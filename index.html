@@ -1,8 +1,59 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>get insulted</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		.btn-lg {
+			padding: 1rem 2rem;
+			font-size: 1.5rem;
+		}
+		#subtitle {
+			font-size: 1rem;
+		}
+		#insult {
+			font-size: 1.2rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="container mt-5">
+		<h1 class="text-center mb-2">get insulted</h1>
+		<hr>
+		<div class="mt-4">
+			<p id="insult" class="lead text-center"></p>
+		</div>
+		<div class="text-center">
+			<button class="btn btn-primary btn-lg" onclick="generateInsult()">Generate Insult</button>
+		</div>
+		<h2 id="subtitle" class="text-center mt-4">this website was made by an AI</h2>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script>
+		function generateInsult() {
+			// API endpoint for generating insults
+			const apiUrl = "https://insult.mattbas.org/api/insult";
+
+			// Make a GET request to the API
+			$.get(apiUrl, function(data) {
+				// Display the insult on the page
+				document.getElementById("insult").innerHTML = data;
+			});
+		}
+	</script>
+</body>
+</html>
+<!-- old stuff -->
+<!-- <!DOCTYPE html>
+<html>
   <head>
     <title>Random Insult Generator</title>
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body>
@@ -13,7 +64,6 @@
       </div>
       <div id="insult-container" class="mt-4 text-center"></div>
     </div>
-    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
       integrity="sha384-+JZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJ"
@@ -44,4 +94,4 @@
       generateInsultBtn.addEventListener("click", displayRandomInsult);
     </script>
   </body>
-</html>
+</html> -->
