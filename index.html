@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Insult Generator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Random Insult Generator</h1>
+      <div class="text-center">
+        <button id="generate-insult-btn" class="btn btn-danger">Generate Insult</button>
+      </div>
+      <div id="insult-container" class="mt-4 text-center"></div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-+JZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJ"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Function to generate a random insult from an external API
+      async function generateRandomInsult() {
+        // Insult API endpoint
+        const endpoint = "https://insult.mattbas.org/api/insult";
+        // Fetch a random insult from the API
+        const response = await fetch(endpoint);
+        const data = await response.text();
+        // Return the insult text
+        return data;
+      }
+      // Function to display a random insult when the button is clicked
+      async function displayRandomInsult() {
+        // Get the insult container element
+        const insultContainer = document.getElementById("insult-container");
+        // Generate a random insult
+        const randomInsult = await generateRandomInsult();
+        // Set the text of the insult container to the random insult
+        insultContainer.innerText = randomInsult;
+      }
+      // Add a click event listener to the generate insult button
+      const generateInsultBtn = document.getElementById("generate-insult-btn");
+      generateInsultBtn.addEventListener("click", displayRandomInsult);
+    </script>
+  </body>
+</html>
