@@ -1,212 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>AI</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <style>
-    .left {
-      /* background-color: #F0F8FF; */
-      /* height: 200px; */
-      padding: 50px;
-      margin-right: 20px;
-    }
-    .right {
-      /* background-color: #FA8072; */
-      /* height: 200px; */
-      padding: 50px;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
-    .container {
-      margin-top: 50px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-    .btn-primary {
-      background-color: #ff69b4;
-      border: none;
-      margin-top: 30px;
-    }
-    #compliment {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-    .btn-danger {
-      background-color: #ff4136;
-      border: none;
-      margin-top: 30px;
-    }
-    #insult {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    /* Responsive design for mobile devices */
-    @media screen and (max-width: 576px) {
-      h1 {
-        font-size: 56px;
-        margin-bottom: 10px;
-      }
-      #compliment {
-        font-size: 40px;
-        margin-bottom: 10px;
-      }
-      .btn-primary {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 20px;
-      }
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>task manager made by an AI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 </head>
+<style>
+    body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+hr {
+  margin-top: 0;
+}
+
+.form-control {
+  font-size: 1.5rem;
+}
+
+.btn-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* .list-group-item {
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+} */
+
+.list-group-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0;
+  font-size: 1.5rem;
+}
+
+
+.list-group-item:hover {
+  background-color: #e9ecef;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+</style>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col left">
-        <h1>Get Compliments</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">ron's simple task manager</h1>
+        <!-- <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="task-input" placeholder="enter a new task...">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3 btn-lg btn-block">add task</button>
+        </form> -->
+        <form>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="add a task" aria-label="add a task" aria-describedby="add-task-button" id="task-input">
+                <button type="submit" class="btn btn-dark" type="button" id="add-task-button">add</button>
+            </div>
+        </form>
+          
         <hr>
-        <div id="compliment"></div>
-        <button type="button" class="btn btn-primary" onclick="getCompliment()">Get Compliment</button>
-      </div>
-      <div class="col right">
-        <h1>Get Insults</h1>
-        <hr>
-        <div id="insult"></div>
-        <button type="button" class="btn btn-danger" onclick="getInsult()">Get Insult</button>
-      </div>
+        <ul id="task-list" class="list-group">
+        </ul>
     </div>
-  </div>
-  <footer>
-    <p>The code for this website was written by an AI</p>
-  </footer>
-  <script>
-    function getCompliment() {
-      $.getJSON("https://complimentr.com/api", function(data) {
-        $("#compliment").text(data.compliment);
-      });
-    }
-    function getInsult() {
-      $.get("https://insult.mattbas.org/api/insult", function(data) {
-        $("#insult").text(data);
-      });
-    }
-  </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script src="app.js"></script>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>get insulted</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<style>
-		.btn-lg {
-			padding: 1rem 2rem;
-			font-size: 1.5rem;
-		}
-		#subtitle {
-			font-size: 1rem;
-		}
-		#insult {
-			font-size: 1.2rem;
-		}
-	</style>
-</head>
-<body>
-	<div class="container mt-5">
-		<h1 class="text-center mb-2">get insulted</h1>
-		<hr>
-		<div class="mt-4">
-			<p id="insult" class="lead text-center"></p>
-		</div>
-		<div class="text-center">
-			<button class="btn btn-primary btn-lg" onclick="generateInsult()">Generate Insult</button>
-		</div>
-		<h2 id="subtitle" class="text-center mt-4">this website was made by an AI</h2>
-	
-  </div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-	<script>
-		function generateInsult() {
-			// API endpoint for generating insults
-			const apiUrl = "https://insult.mattbas.org/api/insult";
-
-			// Make a GET request to the API
-			$.get(apiUrl, function(data) {
-				// Display the insult on the page
-				document.getElementById("insult").innerHTML = data;
-			});
-		}
-	</script>
-</body>
-</html> -->
-<!-- old stuff -->
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Random Insult Generator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container mt-5">
-      <h1 class="text-center mb-4">Random Insult Generator</h1>
-      <div class="text-center">
-        <button id="generate-insult-btn" class="btn btn-danger">Generate Insult</button>
-      </div>
-      <div id="insult-container" class="mt-4 text-center"></div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-      integrity="sha384-+JZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJzvJZJ"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      // Function to generate a random insult from an external API
-      async function generateRandomInsult() {
-        // Insult API endpoint
-        const endpoint = "https://insult.mattbas.org/api/insult";
-        // Fetch a random insult from the API
-        const response = await fetch(endpoint);
-        const data = await response.text();
-        // Return the insult text
-        return data;
-      }
-      // Function to display a random insult when the button is clicked
-      async function displayRandomInsult() {
-        // Get the insult container element
-        const insultContainer = document.getElementById("insult-container");
-        // Generate a random insult
-        const randomInsult = await generateRandomInsult();
-        // Set the text of the insult container to the random insult
-        insultContainer.innerText = randomInsult;
-      }
-      // Add a click event listener to the generate insult button
-      const generateInsultBtn = document.getElementById("generate-insult-btn");
-      generateInsultBtn.addEventListener("click", displayRandomInsult);
-    </script>
-  </body>
-</html> -->
