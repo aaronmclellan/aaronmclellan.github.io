@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .board {
+      display: flex;
+      flex-wrap: wrap;
+      width: 32em;
+      height: 32em;
+      margin: 0 auto;
+      border: 2px solid #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .square {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      min-height: 10em;
+      min-width: 10em;
+      flex-grow: 1;
+    }
+
+    .square.x span {
+      color: #f00;
+    }
+
+    .square.o span {
+      color: #00f;
+    }
+
+    .square span {
+      color: #f00;
+      font-size: 6em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center my-5">Tic Tac Toe</h1>
+    <div class="board">
+      ${renderSquare(0)}
+      ${renderSquare(1)}
+      ${renderSquare(2)}
+      ${renderSquare(3)}
+      ${renderSquare(4)}
+      ${renderSquare(5)}
+      ${renderSquare(6)}
+      ${renderSquare(7)}
+      ${renderSquare(8)}
+    </div>
+    <div class="my-5">
+      <button class="btn btn-primary mr-3" onclick="handleRestart()">Restart</button>
+      <span class="result"></span>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/index1.js"></script>
+</body>
+</html>
