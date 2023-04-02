@@ -1,69 +1,101 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    .board {
-      display: flex;
-      flex-wrap: wrap;
-      width: 32em;
-      height: 32em;
-      margin: 0 auto;
-      border: 2px solid #000;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .square {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      min-height: 10em;
-      min-width: 10em;
-      flex-grow: 1;
-    }
-
-    .square.x span {
-      color: #f00;
-    }
-
-    .square.o span {
-      color: #00f;
-    }
-
-    .square span {
-      color: #f00;
-      font-size: 6em;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1 class="text-center my-5">Tic Tac Toe</h1>
-    <div class="board">
-      ${renderSquare(0)}
-      ${renderSquare(1)}
-      ${renderSquare(2)}
-      ${renderSquare(3)}
-      ${renderSquare(4)}
-      ${renderSquare(5)}
-      ${renderSquare(6)}
-      ${renderSquare(7)}
-      ${renderSquare(8)}
+  <head>
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .save_button {
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 200px;
+            max-height: 200px;
+            font-size: 30px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <div class="row">
+          <div class="col-4" v-for="(cell, index) in cells" :key="index">
+            <button class="save_button btn btn-lg btn-block btn-outline-dark" :class="{ 'btn-success': cell === 'X', 'btn-primary': cell === 'O', 'disabled': cell !== '' }" @click="place(index)" :disabled="cell !== ''">{{ cell }}</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <button class="btn btn-lg btn-block btn-primary" @click="reset">Reset</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="my-5">
-      <button class="btn btn-primary mr-3" onclick="handleRestart()">Restart</button>
-      <span class="result"></span>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/index1.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          cells: ['', '', '', '', '', '', '', '', ''],
+          currentPlayer: 'X',
+          winningCombos: [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+          ]
+        },
+        methods: {
+          place: function(index) {
+            if (this.cells[index] === '') {
+              this.$set(this.cells, index, this.currentPlayer);
+              if (this.checkWin()) {
+                Swal.fire({
+                    title: `Player ${this.currentPlayer} wins!`,
+                    icon: 'success',
+                    confirmButtonText: 'Play again',
+                    onClose: () => {
+                        this.reset();
+                    }
+                    });
+              } else if (this.checkTie()) {
+                Swal.fire({
+                    title: 'It\'s a tie!',
+                    icon: 'info',
+                    confirmButtonText: 'Play again',
+                    onClose: () => {
+                    this.reset();
+                    }
+                });
+              } else {
+                this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+              }
+            }
+          },
+          checkWin: function() {
+            var self = this;
+            return this.winningCombos.some(function(combo) {
+              return combo.every(function(index) {
+                return self.cells[index] === self.currentPlayer;
+              });
+            });
+          },
+          checkTie: function() {
+            return this.cells.every(function(cell) {
+              return cell !== '';
+            });
+          },
+          reset: function() {
+            this.cells = ['', '', '', '', '', '', '', '', ''];
+            this.currentPlayer = 'X';
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
