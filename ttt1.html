@@ -56,7 +56,7 @@
               this.$set(this.cells, index, this.currentPlayer);
               if (this.checkWin()) {
                 Swal.fire({
-                    title: `Player ${this.currentPlayer} wins!`,
+                    title: `${this.currentPlayer} wins!`,
                     icon: 'success',
                     confirmButtonText: 'Play again',
                     onClose: () => {
