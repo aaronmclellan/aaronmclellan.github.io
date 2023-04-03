@@ -25,7 +25,7 @@
         <h1 class="text-center mt-4">sorting algorithm visualization</h1>
         <div class="row">
             <div class="col-md-12 text-center my-4">
-                <button @click="resetArray" class="btn btn-primary aButton">reset</button>
+                <!-- <button @click="resetArray" class="btn btn-primary btn-block aButton">reset</button> -->
                 <button @click="sortArray" class="btn btn-success aButton">bubble sort</button>
                 <button @click="mergeSort" class="btn btn-success aButton">merge sort</button>
                 <button @click="quickSort" class="btn btn-success aButton">quick sort</button>
@@ -36,6 +36,9 @@
             </div>
             <div class="col-md-12">
                 <div v-for="value in array" :style="{width: value + '%', height: '30px'}" class="bar"></div>
+            </div>
+            <div class="col-md-12 text-center my-4">
+                <button @click="resetArray" class="btn btn-primary btn-block aButton">reset</button>
             </div>
         </div>
     </div>
