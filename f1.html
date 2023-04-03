@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Next F1 Race in CST</title>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <h1 class="text-center mb-4">Next F1 Race in CST</h1>
+        <div v-if="location && time" class="card text-center">
+            <div class="card-header">{{ location }}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ time }}</h5>
+            </div>
+        </div>
+        <div v-else class="alert alert-warning">No upcoming races found</div>
+    </div>
+    <!-- Load Vue.js and Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                location: null,
+                time: null
+            },
+            mounted() {
+                // Send a request to the ESPN Formula 1 schedule page
+                axios.get('https://www.espn.com/f1/schedule')
+                    .then(response => {
+                        // Parse the response content using DOMParser
+                        const parser = new DOMParser();
+                        const htmlDocument = parser.parseFromString(response.data, 'text/html');
+                        // Find the next race information
+                        const nextRace = htmlDocument.querySelector('.event-details--upcoming');
+                        if (nextRace) {
+                            // Find the location and time of the next race
+                            const location = nextRace.querySelector('.event-location').textContent.trim();
+                            const date = nextRace.querySelector('.event-date').textContent.trim();
+                            const time = nextRace.querySelector('.event-time').textContent.trim();
+                            // Convert the race time to CST timezone
+                            const raceTime = new Date(`${date} ${time} ET`);
+                            const cstOffset = raceTime.getTimezoneOffset() / 60 - 6;
+                            raceTime.setHours(raceTime.getHours() + cstOffset);
+                            // Update the data properties
+                            this.location = location;
+                            this.time = raceTime.toLocaleString();
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
