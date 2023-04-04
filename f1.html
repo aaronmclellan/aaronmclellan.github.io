@@ -47,10 +47,10 @@
         <br>
         <div class="d-flex justify-content-center">
             <p> 
-                <a class="btn btn-primary" data-toggle="collapse" href="#allRaces" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-primary" onclick="myFunction(this)" data-toggle="collapse" href="#allRaces" role="button" aria-expanded="false" aria-controls="collapseExample">
                     All Races
                 </a>
-                <a class="btn btn-primary" data-toggle="collapse" href="#driversStandings" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-primary" onclick="myFunction(this)" data-toggle="collapse" href="#driversStandings" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Driver Standings
                 </a>
             </p>
@@ -68,10 +68,10 @@
                                 <tr>
                                     <th @click="sortByRaces('round')">Round</th>
                                     <th @click="sortByRaces('raceName')">Race Name</th>
+                                    <th @click="sortByRaces('date')">Date</th>
                                     <th @click="sortByRaces('circuit')">Circuit</th>
                                     <th @click="sortByRaces('location')">Location</th>
                                     <th @click="sortByRaces('country')">Country</th>
-                                    <th @click="sortByRaces('date')">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,6 +132,15 @@
     <!-- Include main.js -->
     <!-- <script src="main.js"></script> -->
     <script>
+        function myFunction(that) {
+            if(that.classList.contains('btn-primary')){
+                that.classList.remove('btn-primary');
+                that.classList.add('btn-success');
+            } else {
+                that.classList.remove('btn-success');
+                that.classList.add('btn-primary');
+            }
+        }
         const API_URL = "https://ergast.com/api/f1/current/next.json";
         // const API_URL = "https://ergast.com/api/f1/current/last.json";
         const API_URL1 = "https://ergast.com/api/f1/current/driverStandings.json";
