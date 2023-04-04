@@ -1,60 +1,304 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Next F1 Race in CST</title>
-    <!-- Load Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ft.wtf</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Vue.js -->
+    <script src="https://unpkg.com/vue@2.6.14"></script>
+    <!-- Include Axios for API requests -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js"></script>
+    <!-- Include Moment.js for date/time manipulation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+    .current1{
+        padding-left: 0!important;
+        margin-left: 0!important;
+        display: block;
+    }
+</style>
 </head>
 <body>
-    <div id="app" class="container mt-5">
-        <h1 class="text-center mb-4">Next F1 Race in CST</h1>
-        <div v-if="location && time" class="card text-center">
-            <div class="card-header">{{ location }}</div>
+    <div id="app" class="container-fluid">
+        <div class="text-center mt-5 card">
+            <div class="card-header">
+                Next F1 Race
+              </div>
+            <!-- <h1>Next F1 Race Info</h1> -->
             <div class="card-body">
-                <h5 class="card-title">{{ time }}</h5>
-            </div>
+                <h1>{{ raceName }}</h1>
+                <h3>{{ nextRaceLocation }}</h3>
+                <hr>
+                <p><b>Practice 1:</b> {{ fp1 }}</p>
+                <p><b>Practice 2:</b> {{ fp2 }}</p>
+                <p><b>Practice 3:</b> {{ fp3 }}</p>
+                <p><b>Qualifying:</b> {{ nextQualiTime }}</p>
+                <p><b>Sprint:</b> {{ sprint }}</p>
+                <p><b>Race:</b> {{ nextRaceTimeCST }}</p>
+              </div>
+
         </div>
-        <div v-else class="alert alert-warning">No upcoming races found</div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <p> 
+                <a class="btn btn-primary" data-toggle="collapse" href="#allRaces" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    All Races
+                </a>
+                <a class="btn btn-primary" data-toggle="collapse" href="#driversStandings" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Driver Standings
+                </a>
+            </p>
+        </div>
+          <!-- ********************************************** -->
+          <!-- ********************** ~~~ ALL RACES ~~~ ****************** -->
+          <!-- ********************************************** -->
+          <div class="current collapse container-fluid" id="allRaces">
+            <!-- <div class="card card-body"> -->
+                <!-- <div id="current" class="container-fluid"> -->
+                    <div class="text-center mt-5">
+                        <h1>F2023 F1 Races</h1>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th @click="sortByRaces('round')">Round</th>
+                                    <th @click="sortByRaces('raceName')">Race Name</th>
+                                    <th @click="sortByRaces('circuit')">Circuit</th>
+                                    <th @click="sortByRaces('location')">Location</th>
+                                    <th @click="sortByRaces('country')">Country</th>
+                                    <th @click="sortByRaces('date')">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="race in sortedRaces">
+                                    <td>{{ race.round }}</td>
+                                    <td>{{ race.raceName }}</td>
+                                    <td>{{ race.date }}</td>
+                                    <td>{{ race.Circuit.circuitName }}</td>
+                                    <td>{{ race.Circuit.Location.locality }}</td>
+                                    <td>{{ race.Circuit.Location.country }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+          </div>
+
+          <div class="current collapse container" id="driversStandings">
+            <!-- <div class="card card-body"> -->
+                <!-- <div id="current" class="container"> -->
+                    <div class="text-center mt-5">
+                        <h1>F1 Driver Standings</h1>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th @click="sortBy('position')">Position</th>
+                                    <th @click="sortBy('points')">Points</th>
+                                    <th @click="sortBy('givenName')">First Name</th>
+                                    <th @click="sortBy('familyName')">Last Name</th>
+                                    <th @click="sortBy('nationality')">Nationality</th>
+                                    <th @click="sortBy('constructor')">Constructor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="driver in sortedDrivers">
+                                    <td>
+                                        <span v-if="driver.position === '1'">🏆</span>
+                                        <span v-else-if="driver.position === '2'">🥈</span>
+                                        <span v-else-if="driver.position === '3'">🥉</span>
+                                        <span v-else>{{ driver.position }}</span>
+                                    </td>
+                                    <td>{{ driver.points }}</td>
+                                    <td>{{ driver.Driver.givenName }}</td>
+                                    <td>{{ driver.Driver.familyName }}</td>
+                                    <td>{{ driver.Driver.nationality }}</td>
+                                    <td>{{ driver.Constructors[0].name }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
+          </div>
+
     </div>
-    <!-- Load Vue.js and Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Include main.js -->
+    <!-- <script src="main.js"></script> -->
     <script>
+        const API_URL = "https://ergast.com/api/f1/current/next.json";
+        // const API_URL = "https://ergast.com/api/f1/current/last.json";
+        const API_URL1 = "https://ergast.com/api/f1/current/driverStandings.json";
+        const API_URL2 = "https://ergast.com/api/f1/current.json";
+
         new Vue({
-            el: '#app',
+            el: "#app",
             data: {
-                location: null,
-                time: null
+                nextRaceLocation: "",
+                nextRaceTimeCST: "",
+                fp1: "none",
+                fp2: "none",
+                fp3: "none",
+                sprint: "none",
+                nextQualiTime: "",
+                raceName: "",
+                drivers: [],
+                sortKey: "",
+                sortOrder: 1,
+                races: [],
+                sortKeyRaces: "",
+                sortOrderRaces: 1,
+            },
+            computed: {
+                sortedDrivers() {
+                    if (this.sortKey) {
+                        const key = this.sortKey;
+                        const order = this.sortOrder;
+                        return this.drivers.slice().sort((a, b) => {
+                            let aValue = key === "constructor" ? a.Constructors[0].name : a[key] || a.Driver[key];
+                            let bValue = key === "constructor" ? b.Constructors[0].name : b[key] || b.Driver[key];
+
+                            if (key === "position" || key === "points") {
+                                aValue = parseInt(aValue);
+                                bValue = parseInt(bValue);
+                            }
+
+                            if (typeof aValue === "string") {
+                                return order * aValue.localeCompare(bValue);
+                            }
+                            return order * (aValue - bValue);
+                        });
+                    }
+                    return this.drivers;
+                },
+                sortedRaces() {
+                    if (this.sortKeyRaces) {
+                        const key = this.sortKeyRaces;
+                        const order = this.sortOrderRaces;
+                        return this.races.slice().sort((a, b) => {
+                            let aValue = key === "circuit" ? a.Circuit.circuitName :
+                                        key === "location" ? a.Circuit.Location.locality :
+                                        key === "country" ? a.Circuit.Location.country :
+                                        a[key];
+                            let bValue = key === "circuit" ? b.Circuit.circuitName :
+                                        key === "location" ? b.Circuit.Location.locality :
+                                        key === "country" ? b.Circuit.Location.country :
+                                        b[key];
+
+                            if (key === "round") {
+                                aValue = parseInt(aValue);
+                                bValue = parseInt(bValue);
+                            }
+
+                            if (typeof aValue === "string") {
+                                return order * aValue.localeCompare(bValue);
+                            }
+                            return order * (aValue - bValue);
+                        });
+                    }
+                    return this.races;
+                },
             },
             mounted() {
-                // Send a request to the ESPN Formula 1 schedule page
-                axios.get('https://www.espn.com/f1/schedule')
-                    .then(response => {
-                        // Parse the response content using DOMParser
-                        const parser = new DOMParser();
-                        const htmlDocument = parser.parseFromString(response.data, 'text/html');
-                        // Find the next race information
-                        const nextRace = htmlDocument.querySelector('.event-details--upcoming');
-                        if (nextRace) {
-                            // Find the location and time of the next race
-                            const location = nextRace.querySelector('.event-location').textContent.trim();
-                            const date = nextRace.querySelector('.event-date').textContent.trim();
-                            const time = nextRace.querySelector('.event-time').textContent.trim();
-                            // Convert the race time to CST timezone
-                            const raceTime = new Date(`${date} ${time} ET`);
-                            const cstOffset = raceTime.getTimezoneOffset() / 60 - 6;
-                            raceTime.setHours(raceTime.getHours() + cstOffset);
-                            // Update the data properties
-                            this.location = location;
-                            this.time = raceTime.toLocaleString();
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
+                this.fetchNextF1Race();
+                this.fetchDriverStandings();
+                this.fetchCurrentSeasonRaces();
+            },
+            methods: {
+                fetchNextF1Race() {
+                    axios.get(API_URL)
+                        .then(response => {
+                            const nextRace = response.data.MRData.RaceTable.Races[0];
+                            this.nextRaceLocation = `${nextRace.Circuit.Location.locality}, ${nextRace.Circuit.Location.country}`;
+                            const raceTimeUTC = nextRace.date + "T" + nextRace.time.slice(0, -1);
+                            this.nextRaceTimeCST = this.convertZtoCST(raceTimeUTC);
+                            const qualiTimeUTC = nextRace.Qualifying.date + "T" + nextRace.Qualifying.time.slice(0, -1);
+                            this.nextQualiTime = this.convertZtoCST(qualiTimeUTC);
+                            this.raceName = nextRace.raceName;
+                            const fp1TimeUTC = nextRace.FirstPractice.date + "T" + nextRace.FirstPractice.time.slice(0, -1);
+                            this.fp1 = this.convertZtoCST(fp1TimeUTC);
+                            const fp2TimeUTC = nextRace.SecondPractice.date + "T" + nextRace.SecondPractice.time.slice(0, -1);
+                            this.fp2 = this.convertZtoCST(fp2TimeUTC);
+                            if (nextRace.ThirdPractice !== undefined) {
+                                const fp3TimeUTC = nextRace.ThirdPractice.date + "T" + nextRace.ThirdPractice.time.slice(0, -1);
+                                this.fp3 = this.convertZtoCST(fp3TimeUTC);
+                            }
+                            if (nextRace.Sprint !== undefined) {
+                                const sprintTimeUTC = nextRace.Sprint.date + "T" + nextRace.Sprint.time.slice(0, -1);
+                                this.sprint = this.convertZtoCST(sprintTimeUTC);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error fetching race data:", error);
+                        });
+                },
+                convertZtoCST(zTime) {
+                    // Create a Date object from the input time string
+                    const utcDate = new Date(zTime);
+
+                    // Set the target timezone (CST) offset in hours
+                    const cstOffset = -5;
+
+                    // Calculate the target timezone (CST) time by applying the offset
+                    const cstDate = new Date(utcDate.getTime() + (cstOffset * 60 * 60 * 1000));
+
+                    // Format the date and time for display
+                    const options = {
+                        timeZone: 'America/Chicago',
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                    };
+                    const formattedDate = cstDate.toLocaleString('en-US', options);
+
+                    return formattedDate;
+                },
+                fetchDriverStandings() {
+                    axios.get(API_URL1)
+                        .then(response => {
+                            this.drivers = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching driver standings data:", error);
+                        });
+                },
+                fetchCurrentSeasonRaces() {
+                    axios.get(API_URL2)
+                        .then(response => {
+                            this.races = response.data.MRData.RaceTable.Races;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching current season races data:", error);
+                        });
+                },
+                sortBy(key) {
+                    if (this.sortKey === key) {
+                        this.sortOrder = -this.sortOrder;
+                    } else {
+                        this.sortKey = key;
+                        this.sortOrder = 1;
+                    }
+                },
+                sortByRaces(key) {
+                    if (this.sortKeyRaces === key) {
+                        this.sortOrderRaces = -this.sortOrderRaces;
+                    } else {
+                        this.sortKeyRaces = key;
+                        this.sortOrderRaces = 1;
+                    }
+                },
+            },
         });
+
     </script>
 </body>
 </html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Current Season Races</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Vue.js -->
+    <script src="https://unpkg.com/vue@2.6.14"></script>
+    <!-- Include Axios for API requests -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="text-center mt-5">
+            <h1>F1 Current Season Races</h1>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th @click="sortBy('round')">Round</th>
+                        <th @click="sortBy('raceName')">Race Name</th>
+                        <th @click="sortBy('circuit')">Circuit</th>
+                        <th @click="sortBy('location')">Location</th>
+                        <th @click="sortBy('country')">Country</th>
+                        <th @click="sortBy('date')">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="race in sortedRaces">
+                        <td>{{ race.round }}</td>
+                        <td>{{ race.raceName }}</td>
+                        <td>{{ race.Circuit.circuitName }}</td>
+                        <td>{{ race.Circuit.Location.locality }}</td>
+                        <td>{{ race.Circuit.Location.country }}</td>
+                        <td>{{ race.date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "https://ergast.com/api/f1/current.json";
+
+new Vue({
+    el: "#app",
+    data: {
+        races: [],
+        sortKey: "",
+        sortOrder: 1,
+    },
+    computed: {
+        sortedRaces() {
+            if (this.sortKey) {
+                const key = this.sortKey;
+                const order = this.sortOrder;
+                return this.races.slice().sort((a, b) => {
+                    let aValue = key === "circuit" ? a.Circuit.circuitName :
+                                 key === "location" ? a.Circuit.Location.locality :
+                                 key === "country" ? a.Circuit.Location.country :
+                                 a[key];
+                    let bValue = key === "circuit" ? b.Circuit.circuitName :
+                                 key === "location" ? b.Circuit.Location.locality :
+                                 key === "country" ? b.Circuit.Location.country :
+                                 b[key];
+
+                    if (key === "round") {
+                        aValue = parseInt(aValue);
+                        bValue = parseInt(bValue);
+                    }
+
+                    if (typeof aValue === "string") {
+                        return order * aValue.localeCompare(bValue);
+                    }
+                    return order * (aValue - bValue);
+                });
+            }
+            return this.races;
+        },
+    },
+    mounted() {
+        this.fetchCurrentSeasonRaces();
+    },
+    methods: {
+        fetchCurrentSeasonRaces() {
+            axios.get(API_URL)
+                .then(response => {
+                    this.races = response.data.MRData.RaceTable.Races;
+                })
+                .catch(error => {
+                    console.error("Error fetching current season races data:", error);
+                });
+        },
+        sortBy(key) {
+            if (this.sortKey === key) {
+                this.sortOrder = -this.sortOrder;
+            } else {
+                this.sortKey = key;
+                this.sortOrder = 1;
+            }
+        },
+    },
+});
+
+    </script>
+</body>
+</html>

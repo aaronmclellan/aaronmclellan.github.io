@@ -1,41 +1,28 @@
 import requests
-from bs4 import BeautifulSoup
-import pytz
 import datetime
+import pytz
 
-# URL of the ESPN Formula 1 schedule page
-url = "https://www.espn.com/f1/schedule"
+def get_next_f1_race():
+    url = "https://ergast.com/api/f1/current/next.json"
+    response = requests.get(url)
+    data = response.json()
 
-# Send a request to the website and get the content
-response = requests.get(url)
-content = response.content
+    next_race = data['MRData']['RaceTable']['Races'][0]
+    race_location = next_race['Circuit']['Location']['locality'] + ", " + next_race['Circuit']['Location']['country']
+    race_time_utc = datetime.datetime.fromisoformat(next_race['date'] + 'T' + next_race['time'][:-1])
 
-# Parse the content using Beautiful Soup
-soup = BeautifulSoup(content, "html.parser")
-print("SOUP")
-print(soup)
-test = soup.find("table", class_="Table__TR")
-print("TEST")
-print(test)
-# Find the next race in the schedule table
-table = soup.find("table")
-print("TABLE")
-print(table)
-rows = table.find_all("tr")
-for row in rows:
-    cells = row.find_all("td")
-    if len(cells) > 0 and cells[0].text.strip() == "Next Race":
-        location = cells[1].text.strip()
-        date_time = cells[2].text.strip()
-        break
+    return race_location, race_time_utc
 
-# Convert the race time to CST timezone
-race_time = datetime.datetime.strptime(date_time, "%a, %b %d, %Y - %I:%M %p %Z")
-utc = pytz.utc
-cst = pytz.timezone('US/Central')
-race_time_utc = utc.localize(race_time)
-race_time_cst = race_time_utc.astimezone(cst)
+def convert_utc_to_cst(utc_time):
+    utc = pytz.utc
+    cst = pytz.timezone('America/Chicago')
+    cst_time = utc_time.replace(tzinfo=utc).astimezone(cst)
+    
+    return cst_time
 
-# Display the location and race time in CST
-print("Next race location:", location)
-print("Race time in CST:", race_time_cst.strftime("%A, %B %d, %Y %I:%M %p"))
+if __name__ == "__main__":
+    location, time_utc = get_next_f1_race()
+    time_cst = convert_utc_to_cst(time_utc)
+    
+    print(f"Next F1 race location: {location}")
+    print(f"Next F1 race time (CST): {time_cst.strftime('%Y-%m-%d %H:%M:%S')}")
