@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Last Race Results</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Vue.js -->
+    <script src="https://unpkg.com/vue@2.6.14"></script>
+    <!-- Include Axios for API requests -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="text-center mt-5">
+            <h1>F1 Last Race Results</h1>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th @click="sortBy('position')">Position</th>
+                        <th @click="sortBy('Driver')">Driver</th>
+                        <th @click="sortBy('Constructor')">Constructor</th>
+                        <th @click="sortBy('laps')">Laps</th>
+                        <th @click="sortBy('status')">Status</th>
+                        <th @click="sortBy('points')">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="result in sortedResults">
+                        <td>{{ result.position }}</td>
+                        <td>{{ result.Driver.givenName }} {{ result.Driver.familyName }}</td>
+                        <td>{{ result.Constructor.name }}</td>
+                        <td>{{ result.laps }}</td>
+                        <td>{{ result.status }}</td>
+                        <td>{{ result.points }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Include main.js -->
+    <script>
+        const API_URL = "https://ergast.com/api/f1/current/last/results.json";
+
+new Vue({
+    el: "#app",
+    data: {
+        results: [],
+        sortKey: "",
+        sortOrder: 1,
+    },
+    computed: {
+        sortedResults() {
+            if (this.sortKey) {
+                const key = this.sortKey;
+                const order = this.sortOrder;
+                return this.results.slice().sort((a, b) => {
+                    let aValue = key === "Driver" ? a.Driver.familyName :
+                                 key === "Constructor" ? a.Constructor.name :
+                                 a[key];
+                    let bValue = key === "Driver" ? b.Driver.familyName :
+                                 key === "Constructor" ? b.Constructor.name :
+                                 b[key];
+
+                    if (key === "position" || key === "laps" || key === "points") {
+                        aValue = parseInt(aValue);
+                        bValue = parseInt(bValue);
+                    }
+
+                    if (typeof aValue === "string") {
+                        return order * aValue.localeCompare(bValue);
+                    }
+                    return order * (aValue - bValue);
+                });
+            }
+            return this.results;
+        },
+    },
+    mounted() {
+        this.fetchLastRaceResults();
+    },
+    methods: {
+        fetchLastRaceResults() {
+            axios.get(API_URL)
+                .then(response => {
+                    this.results = response.data.MRData.RaceTable.Races[0].Results;
+                })
+                .catch(error => {
+                    console.error("Error fetching last race results data:", error);
+                });
+        },
+        sortBy(key) {
+            if (this.sortKey === key) {
+                this.sortOrder = -this.sortOrder;
+            } else {
+                this.sortKey = key;
+                this.sortOrder = 1;
+            }
+        },
+    },
+});
+
+    </script>
+</body>
+</html>

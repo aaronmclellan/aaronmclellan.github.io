@@ -22,6 +22,9 @@
         margin-left: 0!important;
         display: block;
     }
+    .link{
+        color: #000;
+    }
 </style>
 </head>
 <body>
@@ -32,7 +35,7 @@
               </div>
             <!-- <h1>Next F1 Race Info</h1> -->
             <div class="card-body">
-                <h1>{{ raceName }}</h1>
+                <h1><a :href=url target="_blank" class="link">{{ raceName }}</a></h1>
                 <h3>{{ nextRaceLocation }}</h3>
                 <hr>
                 <p><b>Practice 1:</b> {{ fp1 }}</p>
@@ -53,6 +56,10 @@
                 <a class="btn btn-primary" onclick="myFunction(this)" data-toggle="collapse" href="#driversStandings" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Driver Standings
                 </a>
+                <a class="btn btn-primary" onclick="myFunction(this)" data-toggle="collapse" href="#lastResults" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Last Race Results
+                </a>
+                
             </p>
         </div>
           <!-- ********************************************** -->
@@ -126,6 +133,33 @@
                 <!-- </div> -->
             <!-- </div> -->
           </div>
+          <div class="current collapse container" id="lastResults">
+            <div class="text-center mt-5">
+                <h1>F1 Last Race Results</h1>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th @click="sortBy('position')">Position</th>
+                            <th @click="sortBy('Driver')">Driver</th>
+                            <th @click="sortBy('Constructor')">Constructor</th>
+                            <th @click="sortBy('laps')">Laps</th>
+                            <th @click="sortBy('status')">Status</th>
+                            <th @click="sortBy('points')">Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="result in sortedResults">
+                            <td>{{ result.position }}</td>
+                            <td>{{ result.Driver.givenName }} {{ result.Driver.familyName }}</td>
+                            <td>{{ result.Constructor.name }}</td>
+                            <td>{{ result.laps }}</td>
+                            <td>{{ result.status }}</td>
+                            <td>{{ result.points }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
 
     </div>
 
@@ -145,6 +179,7 @@
         // const API_URL = "https://ergast.com/api/f1/current/last.json";
         const API_URL1 = "https://ergast.com/api/f1/current/driverStandings.json";
         const API_URL2 = "https://ergast.com/api/f1/current.json";
+        const API_URL3 = "https://ergast.com/api/f1/current/last/results.json";
 
         new Vue({
             el: "#app",
@@ -163,6 +198,8 @@
                 races: [],
                 sortKeyRaces: "",
                 sortOrderRaces: 1,
+                url: "",
+                results: [],
             },
             computed: {
                 sortedDrivers() {
@@ -213,11 +250,37 @@
                     }
                     return this.races;
                 },
+                sortedResults() {
+                    if (this.sortKey) {
+                        const key = this.sortKey;
+                        const order = this.sortOrder;
+                        return this.results.slice().sort((a, b) => {
+                            let aValue = key === "Driver" ? a.Driver.familyName :
+                                        key === "Constructor" ? a.Constructor.name :
+                                        a[key];
+                            let bValue = key === "Driver" ? b.Driver.familyName :
+                                        key === "Constructor" ? b.Constructor.name :
+                                        b[key];
+
+                            if (key === "position" || key === "laps" || key === "points") {
+                                aValue = parseInt(aValue);
+                                bValue = parseInt(bValue);
+                            }
+
+                            if (typeof aValue === "string") {
+                                return order * aValue.localeCompare(bValue);
+                            }
+                            return order * (aValue - bValue);
+                        });
+                    }
+                    return this.results;
+                },
             },
             mounted() {
                 this.fetchNextF1Race();
                 this.fetchDriverStandings();
                 this.fetchCurrentSeasonRaces();
+                this.fetchLastRaceResults();
             },
             methods: {
                 fetchNextF1Race() {
@@ -230,6 +293,7 @@
                             const qualiTimeUTC = nextRace.Qualifying.date + "T" + nextRace.Qualifying.time.slice(0, -1);
                             this.nextQualiTime = this.convertZtoCST(qualiTimeUTC);
                             this.raceName = nextRace.raceName;
+                            this.url = nextRace.url;
                             const fp1TimeUTC = nextRace.FirstPractice.date + "T" + nextRace.FirstPractice.time.slice(0, -1);
                             this.fp1 = this.convertZtoCST(fp1TimeUTC);
                             const fp2TimeUTC = nextRace.SecondPractice.date + "T" + nextRace.SecondPractice.time.slice(0, -1);
@@ -304,6 +368,15 @@
                         this.sortKeyRaces = key;
                         this.sortOrderRaces = 1;
                     }
+                },
+                fetchLastRaceResults() {
+                    axios.get(API_URL3)
+                        .then(response => {
+                            this.results = response.data.MRData.RaceTable.Races[0].Results;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching last race results data:", error);
+                        });
                 },
             },
         });
