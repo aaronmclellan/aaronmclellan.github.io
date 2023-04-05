@@ -25,6 +25,17 @@
     .link{
         color: #000;
     }
+    .hi{
+        text-align: center;
+        border-radius: 0.25rem;
+    }
+    /* .btn{
+        text-align: center;
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+        border-radius: 0.25rem;
+    } */
 </style>
 </head>
 <body>
@@ -48,7 +59,7 @@
 
         </div>
         <br>
-        <div class="d-flex justify-content-center">
+        <!-- <div class="d-flex justify-content-center">
             <p> 
                 <a class="btn btn-primary" onclick="myFunction(this)" data-toggle="collapse" href="#allRaces" role="button" aria-expanded="false" aria-controls="collapseExample">
                     All Races
@@ -61,13 +72,55 @@
                 </a>
                 
             </p>
-        </div>
+        </div> -->
           <!-- ********************************************** -->
           <!-- ********************** ~~~ ALL RACES ~~~ ****************** -->
           <!-- ********************************************** -->
-          <div class="current collapse container-fluid" id="allRaces">
-            <!-- <div class="card card-body"> -->
-                <!-- <div id="current" class="container-fluid"> -->
+          <!-- <div class="current collapse container-fluid" id="allRaces">
+                <div class="card card-body">
+                    <div id="current" class="container-fluid">
+                        <div class="text-center mt-5">
+                            <h1>F2023 F1 Races</h1>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th @click="sortByRaces('round')">Round</th>
+                                        <th @click="sortByRaces('raceName')">Race Name</th>
+                                        <th @click="sortByRaces('date')">Date</th>
+                                        <th @click="sortByRaces('circuit')">Circuit</th>
+                                        <th @click="sortByRaces('location')">Location</th>
+                                        <th @click="sortByRaces('country')">Country</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="race in sortedRaces">
+                                        <td>{{ race.round }}</td>
+                                        <td>{{ race.raceName }}</td>
+                                        <td>{{ race.date }}</td>
+                                        <td>{{ race.Circuit.circuitName }}</td>
+                                        <td>{{ race.Circuit.Location.locality }}</td>
+                                        <td>{{ race.Circuit.Location.country }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          </div> -->
+
+
+          <div class="accordion" id="accordionExample">
+            <div class="hi">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    2023 Race Schedule
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="races">
                     <div class="text-center mt-5">
                         <h1>F2023 F1 Races</h1>
                         <table class="table table-striped table-hover">
@@ -93,13 +146,19 @@
                             </tbody>
                         </table>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
-          </div>
-
-          <div class="current collapse container" id="driversStandings">
-            <!-- <div class="card card-body"> -->
-                <!-- <div id="current" class="container"> -->
+                </div>
+              </div>
+            </div>
+            <div class="hi">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Driver Standings
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
                     <div class="text-center mt-5">
                         <h1>F1 Driver Standings</h1>
                         <table class="table table-striped table-hover">
@@ -130,10 +189,86 @@
                             </tbody>
                         </table>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="hi">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Constructor Standings
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <div class="text-center mt-5">
+                        <h1>F1 Constructor Standings</h1>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th @click="sortBy('position')">Position</th>
+                                    <th @click="sortBy('Constructor')">Constructor</th>
+                                    <th @click="sortBy('points')">Points</th>
+                                    <th @click="sortBy('wins')">Wins</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="standing in sortedStandings">
+                                    <td>{{ standing.position }}</td>
+                                    <td>{{ standing.Constructor.name }}</td>
+                                    <td>{{ standing.points }}</td>
+                                    <td>{{ standing.wins }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="hi">
+              <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    {{ previousRaceName }} Results
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="text-center mt-5">
+                        <h1>{{ previousRaceName }} Results</h1>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th @click="sortBy('position')">Position</th>
+                                    <th @click="sortBy('Driver')">Driver</th>
+                                    <th @click="sortBy('Constructor')">Constructor</th>
+                                    <th @click="sortBy('laps')">Laps</th>
+                                    <th @click="sortBy('status')">Status</th>
+                                    <th @click="sortBy('points')">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="result in sortedResults">
+                                    <td>{{ result.position }}</td>
+                                    <td>{{ result.Driver.givenName }} {{ result.Driver.familyName }}</td>
+                                    <td>{{ result.Constructor.name }}</td>
+                                    <td>{{ result.laps }}</td>
+                                    <td>{{ result.status }}</td>
+                                    <td>{{ result.points }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="current collapse container" id="lastResults">
+
+
+          <!-- <div class="current collapse container" id="lastResults">
             <div class="text-center mt-5">
                 <h1>F1 Last Race Results</h1>
                 <table class="table table-striped table-hover">
@@ -159,7 +294,7 @@
                     </tbody>
                 </table>
             </div>
-          </div>
+          </div> -->
 
     </div>
 
@@ -176,10 +311,11 @@
             }
         }
         const API_URL = "https://ergast.com/api/f1/current/next.json";
-        // const API_URL = "https://ergast.com/api/f1/current/last.json";
         const API_URL1 = "https://ergast.com/api/f1/current/driverStandings.json";
         const API_URL2 = "https://ergast.com/api/f1/current.json";
         const API_URL3 = "https://ergast.com/api/f1/current/last/results.json";
+        const API_URL4 = "https://ergast.com/api/f1/current/last.json";
+        const API_URL5 = "https://ergast.com/api/f1/current/constructorStandings.json";
 
         new Vue({
             el: "#app",
@@ -200,6 +336,8 @@
                 sortOrderRaces: 1,
                 url: "",
                 results: [],
+                previousRaceName: "",
+                standings: [],
             },
             computed: {
                 sortedDrivers() {
@@ -275,12 +413,39 @@
                     }
                     return this.results;
                 },
+                sortedStandings() {
+                    console.log("sortedStandings");
+                    console.log(this);
+                    if (this.sortKey) {
+                        const key = this.sortKey;
+                        const order = this.sortOrder;
+                        return this.standings.slice().sort((a, b) => {
+                            let aValue = key === "Constructor" ? a.Constructor.name : a[key];
+                            let bValue = key === "Constructor" ? b.Constructor.name : b[key];
+
+                            if (key === "position" || key === "points" || key === "wins") {
+                                aValue = parseInt(aValue);
+                                bValue = parseInt(bValue);
+                            }
+
+                            if (typeof aValue === "string") {
+                                return order * aValue.localeCompare(bValue);
+                            }
+                            return order * (aValue - bValue);
+                        });
+                    }
+                    console.log(this.standings);
+                    return this.standings;
+
+                },
             },
             mounted() {
                 this.fetchNextF1Race();
                 this.fetchDriverStandings();
                 this.fetchCurrentSeasonRaces();
                 this.fetchLastRaceResults();
+                this.fetchLastRaceInfo();
+                this.fetchConstructorStandings();
             },
             methods: {
                 fetchNextF1Race() {
@@ -376,6 +541,25 @@
                         })
                         .catch(error => {
                             console.error("Error fetching last race results data:", error);
+                        });
+                },
+                fetchLastRaceInfo() {
+                    axios.get(API_URL4)
+                        .then(response => {
+                            const nextRace = response.data.MRData.RaceTable.Races[0];
+                            this.previousRaceName = nextRace.raceName;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching race data:", error);
+                        });
+                },
+                fetchConstructorStandings() {
+                    axios.get(API_URL5)
+                        .then(response => {
+                            this.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching constructor standings data:", error);
                         });
                 },
             },

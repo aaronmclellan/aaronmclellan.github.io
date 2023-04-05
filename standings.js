@@ -1,22 +1,22 @@
-const API_URL1 = "https://ergast.com/api/f1/current/driverStandings.json";
+const API_URL = "https://ergast.com/api/f1/current/constructorStandings.json";
 
 new Vue({
-    el: "#standings",
+    el: "#app",
     data: {
-        drivers: [],
+        standings: [],
         sortKey: "",
         sortOrder: 1,
     },
     computed: {
-        sortedDrivers() {
+        sortedStandings() {
             if (this.sortKey) {
                 const key = this.sortKey;
                 const order = this.sortOrder;
-                return this.drivers.slice().sort((a, b) => {
-                    let aValue = key === "constructor" ? a.Constructors[0].name : a[key] || a.Driver[key];
-                    let bValue = key === "constructor" ? b.Constructors[0].name : b[key] || b.Driver[key];
+                return this.standings.slice().sort((a, b) => {
+                    let aValue = key === "Constructor" ? a.Constructor.name : a[key];
+                    let bValue = key === "Constructor" ? b.Constructor.name : b[key];
 
-                    if (key === "position" || key === "points") {
+                    if (key === "position" || key === "points" || key === "wins") {
                         aValue = parseInt(aValue);
                         bValue = parseInt(bValue);
                     }
@@ -27,20 +27,20 @@ new Vue({
                     return order * (aValue - bValue);
                 });
             }
-            return this.drivers;
+            return this.standings;
         },
     },
     mounted() {
-        this.fetchDriverStandings();
+        this.fetchConstructorStandings();
     },
     methods: {
-        fetchDriverStandings() {
-            axios.get(API_URL1)
+        fetchConstructorStandings() {
+            axios.get(API_URL)
                 .then(response => {
-                    this.drivers = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+                    this.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
                 })
                 .catch(error => {
-                    console.error("Error fetching driver standings data:", error);
+                    console.error("Error fetching constructor standings data:", error);
                 });
         },
         sortBy(key) {
