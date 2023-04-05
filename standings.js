@@ -1,24 +1,25 @@
-const API_URL = "https://ergast.com/api/f1/current/constructorStandings.json";
+const API_URL6 = "https://ergast.com/api/f1/current/drivers.json";
 
 new Vue({
     el: "#app",
     data: {
-        standings: [],
-        sortKey: "",
+        drivers2: [],
+        sortKeyDrivers: "givenName",
         sortOrder: 1,
     },
     computed: {
-        sortedStandings() {
-            if (this.sortKey) {
-                const key = this.sortKey;
+        sortedDrivers2() {
+            console.log(this.sortKeyDrivers);
+            if (this.sortKeyDrivers) {
+                const key = this.sortKeyDrivers;
                 const order = this.sortOrder;
-                return this.standings.slice().sort((a, b) => {
-                    let aValue = key === "Constructor" ? a.Constructor.name : a[key];
-                    let bValue = key === "Constructor" ? b.Constructor.name : b[key];
+                return this.drivers2.slice().sort((a, b) => {
+                    let aValue = a[key];
+                    let bValue = b[key];
 
-                    if (key === "position" || key === "points" || key === "wins") {
-                        aValue = parseInt(aValue);
-                        bValue = parseInt(bValue);
+                    if (key === "dateOfBirth") {
+                        aValue = new Date(aValue);
+                        bValue = new Date(bValue);
                     }
 
                     if (typeof aValue === "string") {
@@ -27,27 +28,27 @@ new Vue({
                     return order * (aValue - bValue);
                 });
             }
-            return this.standings;
+            return this.drivers2;
         },
     },
     mounted() {
-        this.fetchConstructorStandings();
+        this.fetchDrivers2();
     },
     methods: {
-        fetchConstructorStandings() {
-            axios.get(API_URL)
+        fetchDrivers2() {
+            axios.get(API_URL6)
                 .then(response => {
-                    this.standings = response.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+                    this.drivers2 = response.data.MRData.DriverTable.Drivers;
                 })
                 .catch(error => {
-                    console.error("Error fetching constructor standings data:", error);
+                    console.error("Error fetching drivers data:", error);
                 });
         },
-        sortBy(key) {
-            if (this.sortKey === key) {
+        sortByDriver(key) {
+            if (this.sortKeyDrivers === key) {
                 this.sortOrder = -this.sortOrder;
             } else {
-                this.sortKey = key;
+                this.sortKeyDrivers = key;
                 this.sortOrder = 1;
             }
         },
