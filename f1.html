@@ -66,7 +66,7 @@
             <div class="hi">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <button @click="fetchCurrentSeasonRaces" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     2023 Race Schedule
                   </button>
                 </h5>
@@ -103,7 +103,7 @@
             <div class="hi">
               <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <button @click="fetchDriverStandings" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     Driver Standings
                   </button>
                 </h5>
@@ -146,7 +146,7 @@
             <div class="hi">
                 <div class="card-header" id="headingThree">
                   <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button @click="fetchConstructorStandings" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       Constructor Standings
                     </button>
                   </h5>
@@ -180,7 +180,7 @@
             <div class="hi">
               <div class="card-header" id="headingFour">
                 <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <button @click="fetchLastRaceInfo" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     {{ previousRaceName }} Results
                   </button>
                 </h5>
@@ -218,7 +218,7 @@
             <div class="hi">
                 <div class="card-header" id="headingFive">
                   <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <button @click="fetchDrivers2" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                       Driver Info
                     </button>
                   </h5>
@@ -429,12 +429,12 @@
             },
             mounted() {
                 this.fetchNextF1Race();
-                this.fetchDriverStandings();
-                this.fetchCurrentSeasonRaces();
+                // this.fetchDriverStandings();
+                // this.fetchCurrentSeasonRaces();
                 this.fetchLastRaceResults();
-                this.fetchLastRaceInfo();
-                this.fetchConstructorStandings();
-                this.fetchDrivers2();
+                // this.fetchLastRaceInfo();
+                // this.fetchConstructorStandings();
+                // this.fetchDrivers2();
             },
             methods: {
                 fetchNextF1Race() {
