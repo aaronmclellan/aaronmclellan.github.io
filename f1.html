@@ -16,6 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
 <style>
     .current1{
         padding-left: 0!important;
@@ -40,6 +41,29 @@
 </head>
 <body>
     <div id="app" class="container-fluid">
+        <!-- ***************************************************************** -->
+        <!-- ************************* ~~~ NAVBAR ~~~ ************************* -->
+        <!-- ***************************************************************** -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">f1.wtf</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Add navbar items here -->
+                    </ul>
+                    <form class="d-flex">
+                        <select class="form-select" id="timezone" class="form-control" v-model="selectedTimeZone" @change="updateTimeNew">
+                        <option v-for="zone in timeZones" :value="zone">{{ zone }}</option>
+                    </select>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ***************************************************************** -->
         <div class="text-center card">
             <div class="card-header">
                 Next F1 Race
@@ -54,7 +78,7 @@
                 <p><b>Practice 3:</b> {{ fp3 }}</p>
                 <p><b>Qualifying:</b> {{ nextQualiTime }}</p>
                 <p><b>Sprint:</b> {{ sprint }}</p>
-                <p><b>Race:</b> {{ nextRaceTimeCST }}</p>
+                <p><b>Race:</b> {{ nextRaceTime }}</p>
               </div>
 
         </div>
@@ -180,7 +204,7 @@
             <div class="hi">
               <div class="card-header" id="headingFour">
                 <h5 class="mb-0">
-                  <button @click="fetchLastRaceInfo" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <button @click="fetchLastRaceResults" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     {{ previousRaceName }} Results
                   </button>
                 </h5>
@@ -202,7 +226,12 @@
                             </thead>
                             <tbody>
                                 <tr v-for="result in sortedResults">
-                                    <td>{{ result.position }}</td>
+                                    <td>
+                                        <span v-if="result.position === '1'">🏆</span>
+                                        <span v-else-if="result.position === '2'">🥈</span>
+                                        <span v-else-if="result.position === '3'">🥉</span>
+                                        <span v-else>{{ result.position }}</span>
+                                    </td>
                                     <td>{{ result.Driver.givenName }} {{ result.Driver.familyName }}</td>
                                     <td>{{ result.Constructor.name }}</td>
                                     <td>{{ result.laps }}</td>
@@ -257,6 +286,7 @@
     <!-- Include main.js -->
     <!-- <script src="main.js"></script> -->
     <script>
+        const { DateTime } = luxon;
         function myFunction(that) {
             if(that.classList.contains('btn-primary')){
                 that.classList.remove('btn-primary');
@@ -278,7 +308,7 @@
             el: "#app",
             data: {
                 nextRaceLocation: "",
-                nextRaceTimeCST: "",
+                nextRaceTime: "",
                 fp1: "none",
                 fp2: "none",
                 fp3: "none",
@@ -297,6 +327,65 @@
                 standings: [],
                 drivers2: [],
                 sortKeyDrivers: "givenName",
+                selectedTimeZone: localStorage.getItem("selectedTimeZone") || "America/New_York",
+                timeZones: [
+                    "America/New_York",
+                    "America/Chicago",
+                    "America/Denver",
+                    "America/Phoenix",
+                    "America/Los_Angeles",
+                    "America/Anchorage",
+                    "America/Adak",
+                    "Pacific/Honolulu",
+                    "Europe/London",
+                    "Europe/Dublin",
+                    "Europe/Paris",
+                    "Europe/Berlin",
+                    "Europe/Madrid",
+                    "Europe/Rome",
+                    "Europe/Warsaw",
+                    "Europe/Athens",
+                    "Europe/Istanbul",
+                    "Europe/Moscow",
+                    "Asia/Tokyo",
+                    "Asia/Seoul",
+                    "Asia/Shanghai",
+                    "Asia/Hong_Kong",
+                    "Asia/Singapore",
+                    "Asia/Kolkata",
+                    "Asia/Dubai",
+                    "Asia/Jakarta",
+                    "Asia/Manila",
+                    "America/Buenos_Aires",
+                    "America/Santiago",
+                    "America/Lima",
+                    "America/Bogota",
+                    "America/Caracas",
+                    "America/Toronto",
+                    "America/Vancouver",
+                    "America/Winnipeg",
+                    "America/Halifax",
+                    "America/St_Johns",
+                    "Asia/Riyadh",
+                    "Asia/Beirut",
+                    "Asia/Tehran",
+                    "Asia/Baghdad",
+                    "Asia/Jerusalem",
+                    "Africa/Cairo",
+                    "Africa/Johannesburg",
+                    "Africa/Lagos",
+                    "Africa/Nairobi",
+                    "Africa/Casablanca",
+                    "Europe/Stockholm",
+                    "Europe/Oslo",
+                    "Europe/Copenhagen",
+                    "Europe/Helsinki",
+                    "Australia/Sydney",
+                    "Australia/Melbourne",
+                    "Australia/Brisbane",
+                    "Australia/Perth",
+                    "Australia/Adelaide",
+                ],
             },
             computed: {
                 sortedDrivers() {
@@ -427,12 +516,18 @@
                     return this.drivers2;
                 },
             },
+            watch: {
+                selectedTimeZone(newValue) {
+                localStorage.setItem("selectedTimeZone", newValue);
+                },
+            },
             mounted() {
                 this.fetchNextF1Race();
                 // this.fetchDriverStandings();
                 // this.fetchCurrentSeasonRaces();
-                this.fetchLastRaceResults();
-                // this.fetchLastRaceInfo();
+                // this.fetchLastRaceResults();
+                this.fetchLastRaceInfo();
+                this.resetStuff();
                 // this.fetchConstructorStandings();
                 // this.fetchDrivers2();
             },
@@ -443,7 +538,7 @@
                             const nextRace = response.data.MRData.RaceTable.Races[0];
                             this.nextRaceLocation = `${nextRace.Circuit.Location.locality}, ${nextRace.Circuit.Location.country}`;
                             const raceTimeUTC = nextRace.date + "T" + nextRace.time.slice(0, -1);
-                            this.nextRaceTimeCST = this.convertZtoCST(raceTimeUTC);
+                            this.nextRaceTime = this.convertZtoCST(raceTimeUTC);
                             const qualiTimeUTC = nextRace.Qualifying.date + "T" + nextRace.Qualifying.time.slice(0, -1);
                             this.nextQualiTime = this.convertZtoCST(qualiTimeUTC);
                             this.raceName = nextRace.raceName;
@@ -466,27 +561,30 @@
                         });
                 },
                 convertZtoCST(zTime) {
-                    // Create a Date object from the input time string
-                    const utcDate = new Date(zTime);
+                    // console.log(zTime);
+                    // // Create a Date object from the input time string
+                    // const utcDate = new Date(zTime);
 
-                    // Set the target timezone (CST) offset in hours
-                    const cstOffset = -5;
+                    // // Set the target timezone (CST) offset in hours
+                    // const cstOffset = -5;
 
-                    // Calculate the target timezone (CST) time by applying the offset
-                    const cstDate = new Date(utcDate.getTime() + (cstOffset * 60 * 60 * 1000));
+                    // // Calculate the target timezone (CST) time by applying the offset
+                    // const cstDate = new Date(utcDate.getTime() + (cstOffset * 60 * 60 * 1000));
 
-                    // Format the date and time for display
-                    const options = {
-                        timeZone: 'America/Chicago',
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit',
-                    };
-                    const formattedDate = cstDate.toLocaleString('en-US', options);
-
+                    // // Format the date and time for display
+                    // const options = {
+                    //     timeZone: 'America/Chicago',
+                    //     year: 'numeric',
+                    //     month: '2-digit',
+                    //     day: '2-digit',
+                    //     hour: '2-digit',
+                    //     minute: '2-digit',
+                    //     second: '2-digit',
+                    // };
+                    // const formattedDate = cstDate.toLocaleString('en-US', options);
+                    d = DateTime.fromISO(zTime+"Z");
+                    dWZone = d.setZone(this.selectedTimeZone);
+                    formattedDate = dWZone.toLocaleString(DateTime.DATETIME_FULL);
                     return formattedDate;
                 },
                 fetchDriverStandings() {
@@ -568,6 +666,51 @@
                         this.sortOrder = 1;
                     }
                 },
+                updateTimeNew() {
+                    const tz = localStorage.getItem("selectedTimeZone");
+                    if(tz){
+                    localStorage.setItem("previousTimeZone", tz);
+                    }
+                    
+                    // convert static time
+                    const prevTZ = localStorage.getItem("previousTimeZone");
+                    correctedDateString = this.nextRaceTime.replace(/\s\S+$/, ' '+prevTZ);
+
+                    const formatString = "LLLL d, yyyy 'at' h:mm a z";
+                    const d = DateTime.fromFormat(correctedDateString, formatString);
+                    
+                    const dWZone = d.setZone(this.selectedTimeZone);
+                    this.nextRaceTime = dWZone.toLocaleString(DateTime.DATETIME_FULL);
+
+                    correctedQualiTime = this.nextQualiTime.replace(/\s\S+$/, ' '+prevTZ);
+                    const d1 = DateTime.fromFormat(correctedQualiTime, formatString);
+                    const dWZone1 = d1.setZone(this.selectedTimeZone);
+                    this.nextQualiTime = dWZone1.toLocaleString(DateTime.DATETIME_FULL);
+
+                    correctedFp1 = this.fp1.replace(/\s\S+$/, ' '+prevTZ);
+                    const d2 = DateTime.fromFormat(correctedFp1, formatString);
+                    const dWZone2 = d2.setZone(this.selectedTimeZone);
+                    this.fp1 = dWZone2.toLocaleString(DateTime.DATETIME_FULL);
+
+                    correctedFp2 = this.fp2.replace(/\s\S+$/, ' '+prevTZ);
+                    const d3 = DateTime.fromFormat(correctedFp2, formatString);
+                    const dWZone3 = d3.setZone(this.selectedTimeZone);
+                    this.fp2 = dWZone3.toLocaleString(DateTime.DATETIME_FULL);
+
+                    correctedFp3 = this.fp3.replace(/\s\S+$/, ' '+prevTZ);
+                    const d4 = DateTime.fromFormat(correctedFp3, formatString);
+                    const dWZone4 = d4.setZone(this.selectedTimeZone);
+                    this.fp4 = dWZone4.toLocaleString(DateTime.DATETIME_FULL);
+
+                    correctedSprint = this.sprint.replace(/\s\S+$/, ' '+prevTZ);
+                    const d5 = DateTime.fromFormat(correctedSprint, formatString);
+                    const dWZone5 = d5.setZone(this.selectedTimeZone);
+                    this.sprint = dWZone5.toLocaleString(DateTime.DATETIME_FULL);
+                },
+                resetStuff(){
+                localStorage.setItem("previousTimeZone", "");
+                }
+                
             },
         });
 
