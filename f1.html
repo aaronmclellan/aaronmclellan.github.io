@@ -28,8 +28,20 @@
     }
     .hi{
         text-align: center;
-        border-radius: 0.25rem;
+        border-radius: 0.55rem;
     }
+    .full-width-btn {
+        width: 100%;
+        text-align: center;
+        /* padding: 0; */
+        /* margin: 0; */
+    }
+    .nah{
+        text-align: center;
+    }
+    /* .card-header {
+        padding: 0;
+    } */
     /* .btn{
         text-align: center;
         color: #fff;
@@ -64,11 +76,11 @@
         </nav>
 
         <!-- ***************************************************************** -->
-        <div class="text-center card">
+        <!-- <div class="text-center card">
             <div class="card-header">
                 Next F1 Race
               </div>
-            <!-- <h1>Next F1 Race Info</h1> -->
+            
             <div class="card-body">
                 <h1><a :href=url target="_blank" class="link">{{ raceName }}</a></h1>
                 <h3>{{ nextRaceLocation }}</h3>
@@ -78,10 +90,44 @@
                 <p><b>Practice 3:</b> {{ fp3 }}</p>
                 <p><b>Qualifying:</b> {{ nextQualiTime }}</p>
                 <p><b>Sprint:</b> {{ sprint }}</p>
-                <p><b>Race:</b> {{ nextRaceTime }}</p>
+                <p><h2><b>Race:</b> {{ nextRaceTime }}</h2></p>
               </div>
 
-        </div>
+        </div> -->
+        <div class="nah">
+            <h1 class="text-center mb-4"> <a :href=url target="_blank" class="link">{{ raceName }}</a></h1>
+            <h3 class="text-center mb-4">{{ nextRaceLocation }}</h3>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <h5 class="mb-1">Practice 1</h5>
+                    <p>{{ fp1 }}</p>
+                  </div>
+                  <div class="list-group-item">
+                    <h5 class="mb-1">Practice 2</h5>
+                    <p>{{ fp2 }}</p>
+                  </div>
+                  <div v-if="fp3 !== 'none'" class="list-group-item">
+                    <h5 class="mb-1">Practice 3</h5>
+                    <p>{{ fp3 }}</p>
+                  </div>
+                  <div class="list-group-item">
+                    <h5 class="mb-1">Qualifying</h5>
+                    <p>{{ nextQualiTime }}</p>
+                  </div>
+                  <div v-if="sprint !== 'none'" class="list-group-item">
+                    <h5 class="mb-1">Sprint</h5>
+                    <p>{{ sprint }}</p>
+                  </div>
+                  <div class="list-group-item">
+                    <h2 class="mb-1">Race</h2>
+                    <p>{{ nextRaceTime }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <br>
         <!-- ***************************************************************** -->
         <!-- ********************** ~~~ ACCORDION START ~~~ ****************** -->
@@ -90,7 +136,7 @@
             <div class="hi">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                  <button @click="fetchCurrentSeasonRaces" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <button @click="fetchCurrentSeasonRaces" class="btn btn-link collapsed full-width-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     2023 Race Schedule
                   </button>
                 </h5>
@@ -264,6 +310,7 @@
                                     <th @click="sortByDriver('givenName')">Name</th>
                                     <th @click="sortByDriver('permanentNumber')">Number</th>
                                     <th @click="sortByDriver('nationality')">Nationality</th>
+                                    <th @click="sortByDriver('dateOfBirth')">Age</th>
                                     <th @click="sortByDriver('dateOfBirth')">Date of Birth</th>
                                 </tr>
                             </thead>
@@ -272,6 +319,7 @@
                                     <td><a :href=driver2.url target="_blank">{{ driver2.givenName }} {{ driver2.familyName }}</a></td>
                                     <td>{{ driver2.permanentNumber }}</td>
                                     <td>{{ driver2.nationality }}</td>
+                                    <td>{{ calculateAge(driver2.dateOfBirth) }}</td>
                                     <td>{{ driver2.dateOfBirth }}</td>
                                 </tr>
                             </tbody>
@@ -329,6 +377,8 @@
                 standings: [],
                 drivers2: [],
                 sortKeyDrivers: "givenName",
+                birthdate: '',
+                age: null,
                 selectedTimeZone: localStorage.getItem("selectedTimeZone") || "America/New_York",
                 timeZones: [
                     "America/New_York",
@@ -563,27 +613,6 @@
                         });
                 },
                 convertZtoCST(zTime) {
-                    // console.log(zTime);
-                    // // Create a Date object from the input time string
-                    // const utcDate = new Date(zTime);
-
-                    // // Set the target timezone (CST) offset in hours
-                    // const cstOffset = -5;
-
-                    // // Calculate the target timezone (CST) time by applying the offset
-                    // const cstDate = new Date(utcDate.getTime() + (cstOffset * 60 * 60 * 1000));
-
-                    // // Format the date and time for display
-                    // const options = {
-                    //     timeZone: 'America/Chicago',
-                    //     year: 'numeric',
-                    //     month: '2-digit',
-                    //     day: '2-digit',
-                    //     hour: '2-digit',
-                    //     minute: '2-digit',
-                    //     second: '2-digit',
-                    // };
-                    // const formattedDate = cstDate.toLocaleString('en-US', options);
                     d = DateTime.fromISO(zTime+"Z");
                     dWZone = d.setZone(this.selectedTimeZone);
                     formattedDate = dWZone.toLocaleString(DateTime.DATETIME_FULL);
@@ -670,44 +699,25 @@
                 },
                 updateTimeNew() {
                     const tz = localStorage.getItem("selectedTimeZone");
-                    if(tz){
-                    localStorage.setItem("previousTimeZone", tz);
+                    if (tz) {
+                        localStorage.setItem("previousTimeZone", tz);
                     }
-                    
-                    // convert static time
+
                     const prevTZ = localStorage.getItem("previousTimeZone");
-                    correctedDateString = this.nextRaceTime.replace(/\s\S+$/, ' '+prevTZ);
 
-                    const formatString = "LLLL d, yyyy 'at' h:mm a z";
-                    const d = DateTime.fromFormat(correctedDateString, formatString);
-                    
-                    const dWZone = d.setZone(this.selectedTimeZone);
-                    this.nextRaceTime = dWZone.toLocaleString(DateTime.DATETIME_FULL);
+                    const convertTime = (timeStr, prevTZ, newTZ) => {
+                        const correctedTime = timeStr.replace(/\s\S+$/, ' ' + prevTZ);
+                        const formatString = "LLLL d, yyyy 'at' h:mm a z";
+                        const dateTime = DateTime.fromFormat(correctedTime, formatString);
+                        return dateTime.setZone(newTZ).toLocaleString(DateTime.DATETIME_FULL);
+                    };
 
-                    correctedQualiTime = this.nextQualiTime.replace(/\s\S+$/, ' '+prevTZ);
-                    const d1 = DateTime.fromFormat(correctedQualiTime, formatString);
-                    const dWZone1 = d1.setZone(this.selectedTimeZone);
-                    this.nextQualiTime = dWZone1.toLocaleString(DateTime.DATETIME_FULL);
-
-                    correctedFp1 = this.fp1.replace(/\s\S+$/, ' '+prevTZ);
-                    const d2 = DateTime.fromFormat(correctedFp1, formatString);
-                    const dWZone2 = d2.setZone(this.selectedTimeZone);
-                    this.fp1 = dWZone2.toLocaleString(DateTime.DATETIME_FULL);
-
-                    correctedFp2 = this.fp2.replace(/\s\S+$/, ' '+prevTZ);
-                    const d3 = DateTime.fromFormat(correctedFp2, formatString);
-                    const dWZone3 = d3.setZone(this.selectedTimeZone);
-                    this.fp2 = dWZone3.toLocaleString(DateTime.DATETIME_FULL);
-
-                    correctedFp3 = this.fp3.replace(/\s\S+$/, ' '+prevTZ);
-                    const d4 = DateTime.fromFormat(correctedFp3, formatString);
-                    const dWZone4 = d4.setZone(this.selectedTimeZone);
-                    this.fp4 = dWZone4.toLocaleString(DateTime.DATETIME_FULL);
-
-                    correctedSprint = this.sprint.replace(/\s\S+$/, ' '+prevTZ);
-                    const d5 = DateTime.fromFormat(correctedSprint, formatString);
-                    const dWZone5 = d5.setZone(this.selectedTimeZone);
-                    this.sprint = dWZone5.toLocaleString(DateTime.DATETIME_FULL);
+                    (this.nextRaceTime !=="none") ? this.nextRaceTime = convertTime(this.nextRaceTime, prevTZ, this.selectedTimeZone) : this.nextRaceTime = "none";
+                    (this.nextQualiTime !=="none") ? this.nextQualiTime = convertTime(this.nextQualiTime, prevTZ, this.selectedTimeZone) : this.nextQualiTime = "none";
+                    (this.fp1 !=="none") ? this.fp1 = convertTime(this.fp1, prevTZ, this.selectedTimeZone) : this.fp1 = "none";
+                    (this.fp2 !=="none") ? this.fp2 = convertTime(this.fp2, prevTZ, this.selectedTimeZone) : this.fp2 = "none";
+                    (this.fp3 !== "none") ? this.fp3 = convertTime(this.fp3, prevTZ, this.selectedTimeZone) : this.fp3 = "none";
+                    (this.sprint !== "none") ? this.sprint = convertTime(this.sprint, prevTZ, this.selectedTimeZone) : this.sprint = "none";
                 },
                 resetStuff(){
                 localStorage.setItem("previousTimeZone", "");
@@ -718,7 +728,18 @@
                 convertTimeForRace(date, time) {
                     return DateTime.fromISO(date + "T" + time).setZone(this.selectedTimeZone).toLocaleString(DateTime.TIME_SIMPLE);
                 },
-                
+                calculateAge: function(dateString) {
+                const birthdate = new Date(dateString);
+                const today = new Date();
+                let age = today.getFullYear() - birthdate.getFullYear();
+                const monthDifference = today.getMonth() - birthdate.getMonth();
+
+                if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthdate.getDate())) {
+                    age--;
+                }
+
+                return age;
+                },
             },
         });
 
