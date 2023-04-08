@@ -98,13 +98,14 @@
           
               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="text-center">
-                        <h1>F2023 F1 Races</h1>
+                        <h1>2023 F1 Races</h1>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th @click="sortByRaces('round')">Round</th>
                                     <th @click="sortByRaces('raceName')">Race Name</th>
                                     <th @click="sortByRaces('date')">Date</th>
+                                    <th @click="sortByRaces('time')">Time</th>
                                     <th @click="sortByRaces('circuit')">Circuit</th>
                                     <th @click="sortByRaces('location')">Location</th>
                                     <th @click="sortByRaces('country')">Country</th>
@@ -114,7 +115,8 @@
                                 <tr v-for="race in sortedRaces">
                                     <td>{{ race.round }}</td>
                                     <td>{{ race.raceName }}</td>
-                                    <td>{{ race.date }}</td>
+                                    <td>{{ convertDateForRace(race.date) }}</td>
+                                    <td>{{ convertTimeForRace(race.date, race.time) }}</td>
                                     <td>{{ race.Circuit.circuitName }}</td>
                                     <td>{{ race.Circuit.Location.locality }}</td>
                                     <td>{{ race.Circuit.Location.country }}</td>
@@ -709,7 +711,13 @@
                 },
                 resetStuff(){
                 localStorage.setItem("previousTimeZone", "");
-                }
+                },
+                convertDateForRace(date) {
+                    return DateTime.fromISO(date).setZone(this.selectedTimeZone).toLocaleString(DateTime.DATE_FULL);
+                },
+                convertTimeForRace(date, time) {
+                    return DateTime.fromISO(date + "T" + time).setZone(this.selectedTimeZone).toLocaleString(DateTime.TIME_SIMPLE);
+                },
                 
             },
         });
