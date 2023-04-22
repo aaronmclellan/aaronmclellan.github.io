@@ -30,7 +30,7 @@
     }
     .hi{
         text-align: center;
-        border-radius: 0.55rem;
+        border-radius: 7px;
         color: #070e03;
     }
     .full-width-btn {
@@ -53,6 +53,8 @@
     .cool_nav{
         background-color: #969565;
         color: #f7f9f4;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
     }
 
     .cool_brand{
@@ -80,6 +82,16 @@
     }
     .nice_normal_card{
         background-color: #f7f9f4;
+    }
+    .nice_header{
+        background-color: #969565;
+        color: #d1b22f;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+    .ac_header{
+        border-top-left-radius: 7px !important;
+        border-top-right-radius: 7px !important;
     }
     /* .card-header {
         padding: 0;
@@ -137,6 +149,9 @@
 
         </div> -->
         <div class="nah">
+            <div class="col-md-6 offset-md-3 nice_header">
+                <h3>Next Race</h3>
+            </div>
             <h1 class="text-center mb-4 race_name"> <a :href=url target="_blank" class="link">{{ raceName }}</a></h1>
             <h3 class="text-center mb-4">{{ nextRaceLocation }}</h3>
             <div class="row">
@@ -175,11 +190,12 @@
         <!-- ***************************************************************** -->
         <!-- ********************** ~~~ ACCORDION START ~~~ ****************** -->
         <!-- ***************************************************************** -->
+        <div class="ac_header">
           <div class="accordion" id="accordionExample">
             <div class="hi">
                 <div class="card-header">
                     <h3>Info</h3>
-                  </div>
+                </div>
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                   <button @click="fetchCurrentSeasonRaces" class="btn collapsed full-width-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -376,6 +392,7 @@
               </div>
             <!-- *** END ACCORDIAN ******** -->
           </div>
+        </div>
 <!-- *** END ACCORDIAN ******** -->
     </div>
 
