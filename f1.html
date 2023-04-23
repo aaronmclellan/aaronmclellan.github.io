@@ -37,8 +37,8 @@
         width: 100%;
         text-align: center;
         font-size: 30px;
-        background-color: #969565;
-        color: #f7f9f4;
+        /* background-color: #020f09; */
+        /* color: #f7f9f4; */
         /* padding: 0; */
         /* margin: 0; */
     }
@@ -51,7 +51,7 @@
         margin: 0;
     }
     .cool_nav{
-        background-color: #969565;
+        background-color: #020f09;
         color: #f7f9f4;
     }
 
@@ -64,32 +64,69 @@
     }
 
     .nice_bg{
-        background-color: #ecebd1;
+        background-color: #f7f9f4;
     }
     .nice_card{
-        background-color: #969565;
+        background-color: #a2554c;
+        color: #f7f9f4;
     }
     .nice_color{
         color: #070e03;
+    }
+    .race_name{
+        font-size: 69px;
     }
     .race_name:hover{
         color: #f7f9f4;
     }
     a:hover{
-        color: #969565;
+        color: #020f09;
     }
     .nice_normal_card{
         background-color: #f7f9f4;
     }
     .nice_header{
-        background-color: #969565;
-        color: #d1b22f;
+        background-color: #020f09;
+        color: #a2554c;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
+        font-weight: 400;
+        font-size: 25px;
     }
     .ac_header{
         border-top-left-radius: 5px !important;
         border-top-right-radius: 5px !important;
+        /* background-color: #f0f5fe; */
+    }
+    .info_card_main{
+        font-size: 20px;
+    }
+    .info_card_header{
+        font-size: 30px;
+    }
+    .race_main{
+        font-size: 35px;
+    }
+    .race_header{
+        font-size: 50px;
+    }
+    .race_weekend{
+        background-color: #020f09;
+        color: #a2554c;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-weight: 400;
+        font-size: 25px;
+        padding: 0px;
+    }
+    .info_spot{
+        background-color: #020f09;
+        color: #a2554c;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-size: 60px;
+        padding: 0px;
+        font-weight: 600;
     }
     /* .card-header {
         padding: 0;
@@ -147,38 +184,42 @@
 
         </div> -->
         <div class="nah">
-            <div class="col-md-6 offset-md-3 nice_header">
-                <h3>Next Race</h3>
+            <div class="col-md-8 offset-md-2 nice_header">
+                Next Race
             </div>
             <h1 class="text-center mb-4 race_name"> <a :href=url target="_blank" class="link">{{ raceName }}</a></h1>
             <h3 class="text-center mb-4">{{ nextRaceLocation }}</h3>
             <div class="row">
-              <div class="col-md-6 offset-md-3">
+              <div class="col-md-8 offset-md-2">
+                <br>
                 <div class="list-group">
+                    <div class="race_weekend">
+                        Race Weekend
+                    </div>
                 <div class="list-group-item nice_card">
-                    <h1 class="mb-1">Race</h1>
-                    <h4>{{ nextRaceTime }}</h4>
+                    <p class="mb-1 race_header">Race</p>
+                    <p class="race_main">{{ nextRaceTime }}</p>
                   </div>
-                  <hr>
+                  <!-- <hr> -->
                   <div class="list-group-item nice_normal_card">
-                    <h3 class="mb-1">Practice 1</h3>
-                    <h5>{{ fp1 }}</h5>
+                    <p class="mb-1 info_card_header">Practice 1</p>
+                    <p class="info_card_main">{{ fp1 }}</p>
                   </div>
                   <div class="list-group-item nice_normal_card">
-                    <h3 class="mb-1">Practice 2</h3>
-                    <h5>{{ fp2 }}</h5>
+                    <p class="mb-1 info_card_header">Practice 2</p>
+                    <p class="info_card_main">{{ fp2 }}</p>
                   </div>
                   <div v-if="fp3 !== 'none'" class="list-group-item">
-                    <h3 class="mb-1">Practice 3</h3>
-                    <h5>{{ fp3 }}</h5>
+                    <p class="mb-1 info_card_header">Practice 3</p>
+                    <p class="info_card_main">{{ fp3 }}</p>
                   </div>
                   <div class="list-group-item nice_normal_card">
-                    <h3 class="mb-1">Qualifying</h3>
-                    <h5>{{ nextQualiTime }}</h5>
+                    <p class="mb-1 info_card_header">Qualifying</p>
+                    <p class="info_card_main">{{ nextQualiTime }}</p>
                   </div>
                   <div v-if="sprint !== 'none'" class="list-group-item nice_normal_card">
-                    <h3 class="mb-1">Sprint</h3>
-                    <h5>{{ sprint }}</h5>
+                    <p class="mb-1 info_card_header">Sprint</p>
+                    <p class="info_card_main">{{ sprint }}</p>
                   </div>
                 </div>
               </div>
@@ -188,11 +229,12 @@
         <!-- ***************************************************************** -->
         <!-- ********************** ~~~ ACCORDION START ~~~ ****************** -->
         <!-- ***************************************************************** -->
-        <div class="ac_header">
+        <div class="col-md-10 offset-md-1 ac_header">
           <div class="accordion" id="accordionExample">
             <div class="hi">
-                <div class="card-header">
-                    <h3>Info</h3>
+                <!-- <hr> -->
+                <div class="info_spot">
+                    Info
                 </div>
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
