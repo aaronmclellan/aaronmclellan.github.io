@@ -12,7 +12,7 @@
         
         <!-- Stranglethorn Vale PvP Event -->
         <div class="event-section">
-            <h2><br>{{ stranglethornEventStatus }}</h2>
+            <h2>{{ stranglethornEventStatus }}</h2>
         </div>
 
         <!-- Ashenvale PvP Event -->
@@ -23,44 +23,64 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script>
+        function convertToLocalTime(date) {
+            const cstOffset = -6; // CST offset from UTC
+            const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+            return new Date(utc + (3600000 * cstOffset));
+        }
+
+        function isEventActive(eventHour) {
+            let now = convertToLocalTime(new Date());
+            let eventStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), eventHour, 0, 0);
+            let eventEndTime = new Date(eventStartTime.getTime() + 1800000); // 30 minutes after event start
+            return now >= eventStartTime && now < eventEndTime;
+        }
+
         new Vue({
             el: '#app',
             data: {
-                stranglethornTotalTime: null,
-                ashenvaleTotalTime: null,
                 eventDuration: 1800, // 30 minutes in seconds
-                isStranglethornEventActive: false,
-                isAshenvaleEventActive: false
+                stranglethornTimeLeft: null,
+                ashenvaleTimeLeft: null,
             },
             computed: {
                 stranglethornEventStatus() {
-                    return this.isStranglethornEventActive ? 
-                           `Stranglethron Event in progress: ${this.formatTime(this.eventDuration)}` : 
-                           `Next Stranglethorn Vale PvP Event: ${this.formatTime(this.stranglethornTotalTime)}`;
+                    if (isEventActive(13) || isEventActive(16) || isEventActive(19)) {
+                        return "STRANGLETHORN EVENT IN PROGRESS: " + this.formatTime(this.stranglethornTimeLeft);
+                    } else {
+                        return "Next Stranglethorn Vale PvP Event: " + this.formatTime(this.stranglethornTimeLeft);
+                    }
                 },
                 ashenvaleEventStatus() {
-                    return this.isAshenvaleEventActive ? 
-                           `Event in progress: ${this.formatTime(this.eventDuration)}` : 
-                           `Next Ashenvale PvP Event: ${this.formatTime(this.ashenvaleTotalTime)}`;
+                    if (isEventActive(14) || isEventActive(17) || isEventActive(20)) {
+                        return "ASHENVALE EVENT IN PROGRESS: " + this.formatTime(this.ashenvaleTimeLeft);
+                    } else {
+                        return "Next Ashenvale PvP Event: " + this.formatTime(this.ashenvaleTimeLeft);
+                    }
                 }
             },
             methods: {
-                calculateInitialTotalTimes() {
-                    let now = new Date();
-                    let nextEventHourStranglethorn = 12 + Math.ceil((now.getHours() - 12) / 3) * 3;
-                    let nextEventHourAshenvale = 13 + Math.ceil((now.getHours() - 13) / 3) * 3;
+                updateTimers() {
+                    this.stranglethornTimeLeft = isEventActive(13) || isEventActive(16) || isEventActive(19) ? 
+                        this.eventDuration - this.getSecondsPastEvent(13) : 
+                        this.getSecondsUntilEvent(13);
 
-                    this.nextStranglethornEventTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextEventHourStranglethorn, 0, 0);
-                    if (this.nextStranglethornEventTime <= now) {
-                        this.nextStranglethornEventTime.setHours(this.nextStranglethornEventTime.getHours() + 3);
+                    this.ashenvaleTimeLeft = isEventActive(14) || isEventActive(17) || isEventActive(20) ? 
+                        this.eventDuration - this.getSecondsPastEvent(14) : 
+                        this.getSecondsUntilEvent(14);
+                },
+                getSecondsUntilEvent(eventHour) {
+                    let now = convertToLocalTime(new Date());
+                    let nextEventTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), eventHour, 0, 0);
+                    if (nextEventTime <= now) {
+                        nextEventTime.setHours(nextEventTime.getHours() + 3);
                     }
-                    this.stranglethornTotalTime = Math.floor((this.nextStranglethornEventTime - now) / 1000);
-
-                    this.nextAshenvaleEventTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextEventHourAshenvale, 0, 0);
-                    if (this.nextAshenvaleEventTime <= now) {
-                        this.nextAshenvaleEventTime.setHours(this.nextAshenvaleEventTime.getHours() + 3);
-                    }
-                    this.ashenvaleTotalTime = Math.floor((this.nextAshenvaleEventTime - now) / 1000);
+                    return Math.floor((nextEventTime - now) / 1000);
+                },
+                getSecondsPastEvent(eventHour) {
+                    let now = convertToLocalTime(new Date());
+                    let eventStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), eventHour, 0, 0);
+                    return Math.floor((now - eventStartTime) / 1000);
                 },
                 formatTime(totalSeconds) {
                     if (totalSeconds < 0) totalSeconds = 0;
@@ -68,55 +88,13 @@
                     const minutes = Math.floor((totalSeconds % 3600) / 60);
                     const seconds = totalSeconds % 60;
                     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                },
-                updateTimers() {
-                    let now = new Date();
-
-                    // Stranglethorn Vale Event Timer
-                    if (!this.isStranglethornEventActive) {
-                        if (this.stranglethornTotalTime > 0) {
-                            this.stranglethornTotalTime--;
-                        } else {
-                            this.isStranglethornEventActive = true;
-                            setTimeout(() => {
-                                this.isStranglethornEventActive = false;
-                                this.updateStranglethornEvent();
-                            }, this.eventDuration * 1000);
-                        }
-                    }
-
-                    // Ashenvale Event Timer
-                    if (!this.isAshenvaleEventActive) {
-                        if (this.ashenvaleTotalTime > 0) {
-                            this.ashenvaleTotalTime--;
-                        } else {
-                            this.isAshenvaleEventActive = true;
-                            setTimeout(() => {
-                                this.isAshenvaleEventActive = false;
-                                this.updateAshenvaleEvent();
-                            }, this.eventDuration * 1000);
-                        }
-                    }
-                },
-                updateStranglethornEvent() {
-                    let now = new Date();
-                    this.nextStranglethornEventTime = new Date(now.getTime() + this.stranglethornTotalTime * 1000);
-                    this.stranglethornTotalTime = 10800; // 3 hours in seconds
-                },
-                updateAshenvaleEvent() {
-                    let now = new Date();
-                    this.nextAshenvaleEventTime = new Date(now.getTime() + this.ashenvaleTotalTime * 1000);
-                    this.ashenvaleTotalTime = 10800; // 3 hours in seconds
-                },
-                startTimer() {
-                    this.calculateInitialTotalTimes();
-                    this.timer = setInterval(() => {
-                        this.updateTimers();
-                    }, 1000);
                 }
             },
             mounted() {
-                this.startTimer();
+                this.updateTimers();
+                setInterval(() => {
+                    this.updateTimers();
+                }, 1000);
             }
         });
     </script>
