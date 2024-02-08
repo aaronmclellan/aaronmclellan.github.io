@@ -61,7 +61,7 @@
                     if (isEventActive(13) || isEventActive(16) || isEventActive(19)) {
                         return "STRANGLETHORN EVENT IN PROGRESS: " + this.formatTime(this.stranglethornTimeLeft);
                     } else {
-                        return "Next StranglethornEvent: " + this.formatTime(this.stranglethornTimeLeft);
+                        return "Next Stranglethorn Event: " + this.formatTime(this.stranglethornTimeLeft);
                     }
                 },
                 ashenvaleEventStatus() {
@@ -73,25 +73,35 @@
                 }
             },
             methods: {
+                getCurrentEventHour(now, baseHour) {
+                    // Adjust the hour to match the event cycle (every 3 hours starting from baseHour)
+                    let hour = now.getHours();
+                    let eventHour = baseHour + Math.floor((hour - baseHour) / 3) * 3;
+                    // If the current time has passed the event time, move to the next event
+                    if (now - new Date(now.getFullYear(), now.getMonth(), now.getDate(), eventHour, 0, 0) > this.eventDuration * 1000) {
+                        eventHour += 3;
+                    }
+                    return eventHour;
+                },
                 updateTimers() {
                     let now = convertToLocalTime(new Date());
 
-                    if (isEventActive(13) || isEventActive(16) || isEventActive(19)) {
-                        this.stranglethornTimeLeft = this.eventDuration - this.getSecondsPastEvent(13);
-                        if (this.stranglethornTimeLeft <= 0) {
-                            this.stranglethornTimeLeft = this.getSecondsUntilEvent(13) + this.eventDuration;
-                        }
+                    // Determine the current event hours for Stranglethorn and Ashenvale
+                    let currentStranglethornHour = this.getCurrentEventHour(now, 13);
+                    let currentAshenvaleHour = this.getCurrentEventHour(now, 14);
+
+                    // Update for Stranglethorn Event
+                    if (isEventActive(currentStranglethornHour)) {
+                        this.stranglethornTimeLeft = this.eventDuration - this.getSecondsPastEvent(currentStranglethornHour);
                     } else {
-                        this.stranglethornTimeLeft = this.getSecondsUntilEvent(13);
+                        this.stranglethornTimeLeft = this.getSecondsUntilEvent(currentStranglethornHour);
                     }
 
-                    if (isEventActive(14) || isEventActive(17) || isEventActive(20)) {
-                        this.ashenvaleTimeLeft = this.eventDuration - this.getSecondsPastEvent(14);
-                        if (this.ashenvaleTimeLeft <= 0) {
-                            this.ashenvaleTimeLeft = this.getSecondsUntilEvent(14) + this.eventDuration;
-                        }
+                    // Update for Ashenvale Event
+                    if (isEventActive(currentAshenvaleHour)) {
+                        this.ashenvaleTimeLeft = this.eventDuration - this.getSecondsPastEvent(currentAshenvaleHour);
                     } else {
-                        this.ashenvaleTimeLeft = this.getSecondsUntilEvent(14);
+                        this.ashenvaleTimeLeft = this.getSecondsUntilEvent(currentAshenvaleHour);
                     }
                 },
                 getSecondsUntilEvent(eventHour) {
