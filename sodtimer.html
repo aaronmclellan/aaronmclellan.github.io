@@ -84,11 +84,11 @@
     <div id="app" class="container">
         <h1 class="header-title">SoD Timer</h1>
         
-        <div class="event-section" :class="stranglethornEventStatusClass">
+        <div class="event-section stranglethorn" :class="{'event-in-progress': isStranglethornInProgress}">
             <h2>{{ stranglethornEventStatus }}</h2>
         </div>
         
-        <div class="event-section" :class="ashenvaleEventStatusClass">
+        <div class="event-section ashenvale" :class="{'event-in-progress': isAshenvaleInProgress}">
             <h2>{{ ashenvaleEventStatus }}</h2>
         </div>
         
@@ -115,6 +115,8 @@
                 eventDuration: 1800, // 30 minutes in seconds
                 stranglethornTimeLeft: null,
                 ashenvaleTimeLeft: null,
+                isStranglethornInProgress: false,
+                isAshenvaleInProgress: false,
             },
             computed: {
                 stranglethornEventStatusClass() {
@@ -176,6 +178,9 @@
                     let currentStranglethornHour = this.getCurrentEventHour(now, 13);
                     let currentAshenvaleHour = this.getCurrentEventHour(now, 14);
 
+                            // Update the in-progress status
+                    this.isStranglethornInProgress = isEventActive(currentStranglethornHour);
+                    this.isAshenvaleInProgress = isEventActive(currentAshenvaleHour);
                     // Update for Stranglethorn Event
                     if (isEventActive(currentStranglethornHour)) {
                         this.stranglethornTimeLeft = this.eventDuration - this.getSecondsPastEvent(currentStranglethornHour);
