@@ -1,56 +1,101 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-  <style>
-    .winning-cell {
-      background-color: #ffd700;
-    }
-    .square {
-        font-size: 12pt;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        border: 1px solid #000;
-        cursor: pointer;
-        min-height: 10em;
-        min-width: 10em;
-        flex: 1;
-    }
-  </style>
-</head>
-<body>
-  <div id="app" class="container mt-5">
-    <h1 class="text-center mb-4">Tic Tac Toe</h1>
-    <div class="row justify-content-center">
-      <div class="col-8">
+  <head>
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .save_button {
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 200px;
+            max-height: 200px;
+            font-size: 120px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>Tic Tac Toe</h1>
         <div class="row">
-          <div class="col square border-top-0 border-left-0" :class="{ 'winning-cell': winningCells.includes(0) }" @click="play(0)">{{ board[0] }}</div>
-          <div class="col square border-top-0" :class="{ 'winning-cell': winningCells.includes(1) }" @click="play(1)">{{ board[1] }}</div>
-          <div class="col square border-top-0 border-right-0" :class="{ 'winning-cell': winningCells.includes(2) }" @click="play(2)">{{ board[2] }}</div>
+          <div class="col-4" v-for="(cell, index) in cells" :key="index">
+            <button class="save_button btn btn-lg btn-block btn-outline-dark" :class="{ 'btn-success': cell === 'X', 'btn-primary': cell === 'O', 'disabled': cell !== '' }" @click="place(index)" :disabled="cell !== ''">{{ cell }}</button>
+          </div>
         </div>
         <div class="row">
-          <div class="col square border-left-0" :class="{ 'winning-cell': winningCells.includes(3) }" @click="play(3)">{{ board[3] }}</div>
-          <div class="col square" :class="{ 'winning-cell': winningCells.includes(4) }" @click="play(4)">{{ board[4] }}</div>
-          <div class="col square border-right-0" :class="{ 'winning-cell': winningCells.includes(5) }" @click="play(5)">{{ board[5] }}</div>
-        </div>
-        <div class="row">
-          <div class="col square border-bottom-0 border-left-0" :class="{ 'winning-cell': winningCells.includes(6) }" @click="play(6)">{{ board[6] }}</div>
-          <div class="col square border-bottom-0" :class="{ 'winning-cell': winningCells.includes(7) }" @click="play(7)">{{ board[7] }}</div>
-          <div class="col square border-bottom-0 border-right-0" :class="{ 'winning-cell': winningCells.includes(8) }" @click="play(8)">{{ board[8] }}</div>
-        </div>
-        <div class="row justify-content-center mt-4">
-          <button class="btn btn-primary" @click="reset">Reset</button>
+          <div class="col-4">
+            <button class="btn btn-lg btn-block btn-primary" @click="reset">Reset</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <script src="index.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          cells: ['', '', '', '', '', '', '', '', ''],
+          currentPlayer: 'X',
+          winningCombos: [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+          ]
+        },
+        methods: {
+          place: function(index) {
+            if (this.cells[index] === '') {
+              this.$set(this.cells, index, this.currentPlayer);
+              if (this.checkWin()) {
+                Swal.fire({
+                    title: `${this.currentPlayer} wins!`,
+                    icon: 'success',
+                    confirmButtonText: 'Play again',
+                    onClose: () => {
+                        this.reset();
+                    }
+                    });
+              } else if (this.checkTie()) {
+                Swal.fire({
+                    title: 'It\'s a tie!',
+                    icon: 'info',
+                    confirmButtonText: 'Play again',
+                    onClose: () => {
+                    this.reset();
+                    }
+                });
+              } else {
+                this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+              }
+            }
+          },
+          checkWin: function() {
+            var self = this;
+            return this.winningCombos.some(function(combo) {
+              return combo.every(function(index) {
+                return self.cells[index] === self.currentPlayer;
+              });
+            });
+          },
+          checkTie: function() {
+            return this.cells.every(function(cell) {
+              return cell !== '';
+            });
+          },
+          reset: function() {
+            this.cells = ['', '', '', '', '', '', '', '', ''];
+            this.currentPlayer = 'X';
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
