@@ -6,9 +6,6 @@
     <title>ron</title>
     <link rel="icon" href="crying-sunglasses-cowboy.png" sizes="32x32" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
     <script>
         // Tailwind CSS Dark Mode Configuration
         tailwind.config = {
@@ -29,7 +26,7 @@
             </label>
         </div>
 
-        <!-- Profile Section -->
+        <!-- Profile Section  300x300 -->
         <div class="text-center">
             <img 
                 src="ron.jpg"
@@ -40,13 +37,14 @@
                 i'm a senior software engineer at <a class="underline decoration-teal-500" href="https://www.s3.com" target="_blank">S3</a><br>
                 i make websites as a form of self expression. sometimes silly, sometimes useful, sometimes pointless<br>
                 i use <a class="underline decoration-teal-500" href="https://vuejs.org/" target="_blank">vue.js</a> and <a class="underline decoration-teal-500" href="https://tailwindcss.com/" target="_blank">tailwind css</a> and <a class="underline decoration-teal-500" href="https://getbootstrap.com/" target="_blank">bootstrap </a>for most of my projects<br>
+                <!-- i enjoy making static websites that are small in scope and usually silly. sometimes tools, sometimes silly  -->
             </p>
         </div>
 
         <!-- Portfolio Section -->
         <div class="mt-10 w-full max-w-4xl">
             <h2 class="text-2xl font-semibold mb-6">sites</h2>
-            <div id="website-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div 
                     v-for="website in websites" 
                     :key="website.id" 
@@ -63,33 +61,58 @@
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer class="mt-16 text-center">
-            <div class="flex justify-center gap-6">
-                <a href="https://bsky.app/profile/aaronmclellan.bsky.social" target="_blank" class="text-blue-500 dark:text-teal-500 text-2xl hover:text-blue-600 dark:hover:text-teal-400">
-                    <i class="fa-brands fa-bluesky"></i>
-                </a>
-                <a href="https://github.com/aaronmclellan" target="_blank" class="text-blue-500 dark:text-teal-500 text-2xl hover:text-blue-600 dark:hover:text-teal-400">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
-        </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
                 isDarkMode: false,
                 websites: [
-                    { id: 1, title: 'f1.wtf', description: 'get need to know info for the next f1 race and race season', image: 'f1.png', link: 'https://www.f1.wtf/' },
-                    { id: 2, title: 'getfucked.org', description: 'all the middle finger gifs you could ever want', image: 'getfucked.png', link: 'https://getfucked.org/' },
-                    { id: 3, title: 'SoD Timer', description: 'timers to track the World of Warcraft Season of Discovery events for US and EU', image: 'sod.png', link: 'https://sodtimer.com/' },
-                    { id: 4, title: 'simple notes', description: 'notes and to-dos in a simple, clean interface', image: 'notes.png', link: './notes.html' },
-                    { id: 5, title: 'blackjack', description: 'simple blackjack game when you\'re bored', image: 'blackjack.png', link: './blackjack.html' },
-                    { id: 6, title: 'delim tool', description: 'simple tool to delimit csv, psv, and spaced data', image: 'delim.png', link: './delim.html' }
-                ]
+                    {
+                        id: 1,
+                        title: 'f1.wtf',
+                        description: 'get need to know info for the next f1 race and race season',
+                        image: 'f1.png',
+                        link: 'https://www.f1.wtf/'
+                    },
+                    {
+                        id: 2,
+                        title: 'getfucked.org',
+                        description: 'all the middle finger gifs you could ever want',
+                        image: 'getfucked.png',
+                        link: 'https://getfucked.org/'
+                    },
+                    {
+                        id: 3,
+                        title: 'SoD Timer',
+                        description: 'timers to track the World of Warcraft Season of Discovery events for US and EU',
+                        image: 'sod.png',
+                        link: 'https://sodtimer.com/'
+                    },
+                    {
+                        id: 4,
+                        title: 'simple notes',
+                        description: 'notes and to-dos in a simple, clean interface',
+                        image: 'notes.png',
+                        link: './notes.html'
+                    },
+                    {
+                        id: 5,
+                        title: 'blackjack',
+                        description: 'simple blackjack game when you\'re bored',
+                        image: 'blackjack.png',
+                        link: './blackjack.html'
+                    },
+                    {
+                        id: 6,
+                        title: 'delim tool',
+                        description: 'simple tool to delimit csv, psv, and spaced data',
+                        image: 'delim.png',
+                        link: './delim.html'
+                    }
+                ],
             },
             methods: {
                 toggleDarkMode() {
@@ -99,16 +122,7 @@
             mounted() {
                 this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 document.documentElement.classList.toggle('dark', this.isDarkMode);
-
-                const websiteList = document.getElementById('website-list');
-                new Sortable(websiteList, {
-                    animation: 150,
-                    onEnd: (event) => {
-                        const movedItem = this.websites.splice(event.oldIndex, 1)[0];
-                        this.websites.splice(event.newIndex, 0, movedItem);
-                    }
-                });
-            }
+            },
         });
     </script>
 </body>

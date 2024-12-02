@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blackjack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            font-family: monospace;
+            display: inline-block;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px;
+            background-color: #444;
+            color: white;
+            width: 120px;
+            height: 160px;
+            text-align: center;
+            position: relative;
+        }
+        .card .top-left,
+        .card .bottom-right {
+            position: absolute;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .card .top-left {
+            top: 8px;
+            left: 10px;
+        }
+        .card .bottom-right {
+            bottom: 8px;
+            right: 10px;
+            transform: rotate(180deg);
+        }
+        .card .suit {
+            font-size: 2rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .card.hidden {
+            background-color: #333;
+            border: 2px solid #888;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white">
+    <div id="app" class="container mx-auto py-10 px-5">
+        <h1 class="text-4xl font-bold text-center mb-8">blackjack</h1>
+
+        <div class="flex justify-between items-center mb-5">
+            <div class="text-xl">
+                <p>balance: ${{ balance }}</p>
+                <p>total winnings: ${{ totalWinnings }}</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-10">
+            <div>
+                <h2 class="text-2xl font-bold mb-2">your hand</h2>
+                <div>
+                    <div v-for="card in playerHand" :key="card.id" class="card">
+                        <span class="top-left">{{ card.rank }}</span>
+                        <span class="suit">{{ getSuitSymbol(card.suit) }}</span>
+                        <span class="bottom-right">{{ card.rank }}</span>
+                    </div>
+                </div>
+                <p>Total: {{ playerTotal }}</p>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold mb-2">dealer's hand</h2>
+                <div>
+                    <div v-for="(card, index) in dealerHand" :key="card.id" class="card" :class="{ hidden: !gameOver && index === 0 }">
+                        <template v-if="gameOver || index > 0">
+                            <span class="top-left">{{ card.rank }}</span>
+                            <span class="suit">{{ getSuitSymbol(card.suit) }}</span>
+                            <span class="bottom-right">{{ card.rank }}</span>
+                        </template>
+                        <template v-else>?</template>
+                    </div>
+                </div>
+                <p>total: {{ gameOver ? dealerTotal : '?' }}</p>
+            </div>
+        </div>
+        <div class="flex justify-center mt-5">
+            <label for="bet" class="text-lg mr-2">bet amount:</label>
+            <select v-model="currentBet" id="bet" class="bg-gray-700 px-3 py-2 rounded">
+                <option v-for="bet in betIntervals" :key="bet" :value="bet">${{ bet }}</option>
+            </select>
+        </div>
+        <div class="flex justify-center mt-5">
+            <button 
+                class="bg-blue-500 px-4 py-2 rounded mr-2"
+                @click="startGame"
+                :disabled="gameStarted">deal
+            </button>
+            <button 
+                class="bg-green-500 px-4 py-2 rounded mr-2"
+                @click="hit"
+                :disabled="!gameStarted || gameOver">hit
+            </button>
+            <button 
+                class="bg-red-500 px-4 py-2 rounded"
+                @click="stand"
+                :disabled="!gameStarted || gameOver">stand
+            </button>
+        </div>
+
+        <p v-if="resultMessage" class="text-center mt-5 text-xl">{{ resultMessage }}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                balance: 500,
+                totalWinnings: 0,
+                currentBet: 10,
+                betIntervals: [10, 25, 50, 100],
+                playerHand: [],
+                dealerHand: [],
+                deck: [],
+                gameStarted: false,
+                gameOver: false,
+                resultMessage: ''
+            },
+            computed: {
+                playerTotal() {
+                    return this.calculateHandTotal(this.playerHand);
+                },
+                dealerTotal() {
+                    return this.calculateHandTotal(this.dealerHand);
+                }
+            },
+            methods: {
+                startGame() {
+                    if (this.balance < this.currentBet) {
+                        alert('Not enough balance to place this bet.');
+                        return;
+                    }
+
+                    this.gameStarted = true;
+                    this.gameOver = false;
+                    this.resultMessage = '';
+                    this.playerHand = [];
+                    this.dealerHand = [];
+                    this.createDeck();
+                    this.shuffleDeck();
+
+                    this.playerHand.push(this.drawCard());
+                    this.playerHand.push(this.drawCard());
+                    this.dealerHand.push(this.drawCard());
+                    this.dealerHand.push(this.drawCard());
+                },
+                hit() {
+                    this.playerHand.push(this.drawCard());
+                    if (this.playerTotal > 21) {
+                        this.endGame('You busted. Dealer wins!');
+                    }
+                },
+                stand() {
+                    while (this.dealerTotal < 17) {
+                        this.dealerHand.push(this.drawCard());
+                    }
+                    this.determineWinner();
+                },
+                endGame(message) {
+                    this.gameOver = true;
+                    this.resultMessage = message;
+                    this.updateBalance();
+                    this.saveStatsToLocalStorage();
+                    this.gameStarted = false;
+                },
+                determineWinner() {
+                    if (this.dealerTotal > 21 || this.playerTotal > this.dealerTotal) {
+                        this.endGame('You win!');
+                    } else if (this.playerTotal === this.dealerTotal) {
+                        this.endGame('It\'s a draw!');
+                    } else {
+                        this.endGame('Dealer wins!');
+                    }
+                },
+                createDeck() {
+                    const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+                    const ranks = [
+                        { rank: '2', value: 2 }, { rank: '3', value: 3 }, { rank: '4', value: 4 },
+                        { rank: '5', value: 5 }, { rank: '6', value: 6 }, { rank: '7', value: 7 },
+                        { rank: '8', value: 8 }, { rank: '9', value: 9 }, { rank: '10', value: 10 },
+                        { rank: 'J', value: 10 }, { rank: 'Q', value: 10 }, { rank: 'K', value: 10 },
+                        { rank: 'A', value: 11 }
+                    ];
+
+                    this.deck = [];
+                    suits.forEach(suit => {
+                        ranks.forEach(rank => {
+                            this.deck.push({ ...rank, suit, id: `${rank.rank}-${suit}` });
+                        });
+                    });
+                },
+                shuffleDeck() {
+                    for (let i = this.deck.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+                    }
+                },
+                drawCard() {
+                    return this.deck.pop();
+                },
+                calculateHandTotal(hand) {
+                    let total = 0;
+                    let aces = 0;
+
+                    hand.forEach(card => {
+                        total += card.value;
+                        if (card.rank === 'A') aces++;
+                    });
+
+                    while (total > 21 && aces) {
+                        total -= 10;
+                        aces--;
+                    }
+
+                    return total;
+                },
+                updateBalance() {
+                    if (this.resultMessage === 'You win!') {
+                        this.balance += this.currentBet;
+                        this.totalWinnings += this.currentBet;
+                    } else if (this.resultMessage === 'You busted. Dealer wins!' || this.resultMessage === 'Dealer wins!') {
+                        this.balance -= this.currentBet;
+                        this.totalWinnings -= this.currentBet;
+                    }
+                },
+                getSuitSymbol(suit) {
+                    const symbols = {
+                        Hearts: '♥',
+                        Diamonds: '♦',
+                        Clubs: '♣',
+                        Spades: '♠'
+                    };
+                    return symbols[suit];
+                },
+                saveStatsToLocalStorage() {
+                    localStorage.setItem('balance', this.balance);
+                    localStorage.setItem('totalWinnings', this.totalWinnings);
+                },
+                loadStatsFromLocalStorage() {
+                    const savedBalance = localStorage.getItem('balance');
+                    const savedTotalWinnings = localStorage.getItem('totalWinnings');
+                    if (savedBalance !== null) this.balance = parseInt(savedBalance, 10);
+                    if (savedTotalWinnings !== null) this.totalWinnings = parseInt(savedTotalWinnings, 10);
+                }
+            },
+            mounted() {
+                this.loadStatsFromLocalStorage();
+            }
+        });
+    </script>
+</body>
+</html>

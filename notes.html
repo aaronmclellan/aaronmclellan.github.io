@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple notes and to-dos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .note-content {
+            min-height: calc(100vh - 350px);
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+        ul, ol {
+            list-style-position: inside;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .code-block {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .dark .code-block {
+            background-color: #1e293b;
+            border-color: #4b5563;
+            color: #d1d5db;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-gray-100 transition-colors">
+    <div id="app" class="container mx-auto p-5">
+        <div class="flex justify-between items-center mb-5">
+            <h1 class="text-2xl font-bold">simple notes and to-dos</h1>
+            <label class="toggle-switch">
+                <input type="checkbox" v-model="isDarkMode" @change="toggleDarkMode" class="hidden">
+                <span class="w-10 h-5 bg-gray-300 dark:bg-gray-700 rounded-full relative inline-block">
+                    <span class="absolute w-4 h-4 bg-white rounded-full top-0.5 left-0.5 transition-transform transform dark:translate-x-5"></span>
+                </span>
+                <span class="ml-3 text-sm">dark mode</span>
+            </label>
+        </div>
+
+        <div class="flex gap-5">
+
+                        <!-- To-Do Section -->
+                        <div class="w-2/5">
+                            <h2 class="text-xl font-semibold mb-4">to-dos</h2>
+                            <div class="relative mb-4">
+                                <input
+                                    v-model="newTodo"
+                                    @keyup.enter="addTodo"
+                                    type="text"
+                                    placeholder="add a new to-do..."
+                                    class="w-full px-4 py-2 border rounded bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                <button
+                                    @click="addTodo"
+                                    class="absolute top-0 right-0 h-full px-4 text-blue-500 hover:text-blue-600">
+                                    ➕
+                                </button>
+                            </div>
+                            <ul id="todo-list" class="space-y-2">
+                                <li
+                                    v-for="(todo, index) in sortedTodos"
+                                    :key="todo.id"
+                                    :class="{ 'line-through text-gray-500 dark:text-gray-400': todo.completed }"
+                                    class="flex items-center justify-between p-3 bg-gray-200 rounded dark:bg-gray-800">
+                                    <span class="draggable-icon mr-3 text-gray-500 dark:text-gray-400">≡</span>
+                                    <div class="flex items-center flex-grow">
+                                        <input
+                                            type="checkbox"
+                                            v-model="todo.completed"
+                                            @change="updateTodos"
+                                            class="checkbox mr-3">
+                                        <span>{{ todo.text }}</span>
+                                    </div>
+                                    <button
+                                        class="text-red-500 hover:text-red-600"
+                                        @click="deleteTodo(index)">
+                                        🗑️
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+            <!-- Notes List Section -->
+            <div class="w-1/5">
+                <h2 class="text-xl font-semibold mb-4">notes</h2>
+                <button
+                    @click="createNewNote"
+                    class="w-full px-4 py-2 mb-4 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    new note
+                </button>
+                <ul class="space-y-2">
+                    <li
+                        v-for="(note, index) in notes"
+                        :key="index"
+                        :class="{ 'bg-blue-500 text-white': index === currentNoteIndex }"
+                        class="flex items-center justify-between p-3 bg-gray-200 rounded cursor-pointer hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
+                        @click="switchNote(index)">
+                        <span class="truncate">{{ note.title || `note ${index + 1}` }}</span>
+                        <button
+                            class="text-red-500 hover:text-red-600 ml-2"
+                            @click.stop="deleteNote(index)">
+                            🗑️
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="w-3/5">
+                <h2 class="text-xl font-semibold mb-4">editor</h2>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button
+                        @click="addHeader"
+                        class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex items-center gap-2">
+                        <i class="fas fa-heading"></i> header
+                    </button>
+                    <button
+                        @click="addDivider"
+                        class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex items-center gap-2">
+                        <i class="fas fa-minus"></i> divider
+                    </button>
+                    <button
+                        @click="addCodeBlock"
+                        class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex items-center gap-2">
+                        <i class="fas fa-code"></i> code block
+                    </button>
+                </div>
+                <div>
+                    <input
+                        v-model="currentNote.title"
+                        class="w-full px-4 py-2 mb-4 border rounded bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+                        placeholder="note title">
+                    <div
+                        class="note-content p-4 border rounded bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+                        contenteditable="true"
+                        @input="onInput"
+                        ref="contentEditable">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isDarkMode: false,
+                notes: JSON.parse(localStorage.getItem('notes')) || [],
+                currentNoteIndex: 0,
+                todos: JSON.parse(localStorage.getItem('todos')) || [],
+                newTodo: '',
+            },
+            computed: {
+                currentNote() {
+                    return this.notes[this.currentNoteIndex] || { title: '', content: '' };
+                },
+                sortedTodos() {
+                    return this.todos.slice().sort((a, b) => a.completed - b.completed);
+                },
+            },
+            methods: {
+                toggleDarkMode() {
+                    document.documentElement.classList.toggle('dark', this.isDarkMode);
+                },
+                createNewNote() {
+                    this.notes.push({ title: '', content: '' });
+                    this.currentNoteIndex = this.notes.length - 1;
+                    this.$nextTick(() => {
+                        this.updateContentEditable();
+                    });
+                    this.saveNotes();
+                },
+                switchNote(index) {
+                    this.currentNoteIndex = index;
+                    this.$nextTick(() => {
+                        this.updateContentEditable();
+                    });
+                },
+                deleteNote(index) {
+                    if (this.notes.length > 1) {
+                        this.notes.splice(index, 1);
+                        this.currentNoteIndex = Math.min(this.currentNoteIndex, this.notes.length - 1);
+                    } else {
+                        this.notes = [{ title: '', content: '' }];
+                        this.currentNoteIndex = 0;
+                    }
+                    this.updateContentEditable();
+                    this.saveNotes();
+                },
+                updateContentEditable() {
+                    const noteContent = this.$refs.contentEditable;
+                    noteContent.innerHTML = this.currentNote.content || '';
+                },
+                onInput(event) {
+                    this.currentNote.content = event.target.innerHTML;
+                    this.saveNotes();
+                },
+                saveNotes() {
+                    localStorage.setItem('notes', JSON.stringify(this.notes));
+                },
+                addHeader() {
+                    this.insertAtCaret('<h1 style="font-size: 1.5rem; font-weight: bold; text-decoration: underline;">Header</h1>');
+                },
+                addDivider() {
+                    this.insertAtCaret('<hr>');
+                },
+                addCodeBlock() {
+                    this.insertAtCaret('<pre class="code-block"><code>Code Block</code></pre>');
+                },
+                insertAtCaret(html) {
+                    const noteContent = this.$refs.contentEditable;
+                    const selection = window.getSelection();
+                    if (!selection.rangeCount) return;
+
+                    const range = selection.getRangeAt(0);
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+
+                    const frag = document.createDocumentFragment();
+                    let node;
+                    while ((node = temp.firstChild)) {
+                        frag.appendChild(node);
+                    }
+
+                    const lastNode = frag.lastChild;
+                    range.deleteContents();
+                    range.insertNode(frag);
+
+                    if (lastNode) {
+                        range.setStartAfter(lastNode);
+                        range.setEndAfter(lastNode);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                    }
+
+                    this.onInput({ target: noteContent });
+                },
+                addTodo() {
+                    if (!this.newTodo.trim()) return;
+                    this.todos.push({ id: Date.now(), text: this.newTodo.trim(), completed: false });
+                    this.newTodo = '';
+                    this.updateTodos();
+                },
+                deleteTodo(index) {
+                    this.todos.splice(index, 1);
+                    this.updateTodos();
+                },
+                updateTodos() {
+                    localStorage.setItem('todos', JSON.stringify(this.todos));
+                },
+            },
+            mounted() {
+                if (this.notes.length === 0) {
+                    this.createNewNote();
+                }
+                this.updateContentEditable();
+                this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.classList.toggle('dark', this.isDarkMode);
+
+                const todoList = document.getElementById('todo-list');
+                new Sortable(todoList, {
+                    handle: '.draggable-icon',
+                    onEnd: (evt) => {
+                        const movedItem = this.todos.splice(evt.oldIndex, 1)[0];
+                        this.todos.splice(evt.newIndex, 0, movedItem);
+                        this.updateTodos();
+                    },
+                });
+            },
+        });
+    </script>
+</body>
+</html>
