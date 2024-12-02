@@ -51,15 +51,11 @@
                     v-for="website in websites" 
                     :key="website.id" 
                     class="bg-gray-200 dark:bg-gray-800 rounded-lg p-4 shadow hover:shadow-lg transition-shadow">
-                    <img :src="website.image" :alt="website.title" class="rounded-lg mb-4 w-96 h-64 object-cover">
+                    <a :href="website.link" target="_blank">
+                        <img :src="website.image" :alt="website.title" class="rounded-lg mb-4 w-96 h-64 object-cover">
+                    </a>
                     <h3 class="font-bold text-lg">{{ website.title }}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300">{{ website.description }}</p>
-                    <a 
-                        :href="website.link" 
-                        target="_blank" 
-                        class="inline-block mt-3 text-blue-500 dark:text-teal-500 font-semibold hover:underline">
-                        Visit Site
-                    </a>
                 </div>
             </div>
         </div>
@@ -100,14 +96,16 @@
                 this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 document.documentElement.classList.toggle('dark', this.isDarkMode);
 
-                const websiteList = document.getElementById('website-list');
-                new Sortable(websiteList, {
-                    animation: 150,
-                    onEnd: (event) => {
-                        const movedItem = this.websites.splice(event.oldIndex, 1)[0];
-                        this.websites.splice(event.newIndex, 0, movedItem);
-                    }
-                });
+                if (window.innerWidth >= 640) { // Enable Sortable only on devices wider than 640px
+                    const websiteList = document.getElementById('website-list');
+                    new Sortable(websiteList, {
+                        animation: 150,
+                        onEnd: (event) => {
+                            const movedItem = this.websites.splice(event.oldIndex, 1)[0];
+                            this.websites.splice(event.newIndex, 0, movedItem);
+                        }
+                    });
+                }
             }
         });
     </script>
