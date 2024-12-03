@@ -16,6 +16,15 @@
         };
     </script>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J61JMC33K6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J61JMC33K6');
+</script>
 <body class="bg-gray-100 dark:bg-gray-900 dark:text-gray-100 transition-colors">
     <div id="app" class="min-h-screen flex flex-col items-center px-6 py-10">
         <!-- Dark Mode Toggle -->
@@ -52,7 +61,7 @@
                     :key="website.id" 
                     class="bg-gray-200 dark:bg-gray-800 rounded-lg p-4 shadow hover:shadow-lg transition-shadow">
                     <a :href="website.link" target="_blank">
-                        <img :src="website.image" :alt="website.title" class="rounded-lg mb-4 w-96 h-64 object-cover">
+                        <img :src="website.image" :alt="website.title" class="rounded-lg mb-4 w-96 h-120">
                     </a>
                     <h3 class="font-bold text-lg">{{ website.title }}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300">{{ website.description }}</p>
@@ -79,12 +88,12 @@
             data: {
                 isDarkMode: false,
                 websites: [
-                    { id: 1, title: 'f1.wtf', description: 'get need to know info for the next f1 race and race season', image: 'f1.png', link: 'https://www.f1.wtf/' },
-                    { id: 2, title: 'getfucked.org', description: 'all the middle finger gifs you could ever want', image: 'getfucked.png', link: 'https://getfucked.org/' },
-                    { id: 3, title: 'SoD Timer', description: 'timers to track the World of Warcraft Season of Discovery events for US and EU', image: 'sod.png', link: 'https://sodtimer.com/' },
-                    { id: 4, title: 'simple notes', description: 'notes and to-dos in a simple, clean interface', image: 'notes.png', link: './notes.html' },
-                    { id: 5, title: 'blackjack', description: 'simple blackjack game when you\'re bored', image: 'blackjack.png', link: './blackjack.html' },
-                    { id: 6, title: 'delim tool', description: 'simple tool to delimit csv, psv, and spaced data', image: 'delim.png', link: './delim.html' }
+                    { id: 1, title: 'f1.wtf', description: 'get need to know info for the next f1 race and race season', image: 'f1.jpg', link: 'https://www.f1.wtf/' },
+                    { id: 2, title: 'getfucked.org', description: 'all the middle finger gifs you could ever want', image: 'fucked.jpg', link: 'https://getfucked.org/' },
+                    { id: 3, title: 'SoD Timer', description: 'timers to track the World of Warcraft Season of Discovery events for US and EU', image: 'sod.jpg', link: 'https://sodtimer.com/' },
+                    { id: 4, title: 'simple notes', description: 'notes and to-dos in a simple, clean interface', image: 'notes.jpg', link: './notes.html' },
+                    { id: 5, title: 'blackjack', description: 'simple blackjack game when you\'re bored', image: 'blackjack.jpg', link: './blackjack.html' },
+                    { id: 6, title: 'delim tool', description: 'simple tool to delimit csv, psv, and spaced data', image: 'delim.jpg', link: './delim.html' }
                 ]
             },
             methods: {
