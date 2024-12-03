@@ -72,7 +72,7 @@
         <!-- Footer -->
         <footer class="mt-16 text-center">
             <div class="flex justify-center gap-6">
-                <a href="https://bsky.app/profile/aaronmclellan.bsky.social" target="_blank" class="text-blue-500 dark:text-teal-500 text-2xl hover:text-blue-600 dark:hover:text-teal-400">
+                <a href="https://bsky.app/profile/ron.rip" target="_blank" class="text-blue-500 dark:text-teal-500 text-2xl hover:text-blue-600 dark:hover:text-teal-400">
                     <i class="fa-brands fa-bluesky"></i>
                 </a>
                 <a href="https://github.com/aaronmclellan" target="_blank" class="text-blue-500 dark:text-teal-500 text-2xl hover:text-blue-600 dark:hover:text-teal-400">
@@ -86,7 +86,7 @@
         new Vue({
             el: '#app',
             data: {
-                isDarkMode: false,
+                isDarkMode: true,
                 websites: [
                     { id: 1, title: 'f1.wtf', description: 'get need to know info for the next f1 race and race season', image: 'f1.jpg', link: 'https://www.f1.wtf/' },
                     { id: 2, title: 'getfucked.org', description: 'all the middle finger gifs you could ever want', image: 'fucked.jpg', link: 'https://getfucked.org/' },
@@ -99,10 +99,16 @@
             methods: {
                 toggleDarkMode() {
                     document.documentElement.classList.toggle('dark', this.isDarkMode);
+                    localStorage.setItem('isDarkMode', this.isDarkMode);
                 },
             },
             mounted() {
-                this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const storedDarkMode = localStorage.getItem('isDarkMode');
+                if (storedDarkMode !== null) {
+                    this.isDarkMode = JSON.parse(storedDarkMode);
+                } else {
+                    this.isDarkMode = true; // Default to dark mode
+                }
                 document.documentElement.classList.toggle('dark', this.isDarkMode);
 
                 if (window.innerWidth >= 640) { // Enable Sortable only on devices wider than 640px

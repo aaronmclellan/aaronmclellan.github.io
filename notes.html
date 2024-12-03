@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>notes and to-dos</title>
+    <title>Simple Notes and To-Dos</title>
     <link rel="icon" href="crying-sunglasses-cowboy.png" sizes="32x32" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -48,13 +48,13 @@
     <div id="app" class="container mx-auto p-5">
         <!-- Header -->
         <div class="flex justify-between items-center mb-5">
-            <h1 class="text-2xl font-bold">notes and todos</h1>
+            <h1 class="text-2xl font-bold">Simple Notes and To-Dos</h1>
             <label class="toggle-switch">
                 <input type="checkbox" v-model="isDarkMode" @change="toggleDarkMode" class="hidden">
                 <span class="w-10 h-5 bg-gray-300 dark:bg-gray-700 rounded-full relative inline-block">
                     <span class="absolute w-4 h-4 bg-white rounded-full top-0.5 left-0.5 transition-transform transform dark:translate-x-5"></span>
                 </span>
-                <span class="ml-3 text-sm">dark mode</span>
+                <span class="ml-3 text-sm">Dark Mode</span>
             </label>
         </div>
 
@@ -62,7 +62,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
             <!-- To-Do Section -->
             <div class="lg:col-span-2">
-                <h2 class="text-xl font-semibold mb-4">to-dos</h2>
+                <h2 class="text-xl font-semibold mb-4">To-Dos</h2>
                 <div class="relative mb-4">
                     <input
                         v-model="newTodo"
@@ -102,11 +102,11 @@
 
             <!-- Notes List Section -->
             <div class="lg:col-span-1">
-                <h2 class="text-xl font-semibold mb-4">notes</h2>
+                <h2 class="text-xl font-semibold mb-4">Notes</h2>
                 <button
                     @click="createNewNote"
                     class="w-full px-4 py-2 mb-4 bg-blue-500 text-white rounded hover:bg-blue-600">
-                    new note
+                    New Note
                 </button>
                 <ul class="space-y-2">
                     <li
@@ -115,7 +115,7 @@
                         :class="{ 'bg-blue-500 text-white': index === currentNoteIndex }"
                         class="flex items-center justify-between p-3 bg-gray-200 rounded cursor-pointer hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
                         @click="switchNote(index)">
-                        <span class="truncate">{{ note.title || `note ${index + 1}` }}</span>
+                        <span class="truncate">{{ note.title || `Note ${index + 1}` }}</span>
                         <button
                             class="text-red-500 hover:text-red-600 ml-2"
                             @click.stop="deleteNote(index)">
@@ -127,22 +127,22 @@
 
             <!-- Editor Section -->
             <div class="lg:col-span-2">
-                <h2 class="text-xl font-semibold mb-4">editor</h2>
+                <h2 class="text-xl font-semibold mb-4">Editor</h2>
                 <div class="flex flex-wrap gap-2 mb-4">
                     <button
                         @click="addHeader"
                         class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex items-center gap-2">
-                        <i class="fas fa-heading"></i> header
+                        <i class="fas fa-heading"></i> Header
                     </button>
                     <button
                         @click="addDivider"
                         class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex items-center gap-2">
-                        <i class="fas fa-minus"></i> divider
+                        <i class="fas fa-minus"></i> Divider
                     </button>
                     <button
                         @click="addCodeBlock"
                         class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex items-center gap-2">
-                        <i class="fas fa-code"></i> code block
+                        <i class="fas fa-code"></i> Code Block
                     </button>
                 </div>
                 <input
@@ -182,6 +182,7 @@
             methods: {
                 toggleDarkMode() {
                     document.documentElement.classList.toggle('dark', this.isDarkMode);
+                    localStorage.setItem('isDarkMode', this.isDarkMode);
                 },
                 createNewNote() {
                     this.notes.push({ title: '', content: '' });
@@ -220,13 +221,13 @@
                     localStorage.setItem('notes', JSON.stringify(this.notes));
                 },
                 addHeader() {
-                    this.insertAtCaret('<h1 style="font-size: 1.5rem; font-weight: bold; text-decoration: underline;">header</h1>');
+                    this.insertAtCaret('<h1 style="font-size: 1.5rem; font-weight: bold; text-decoration: underline;">Header</h1>');
                 },
                 addDivider() {
                     this.insertAtCaret('<hr>');
                 },
                 addCodeBlock() {
-                    this.insertAtCaret('<pre class="code-block"><code>code block</code></pre>');
+                    this.insertAtCaret('<pre class="code-block"><code>Code Block</code></pre>');
                 },
                 insertAtCaret(html) {
                     const noteContent = this.$refs.contentEditable;
@@ -271,12 +272,18 @@
                 },
             },
             mounted() {
+                const storedDarkMode = localStorage.getItem('isDarkMode');
+                if (storedDarkMode !== null) {
+                    this.isDarkMode = JSON.parse(storedDarkMode);
+                } else {
+                    this.isDarkMode = true; // Default to dark mode
+                }
+                document.documentElement.classList.toggle('dark', this.isDarkMode);
+
                 if (this.notes.length === 0) {
                     this.createNewNote();
                 }
                 this.updateContentEditable();
-                this.isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                document.documentElement.classList.toggle('dark', this.isDarkMode);
 
                 const todoList = document.getElementById('todo-list');
                 new Sortable(todoList, {
