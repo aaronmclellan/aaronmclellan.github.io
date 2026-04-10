@@ -963,6 +963,17 @@ async function pullFromCloud(){
   }
 }
 
+// Auto-pull: every 30 seconds if sync is configured
+var _pullInterval=null;
+function startAutoPull(){
+  stopAutoPull();
+  _pullInterval=setInterval(function(){
+    if(!isSyncConfigured())return;
+    pullFromCloud().catch(function(){});
+  },30000);
+}
+function stopAutoPull(){if(_pullInterval){clearInterval(_pullInterval);_pullInterval=null;}}
+
 // Auto-sync: push after save (debounced)
 var _syncTimer=null;
 function scheduleSync(){
@@ -1005,6 +1016,7 @@ async function saveSettings(){
 
   setSetupStatus('ok','Saved! Syncing...');
   await pushToCloud();
+  startAutoPull();
   setSetupStatus('ok','Connected and synced!');
   setTimeout(closeSettingsModal,1200);
 }
@@ -1027,6 +1039,7 @@ async function modalPush(){
 function disconnectSync(){
   if(!confirm('Disconnect sync? Your local notes stay, but cloud sync stops.'))return;
   syncCfg={token:'',gistId:'',passphrase:''};saveSyncCfg();
+  stopAutoPull();
   setSyncStatus('','Local only');
   closeSettingsModal();
 }
@@ -1054,10 +1067,11 @@ if(D.activeId){var f=D.notes.find(function(n){return n.id===D.activeId});if(f)op
 // Fresh load with no notes: auto-create one so the editor isn't a ghost
 if(D.notes.length===0){createNote();}
 
-// On startup: if sync is configured, pull latest
+// On startup: if sync is configured, pull latest and start auto-pull
 if(isSyncConfigured()){
   setSyncStatus('syncing','Syncing...');
   pullFromCloud().catch(function(){setSyncStatus('error','Sync failed')});
+  startAutoPull();
 }
 </script>
 </body>
