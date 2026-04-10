@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tenor GIF Downloader</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f0f0f;
+    color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 100vh;
+  }
+  h1 { font-size: 1.6em; margin-bottom: 6px; }
+  p.sub { color: #888; font-size: 0.85em; margin-bottom: 30px; }
+  .input-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: #eee;
+    font-size: 0.95em;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus { border-color: #00d4ff; }
+  button {
+    padding: 12px 24px;
+    background: #00d4ff;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9em;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  button:hover { background: #00b8d4; }
+  button:disabled { background: #333; color: #666; cursor: default; }
+  .secondary { background: #2a2a2a; color: #ccc; }
+  .secondary:hover { background: #3a3a3a; }
+  #status {
+    color: #888;
+    font-size: 0.85em;
+    margin-bottom: 20px;
+    min-height: 1.2em;
+    max-width: 600px;
+    text-align: center;
+  }
+  #status.error { color: #ff6b6b; }
+  #status.success { color: #4caf50; }
+  #preview {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 90vw;
+  }
+  #preview img {
+    max-width: 500px;
+    max-height: 420px;
+    border-radius: 8px;
+    background: #1a1a1a;
+  }
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  footer {
+    margin-top: auto;
+    padding-top: 40px;
+    color: #444;
+    font-size: 0.75em;
+  }
+  footer a { color: #555; }
+
+  @media (max-width: 640px) {
+    body { padding: 30px 12px; }
+    .input-row { flex-direction: column; }
+    button { width: 100%; }
+    #preview img { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <h1>Tenor GIF Downloader</h1>
+  <p class="sub">Paste a Tenor link, preview &amp; download the GIF</p>
+
+  <div class="input-row">
+    <input id="url" type="text" placeholder="https://tenor.com/view/..." autofocus>
+    <button id="fetchBtn" onclick="fetchGif()">Get GIF</button>
+  </div>
+  <div id="status"></div>
+  <div id="preview">
+    <img id="gifImg" alt="GIF preview">
+    <div class="btn-row">
+      <button onclick="downloadGif()">Download GIF</button>
+      <button class="secondary" onclick="window.open(gifUrl,'_blank')">Open in new tab</button>
+    </div>
+  </div>
+
+  <footer>
+    Built by <a href="https://github.com/aaronmclellan" target="_blank">aaronmclellan</a>
+  </footer>
+
+<script>
+var gifUrl = '';
+var gifName = '';
+var TENOR_KEY = 'AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ';
+
+document.getElementById('url').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') fetchGif();
+});
+
+function setStatus(msg, type) {
+  var el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = type || '';
+}
+
+function extractId(url) {
+  var m = url.match(/(\d{5,})(?:\?|#|\/|$)/);
+  return m ? m[1] : null;
+}
+
+function buildFilename(url) {
+  var slug = url.replace(/[\?#].*/, '').replace(/\/$/, '').split('/').pop() || 'tenor-gif';
+  return slug.replace(/-\d{5,}$/, '').substring(0, 60) + '.gif';
+}
+
+function fetchGif() {
+  var rawUrl = document.getElementById('url').value.trim();
+
+  if (!rawUrl || rawUrl.indexOf('tenor.com') === -1) {
+    setStatus('Please enter a valid Tenor URL', 'error');
+    return;
+  }
+
+  var postId = extractId(rawUrl);
+  if (!postId) {
+    setStatus('Could not find a post ID in that URL', 'error');
+    return;
+  }
+
+  setStatus('Fetching...');
+  document.getElementById('preview').style.display = 'none';
+  document.getElementById('fetchBtn').disabled = true;
+
+  var apiUrl = 'https://tenor.googleapis.com/v2/posts?ids=' + postId +
+               '&key=' + TENOR_KEY + '&media_filter=gif';
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', apiUrl, true);
+  xhr.timeout = 15000;
+
+  xhr.onload = function() {
+    document.getElementById('fetchBtn').disabled = false;
+
+    if (xhr.status !== 200) {
+      setStatus('Tenor API returned HTTP ' + xhr.status, 'error');
+      return;
+    }
+
+    try {
+      var data = JSON.parse(xhr.responseText);
+      if (!data.results || data.results.length === 0) {
+        setStatus('No results found for that post ID', 'error');
+        return;
+      }
+
+      var post = data.results[0];
+      var media = post.media_formats || {};
+      var chosen = media.gif || media.mediumgif || media.tinygif;
+
+      if (!chosen) {
+        for (var key in media) {
+          if (media[key].url && media[key].url.indexOf('.gif') !== -1) {
+            chosen = media[key];
+            break;
+          }
+        }
+      }
+
+      if (!chosen || !chosen.url) {
+        setStatus('Post found but no GIF format available', 'error');
+        return;
+      }
+
+      gifUrl = chosen.url;
+      gifName = buildFilename(rawUrl);
+
+      var sizeText = chosen.size ? ' (' + (chosen.size / 1024 / 1024).toFixed(1) + ' MB)' : '';
+      setStatus('Found!' + sizeText, 'success');
+
+      document.getElementById('gifImg').src = gifUrl;
+      document.getElementById('gifImg').onerror = function() {
+        setStatus('Preview failed to load, but download may still work', 'error');
+      };
+      document.getElementById('preview').style.display = 'flex';
+
+    } catch (e) {
+      setStatus('Failed to parse API response', 'error');
+    }
+  };
+
+  xhr.onerror = function() {
+    document.getElementById('fetchBtn').disabled = false;
+    setStatus('Network error — could not reach Tenor API', 'error');
+  };
+
+  xhr.ontimeout = function() {
+    document.getElementById('fetchBtn').disabled = false;
+    setStatus('Request timed out — try again', 'error');
+  };
+
+  xhr.send();
+}
+
+function downloadGif() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', gifUrl, true);
+  xhr.responseType = 'blob';
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(xhr.response);
+      a.download = gifName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(a.href); }, 3000);
+    } else {
+      window.open(gifUrl, '_blank');
+    }
+  };
+  xhr.onerror = function() {
+    window.open(gifUrl, '_blank');
+  };
+  xhr.send();
+}
+</script>
+</body>
+</html>
