@@ -464,7 +464,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
    DATA LAYER
    ═══════════════════════════════════════════════════════ */
 var K='notes_v2',D={notes:[],folders:['General','Personal','Work'],activeFolder:null,activeId:null,theme:'dark',sbOpen:true};
-function save(){var n=active();if(n){n.content=$('editor').innerHTML;n.title=$('title-input').value;n.updated=Date.now();}try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}}
+var _editorReady=false;
+function save(){var n=active();if(n&&_editorReady){n.content=$('editor').innerHTML;n.title=$('title-input').value;n.updated=Date.now();}try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}}
 function load(){try{var s=localStorage.getItem(K);if(s)Object.assign(D,JSON.parse(s))}catch(e){}}
 function $(id){return document.getElementById(id)}
 function active(){return D.activeId?D.notes.find(function(n){return n.id===D.activeId}):null}
@@ -614,7 +615,6 @@ function createNote(){
   D.notes.unshift(n);openNote(n.id);save();
   setTimeout(function(){$('title-input').focus()},100);
 }
-var _editorReady=false;
 function openNote(id){
   // Only save previous note if the editor has actually been loaded with content
   if(_editorReady){var prev=active();if(prev){prev.content=$('editor').innerHTML;prev.title=$('title-input').value;}}
