@@ -478,7 +478,7 @@ function strip(h){var d=document.createElement('div');d.innerHTML=h||'';return d
 /* ═══════════════════════════════════════════════════════
    THEME
    ═══════════════════════════════════════════════════════ */
-function switchTheme(t){D.theme=t;document.documentElement.setAttribute('data-theme',t);$('theme-select').value=t;save();}
+function switchTheme(t){D.theme=t;document.documentElement.setAttribute('data-theme',t);$('theme-select').value=t;save();scheduleSync();}
 
 /* ═══════════════════════════════════════════════════════
    FOLDERS
@@ -667,7 +667,7 @@ function insertCode(){
   var sel=window.getSelection();
   var pre=document.createElement('pre');
   var code=document.createElement('code');
-  code.textContent='// code here';
+  code.innerHTML='<br>';
   pre.appendChild(code);
   if(sel.rangeCount){var r=sel.getRangeAt(0);r.deleteContents();r.insertNode(pre);r.setStartAfter(pre);r.collapse(true);sel.removeAllRanges();sel.addRange(r);}
   else ed.appendChild(pre);
@@ -679,7 +679,7 @@ function insertInline(){
   var sel=window.getSelection();
   if(sel.rangeCount&&!sel.isCollapsed){
     var t=sel.toString();document.execCommand('insertHTML',false,'<code>'+esc(t)+'</code>');
-  }else{document.execCommand('insertHTML',false,'<code>code</code>&nbsp;');}
+  }else{document.execCommand('insertHTML',false,'<code>&nbsp;</code>&nbsp;');}
   onContent();
 }
 function insertQuote(){$('editor').focus();document.execCommand('formatBlock',false,'BLOCKQUOTE');onContent();}
@@ -699,7 +699,7 @@ function clearFmt(){$('editor').focus();document.execCommand('removeFormat');doc
 function insertTodo(){
   var ed=$('editor');ed.focus();
   // Insert via HTML — a simple div with data-todo attribute
-  var html='<div data-todo="false">To-do item</div>';
+  var html='<div data-todo="false"><br></div>';
   document.execCommand('insertHTML',false,html);
   bindTodos();
   onContent();
@@ -1093,16 +1093,9 @@ async function pullFromCloud(){
     if(D.activeId){
       var cur=D.notes.find(function(x){return x.id===D.activeId});
       if(cur){
-        // Only update editor if content actually changed (avoids cursor jump)
-        var edEl=$('editor'),tiEl=$('title-input');
-        if(tiEl.value!==cur.title)tiEl.value=cur.title;
-        if(edEl.innerHTML!==cur.content){
-          edEl.innerHTML=cur.content;
-          bindTodos();
-          $('saved').textContent='Updated from cloud';
-          setTimeout(function(){$('saved').textContent=''},2000);
-        }
-        renderTags();renderFolderSel();updatePin();updateWC();
+        $('title-input').value=cur.title;
+        $('editor').innerHTML=cur.content;
+        bindTodos();renderTags();renderFolderSel();updatePin();updateWC();
       }
     }
     setSyncStatus('synced','Synced');
