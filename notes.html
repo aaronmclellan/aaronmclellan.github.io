@@ -135,7 +135,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
 #note-items{flex:1;overflow-y:auto;padding:6px;}
 
 /* NOTE CARD */
-.nc{padding:10px 12px;border-radius:var(--r);cursor:pointer;margin-bottom:2px;transition:all .15s;position:relative;animation:slideIn .2s ease;}
+.nc{padding:10px 12px;border-radius:var(--r);cursor:pointer;margin-bottom:2px;transition:all .15s;position:relative;animation:slideIn .2s ease;user-select:none;}
+.nc.dragging{opacity:.4;}.nc.drag-over{border-top:2px solid var(--accent);margin-top:-2px;}
 .nc:hover{background:var(--cardH);}
 .nc.active{background:var(--cardA);border-left:3px solid var(--accent);padding-left:9px;}
 .nc-title{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -504,20 +505,105 @@ function renderList(){
     if(q){var hay=(n.title+' '+strip(n.content)+' '+(n.tags||[]).join(' ')).toLowerCase();return hay.indexOf(q)!==-1;}
     return true;
   });
-  ns.sort(function(a,b){if(a.pinned&&!b.pinned)return-1;if(!a.pinned&&b.pinned)return 1;return b.updated-a.updated});
+  // Stable order: pinned first, otherwise preserve array (manual) order
+  var pinned=ns.filter(function(n){return n.pinned});
+  var unpinned=ns.filter(function(n){return !n.pinned});
+  ns=pinned.concat(unpinned);
   var el=$('note-items');
   if(!ns.length){el.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><p>'+(q?'No matches':'No notes yet')+'</p></div>';return;}
   var h='';
   ns.forEach(function(n){
     var pre=strip(n.content).substring(0,80);
     var d=new Date(n.updated).toLocaleDateString(undefined,{month:'short',day:'numeric'});
-    h+='<div class="nc'+(n.id===D.activeId?' active':'')+'" onclick="openNote(\''+n.id+'\')" oncontextmenu="ncCtx(event,\''+n.id+'\')">';
+    h+='<div class="nc'+(n.id===D.activeId?' active':'')+'" draggable="true" data-nid="'+n.id+'" onclick="openNote(\''+n.id+'\')" oncontextmenu="ncCtx(event,\''+n.id+'\')">';
     if(n.pinned)h+='<span class="nc-pin">&#128204;</span>';
     h+='<div class="nc-title">'+(esc(n.title)||'Untitled')+'</div><div class="nc-preview">'+esc(pre)+'</div><div class="nc-meta"><span>'+d+'</span>';
     if(n.tags&&n.tags.length){h+='<div class="nc-tags">';n.tags.forEach(function(t){h+='<span class="tag tag-sm">'+esc(t)+'</span>'});h+='</div>';}
     h+='</div></div>';
   });
   el.innerHTML=h;
+  bindDrag();
+}
+
+/* ═══════════════════════════════════════════════════════
+   DRAG TO REORDER
+   ═══════════════════════════════════════════════════════ */
+var _dragId=null;
+function bindDrag(){
+  var items=$('note-items').querySelectorAll('.nc[data-nid]');
+  items.forEach(function(el){
+    el.addEventListener('dragstart',function(e){
+      _dragId=el.getAttribute('data-nid');
+      el.classList.add('dragging');
+      e.dataTransfer.effectAllowed='move';
+      e.dataTransfer.setData('text/plain',_dragId);
+    });
+    el.addEventListener('dragend',function(){
+      _dragId=null;el.classList.remove('dragging');
+      $('note-items').querySelectorAll('.drag-over').forEach(function(x){x.classList.remove('drag-over')});
+    });
+    el.addEventListener('dragover',function(e){
+      e.preventDefault();e.dataTransfer.dropEffect='move';
+      $('note-items').querySelectorAll('.drag-over').forEach(function(x){x.classList.remove('drag-over')});
+      if(el.getAttribute('data-nid')!==_dragId)el.classList.add('drag-over');
+    });
+    el.addEventListener('dragleave',function(){el.classList.remove('drag-over')});
+    el.addEventListener('drop',function(e){
+      e.preventDefault();el.classList.remove('drag-over');
+      var targetId=el.getAttribute('data-nid');
+      if(!_dragId||_dragId===targetId)return;
+      // Reorder in D.notes
+      var fromIdx=D.notes.findIndex(function(n){return n.id===_dragId});
+      var toIdx=D.notes.findIndex(function(n){return n.id===targetId});
+      if(fromIdx===-1||toIdx===-1)return;
+      var moved=D.notes.splice(fromIdx,1)[0];
+      // Recalc toIdx after splice
+      toIdx=D.notes.findIndex(function(n){return n.id===targetId});
+      D.notes.splice(toIdx,0,moved);
+      save();renderList();
+    });
+    // Touch support
+    var _touchY=0,_touchClone=null,_touchMoved=false;
+    el.addEventListener('touchstart',function(e){
+      _touchY=e.touches[0].clientY;_touchMoved=false;
+      _dragId=el.getAttribute('data-nid');
+    },{passive:true});
+    el.addEventListener('touchmove',function(e){
+      if(!_dragId)return;
+      var dy=Math.abs(e.touches[0].clientY-_touchY);
+      if(dy>8)_touchMoved=true;
+      if(!_touchMoved)return;
+      e.preventDefault();
+      el.classList.add('dragging');
+      var touch=e.touches[0];
+      var target=document.elementFromPoint(touch.clientX,touch.clientY);
+      $('note-items').querySelectorAll('.drag-over').forEach(function(x){x.classList.remove('drag-over')});
+      if(target){
+        var card=target.closest('.nc[data-nid]');
+        if(card&&card.getAttribute('data-nid')!==_dragId)card.classList.add('drag-over');
+      }
+    },{passive:false});
+    el.addEventListener('touchend',function(e){
+      el.classList.remove('dragging');
+      if(!_touchMoved){_dragId=null;return;}
+      var overEl=$('note-items').querySelector('.drag-over');
+      if(overEl){
+        var targetId=overEl.getAttribute('data-nid');
+        overEl.classList.remove('drag-over');
+        if(_dragId&&_dragId!==targetId){
+          var fromIdx=D.notes.findIndex(function(n){return n.id===_dragId});
+          var toIdx=D.notes.findIndex(function(n){return n.id===targetId});
+          if(fromIdx!==-1&&toIdx!==-1){
+            var moved=D.notes.splice(fromIdx,1)[0];
+            toIdx=D.notes.findIndex(function(n){return n.id===targetId});
+            D.notes.splice(toIdx,0,moved);
+            save();renderList();
+          }
+        }
+      }
+      _dragId=null;_touchMoved=false;
+    });
+  });
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -541,7 +627,9 @@ function openNote(id){
   // Mobile
   if(window.innerWidth<=768){$('list-panel').classList.add('hidden');$('editor-panel').classList.remove('hidden');$('back-btn').style.display='';}
   else $('editor-panel').classList.remove('hidden');
-  renderList();save();
+  renderList();
+  // Save activeId without touching note timestamps
+  try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
 }
 function deleteCurrent(){if(!D.activeId)return;if(!confirm('Delete this note?'))return;delNote(D.activeId);}
 function delNote(id){
@@ -1064,14 +1152,20 @@ load();loadSyncCfg();switchTheme(D.theme);
 if(!D.sbOpen&&window.innerWidth>768){$('sidebar').classList.add('collapsed');$('expand-btn').style.display='';}
 renderFolders();renderList();
 if(D.activeId){var f=D.notes.find(function(n){return n.id===D.activeId});if(f)openNote(f.id);}
-// Fresh load with no notes: auto-create one so the editor isn't a ghost
-if(D.notes.length===0){createNote();}
-
 // On startup: if sync is configured, pull latest and start auto-pull
 if(isSyncConfigured()){
   setSyncStatus('syncing','Syncing...');
-  pullFromCloud().catch(function(){setSyncStatus('error','Sync failed')});
+  pullFromCloud().then(function(){
+    // After pull, if still no notes, create one
+    if(D.notes.length===0)createNote();
+  }).catch(function(){
+    setSyncStatus('error','Sync failed');
+    if(D.notes.length===0)createNote();
+  });
   startAutoPull();
+}else{
+  // No sync configured — create a starter note if empty
+  if(D.notes.length===0)createNote();
 }
 </script>
 </body>
