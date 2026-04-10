@@ -178,6 +178,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
 #editor h1{font-size:1.6rem;margin:16px 0 8px;font-weight:700;}
 #editor h2{font-size:1.3rem;margin:14px 0 6px;font-weight:600;}
 #editor h3{font-size:1.1rem;margin:12px 0 4px;font-weight:600;}
+#editor img{max-width:100%;height:auto;border-radius:var(--r);margin:8px 0;display:block;}
 #editor ul,#editor ol{padding-left:24px;margin:4px 0;}
 #editor li{margin:2px 0;}
 #editor blockquote{border-left:3px solid var(--accent);margin:8px 0;padding:4px 16px;color:var(--text2);background:var(--accentA);border-radius:0 var(--rs) var(--rs) 0;}
@@ -728,6 +729,39 @@ function todoClickHandler(e){
     onContent();
   }
 }
+
+// Convert pasted/dropped images to base64 data URLs so they persist across save/sync
+$('editor').addEventListener('paste',function(e){
+  var items=(e.clipboardData||e.originalEvent.clipboardData).items;
+  for(var i=0;i<items.length;i++){
+    if(items[i].type.indexOf('image')!==-1){
+      e.preventDefault();
+      var blob=items[i].getAsFile();
+      var reader=new FileReader();
+      reader.onload=function(ev){
+        document.execCommand('insertImage',false,ev.target.result);
+        onContent();
+      };
+      reader.readAsDataURL(blob);
+      return;
+    }
+  }
+});
+$('editor').addEventListener('drop',function(e){
+  var files=e.dataTransfer.files;
+  for(var i=0;i<files.length;i++){
+    if(files[i].type.indexOf('image')!==-1){
+      e.preventDefault();
+      var reader=new FileReader();
+      reader.onload=function(ev){
+        document.execCommand('insertImage',false,ev.target.result);
+        onContent();
+      };
+      reader.readAsDataURL(files[i]);
+      return;
+    }
+  }
+});
 
 function edKey(e){
   // Tab in code blocks → insert spaces
