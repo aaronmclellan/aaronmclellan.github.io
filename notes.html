@@ -1073,37 +1073,18 @@ async function pullFromCloud(){
     var json=await decrypt(file.content,syncCfg.passphrase);
     var cloud=JSON.parse(json);
 
-    // Smart merge: for each note, keep whichever version is newer
-    var cloudNotes=cloud.notes||[];
-    var localMap={};
-    D.notes.forEach(function(n){localMap[n.id]=n});
-    var cloudMap={};
-    cloudNotes.forEach(function(n){cloudMap[n.id]=n});
-    // Update existing local notes with newer cloud versions
-    D.notes=D.notes.map(function(local){
-      var remote=cloudMap[local.id];
-      if(remote&&remote.updated>local.updated)return remote;
-      return local;
-    });
-    // Add cloud-only notes (new from other device)
-    cloudNotes.forEach(function(cn){
-      if(!localMap[cn.id])D.notes.push(cn);
-    });
-    // Remove notes deleted on cloud (not in cloud but also not newer locally)
-    // Only if cloud has notes (don't wipe if cloud is empty/fresh)
-    if(cloudNotes.length>0){
-      var cloudIds={};cloudNotes.forEach(function(n){cloudIds[n.id]=true});
-      D.notes=D.notes.filter(function(n){return cloudIds[n.id]||n.updated>(cloud._pushTime||0)});
-    }
-    D.folders=cloud.folders||D.folders;
+    // Cancel any pending autoSave/sync so they don't overwrite pulled data
+    clearTimeout(_st);clearTimeout(_syncTimer);
+
+    // Simple: cloud wins
+    D.notes=cloud.notes||[];
+    D.folders=cloud.folders||['General','Personal','Work'];
     if(cloud.theme)D.theme=cloud.theme;
 
-    // Cancel any pending autoSave so it doesn't overwrite pulled data
-    clearTimeout(_st);clearTimeout(_syncTimer);
-    // Save directly to localStorage (bypass save() which would overwrite pulled data from editor DOM)
+    // Save to localStorage (bypass save() which reads from editor DOM)
     try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
     switchTheme(D.theme);renderFolders();renderList();
-    // Refresh the currently open note's editor with pulled data (without saving stale DOM back)
+    // Refresh the currently open note's editor with pulled data
     if(D.activeId){
       var cur=D.notes.find(function(x){return x.id===D.activeId});
       if(cur){
