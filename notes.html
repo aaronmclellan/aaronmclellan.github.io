@@ -649,7 +649,7 @@ function showList(){$('list-panel').classList.remove('hidden');$('editor-panel')
    ═══════════════════════════════════════════════════════ */
 function onTitle(){var n=active();if(n){n.title=$('title-input').value;n.updated=Date.now();renderList();autoSave();}}
 function onContent(){var n=active();if(n){n.updated=Date.now();updateWC();autoSave();}}
-function onFolderChange(){var n=active();if(n){n.folder=$('folder-sel').value;renderList();renderFolders();save();}}
+function onFolderChange(){var n=active();if(n){n.folder=$('folder-sel').value;n.updated=Date.now();renderList();renderFolders();autoSave();}}
 var _st=null;
 function autoSave(){clearTimeout(_st);_st=setTimeout(function(){save();$('saved').textContent='Saved';setTimeout(function(){$('saved').textContent=''},2000)},600);}
 function updateWC(){var t=strip($('editor').innerHTML),w=t.trim()?t.trim().split(/\s+/).length:0;$('wc').textContent=w+' word'+(w!==1?'s':'');}
