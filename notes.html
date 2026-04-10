@@ -1205,7 +1205,9 @@ autoSave=function(){
 /* ═══════════════════════════════════════════════════════
    INIT
    ═══════════════════════════════════════════════════════ */
-load();loadSyncCfg();switchTheme(D.theme);
+load();loadSyncCfg();
+// Apply theme without triggering sync (switchTheme would push stale data before pull)
+document.documentElement.setAttribute('data-theme',D.theme);$('theme-select').value=D.theme;
 if(!D.sbOpen&&window.innerWidth>768){$('sidebar').classList.add('collapsed');$('expand-btn').style.display='';}
 renderFolders();renderList();
 // On desktop, reopen last active note; on mobile, always show the list first
