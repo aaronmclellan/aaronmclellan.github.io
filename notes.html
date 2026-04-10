@@ -135,7 +135,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
 #note-items{flex:1;overflow-y:auto;padding:6px;}
 
 /* NOTE CARD */
-.nc{padding:10px 12px;border-radius:var(--r);cursor:pointer;margin-bottom:2px;transition:all .15s;position:relative;animation:slideIn .2s ease;user-select:none;}
+.nc{padding:10px 12px;border-radius:var(--r);cursor:pointer;margin-bottom:2px;transition:background .15s;position:relative;user-select:none;}
 .nc.dragging{opacity:.4;}.nc.drag-over{border-top:2px solid var(--accent);margin-top:-2px;}
 .nc:hover{background:var(--cardH);}
 .nc.active{background:var(--cardA);border-left:3px solid var(--accent);padding-left:9px;}
@@ -627,7 +627,9 @@ function openNote(id){
   // Mobile
   if(window.innerWidth<=768){$('list-panel').classList.add('hidden');$('editor-panel').classList.remove('hidden');$('back-btn').style.display='';}
   else $('editor-panel').classList.remove('hidden');
-  renderList();
+  // Update active highlight without rebuilding the whole list
+  var cards=$('note-items').querySelectorAll('.nc[data-nid]');
+  cards.forEach(function(c){c.classList.toggle('active',c.getAttribute('data-nid')===id)});
   // Save activeId without touching note timestamps
   try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
 }
@@ -1151,21 +1153,21 @@ autoSave=function(){
 load();loadSyncCfg();switchTheme(D.theme);
 if(!D.sbOpen&&window.innerWidth>768){$('sidebar').classList.add('collapsed');$('expand-btn').style.display='';}
 renderFolders();renderList();
-if(D.activeId){var f=D.notes.find(function(n){return n.id===D.activeId});if(f)openNote(f.id);}
+// On desktop, reopen last active note; on mobile, always show the list first
+if(D.activeId&&window.innerWidth>768){var f=D.notes.find(function(n){return n.id===D.activeId});if(f)openNote(f.id);}
 // On startup: if sync is configured, pull latest and start auto-pull
 if(isSyncConfigured()){
   setSyncStatus('syncing','Syncing...');
   pullFromCloud().then(function(){
-    // After pull, if still no notes, create one
-    if(D.notes.length===0)createNote();
+    if(D.notes.length===0&&window.innerWidth>768)createNote();
   }).catch(function(){
     setSyncStatus('error','Sync failed');
-    if(D.notes.length===0)createNote();
+    if(D.notes.length===0&&window.innerWidth>768)createNote();
   });
   startAutoPull();
 }else{
-  // No sync configured — create a starter note if empty
-  if(D.notes.length===0)createNote();
+  // No sync configured — create a starter note if empty (desktop only)
+  if(D.notes.length===0&&window.innerWidth>768)createNote();
 }
 </script>
 </body>
