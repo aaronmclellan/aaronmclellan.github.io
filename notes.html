@@ -649,7 +649,7 @@ function showList(){$('list-panel').classList.remove('hidden');$('editor-panel')
    ═══════════════════════════════════════════════════════ */
 function onTitle(){var n=active();if(n){n.title=$('title-input').value;n.updated=Date.now();renderList();autoSave();}}
 function onContent(){var n=active();if(n){n.updated=Date.now();updateWC();autoSave();}}
-function onFolderChange(){var n=active();if(n){n.folder=$('folder-sel').value;n.updated=Date.now();renderList();renderFolders();autoSave();}}
+function onFolderChange(){var n=active();if(n){n.folder=$('folder-sel').value;n.updated=Date.now();renderList();renderFolders();save();scheduleSync();}}
 var _st=null;
 function autoSave(){clearTimeout(_st);_st=setTimeout(function(){save();$('saved').textContent='Saved';setTimeout(function(){$('saved').textContent=''},2000)},600);}
 function updateWC(){var t=strip($('editor').innerHTML),w=t.trim()?t.trim().split(/\s+/).length:0;$('wc').textContent=w+' word'+(w!==1?'s':'');}
@@ -991,7 +991,7 @@ async function pushToCloud(){
   try{
     // Filter out empty untitled notes before pushing
     var cleanNotes=D.notes.filter(function(n){return n.title.trim()||strip(n.content).trim()});
-    var payload=JSON.stringify({notes:cleanNotes,folders:D.folders,theme:D.theme});
+    var payload=JSON.stringify({notes:cleanNotes,folders:D.folders,theme:D.theme,_pushTime:Date.now()});
     var encrypted=await encrypt(payload,syncCfg.passphrase);
     var body={files:{'notes.enc':{content:encrypted}}};
 
@@ -1039,9 +1039,29 @@ async function pullFromCloud(){
     var json=await decrypt(file.content,syncCfg.passphrase);
     var cloud=JSON.parse(json);
 
-    // Merge: cloud data replaces local
-    D.notes=cloud.notes||[];
-    D.folders=cloud.folders||['General','Personal','Work'];
+    // Smart merge: for each note, keep whichever version is newer
+    var cloudNotes=cloud.notes||[];
+    var localMap={};
+    D.notes.forEach(function(n){localMap[n.id]=n});
+    var cloudMap={};
+    cloudNotes.forEach(function(n){cloudMap[n.id]=n});
+    // Update existing local notes with newer cloud versions
+    D.notes=D.notes.map(function(local){
+      var remote=cloudMap[local.id];
+      if(remote&&remote.updated>local.updated)return remote;
+      return local;
+    });
+    // Add cloud-only notes (new from other device)
+    cloudNotes.forEach(function(cn){
+      if(!localMap[cn.id])D.notes.push(cn);
+    });
+    // Remove notes deleted on cloud (not in cloud but also not newer locally)
+    // Only if cloud has notes (don't wipe if cloud is empty/fresh)
+    if(cloudNotes.length>0){
+      var cloudIds={};cloudNotes.forEach(function(n){cloudIds[n.id]=true});
+      D.notes=D.notes.filter(function(n){return cloudIds[n.id]||n.updated>(cloud._pushTime||0)});
+    }
+    D.folders=cloud.folders||D.folders;
     if(cloud.theme)D.theme=cloud.theme;
 
     // Save directly to localStorage (bypass save() which would overwrite pulled data from editor DOM)
