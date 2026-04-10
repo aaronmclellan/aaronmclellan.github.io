@@ -1067,8 +1067,15 @@ async function pullFromCloud(){
     // Save directly to localStorage (bypass save() which would overwrite pulled data from editor DOM)
     try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
     switchTheme(D.theme);renderFolders();renderList();
-    // On desktop, reopen active note if it still exists; on mobile, stay on list
-    if(D.activeId&&window.innerWidth>768){var n=D.notes.find(function(x){return x.id===D.activeId});if(n)openNote(n.id);}
+    // Refresh the currently open note's editor with pulled data (without saving stale DOM back)
+    if(D.activeId){
+      var cur=D.notes.find(function(x){return x.id===D.activeId});
+      if(cur){
+        $('title-input').value=cur.title;
+        $('editor').innerHTML=cur.content;
+        bindTodos();renderTags();renderFolderSel();updatePin();updateWC();
+      }
+    }
     setSyncStatus('synced','Synced');
   }catch(e){
     console.error('Pull error:',e);
