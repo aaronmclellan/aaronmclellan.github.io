@@ -466,7 +466,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
    ═══════════════════════════════════════════════════════ */
 var K='notes_v2',D={notes:[],folders:['General','Personal','Work'],activeFolder:null,activeId:null,theme:'dark',sbOpen:true};
 var _editorReady=false;
-function save(){var n=active();if(n&&_editorReady){n.content=$('editor').innerHTML;n.title=$('title-input').value;n.updated=Date.now();}try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}}
+function save(){var n=active();if(n&&_editorReady){n.content=$('editor').innerHTML;n.title=$('title-input').value;}try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}}
 function load(){try{var s=localStorage.getItem(K);if(s)Object.assign(D,JSON.parse(s))}catch(e){}}
 function $(id){return document.getElementById(id)}
 function active(){return D.activeId?D.notes.find(function(n){return n.id===D.activeId}):null}
