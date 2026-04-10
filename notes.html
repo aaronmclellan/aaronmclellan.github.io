@@ -331,7 +331,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
     </div>
   </div>
   <div id="folder-list"></div>
-  <div id="sb-bottom"></div>
+  <div id="sb-bottom">
+    <button class="ib" data-tip="Sync Settings" onclick="showSettingsModal()" style="width:100%;display:flex;align-items:center;gap:8px;justify-content:flex-start;padding:8px 6px;border-radius:var(--r);font-size:.78rem;color:var(--text2);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;flex-shrink:0;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Sync Settings</span></button>
+  </div>
 </div>
 
 <!-- NOTE LIST -->
@@ -374,7 +376,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
       <button class="ib" id="md-btn" data-tip="Markdown Preview" onclick="toggleMd()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15V9l2.5 3L12 9v6"/><path d="M17.5 9L15 12h5l-2.5-3z"/></svg></button>
       <button class="ib" data-tip="Export as .md" onclick="exportNote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
       <button class="ib danger" data-tip="Delete Note" onclick="deleteCurrent()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></button>
-      <button class="ib" data-tip="Sync Settings" onclick="showSettingsModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></button>
     </div>
   </div>
   <div id="meta-bar">
@@ -448,8 +449,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
     </div>
     <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px">
       <div class="settings-row">
-        <button class="m-btn sec" onclick="pullFromCloud()" style="font-size:.72rem">Pull from Cloud</button>
-        <button class="m-btn sec" onclick="pushToCloud()" style="font-size:.72rem">Push to Cloud</button>
+        <button class="m-btn sec" onclick="modalPull()" style="font-size:.72rem">Pull from Cloud</button>
+        <button class="m-btn sec" onclick="modalPush()" style="font-size:.72rem">Push to Cloud</button>
         <button class="m-btn sec" style="color:var(--danger);font-size:.72rem" onclick="disconnectSync()">Disconnect</button>
       </div>
     </div>
@@ -860,7 +861,8 @@ async function encrypt(plaintext,passphrase){
   // Pack: salt(16) + iv(12) + ciphertext → base64
   var buf=new Uint8Array(salt.length+iv.length+ct.byteLength);
   buf.set(salt,0);buf.set(iv,16);buf.set(new Uint8Array(ct),28);
-  return btoa(String.fromCharCode.apply(null,buf));
+  var binary='';for(var i=0;i<buf.length;i++)binary+=String.fromCharCode(buf[i]);
+  return btoa(binary);
 }
 
 async function decrypt(b64,passphrase){
@@ -879,6 +881,13 @@ async function decrypt(b64,passphrase){
 function setSyncStatus(state,label){
   var dot=$('sync-dot'),lbl=$('sync-label');
   dot.className=state;lbl.textContent=label;
+  // Brief highlight on sync complete
+  if(state==='synced'){
+    var el=$('sync-status');
+    el.style.transition='opacity .2s';el.style.opacity='1';
+    clearTimeout(setSyncStatus._fade);
+    setSyncStatus._fade=setTimeout(function(){el.style.opacity='.5';setTimeout(function(){el.style.opacity=''},800)},2500);
+  }
 }
 
 function isSyncConfigured(){return syncCfg.token&&syncCfg.passphrase;}
@@ -941,7 +950,9 @@ async function pullFromCloud(){
     D.folders=cloud.folders||['General','Personal','Work'];
     if(cloud.theme)D.theme=cloud.theme;
 
-    save();switchTheme(D.theme);renderFolders();renderList();
+    // Save directly to localStorage (bypass save() which would overwrite pulled data from editor DOM)
+    try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
+    switchTheme(D.theme);renderFolders();renderList();
     // Reopen active note if it still exists
     if(D.activeId){var n=D.notes.find(function(x){return x.id===D.activeId});if(n)openNote(n.id);}
     setSyncStatus('synced','Synced');
@@ -1002,6 +1013,17 @@ function setSetupStatus(cls,msg){
   var el=$('setup-status');el.className=cls;el.textContent=msg;el.style.display='block';
 }
 
+async function modalPull(){
+  setSetupStatus('ok','Pulling...');
+  try{await pullFromCloud();setSetupStatus('ok','Pull complete!');}
+  catch(e){setSetupStatus('err','Pull failed: '+e.message);}
+}
+async function modalPush(){
+  setSetupStatus('ok','Pushing...');
+  try{await pushToCloud();setSetupStatus('ok','Push complete!');}
+  catch(e){setSetupStatus('err','Push failed: '+e.message);}
+}
+
 function disconnectSync(){
   if(!confirm('Disconnect sync? Your local notes stay, but cloud sync stops.'))return;
   syncCfg={token:'',gistId:'',passphrase:''};saveSyncCfg();
@@ -1029,6 +1051,8 @@ load();loadSyncCfg();switchTheme(D.theme);
 if(!D.sbOpen&&window.innerWidth>768){$('sidebar').classList.add('collapsed');$('expand-btn').style.display='';}
 renderFolders();renderList();
 if(D.activeId){var f=D.notes.find(function(n){return n.id===D.activeId});if(f)openNote(f.id);}
+// Fresh load with no notes: auto-create one so the editor isn't a ghost
+if(D.notes.length===0){createNote();}
 
 // On startup: if sync is configured, pull latest
 if(isSyncConfigured()){
