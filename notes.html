@@ -1098,6 +1098,8 @@ async function pullFromCloud(){
     D.folders=cloud.folders||D.folders;
     if(cloud.theme)D.theme=cloud.theme;
 
+    // Cancel any pending autoSave so it doesn't overwrite pulled data
+    clearTimeout(_st);clearTimeout(_syncTimer);
     // Save directly to localStorage (bypass save() which would overwrite pulled data from editor DOM)
     try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
     switchTheme(D.theme);renderFolders();renderList();
