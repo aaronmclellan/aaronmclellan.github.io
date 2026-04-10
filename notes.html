@@ -1063,8 +1063,9 @@ async function pullFromCloud(){
   if(!syncCfg.gistId){setSyncStatus('error','No Gist ID');return;}
   setSyncStatus('syncing','Pulling...');
   try{
-    var res=await fetch('https://api.github.com/gists/'+syncCfg.gistId,{
-      headers:{'Authorization':'token '+syncCfg.token}
+    var res=await fetch('https://api.github.com/gists/'+syncCfg.gistId+'?t='+Date.now(),{
+      headers:{'Authorization':'token '+syncCfg.token,'If-None-Match':''},
+      cache:'no-store'
     });
     if(!res.ok)throw new Error('Gist fetch failed: '+res.status);
     var gist=await res.json();
@@ -1109,7 +1110,7 @@ function startAutoPull(){
   _pullInterval=setInterval(function(){
     if(!isSyncConfigured())return;
     pullFromCloud().catch(function(){});
-  },30000);
+  },15000);
 }
 function stopAutoPull(){if(_pullInterval){clearInterval(_pullInterval);_pullInterval=null;}}
 
