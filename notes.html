@@ -986,8 +986,9 @@ async function pushToCloud(){
   if(!isSyncConfigured()){showSettingsModal();return;}
   setSyncStatus('syncing','Pushing...');
   try{
-    // Prepare data — strip activeId/activeFolder (session-local)
-    var payload=JSON.stringify({notes:D.notes,folders:D.folders,theme:D.theme});
+    // Filter out empty untitled notes before pushing
+    var cleanNotes=D.notes.filter(function(n){return n.title.trim()||strip(n.content).trim()});
+    var payload=JSON.stringify({notes:cleanNotes,folders:D.folders,theme:D.theme});
     var encrypted=await encrypt(payload,syncCfg.passphrase);
     var body={files:{'notes.enc':{content:encrypted}}};
 
@@ -1043,8 +1044,8 @@ async function pullFromCloud(){
     // Save directly to localStorage (bypass save() which would overwrite pulled data from editor DOM)
     try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
     switchTheme(D.theme);renderFolders();renderList();
-    // Reopen active note if it still exists
-    if(D.activeId){var n=D.notes.find(function(x){return x.id===D.activeId});if(n)openNote(n.id);}
+    // On desktop, reopen active note if it still exists; on mobile, stay on list
+    if(D.activeId&&window.innerWidth>768){var n=D.notes.find(function(x){return x.id===D.activeId});if(n)openNote(n.id);}
     setSyncStatus('synced','Synced');
   }catch(e){
     console.error('Pull error:',e);
