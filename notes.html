@@ -614,8 +614,11 @@ function createNote(){
   D.notes.unshift(n);openNote(n.id);save();
   setTimeout(function(){$('title-input').focus()},100);
 }
+var _editorReady=false;
 function openNote(id){
-  var prev=active();if(prev){prev.content=$('editor').innerHTML;prev.title=$('title-input').value;}
+  // Only save previous note if the editor has actually been loaded with content
+  if(_editorReady){var prev=active();if(prev){prev.content=$('editor').innerHTML;prev.title=$('title-input').value;}}
+  _editorReady=true;
   D.activeId=id;var n=active();if(!n)return;
   $('title-input').value=n.title;
   $('editor').innerHTML=n.content;
