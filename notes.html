@@ -1083,16 +1083,26 @@ async function pullFromCloud(){
     D.folders=cloud.folders||['General','Personal','Work'];
     if(cloud.theme)D.theme=cloud.theme;
 
+    // Apply theme WITHOUT calling save() (which would read stale editor DOM)
+    document.documentElement.setAttribute('data-theme',D.theme);
+    $('theme-select').value=D.theme;
     // Save to localStorage (bypass save() which reads from editor DOM)
     try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}
-    switchTheme(D.theme);renderFolders();renderList();
+    renderFolders();renderList();
     // Refresh the currently open note's editor with pulled data
     if(D.activeId){
       var cur=D.notes.find(function(x){return x.id===D.activeId});
       if(cur){
-        $('title-input').value=cur.title;
-        $('editor').innerHTML=cur.content;
-        bindTodos();renderTags();renderFolderSel();updatePin();updateWC();
+        // Only update editor if content actually changed (avoids cursor jump)
+        var edEl=$('editor'),tiEl=$('title-input');
+        if(tiEl.value!==cur.title)tiEl.value=cur.title;
+        if(edEl.innerHTML!==cur.content){
+          edEl.innerHTML=cur.content;
+          bindTodos();
+          $('saved').textContent='Updated from cloud';
+          setTimeout(function(){$('saved').textContent=''},2000);
+        }
+        renderTags();renderFolderSel();updatePin();updateWC();
       }
     }
     setSyncStatus('synced','Synced');
