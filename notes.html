@@ -642,7 +642,7 @@ function deleteCurrent(){if(!D.activeId)return;if(!confirm('Delete this note?'))
 function delNote(id){
   D.notes=D.notes.filter(function(n){return n.id!==id});
   if(D.activeId===id){D.activeId=null;$('editor').innerHTML='';$('title-input').value='';if(window.innerWidth<=768)showList();else $('editor-panel').classList.add('hidden');}
-  renderList();renderFolders();save();
+  renderList();renderFolders();save();scheduleSync();
 }
 function showList(){$('list-panel').classList.remove('hidden');$('editor-panel').classList.add('hidden');}
 
@@ -822,15 +822,15 @@ function onTagKey(e){
     e.preventDefault();var inp=$('tag-input'),t=inp.value.trim().toLowerCase();
     if(!t)return;var n=active();if(!n)return;
     if(!n.tags)n.tags=[];if(n.tags.indexOf(t)===-1)n.tags.push(t);
-    inp.value='';renderTags();renderList();save();
+    n.updated=Date.now();inp.value='';renderTags();renderList();save();scheduleSync();
   }
 }
-function removeTag(t){var n=active();if(!n)return;n.tags=(n.tags||[]).filter(function(x){return x!==t});renderTags();renderList();save();}
+function removeTag(t){var n=active();if(!n)return;n.tags=(n.tags||[]).filter(function(x){return x!==t});n.updated=Date.now();renderTags();renderList();save();scheduleSync();}
 
 /* ═══════════════════════════════════════════════════════
    PIN / EXPORT
    ═══════════════════════════════════════════════════════ */
-function togglePin(){var n=active();if(!n)return;n.pinned=!n.pinned;updatePin();renderList();save();}
+function togglePin(){var n=active();if(!n)return;n.pinned=!n.pinned;n.updated=Date.now();updatePin();renderList();save();scheduleSync();}
 function updatePin(){var n=active();$('pin-btn').style.color=n&&n.pinned?'var(--warn)':'';}
 
 function exportNote(){
@@ -934,11 +934,11 @@ function flCtx(e,f){
   m.style.left=e.pageX+'px';m.style.top=e.pageY+'px';m.classList.add('show');
 }
 document.addEventListener('click',function(){$('ctx').classList.remove('show')});
-function togglePinById(id){var n=D.notes.find(function(x){return x.id===id});if(n)n.pinned=!n.pinned;renderList();updatePin();save();$('ctx').classList.remove('show');}
+function togglePinById(id){var n=D.notes.find(function(x){return x.id===id});if(n){n.pinned=!n.pinned;n.updated=Date.now();}renderList();updatePin();save();scheduleSync();$('ctx').classList.remove('show');}
 function dupNote(id){
   var n=D.notes.find(function(x){return x.id===id});if(!n)return;
   D.notes.unshift({id:gid(),title:n.title+' (copy)',content:n.content,folder:n.folder,tags:(n.tags||[]).slice(),pinned:false,created:Date.now(),updated:Date.now()});
-  renderList();save();$('ctx').classList.remove('show');
+  renderList();save();scheduleSync();$('ctx').classList.remove('show');
 }
 function renFolder(f){
   var n=prompt('Rename folder:',f);if(!n||n===f||D.folders.indexOf(n)!==-1)return;
@@ -1119,6 +1119,8 @@ function startAutoPull(){
   stopAutoPull();
   _pullInterval=setInterval(function(){
     if(!isSyncConfigured())return;
+    // Skip pull if there are unpushed local edits
+    if(_st||_syncTimer)return;
     pullFromCloud().catch(function(){});
   },15000);
 }
