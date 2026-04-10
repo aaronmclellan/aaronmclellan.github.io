@@ -649,8 +649,8 @@ function showList(){$('list-panel').classList.remove('hidden');$('editor-panel')
 /* ═══════════════════════════════════════════════════════
    EDITOR EVENTS
    ═══════════════════════════════════════════════════════ */
-function onTitle(){var n=active();if(n){n.title=$('title-input').value;n.updated=Date.now();renderList();autoSave();}}
-function onContent(){var n=active();if(n){n.updated=Date.now();updateWC();autoSave();}}
+function onTitle(){var n=active();if(n){n.title=$('title-input').value;n.updated=Date.now();_lastLocalEdit=Date.now();renderList();autoSave();}}
+function onContent(){var n=active();if(n){n.updated=Date.now();_lastLocalEdit=Date.now();updateWC();autoSave();}}
 function onFolderChange(){var n=active();if(n){n.folder=$('folder-sel').value;n.updated=Date.now();renderList();renderFolders();save();scheduleSync();}}
 var _st=null;
 function autoSave(){clearTimeout(_st);_st=setTimeout(function(){save();$('saved').textContent='Saved';setTimeout(function(){$('saved').textContent=''},2000)},600);}
@@ -1022,6 +1022,7 @@ function isSyncConfigured(){return syncCfg.token&&syncCfg.passphrase;}
 
 async function pushToCloud(){
   if(!isSyncConfigured()){showSettingsModal();return;}
+  _isPushing=true;
   setSyncStatus('syncing','Pushing...');
   try{
     // Filter out empty untitled notes before pushing
@@ -1055,7 +1056,7 @@ async function pushToCloud(){
   }catch(e){
     console.error('Push error:',e);
     setSyncStatus('error','Push failed');
-  }
+  }finally{_isPushing=false;}
 }
 
 async function pullFromCloud(){
@@ -1107,13 +1108,13 @@ async function pullFromCloud(){
 }
 
 // Auto-pull: every 30 seconds if sync is configured
-var _pullInterval=null;
+var _pullInterval=null,_lastLocalEdit=0,_isPushing=false;
 function startAutoPull(){
   stopAutoPull();
   _pullInterval=setInterval(function(){
     if(!isSyncConfigured())return;
-    // Skip pull if there are unpushed local edits
-    if(_st||_syncTimer)return;
+    // Skip pull if user edited within last 5 seconds or a push is in progress
+    if(_isPushing||Date.now()-_lastLocalEdit<5000)return;
     pullFromCloud().catch(function(){});
   },15000);
 }
