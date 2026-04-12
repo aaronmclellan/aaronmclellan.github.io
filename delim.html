@@ -1,88 +1,555 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>delim app</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delim tool</title>
     <link rel="icon" href="crying-sunglasses-cowboy.png" sizes="32x32" type="image/png">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <style>
-        #delimitedTextContainer {
-            width: 100%;
-            height: 400px;
-            overflow: auto;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0f0f13;
+            --bg-card: #1a1a24;
+            --border: #2a2a3a;
+            --text: #e4e4ef;
+            --text-muted: #6b6b80;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --green: #22c55e;
+            --red: #ef4444;
+            --orange: #f59e0b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header h1 i { color: var(--accent); margin-right: 0.4rem; }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.35rem;
+        }
+
+        /* Controls bar */
+        .controls {
             display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .control-group label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        select, input[type="text"] {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.45rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: var(--accent);
+        }
+
+        input[type="text"].custom-delim {
+            width: 60px;
+            text-align: center;
+        }
+
+        .controls-right {
+            margin-left: auto;
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        /* Buttons */
+        .btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+        }
+
+        .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        .btn-accent {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn-accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+
+        .btn-success {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* Main layout */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0.85rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .panel-header .actions {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .panel-header .btn {
+            padding: 0.25rem 0.55rem;
+            font-size: 0.7rem;
+        }
+
+        textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            padding: 0.85rem;
+            resize: none;
+            outline: none;
+            min-height: 400px;
+        }
+
+        textarea::placeholder { color: var(--text-muted); }
+
+        /* Output panel */
+        .output-wrap {
+            flex: 1;
+            overflow: auto;
             position: relative;
         }
-        #lineNumbers, #delimitedText {
-            margin: 0;
-            padding: 10px;
+
+        .output-content {
+            display: flex;
+            min-height: 400px;
         }
-        #lineNumbers {
+
+        .line-numbers {
+            padding: 0.85rem 0.6rem 0.85rem 0.85rem;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: right;
             user-select: none;
+            border-right: 1px solid var(--border);
+            min-width: 40px;
+            flex-shrink: 0;
+            white-space: pre;
         }
-        .active {
-            background-color: #D0D0D0;
+
+        .output-text {
+            padding: 0.85rem;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre;
+            flex: 1;
+            min-width: 0;
+            overflow-x: auto;
         }
-        #copyButton {
-            position: absolute;
-            top: 10px;
-            right: 2%;
-            z-index: 1;
+
+        .output-text.placeholder { color: var(--text-muted); }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            gap: 1.25rem;
+            padding: 0.5rem 0.85rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: var(--text-muted);
         }
+
+        .stat-item span { color: var(--text); font-weight: 600; }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--green);
+            color: #fff;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Mode tabs */
+        .mode-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            width: fit-content;
+        }
+
+        .mode-tab {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .mode-tab:hover { color: var(--text); }
+
+        .mode-tab.active {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            body { padding: 1rem 0.75rem; }
+            .workspace { grid-template-columns: 1fr; }
+            textarea, .output-content { min-height: 250px; }
+            .controls { gap: 0.4rem; }
+            .controls-right { margin-left: 0; width: 100%; }
+            .controls-right .btn { flex: 1; justify-content: center; }
+            header h1 { font-size: 1.5rem; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
     </style>
 </head>
 <body>
-    <div id="app" class="container mt-5">
-        <center><h1>delim tool</h1></center>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <textarea class="form-control" rows="16" v-model="inputText" placeholder="raw text here"></textarea>
-            </div>
-            <div class="col-2">
-                <select class="form-control" v-model="delimiter">
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-scissors"></i> delim tool</h1>
+            <p>Split, join, and transform delimited text instantly</p>
+        </header>
+
+        <div class="mode-tabs">
+            <button class="mode-tab active" onclick="setMode('split')" id="tab-split">Split</button>
+            <button class="mode-tab" onclick="setMode('join')" id="tab-join">Join</button>
+            <button class="mode-tab" onclick="setMode('extract')" id="tab-extract">Extract Column</button>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Delimiter</label>
+                <select id="delimSelect" onchange="onDelimChange()">
                     <option value=",">Comma</option>
                     <option value="|">Pipe</option>
+                    <option value="&#9;">Tab</option>
                     <option value=" ">Space</option>
+                    <option value=";">Semicolon</option>
+                    <option value=":">Colon</option>
+                    <option value="custom">Custom...</option>
                 </select>
+                <input type="text" id="customDelim" class="custom-delim" style="display:none" placeholder="..." oninput="process()">
             </div>
-            <div class="col">
-                <div id="delimitedTextContainer" class="border border-dark rounded">
-                    <button id="copyButton" class="btn btn-dark" @click="copyToClipboard">Copy</button>
-                    <pre id="lineNumbers" :class="{ active: isActive }" v-html="lineNumbers" readonly></pre>
-                    <pre id="delimitedText" v-html="delimitedContent" readonly></pre>
-                </div>
+
+            <div class="control-group" id="columnControl" style="display:none">
+                <label>Column #</label>
+                <input type="text" id="columnNum" class="custom-delim" value="1" oninput="process()">
+            </div>
+
+            <div class="controls-right">
+                <button class="btn" onclick="swapPanels()" title="Swap input/output"><i class="fa-solid fa-arrow-right-arrow-left"></i> Swap</button>
+                <button class="btn" onclick="clearAll()" title="Clear all"><i class="fa-solid fa-trash"></i> Clear</button>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col">
-                <button class="btn btn-lg btn-block btn-dark" @click="delimit">Delimit</button>
+
+        <div class="workspace">
+            <div class="panel">
+                <div class="panel-header">
+                    <span><i class="fa-solid fa-pen"></i> Input</span>
+                    <div class="actions">
+                        <button class="btn" onclick="pasteFromClipboard()"><i class="fa-solid fa-paste"></i> Paste</button>
+                    </div>
+                </div>
+                <textarea id="inputText" placeholder="Paste or type your text here..." oninput="process()"></textarea>
+                <div class="stats-bar" id="inputStats">
+                    <div class="stat-item">Chars: <span id="charCount">0</span></div>
+                    <div class="stat-item">Lines: <span id="lineCount">0</span></div>
+                    <div class="stat-item">Items: <span id="itemCount">0</span></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <span><i class="fa-solid fa-code"></i> Output</span>
+                    <div class="actions">
+                        <button class="btn" onclick="copyOutput()" id="copyBtn"><i class="fa-solid fa-copy"></i> Copy</button>
+                        <button class="btn" onclick="downloadOutput()"><i class="fa-solid fa-download"></i></button>
+                    </div>
+                </div>
+                <div class="output-wrap">
+                    <div class="output-content">
+                        <div class="line-numbers" id="lineNumbers"></div>
+                        <div class="output-text placeholder" id="outputText">Output will appear here as you type...</div>
+                    </div>
+                </div>
+                <div class="stats-bar">
+                    <div class="stat-item">Output lines: <span id="outputLineCount">0</span></div>
+                    <div class="stat-item">Output chars: <span id="outputCharCount">0</span></div>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="toast" id="toast"></div>
+
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                inputText: '',
-                delimitedContent: 'delim will be here',
-                lineNumbers: '',
-                delimiter: ',',
-                isActive: false
-            },
-            methods: {
-                delimit: function () {
-                    var lines = this.inputText.split(this.delimiter);
-                    this.delimitedContent = lines.join('\n');
-                    this.lineNumbers = lines.map((_, index) => `${index+1}`).join('\n');
-                    this.isActive = true;
-                },
-                copyToClipboard: function() {
-                    navigator.clipboard.writeText(this.delimitedContent);
-                }
+    (function() {
+        let mode = 'split';
+        let outputRaw = '';
+
+        function getDelimiter() {
+            const sel = document.getElementById('delimSelect');
+            if (sel.value === 'custom') {
+                return document.getElementById('customDelim').value || ',';
             }
-        });
+            return sel.value;
+        }
+
+        window.onDelimChange = function() {
+            const sel = document.getElementById('delimSelect');
+            const custom = document.getElementById('customDelim');
+            custom.style.display = sel.value === 'custom' ? '' : 'none';
+            if (sel.value === 'custom') custom.focus();
+            process();
+        };
+
+        window.setMode = function(m) {
+            mode = m;
+            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + m).classList.add('active');
+            document.getElementById('columnControl').style.display = m === 'extract' ? '' : 'none';
+
+            const input = document.getElementById('inputText');
+            if (m === 'split') input.placeholder = 'Paste delimited text to split into lines...';
+            else if (m === 'join') input.placeholder = 'Paste lines to join with a delimiter...';
+            else input.placeholder = 'Paste delimited rows to extract a column...';
+
+            process();
+        };
+
+        window.process = function() {
+            const input = document.getElementById('inputText').value;
+            const delim = getDelimiter();
+            let lines = [];
+
+            if (!input.trim()) {
+                outputRaw = '';
+                render([], true);
+                updateInputStats(input, delim);
+                return;
+            }
+
+            if (mode === 'split') {
+                // Split by delimiter, output one item per line
+                lines = input.split(delim).map(s => s.trim()).filter(s => s.length > 0);
+            } else if (mode === 'join') {
+                // Join lines with delimiter
+                const items = input.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+                lines = [items.join(delim + ' ')];
+            } else if (mode === 'extract') {
+                // Extract column N from each row
+                const colNum = parseInt(document.getElementById('columnNum').value) || 1;
+                const rows = input.split('\n').filter(s => s.trim().length > 0);
+                lines = rows.map(row => {
+                    const cols = row.split(delim).map(s => s.trim());
+                    return cols[colNum - 1] !== undefined ? cols[colNum - 1] : '';
+                });
+            }
+
+            outputRaw = lines.join('\n');
+            render(lines, false);
+            updateInputStats(input, delim);
+        };
+
+        function render(lines, empty) {
+            const numEl = document.getElementById('lineNumbers');
+            const outEl = document.getElementById('outputText');
+            const outLines = document.getElementById('outputLineCount');
+            const outChars = document.getElementById('outputCharCount');
+
+            if (empty) {
+                numEl.textContent = '';
+                outEl.textContent = 'Output will appear here as you type...';
+                outEl.classList.add('placeholder');
+                outLines.textContent = '0';
+                outChars.textContent = '0';
+                return;
+            }
+
+            outEl.classList.remove('placeholder');
+            numEl.textContent = lines.map((_, i) => i + 1).join('\n');
+            outEl.textContent = lines.join('\n');
+            outLines.textContent = lines.length;
+            outChars.textContent = outputRaw.length;
+        }
+
+        function updateInputStats(input, delim) {
+            document.getElementById('charCount').textContent = input.length;
+            document.getElementById('lineCount').textContent = input ? input.split('\n').length : 0;
+            const items = input ? input.split(delim).filter(s => s.trim().length > 0).length : 0;
+            document.getElementById('itemCount').textContent = items;
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
+
+        window.copyOutput = function() {
+            if (!outputRaw) return;
+            navigator.clipboard.writeText(outputRaw).then(() => {
+                showToast('Copied to clipboard!');
+                const btn = document.getElementById('copyBtn');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+                btn.classList.add('btn-success');
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy';
+                    btn.classList.remove('btn-success');
+                }, 2000);
+            });
+        };
+
+        window.pasteFromClipboard = function() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('inputText').value = text;
+                process();
+                showToast('Pasted from clipboard!');
+            }).catch(() => {
+                document.getElementById('inputText').focus();
+            });
+        };
+
+        window.downloadOutput = function() {
+            if (!outputRaw) return;
+            const blob = new Blob([outputRaw], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'delim-output.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            showToast('Downloaded!');
+        };
+
+        window.swapPanels = function() {
+            const input = document.getElementById('inputText');
+            if (!outputRaw) return;
+            input.value = outputRaw;
+            process();
+            showToast('Swapped!');
+        };
+
+        window.clearAll = function() {
+            document.getElementById('inputText').value = '';
+            outputRaw = '';
+            render([], true);
+            updateInputStats('', getDelimiter());
+        };
+    })();
     </script>
 </body>
 </html>

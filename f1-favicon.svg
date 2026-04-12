@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#1a1a2e"/>
+  <text x="32" y="28" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" fill="#e8002d" letter-spacing="-1">F1</text>
+  <text x="32" y="50" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="16" fill="#ffffff" letter-spacing="1">.wtf</text>
+</svg>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="click to get random middle finger gifs. star your favs, copy links, send to friends.">
+    <title>getfucked</title>
+    <link rel="icon" href="crying-sunglasses-cowboy.png" sizes="32x32" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J61JMC33K6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-J61JMC33K6');</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);transition:background 0.3s,color 0.3s}
+
+/* ========== DARK THEME (default) ========== */
+[data-theme="dark"]{
+    --font:'Inter',-apple-system,system-ui,sans-serif;
+    --bg:#0a0a0a;--bg2:#141414;--bg3:#1e1e1e;
+    --text:#e0e0e0;--text2:#888;--accent:#ff3333;--accent2:#ff6666;
+    --border:#2a2a2a;--card:#161616;--card-hover:#1c1c1c;
+    --btn-bg:#ff3333;--btn-text:#fff;--btn-hover:#ff5555;
+    --glow:none;--shake:none;--font-style:normal;--pixel:normal;
+    --radius:12px;--shadow:0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* ========== NEON THEME ========== */
+[data-theme="neon"]{
+    --font:'Inter',-apple-system,system-ui,sans-serif;
+    --bg:#0a0010;--bg2:#120020;--bg3:#1a0030;
+    --text:#e0e0ff;--text2:#8888cc;--accent:#ff00ff;--accent2:#00ffff;
+    --border:#2a1050;--card:#150025;--card-hover:#1e0035;
+    --btn-bg:linear-gradient(135deg,#ff00ff,#8800ff);--btn-text:#fff;--btn-hover:#ff44ff;
+    --glow:0 0 20px rgba(255,0,255,0.3),0 0 40px rgba(255,0,255,0.1);
+    --shake:none;--font-style:normal;--pixel:normal;
+    --radius:16px;--shadow:0 4px 30px rgba(255,0,255,0.2);
+}
+[data-theme="neon"] .gif-frame{box-shadow:0 0 30px rgba(255,0,255,0.2),0 0 60px rgba(0,255,255,0.1)}
+[data-theme="neon"] .main-btn{box-shadow:0 0 20px rgba(255,0,255,0.4)}
+[data-theme="neon"] .counter-bar-fill{background:linear-gradient(90deg,#ff00ff,#00ffff)}
+[data-theme="neon"] h1{text-shadow:0 0 20px rgba(255,0,255,0.5),0 0 40px rgba(255,0,255,0.2)}
+
+/* ========== RETRO THEME ========== */
+[data-theme="retro"]{
+    --font:"Courier New",monospace;
+    --bg:#1a1a2e;--bg2:#16213e;--bg3:#0f3460;
+    --text:#e0e0a0;--text2:#a0a060;--accent:#e94560;--accent2:#ffd460;
+    --border:#0f3460;--card:#16213e;--card-hover:#1a2744;
+    --btn-bg:#e94560;--btn-text:#fff;--btn-hover:#ff6680;
+    --glow:none;--shake:none;--font-style:normal;--pixel:normal;
+    --radius:0;--shadow:4px 4px 0 #000;
+}
+[data-theme="retro"] *{image-rendering:pixelated}
+[data-theme="retro"] .main-btn{text-transform:uppercase;letter-spacing:3px;border:3px solid #ffd460}
+[data-theme="retro"] h1{font-family:"Courier New",monospace;letter-spacing:4px;text-transform:uppercase}
+[data-theme="retro"] .gif-frame{border:4px solid #e94560}
+
+/* ========== CLEAN THEME ========== */
+[data-theme="clean"]{
+    --font:'Inter',-apple-system,system-ui,sans-serif;
+    --bg:#f5f5f5;--bg2:#fff;--bg3:#eee;
+    --text:#222;--text2:#888;--accent:#333;--accent2:#666;
+    --border:#ddd;--card:#fff;--card-hover:#f8f8f8;
+    --btn-bg:#222;--btn-text:#fff;--btn-hover:#444;
+    --glow:none;--shake:none;--font-style:normal;--pixel:normal;
+    --radius:16px;--shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+[data-theme="clean"] .gif-frame{border:1px solid #ddd}
+
+/* ========== RAGE THEME ========== */
+[data-theme="rage"]{
+    --font:'Impact','Arial Black',sans-serif;
+    --bg:#1a0000;--bg2:#2a0000;--bg3:#3a0000;
+    --text:#ff4444;--text2:#aa2222;--accent:#ff0000;--accent2:#ff6600;
+    --border:#4a0000;--card:#200000;--card-hover:#300000;
+    --btn-bg:linear-gradient(135deg,#ff0000,#cc0000);--btn-text:#fff;--btn-hover:#ff3333;
+    --glow:0 0 30px rgba(255,0,0,0.3);--shake:shake 0.1s infinite;
+    --font-style:italic;--pixel:normal;
+    --radius:4px;--shadow:0 0 20px rgba(255,0,0,0.3);
+}
+[data-theme="rage"] .main-btn{animation:var(--shake);text-transform:uppercase;letter-spacing:2px}
+[data-theme="rage"] .main-btn:hover{animation:shake 0.05s infinite}
+[data-theme="rage"] h1{text-shadow:0 0 10px rgba(255,0,0,0.8);font-style:italic}
+[data-theme="rage"] .gif-frame{border:3px solid #ff0000;box-shadow:0 0 20px rgba(255,0,0,0.3)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px) rotate(-1deg)}75%{transform:translateX(3px) rotate(1deg)}}
+
+/* ========== LAYOUT ========== */
+.app{display:flex;height:100vh;overflow:hidden}
+.main{flex:1;display:flex;flex-direction:column;align-items:center;overflow-y:auto;padding:20px;position:relative}
+.sidebar{width:320px;background:var(--bg2);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;transition:transform 0.3s}
+.sidebar.closed{transform:translateX(100%);width:0;border:none}
+.sidebar-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-weight:bold;font-size:14px}
+.sidebar-tabs{display:flex;border-bottom:1px solid var(--border)}
+.sidebar-tab{flex:1;padding:10px;text-align:center;cursor:pointer;font-size:12px;border:none;background:none;color:var(--text2);font-family:var(--font);transition:all 0.2s}
+.sidebar-tab.active{color:var(--accent);border-bottom:2px solid var(--accent);font-weight:bold}
+.sidebar-tab:hover{color:var(--text)}
+.sidebar-content{flex:1;overflow-y:auto;padding:8px}
+.sidebar-item{display:flex;gap:8px;padding:8px;border-radius:var(--radius);cursor:pointer;align-items:center;border:1px solid transparent;transition:all 0.2s;margin-bottom:4px}
+.sidebar-item:hover{background:var(--card-hover);border-color:var(--border)}
+.sidebar-item img{width:60px;height:60px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.sidebar-item .item-info{flex:1;overflow:hidden}
+.sidebar-item .item-desc{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar-item .item-id{font-size:10px;color:var(--text2)}
+.sidebar-item .item-actions{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity 0.2s}
+.sidebar-item:hover .item-actions{opacity:1}
+.sidebar-item .item-action{background:none;border:none;color:var(--text2);cursor:pointer;font-size:12px;padding:4px 5px;border-radius:4px;transition:all 0.2s}
+.sidebar-item .item-action:hover{color:var(--accent);background:var(--bg3)}
+.sidebar-empty{padding:40px 20px;text-align:center;color:var(--text2);font-size:13px}
+.sidebar-footer{padding:8px 12px;border-top:1px solid var(--border)}
+.sidebar-footer button{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:8px;border-radius:8px;cursor:pointer;font-family:var(--font);font-size:12px;transition:all 0.2s}
+.sidebar-footer button:hover{border-color:var(--accent);color:var(--accent)}
+.stats-panel{padding:16px}
+.stat-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px}
+.stat-row:last-child{border-bottom:none}
+.stat-label{color:var(--text2)}
+.stat-value{font-weight:bold;color:var(--accent)}
+.stat-section{margin-top:16px}
+.stat-section h3{font-size:13px;color:var(--text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.stat-bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-top:4px}
+.stat-bar-fill{height:100%;background:var(--accent);border-radius:4px;transition:width 0.3s}
+
+/* ========== HEADER ========== */
+.header{text-align:center;margin-bottom:16px;width:100%;max-width:600px}
+h1{font-size:clamp(28px,5vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:4px}
+h1 span{color:var(--accent)}
+.subtitle{color:var(--text2);font-size:13px;font-style:var(--font-style)}
+
+/* ========== TOOLBAR ========== */
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:16px;width:100%;max-width:600px}
+.tool-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--font);display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap}
+.tool-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tool-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tool-btn i{font-size:12px}
+.theme-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 8px;border-radius:8px;font-size:12px;font-family:var(--font);cursor:pointer;outline:none}
+
+/* ========== GIF DISPLAY ========== */
+.gif-area{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:600px;min-height:0}
+.gif-frame{background:var(--bg2);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:100%;max-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;transition:box-shadow 0.3s}
+.gif-frame img{max-width:100%;max-height:50vh;display:block;object-fit:contain}
+.gif-frame .loading{padding:80px;color:var(--text2);font-size:14px}
+.gif-desc{margin-top:12px;font-size:14px;color:var(--text2);text-align:center;min-height:20px;font-style:var(--font-style)}
+
+/* ========== ACTION BUTTONS ========== */
+.actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.action-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s}
+.action-btn:hover{border-color:var(--accent);color:var(--accent);transform:scale(1.1)}
+.action-btn.fav-active{color:#ffd700;border-color:#ffd700}
+.action-btn .tooltip-text{display:none}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:bold;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.copied-toast.show{opacity:1}
+
+/* ========== MAIN BUTTON ========== */
+.main-btn{background:var(--btn-bg);color:var(--btn-text);border:none;padding:14px 40px;border-radius:var(--radius);font-size:18px;font-weight:bold;font-family:var(--font);cursor:pointer;transition:all 0.15s;margin-top:16px;letter-spacing:0.5px}
+.main-btn:hover{filter:brightness(1.2);transform:scale(1.05)}
+.main-btn:active{transform:scale(0.98)}
+
+/* ========== COUNTER ========== */
+.counter{margin-top:16px;text-align:center;width:100%;max-width:400px}
+.counter-text{font-size:12px;color:var(--text2);margin-bottom:4px}
+.counter-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.counter-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.5s ease-out}
+
+/* ========== CELEBRATION ========== */
+.celebrate-overlay{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden}
+.celebrate-particle{position:absolute;top:-40px;font-size:28px;animation:confettiFall linear forwards;pointer-events:none}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}80%{opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.celebrate-banner{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);z-index:10000;background:var(--bg2);border:2px solid var(--accent);border-radius:var(--radius);padding:32px 48px;text-align:center;box-shadow:var(--shadow),0 0 60px rgba(255,0,0,0.3);animation:bannerPop 0.5s ease-out 0.3s forwards;pointer-events:auto}
+@keyframes bannerPop{0%{transform:translate(-50%,-50%) scale(0) rotate(-5deg)}60%{transform:translate(-50%,-50%) scale(1.1) rotate(2deg)}100%{transform:translate(-50%,-50%) scale(1) rotate(0deg)}}
+.celebrate-banner h2{font-size:24px;margin-bottom:8px;color:var(--accent)}
+.celebrate-banner p{color:var(--text2);font-size:14px;margin-bottom:16px}
+.celebrate-banner button{background:var(--btn-bg);color:var(--btn-text);border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-family:var(--font);font-weight:bold;font-size:14px}
+.celebrate-banner button:hover{filter:brightness(1.2)}
+
+/* ========== KEYBOARD HINTS ========== */
+.hints{margin-top:12px;font-size:11px;color:var(--text2);opacity:0.5;text-align:center}
+.hints kbd{background:var(--bg3);padding:1px 5px;border-radius:3px;border:1px solid var(--border);font-family:monospace;font-size:10px}
+
+/* ========== SIDEBAR TOGGLE (MOBILE) ========== */
+.sidebar-toggle{position:fixed;top:12px;right:12px;z-index:100;background:var(--bg2);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s}
+.sidebar-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.sidebar-toggle .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
+
+/* ========== AUTOPLAY INDICATOR ========== */
+.autoplay-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--accent);transition:width linear;border-radius:2px}
+
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+    .sidebar{position:fixed;right:0;top:0;bottom:0;width:300px;z-index:150;box-shadow:-4px 0 20px rgba(0,0,0,0.3)}
+    .sidebar.closed{transform:translateX(100%)}
+    .hints{display:none}
+.gif-frame img{max-height:40vh}
+}
+@media(max-width:480px){
+    .sidebar{width:100%}
+    .toolbar{gap:4px}
+    .tool-btn{padding:5px 8px;font-size:11px}
+    .main-btn{padding:12px 30px;font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="copied-toast" id="toast"></div>
+
+<div class="app">
+    <div class="main" id="main-area">
+        <div class="header">
+            <h1>get<span>fucked</span></h1>
+            <div class="subtitle" id="subtitle">click the button. get a gif. send it to someone who deserves it.</div>
+        </div>
+
+        <div class="toolbar">
+<button class="tool-btn" id="autoplay-btn" onclick="toggleAutoplay()" title="Auto-play"><i class="fa-solid fa-play"></i> Auto</button>
+            <button class="tool-btn" onclick="toggleSidebar()" title="Favorites & History"><i class="fa-solid fa-star"></i> <span id="fav-count">0</span></button>
+            <select class="theme-select" onchange="setTheme(this.value)" id="theme-select">
+                <option value="dark">Dark</option>
+                <option value="neon">Neon</option>
+                <option value="retro">Retro</option>
+                <option value="clean">Clean</option>
+                <option value="rage">Rage</option>
+            </select>
+        </div>
+
+        <div class="gif-area">
+            <div class="gif-frame" id="gif-frame">
+                <div class="loading">hit the button to get started</div>
+                <div class="autoplay-bar" id="autoplay-bar"></div>
+            </div>
+            <div class="gif-desc" id="gif-desc"></div>
+
+            <div class="actions" id="actions" style="display:none">
+                <button class="action-btn" id="fav-btn" onclick="toggleFav()" title="Favorite (F)"><i class="fa-solid fa-star"></i></button>
+                <button class="action-btn" onclick="copyLink()" title="Copy Link (C)"><i class="fa-solid fa-link"></i></button>
+                <button class="action-btn" onclick="downloadGif()" title="Download"><i class="fa-solid fa-download"></i></button>
+                <button class="action-btn" onclick="prevGif()" title="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+            </div>
+
+            <button class="main-btn" id="main-btn" onclick="getRandomGif()">get fucked</button>
+
+            <div class="counter" id="counter" style="display:none">
+                <div class="counter-text"><span id="seen-count">0</span> of <span id="total-count">0</span> gifs seen</div>
+                <div class="counter-bar"><div class="counter-bar-fill" id="counter-fill" style="width:0%"></div></div>
+            </div>
+
+            <div class="hints">
+                <kbd>space</kbd> next &nbsp; <kbd>f</kbd> fav &nbsp; <kbd>c</kbd> copy &nbsp; <kbd>←</kbd> prev &nbsp; <kbd>→</kbd> next
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar closed" id="sidebar">
+        <div class="sidebar-header">
+            <span id="sidebar-title">Favorites</span>
+            <button class="tool-btn" onclick="toggleSidebar()" style="padding:4px 8px"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="sidebar-tabs">
+            <button class="sidebar-tab active" data-tab="favs" onclick="switchTab('favs',this)"><i class="fa-solid fa-star"></i> Favs</button>
+            <button class="sidebar-tab" data-tab="history" onclick="switchTab('history',this)"><i class="fa-solid fa-clock-rotate-left"></i> History</button>
+            <button class="sidebar-tab" data-tab="stats" onclick="switchTab('stats',this)"><i class="fa-solid fa-chart-simple"></i> Stats</button>
+        </div>
+        <div class="sidebar-content" id="sidebar-content"></div>
+    </div>
+</div>
+
+<button class="sidebar-toggle" onclick="toggleSidebar()">
+    <i class="fa-solid fa-bars"></i>
+    <div class="badge" id="fav-badge" style="display:none">0</div>
+</button>
+
+<script>
+/* ==============================================
+   GIF DATA
+   ============================================== */
+const GIFS = [
+{id:2,url:'https://i.imgur.com/cBn1gZB.gif',desc:'crasy arm man go fuck yourself'},
+{id:3,url:'https://i.imgur.com/oBC7bLr.gif',desc:'gamecube fuck yourself'},
+{id:4,url:'https://i.imgur.com/L7Hkee6.gif',desc:'irredeemable fuckwit'},
+{id:5,url:'https://i.imgur.com/ZdGQWTH.gif',desc:'almost gave a fuck'},
+{id:6,url:'https://i.imgur.com/JOmfUor.gif',desc:'seal almost gave a fuck'},
+{id:7,url:'https://i.imgur.com/vRMR4pG.gif',desc:'middle finger greeting card'},
+{id:8,url:'https://i.imgur.com/SvykPoC.gif',desc:'middle finger thru the face'},
+{id:9,url:'https://i.imgur.com/G8KWYcZ.gif',desc:'scool bus bird'},
+{id:10,url:'https://i.imgur.com/0IRT9E2.gif',desc:'mr bean flippin it'},
+{id:11,url:'https://i.imgur.com/7utOqMN.gif',desc:'homer no fucks'},
+{id:12,url:'https://i.imgur.com/H5gTBvE.gif',desc:'aquaman fuck you'},
+{id:13,url:'https://i.imgur.com/mgVwGTD.gif',desc:'fuck you!'},
+{id:14,url:'https://i.imgur.com/TSHU3fE.gif',desc:'infinite birds'},
+{id:15,url:'https://i.imgur.com/Vbd00Ry.gif',desc:'disney go fuck yourself with a cactus'},
+{id:16,url:'https://i.imgur.com/oo7gwZJ.gif',desc:'departed maybe go fuck yourself'},
+{id:17,url:'https://i.imgur.com/7OEpoxD.gif',desc:'ninja flip'},
+{id:18,url:'https://i.imgur.com/IS8g6YD.gif',desc:'dinklage fuck u'},
+{id:19,url:'https://i.imgur.com/YyDq4OX.gif',desc:'mr rogers flippin'},
+{id:20,url:'https://i.imgur.com/i2Wou.jpg',desc:'colin mochrie middle finger'},
+{id:21,url:'https://i.imgur.com/ElURxUe.jpg',desc:'misfits fuck u'},
+{id:22,url:'https://i.imgur.com/2I0afpV.jpg',desc:'fingered in a wheelchair :('},
+{id:23,url:'https://i.imgur.com/8P72l5F.jpg',desc:'dobby (rip) poof fuck you'},
+{id:35,url:'https://i.imgur.com/zOcyC0u.jpg',desc:'powers pumpin bird'},
+{id:36,url:'https://i.imgur.com/Yv9NV.gif',desc:'boba fett wind up bird'},
+{id:37,url:'https://i.imgur.com/fMth417.gif',desc:'chevy finger'},
+{id:38,url:'https://i.imgur.com/Jb6n1Ua.gif',desc:'queen quad flip'},
+{id:39,url:'https://i.imgur.com/GBdLcr3.gif',desc:'not quite hollywod crazy fingers?'},
+{id:40,url:'https://i.imgur.com/Vwrp0J4.gif',desc:'amy poehler double finger'},
+{id:41,url:'https://i.imgur.com/20Cl6r9.gif',desc:'em 8 mile no fucks'},
+{id:42,url:'https://i.imgur.com/QT2k4Ed.gif',desc:'kristin bell ft. middle finger'},
+{id:43,url:'https://i.imgur.com/NWrIhea.gif',desc:'david brent finger'},
+{id:44,url:'https://i.imgur.com/VKx9XE7.gif',desc:'sudeikis show'},
+{id:45,url:'https://i.imgur.com/Qt7Qk0s.gif',desc:'gillian jacobs up urs'},
+{id:46,url:'https://i.imgur.com/78LM3vD.gif',desc:'girl car window flip'},
+{id:47,url:'https://i.imgur.com/7EQS5Og.gif',desc:'walter white bird'},
+{id:48,url:'https://i.imgur.com/jP3Y9sY.gif',desc:'stewart double up'},
+{id:49,url:'https://i.imgur.com/iXfvvAZ.gif',desc:'devito flip'},
+{id:50,url:'https://i.imgur.com/Wdn9vdI.gif',desc:'child stumbles then surprise flips with conviction'},
+{id:51,url:'https://i.imgur.com/czy4iAA.gif',desc:'galifianakis middle finger'},
+{id:52,url:'https://i.imgur.com/qqvASSz.gif',desc:'spidey'},
+{id:53,url:'https://i.imgur.com/8IYFCj8.gif',desc:'felicia day u can go fuck urself'},
+{id:54,url:'https://i.imgur.com/LA1ARzg.gif',desc:'batman double flipper'},
+{id:55,url:'https://i.imgur.com/JRaxAKI.gif',desc:'freeman camera rush'},
+{id:56,url:'https://i.imgur.com/yanDuG4.gif',desc:'stiller finger'},
+{id:57,url:'https://i.imgur.com/0bVma53.gif',desc:'team up 2 say fuck you!'},
+{id:58,url:'https://i.imgur.com/rHrvoqG.gif',desc:'macgruber flip'},
+{id:59,url:'https://i.imgur.com/wxa6Qnq.gif',desc:'brain pls'},
+{id:60,url:'https://i.imgur.com/OPwcQkl.gif',desc:'asylum get fucked'},
+{id:61,url:'https://i.imgur.com/y8WwZHm.gif',desc:'burgundy fuck yourself'},
+{id:62,url:'https://i.imgur.com/hRSi2bN.gif',desc:"ja'mie fuck public school bitches"},
+{id:63,url:'https://i.imgur.com/hcqWEOh.gif',desc:'colbert u can fuck yourself'},
+{id:64,url:'https://i.imgur.com/jdzkhwU.gif',desc:'21st century fuck urself'},
+{id:65,url:'https://i.imgur.com/j9clEbk.gif',desc:'granny flips the bird'},
+{id:66,url:'https://i.imgur.com/FNalJLH.gif',desc:'bush back2back'},
+{id:67,url:'https://i.imgur.com/nHXgxtF.gif',desc:'doubtfire fuck u'},
+{id:68,url:'https://i.imgur.com/gf6Ce3S.gif',desc:'elsa fuck off'},
+{id:69,url:'https://i.imgur.com/Lu7SMVP.gif',desc:'kathy double bird'},
+{id:70,url:'https://i.imgur.com/pGY4fWA.gif',desc:'surprise bird'},
+{id:71,url:'https://i.imgur.com/RdMgi2M.gif',desc:'farley mechanical flip'},
+{id:72,url:'https://i.imgur.com/GK5sFYA.gif',desc:'buster has an accident'},
+{id:73,url:'https://i.imgur.com/XwcWiw6.gif',desc:'disney channel wand id middle finger'},
+{id:74,url:'https://i.imgur.com/iAiD12O.gif',desc:'radcliffe paints'},
+{id:75,url:'https://i.imgur.com/ZRxMPzy.gif',desc:'flight of the conchords rare triple bird'},
+{id:76,url:'https://i.imgur.com/gFiTl4N.gif',desc:'fuk u'},
+{id:77,url:'https://i.imgur.com/bMAaXYx.gif',desc:'welcome to the dollhouse fuck you'},
+{id:78,url:'https://i.imgur.com/Ojumk4x.gif',desc:'workaholics fuck u dude'},
+{id:79,url:'https://i.imgur.com/0EAEaRT.gif',desc:'adele double bird'},
+{id:80,url:'https://i.imgur.com/tyOshi6.gif',desc:'debra fuck you'},
+{id:81,url:'https://i.imgur.com/osO4ntp.gif',desc:'littlefinger fuck yourself'},
+{id:82,url:'https://i.imgur.com/IyAt21V.gif',desc:'shrek double bird'},
+{id:83,url:'https://i.imgur.com/wPWUxha.gif',desc:'kendrick flippin'},
+{id:84,url:'https://i.imgur.com/RHQfk9l.gif',desc:'tf2 double'},
+{id:85,url:'https://i.imgur.com/3taMGPY.gif',desc:'ringwald breakfast club flip'},
+{id:86,url:'https://i.imgur.com/5Y4HWeU.gif',desc:'lady gaga slight flip'},
+{id:87,url:'https://i.imgur.com/Nw30okY.gif',desc:'asap double'},
+{id:88,url:'https://i.imgur.com/6UWsQmz.gif',desc:'this guy looks like ray romano'},
+{id:89,url:'https://i.imgur.com/Up62vt4.gif',desc:'kunis fuk u'},
+{id:90,url:'https://i.imgur.com/T0vpgrv.gif',desc:'matt smith flipping the bird'},
+{id:91,url:'https://i.imgur.com/2KUfKCJ.gif',desc:'wild toe flip 10/10'},
+{id:92,url:'https://i.imgur.com/7Kqel9V.gif',desc:'bring it on middle'},
+{id:93,url:'https://i.imgur.com/4Hg038N.gif',desc:'the icon of a lo-fi song on soundcloud'},
+{id:94,url:'https://i.imgur.com/kwqgP7K.gif',desc:'cursed werewolf middle finger'},
+{id:95,url:'https://i.imgur.com/AHkgOsq.gif',desc:'pratt wind up bird'},
+{id:96,url:'https://i.imgur.com/0RRdVyC.gif',desc:'attack on titan or some shit?'},
+{id:97,url:'https://i.imgur.com/1F7JhaI.gif',desc:'mcavoy middle finger'},
+{id:98,url:'https://i.imgur.com/eNyIuiK.gif',desc:'conchords flippin'},
+{id:99,url:'https://i.imgur.com/P4C0vQV.gif',desc:'rebel found a fuck'},
+{id:100,url:'https://i.imgur.com/z1Gm6Ui.gif',desc:'hand flippin'},
+{id:101,url:'https://i.imgur.com/ZpZADCK.gif',desc:'rub it in'},
+{id:102,url:'https://i.imgur.com/Cu73ifj.gif',desc:'fuk everyone'},
+{id:103,url:'https://i.imgur.com/aqzNUJ5.gif',desc:"baby's first flip"},
+{id:104,url:'https://i.imgur.com/M6BZlpj.gif',desc:'donald glover (god) out of fucks'},
+{id:105,url:'https://i.imgur.com/tRKM2x2.gif',desc:'shaun get fucked'},
+{id:106,url:'https://i.imgur.com/X106sQT.gif',desc:'tremors fuck u haha'},
+{id:107,url:'https://i.imgur.com/AWIJKXR.gif',desc:'entourage or some shit?'},
+{id:108,url:'https://i.imgur.com/dUlo3Vv.gif',desc:'dirty finger'},
+{id:109,url:'https://i.imgur.com/t1a6PCV.gif',desc:'fry take my money finger'},
+{id:110,url:'https://i.imgur.com/Q0pfLhD.gif',desc:'kid glocked and loaded'},
+{id:111,url:'https://i.imgur.com/GkG8i6J.gif',desc:'magic trick finger'},
+{id:112,url:'https://i.imgur.com/0WBq5Up.gif',desc:'colbert wind up'},
+{id:113,url:'https://i.imgur.com/50RtgDz.gif',desc:'waymond churro finger'},
+{id:114,url:'https://i.imgur.com/Qzi63Ys.gif',desc:'jim trumpet finger'},
+{id:115,url:'https://i.imgur.com/KjuqJsg.gif',desc:'jesus finger'},
+{id:116,url:'https://i.imgur.com/h5k7ffz.gif',desc:'channing eyebrow rub'},
+{id:117,url:'https://i.imgur.com/nRLmWS6.gif',desc:'willy casual finger'},
+{id:118,url:'https://i.imgur.com/rhymOVk.gif',desc:'baby dont give a fuck'},
+{id:119,url:'https://i.imgur.com/XLn0TZc.gif',desc:'cumberbatch double'},
+{id:120,url:'https://i.imgur.com/HnGfBnX.gif',desc:'bey (queen)'},
+{id:121,url:'https://i.imgur.com/TFFx0es.gif',desc:'rogen double ft grin'},
+{id:122,url:'https://i.imgur.com/M84PZ2D.gif',desc:'sasha bow finger'},
+{id:123,url:'https://i.imgur.com/XDJy1xg.gif',desc:'chucky finger'},
+{id:124,url:'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTVobHFvdHB4cHUxcWt2dHRueGl3cDBzb2t3NXNmZTA2eDZwanNudyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NBN2nFCVQDCDe/giphy.gif',desc:'loooooong flip'},
+{id:125,url:'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmtoNnk2enlpZG5ydXd5aWtuYWoxaDdqY3J4NGdxMHNrb3E4aG1ncSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h04FGYY7LTQm1HnBqv/giphy.gif',desc:'shrinking dance flip'},
+{id:126,url:'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGFrZHo5azgwdnBxZjk5cTkzZHM1enczaThwdWR6bXNkMTV2czI2MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Qn5BEsuJX80AEsYu06/giphy.gif',desc:'surprise reverse uno flip'},
+{id:127,url:'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHB4b2ttcW4zN29paXEycjV6Z3ExMWZhYm4xamExbHA1NjBsYmJwMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TVwmuHfURzBMSLxtgJ/giphy.gif',desc:'unicorn flip'},
+{id:128,url:'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzZoZTF5ZzN0eHMyeDQ4eGlwZGZ1N2V4aHlwYmtmN3ZtYTRwYW50ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT1XGxgVKPcBjmRNUk/giphy.gif',desc:'pogoflip'},
+{id:129,url:'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGs4NWhlcXQ5amd6bGE2YjBzaTc5ZHQwMHY5bnNia2h5djZwM2JjMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eh61aSJZYBies/giphy.gif',desc:'kroll flip'},
+{id:130,url:'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmgydTc3MjU0dzluNGZ2anI5d3F2YmRzbmdxdTQwdWxwc2pvdW5uYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OWdD7XacltTGg/giphy.gif',desc:'have a nice day flip'},
+{id:131,url:'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExczFoMjNreXBsYXE3d3Zha2hza2gzczhvNTFqYXBtcjhxZ3ExdmxiciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bNdFHfp0VIiME/giphy.gif',desc:'bow flip'},
+{id:132,url:'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTdwN2J2M3N3cGNia2JqYno2eGh0cHFtbHpxM3F1NzJmcHg3aGU2YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13UeVnBP6x05P2/giphy.gif',desc:'tupac flip'},
+{id:133,url:'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYThneDFsOHBjMml2dG15Mm56ajA5ZXdteTE1ZDh6dTZheTNtMmtxbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mW94pfkJkM29iz83gl/giphy.gif',desc:'granddad dance flip'},
+{id:134,url:'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3puOWhxY24ycmw4aG54cXFidTd0NWd0eDJybWQxczVzMjh6NXBtcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wOzfGOVG5oapW/giphy.gif',desc:'bilbo flippinz'},
+{id:135,url:'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFzYWUwaTB5enh0dGF4ZDY0ejlubXZlaHlhMDRjZm1sc3ZyZDFqYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wpgGn8RB2Erxm/giphy.gif',desc:'bilbo flippinz 2'},
+{id:136,url:'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG9kZnkxY2xiamc5ZzIwbnhsMWlyemNma3VlOGY1dWNjNGFuems4eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KzGCAlMiK6hQQ/giphy.gif',desc:'gorilla flip'},
+{id:137,url:'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHA5djVjZ2ppdWdubzE1eHcwa2dkbGw5eXp6czVmdXk3NmNwaWFnMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XdaoWhLb3llR5ylIjB/giphy.gif',desc:'marcus flip - the bear'},
+{id:138,url:'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzJwZDM3ZzJodmhqNTE0OW9kZmljdzIycnlkMm16ZHhibGx5bDM1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/twJ0q5r1f3kdj80FgR/giphy.gif',desc:'fuck off'},
+{id:139,url:'https://media1.tenor.com/m/_3TvhC-8qlgAAAAC/middle-finger-middle-finger-gif.gif',desc:'morning multiflip'},
+{id:140,url:'https://media1.tenor.com/m/BPzVqf7mPhAAAAAC/baby-girl-middle-finger.gif',desc:'good morning!!'},
+{id:141,url:'https://media1.tenor.com/m/Vhs2ze6MlVUAAAAC/nope.gif',desc:'50'},
+{id:142,url:'https://media1.tenor.com/m/o2rcrUoHjTEAAAAC/middle-finger-fuck-you.gif',desc:'liar liar trumpet flip'},
+{id:143,url:'https://media1.tenor.com/m/dEw1wKXUkJIAAAAC/mikonay.gif',desc:'kid airplane flip'},
+{id:144,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-3.gif',desc:'crank it'},
+{id:145,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-13.gif',desc:'lmaoooooo'},
+{id:146,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-23.gif',desc:'galactic flip'},
+{id:147,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-50.gif',desc:'sky flip'},
+];
+
+/* ==============================================
+   STATE
+   ============================================== */
+let current = null;
+let history = [];
+let historyIndex = -1;
+let seen = new Set();
+let favs = [];
+let autoplay = false;
+let autoplayTimer = null;
+let sidebarTab = 'favs';
+
+/* ==============================================
+   INIT
+   ============================================== */
+function init() {
+    // Restore state
+    try { favs = JSON.parse(localStorage.getItem('gf_favs')) || []; } catch(e) { favs = []; }
+    try { const s = JSON.parse(localStorage.getItem('gf_seen')); if (s) seen = new Set(s); } catch(e) {}
+    try { history = JSON.parse(localStorage.getItem('gf_history')) || []; historyIndex = history.length - 1; } catch(e) { history = []; }
+    const savedTheme = localStorage.getItem('gf_theme') || 'dark';
+    setTheme(savedTheme);
+    updateFavCount();
+    updateCounter();
+
+    // Check for shared gif in URL hash
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#gif=')) {
+        const gifId = parseInt(hash.slice(5));
+        const gif = GIFS.find(g => g.id === gifId);
+        if (gif) { showGif(gif); return; }
+    }
+}
+
+/* ==============================================
+   THEME
+   ============================================== */
+function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    document.getElementById('theme-select').value = t;
+    localStorage.setItem('gf_theme', t);
+}
+
+/* ==============================================
+   GET RANDOM GIF
+   ============================================== */
+function getRandomGif() {
+    if (GIFS.length === 0) return;
+    localStorage.setItem('gf_clicks', (parseInt(localStorage.getItem('gf_clicks')||'0')+1).toString());
+    let unseen = GIFS.filter(g => !seen.has(g.id));
+    if (unseen.length === 0) {
+        // All seen — reset and start fresh
+        seen.clear();
+        localStorage.setItem('gf_seen', JSON.stringify([]));
+        updateCounter();
+        showToast('seen them all! reshuffling...');
+        unseen = GIFS;
+    }
+    const gif = unseen[Math.floor(Math.random() * unseen.length)];
+    showGif(gif);
+}
+
+function showGif(gif) {
+    current = gif;
+    seen.add(gif.id);
+    localStorage.setItem('gf_seen', JSON.stringify([...seen]));
+
+    // Add to history
+    if (historyIndex < history.length - 1) {
+        history = history.slice(0, historyIndex + 1);
+    }
+    history.push(gif);
+    if (history.length > 500) history = history.slice(-500);
+    historyIndex = history.length - 1;
+    localStorage.setItem('gf_history', JSON.stringify(history));
+
+    // Update UI
+    const frame = document.getElementById('gif-frame');
+    frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
+    document.getElementById('gif-desc').textContent = gif.desc;
+    document.getElementById('actions').style.display = 'flex';
+    document.getElementById('counter').style.display = 'block';
+    updateFavBtn();
+    updateCounter();
+    if (sidebarTab === 'history') renderSidebar();
+
+    // Autoplay bar
+    if (autoplay) startAutoplayBar();
+
+    // Update URL hash for sharing
+    window.history.replaceState(null, '', '#gif=' + gif.id);
+}
+
+function prevGif() {
+    if (historyIndex > 0) {
+        historyIndex--;
+        const gif = history[historyIndex];
+        current = gif;
+        const frame = document.getElementById('gif-frame');
+        frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
+        document.getElementById('gif-desc').textContent = gif.desc;
+        updateFavBtn();
+        window.history.replaceState(null, '', '#gif=' + gif.id);
+    }
+}
+
+function nextGif() {
+    if (historyIndex < history.length - 1) {
+        historyIndex++;
+        const gif = history[historyIndex];
+        current = gif;
+        const frame = document.getElementById('gif-frame');
+        frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
+        document.getElementById('gif-desc').textContent = gif.desc;
+        updateFavBtn();
+        window.history.replaceState(null, '', '#gif=' + gif.id);
+    } else {
+        getRandomGif();
+    }
+}
+
+/* ==============================================
+   FAVORITES
+   ============================================== */
+function toggleFav() {
+    if (!current) return;
+    const idx = favs.findIndex(f => f.id === current.id);
+    if (idx >= 0) favs.splice(idx, 1);
+    else favs.push({id: current.id, url: current.url, desc: current.desc});
+    localStorage.setItem('gf_favs', JSON.stringify(favs));
+    updateFavBtn();
+    updateFavCount();
+    if (sidebarTab === 'favs') renderSidebar();
+}
+
+function isFav(id) { return favs.some(f => f.id === id); }
+
+function updateFavBtn() {
+    const btn = document.getElementById('fav-btn');
+    if (!btn || !current) return;
+    btn.classList.toggle('fav-active', isFav(current.id));
+}
+
+function updateFavCount() {
+    document.getElementById('fav-count').textContent = favs.length;
+    const badge = document.getElementById('fav-badge');
+    if (favs.length > 0) { badge.style.display = 'flex'; badge.textContent = favs.length; }
+    else badge.style.display = 'none';
+}
+
+function removeFav(id) {
+    favs = favs.filter(f => f.id !== id);
+    localStorage.setItem('gf_favs', JSON.stringify(favs));
+    updateFavBtn();
+    updateFavCount();
+    renderSidebar();
+}
+
+/* ==============================================
+   COUNTER
+   ============================================== */
+function updateCounter() {
+    document.getElementById('seen-count').textContent = seen.size;
+    document.getElementById('total-count').textContent = GIFS.length;
+    const pct = (seen.size / GIFS.length * 100).toFixed(1);
+    document.getElementById('counter-fill').style.width = pct + '%';
+    if (seen.size === GIFS.length && !window._celebrated) {
+        window._celebrated = true;
+        document.getElementById('subtitle').textContent = "you've seen every single one. you absolute legend.";
+        celebrate();
+    }
+}
+
+function celebrate() {
+    const emojis = ['🖕','🖕','🖕','🎉','🔥','💀','👏','🖕','🤘','💅'];
+    const overlay = document.createElement('div');
+    overlay.className = 'celebrate-overlay';
+    document.body.appendChild(overlay);
+
+    // Spawn particles in waves
+    let spawned = 0;
+    const spawnWave = () => {
+        for (let i = 0; i < 15; i++) {
+            const p = document.createElement('div');
+            p.className = 'celebrate-particle';
+            p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            p.style.left = (Math.random() * 100) + 'vw';
+            p.style.fontSize = (20 + Math.random() * 24) + 'px';
+            p.style.animationDuration = (2 + Math.random() * 3) + 's';
+            p.style.animationDelay = (Math.random() * 0.5) + 's';
+            overlay.appendChild(p);
+        }
+        spawned++;
+        if (spawned < 4) setTimeout(spawnWave, 800);
+    };
+    spawnWave();
+
+    // Banner
+    const banner = document.createElement('div');
+    banner.className = 'celebrate-banner';
+    const clicks = localStorage.getItem('gf_clicks') || '?';
+    banner.innerHTML = `
+        <h2>🖕 you did it 🖕</h2>
+        <p>you've seen all ${GIFS.length} gifs in ${clicks} clicks.<br>you absolute fucking legend.</p>
+        <button onclick="this.parentElement.remove()">hell yeah</button>
+    `;
+    document.body.appendChild(banner);
+
+    // Clean up particles after animation
+    setTimeout(() => overlay.remove(), 6000);
+}
+
+/* ==============================================
+   COPY & SHARE
+   ============================================== */
+function copyLink() {
+    if (!current) return;
+    const url = window.location.origin + window.location.pathname + '#gif=' + current.id;
+    navigator.clipboard.writeText(url).then(() => showToast('link copied'));
+}
+
+function downloadGif() {
+    if (!current) return;
+    const a = document.createElement('a');
+    a.href = current.url;
+    a.download = current.desc.replace(/[^a-z0-9]/gi, '_') + '.gif';
+    a.target = '_blank';
+    a.click();
+}
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+/* ==============================================
+   AUTOPLAY
+   ============================================== */
+function toggleAutoplay() {
+    autoplay = !autoplay;
+    const btn = document.getElementById('autoplay-btn');
+    btn.classList.toggle('active', autoplay);
+    btn.innerHTML = autoplay ? '<i class="fa-solid fa-pause"></i> Auto' : '<i class="fa-solid fa-play"></i> Auto';
+    if (autoplay) {
+        if (!current) getRandomGif();
+        else startAutoplayBar();
+    } else {
+        clearTimeout(autoplayTimer);
+        const bar = document.getElementById('autoplay-bar');
+        if (bar) bar.style.width = '0';
+    }
+}
+
+function startAutoplayBar() {
+    clearTimeout(autoplayTimer);
+    const bar = document.getElementById('autoplay-bar');
+    if (bar) {
+        bar.style.transition = 'none';
+        bar.style.width = '0';
+        requestAnimationFrame(() => {
+            bar.style.transition = 'width 4s linear';
+            bar.style.width = '100%';
+        });
+    }
+    autoplayTimer = setTimeout(() => { if (autoplay) getRandomGif(); }, 4000);
+}
+
+/* ==============================================
+   SIDEBAR
+   ============================================== */
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('closed');
+    renderSidebar();
+}
+
+function switchTab(tab, el) {
+    sidebarTab = tab;
+    document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    const titles = {favs:'Favorites',history:'History',stats:'Stats'};
+    document.getElementById('sidebar-title').textContent = titles[tab];
+    renderSidebar();
+}
+
+function renderSidebar() {
+    const c = document.getElementById('sidebar-content');
+
+    if (sidebarTab === 'stats') {
+        const clicks = parseInt(localStorage.getItem('gf_clicks') || '0');
+        const pct = (seen.size / GIFS.length * 100).toFixed(1);
+        const uniqueHist = new Set(history.map(g=>g.id));
+        // Find most viewed gif
+        const viewCounts = {};
+        history.forEach(g => { viewCounts[g.id] = (viewCounts[g.id]||0)+1; });
+        const topEntries = Object.entries(viewCounts).sort((a,b)=>b[1]-a[1]).slice(0,3);
+        const topHtml = topEntries.map(([id,count]) => {
+            const g = GIFS.find(x=>x.id===parseInt(id));
+            return g ? `<div class="sidebar-item" onclick="showGif(GIFS.find(x=>x.id===${g.id}))"><img src="${g.url}" alt="" onerror="this.src='gifs/${g.id}.gif'"><div class="item-info"><div class="item-desc">${g.desc}</div><div class="item-id">${count} view${count>1?'s':''}</div></div></div>` : '';
+        }).join('');
+        c.innerHTML = `<div class="stats-panel">
+            <div class="stat-row"><span class="stat-label">total clicks</span><span class="stat-value">${clicks}</span></div>
+            <div class="stat-row"><span class="stat-label">unique gifs seen</span><span class="stat-value">${seen.size} / ${GIFS.length}</span></div>
+            <div class="stat-row"><span class="stat-label">completion</span><span class="stat-value">${pct}%</span></div>
+            <div style="margin-top:4px"><div class="stat-bar"><div class="stat-bar-fill" style="width:${pct}%"></div></div></div>
+            <div class="stat-row"><span class="stat-label">favorites</span><span class="stat-value">${favs.length}</span></div>
+            <div class="stat-row"><span class="stat-label">history entries</span><span class="stat-value">${history.length}</span></div>
+            <div class="stat-row"><span class="stat-label">unique in history</span><span class="stat-value">${uniqueHist.size}</span></div>
+            ${topEntries.length ? `<div class="stat-section"><h3>most viewed</h3>${topHtml}</div>` : ''}
+        </div>`;
+        return;
+    }
+
+    const items = sidebarTab === 'favs' ? favs : [...history].reverse();
+    if (items.length === 0) {
+        c.innerHTML = `<div class="sidebar-empty"><i class="fa-solid fa-${sidebarTab==='favs'?'star':'clock-rotate-left'}" style="font-size:32px;margin-bottom:12px;display:block;opacity:0.3"></i>${sidebarTab==='favs'?'no favorites yet. click the star on a gif to save it.':'no history yet. start clicking!'}</div>`;
+        return;
+    }
+    let html = items.map(g => {
+        const esc = g.desc.replace(/'/g,"\\'");
+        const gifRef = `GIFS.find(x=>x.id===${g.id})||{id:${g.id},url:'${g.url}',desc:'${esc}'}`;
+        return `<div class="sidebar-item" onclick="showGif(${gifRef})"><img src="${g.url}" alt="" onerror="this.src='gifs/${g.id}.gif'"><div class="item-info"><div class="item-desc">${g.desc}</div><div class="item-id">#${g.id}</div></div><div class="item-actions"><button class="item-action" onclick="event.stopPropagation();navigator.clipboard.writeText(location.origin+location.pathname+'#gif=${g.id}').then(()=>showToast('link copied'))" title="Copy Link"><i class="fa-solid fa-link"></i></button><button class="item-action" onclick="event.stopPropagation();(()=>{const a=document.createElement('a');a.href='${g.url}';a.download='${esc.replace(/[^a-z0-9]/gi,'_')}.gif';a.target='_blank';a.click()})()" title="Download"><i class="fa-solid fa-download"></i></button>${sidebarTab==='favs'?`<button class="item-action" onclick="event.stopPropagation();removeFav(${g.id})" title="Remove"><i class="fa-solid fa-xmark"></i></button>`:''}</div></div>`;
+    }).join('');
+    if (sidebarTab === 'history' && history.length > 0) {
+        html += `<div class="sidebar-footer"><button onclick="clearHistory()"><i class="fa-solid fa-trash-can"></i> clear history</button></div>`;
+    }
+    c.innerHTML = html;
+}
+
+function clearHistory() {
+    history = [];
+    historyIndex = -1;
+    localStorage.removeItem('gf_history');
+    renderSidebar();
+    showToast('history cleared');
+}
+
+/* ==============================================
+   KEYBOARD SHORTCUTS
+   ============================================== */
+document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.code === 'Space') { e.preventDefault(); getRandomGif(); }
+    else if (e.key === 'f') toggleFav();
+    else if (e.key === 'c') copyLink();
+    else if (e.key === 'ArrowLeft') prevGif();
+    else if (e.key === 'ArrowRight') nextGif();
+});
+
+/* ==============================================
+   START
+   ============================================== */
+init();
+</script>
+</body>
+</html>
