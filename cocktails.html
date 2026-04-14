@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Round</title>
+<link rel="icon" type="image/svg+xml" href="cocktail-favicon.svg">
+<link rel="apple-touch-icon" href="cocktail-favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap">
+<script src="cocktails-data.js"></script>
+<style>
+:root {
+    /* Inspired by Teddy's (San Antonio) — teal base, peach accents */
+    --bg: #1e3a32;
+    --bg-secondary: #264840;
+    --bg-card: #30574e;
+    --border: #3d6b60;
+    --text-primary: #fee6c4;          /* Teddy's peach/bisque */
+    --text-secondary: #c9b89a;
+    --text-muted: #7a9090;
+    --accent: #fee6c4;                /* peach as accent on teal */
+    --accent-dim: rgba(254, 230, 196, 0.15);
+    --good: #7edba6;                  /* minty green */
+    --bad: #e07a7a;                   /* soft coral red */
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    background: var(--bg); color: var(--text-primary);
+    min-height: 100vh; line-height: 1.5;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem; background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50;
+}
+.brand {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-weight: 600; font-size: 1.1rem; color: var(--text-primary);
+}
+.brand i { color: var(--accent); }
+.nav-actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.nav-btn {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary);
+    padding: 0.45rem 0.85rem; border-radius: 8px; font-family: inherit; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.nav-btn:hover { border-color: var(--accent); }
+.nav-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+.intro {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;
+}
+.intro h1 {
+    font-size: 1.4rem; margin-bottom: 0.4rem;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.intro h1 i { color: var(--accent); }
+.intro p { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* (legacy two-col layout removed — vibes-first is single-column) */
+
+/* Spirit landing */
+.spirit-grid {
+    display: grid; gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+.spirit-card {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem 1rem;
+    text-align: center; cursor: pointer; transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.spirit-card:hover {
+    border-color: var(--accent); transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(245, 158, 11, 0.15);
+}
+.spirit-card .icon {
+    font-size: 2.2rem; color: var(--accent); margin-bottom: 0.25rem;
+}
+.spirit-card h3 { font-size: 1.05rem; font-weight: 500; }
+.spirit-card .desc { font-size: 0.78rem; color: var(--text-muted); }
+.spirit-card .count-pill {
+    background: var(--bg-card); color: var(--text-secondary);
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 600; margin-top: 0.4rem;
+}
+
+.results-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.spirit-title {
+    flex: 1; font-size: 1.2rem; font-weight: 600;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.spirit-title i { color: var(--accent); }
+.nav-btn.surprise:hover { border-color: var(--good); color: var(--good); }
+
+.panel-hint {
+    color: var(--text-muted); font-size: 0.78rem; margin-bottom: 0.75rem; margin-top: -0.25rem;
+}
+
+/* Style step (sour vs stirred) — bigger 2-col cards */
+.style-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.style-grid .spirit-card { padding: 2.25rem 1.25rem; }
+.style-grid .spirit-card .icon { font-size: 2.8rem; }
+.style-grid .spirit-card h3 { font-size: 1.25rem; }
+.style-skip {
+    display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 1.25rem;
+}
+
+/* Style chip in header — slightly distinct so it reads as the active style filter */
+#styleChip {
+    background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+}
+#styleChip:hover { background: var(--accent); color: #1a1f2a; }
+
+/* Advanced details */
+.advanced {
+    margin-bottom: 1rem; background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: 14px;
+}
+.advanced summary {
+    list-style: none; cursor: pointer; padding: 0.85rem 1.25rem;
+    font-weight: 500; font-size: 0.9rem; color: var(--text-secondary);
+    display: flex; align-items: center; gap: 0.5rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+}
+.advanced summary::-webkit-details-marker { display: none; }
+.advanced summary::after {
+    content: '▾'; margin-left: auto; transition: transform 0.15s;
+}
+.advanced[open] summary::after { transform: rotate(180deg); }
+.advanced summary i { color: var(--accent); }
+.advanced summary .count { margin-left: 0; }
+.advanced-body { padding: 0 1.25rem 1.25rem; }
+
+.panel {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem;
+}
+.panel h2 {
+    font-size: 1rem; font-weight: 500; margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;
+}
+.panel h2 .count {
+    margin-left: auto; background: var(--bg-card); color: var(--text-secondary);
+    padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.7rem; letter-spacing: 0;
+}
+
+.search-input {
+    width: 100%; background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 0.55rem 0.85rem; border-radius: 8px;
+    font-family: inherit; font-size: 0.9rem; margin-bottom: 0.85rem;
+}
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus { outline: none; border-color: var(--accent); }
+
+.mode-toggle { display: flex; gap: 0.4rem; margin-bottom: 0.85rem; }
+.mode-toggle button {
+    flex: 1; background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-secondary); padding: 0.4rem 0.6rem; border-radius: 8px;
+    font-family: inherit; font-size: 0.78rem; cursor: pointer; transition: all 0.15s;
+}
+.mode-toggle button.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+.ingredient-cat {
+    margin-bottom: 1rem;
+}
+.ingredient-cat-title {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 500;
+}
+.ingredient-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ing-pill {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 0.35rem 0.7rem; border-radius: 999px;
+    font-size: 0.78rem; cursor: pointer; transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 0.35rem; user-select: none;
+}
+.ing-pill:hover { border-color: var(--accent); }
+.ing-pill.selected {
+    background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+    font-weight: 600;
+}
+.ing-pill .qty { color: var(--text-muted); font-size: 0.7rem; }
+
+.results-summary {
+    color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.85rem;
+}
+.results-summary .clear-btn {
+    background: none; border: 1px solid var(--border); color: var(--text-secondary);
+    padding: 0.25rem 0.7rem; border-radius: 8px; font-family: inherit; font-size: 0.75rem;
+    cursor: pointer; margin-left: 0.5rem;
+}
+.results-summary .clear-btn:hover { border-color: var(--bad); color: var(--bad); }
+
+.results-grid {
+    display: grid; gap: 0.85rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.cocktail-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem; cursor: pointer;
+    transition: all 0.15s; position: relative;
+    overflow: hidden; min-width: 0;
+}
+.cocktail-card * { min-width: 0; }
+.cocktail-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.cocktail-card h3 {
+    font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem;
+    padding-right: 3.5rem;
+}
+.match-badge {
+    position: absolute; top: 0.85rem; right: 0.85rem;
+    background: var(--accent-dim); color: var(--accent);
+    padding: 0.2rem 0.55rem; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 500;
+}
+.match-badge.perfect { background: rgba(126, 219, 166, 0.15); color: var(--good); }
+.cocktail-meta {
+    color: var(--text-muted); font-size: 0.75rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;
+}
+.cocktail-meta i { margin-right: 0.25rem; }
+.cocktail-meta span {
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    display: inline-flex; align-items: center;
+}
+.cocktail-ings { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
+.tag {
+    background: var(--bg-secondary); color: var(--text-secondary);
+    padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.7rem;
+}
+.tag.match { background: var(--accent-dim); color: var(--accent); font-weight: 600; }
+.tag.missing { background: rgba(224, 122, 122, 0.12); color: var(--bad); }
+
+.empty-state {
+    text-align: center; padding: 2rem 1rem; color: var(--text-secondary);
+}
+.empty-state i { font-size: 2.5rem; color: var(--text-muted); margin-bottom: 0.85rem; }
+
+/* ── Modal ── */
+.modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85); z-index: 100;
+    align-items: flex-start; justify-content: center;
+    padding: 2rem 1rem; overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal-content {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.75rem 1.5rem;
+    max-width: 520px; width: 100%; position: relative; margin: auto 0;
+}
+.modal-close {
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    background: none; border: 1px solid var(--border); color: var(--text-secondary);
+    border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.15s;
+}
+.modal-close:hover { border-color: var(--bad); color: var(--bad); }
+.modal-content h2 {
+    font-size: 1.4rem; margin-bottom: 0.5rem; padding-right: 2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.modal-content h2 i { color: var(--accent); }
+.recipe-section { margin-top: 1.25rem; }
+.recipe-section h4 {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 500;
+}
+.recipe-list { list-style: none; padding: 0; }
+.recipe-list li {
+    padding: 0.4rem 0; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; gap: 1rem; font-size: 0.9rem;
+}
+.recipe-list li:last-child { border-bottom: none; }
+.recipe-list .qty { color: var(--text-secondary); font-weight: 600; min-width: 70px; }
+.recipe-list .name { color: var(--text-primary); flex: 1; text-align: right; }
+.recipe-line { color: var(--text-primary); font-size: 0.92rem; line-height: 1.7; }
+.recipe-line strong { color: var(--accent); }
+.origin-note {
+    margin-top: 1rem; padding: 0.75rem;
+    background: var(--bg-card); border-radius: 8px;
+    color: var(--text-secondary); font-size: 0.82rem; font-style: italic;
+}
+
+.spinner {
+    width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin 0.8s linear infinite; margin: 2rem auto;
+}
+
+/* ── Toolbar above results ── */
+.toolbar {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 0.85rem; align-items: center;
+}
+.toolbar .tb-search {
+    flex: 1 1 220px; min-width: 180px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 0.5rem 0.85rem;
+    border-radius: 8px; font-family: inherit; font-size: 0.88rem;
+}
+.toolbar .tb-search:focus { outline: none; border-color: var(--accent); }
+.toolbar .tb-search::placeholder { color: var(--text-muted); }
+.toolbar select.tb-sort {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 0.5rem 0.7rem;
+    border-radius: 8px; font-family: inherit; font-size: 0.85rem; cursor: pointer;
+}
+.toolbar select.tb-sort:focus { outline: none; border-color: var(--accent); }
+.icon-btn {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary);
+    width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 8px; cursor: pointer; transition: all 0.15s; font-size: 0.95rem;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+.icon-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.view-toggle { display: inline-flex; gap: 0.25rem; }
+.glass-row { display: inline-flex; gap: 0.25rem; margin-left: 0.25rem; }
+.glass-row .icon-btn { width: auto; padding: 0 0.6rem; gap: 0.35rem; font-size: 0.8rem; }
+.glass-row .icon-btn i { font-size: 0.9rem; }
+
+/* Favorite heart on cards */
+.fav-btn {
+    position: absolute; top: 0.7rem; right: 0.7rem;
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; font-size: 1rem; padding: 0.25rem;
+    transition: all 0.15s; z-index: 2;
+}
+.fav-btn:hover { color: var(--accent); transform: scale(1.15); }
+.fav-btn.active { color: var(--accent); }
+.cocktail-card h3 { padding-right: 4.5rem; }
+
+/* Strength + classic badges */
+.badge-row { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.4rem; }
+.badge {
+    font-size: 0.66rem; font-weight: 500;
+    padding: 0.15rem 0.45rem; border-radius: 6px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    border: 1px solid transparent;
+}
+.badge.light    { background: rgba(126, 219, 166, 0.15); color: var(--good); }
+.badge.medium   { background: var(--accent-dim); color: var(--accent); }
+.badge.stiff    { background: rgba(224, 122, 122, 0.15); color: var(--bad); }
+.badge.classic  { background: rgba(254, 230, 196, 0.10); color: var(--text-primary); }
+.badge.modern   { background: var(--bg-card); color: var(--text-secondary); border-color: var(--border); }
+
+/* List / compact view */
+.results-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.results-list .cocktail-card {
+    padding: 0.65rem 0.85rem; display: grid;
+    grid-template-columns: 1fr auto auto; align-items: center; gap: 0.75rem;
+}
+.results-list .cocktail-card h3 { font-size: 0.95rem; margin: 0; padding: 0; }
+.results-list .cocktail-card .cocktail-meta { margin: 0; font-size: 0.72rem; }
+.results-list .cocktail-card .cocktail-ings,
+.results-list .cocktail-card .badge-row { display: none; }
+.results-list .fav-btn { position: static; font-size: 1rem; }
+
+/* Similar drinks in modal */
+.similar-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.similar-chip {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 0.35rem 0.7rem; border-radius: 999px;
+    font-size: 0.8rem; cursor: pointer; transition: all 0.15s;
+}
+.similar-chip:hover { border-color: var(--accent); color: var(--accent); }
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <span class="brand"><i class="fa-solid fa-martini-glass-citrus"></i> Next Round</span>
+    <div class="nav-actions"></div>
+</nav>
+
+<div class="container">
+    <!-- Step 1: spirit landing -->
+    <div id="spiritLanding">
+        <div class="intro">
+            <h1><i class="fa-solid fa-martini-glass-citrus"></i> What are you in the mood for?</h1>
+            <p>Pick a base spirit and discover your next favorite drink.</p>
+        </div>
+        <div class="spirit-grid" id="spiritGrid"></div>
+    </div>
+
+    <!-- Step 2: sour vs stirred -->
+    <div id="styleView" style="display:none">
+        <div class="intro">
+            <h1 id="styleHeader"><i class="fa-solid fa-martini-glass-citrus"></i> Bright or bold?</h1>
+            <p>Pick a vibe — or skip and see them all.</p>
+        </div>
+        <div class="spirit-grid style-grid" id="styleGrid"></div>
+        <div class="style-skip">
+            <button class="nav-btn" id="styleSkip"><i class="fa-solid fa-list"></i> Show me both — see all <span id="styleAllCount"></span></button>
+            <button class="nav-btn" id="styleBack"><i class="fa-solid fa-arrow-left"></i> Change spirit</button>
+        </div>
+    </div>
+
+    <!-- Step 3: results + narrow-down panel -->
+    <div id="resultsView" style="display:none">
+        <div class="results-header">
+            <button class="nav-btn" id="changeSpirit"><i class="fa-solid fa-arrow-left"></i> Change spirit</button>
+            <div class="spirit-title" id="spiritTitle"></div>
+            <button class="nav-btn" id="styleChip" title="Change style"></button>
+            <button class="nav-btn surprise" id="surpriseBtn" title="Random pick"><i class="fa-solid fa-dice"></i> Surprise me</button>
+        </div>
+
+        <!-- Advanced: specific ingredient pills (collapsed by default) -->
+        <details class="advanced" id="advanced">
+            <summary><i class="fa-solid fa-flask"></i> Filter by specific ingredient <span class="count" id="selectedCount">0</span></summary>
+            <div class="advanced-body">
+                <input class="search-input" id="ingSearch" type="text" placeholder="Search ingredients...">
+                <div id="ingredientCats"></div>
+            </div>
+        </details>
+
+        <div class="toolbar">
+            <input class="tb-search" id="nameSearch" type="text" placeholder="Search by name…">
+            <button class="icon-btn" id="favFilterBtn" title="Favorites only"><i class="fa-regular fa-heart"></i></button>
+            <div class="view-toggle">
+                <button class="icon-btn active" id="viewGrid" title="Grid view"><i class="fa-solid fa-grip"></i></button>
+                <button class="icon-btn" id="viewList" title="List view"><i class="fa-solid fa-list"></i></button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2><i class="fa-solid fa-list"></i> Order this <span class="count" id="resultCount">0</span></h2>
+            <div class="results-summary" id="resultsSummary"></div>
+            <div id="results"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Recipe modal -->
+<div class="modal-overlay" id="recipeModal">
+    <div class="modal-content" id="recipeContent"></div>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+const CATEGORY_ORDER = ['spirit', 'liqueur', 'amaro', 'fortified', 'citrus', 'sweetener', 'bitters', 'herb', 'other'];
+const CATEGORY_LABELS = {
+    spirit: 'Spirits',
+    liqueur: 'Liqueurs',
+    amaro: 'Amari & Apéritifs',
+    fortified: 'Vermouth, Sherry & Wine',
+    citrus: 'Citrus & Juice',
+    sweetener: 'Sweeteners & Syrups',
+    bitters: 'Bitters',
+    herb: 'Herbs',
+    other: 'Other',
+};
+
+// Spirit groups — broad bar-friendly buckets that map to one or more ingredient keys
+const SPIRIT_GROUPS = [
+    { id: 'gin',      label: 'Gin',              icon: 'fa-glass-water',         desc: 'Crisp, botanical, herbal',         keys: ['gin', 'old_tom_gin', 'navy_gin'] },
+    { id: 'whiskey',  label: 'Whiskey',          icon: 'fa-fire',                desc: 'Bourbon, rye, scotch, irish',      keys: ['bourbon', 'rye', 'scotch', 'peated_scotch', 'irish_whiskey', 'japanese_whisky'] },
+    { id: 'tequila',  label: 'Tequila & Mezcal', icon: 'fa-pepper-hot',          desc: 'Bright agave or smoky',            keys: ['tequila', 'reposado_tequila', 'anejo_tequila', 'mezcal'] },
+    { id: 'rum',      label: 'Rum',              icon: 'fa-umbrella-beach',      desc: 'Tropical, funky, tiki',            keys: ['rum', 'white_rum', 'aged_rum', 'black_rum', 'jamaican_rum', 'cachaca', 'agricole', 'arrack'] },
+    { id: 'vodka',    label: 'Vodka',            icon: 'fa-snowflake',           desc: 'Clean and easy-going',             keys: ['vodka'] },
+    { id: 'brandy',   label: 'Brandy',           icon: 'fa-wine-bottle',         desc: 'Cognac, apple brandy, pisco',      keys: ['cognac', 'brandy', 'pisco', 'apple_brandy'] },
+    { id: 'lowabv',   label: 'Low ABV',          icon: 'fa-leaf',                desc: 'Vermouth, sherry, amaro-led',      keys: ['dry_vermouth', 'sweet_vermouth', 'blanc_vermouth', 'vermouth', 'sherry', 'lillet_blanc', 'lillet_rouge', 'cocchi_americano', 'cocchi', 'campari', 'aperol', 'cynar', 'fernet', 'montenegro', 'cio_ciaro', 'china_china', 'suze', 'amaro', 'punt_e_mes', 'nonino', 'ramazzotti'], lowAbvOnly: true },
+    { id: 'surprise', label: 'Surprise me',      icon: 'fa-dice',                desc: 'Pick something at random',         keys: [], surprise: true },
+];
+
+const CITRUS_KEYS = new Set(['lemon_juice', 'lime_juice', 'orange_juice', 'grapefruit_juice', 'pineapple', 'cranberry']);
+
+const STYLES = [
+    { id: 'sour',    label: 'Bright',  icon: 'fa-sun',         desc: 'Refreshing, citrusy, and light. Think Margaritas and Daiquiris.' },
+    { id: 'stirred', label: 'Bold',    icon: 'fa-fire',        desc: 'Rich, spirit-forward, and strong. Think Old Fashioneds and Manhattans.' },
+];
+
+const BIG_SPIRIT_KEYS = new Set(['gin','old_tom_gin','navy_gin','vodka','rum','white_rum','aged_rum','black_rum','jamaican_rum','bourbon','rye','scotch','peated_scotch','irish_whiskey','japanese_whisky','tequila','reposado_tequila','anejo_tequila','mezcal','cognac','brandy','pisco','apple_brandy','cachaca','agricole','arrack']);
+
+// Glass format buckets (broad — matches .glass free text)
+const GLASS_FORMATS = [
+    { id: 'coupe',   label: 'Coupe / Up', icon: 'fa-martini-glass',        match: /coupe|nick|martini|cocktail glass|champagne|flute/i },
+    { id: 'rocks',   label: 'Rocks',      icon: 'fa-glass-whiskey',        match: /rocks|old[- ]?fashioned|double old|dof/i },
+    { id: 'collins', label: 'Tall',       icon: 'fa-glass-water',          match: /collins|highball|tall|fizz|pilsner|hurricane/i },
+    { id: 'tin',     label: 'Mug / Tiki', icon: 'fa-mug-saucer',           match: /mug|julep|tiki|tin|pint|copper|toddy/i },
+];
+
+const state = {
+    cocktails: [],
+    ingredients: [],
+    spirit: null,           // selected SPIRIT_GROUPS entry
+    style: null,            // 'sour' | 'stirred' | null (= both)
+    selected: new Set(),    // refinement: extra required ingredients
+    search: '',
+    nameSearch: '',
+    sort: 'name',
+    view: 'grid',           // 'grid' | 'list'
+    favsOnly: false,
+    glass: null,            // GLASS_FORMATS.id or null
+    favorites: new Set(JSON.parse(localStorage.getItem('cp_favs') || '[]')),
+    randomSeed: Math.random(),
+};
+
+function saveFavorites() {
+    localStorage.setItem('cp_favs', JSON.stringify([...state.favorites]));
+}
+
+// ── Strength ──
+function ozOf(qty) {
+    if (!qty) return 0;
+    const s = String(qty).toLowerCase();
+    if (!/oz/.test(s)) return 0;
+    // strip "oz" and everything after; grab the leading number/fraction
+    const num = s.replace(/oz.*$/, '').trim();
+    // handle mixed like "1 1/2" and plain fractions "3/4"
+    const m = num.match(/^(\d+)?\s*(?:(\d+)\/(\d+))?$/);
+    if (!m) { const f = parseFloat(num); return isFinite(f) ? f : 0; }
+    const whole = m[1] ? parseFloat(m[1]) : 0;
+    const frac = m[2] && m[3] ? parseFloat(m[2]) / parseFloat(m[3]) : 0;
+    return whole + frac;
+}
+function strengthOf(c) {
+    // Weighted alcohol oz: estimate how much pure ethanol is in the drink.
+    // Spirits ~40% ABV (1.0), liqueurs/amari ~25% (0.65), fortified wines ~17% (0.4).
+    const WEIGHT = { spirit: 1.0, liqueur: 0.65, amaro: 0.65, fortified: 0.4 };
+    let alc = 0;
+    c.ingredients.forEach(i => {
+        if (!i.key || !i.category) return;
+        const w = WEIGHT[i.category];
+        if (!w) return;
+        alc += ozOf(i.qty) * w;
+    });
+    const tier = alc >= 2.4 ? 'stiff' : (alc > 0 && alc <= 1.2 ? 'light' : 'medium');
+    return { tier, alc: Math.round(alc * 100) / 100 };
+}
+
+// ── Classic vs modern ──
+function eraOf(c) {
+    if (!c.origin) return null;
+    const o = c.origin.toLowerCase();
+    if (/classic|pre-prohibition|prohibition|golden age|19th century|early 20th/.test(o)) return 'classic';
+    const yearMatch = o.match(/\b(1[89]\d{2}|20\d{2})\b/);
+    if (yearMatch) {
+        const y = parseInt(yearMatch[1], 10);
+        if (y < 1970) return 'classic';
+        if (y >= 1990) return 'modern';
+    }
+    if (/modern|contemporary|craft|2000s|2010s/.test(o)) return 'modern';
+    return null;
+}
+
+// ── Glass format ──
+function glassFormatOf(c) {
+    if (!c.glass) return null;
+    for (const f of GLASS_FORMATS) if (f.match.test(c.glass)) return f.id;
+    return null;
+}
+
+// Cache: cocktail → ingredient key Set (computed once)
+const _ingKeysCache = new WeakMap();
+function ingKeys(c) {
+    let s = _ingKeysCache.get(c);
+    if (!s) { s = new Set(c.ingredients.filter(i => i.key).map(i => i.key)); _ingKeysCache.set(c, s); }
+    return s;
+}
+function isSour(c) {
+    const ks = ingKeys(c);
+    for (const k of ks) if (CITRUS_KEYS.has(k)) return true;
+    return false;
+}
+function matchesStyle(c, style) {
+    if (!style) return true;
+    return style === 'sour' ? isSour(c) : !isSour(c);
+}
+
+// ── Load data ──
+// Data is embedded via <script src="cocktails-data.js"> so this works on file:// too.
+async function loadData() {
+    let data = window.COCKTAIL_DATA;
+    if (!data) {
+        // Fallback for legacy setups: try fetching the JSON (only works on http(s))
+        const resp = await fetch('cocktails.json');
+        data = await resp.json();
+    }
+    state.cocktails = data.cocktails;
+    state.ingredients = data.ingredients;
+    renderSpiritLanding();
+}
+
+// ── Step 1: spirit landing ──
+function cocktailsForSpirit(group) {
+    if (group.surprise) return state.cocktails;
+    const keys = new Set(group.keys);
+    return state.cocktails.filter(c => {
+        const ingKeys = c.ingredients.filter(i => i.key).map(i => i.key);
+        if (group.lowAbvOnly) {
+            // Show drinks where the LEAD/dominant ingredient is in the group (no big spirit base)
+            const hasBigSpirit = ingKeys.some(k => ['gin','vodka','rum','white_rum','aged_rum','black_rum','jamaican_rum','bourbon','rye','scotch','peated_scotch','irish_whiskey','japanese_whisky','tequila','reposado_tequila','anejo_tequila','mezcal','cognac','brandy','pisco','apple_brandy','cachaca','agricole','arrack'].includes(k));
+            if (hasBigSpirit) return false;
+            return ingKeys.some(k => keys.has(k));
+        }
+        return ingKeys.some(k => keys.has(k));
+    });
+}
+
+function renderSpiritLanding() {
+    const root = document.getElementById('spiritGrid');
+    root.innerHTML = SPIRIT_GROUPS.map(g => {
+        const n = g.surprise ? state.cocktails.length : cocktailsForSpirit(g).length;
+        return `<div class="spirit-card" data-id="${g.id}">
+            <div class="icon"><i class="fa-solid ${g.icon}"></i></div>
+            <h3>${escapeHtml(g.label)}</h3>
+            <div class="desc">${escapeHtml(g.desc)}</div>
+            <div class="count-pill">${n} drink${n === 1 ? '' : 's'}</div>
+        </div>`;
+    }).join('');
+    root.querySelectorAll('.spirit-card').forEach(card => {
+        card.addEventListener('click', () => pickSpirit(card.dataset.id));
+    });
+}
+
+function pickSpirit(id) {
+    const group = SPIRIT_GROUPS.find(g => g.id === id);
+    if (!group) return;
+    if (group.surprise) {
+        const pool = state.cocktails;
+        if (!pool.length) return;
+        openRecipe(pool[Math.floor(Math.random() * pool.length)].name);
+        return;
+    }
+    state.spirit = group;
+    state.style = null;
+    state.selected.clear();
+    state.search = '';
+    showStyleStep();
+}
+
+// ── Step 2: sour vs stirred ──
+function showStyleStep() {
+    const group = state.spirit;
+    const pool = cocktailsForSpirit(group);
+    document.getElementById('spiritLanding').style.display = 'none';
+    document.getElementById('resultsView').style.display = 'none';
+    document.getElementById('styleView').style.display = 'block';
+    document.getElementById('styleHeader').innerHTML =
+        `<i class="fa-solid ${group.icon}"></i> ${escapeHtml(group.label)} — bright or bold?`;
+
+    const grid = document.getElementById('styleGrid');
+    grid.innerHTML = STYLES.map(s => {
+        const n = pool.filter(c => matchesStyle(c, s.id)).length;
+        return `<div class="spirit-card" data-style="${s.id}">
+            <div class="icon"><i class="fa-solid ${s.icon}"></i></div>
+            <h3>${escapeHtml(s.label)}</h3>
+            <div class="desc">${escapeHtml(s.desc)}</div>
+            <div class="count-pill">${n} drink${n === 1 ? '' : 's'}</div>
+        </div>`;
+    }).join('');
+    grid.querySelectorAll('.spirit-card').forEach(card => {
+        card.addEventListener('click', () => pickStyle(card.dataset.style));
+    });
+    document.getElementById('styleAllCount').textContent = `(${pool.length})`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function pickStyle(style) {
+    state.style = style;  // 'sour' | 'stirred' | null (= both)
+    state.selected.clear();
+    state.search = '';
+    state.nameSearch = '';
+    state.glass = null;
+    state.favsOnly = false;
+    const adv = document.getElementById('advanced');
+    if (adv) adv.open = false;
+    const ns = document.getElementById('nameSearch'); if (ns) ns.value = '';
+    const favBtn = document.getElementById('favFilterBtn'); if (favBtn) favBtn.classList.remove('active');
+
+    const group = state.spirit;
+    document.getElementById('styleView').style.display = 'none';
+    document.getElementById('spiritLanding').style.display = 'none';
+    document.getElementById('resultsView').style.display = 'block';
+
+    document.getElementById('spiritTitle').innerHTML =
+        `<i class="fa-solid ${group.icon}"></i> ${escapeHtml(group.label)}`;
+    renderStyleChip();
+
+    renderIngredients();
+    renderResults();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderGlassRow() {
+    const row = document.getElementById('glassRow');
+    if (!row) return;
+    // Only show glass formats that exist in the current spirit+style pool
+    const basePool = cocktailsForSpirit(state.spirit).filter(c => matchesStyle(c, state.style));
+    const avail = new Set(basePool.map(glassFormatOf).filter(Boolean));
+    const btns = GLASS_FORMATS.filter(f => avail.has(f.id)).map(f => {
+        const active = state.glass === f.id ? ' active' : '';
+        return `<button class="icon-btn${active}" data-glass="${f.id}" title="${escapeHtml(f.label)}"><i class="fa-solid ${f.icon}"></i><span>${escapeHtml(f.label)}</span></button>`;
+    }).join('');
+    row.innerHTML = btns;
+    row.querySelectorAll('[data-glass]').forEach(b => {
+        b.addEventListener('click', () => {
+            state.glass = state.glass === b.dataset.glass ? null : b.dataset.glass;
+        
+            renderResults();
+        });
+    });
+}
+
+function renderStyleChip() {
+    const chip = document.getElementById('styleChip');
+    if (!chip) return;
+    if (!state.style) {
+        chip.innerHTML = `<i class="fa-solid fa-list"></i> Both styles`;
+    } else {
+        const s = STYLES.find(x => x.id === state.style);
+        chip.innerHTML = `<i class="fa-solid ${s.icon}"></i> ${escapeHtml(s.label)} <i class="fa-solid fa-pen-to-square" style="opacity:0.5;font-size:0.75em;margin-left:0.25rem"></i>`;
+    }
+}
+
+function backToLanding() {
+    state.spirit = null;
+    state.style = null;
+    state.selected.clear();
+    document.getElementById('resultsView').style.display = 'none';
+    document.getElementById('styleView').style.display = 'none';
+    document.getElementById('spiritLanding').style.display = 'block';
+}
+
+// ── Render ingredient picker (grouped by category) ──
+function renderIngredients() {
+    const root = document.getElementById('ingredientCats');
+    const search = state.search.toLowerCase();
+    if (!state.spirit) { root.innerHTML = ''; return; }
+
+    // Pool of cocktails matching ALL current filters (spirit + style + selected ingredients).
+    // We show ingredients that appear in this already-narrowed pool, so every extra pill
+    // the user taps is guaranteed to lead to at least one remaining drink.
+    let pool = cocktailsForSpirit(state.spirit).filter(c => matchesStyle(c, state.style));
+    if (state.selected.size > 0) {
+        pool = pool.filter(c => {
+            const ks = ingKeys(c);
+            return [...state.selected].every(k => ks.has(k));
+        });
+    }
+    const spiritKeys = new Set(state.spirit.keys);
+
+    const usage = {};
+    pool.forEach(c => {
+        const seen = new Set();
+        c.ingredients.forEach(i => { if (i.key && !spiritKeys.has(i.key)) seen.add(i.key); });
+        seen.forEach(k => { usage[k] = (usage[k] || 0) + 1; });
+    });
+    // Always keep already-selected ingredients visible so the user can deselect them.
+    state.selected.forEach(k => { if (!usage[k]) usage[k] = 0; });
+
+    const grouped = {};
+    state.ingredients.forEach(ing => {
+        if (!usage[ing.key]) return;                // only show ingredients used in this pool
+        if (search && !ing.display.toLowerCase().includes(search)) return;
+        if (!grouped[ing.category]) grouped[ing.category] = [];
+        grouped[ing.category].push(ing);
+    });
+
+    const html = CATEGORY_ORDER
+        .filter(cat => grouped[cat] && grouped[cat].length)
+        .map(cat => {
+            const items = grouped[cat]
+                .sort((a, b) => (usage[b.key] || 0) - (usage[a.key] || 0))
+                .map(ing => {
+                    const sel = state.selected.has(ing.key) ? 'selected' : '';
+                    const u = usage[ing.key] || 0;
+                    return `<span class="ing-pill ${sel}" data-key="${ing.key}">${escapeHtml(ing.display)} <span class="qty">${u}</span></span>`;
+                }).join('');
+            return `<div class="ingredient-cat">
+                <div class="ingredient-cat-title">${CATEGORY_LABELS[cat] || cat}</div>
+                <div class="ingredient-list">${items}</div>
+            </div>`;
+        }).join('');
+
+    root.innerHTML = html || '<div class="empty-state" style="padding:1rem"><div>No ingredients match.</div></div>';
+
+    root.querySelectorAll('.ing-pill').forEach(el => {
+        el.addEventListener('click', () => {
+            const k = el.dataset.key;
+            if (state.selected.has(k)) state.selected.delete(k);
+            else state.selected.add(k);
+            renderIngredients();
+            renderResults();
+        });
+    });
+
+    document.getElementById('selectedCount').textContent = state.selected.size + ' selected';
+}
+
+// ── Render results: cocktails for current spirit, narrowed by required ingredients ──
+function renderResults() {
+    const root = document.getElementById('results');
+    const summary = document.getElementById('resultsSummary');
+    const counter = document.getElementById('resultCount');
+    if (!state.spirit) return;
+
+    let pool = cocktailsForSpirit(state.spirit).filter(c => matchesStyle(c, state.style));
+
+    // Refinement: every required ingredient must be in the cocktail
+    if (state.selected.size > 0) {
+        pool = pool.filter(c => {
+            const ks = ingKeys(c);
+            return [...state.selected].every(k => ks.has(k));
+        });
+    }
+    if (state.nameSearch) {
+        const q = state.nameSearch.toLowerCase();
+        pool = pool.filter(c => c.name.toLowerCase().includes(q));
+    }
+    if (state.favsOnly) {
+        pool = pool.filter(c => state.favorites.has(c.name));
+    }
+
+    pool.sort((a, b) => a.name.localeCompare(b.name));
+    counter.textContent = pool.length;
+
+    const styleLabel = state.style ? STYLES.find(s => s.id === state.style).label.toLowerCase() : '';
+    const niceLabel = styleLabel ? `${escapeHtml(state.spirit.label)} ${styleLabel}` : `${escapeHtml(state.spirit.label)}`;
+
+    if (state.selected.size === 0) {
+        summary.innerHTML = `<strong>${pool.length}</strong> ${niceLabel} drink${pool.length === 1 ? '' : 's'}. Tap any to see the recipe.`;
+    } else {
+        const selNames = [...state.selected].map(k => state.ingredients.find(i => i.key === k)?.display).filter(Boolean).join(', ');
+        summary.innerHTML = `<strong>${pool.length}</strong> ${niceLabel} drink${pool.length === 1 ? '' : 's'} also with: ${escapeHtml(selNames)} <button class="clear-btn" id="clearBtn"><i class="fa-solid fa-xmark"></i> Clear filters</button>`;
+        const clr = document.getElementById('clearBtn');
+        if (clr) clr.addEventListener('click', () => {
+            state.selected.clear();
+            renderIngredients();
+            renderResults();
+        });
+    }
+
+    if (pool.length === 0) {
+        root.innerHTML = '<div class="empty-state"><i class="fa-solid fa-circle-exclamation"></i><div>Nothing matches that combo. Try removing a filter.</div></div>';
+        return;
+    }
+
+    const spiritKeys = new Set(state.spirit.keys);
+    const containerCls = state.view === 'list' ? 'results-list' : 'results-grid';
+    root.innerHTML = `<div class="${containerCls}">` + pool.slice(0, 60).map(c => {
+        const ings = c.ingredients.filter(i => i.key);
+        ings.sort((a, b) => {
+            const aS = spiritKeys.has(a.key) ? 0 : (state.selected.has(a.key) ? 1 : 2);
+            const bS = spiritKeys.has(b.key) ? 0 : (state.selected.has(b.key) ? 1 : 2);
+            return aS - bS;
+        });
+        const tags = ings.map(i => {
+            const isSpirit = spiritKeys.has(i.key);
+            const isSel = state.selected.has(i.key);
+            const cls = isSel ? 'match' : (isSpirit ? 'match' : '');
+            return `<span class="tag ${cls}">${escapeHtml(i.display)}</span>`;
+        }).join('');
+
+        const { tier: strength, alc: strengthOz } = strengthOf(c);
+        const strengthLabel = strength === 'stiff' ? 'Strong' : (strength === 'medium' ? 'Medium' : 'Low ABV');
+        const strengthTip = strength === 'stiff' ? `${strengthOz} oz weighted alcohol (≥2.4 oz = Strong)` : strength === 'light' ? `${strengthOz} oz weighted alcohol (≤1.2 oz = Low ABV)` : '';
+        // Cards only show the *interesting* strength signals: Low ABV or Strong (skip Medium)
+        const showStrength = strength === 'stiff' || strength === 'light';
+        const badges = showStrength ? `<div class="badge-row">
+            <span class="badge ${strength}"><i class="fa-solid fa-bolt"></i> ${strengthLabel} · ${strengthOz} oz</span>
+        </div>` : '';
+        const isFav = state.favorites.has(c.name);
+        const favBtn = `<button class="fav-btn${isFav ? ' active' : ''}" data-fav="${escapeHtml(c.name)}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}"><i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i></button>`;
+
+        if (state.view === 'list') {
+            return `<div class="cocktail-card" data-name="${escapeHtml(c.name)}">
+                <div>
+                    <h3>${escapeHtml(c.name)}</h3>
+                    <div class="cocktail-meta">
+                        ${c.glass ? `<span><i class="fa-solid fa-wine-glass"></i>${escapeHtml(c.glass)}</span>` : ''}
+                            </div>
+                </div>
+                ${showStrength ? `<span class="badge ${strength}"><i class="fa-solid fa-bolt"></i> ${strengthLabel} · ${strengthOz} oz</span>` : '<span></span>'}
+                ${favBtn}
+            </div>`;
+        }
+        return `<div class="cocktail-card" data-name="${escapeHtml(c.name)}">
+            ${favBtn}
+            <h3>${escapeHtml(c.name)}</h3>
+            ${badges}
+            <div class="cocktail-meta">
+                ${c.glass ? `<span><i class="fa-solid fa-wine-glass"></i>${escapeHtml(c.glass)}</span>` : ''}
+            </div>
+            <div class="cocktail-ings">${tags}</div>
+        </div>`;
+    }).join('') + '</div>';
+
+    if (pool.length > 60) {
+        root.innerHTML += `<div class="results-summary" style="margin-top:1rem;text-align:center">Showing top 60 of ${pool.length}.</div>`;
+    }
+
+    root.querySelectorAll('.fav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const name = btn.dataset.fav;
+            if (state.favorites.has(name)) state.favorites.delete(name);
+            else state.favorites.add(name);
+            saveFavorites();
+            renderResults();
+        });
+    });
+    root.querySelectorAll('.cocktail-card').forEach(card => {
+        card.addEventListener('click', () => openRecipe(card.dataset.name));
+    });
+}
+
+// ── Recipe modal ──
+function openRecipe(name) {
+    const c = state.cocktails.find(x => x.name === name);
+    if (!c) return;
+    const content = document.getElementById('recipeContent');
+    const ingHtml = c.ingredients.map(i => {
+        const isSel = i.key && state.selected.has(i.key);
+        return `<li>
+            <span class="qty">${escapeHtml(i.qty || '')}</span>
+            <span class="name" style="${isSel ? 'color:var(--accent);font-weight:600' : ''}">${escapeHtml(i.name)}</span>
+        </li>`;
+    }).join('');
+    // Similar drinks: share ≥2 key ingredients (excluding generic sweeteners/bitters-only overlap)
+    const myKeys = ingKeys(c);
+    const similar = state.cocktails
+        .filter(x => x.name !== c.name)
+        .map(x => {
+            let overlap = 0;
+            ingKeys(x).forEach(k => { if (myKeys.has(k)) overlap++; });
+            return { c: x, overlap };
+        })
+        .filter(x => x.overlap >= 2)
+        .sort((a, b) => b.overlap - a.overlap || a.c.name.localeCompare(b.c.name))
+        .slice(0, 6);
+
+    const isFav = state.favorites.has(c.name);
+    const { tier: strength, alc: strengthOz } = strengthOf(c);
+    const strengthLabel = strength === 'stiff' ? 'Strong' : (strength === 'medium' ? 'Medium' : 'Low ABV');
+    const strengthTip = `${strengthOz} oz weighted alcohol (spirits×1 + liqueurs×0.65 + fortified×0.4)`;
+
+    content.innerHTML = `
+        <button class="modal-close" id="recipeCloseBtn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <h2><i class="fa-solid fa-martini-glass-citrus"></i> ${escapeHtml(c.name)}
+            <button class="fav-btn${isFav ? ' active' : ''}" id="modalFav" style="position:static;margin-left:auto;font-size:1.2rem"><i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i></button>
+        </h2>
+        <div class="badge-row" style="margin-bottom:0.75rem">
+            <span class="badge ${strength}"><i class="fa-solid fa-bolt"></i> ${strengthLabel} · ${strengthOz} oz</span>
+        </div>
+        <div class="recipe-section">
+            <h4>Ingredients</h4>
+            <ul class="recipe-list">${ingHtml}</ul>
+        </div>
+        ${c.method ? `<div class="recipe-section"><h4>Method</h4><div class="recipe-line">${escapeHtml(c.method)}</div></div>` : ''}
+        ${c.glass ? `<div class="recipe-section"><h4>Glass</h4><div class="recipe-line">${escapeHtml(c.glass)}</div></div>` : ''}
+        ${c.garnish ? `<div class="recipe-section"><h4>Garnish</h4><div class="recipe-line">${escapeHtml(c.garnish)}</div></div>` : ''}
+        ${c.origin ? `<div class="origin-note"><strong>Origin:</strong> ${escapeHtml(c.origin)}</div>` : ''}
+        ${similar.length ? `<div class="recipe-section">
+            <h4>If you like this, try</h4>
+            <div class="similar-row">${similar.map(s => `<span class="similar-chip" data-name="${escapeHtml(s.c.name)}">${escapeHtml(s.c.name)}</span>`).join('')}</div>
+        </div>` : ''}
+    `;
+    document.getElementById('recipeModal').classList.add('open');
+    document.getElementById('recipeCloseBtn').addEventListener('click', closeRecipe);
+    const mFav = document.getElementById('modalFav');
+    if (mFav) mFav.addEventListener('click', () => {
+        if (state.favorites.has(c.name)) state.favorites.delete(c.name);
+        else state.favorites.add(c.name);
+        saveFavorites();
+        openRecipe(c.name);  // re-render modal
+        renderResults();
+    });
+    content.querySelectorAll('.similar-chip').forEach(ch => {
+        ch.addEventListener('click', () => openRecipe(ch.dataset.name));
+    });
+}
+function closeRecipe() { document.getElementById('recipeModal').classList.remove('open'); }
+
+document.getElementById('recipeModal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('recipeModal')) closeRecipe();
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('recipeModal').classList.contains('open')) closeRecipe();
+});
+
+// ── Header buttons ──
+document.getElementById('changeSpirit').addEventListener('click', backToLanding);
+document.getElementById('styleChip').addEventListener('click', () => {
+    if (state.spirit) showStyleStep();
+});
+document.getElementById('surpriseBtn').addEventListener('click', () => {
+    if (!state.spirit) return;
+    const pool = cocktailsForSpirit(state.spirit).filter(c => matchesStyle(c, state.style));
+    if (!pool.length) return;
+    openRecipe(pool[Math.floor(Math.random() * pool.length)].name);
+});
+
+// ── Style step buttons ──
+document.getElementById('styleSkip').addEventListener('click', () => pickStyle(null));
+document.getElementById('styleBack').addEventListener('click', backToLanding);
+
+// ── Search ──
+document.getElementById('ingSearch').addEventListener('input', (e) => {
+    state.search = e.target.value;
+    renderIngredients();
+});
+
+// ── Toolbar ──
+document.getElementById('nameSearch').addEventListener('input', (e) => {
+    state.nameSearch = e.target.value;
+    renderResults();
+});
+document.getElementById('favFilterBtn').addEventListener('click', () => {
+    state.favsOnly = !state.favsOnly;
+    document.getElementById('favFilterBtn').classList.toggle('active', state.favsOnly);
+    renderResults();
+});
+document.getElementById('viewGrid').addEventListener('click', () => {
+    state.view = 'grid';
+    document.getElementById('viewGrid').classList.add('active');
+    document.getElementById('viewList').classList.remove('active');
+    renderResults();
+});
+document.getElementById('viewList').addEventListener('click', () => {
+    state.view = 'list';
+    document.getElementById('viewList').classList.add('active');
+    document.getElementById('viewGrid').classList.remove('active');
+    renderResults();
+});
+
+// ── Util ──
+function escapeHtml(s) {
+    if (s == null) return '';
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+loadData().catch(err => {
+    const msg = `Failed to load cocktail data: ${escapeHtml(err.message)}. Make sure <code>cocktails-data.js</code> is next to this HTML file.`;
+    const landing = document.getElementById('spiritLanding');
+    if (landing) {
+        landing.innerHTML = `<div class="intro"><h1><i class="fa-solid fa-circle-exclamation"></i> Can't load cocktails</h1><p style="margin-top:0.5rem">${msg}</p></div>`;
+    }
+});
+
+})();
+</script>
+</body>
+</html>
