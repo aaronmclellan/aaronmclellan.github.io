@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0f1419"/>
+  <!-- Glass triangle -->
+  <path d="M 14 16 L 50 16 L 32 38 Z" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Liquid -->
+  <path d="M 19 19 L 45 19 L 32 35 Z" fill="#f59e0b" opacity="0.55"/>
+  <!-- Stem -->
+  <line x1="32" y1="38" x2="32" y2="52" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+  <!-- Base -->
+  <line x1="22" y1="54" x2="42" y2="54" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+  <!-- Olive -->
+  <circle cx="36" cy="22" r="3" fill="#34d399"/>
+  <line x1="36" y1="22" x2="46" y2="14" stroke="#9aa0a6" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
