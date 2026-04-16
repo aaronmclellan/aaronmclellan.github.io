@@ -384,6 +384,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     animation: spin 0.8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes refreshSpin { to { transform: rotate(360deg); } }
+.refresh-btn { background: none; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.4rem 0.6rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s; display: inline-flex; align-items: center; }
+.refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
+.refresh-btn i.spinning { animation: refreshSpin 0.8s linear infinite; }
 
 /* Mobile cards (for standings on small screens) */
 .mobile-cards { display: none; }
@@ -1158,6 +1162,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 <nav class="navbar">
     <a href="f1.html" class="navbar-brand">f1.wtf</a>
     <div class="navbar-controls">
+        <button class="refresh-btn" id="refreshBtn" onclick="window.refreshF1()" title="Refresh data">
+            <i class="fa-solid fa-rotate" id="refreshIcon"></i>
+        </button>
         <button class="theme-toggle" id="themeToggle" title="Toggle theme">
             <i class="fa-solid fa-moon"></i>
         </button>
@@ -3629,6 +3636,16 @@ async function init() {
     // Auto-load first tab
     loadTab('schedule');
 }
+
+window.refreshF1 = async function() {
+    const icon = document.getElementById('refreshIcon');
+    if (icon) icon.classList.add('spinning');
+    // Clear fetch cache to force fresh data
+    Object.keys(cache).forEach(k => delete cache[k]);
+    try { await init(); }
+    catch (e) { console.warn('refresh failed:', e.message); }
+    if (icon) icon.classList.remove('spinning');
+};
 
 init();
 

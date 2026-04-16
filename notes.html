@@ -333,6 +333,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);height:100dv
   <div class="sb-head">
     <h1>Notes</h1>
     <div class="sb-actions">
+      <button class="ib" id="quickSyncBtn" data-tip="Sync" onclick="window.quickSync()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2 11.5a10 10 0 0 1 18.8-4.3"/><path d="M22 12.5a10 10 0 0 1-18.8 4.3"/></svg></button>
       <button class="ib" data-tip="New Folder" onclick="showFolderModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></button>
       <button class="ib" data-tip="Collapse" onclick="toggleSidebar()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 19l-7-7 7-7"/></svg></button>
     </div>
@@ -1023,6 +1024,23 @@ function setSyncStatus(state,label){
 }
 
 function isSyncConfigured(){return syncCfg.token&&syncCfg.passphrase;}
+
+// Quick-sync button in the sidebar header. If sync is configured,
+// pulls then pushes. Otherwise just re-renders from local data.
+window.quickSync = async function() {
+  const btn = document.getElementById('quickSyncBtn');
+  if (btn) btn.style.opacity = '0.4';
+  try {
+    if (syncCfg.token && syncCfg.passphrase) {
+      await pullFromCloud();
+      await pushToCloud();
+    } else {
+      // No cloud sync — just reload local data + re-render
+      load(); renderFolders(); renderList();
+    }
+  } catch (e) { console.warn('quick sync failed:', e.message); }
+  if (btn) btn.style.opacity = '';
+};
 
 async function pushToCloud(){
   if(!isSyncConfigured()){showSettingsModal();return;}

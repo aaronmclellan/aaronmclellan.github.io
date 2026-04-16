@@ -812,6 +812,8 @@ a.match-action-btn { text-decoration: none; }
 .section-title i { color: var(--accent); }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes refreshSpin { to { transform: rotate(360deg); } }
+#refreshIcon.spinning { animation: refreshSpin 0.8s linear infinite; }
 
 @media (max-width: 768px) {
     .navbar { padding: 0.5rem 1rem; }
@@ -851,6 +853,9 @@ a.match-action-btn { text-decoration: none; }
 <nav class="navbar">
     <a href="cs.html" class="navbar-brand"><i class="fa-solid fa-crosshairs"></i> CS2 Tracker</a>
     <div class="navbar-controls">
+        <button class="fav-nav-btn" id="refreshBtn" onclick="window.refreshData()" title="Refresh data">
+            <i class="fa-solid fa-rotate" id="refreshIcon"></i>
+        </button>
         <button class="fav-nav-btn" onclick="window.openFavorites()">
             <i class="fa-solid fa-star"></i> <span>Favorites</span>
         </button>
@@ -3917,6 +3922,15 @@ async function init() {
 
 // Expose showOnboarding for the hero button
 window.showOnboarding = showOnboarding;
+window.refreshData = async function() {
+    const icon = document.getElementById('refreshIcon');
+    if (icon) icon.classList.add('spinning');
+    // Clear the response cache so we get fresh data from GRID.
+    _responseCache.clear();
+    try { await loadAllData(); }
+    catch (e) { console.warn('[cs2] refresh failed:', e.message); }
+    if (icon) icon.classList.remove('spinning');
+};
 
 init();
 

@@ -736,7 +736,10 @@ function createAppWindow(opts) {
     const el = document.createElement('div');
     el.className = 'window'; el.id = 'window-' + id;
     el.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;z-index:${++S.nextZ}`;
-    el.innerHTML = `<div class="window-title" data-wid="${id}"><span class="window-title-icon" style="color:${win.color}"><i class="${win.icon}"></i></span><span class="window-title-text">${opts.title}</span><div class="window-title-btns"><button class="window-title-btn" onclick="minimizeWindow(${id})" title="Minimize">&#8211;</button><button class="window-title-btn" onclick="toggleMaximize(${id})" title="Maximize">&#9633;</button><button class="window-title-btn close-btn" onclick="closeWindow(${id})" title="Close">&#10005;</button></div></div><div class="window-content">${opts.content}</div><div class="window-resize" data-wid="${id}"></div>`;
+    const openInTabBtn = opts.siteUrl
+        ? `<button class="window-title-btn" onclick="window.open('${opts.siteUrl}','_blank')" title="Open in new tab" style="font-size:10px"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>`
+        : '';
+    el.innerHTML = `<div class="window-title" data-wid="${id}"><span class="window-title-icon" style="color:${win.color}"><i class="${win.icon}"></i></span><span class="window-title-text">${opts.title}</span><div class="window-title-btns">${openInTabBtn}<button class="window-title-btn" onclick="minimizeWindow(${id})" title="Minimize">&#8211;</button><button class="window-title-btn" onclick="toggleMaximize(${id})" title="Maximize">&#9633;</button><button class="window-title-btn close-btn" onclick="closeWindow(${id})" title="Close">&#10005;</button></div></div><div class="window-content">${opts.content}</div><div class="window-resize" data-wid="${id}"></div>`;
     document.getElementById('desktop').appendChild(el);
     focusWindow(id); renderTaskbarWindows();
     // Wire events
@@ -773,7 +776,7 @@ function openSiteWindow(site) {
     createAppWindow({id:site.id, title:site.title.replace(/\n/g,' '), icon:site.icon, color:site.color,
         w: mob ? dr.width-8 : Math.min(900,dr.width-40),
         h: mob ? dr.height-8 : Math.min(dr.height-60,dr.height-40),
-        content});
+        content, siteUrl: site.external ? null : site.url});
 }
 
 /* ==============================================
