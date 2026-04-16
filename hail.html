@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hail Watch — Leander, TX</title>
+<link rel="icon" type="image/svg+xml" href="hail-favicon.svg">
+<link rel="apple-touch-icon" href="hail-favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0f1923;
+    --bg-secondary: #162230;
+    --bg-card: #1c2e3f;
+    --bg-card-hover: #243a4e;
+    --border: #2a4560;
+    --text-primary: #e8f0f8;
+    --text-secondary: #8ba4bc;
+    --text-muted: #506880;
+    --accent: #4fc3f7;
+    --accent-dim: rgba(79, 195, 247, 0.12);
+    --green: #66bb6a;
+    --green-dim: rgba(102, 187, 106, 0.12);
+    --yellow: #ffd54f;
+    --yellow-dim: rgba(255, 213, 79, 0.15);
+    --orange: #ffa726;
+    --orange-dim: rgba(255, 167, 38, 0.15);
+    --red: #ef5350;
+    --red-dim: rgba(239, 83, 80, 0.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg); color: var(--text-primary);
+    min-height: 100vh; line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 1.5rem; background: var(--bg-secondary);
+    border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 50;
+}
+.brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.1rem; }
+.brand i { color: var(--accent); }
+.nav-actions { display: flex; gap: 0.5rem; align-items: center; }
+.nav-btn {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary);
+    padding: 0.45rem 0.85rem; border-radius: 8px; font-family: inherit; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.nav-btn:hover { border-color: var(--accent); }
+
+.container { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+/* Status Banner */
+.status-banner {
+    border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1.25rem;
+    transition: all 0.3s;
+}
+.status-banner.clear { background: var(--green-dim); border: 1px solid var(--green); }
+.status-banner.watch { background: var(--yellow-dim); border: 1px solid var(--yellow); }
+.status-banner.warning { background: var(--orange-dim); border: 1px solid var(--orange); }
+.status-banner.severe { background: var(--red-dim); border: 1px solid var(--red); }
+.status-banner.loading { background: var(--bg-card); border: 1px solid var(--border); }
+
+.status-icon {
+    font-size: 2.5rem; flex-shrink: 0;
+}
+.status-banner.clear .status-icon { color: var(--green); }
+.status-banner.watch .status-icon { color: var(--yellow); }
+.status-banner.warning .status-icon { color: var(--orange); }
+.status-banner.severe .status-icon { color: var(--red); }
+.status-banner.loading .status-icon { color: var(--text-muted); }
+
+.status-text h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem; }
+.status-text p { font-size: 0.9rem; color: var(--text-secondary); }
+
+.garage-reminder {
+    background: var(--red-dim); border: 2px solid var(--red); border-radius: 12px;
+    padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;
+    animation: pulse-border 1.5s ease-in-out infinite;
+    display: none;
+}
+.garage-reminder.show { display: block; }
+.garage-reminder i { font-size: 1.5rem; color: var(--red); margin-bottom: 0.4rem; }
+.garage-reminder h3 { color: var(--red); font-size: 1.2rem; margin-bottom: 0.3rem; }
+.garage-reminder p { font-size: 0.85rem; color: var(--text-secondary); }
+
+@keyframes pulse-border {
+    0%, 100% { border-color: var(--red); }
+    50% { border-color: rgba(239, 83, 80, 0.4); }
+}
+
+/* Cards */
+.section-title {
+    font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-title i { color: var(--accent); }
+
+.card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1rem 1.25rem; margin-bottom: 0.75rem; transition: all 0.15s;
+}
+.card:hover { background: var(--bg-card-hover); }
+
+.alert-card { border-left: 4px solid var(--orange); }
+.alert-card.severe { border-left-color: var(--red); }
+.alert-card .alert-event { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+.alert-card .alert-meta {
+    display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;
+}
+.alert-card .alert-meta span { display: inline-flex; align-items: center; gap: 0.3rem; }
+.alert-card .alert-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.alert-card .hail-size {
+    display: inline-flex; align-items: center; gap: 0.4rem; background: var(--orange-dim);
+    color: var(--orange); padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+.forecast-card { display: flex; align-items: center; gap: 1rem; }
+.forecast-card .period-name { font-weight: 600; min-width: 110px; font-size: 0.9rem; }
+.forecast-card .period-temp { font-weight: 700; font-size: 1.1rem; min-width: 50px; }
+.forecast-card .period-temp .unit { font-size: 0.75rem; color: var(--text-muted); }
+.forecast-card .period-short { font-size: 0.85rem; color: var(--text-secondary); flex: 1; }
+.forecast-card .hail-badge {
+    background: var(--red-dim); color: var(--red); font-weight: 700; font-size: 0.75rem;
+    padding: 0.15rem 0.5rem; border-radius: 5px; white-space: nowrap;
+}
+
+.empty-state { text-align: center; padding: 2rem; color: var(--text-muted); }
+.empty-state i { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+
+/* Radar */
+.radar-section { margin-bottom: 1.5rem; }
+.radar-frame {
+    width: 100%; aspect-ratio: 16/10; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border); background: var(--bg-card);
+}
+.radar-frame iframe { width: 100%; height: 100%; border: none; }
+
+/* Footer */
+.last-updated {
+    text-align: center; padding: 1rem; font-size: 0.75rem; color: var(--text-muted);
+}
+.last-updated button {
+    background: none; border: none; color: var(--accent); cursor: pointer;
+    font-family: inherit; font-size: 0.75rem; margin-left: 0.5rem;
+}
+.last-updated button:hover { text-decoration: underline; }
+
+/* Notification Banner */
+.notif-banner {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+}
+.notif-banner h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.notif-banner h3 i { color: var(--accent); }
+.notif-banner p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.notif-btn {
+    background: var(--accent); color: var(--bg); border: none; padding: 0.5rem 1.2rem;
+    border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.15s;
+}
+.notif-btn:hover { filter: brightness(1.1); }
+.notif-btn:disabled { opacity: 0.5; cursor: default; }
+.notif-status { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+.notif-status.enabled { color: var(--green); }
+
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+.footer {
+    text-align: center; padding: 2rem 1rem;
+    color: var(--text-muted); font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+}
+.footer a { color: var(--text-secondary); }
+
+@media (max-width: 600px) {
+    .container { padding: 1rem; }
+    .status-banner { flex-direction: column; text-align: center; gap: 0.75rem; padding: 1.25rem; }
+    .forecast-card { flex-wrap: wrap; }
+    .forecast-card .period-name { min-width: unset; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="brand"><i class="fa-solid fa-cloud-bolt"></i> Hail Watch</div>
+    <div class="nav-actions">
+        <form id="zipForm" onsubmit="changeZip(event)" style="display:flex;gap:0.4rem;align-items:center;">
+            <i class="fa-solid fa-location-dot" style="font-size:0.8rem;color:var(--text-secondary);"></i>
+            <input type="text" id="zipInput" maxlength="5" inputmode="numeric" pattern="[0-9]{5}"
+                placeholder="ZIP" value="78641"
+                style="width:60px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);
+                padding:0.35rem 0.5rem;border-radius:8px;font-family:inherit;font-size:0.85rem;text-align:center;">
+            <span id="locationName" style="font-size:0.8rem;color:var(--text-secondary);"></span>
+        </form>
+        <button class="nav-btn" onclick="fetchAll()" title="Refresh"><i class="fa-solid fa-rotate"></i></button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Status Banner -->
+    <div class="status-banner loading" id="statusBanner">
+        <div class="status-icon"><i class="fa-solid fa-spinner fa-spin"></i></div>
+        <div class="status-text">
+            <h2>Checking weather...</h2>
+            <p>Fetching alerts and forecast from the National Weather Service</p>
+        </div>
+    </div>
+
+    <!-- Garage Reminder -->
+    <div class="garage-reminder" id="garageReminder">
+        <i class="fa-solid fa-warehouse"></i>
+        <h3>GET YOUR CAR IN THE GARAGE</h3>
+        <p>Hail is expected in the Leander area. Move your vehicle to covered parking now.</p>
+    </div>
+
+    <!-- Push Notification Banner -->
+    <div class="notif-banner" id="notifBanner">
+        <h3><i class="fa-solid fa-bell"></i> Get push notifications</h3>
+        <p>Enable browser notifications to get alerted on your phone or computer when hail is in the forecast. Works even when this tab is closed on mobile (add to home screen first).</p>
+        <button class="notif-btn" id="notifBtn" onclick="requestNotifications()">
+            <i class="fa-solid fa-bell"></i> Enable Notifications
+        </button>
+        <div class="notif-status" id="notifStatus"></div>
+    </div>
+
+    <!-- Active Alerts -->
+    <div id="alertsSection">
+        <div class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> Active Alerts</div>
+        <div id="alertsList">
+            <div class="empty-state"><span class="spinner"></span></div>
+        </div>
+    </div>
+
+    <!-- Radar -->
+    <div class="radar-section">
+        <div class="section-title"><i class="fa-solid fa-satellite-dish"></i> Radar</div>
+        <div class="radar-frame">
+            <iframe src="https://radar.weather.gov/station/KGRK/standard?type=N0B" loading="lazy" title="NWS Radar"></iframe>
+        </div>
+    </div>
+
+    <!-- Forecast -->
+    <div>
+        <div class="section-title"><i class="fa-solid fa-calendar-days"></i> Forecast — Next 7 Periods</div>
+        <div id="forecastList">
+            <div class="empty-state"><span class="spinner"></span></div>
+        </div>
+    </div>
+
+    <div class="last-updated" id="lastUpdated"></div>
+
+    <footer class="footer">
+        Made by <a href="https://ron.computer">Aaron</a>
+    </footer>
+</div>
+
+<script>
+const DEFAULT_ZIP = '78641';
+const HAIL_RE = /hail/i;
+const HAIL_SIZE_RE = /(\d[\d./]*)\s*inch\s*hail|hail\s*(?:up\s*to\s*)?(\d[\d./]*)\s*inch|(\d[\d./]*)\s*(?:in\.)?\s*(?:diameter\s*)?hail/i;
+
+let loc = { lat: null, lon: null, forecastUrl: null, radarStation: null, name: '', zip: '' };
+let notificationsEnabled = localStorage.getItem('hailNotif') === 'true';
+let lastHailState = false;
+let refreshTimer = null;
+
+// ── Location / ZIP ──
+async function resolveZip(zip) {
+    // Geocode zip via zippopotam.us (free, no key)
+    const r = await fetch(`https://api.zippopotam.us/us/${zip}`);
+    if (!r.ok) throw new Error('Invalid ZIP code');
+    const data = await r.json();
+    const place = data.places[0];
+    const lat = parseFloat(place.latitude);
+    const lon = parseFloat(place.longitude);
+    const name = `${place['place name']}, ${place['state abbreviation']}`;
+
+    // Get NWS grid point for this lat/lon
+    const nr = await fetch(`https://api.weather.gov/points/${lat},${lon}`, {
+        headers: { 'User-Agent': 'HailWatch/1.0 (aaronmclellan.github.io)' }
+    });
+    if (!nr.ok) throw new Error('NWS lookup failed');
+    const nws = await nr.json();
+    const props = nws.properties;
+
+    return {
+        lat, lon, zip, name,
+        forecastUrl: props.forecast,
+        radarStation: props.radarStation
+    };
+}
+
+async function changeZip(e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById('zipInput');
+    const zip = input.value.trim();
+    if (!/^\d{5}$/.test(zip)) return;
+
+    // Show loading state
+    document.getElementById('locationName').textContent = 'Loading...';
+    setLoadingState();
+
+    try {
+        loc = await resolveZip(zip);
+        localStorage.setItem('hailZip', zip);
+        document.getElementById('locationName').textContent = loc.name;
+        document.title = `Hail Watch — ${loc.name}`;
+        // Update radar iframe
+        const iframe = document.querySelector('.radar-frame iframe');
+        if (iframe && loc.radarStation) {
+            iframe.src = `https://radar.weather.gov/station/${loc.radarStation}/standard?type=N0B`;
+        }
+        await fetchAll();
+    } catch (err) {
+        document.getElementById('locationName').textContent = 'Not found';
+        console.error('ZIP resolve failed:', err);
+    }
+}
+
+function setLoadingState() {
+    const banner = document.getElementById('statusBanner');
+    banner.className = 'status-banner loading';
+    banner.innerHTML = '<div class="status-icon"><i class="fa-solid fa-spinner fa-spin"></i></div><div class="status-text"><h2>Checking weather...</h2><p>Fetching alerts and forecast from the National Weather Service</p></div>';
+    document.getElementById('alertsList').innerHTML = '<div class="empty-state"><span class="spinner"></span></div>';
+    document.getElementById('forecastList').innerHTML = '<div class="empty-state"><span class="spinner"></span></div>';
+}
+
+// ── Notifications ──
+function updateNotifUI() {
+    const btn = document.getElementById('notifBtn');
+    const status = document.getElementById('notifStatus');
+    if (!('Notification' in window)) {
+        btn.disabled = true;
+        btn.textContent = 'Not supported';
+        status.textContent = 'Push notifications are not supported in this browser.';
+        return;
+    }
+    if (Notification.permission === 'granted' && notificationsEnabled) {
+        btn.innerHTML = '<i class="fa-solid fa-bell-slash"></i> Disable Notifications';
+        btn.onclick = () => { notificationsEnabled = false; localStorage.setItem('hailNotif','false'); updateNotifUI(); };
+        status.textContent = 'Notifications are enabled. You will be alerted when hail is detected.';
+        status.className = 'notif-status enabled';
+    } else if (Notification.permission === 'denied') {
+        btn.disabled = true;
+        btn.textContent = 'Blocked by browser';
+        status.textContent = 'Notifications were blocked. Enable them in your browser settings for this site.';
+    } else {
+        btn.innerHTML = '<i class="fa-solid fa-bell"></i> Enable Notifications';
+        btn.onclick = requestNotifications;
+        status.textContent = '';
+        status.className = 'notif-status';
+    }
+}
+
+async function requestNotifications() {
+    if (!('Notification' in window)) return;
+    const perm = await Notification.requestPermission();
+    if (perm === 'granted') {
+        notificationsEnabled = true;
+        localStorage.setItem('hailNotif', 'true');
+    }
+    updateNotifUI();
+}
+
+function sendNotification(title, body) {
+    if (!notificationsEnabled || Notification.permission !== 'granted') return;
+    try { new Notification(title, { body, icon: 'hail-favicon.svg', tag: 'hail-alert' }); } catch {}
+}
+
+// ── Data Fetching ──
+async function fetchAlerts() {
+    if (!loc.lat) return null;
+    try {
+        const r = await fetch(`https://api.weather.gov/alerts/active?point=${loc.lat},${loc.lon}`, {
+            headers: { 'User-Agent': 'HailWatch/1.0 (aaronmclellan.github.io)' }
+        });
+        if (!r.ok) throw new Error(r.status);
+        const data = await r.json();
+        return data.features || [];
+    } catch (e) {
+        console.error('Alerts fetch failed:', e);
+        return null;
+    }
+}
+
+async function fetchForecast() {
+    if (!loc.forecastUrl) return null;
+    try {
+        const r = await fetch(loc.forecastUrl, {
+            headers: { 'User-Agent': 'HailWatch/1.0 (aaronmclellan.github.io)' }
+        });
+        if (!r.ok) throw new Error(r.status);
+        const data = await r.json();
+        return data.properties?.periods || [];
+    } catch (e) {
+        console.error('Forecast fetch failed:', e);
+        return null;
+    }
+}
+
+// ── Rendering ──
+function renderAlerts(alerts) {
+    const el = document.getElementById('alertsList');
+    if (alerts === null) {
+        el.innerHTML = '<div class="empty-state"><i class="fa-solid fa-circle-exclamation"></i>Failed to load alerts</div>';
+        return [];
+    }
+    const relevant = alerts.filter(a => {
+        const ev = (a.properties?.event || '').toLowerCase();
+        const desc = (a.properties?.description || '').toLowerCase();
+        return ev.includes('hail') || ev.includes('thunderstorm') || ev.includes('tornado') ||
+               ev.includes('severe') || desc.includes('hail');
+    });
+    if (relevant.length === 0) {
+        el.innerHTML = '<div class="card"><div class="empty-state" style="padding:1rem;"><i class="fa-solid fa-circle-check" style="color:var(--green);"></i>No active severe weather alerts</div></div>';
+        return [];
+    }
+    el.innerHTML = relevant.map(a => {
+        const p = a.properties;
+        const sizeMatch = (p.description || '').match(HAIL_SIZE_RE);
+        const hailSize = sizeMatch ? (sizeMatch[1] || sizeMatch[2] || sizeMatch[3]) : null;
+        const severity = p.severity === 'Extreme' || p.severity === 'Severe' ? 'severe' : '';
+        const onset = p.onset ? new Date(p.onset).toLocaleString() : '';
+        const expires = p.expires ? new Date(p.expires).toLocaleString() : '';
+        const desc = (p.description || '').slice(0, 300) + ((p.description || '').length > 300 ? '...' : '');
+        return `<div class="card alert-card ${severity}">
+            <div class="alert-event">${esc(p.event)}</div>
+            <div class="alert-meta">
+                <span><i class="fa-solid fa-shield"></i> ${esc(p.severity)}</span>
+                ${onset ? `<span><i class="fa-regular fa-clock"></i> ${esc(onset)}</span>` : ''}
+                ${expires ? `<span><i class="fa-solid fa-hourglass-end"></i> Expires ${esc(expires)}</span>` : ''}
+            </div>
+            <div class="alert-desc">${esc(desc)}</div>
+            ${hailSize ? `<div class="hail-size"><i class="fa-solid fa-circle-dot"></i> ${esc(hailSize)}" hail</div>` : ''}
+        </div>`;
+    }).join('');
+    return relevant;
+}
+
+function renderForecast(periods) {
+    const el = document.getElementById('forecastList');
+    if (periods === null) {
+        el.innerHTML = '<div class="empty-state"><i class="fa-solid fa-circle-exclamation"></i>Failed to load forecast</div>';
+        return [];
+    }
+    const show = periods.slice(0, 7);
+    const hailPeriods = [];
+    el.innerHTML = show.map(p => {
+        const detail = p.detailedForecast || p.shortForecast || '';
+        const hasHail = HAIL_RE.test(detail) || HAIL_RE.test(p.shortForecast || '');
+        if (hasHail) hailPeriods.push(p);
+        return `<div class="card forecast-card">
+            <div class="period-name">${esc(p.name)}</div>
+            <div class="period-temp">${p.temperature}<span class="unit">&deg;${p.temperatureUnit}</span></div>
+            <div class="period-short">${esc(p.shortForecast)}</div>
+            ${hasHail ? '<span class="hail-badge"><i class="fa-solid fa-cloud-meatball"></i> HAIL</span>' : ''}
+        </div>`;
+    }).join('');
+    return hailPeriods;
+}
+
+function updateStatus(hailAlerts, hailForecast) {
+    const banner = document.getElementById('statusBanner');
+    const garage = document.getElementById('garageReminder');
+    const hailNow = hailAlerts.length > 0;
+    const hailSoon = hailForecast.length > 0;
+
+    let cls, icon, title, desc;
+    if (hailNow) {
+        cls = 'severe'; icon = 'fa-solid fa-bolt'; title = 'HAIL ALERT ACTIVE';
+        desc = `There ${hailAlerts.length === 1 ? 'is 1 active alert' : `are ${hailAlerts.length} active alerts`} mentioning hail or severe storms in your area.`;
+    } else if (hailSoon) {
+        cls = 'watch'; icon = 'fa-solid fa-cloud-bolt'; title = 'Hail in Forecast';
+        desc = 'Hail is mentioned in the upcoming forecast. Keep an eye on conditions.';
+    } else {
+        cls = 'clear'; icon = 'fa-solid fa-sun'; title = 'All Clear';
+        desc = 'No hail threats detected. Your car is safe outside.';
+    }
+    banner.className = `status-banner ${cls}`;
+    banner.innerHTML = `<div class="status-icon"><i class="${icon}"></i></div><div class="status-text"><h2>${title}</h2><p>${desc}</p></div>`;
+
+    garage.classList.toggle('show', hailNow);
+
+    // Notification
+    const currentHail = hailNow || hailSoon;
+    if (currentHail && !lastHailState) {
+        sendNotification(`Hail Watch — ${loc.name}`, hailNow ? 'ACTIVE HAIL ALERT! Get your car in the garage!' : 'Hail is in the forecast. Be prepared.');
+    }
+    lastHailState = currentHail;
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+async function fetchAll() {
+    const [alerts, periods] = await Promise.all([fetchAlerts(), fetchForecast()]);
+    const hailAlerts = renderAlerts(alerts);
+    const hailForecast = renderForecast(periods);
+    updateStatus(
+        hailAlerts.filter(a => HAIL_RE.test(a.properties?.event || '') || HAIL_RE.test(a.properties?.description || '')),
+        hailForecast
+    );
+    document.getElementById('lastUpdated').innerHTML =
+        `Updated ${new Date().toLocaleString()} <button onclick="fetchAll()">Refresh</button>`;
+}
+
+// ── Init ──
+async function init() {
+    updateNotifUI();
+    const savedZip = localStorage.getItem('hailZip') || DEFAULT_ZIP;
+    document.getElementById('zipInput').value = savedZip;
+    await changeZip(null);
+    // Auto-refresh every 10 minutes
+    refreshTimer = setInterval(fetchAll, 10 * 60 * 1000);
+}
+init();
+</script>
+</body>
+</html>

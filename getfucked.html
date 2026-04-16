@@ -171,6 +171,9 @@ h1 span{color:var(--accent)}
 .celebrate-banner p{color:var(--text2);font-size:14px;margin-bottom:16px}
 .celebrate-banner button{background:var(--btn-bg);color:var(--btn-text);border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-family:var(--font);font-weight:bold;font-size:14px}
 .celebrate-banner button:hover{filter:brightness(1.2)}
+.page-credit{position:fixed;bottom:6px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--text2);opacity:0.4;z-index:10;pointer-events:auto}
+.page-credit a{color:var(--text2);text-decoration:none}
+.page-credit a:hover{text-decoration:underline;opacity:1}
 
 /* ========== KEYBOARD HINTS ========== */
 .hints{margin-top:12px;font-size:11px;color:var(--text2);opacity:0.5;text-align:center}
@@ -203,6 +206,7 @@ h1 span{color:var(--accent)}
 <body>
 
 <div class="copied-toast" id="toast"></div>
+<div class="page-credit">Made by <a href="https://ron.computer">Aaron</a></div>
 
 <div class="app">
     <div class="main" id="main-area">

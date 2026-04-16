@@ -284,6 +284,50 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     text-align: center; font-size: 0.8rem; color: var(--text-secondary);
     margin-top: 0.4rem;
 }
+.match-actions {
+    display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.6rem;
+    padding-top: 0.5rem; border-top: 1px dashed var(--border);
+}
+.match-action-btn {
+    background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary);
+    padding: 0.3rem 0.7rem; border-radius: 6px; font-family: inherit; font-size: 0.72rem; font-weight: 500;
+    cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.match-action-btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.match-action-btn i { font-size: 0.75rem; }
+a.match-action-btn { text-decoration: none; }
+.cal-menu {
+    position: absolute; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.35rem; z-index: 100; box-shadow: 0 4px 16px var(--shadow);
+    display: none; min-width: 180px;
+}
+.cal-menu.open { display: block; }
+.cal-menu button {
+    display: flex; align-items: center; gap: 0.5rem; width: 100%;
+    background: none; border: none; color: var(--text-primary);
+    padding: 0.5rem 0.75rem; border-radius: 6px; font-family: inherit;
+    font-size: 0.8rem; text-align: left; cursor: pointer;
+}
+.cal-menu button:hover { background: var(--bg-card-hover); color: var(--accent); }
+
+/* Notification toggle in favorites modal */
+.notif-row {
+    background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.8rem 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
+}
+.notif-row .notif-info { flex: 1; }
+.notif-row h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.4rem; }
+.notif-row h4 i { color: var(--accent); }
+.notif-row p { font-size: 0.75rem; color: var(--text-muted); }
+.notif-toggle-btn {
+    background: var(--accent); color: #111; border: none;
+    padding: 0.45rem 0.9rem; border-radius: 6px; font-family: inherit;
+    font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap;
+}
+.notif-toggle-btn:hover { filter: brightness(1.1); }
+.notif-toggle-btn.enabled { background: var(--win); color: #fff; }
+.notif-toggle-btn.disabled { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); }
+.notif-toggle-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Team badge small */
 .team-badge-sm {
@@ -406,6 +450,77 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .team-pick-meta { font-size: 0.7rem; color: var(--text-muted); }
 .team-pick-star { font-size: 1rem; color: var(--text-muted); flex-shrink: 0; transition: color 0.2s; }
 .team-pick-card.selected .team-pick-star { color: var(--accent); }
+/* Compact priority pill: shows crown + rank inline. Click to remove. */
+.team-pick-pri {
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    background: var(--accent); color: #111;
+    padding: 2px 6px; border-radius: 10px;
+    font-size: 0.7rem; font-weight: 800;
+    cursor: pointer; border: none; flex-shrink: 0;
+    transition: filter 0.15s;
+}
+.team-pick-pri:hover { filter: brightness(1.1); }
+.team-pick-pri i { font-size: 0.65rem; }
+/* Small up/down reorder column, only shown when team is priority. */
+.team-pick-reorder {
+    display: inline-flex; flex-direction: column; gap: 1px; flex-shrink: 0;
+}
+.team-pick-reorder button {
+    background: transparent; border: none; color: var(--text-muted);
+    cursor: pointer; padding: 0; width: 14px; height: 10px; line-height: 1;
+    font-size: 0.6rem; transition: color 0.15s;
+}
+.team-pick-reorder button:hover { color: var(--accent); }
+.team-pick-reorder button:disabled { opacity: 0.25; cursor: not-allowed; }
+/* Outline crown shown on non-priority favorited teams as an "add to priority" button. */
+.team-pick-crown {
+    background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+    width: 24px; height: 24px; border-radius: 6px; font-size: 0.7rem;
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+    transition: all 0.15s; flex-shrink: 0; padding: 0;
+}
+.team-pick-crown:hover { border-color: var(--accent); color: var(--accent); }
+.team-pick-crown:disabled { opacity: 0.3; cursor: not-allowed; }
+.team-pick-card.priority { border-color: var(--accent); background: var(--accent-dim); box-shadow: 0 0 0 1px var(--accent); }
+.team-pick-card.priority .team-pick-star { color: var(--accent); }
+/* Priority rank pill shown inline in the match-header (to the left of the
+   Bo3 format badge). Compact so it doesn't crowd the tournament name. */
+.priority-match-indicator {
+    background: var(--accent); color: #111; padding: 2px 6px;
+    border-radius: 4px; font-size: 0.65rem; font-weight: 800;
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    pointer-events: none; flex-shrink: 0;
+}
+.match-card.priority-match { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--next-glow); }
+.match-card.priority-match .match-team-name { color: var(--text-primary); }
+/* "Context" match: in the same tournament as a favorite but no favorite
+   team is playing. Rendered muted so favorite matches still pop. */
+.match-card.context-match { opacity: 0.72; }
+.match-card.context-match:hover { opacity: 1; }
+/* TBD placeholder match (future bracket slot, teams not yet determined). */
+.match-card.tbd-match { opacity: 0.55; cursor: default; }
+.match-card.tbd-match:hover { border-color: var(--border); opacity: 0.75; }
+.match-team-badge.tbd-badge { background: var(--bg-secondary); color: var(--text-muted); font-size: 0.9rem; }
+.match-team-name.tbd-name { color: var(--text-muted); font-style: italic; }
+.team-info-card.priority-team-card { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+/* Give the match header a right-side container so the rank pill sits
+   next to the Bo3 badge cleanly. */
+.match-header .match-header-right { display: inline-flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+/* Priority chip in favorite settings hint */
+.priority-count-hint {
+    font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.75rem;
+    display: flex; align-items: flex-start; gap: 0.4rem;
+    flex-wrap: wrap; line-height: 1.4;
+}
+.priority-count-hint i { color: var(--accent); margin-top: 0.15rem; }
+.priority-count-hint .pri-hint-label { color: var(--text-secondary); font-weight: 600; }
+.priority-count-hint .pri-hint-list { color: var(--text-primary); }
+.priority-count-hint .pri-hint-sub { width: 100%; color: var(--text-muted); font-size: 0.7rem; margin-top: 0.2rem; }
+@media (max-width: 520px) {
+    .priority-count-hint { font-size: 0.7rem; }
+    .priority-count-hint .pri-hint-sub { font-size: 0.65rem; }
+}
 
 /* Fav star on match cards */
 .fav-star {
@@ -428,13 +543,42 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .tournament-teams-list {
     display: flex; flex-wrap: wrap; gap: 0.4rem;
+    align-items: stretch;
 }
+.tournament-team-chip span { overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
 .tournament-team-chip {
-    background: var(--bg-secondary); padding: 0.3rem 0.6rem;
+    background: var(--bg-secondary); padding: 0.35rem 0.65rem;
     border-radius: 6px; font-size: 0.8rem; font-weight: 600;
-    display: inline-flex; align-items: center; gap: 0.35rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.tournament-team-chip img { width: 16px; height: 16px; object-fit: contain; }
+.tournament-team-chip img { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
+.tournament-team-chip.fav { border: 1px solid var(--accent); background: var(--accent-dim); color: var(--accent); }
+.tournament-status {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.2rem 0.55rem; border-radius: 5px;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    margin-left: 0.5rem; vertical-align: middle;
+}
+.tournament-status.live { background: rgba(239,68,68,0.15); color: var(--loss); }
+.tournament-status.soon { background: var(--accent-dim); color: var(--accent); }
+.tournament-status.upcoming { background: var(--bg-secondary); color: var(--text-secondary); }
+.tournament-stages {
+    font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;
+}
+.tournament-stages strong { color: var(--text-secondary); font-weight: 600; }
+.tournament-filter-tabs {
+    display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap;
+}
+.tournament-filter-tabs button {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary);
+    padding: 0.4rem 0.85rem; border-radius: 8px; font-family: inherit; font-size: 0.8rem;
+    cursor: pointer; transition: all 0.15s;
+}
+.tournament-filter-tabs button:hover { border-color: var(--accent); color: var(--accent); }
+.tournament-filter-tabs button.active { background: var(--accent); color: #111; border-color: var(--accent); font-weight: 600; }
+.tournament-name-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.25rem; }
+.tournament-fav-indicator { color: var(--accent); font-size: 0.85em; margin-right: 0.35rem; }
 
 /* Team Info section */
 .team-info-card {
@@ -758,7 +902,19 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     <div class="fav-modal-content" id="favModalContent">
         <button class="modal-close-btn" id="favCloseBtn" aria-label="Close" title="Close"><i class="fa-solid fa-xmark"></i></button>
         <h2><i class="fa-solid fa-star" style="color:var(--accent)"></i> Pick Your Teams</h2>
+        <div class="notif-row" id="notifRow">
+            <div class="notif-info">
+                <h4><i class="fa-solid fa-bell"></i> Match Notifications</h4>
+                <p id="notifDesc">Get a browser alert 10 minutes before your teams play.</p>
+                <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--text-muted);margin-top:0.4rem;cursor:pointer;user-select:none;">
+                    <input type="checkbox" id="notifPriorityOnly" onchange="window.toggleNotifPriorityOnly(this.checked)">
+                    <span><i class="fa-solid fa-crown" style="color:var(--accent);font-size:0.75em"></i> Only notify for my priority teams</span>
+                </label>
+            </div>
+            <button class="notif-toggle-btn" id="notifToggleBtn" onclick="window.toggleMatchNotifications()">Enable</button>
+        </div>
         <input class="fav-search" id="favSearch" type="text" placeholder="Search teams...">
+        <div class="priority-count-hint" id="priorityHint"></div>
         <div class="teams-grid" id="teamsGrid"></div>
     </div>
 </div>
@@ -918,40 +1074,188 @@ Object.entries(TEAM_ALIASES).forEach(([alias, canonical]) => {
 // NOTE: The Open Access tier does NOT support titleId, types, or teamIds filters.
 // All filtering for CS2 and specific teams is done client-side.
 
-const Q_ALL_SERIES = `query AllSeries($from: String!, $to: String!, $first: Int!, $orderDir: OrderDirection!, $after: String) {
-  allSeries(
-    filter: {
-      startTimeScheduled: { gte: $from, lte: $to }
-    }
-    first: $first
-    after: $after
-    orderBy: StartTimeScheduled
-    orderDirection: $orderDir
-  ) {
-    totalCount
-    pageInfo { hasNextPage endCursor }
-    edges {
-      node {
-        id
-        title { nameShortened }
-        startTimeScheduled
-        format { name nameShortened }
-        tournament { id name nameShortened }
-        teams {
-          baseInfo {
+// NOTE: The series query is now built dynamically in buildSeriesQuery() based
+// on schema introspection so we can include the right parent-tournament field.
+
+// We assume GRID exposes:
+//   - Tournament.parentTournament (nested) — the real event name when GRID
+//     returns a stage as the series' tournament (e.g. "Group Stage")
+//   - Query.tournament(id: ID!) — a top-level lookup for backfilling parent
+//     info when the series-level parentTournament is null
+//   - Series.streams — live broadcast URLs
+//
+// We query all of these OPTIMISTICALLY. If GRID rejects a field we retry
+// without it and remember the rejection for this session only (no
+// localStorage — persistence across reloads was causing the fix to stay
+// disabled after a single transient error). Session flags live on
+// `state` so they're visible in DevTools.
+let _parentTournamentSupported = true;
+let _streamsSupported = true;
+let _tournamentLookupSupported = true;
+
+// Build a parent-chain fragment up to N levels deep.
+function parentChainFragment(depth) {
+    if (!_parentTournamentSupported || depth <= 0) return '';
+    const inner = parentChainFragment(depth - 1);
+    return `\n          parentTournament { id name nameShortened${inner} }`;
+}
+
+function buildSeriesQuery() {
+    // GRID rejects deeply-nested parentTournament on some tiers, so we keep
+    // the chain at 1 level in the main series query and rely on the
+    // per-tournament backfill to walk further up.
+    const parentFragment = parentChainFragment(1);
+    // GRID's VideoStream type exposes `url` and `languageName` (no `rawLanguage`).
+    // Keep this minimal so we don't trip field-validation errors.
+    // GRID's VideoStream type on Open Access tier exposes only `url`.
+    const streamFragment = _streamsSupported
+        ? `\n        streams { url }`
+        : '';
+    return `query AllSeries($from: String!, $to: String!, $first: Int!, $orderDir: OrderDirection!, $after: String) {
+      allSeries(
+        filter: { startTimeScheduled: { gte: $from, lte: $to } }
+        first: $first
+        after: $after
+        orderBy: StartTimeScheduled
+        orderDirection: $orderDir
+      ) {
+        totalCount
+        pageInfo { hasNextPage endCursor }
+        edges {
+          node {
             id
-            name
-            nameShortened
-            logoUrl
-            colorPrimary
-            colorSecondary
+            title { nameShortened }
+            startTimeScheduled
+            format { name nameShortened }${streamFragment}
+            tournament {
+              id
+              name
+              nameShortened${parentFragment}
+            }
+            teams {
+              baseInfo { id name nameShortened logoUrl colorPrimary colorSecondary }
+              scoreAdvantage
+            }
           }
-          scoreAdvantage
         }
       }
+    }`;
+}
+
+// Detect GraphQL "Cannot query field X on type Y" / "FieldUndefined" errors
+// so we can retry without that field. Returns { field, path } where path
+// comes from a bracketed error path like "[allSeries/edges/node/streams/X]".
+function extractMissingField(errMsg) {
+    if (!errMsg) return { field: null, path: '' };
+    // Prefer the FieldUndefined form which tells us the path too
+    const fu = errMsg.match(/FieldUndefined@\[([^\]]+)\].*?Field ['"]?(\w+)['"]?/i);
+    if (fu) return { field: fu[2], path: fu[1] };
+    const m = errMsg.match(/Cannot query field ["']?(\w+)["']?/i)
+           || errMsg.match(/Unknown field ["']?(\w+)["']?/i)
+           || errMsg.match(/Field ["']?(\w+)["']?/i);
+    return { field: m ? m[1] : null, path: '' };
+}
+
+async function fetchAllSeries(vars) {
+    // Up to 3 retries to peel off unsupported fields one at a time.
+    // IMPORTANT: we always retry on a known missing-field error regardless
+    // of whether the corresponding support flag is currently true. Parallel
+    // fetches can race — one call may already have flipped a flag to false,
+    // but a sibling call's in-flight query was built before that, so it
+    // still sees the error. Retrying unconditionally re-issues with the
+    // current (now-disabled) flag state and succeeds.
+    for (let attempt = 0; attempt < 4; attempt++) {
+        try {
+            const result = await gridFetch(buildSeriesQuery(), vars);
+            if (result && result.allSeries && result.allSeries.edges) {
+                window._cs2Debug = window._cs2Debug || { samples: [], tournamentNames: new Set() };
+                result.allSeries.edges.forEach(e => {
+                    const n = e.node;
+                    if (!n || !n.title || !n.title.nameShortened) return;
+                    if (n.title.nameShortened.toLowerCase() !== 'cs2') return;
+                    if (window._cs2Debug.samples.length < 3) {
+                        window._cs2Debug.samples.push({ id: n.id, tournament: n.tournament, streams: n.streams });
+                    }
+                    if (n.tournament && n.tournament.name) window._cs2Debug.tournamentNames.add(n.tournament.name);
+                });
+                if (!window._cs2SampleLogged) {
+                    window._cs2SampleLogged = true;
+                    console.log('[cs2] Sample CS2 tournament JSON:', JSON.stringify(window._cs2Debug.samples[0]?.tournament));
+                    console.log('[cs2] Flags: parentTournament=' + _parentTournamentSupported + ' streams=' + _streamsSupported);
+                }
+            }
+            return result;
+        } catch (e) {
+            const msg = (e && e.message) || '';
+            const { field, path } = extractMissingField(msg);
+            if (path && path.includes('streams')) {
+                if (_streamsSupported) console.warn('[cs2] GRID rejected streams sub-field "' + field + '" — disabling streams.');
+                _streamsSupported = false;
+                continue;
+            }
+            if (field === 'streams') {
+                if (_streamsSupported) console.warn('[cs2] GRID rejected "streams" field — disabling.');
+                _streamsSupported = false;
+                continue;
+            }
+            if (field === 'parentTournament' || (path && path.includes('parentTournament'))) {
+                if (_parentTournamentSupported) console.warn('[cs2] GRID rejected "parentTournament" — disabling.');
+                _parentTournamentSupported = false;
+                continue;
+            }
+            throw e;
+        }
     }
-  }
-}`;
+    return await gridFetch(buildSeriesQuery(), vars);
+}
+
+// Walk up a tournament's parent chain, returning the first ancestor whose
+// name doesn't look like a stage word ("Group Stage", "Playoffs", etc.).
+// Returns null if every level is a stage word or no parent exists.
+function findRealTournamentName(tournamentObj) {
+    let cur = tournamentObj;
+    let depth = 0;
+    while (cur && depth < 5) {
+        const name = cur.nameShortened || cur.name;
+        if (name && !STAGE_WORDS_RE.test(name.trim())) {
+            return { id: cur.id, name, obj: cur };
+        }
+        cur = cur.parentTournament || null;
+        depth++;
+    }
+    return null;
+}
+
+// Per-ID backfill: for any orphan-stage tournament we saw, try querying
+// GRID's top-level tournament(id:) lookup to discover its parent chain.
+const _tournamentLookupCache = new Map(); // id -> { name, id } | null
+async function lookupTournamentParent(id) {
+    if (!_tournamentLookupSupported || !id) return null;
+    if (_tournamentLookupCache.has(id)) return _tournamentLookupCache.get(id);
+    const parentFrag = parentChainFragment(1);
+    const q = `query($id: ID!) { tournament(id: $id) { id name nameShortened${parentFrag} } }`;
+    try {
+        const data = await gridFetch(q, { id });
+        const t = data && data.tournament;
+        if (!t) { _tournamentLookupCache.set(id, null); return null; }
+        const real = findRealTournamentName(t);
+        _tournamentLookupCache.set(id, real);
+        return real;
+    } catch (e) {
+        const msg = (e && e.message) || '';
+        if (/Cannot query field ["']?tournament["']?/i.test(msg) || /Unknown field ["']?tournament["']?/i.test(msg)) {
+            console.warn('[cs2] GRID does not expose tournament(id:) lookup — disabling backfill.');
+            _tournamentLookupSupported = false;
+        } else {
+            console.warn('[cs2] tournament(' + id + ') lookup failed:', msg);
+        }
+        _tournamentLookupCache.set(id, null);
+        return null;
+    }
+}
+
+// Clear any stale fallback flag from earlier builds
+try { localStorage.removeItem('cs2_parent_tournament_unsupported'); } catch {}
 
 // CS2 series-state query. Both `teams` (series-level: maps won) and
 // `games[].teams` (per-game: rounds + side) are unions, so we use inline
@@ -1059,6 +1363,11 @@ async function gridFetch(query, variables, endpoint, opts) {
 let state = {
     upcoming: [],
     results: [],
+    // Unfiltered CS2 series — populated as a side-effect of fetchUpcoming/fetchResults.
+    // Used by the Tournaments tab so it can show ALL upcoming events, not just
+    // those involving favorite teams.
+    allUpcomingSeries: [],
+    allResultsSeries: [],
     tournaments: [],
     countdownIntervals: [],
     selectedTz: null,
@@ -1097,10 +1406,78 @@ function setFavorites(favs) {
 function toggleFavorite(name) {
     const favs = getFavorites();
     const idx = favs.indexOf(name);
-    if (idx >= 0) favs.splice(idx, 1);
-    else favs.push(name);
+    if (idx >= 0) {
+        favs.splice(idx, 1);
+        // Removing from favorites also removes from priority.
+        const pri = getPriorityFavorites();
+        const pIdx = pri.indexOf(name);
+        if (pIdx >= 0) { pri.splice(pIdx, 1); setPriorityFavorites(pri); }
+    } else {
+        favs.push(name);
+    }
     setFavorites(favs);
     return favs;
+}
+
+// Priority favorites — a subset of favorites (max 3) the user cares most about.
+// Priority teams get visual emphasis, sort first in match lists, and (by default)
+// are the only teams that trigger browser notifications.
+const PRIORITY_MAX = 3;
+function getPriorityFavorites() {
+    try { return JSON.parse(localStorage.getItem('cs2_priority_favorites')) || []; }
+    catch { return []; }
+}
+function setPriorityFavorites(list) {
+    localStorage.setItem('cs2_priority_favorites', JSON.stringify(list));
+}
+function togglePriority(name) {
+    const favs = getFavorites();
+    if (!favs.includes(name)) return { ok: false, reason: 'not-favorited' };
+    const pri = getPriorityFavorites();
+    const idx = pri.indexOf(name);
+    if (idx >= 0) {
+        pri.splice(idx, 1);
+    } else {
+        if (pri.length >= PRIORITY_MAX) return { ok: false, reason: 'max', max: PRIORITY_MAX };
+        pri.push(name);
+    }
+    setPriorityFavorites(pri);
+    return { ok: true, priority: pri };
+}
+// Match involves a priority team? Uses the same loose-match rules as favorites.
+function matchInvolvesPriority(match, priority) {
+    return matchPriorityRank(match, priority) !== Infinity;
+}
+// Rank-of: 1-based position in priority list (1 = most important).
+// Returns null if team isn't in the priority list.
+function priorityRankOf(teamName, priority) {
+    if (!teamName || !priority) return null;
+    for (let i = 0; i < priority.length; i++) {
+        const pn = priority[i];
+        if (pn === teamName || teamName.includes(pn) || pn.includes(teamName)) return i + 1;
+    }
+    return null;
+}
+// Returns the best (lowest) priority rank among the match's teams, or
+// Infinity if neither team is on the priority list. Used as a sort key.
+function matchPriorityRank(match, priority) {
+    if (!priority || priority.length === 0) return Infinity;
+    const r1 = priorityRankOf(match.team1?.name, priority);
+    const r2 = priorityRankOf(match.team2?.name, priority);
+    const ranks = [r1, r2].filter(r => r !== null);
+    return ranks.length ? Math.min(...ranks) : Infinity;
+}
+// Reorder helpers for the priority list.
+function movePriority(name, direction) {
+    const pri = getPriorityFavorites();
+    const idx = pri.indexOf(name);
+    if (idx < 0) return false;
+    const newIdx = idx + direction;
+    if (newIdx < 0 || newIdx >= pri.length) return false;
+    // Swap
+    [pri[idx], pri[newIdx]] = [pri[newIdx], pri[idx]];
+    setPriorityFavorites(pri);
+    return true;
 }
 
 // One-time migration: old favorites used GRID numeric IDs; clear them since
@@ -1416,6 +1793,7 @@ window.openFavorites = function() {
     renderFavoritesGrid();
     document.getElementById('favSearch').value = '';
     document.getElementById('favSearch').focus();
+    if (typeof updateNotifBtnUI === 'function') updateNotifBtnUI();
 };
 
 function closeFavorites() {
@@ -1439,68 +1817,222 @@ document.getElementById('favSearch').addEventListener('input', (e) => {
 function renderFavoritesGrid(filter) {
     const grid = document.getElementById('teamsGrid');
     const favs = getFavorites();
+    const priority = getPriorityFavorites();
     const filtered = filter
         ? TOP_CS2_TEAMS.filter(t => t.name.toLowerCase().includes(filter) || t.tag.toLowerCase().includes(filter))
         : TOP_CS2_TEAMS;
 
+    // Render the priority count hint above the grid (once)
+    const hint = document.getElementById('priorityHint');
+    if (hint) {
+        const rankInline = priority.length > 0
+            ? priority.map((n, i) => `<strong>#${i + 1}</strong> ${n}`).join(' · ')
+            : '<span style="color:var(--text-muted)">none yet — click a crown below</span>';
+        hint.innerHTML = `<i class="fa-solid fa-crown"></i> <span class="pri-hint-label">Priority (${priority.length}/${PRIORITY_MAX}):</span> <span class="pri-hint-list">${rankInline}</span><span class="pri-hint-sub">#1 gets the hero and top spot everywhere. Use the arrows to reorder.</span>`;
+    }
+
     grid.innerHTML = filtered.map(t => {
         const sel = favs.includes(t.name);
+        const rank = priorityRankOf(t.name, priority);
+        const isPri = rank !== null;
+        const atMax = priority.length >= PRIORITY_MAX && !isPri;
         const escapedName = t.name.replace(/'/g, "\\'");
         const logo = logoCache[t.name];
         const badge = logo
             ? `<div class="team-pick-badge" style="background:#fff"><img src="${logo}" alt="${t.tag}" style="width:100%;height:100%;object-fit:contain" onerror="this.parentNode.style.background='${t.color}';this.parentNode.innerHTML='${t.tag.replace(/'/g, "\\'")}'"></div>`
             : `<div class="team-pick-badge" style="background:${t.color};color:#fff;font-size:0.55rem">${t.tag}</div>`;
-        return `<div class="team-pick-card ${sel ? 'selected' : ''}" onclick="window.toggleTeamPick('${escapedName}')">
+        // Right side: either the priority pill + reorder arrows, OR the
+        // outline crown (if favorited but not priority). No rank badge, no
+        // separate crown+star once priority — keep each card to 2 icons max.
+        let rightSide;
+        if (isPri) {
+            rightSide = `
+                <button class="team-pick-pri" onclick="event.stopPropagation();window.toggleTeamPriority('${escapedName}')" title="Priority #${rank} — click to remove">
+                    <i class="fa-solid fa-crown"></i> #${rank}
+                </button>
+                <div class="team-pick-reorder" onclick="event.stopPropagation()">
+                    <button onclick="event.stopPropagation();window.movePriorityTeam('${escapedName}', -1)" title="Move up" ${rank === 1 ? 'disabled' : ''}><i class="fa-solid fa-chevron-up"></i></button>
+                    <button onclick="event.stopPropagation();window.movePriorityTeam('${escapedName}', 1)" title="Move down" ${rank === priority.length ? 'disabled' : ''}><i class="fa-solid fa-chevron-down"></i></button>
+                </div>`;
+        } else if (sel) {
+            const title = atMax ? `Priority full (max ${PRIORITY_MAX}). Remove another first.` : `Add to priority (slot #${priority.length + 1})`;
+            rightSide = `
+                <button class="team-pick-crown" onclick="event.stopPropagation();window.toggleTeamPriority('${escapedName}')" title="${title}" ${atMax ? 'disabled' : ''}>
+                    <i class="fa-solid fa-crown"></i>
+                </button>`;
+        } else {
+            rightSide = '';
+        }
+        return `<div class="team-pick-card ${sel ? 'selected' : ''} ${isPri ? 'priority' : ''}" onclick="window.toggleTeamPick('${escapedName}')">
             ${badge}
             <div class="team-pick-info">
                 <div class="team-pick-name">${t.name}</div>
                 <div class="team-pick-meta">${t.tag}</div>
             </div>
             <div class="team-pick-star"><i class="fa-${sel ? 'solid' : 'regular'} fa-star"></i></div>
+            ${rightSide}
         </div>`;
     }).join('');
 }
+window.movePriorityTeam = function(name, direction) {
+    if (movePriority(name, direction)) {
+        renderFavoritesGrid(document.getElementById('favSearch').value.toLowerCase());
+    }
+};
 
 window.toggleTeamPick = function(name) {
     toggleFavorite(name);
     renderFavoritesGrid(document.getElementById('favSearch').value.toLowerCase());
 };
+window.toggleTeamPriority = function(name) {
+    const result = togglePriority(name);
+    if (!result.ok && result.reason === 'max') {
+        // Brief, non-blocking hint
+        const hint = document.getElementById('priorityHint');
+        if (hint) {
+            hint.style.color = 'var(--loss)';
+            setTimeout(() => hint.style.color = '', 1500);
+        }
+    }
+    renderFavoritesGrid(document.getElementById('favSearch').value.toLowerCase());
+};
 
 // ── Data Fetching ──
+// Build a match object from a GRID series node.
+// Uses parentTournament (the actual event like "ESL Pro League S20") when
+// available; otherwise falls back to `tournament` (which is often a stage
+// name like "Group Stage" or "Round Robin"). The stage is preserved in
+// `stage` so we can show both.
+// Heuristic stage keywords used to clean up the "parent" name when GRID
+// doesn't give us a real parent tournament object. GRID sometimes stuffs
+// the stage into the tournament name like "IEM Dallas 2025 - Group Stage".
+// GRID's Open Access tier returns tournament names in the format:
+//   tournament.name          = "IEM Rio 2026 (Group Stage)"  — parent + stage
+//   tournament.nameShortened = "Group Stage"                  — stage only
+// So we prefer `name` (richer) and parse "(Stage)" at the end to split parent/stage.
+// We ALSO handle the older "{parent} - {stage}" variant as a fallback.
+const STAGE_PAREN_RE = /^(.+?)\s*\(([^()]+)\)\s*$/;
+const STAGE_DASH_RE = /^(.+?)\s*[-–—:·|]+\s*(group\s*stage|round\s*robin|play[-\s]*ins?|playoffs?|swiss(?:\s*stage)?|bracket|finals?|semi[-\s]*finals?|quarter[-\s]*finals?|grand\s*finals?|qualifiers?|upper\s*bracket|lower\s*bracket|main\s*event|opening\s*stage|closing\s*stage|legends\s*stage|challengers\s*stage|champions\s*stage|stage\s*\d+|group\s*[a-z]|regular\s*season)\s*$/i;
+const STAGE_WORDS_RE = /^(group\s*stage|round\s*robin|play[-\s]*ins?|playoffs?|swiss(\s*stage)?|bracket|finals?|semi[-\s]*finals?|quarter[-\s]*finals?|grand\s*finals?|qualifiers?|upper\s*bracket|lower\s*bracket|main\s*event|opening\s*stage|closing\s*stage|legends\s*stage|challengers\s*stage|champions\s*stage|stage\s*\d+|group\s*[a-z]|day\s*\d+|week\s*\d+|finals\s*stage|regular\s*season)$/i;
+
+// Split "IEM Rio 2026 (Group Stage)" → { parent: "IEM Rio 2026", stage: "Group Stage" }
+// Handles both paren-style (GRID's current format) and dash-style fallback.
+function splitStageFromName(rawName) {
+    if (!rawName) return { parent: '', stage: '' };
+    const paren = rawName.match(STAGE_PAREN_RE);
+    if (paren) {
+        const inside = paren[2].trim();
+        // Only treat the parenthesized portion as a stage if it looks stage-y.
+        if (STAGE_WORDS_RE.test(inside)) {
+            return { parent: paren[1].trim(), stage: inside };
+        }
+    }
+    const dash = rawName.match(STAGE_DASH_RE);
+    if (dash) {
+        return { parent: dash[1].trim(), stage: dash[2].replace(/\s+/g, ' ').trim() };
+    }
+    return { parent: rawName, stage: '' };
+}
+
+function buildMatchFromNode(n, extra) {
+    const teams = (n.teams || []).map(t => resolveTeam(t.baseInfo));
+    const tObj = n.tournament;
+    // IMPORTANT: GRID's Open Access tier stuffs the parent + stage into
+    // `tournament.name` like "IEM Rio 2026 (Group Stage)", while
+    // `nameShortened` is just "Group Stage". We must prefer `name` (richer)
+    // and then split off the trailing stage in parentheses.
+    const fullName = tObj && (tObj.name || tObj.nameShortened);
+
+    let tournamentName = 'Unknown Tournament';
+    let stage = '';
+    let tournamentId = tObj ? tObj.id : null;
+
+    if (fullName) {
+        // 1. Try nested parent chain (in case GRID ever re-enables parentTournament).
+        const realParent = findRealTournamentName(tObj);
+        if (realParent && tObj && realParent.id !== tObj.id) {
+            tournamentName = realParent.name;
+            tournamentId = realParent.id;
+            const myName = (tObj.name || tObj.nameShortened || '').trim();
+            stage = myName && myName !== realParent.name ? myName : '';
+        } else {
+            // 2. Split "{parent} ({stage})" or "{parent} - {stage}"
+            const split = splitStageFromName(fullName);
+            if (split.parent && split.stage) {
+                tournamentName = split.parent;
+                stage = split.stage;
+            } else {
+                // 3. No split possible — either a bare stage word or a real event.
+                tournamentName = fullName;
+                stage = '';
+            }
+        }
+    }
+
+    // Extract stream URLs if GRID returned any. Normalize into a simple
+    // list of { url, language } so the UI can render them uniformly.
+    const streams = [];
+    if (_streamsSupported && Array.isArray(n.streams)) {
+        n.streams.forEach(s => {
+            if (!s) return;
+            if (typeof s === 'string') {
+                streams.push({ url: s, language: '' });
+            } else if (s.url) {
+                streams.push({ url: s.url, language: s.languageName || '' });
+            }
+        });
+    }
+
+    return {
+        id: n.id,
+        time: n.startTimeScheduled,
+        format: formatBo(n.format),
+        tournament: tournamentName,
+        tournamentId,
+        stage,
+        stageId: tObj ? tObj.id : null,
+        streams,
+        team1: teams[0] || { id: '0', name: 'TBD', tag: 'TBD', logoUrl: '' },
+        team2: teams[1] || { id: '0', name: 'TBD', tag: 'TBD', logoUrl: '' },
+        ...(extra || {}),
+    };
+}
+
+// Returns true if any favorite team name loosely matches a team name.
+function matchInvolvesFavorite(teamNames, favNames) {
+    if (!favNames || favNames.length === 0) return true;
+    return favNames.some(fn => teamNames.some(tn => tn === fn || tn.includes(fn) || fn.includes(tn)));
+}
+
 async function fetchUpcoming(favNames) {
     const now = DateTime.now();
-    let allMatches = [];
+    const all = [];
     let after = null;
     let pages = 0;
-    // Start window 6 hours in the past so currently-live matches (started but
-    // not yet ended) still surface in the Upcoming tab marked as "LIVE".
-    const fromISO = now.minus({ hours: 6 }).toISO();
-    const toISO = now.plus({ days: 14 }).toISO();
+    // Start window 7 days in the past. This serves two purposes:
+    //   1. Currently-live matches (started recently) surface in the Live tab
+    //   2. Recent matches (even if finished) let us detect which tournaments
+    //      the user's favorite teams are participating in, so we can show
+    //      future TBD/placeholder matches for those tournaments even after
+    //      today's games are done. The partition step in loadUpcoming()
+    //      moves past matches to state.recentlyFinished so they don't
+    //      clutter the Upcoming tab — only the tournament-association
+    //      benefit remains.
+    const fromISO = now.minus({ days: 7 }).toISO();
+    const toISO = now.plus({ days: 30 }).toISO();
 
     while (pages < 8) {
         const vars = { from: fromISO, to: toISO, first: 50, orderDir: 'ASC' };
         if (after) vars.after = after;
 
-        const data = await gridFetch(Q_ALL_SERIES, vars);
+        const data = await fetchAllSeries(vars);
         const edges = data.allSeries.edges || [];
         edges.forEach(e => {
             const n = e.node;
             if (!isCS2(n)) return;
-            const teams = (n.teams || []).map(t => resolveTeam(t.baseInfo));
-            const teamNames = teams.map(t => t.name);
-            if (favNames.length > 0 && !favNames.some(fn => teamNames.some(tn => tn === fn || tn.includes(fn) || fn.includes(tn)))) return;
             const startMs = DateTime.fromISO(n.startTimeScheduled).toMillis();
             const isLive = startMs <= Date.now() && startMs > Date.now() - 6 * 3600 * 1000;
-            allMatches.push({
-                id: n.id,
-                time: n.startTimeScheduled,
-                format: formatBo(n.format),
-                tournament: n.tournament ? (n.tournament.nameShortened || n.tournament.name) : 'Unknown Tournament',
-                tournamentId: n.tournament ? n.tournament.id : null,
-                team1: teams[0] || { id: '0', name: 'TBD', tag: 'TBD', logoUrl: '' },
-                team2: teams[1] || { id: '0', name: 'TBD', tag: 'TBD', logoUrl: '' },
-                isLive,
-            });
+            all.push(buildMatchFromNode(n, { isLive }));
         });
 
         if (!data.allSeries.pageInfo || !data.allSeries.pageInfo.hasNextPage) break;
@@ -1508,12 +2040,32 @@ async function fetchUpcoming(favNames) {
         pages++;
     }
 
-    return allMatches;
+    // Keep the full, unfiltered list on state for the Tournaments view.
+    state.allUpcomingSeries = all;
+
+    // For Upcoming tab: include every match from any tournament where a
+    // favorite team is playing. This gives users the full schedule for
+    // their tournaments — including TBD/placeholder matches for future
+    // rounds (playoffs brackets that aren't seeded yet). Tag each match
+    // with a flag indicating whether a favorite team is actually playing
+    // so the UI can emphasize those cards.
+    const favTournaments = new Set();
+    all.forEach(m => {
+        if (!m.tournament) return;
+        if (matchInvolvesFavorite([m.team1.name, m.team2.name], favNames)) {
+            favTournaments.add(m.tournament);
+        }
+    });
+    const filtered = all.filter(m => m.tournament && favTournaments.has(m.tournament));
+    filtered.forEach(m => {
+        m.involvesFavorite = matchInvolvesFavorite([m.team1.name, m.team2.name], favNames);
+    });
+    return filtered;
 }
 
 async function fetchResults(favNames) {
     const now = DateTime.now();
-    let allMatches = [];
+    const all = [];
     let after = null;
     let pages = 0;
 
@@ -1525,23 +2077,12 @@ async function fetchResults(favNames) {
         const vars = { from: fromISO, to: toISO, first: 50, orderDir: 'DESC' };
         if (after) vars.after = after;
 
-        const data = await gridFetch(Q_ALL_SERIES, vars);
+        const data = await fetchAllSeries(vars);
         const edges = data.allSeries.edges || [];
         edges.forEach(e => {
             const n = e.node;
             if (!isCS2(n)) return;
-            const teams = (n.teams || []).map(t => resolveTeam(t.baseInfo));
-            const teamNames = teams.map(t => t.name);
-            if (favNames.length > 0 && !favNames.some(fn => teamNames.some(tn => tn === fn || tn.includes(fn) || fn.includes(tn)))) return;
-            allMatches.push({
-                id: n.id,
-                time: n.startTimeScheduled,
-                format: formatBo(n.format),
-                tournament: n.tournament ? (n.tournament.nameShortened || n.tournament.name) : 'Unknown Tournament',
-                tournamentId: n.tournament ? n.tournament.id : null,
-                team1: teams[0] || { id: '0', name: 'TBD', tag: 'TBD', logoUrl: '' },
-                team2: teams[1] || { id: '0', name: 'TBD', tag: 'TBD', logoUrl: '' },
-            });
+            all.push(buildMatchFromNode(n));
         });
 
         if (!data.allSeries.pageInfo || !data.allSeries.pageInfo.hasNextPage) break;
@@ -1549,47 +2090,189 @@ async function fetchResults(favNames) {
         pages++;
     }
 
-    return allMatches;
+    state.allResultsSeries = all;
+    return all.filter(m => matchInvolvesFavorite([m.team1.name, m.team2.name], favNames));
 }
 
 // Derive tournaments client-side from upcoming + results CS2 series
+// Placeholder/filler team names we should hide from tournament team lists.
+// GRID populates unassigned qualifier spots with names like "CS2-OPEN-A",
+// "TBD", "Winner of Match X", etc.
+const PLACEHOLDER_TEAM_RE = /^(tbd|cs2[-:_\s]|winner\s+of|loser\s+of|qualifier|seed\s*\d|to\s+be\s+determined|placeholder)/i;
+function isPlaceholderTeam(tm) {
+    if (!tm || !tm.name) return true;
+    const n = tm.name.trim();
+    if (!n || n === 'TBD' || n === 'Unknown') return true;
+    if (PLACEHOLDER_TEAM_RE.test(n)) return true;
+    return false;
+}
+// Clean a team's display name — strip the generic "Team " prefix when the
+// team isn't in our known list (where we've already normalized names).
+// Also collapse GRID placeholder names ("CS2-1", "TBD-1", "Winner of ...")
+// to a simple "TBD" so match cards read cleanly for un-seeded rounds.
+function displayTeamName(tm) {
+    if (!tm || !tm.name) return 'TBD';
+    if (TOP_CS2_TEAMS_MAP[tm.name]) return tm.name;
+    if (isPlaceholderTeam(tm)) return 'TBD';
+    return tm.name.replace(/^team\s+/i, '').trim();
+}
+// Match has no resolved teams on either side — GRID placeholder for an
+// un-seeded future bracket slot. The card should read "TBD vs TBD".
+function isTbdMatch(match) {
+    return isPlaceholderTeam(match?.team1) && isPlaceholderTeam(match?.team2);
+}
+
 function deriveTournaments(upcomingMatches, pastMatches) {
     const tournMap = {};
     const allMatches = [...(upcomingMatches || []), ...(pastMatches || [])];
 
     allMatches.forEach(m => {
-        const tid = m.tournamentId;
-        if (!tid) return;
-        if (!tournMap[tid]) {
-            tournMap[tid] = {
-                id: tid,
+        // Group by the parsed parent tournament NAME (not the stage ID) so
+        // that "IEM Rio 2026 (Group Stage)" and "IEM Rio 2026 (Playoffs)"
+        // collapse into a single "IEM Rio 2026" entry with multiple stages.
+        // Fall back to stage ID when no parent name is available.
+        const groupKey = (m.tournament || '').trim().toLowerCase() || String(m.tournamentId || '');
+        if (!groupKey) return;
+        if (!tournMap[groupKey]) {
+            tournMap[groupKey] = {
+                id: m.tournamentId || groupKey,
                 name: m.tournament || 'Unknown Tournament',
                 teams: {},
+                stages: {},
+                stageIds: new Set(),
                 matchCount: 0,
+                upcomingMatchCount: 0,
                 earliestMatch: m.time,
                 latestMatch: m.time,
             };
         }
-        const t = tournMap[tid];
+        const t = tournMap[groupKey];
         t.matchCount++;
+        if (m.tournamentId) t.stageIds.add(String(m.tournamentId));
+        const ms = new Date(m.time).getTime();
+        if (ms > Date.now()) t.upcomingMatchCount++;
         if (m.time < t.earliestMatch) t.earliestMatch = m.time;
         if (m.time > t.latestMatch) t.latestMatch = m.time;
+        if (m.stage) {
+            if (!t.stages[m.stage]) t.stages[m.stage] = { name: m.stage, earliest: m.time, latest: m.time, count: 0 };
+            const st = t.stages[m.stage];
+            st.count++;
+            if (m.time < st.earliest) st.earliest = m.time;
+            if (m.time > st.latest) st.latest = m.time;
+        }
         [m.team1, m.team2].forEach(tm => {
-            if (tm && tm.name !== 'TBD') t.teams[tm.name] = tm;
+            if (!isPlaceholderTeam(tm)) t.teams[tm.name] = tm;
         });
     });
 
-    return Object.values(tournMap)
-        .sort((a, b) => b.matchCount - a.matchCount)
-        .map(t => ({
-            id: t.id,
-            name: t.name,
-            startDate: t.earliestMatch,
-            endDate: t.latestMatch,
-            prize: '',
-            location: '',
-            teams: Object.values(t.teams),
-        }));
+    // Orphan-stage merging: GRID sometimes gives us a proper parent
+    // tournament for some series (e.g. "IEM Rio 2026") and just the stage
+    // name for others (e.g. "Group Stage"). The latter end up as separate
+    // tournament cards even though they belong to the same event. We merge
+    // them by looking for a non-orphan with overlapping dates and a
+    // significant team overlap, and absorbing the orphan's data into it.
+    const tourneys = Object.values(tournMap);
+    const orphanNameRe = STAGE_WORDS_RE;
+    const orphans = [];
+    const nonOrphans = [];
+    tourneys.forEach(t => {
+        const name = (t.name || '').trim();
+        if (orphanNameRe.test(name)) orphans.push(t);
+        else nonOrphans.push(t);
+    });
+    console.log(`[cs2] deriveTournaments: ${tourneys.length} total (${orphans.length} orphan-stage, ${nonOrphans.length} real events)`);
+    if (orphans.length > 0) console.log('[cs2]   Orphans:', orphans.map(o => o.name).join(', '));
+    if (nonOrphans.length > 0) console.log('[cs2]   Real events:', nonOrphans.map(o => o.name).join(', '));
+    orphans.forEach(orphan => {
+        const oStart = new Date(orphan.earliestMatch).getTime();
+        const oEnd = new Date(orphan.latestMatch).getTime();
+        const orphanTeamNames = new Set(Object.keys(orphan.teams));
+        let best = null;
+        let bestScore = 0;
+        for (const cand of nonOrphans) {
+            const cStart = new Date(cand.earliestMatch).getTime();
+            const cEnd = new Date(cand.latestMatch).getTime();
+            // Require date overlap (with a 2-day fuzz since stage dates can
+            // slightly exceed the parent range).
+            const fuzz = 2 * 24 * 3600 * 1000;
+            if (oEnd + fuzz < cStart || oStart - fuzz > cEnd) continue;
+            const candTeamNames = new Set(Object.keys(cand.teams));
+            let shared = 0;
+            orphanTeamNames.forEach(n => { if (candTeamNames.has(n)) shared++; });
+            if (shared === 0) continue;
+            // Score = fraction of orphan teams also in candidate.
+            const score = shared / Math.max(1, orphanTeamNames.size);
+            if (score > bestScore) { best = cand; bestScore = score; }
+        }
+        // Require ≥40% team overlap — enough to be confident it's the same event.
+        if (best && bestScore >= 0.4) {
+            // Merge teams
+            Object.values(orphan.teams).forEach(tm => { if (!best.teams[tm.name]) best.teams[tm.name] = tm; });
+            // Promote the orphan's name as a stage under the parent
+            const stageKey = orphan.name;
+            if (!best.stages[stageKey]) {
+                best.stages[stageKey] = {
+                    name: stageKey,
+                    earliest: orphan.earliestMatch,
+                    latest: orphan.latestMatch,
+                    count: orphan.matchCount,
+                };
+            } else {
+                const st = best.stages[stageKey];
+                if (orphan.earliestMatch < st.earliest) st.earliest = orphan.earliestMatch;
+                if (orphan.latestMatch > st.latest) st.latest = orphan.latestMatch;
+                st.count += orphan.matchCount;
+            }
+            // Absorb match counts + date range
+            best.matchCount += orphan.matchCount;
+            best.upcomingMatchCount += orphan.upcomingMatchCount;
+            if (orphan.earliestMatch < best.earliestMatch) best.earliestMatch = orphan.earliestMatch;
+            if (orphan.latestMatch > best.latestMatch) best.latestMatch = orphan.latestMatch;
+            // Propagate the real tournament name back to the match objects so
+            // Upcoming/Live cards, Watch buttons, and .ics exports all use
+            // "IEM Rio 2026" instead of "Group Stage".
+            allMatches.forEach(m => {
+                if (String(m.tournamentId) === String(orphan.id)) {
+                    m.tournament = best.name;
+                    m.tournamentId = best.id;
+                    if (!m.stage) m.stage = orphan.name;
+                }
+            });
+            orphan._merged = true;
+        }
+    });
+
+    const now = Date.now();
+    return tourneys
+        .filter(t => !t._merged)
+        .map(t => {
+            const startMs = new Date(t.earliestMatch).getTime();
+            const endMs = new Date(t.latestMatch).getTime();
+            let status;
+            if (startMs <= now && endMs >= now - 24 * 3600 * 1000) status = 'live';
+            else if (startMs > now) status = 'upcoming';
+            else status = 'past';
+            return {
+                id: t.id,
+                name: t.name,
+                startDate: t.earliestMatch,
+                endDate: t.latestMatch,
+                matchCount: t.matchCount,
+                upcomingMatchCount: t.upcomingMatchCount,
+                status,
+                stages: Object.values(t.stages).sort((a, b) => new Date(a.earliest) - new Date(b.earliest)),
+                teams: Object.values(t.teams),
+                prize: '',
+                location: '',
+            };
+        })
+        .sort((a, b) => {
+            // Live first, then upcoming by start date, then past by end date desc
+            const rank = { live: 0, upcoming: 1, past: 2 };
+            if (rank[a.status] !== rank[b.status]) return rank[a.status] - rank[b.status];
+            if (a.status === 'past') return new Date(b.endDate) - new Date(a.endDate);
+            return new Date(a.startDate) - new Date(b.startDate);
+        });
 }
 
 // ── Render: Hero ──
@@ -1626,17 +2309,29 @@ function renderHero() {
         heroEl.innerHTML = `<div class="hero-empty">
             <i class="fa-solid fa-calendar-xmark"></i>
             <h2>No Upcoming Matches</h2>
-            <p>No upcoming matches found for your favorite teams in the next 14 days.</p>
+            <p>No upcoming matches found for your favorite teams in the next 30 days.</p>
         </div>`;
         return;
     }
 
-    // Prefer a live match; otherwise the next match that hasn't started yet;
-    // otherwise fall back to the first item (which will be a recent past match).
+    // Hero selection honors priority rank:
+    //   1. Prefer a live match. If multiple, pick the one with the lowest
+    //      (best) priority rank — so #1 Vitality live beats #2 Spirit live.
+    //   2. Otherwise pick the next upcoming match with the best rank.
+    //   3. Fall back to the first item.
     const now = Date.now();
-    const liveMatch = state.upcoming.find(m => m.isLive);
-    const nextFuture = state.upcoming.find(m => new Date(m.time).getTime() > now);
-    const match = liveMatch || nextFuture || state.upcoming[0];
+    const priority = getPriorityFavorites();
+    const rankCompare = (a, b) => {
+        const ra = matchPriorityRank(a, priority);
+        const rb = matchPriorityRank(b, priority);
+        if (ra !== rb) return ra - rb;
+        return new Date(a.time) - new Date(b.time);
+    };
+    const liveSorted = state.upcoming.filter(m => m.isLive).sort(rankCompare);
+    const futureSorted = state.upcoming
+        .filter(m => !m.isLive && new Date(m.time).getTime() > now)
+        .sort(rankCompare);
+    const match = liveSorted[0] || futureSorted[0] || state.upcoming[0];
     const cd = getCountdown(match.time);
     const isLive = !!match.isLive;
 
@@ -1662,7 +2357,7 @@ function renderHero() {
     }
 
     heroEl.innerHTML = `
-        <div class="hero-meta">${match.tournament} ${match.format ? '<span class="format-badge">' + match.format + '</span>' : ''}</div>
+        <div class="hero-meta">${match.tournament}${match.stage ? ' <span style="color:var(--text-muted);font-weight:400">· ' + match.stage + '</span>' : ''} ${match.format ? '<span class="format-badge">' + match.format + '</span>' : ''}</div>
         <div class="hero-matchup">
             <div class="hero-team">
                 ${teamBadgeHtml(match.team1, 'lg')}
@@ -1676,6 +2371,7 @@ function renderHero() {
         </div>
         ${centerHtml}
         <div class="match-time" style="margin-top:0.5rem">${formatTime(match.time)}</div>
+        ${matchActionsHtml(match, { isLive })}
     `;
 }
 
@@ -1694,8 +2390,16 @@ function renderLive() {
         panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-circle-pause"></i><p>None of your favorite teams are playing right now</p><div class="live-tip">${tip}</div></div>`;
         return;
     }
+    const priority = getPriorityFavorites();
+    // Sort by priority rank (1 wins over 2 wins over 3 wins over non-priority).
+    const sortedLive = live.slice().sort((a, b) => {
+        const ra = matchPriorityRank(a, priority);
+        const rb = matchPriorityRank(b, priority);
+        if (ra !== rb) return ra - rb;
+        return new Date(a.time) - new Date(b.time);
+    });
     let html = '<div class="section-title"><i class="fa-solid fa-circle-dot" style="color:var(--loss)"></i> Live Now</div>';
-    live.forEach((match, i) => {
+    sortedLive.forEach((match, i) => {
         let s1 = '', s2 = '';
         if (match.liveState) {
             const ts = match.liveState.teams || [];
@@ -1706,10 +2410,14 @@ function renderLive() {
         const center = (s1 !== '' && s2 !== '')
             ? `<div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem"><div style="font-size:1.6rem;font-weight:800">${s1} <span style="color:var(--text-muted)">-</span> ${s2}</div><span class="live-pulse" style="font-size:0.7rem">LIVE</span></div>`
             : '<span class="live-pulse">LIVE</span>';
-        html += `<div class="match-card next-match" onclick="window.openMatchDetails('${match.id}')">
+        const isPriority = matchInvolvesPriority(match, priority);
+        html += `<div class="match-card next-match ${isPriority ? 'priority-match' : ''}" onclick="window.openMatchDetails('${match.id}')">
             <div class="match-header">
-                <div class="match-tournament">${match.tournament}</div>
-                ${match.format ? '<div class="match-format">' + match.format + '</div>' : ''}
+                <div class="match-tournament">${match.tournament}${match.stage ? ' <span style="color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0">· ' + match.stage + '</span>' : ''}</div>
+                <div class="match-header-right">
+                    ${isPriority ? `<div class="priority-match-indicator"><i class="fa-solid fa-crown"></i> #${matchPriorityRank(match, priority)}</div>` : ''}
+                    ${match.format ? '<div class="match-format">' + match.format + '</div>' : ''}
+                </div>
             </div>
             <div class="match-teams">
                 <div class="match-team">${teamBadgeHtml(match.team1)}<div><div class="match-team-name">${match.team1.name}</div></div></div>
@@ -1718,6 +2426,7 @@ function renderLive() {
             </div>
             ${mapBadgesHtml(match)}
             <div class="match-time">${formatTime(match.time)}</div>
+            ${matchActionsHtml(match, { isLive: true })}
         </div>`;
     });
     panel.innerHTML = html;
@@ -1743,10 +2452,11 @@ function renderUpcoming() {
     // Exclude live matches — those belong in the Live tab.
     const upcoming = (state.upcoming || []).filter(m => !m.isLive);
     if (upcoming.length === 0) {
-        panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-calendar"></i><p>No upcoming matches found in the next 14 days</p></div>`;
+        panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-calendar"></i><p>No upcoming matches found in the next 30 days</p></div>`;
         return;
     }
 
+    const priority = getPriorityFavorites();
     // Build tournament filter options from current upcoming pool
     const tournSet = new Map();
     upcoming.forEach(m => { if (m.tournamentId) tournSet.set(m.tournamentId, m.tournament); });
@@ -1756,7 +2466,18 @@ function renderUpcoming() {
     let filtered = upcoming;
     if (currentFilter) filtered = filtered.filter(m => String(m.tournamentId) === String(currentFilter));
 
-    let html = '<div class="section-title"><i class="fa-solid fa-clock"></i> Upcoming Matches</div>';
+    // Count today's matches (in the user's selected timezone) for the header.
+    // Count only fav-involved matches in the "today" headline — context/TBD
+    // matches are included for schedule visibility but shouldn't inflate
+    // the headline number the user is scanning for.
+    const todayKey = DateTime.now().setZone(state.selectedTz).toFormat('yyyy-MM-dd');
+    const isTodayMatch = (m) => DateTime.fromISO(m.time).setZone(state.selectedTz).toFormat('yyyy-MM-dd') === todayKey;
+    const favOnly = upcoming.filter(m => m.involvesFavorite);
+    const todayFavCount = favOnly.filter(isTodayMatch).length;
+    const laterFavCount = favOnly.length - todayFavCount;
+    const extraContext = upcoming.length - favOnly.length;
+
+    let html = `<div class="section-title"><i class="fa-solid fa-clock"></i> Upcoming Matches <span style="color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0;margin-left:0.4rem;font-size:0.75rem">— next 30 days${todayFavCount > 0 ? ` · <span style="color:var(--accent);font-weight:600">${todayFavCount} today</span>` : ''}${laterFavCount > 0 ? ` · ${laterFavCount} later` : ''}${extraContext > 0 ? ` · +${extraContext} in your tournaments` : ''}</span></div>`;
     html += `<div class="upcoming-controls">
         <select id="upcomingTournamentFilter" onchange="window.setUpcomingFilter(this.value)">
             <option value="">All tournaments</option>
@@ -1776,29 +2497,61 @@ function renderUpcoming() {
 
     const renderCard = (match, i) => {
         const cd = getCountdown(match.time);
-        return `<div class="match-card ${i === 0 ? 'next-match' : ''}" onclick="window.openMatchDetails('${match.id}')">
+        const isPriority = matchInvolvesPriority(match, priority);
+        const isTbd = isTbdMatch(match);
+        const isContext = !match.involvesFavorite; // non-fav match shown because it's in a fav tournament
+        const t1Name = displayTeamName(match.team1);
+        const t2Name = displayTeamName(match.team2);
+        const p1 = isPlaceholderTeam(match.team1);
+        const p2 = isPlaceholderTeam(match.team2);
+        return `<div class="match-card ${i === 0 && !isContext ? 'next-match' : ''} ${isPriority ? 'priority-match' : ''} ${isTbd ? 'tbd-match' : ''} ${isContext ? 'context-match' : ''}" onclick="${isTbd ? '' : `window.openMatchDetails('${match.id}')`}">
             <div class="match-header">
-                <div class="match-tournament">${match.tournament}</div>
-                ${match.format ? '<div class="match-format">' + match.format + '</div>' : ''}
+                <div class="match-tournament">${match.tournament}${match.stage ? ' <span style="color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0">· ' + match.stage + '</span>' : ''}</div>
+                <div class="match-header-right">
+                    ${isPriority ? `<div class="priority-match-indicator"><i class="fa-solid fa-crown"></i> #${matchPriorityRank(match, priority)}</div>` : ''}
+                    ${match.format ? '<div class="match-format">' + match.format + '</div>' : ''}
+                </div>
             </div>
             <div class="match-teams">
                 <div class="match-team">
-                    ${teamBadgeHtml(match.team1)}
-                    <div><div class="match-team-name">${match.team1.name}</div></div>
+                    ${p1 ? '<div class="match-team-badge tbd-badge"><i class="fa-solid fa-question"></i></div>' : teamBadgeHtml(match.team1)}
+                    <div><div class="match-team-name ${p1 ? 'tbd-name' : ''}">${t1Name}</div></div>
                 </div>
                 <div class="match-score">vs</div>
                 <div class="match-team right">
-                    ${teamBadgeHtml(match.team2)}
-                    <div><div class="match-team-name">${match.team2.name}</div></div>
+                    ${p2 ? '<div class="match-team-badge tbd-badge"><i class="fa-solid fa-question"></i></div>' : teamBadgeHtml(match.team2)}
+                    <div><div class="match-team-name ${p2 ? 'tbd-name' : ''}">${t2Name}</div></div>
                 </div>
             </div>
             ${cd ? `<div class="match-countdown" data-time="${match.time}">${cd}</div>` : ''}
             <div class="match-time">${formatTime(match.time)}</div>
+            ${isTbd ? '' : matchActionsHtml(match)}
         </div>`;
     };
 
+    // List view layout: split "happening today" from "coming up later".
+    // Sort order within each bucket:
+    //   1. Favorite-involved matches before context-only matches
+    //   2. Priority rank (1 < 2 < 3 < non-priority)
+    //   3. Non-TBD matches before TBD placeholder matches
+    //   4. Chronological
+    const rankSort = (a, b) => {
+        const af = a.involvesFavorite ? 0 : 1;
+        const bf = b.involvesFavorite ? 0 : 1;
+        if (af !== bf) return af - bf;
+        const ra = matchPriorityRank(a, priority);
+        const rb = matchPriorityRank(b, priority);
+        if (ra !== rb) return ra - rb;
+        const at = isTbdMatch(a) ? 1 : 0;
+        const bt = isTbdMatch(b) ? 1 : 0;
+        if (at !== bt) return at - bt;
+        return new Date(a.time) - new Date(b.time);
+    };
+    const todayMatches = filtered.filter(isTodayMatch).sort(rankSort);
+    const laterMatches = filtered.filter(m => !isTodayMatch(m)).sort(rankSort);
+
     if (view === 'calendar') {
-        // Group by day in user's timezone
+        // Group by day in user's timezone — within each day, sort by priority rank
         const groups = new Map();
         filtered.forEach(m => {
             const key = DateTime.fromISO(m.time).setZone(state.selectedTz).toFormat('yyyy-MM-dd');
@@ -1809,6 +2562,12 @@ function renderUpcoming() {
         const tomorrow = DateTime.now().setZone(state.selectedTz).plus({ days: 1 }).toFormat('yyyy-MM-dd');
         let idx = 0;
         for (const [day, matches] of groups) {
+            matches.sort((a, b) => {
+                const ra = matchPriorityRank(a, priority);
+                const rb = matchPriorityRank(b, priority);
+                if (ra !== rb) return ra - rb;
+                return new Date(a.time) - new Date(b.time);
+            });
             const dt = DateTime.fromISO(day).setZone(state.selectedTz);
             let label;
             if (day === today) label = 'Today';
@@ -1818,7 +2577,77 @@ function renderUpcoming() {
             matches.forEach(m => { html += renderCard(m, idx++); });
         }
     } else {
-        filtered.forEach((m, i) => { html += renderCard(m, i); });
+        // List view: three-way split within Today and Later buckets:
+        //   (a) priority-team matches
+        //   (b) other favorite-team matches (not priority)
+        //   (c) context-only matches (same tournament, favs not playing —
+        //       e.g. TBD playoff brackets)
+        let idx = 0;
+        const pluralize = (n) => n === 1 ? 'match' : 'matches';
+        const classify = (m) => {
+            if (!m.involvesFavorite) return 'context';
+            return matchInvolvesPriority(m, priority) ? 'priority' : 'other';
+        };
+        const renderBucket = (matches, { title, accent, marginTop }) => {
+            if (matches.length === 0) return;
+            const style = [];
+            if (accent) style.push('color:var(--accent)');
+            if (marginTop) style.push(`margin-top:${marginTop}`);
+            html += `<div class="day-header" style="${style.join(';')}">${title} <span style="color:var(--text-muted);font-weight:400">· ${matches.length} ${pluralize(matches.length)}</span></div>`;
+            matches.forEach(m => { html += renderCard(m, idx++); });
+        };
+
+        const renderGroup = (label, matches, { big } = {}) => {
+            const priorityOnes = matches.filter(m => classify(m) === 'priority');
+            const otherFav = matches.filter(m => classify(m) === 'other');
+            const context = matches.filter(m => classify(m) === 'context');
+            let first = true;
+            const mt = () => first ? 0 : '1.25rem';
+            if (priorityOnes.length > 0) {
+                renderBucket(priorityOnes, {
+                    title: `<i class="fa-solid fa-crown"></i> My Priority — ${label}`,
+                    accent: true,
+                    marginTop: mt(),
+                });
+                first = false;
+            }
+            if (otherFav.length > 0) {
+                renderBucket(otherFav, {
+                    title: priority.length > 0 ? `Other Favorites — ${label}` : label,
+                    marginTop: mt(),
+                });
+                first = false;
+            }
+            if (context.length > 0) {
+                renderBucket(context, {
+                    title: `<i class="fa-solid fa-layer-group"></i> More in your tournaments — ${label}`,
+                    marginTop: mt(),
+                });
+                first = false;
+            }
+        };
+
+        if (todayMatches.length > 0) {
+            // When there's only today matches and they all involve favs, skip
+            // the nested structure — just show them under a simple "Today" header.
+            const todayFav = todayMatches.filter(m => m.involvesFavorite);
+            const todayContext = todayMatches.filter(m => !m.involvesFavorite);
+            if (todayContext.length === 0) {
+                renderBucket(todayMatches, {
+                    title: `<i class="fa-solid fa-calendar-day"></i> Today`,
+                    accent: true,
+                });
+            } else {
+                html += `<div class="day-header" style="color:var(--accent)"><i class="fa-solid fa-calendar-day"></i> Today</div>`;
+                renderGroup('Today', todayMatches);
+            }
+        }
+
+        if (laterMatches.length > 0) {
+            const leader = todayMatches.length > 0 ? '1.5rem' : 0;
+            html += `<div class="day-header" style="margin-top:${leader}">Coming Up</div>`;
+            renderGroup('Later', laterMatches);
+        }
     }
 
     panel.innerHTML = html;
@@ -1872,33 +2701,61 @@ function renderResults() {
     if (anyMissingScores) {
         html += '<div class="info-note"><i class="fa-solid fa-info-circle"></i> Scores are shown for matches from the last ~12 hours. Older results show dates and teams only.</div>';
     }
-    merged.forEach(match => {
+    const priority = getPriorityFavorites();
+
+    // Build card HTML once — used for both the priority section and the
+    // chronological "other results" section.
+    const buildCard = (match) => {
         const scoreHtml = buildScoreHtml(match);
         const needsHydration = !match.liveState;
-        html += `<div class="match-card" data-match-id="${match.id}"${needsHydration ? ' data-needs-hydration="1"' : ''} onclick="window.openMatchDetails('${match.id}')">
+        const isPriority = matchInvolvesPriority(match, priority);
+        return `<div class="match-card ${isPriority ? 'priority-match' : ''}" data-match-id="${match.id}"${needsHydration ? ' data-needs-hydration="1"' : ''} onclick="window.openMatchDetails('${match.id}')">
             <div class="match-header">
-                <div class="match-tournament">${match.tournament}</div>
-                ${match.format ? '<div class="match-format">' + match.format + '</div>' : ''}
+                <div class="match-tournament">${match.tournament}${match.stage ? ' <span style="color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0">· ' + match.stage + '</span>' : ''}</div>
+                <div class="match-header-right">
+                    ${isPriority ? `<div class="priority-match-indicator"><i class="fa-solid fa-crown"></i> #${matchPriorityRank(match, priority)}</div>` : ''}
+                    ${match.format ? '<div class="match-format">' + match.format + '</div>' : ''}
+                </div>
             </div>
             <div class="match-teams">
                 <div class="match-team">
                     ${teamBadgeHtml(match.team1)}
-                    <div>
-                        <div class="match-team-name">${match.team1.name}</div>
-                    </div>
+                    <div><div class="match-team-name">${match.team1.name}</div></div>
                 </div>
                 <div class="match-score-slot">${scoreHtml}</div>
                 <div class="match-team right">
                     ${teamBadgeHtml(match.team2)}
-                    <div>
-                        <div class="match-team-name">${match.team2.name}</div>
-                    </div>
+                    <div><div class="match-team-name">${match.team2.name}</div></div>
                 </div>
             </div>
             ${mapBadgesHtml(match)}
             <div class="match-time">${formatTime(match.time)}</div>
         </div>`;
-    });
+    };
+
+    if (priority.length > 0) {
+        const priorityResults = merged
+            .filter(m => matchInvolvesPriority(m, priority))
+            .sort((a, b) => {
+                const ra = matchPriorityRank(a, priority);
+                const rb = matchPriorityRank(b, priority);
+                if (ra !== rb) return ra - rb;
+                return new Date(b.time) - new Date(a.time); // newest first within a rank
+            });
+        const otherResults = merged.filter(m => !matchInvolvesPriority(m, priority));
+        if (priorityResults.length > 0) {
+            html += `<div class="day-header" style="color:var(--accent)"><i class="fa-solid fa-crown"></i> My Priority Teams <span style="color:var(--text-muted);font-weight:400">· ${priorityResults.length} result${priorityResults.length !== 1 ? 's' : ''}</span></div>`;
+            priorityResults.forEach(m => { html += buildCard(m); });
+        }
+        if (otherResults.length > 0) {
+            if (priorityResults.length > 0) {
+                html += `<div class="day-header" style="margin-top:1.25rem">Other Results <span style="color:var(--text-muted);font-weight:400">· ${otherResults.length} result${otherResults.length !== 1 ? 's' : ''}</span></div>`;
+            }
+            otherResults.forEach(m => { html += buildCard(m); });
+        }
+    } else {
+        merged.forEach(m => { html += buildCard(m); });
+    }
     panel.innerHTML = html;
     setupLazyResultsHydration(merged);
 }
@@ -1967,9 +2824,10 @@ function setupLazyResultsHydration(matches) {
 function renderTournaments() {
     const panel = document.getElementById('panel-tournaments');
     const favs = getFavorites();
+    const favSet = new Set(favs);
 
     if (state.loading.tournaments) {
-        panel.innerHTML = '<div class="section-title"><i class="fa-solid fa-trophy"></i> Active Tournaments</div>' + skeletonCards(3);
+        panel.innerHTML = '<div class="section-title"><i class="fa-solid fa-trophy"></i> CS2 Tournaments</div>' + skeletonCards(3);
         return;
     }
     if (state.errors.tournaments) {
@@ -1977,33 +2835,135 @@ function renderTournaments() {
         return;
     }
     if (!state.tournaments || state.tournaments.length === 0) {
-        panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-trophy"></i><p>No active CS2 tournaments found right now</p></div>`;
+        panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-trophy"></i><p>No CS2 tournaments found in the data window</p></div>`;
         return;
     }
 
-    let html = '<div class="section-title"><i class="fa-solid fa-trophy"></i> Active Tournaments</div>';
-    state.tournaments.forEach(t => {
-        const startFmt = t.startDate ? DateTime.fromISO(t.startDate).toFormat('MMM d') : '';
-        const endFmt = t.endDate ? DateTime.fromISO(t.endDate).toFormat('MMM d, yyyy') : '';
-        const dates = startFmt && endFmt ? `${startFmt} - ${endFmt}` : (startFmt || endFmt);
+    // Default to "pro" filter so small qualifiers don't clutter the view.
+    const filterMode = state.tournamentFilter || 'pro';
+    const now = Date.now();
+
+    const live = state.tournaments.filter(t => t.status === 'live');
+    const upcoming = state.tournaments.filter(t => t.status === 'upcoming');
+    const past = state.tournaments.filter(t => t.status === 'past');
+
+    const involvesFav = (t) => (t.teams || []).some(tm => favSet.has(tm.name));
+    // A "pro" tournament has at least 2 teams from our top-50 list. This
+    // filters out qualifiers, grassroots, and regional events that tend to
+    // flood the upcoming feed.
+    const isPro = (t) => {
+        const top50Count = (t.teams || []).filter(tm => TOP_CS2_TEAMS_MAP[tm.name]).length;
+        return top50Count >= 2;
+    };
+
+    let visible;
+    if (filterMode === 'favorites') visible = state.tournaments.filter(involvesFav);
+    else if (filterMode === 'pro') visible = state.tournaments.filter(isPro);
+    else if (filterMode === 'upcoming') visible = [...live, ...upcoming];
+    else if (filterMode === 'past') visible = past;
+    else visible = state.tournaments;
+
+    let html = '<div class="section-title"><i class="fa-solid fa-trophy"></i> CS2 Tournaments</div>';
+
+    // Filter tabs
+    const proCount = state.tournaments.filter(isPro).length;
+    html += `<div class="tournament-filter-tabs">
+        <button class="${filterMode === 'pro' ? 'active' : ''}" onclick="window.setTournamentFilter('pro')" title="Tournaments with 2+ top-50 teams"><i class="fa-solid fa-medal"></i> Pro <span style="opacity:0.6">(${proCount})</span></button>
+        ${favs.length > 0 ? `<button class="${filterMode === 'favorites' ? 'active' : ''}" onclick="window.setTournamentFilter('favorites')"><i class="fa-solid fa-star"></i> My Favorites <span style="opacity:0.6">(${state.tournaments.filter(involvesFav).length})</span></button>` : ''}
+        <button class="${filterMode === 'upcoming' ? 'active' : ''}" onclick="window.setTournamentFilter('upcoming')">Live &amp; Upcoming <span style="opacity:0.6">(${live.length + upcoming.length})</span></button>
+        <button class="${filterMode === 'past' ? 'active' : ''}" onclick="window.setTournamentFilter('past')">Past <span style="opacity:0.6">(${past.length})</span></button>
+        <button class="${filterMode === 'all' ? 'active' : ''}" onclick="window.setTournamentFilter('all')">All <span style="opacity:0.6">(${state.tournaments.length})</span></button>
+    </div>`;
+
+    if (visible.length === 0) {
+        html += `<div class="empty-state"><i class="fa-solid fa-filter"></i><p>No tournaments match this filter</p></div>`;
+        panel.innerHTML = html;
+        return;
+    }
+
+    visible.forEach(t => {
+        const startMs = new Date(t.startDate).getTime();
+        const endMs = new Date(t.endDate).getTime();
+        const startFmt = t.startDate ? DateTime.fromISO(t.startDate).setZone(state.selectedTz).toFormat('MMM d') : '';
+        const endFmt = t.endDate ? DateTime.fromISO(t.endDate).setZone(state.selectedTz).toFormat('MMM d, yyyy') : '';
+        const dates = startFmt && endFmt && startFmt !== endFmt.split(',')[0] ? `${startFmt} – ${endFmt}` : (endFmt || startFmt);
+
+        // Status badge
+        let statusHtml = '';
+        if (t.status === 'live') {
+            statusHtml = '<span class="tournament-status live"><span style="width:6px;height:6px;background:currentColor;border-radius:50%;animation:livePulse 1.2s infinite"></span> Live now</span>';
+        } else if (t.status === 'upcoming') {
+            const daysUntil = Math.max(0, Math.ceil((startMs - now) / (24 * 3600 * 1000)));
+            if (daysUntil === 0) statusHtml = '<span class="tournament-status soon">Starts today</span>';
+            else if (daysUntil === 1) statusHtml = '<span class="tournament-status soon">Starts tomorrow</span>';
+            else if (daysUntil <= 7) statusHtml = `<span class="tournament-status soon">In ${daysUntil} days</span>`;
+            else statusHtml = `<span class="tournament-status upcoming">In ${daysUntil} days</span>`;
+        }
+
+        // Stage summary — find the next upcoming stage if any
+        let stageLine = '';
+        if (t.stages && t.stages.length > 0) {
+            const nextStage = t.stages.find(s => new Date(s.latest).getTime() >= now) || t.stages[t.stages.length - 1];
+            const stageNames = t.stages.map(s => s.name).join(' → ');
+            if (t.stages.length > 1) {
+                stageLine = `<div class="tournament-stages">Stages: ${stageNames}${nextStage && t.status !== 'past' ? ` &middot; <strong>Current: ${nextStage.name}</strong>` : ''}</div>`;
+            } else if (t.stages.length === 1) {
+                stageLine = `<div class="tournament-stages">Stage: <strong>${t.stages[0].name}</strong></div>`;
+            }
+        }
+
+        const fav = involvesFav(t);
+        const favBadge = fav ? '<i class="fa-solid fa-star tournament-fav-indicator" title="One of your favorite teams is playing"></i>' : '';
+        const top50Count = (t.teams || []).filter(tm => TOP_CS2_TEAMS_MAP[tm.name]).length;
+        const proBadge = top50Count >= 2
+            ? `<span class="tournament-status upcoming" title="${top50Count} top-50 teams participating" style="background:var(--accent-dim);color:var(--accent)"><i class="fa-solid fa-medal"></i> ${top50Count} top-50</span>`
+            : '';
+
+        // Team chips — favorites first, then top-50 teams, then alphabetically
+        const chips = (t.teams || []).slice()
+            .filter(tm => !isPlaceholderTeam(tm))
+            .sort((a, b) => {
+                const af = favSet.has(a.name) ? 0 : 1;
+                const bf = favSet.has(b.name) ? 0 : 1;
+                if (af !== bf) return af - bf;
+                const at = TOP_CS2_TEAMS_MAP[a.name] ? 0 : 1;
+                const bt = TOP_CS2_TEAMS_MAP[b.name] ? 0 : 1;
+                if (at !== bt) return at - bt;
+                return displayTeamName(a).localeCompare(displayTeamName(b));
+            });
+        const maxChips = 24;
+        const chipsShown = chips.slice(0, maxChips);
+        const overflow = chips.length - chipsShown.length;
 
         html += `<div class="tournament-card">
-            <div class="tournament-name">${t.name}</div>
+            <div class="tournament-name-row">
+                <div class="tournament-name">${favBadge}${t.name}</div>
+                ${statusHtml}
+                ${proBadge}
+            </div>
             <div class="tournament-meta">
                 ${dates ? '<i class="fa-solid fa-calendar"></i> ' + dates : ''}
-                ${t.location ? ' &middot; <i class="fa-solid fa-location-dot"></i> ' + t.location : ''}
-                ${t.prize ? ' &middot; <i class="fa-solid fa-sack-dollar"></i> ' + t.prize : ''}
+                ${t.upcomingMatchCount > 0 ? ' &middot; <i class="fa-solid fa-clock"></i> ' + t.upcomingMatchCount + ' upcoming match' + (t.upcomingMatchCount === 1 ? '' : 'es') : ''}
             </div>
-            ${t.teams.length > 0 ? `
-                <div class="section-title" style="font-size:0.75rem;margin-top:0.5rem;margin-bottom:0.4rem"><i class="fa-solid fa-users"></i> Teams (${t.teams.length})</div>
+            ${stageLine}
+            ${chipsShown.length > 0 ? `
+                <div class="section-title" style="font-size:0.75rem;margin-top:0.75rem;margin-bottom:0.4rem"><i class="fa-solid fa-users"></i> Teams (${chips.length})</div>
                 <div class="tournament-teams-list">
-                    ${t.teams.map(tm => `<div class="tournament-team-chip">${tm.logoUrl ? '<img src="' + tm.logoUrl + '" alt="' + tm.tag + '" onerror="this.style.display=\'none\'">' : ''} ${tm.tag}</div>`).join('')}
+                    ${chipsShown.map(tm => {
+                        const displayName = displayTeamName(tm);
+                        return `<div class="tournament-team-chip ${favSet.has(tm.name) ? 'fav' : ''}" title="${displayName}">${tm.logoUrl ? '<img src="' + tm.logoUrl + '" alt="" onerror="this.style.display=\'none\'">' : ''}<span>${displayName}</span></div>`;
+                    }).join('')}
+                    ${overflow > 0 ? `<div class="tournament-team-chip" style="opacity:0.6">+${overflow} more</div>` : ''}
                 </div>
             ` : ''}
         </div>`;
     });
     panel.innerHTML = html;
 }
+window.setTournamentFilter = function(mode) {
+    state.tournamentFilter = mode;
+    renderTournaments();
+};
 
 // ── Render: Team Info ──
 function renderTeamInfo() {
@@ -2021,10 +2981,22 @@ function renderTeamInfo() {
 
     let html = '<div class="section-title"><i class="fa-solid fa-users"></i> Team Details</div>';
 
-    favs.forEach(favName => {
+    // Sort favorites so priority teams come first in their ranked order.
+    // Non-priority favorites follow in their original pick order.
+    const priority = getPriorityFavorites();
+    const priSet = new Set(priority);
+    const nonPriorityFavs = favs.filter(n => !priSet.has(n));
+    const orderedFavs = [
+        ...priority.filter(n => favs.includes(n)), // priority teams still favorited, in rank order
+        ...nonPriorityFavs,
+    ];
+
+    orderedFavs.forEach(favName => {
         const known = TOP_CS2_TEAMS_MAP[favName];
         const tag = known ? known.tag : favName.substring(0, 4).toUpperCase();
         const color = known ? known.color : '#666';
+        const rank = priorityRankOf(favName, priority);
+        const isPri = rank !== null;
 
         // Get next 5 upcoming and last 5 results for this team
         const teamUpcoming = (state.upcoming || []).filter(m => m.team1.name === favName || m.team2.name === favName).slice(0, 5);
@@ -2034,11 +3006,11 @@ function renderTeamInfo() {
         const wins = form.filter(f => f.result === 'W').length;
         const losses = form.filter(f => f.result === 'L').length;
 
-        html += `<div class="team-info-card">
+        html += `<div class="team-info-card ${isPri ? 'priority-team-card' : ''}">
             <div class="team-info-header">
                 <div class="team-info-badge" style="background:${color};color:#fff">${tag}</div>
                 <div>
-                    <div class="team-info-name">${favName}</div>
+                    <div class="team-info-name">${favName}${isPri ? ` <span class="priority-match-indicator" style="margin-left:0.5rem"><i class="fa-solid fa-crown"></i> #${rank}</span>` : ''}</div>
                     <div class="team-info-meta">${tag}</div>
                 </div>
             </div>
@@ -2247,7 +3219,7 @@ window.openMatchDetails = function(matchId) {
     content.innerHTML = `
         <button class="match-details-close" onclick="window.closeMatchDetails()">&times;</button>
         <div class="match-details-title">${match.team1.name} vs ${match.team2.name}</div>
-        <div class="match-details-meta">${match.tournament} · ${match.format || ''} · ${formatTime(match.time)}</div>
+        <div class="match-details-meta">${match.tournament}${match.stage ? ' · ' + match.stage : ''}${match.format ? ' · ' + match.format : ''} · ${formatTime(match.time)}</div>
         ${scoreHtml}
         ${gamesHtml}
     `;
@@ -2531,8 +3503,72 @@ async function loadResults(favNames) {
 function loadTournaments() {
     state.loading.tournaments = false;
     state.errors.tournaments = null;
-    state.tournaments = deriveTournaments(state.upcoming || [], state.results || []);
+    // Use the unfiltered series pools so the Tournaments tab shows EVERY CS2
+    // event in the window, not just those involving the user's favorites.
+    // Fall back to filtered lists if unfiltered pools aren't populated yet
+    // (e.g. before the first fetch completes).
+    const upcomingPool = (state.allUpcomingSeries && state.allUpcomingSeries.length)
+        ? state.allUpcomingSeries
+        : (state.upcoming || []);
+    const resultsPool = (state.allResultsSeries && state.allResultsSeries.length)
+        ? state.allResultsSeries
+        : (state.results || []);
+    state.tournaments = deriveTournaments(upcomingPool, resultsPool);
     renderTournaments();
+}
+
+// Backfill orphan-stage tournament names via the per-tournament lookup. For
+// any match whose tournament name is still a bare stage word ("Group Stage",
+// "Playoffs", etc.), hit GRID's tournament(id:) endpoint to walk up the
+// parent chain and resolve the real event name. Mutates the match objects
+// in-place so all views reflect the fix after re-render.
+async function backfillOrphanTournaments() {
+    if (!_tournamentLookupSupported) return; // secondary lookup disabled this session
+    const pools = [state.allUpcomingSeries || [], state.allResultsSeries || []];
+    // Collect unique tournamentIds whose current name is a bare stage word
+    const needsLookup = new Map(); // tournamentId -> representative match
+    for (const pool of pools) {
+        for (const m of pool) {
+            if (!m.tournamentId) continue;
+            const name = (m.tournament || '').trim();
+            if (name && STAGE_WORDS_RE.test(name)) {
+                if (!needsLookup.has(m.tournamentId)) needsLookup.set(m.tournamentId, m);
+            }
+        }
+    }
+    if (needsLookup.size === 0) return;
+    console.log(`[cs2] Backfilling ${needsLookup.size} orphan tournament(s) via secondary lookup...`);
+
+    // Serial (not parallel) to respect GRID rate limits; gridFetch already
+    // serializes internally, but keeping this explicit for clarity.
+    const remap = new Map(); // oldId -> { name, id }
+    for (const [tid, sample] of needsLookup) {
+        const real = await lookupTournamentParent(tid);
+        if (real && real.name && real.name !== sample.tournament) {
+            remap.set(String(tid), real);
+            console.log(`[cs2]   ${tid} "${sample.tournament}" → "${real.name}"`);
+        }
+    }
+    if (remap.size === 0) return;
+
+    // Apply remap to every match pool on state
+    const allPools = [
+        state.upcoming || [],
+        state.recentlyFinished || [],
+        state.results || [],
+        state.allUpcomingSeries || [],
+        state.allResultsSeries || [],
+    ];
+    for (const pool of allPools) {
+        for (const m of pool) {
+            const r = remap.get(String(m.tournamentId));
+            if (r) {
+                if (!m.stage && m.tournament && m.tournament !== r.name) m.stage = m.tournament;
+                m.tournament = r.name;
+                m.tournamentId = r.id;
+            }
+        }
+    }
 }
 
 async function loadAllData() {
@@ -2561,16 +3597,296 @@ async function loadAllData() {
     // Wait for upcoming + results to finish, then compute derived data
     await Promise.allSettled([upcomingPromise, resultsPromise]);
 
-    // Tournaments are computed client-side from the fetched data
+    // Backfill orphan stage names via the per-tournament lookup (if GRID
+    // exposes one). This handles the case where GRID returns "Group Stage"
+    // as the series' tournament with no parent populated, but the tournament
+    // endpoint reveals the real event ("IEM Rio 2026").
+    try { await backfillOrphanTournaments(); } catch (e) { console.warn('[cs2] backfill failed:', e.message); }
+
+    // Tournaments are computed client-side from the fetched data. The orphan
+    // merge also mutates individual match objects to fix remaining orphan
+    // stage names (e.g. "Group Stage" → "IEM Rio 2026") based on team +
+    // date overlap, so we must re-render the match-based views afterwards.
     loadTournaments();
+    renderHero();
+    renderUpcoming();
+    renderLive();
+    renderResults();
+    renderTodayStrip();
 
     state.loading.teaminfo = false;
     renderTeamInfo();
 
     state.lastUpdated = Date.now();
     updateLastSynced();
-    renderTodayStrip();
     updatePageTitle();
+}
+
+// ── Calendar & Notifications ──
+const NOTIF_LEAD_MS = 10 * 60 * 1000; // 10 minutes
+const NOTIFIED_KEY = 'cs2_notified_matches';
+
+function icsEscape(s) { return String(s || '').replace(/([,;\\])/g, '\\$1').replace(/\n/g, '\\n'); }
+function icsFormatDate(iso) {
+    const d = new Date(iso);
+    const pad = n => String(n).padStart(2, '0');
+    return d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate())
+         + 'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds()) + 'Z';
+}
+function buildMatchCalendarData(match) {
+    const title = `${match.team1.name} vs ${match.team2.name}`;
+    const start = new Date(match.time);
+    // Default match duration estimate based on format
+    let durHours = 2;
+    if (match.format) {
+        const m = String(match.format).match(/(\d+)/);
+        if (m) { const n = parseInt(m[1], 10); if (n === 3) durHours = 2.5; else if (n === 5) durHours = 4; }
+    }
+    const end = new Date(start.getTime() + durHours * 3600 * 1000);
+    const tournament = match.tournament || 'CS2 Match';
+    const description = `${tournament}${match.format ? ' — ' + match.format : ''}\\n\\nTracked via CS2 Pro Tracker`;
+    return { title, start, end, tournament, description };
+}
+function downloadIcs(match) {
+    const d = buildMatchCalendarData(match);
+    const uid = `cs2-${match.id}@aaronmclellan.github.io`;
+    const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//CS2 Pro Tracker//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:' + uid,
+        'DTSTAMP:' + icsFormatDate(new Date().toISOString()),
+        'DTSTART:' + icsFormatDate(d.start.toISOString()),
+        'DTEND:' + icsFormatDate(d.end.toISOString()),
+        'SUMMARY:' + icsEscape(d.title),
+        'DESCRIPTION:' + icsEscape(d.description),
+        'LOCATION:' + icsEscape(d.tournament),
+        'BEGIN:VALARM',
+        'ACTION:DISPLAY',
+        'DESCRIPTION:' + icsEscape(d.title + ' starting soon'),
+        'TRIGGER:-PT10M',
+        'END:VALARM',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${d.title.replace(/[^a-z0-9]+/gi, '_')}.ics`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function openGoogleCalendar(match) {
+    const d = buildMatchCalendarData(match);
+    const fmt = dt => icsFormatDate(dt.toISOString());
+    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text=' + encodeURIComponent(d.title)
+        + '&dates=' + fmt(d.start) + '/' + fmt(d.end)
+        + '&details=' + encodeURIComponent(d.description.replace(/\\n/g, '\n'))
+        + '&location=' + encodeURIComponent(d.tournament);
+    window.open(url, '_blank', 'noopener');
+}
+function esc(s) {
+    if (s == null) return '';
+    const d = document.createElement('div');
+    d.textContent = String(s);
+    return d.innerHTML;
+}
+function matchActionsHtml(match, opts) {
+    if (!match || !match.time) return '';
+    const when = new Date(match.time).getTime();
+    const isLive = !!(match.isLive || (opts && opts.isLive));
+    // Hide actions for matches that are well in the past and not live.
+    // Live matches stay — we want the Watch button during the broadcast.
+    if (!isLive && (!Number.isFinite(when) || when < Date.now() - 5 * 60 * 1000)) return '';
+    // For live matches, we don't need calendar buttons — skip the calendar UI.
+    const showCalendar = !isLive;
+
+    // Watch button: direct link when only one stream, dropdown when many.
+    // If GRID gave us no streams, fall back to a Twitch search for the event
+    // name so the user can still find the broadcast.
+    let watchHtml = '';
+    const streams = (match.streams || []).filter(s => s && s.url);
+    if (streams.length === 1) {
+        watchHtml = `<a class="match-action-btn" href="${esc(streams[0].url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Watch stream">
+            <i class="fa-solid fa-play"></i> Watch
+        </a>`;
+    } else if (streams.length > 1) {
+        watchHtml = `<button class="match-action-btn" onclick="event.stopPropagation();window.toggleStreamMenu(event,'${match.id}')" title="Watch stream">
+            <i class="fa-solid fa-play"></i> Watch <span style="opacity:0.6">(${streams.length})</span>
+        </button>
+        <div class="cal-menu" id="stream-menu-${match.id}">
+            ${streams.map(s => `<button onclick="event.stopPropagation();window.openStream('${esc(s.url)}')"><i class="fa-solid fa-tv"></i> ${esc(s.language || 'Stream')}</button>`).join('')}
+        </div>`;
+    } else {
+        // Fallback: search Twitch for the tournament name.
+        const query = encodeURIComponent(match.tournament || 'Counter-Strike 2');
+        const twitchSearch = `https://www.twitch.tv/search?term=${query}`;
+        watchHtml = `<a class="match-action-btn" href="${twitchSearch}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Search Twitch for this tournament">
+            <i class="fa-brands fa-twitch"></i> Find stream
+        </a>`;
+    }
+
+    return `<div class="match-actions" onclick="event.stopPropagation()">
+        ${watchHtml}
+        ${showCalendar ? `<button class="match-action-btn" onclick="event.stopPropagation();window.toggleCalMenu(event,'${match.id}')" title="Add to calendar">
+            <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
+        </button>
+        <div class="cal-menu" id="cal-menu-${match.id}">
+            <button onclick="event.stopPropagation();window.addToGoogleCal('${match.id}')"><i class="fa-brands fa-google"></i> Google Calendar</button>
+            <button onclick="event.stopPropagation();window.addToIcs('${match.id}')"><i class="fa-solid fa-download"></i> Download .ics (Apple/Outlook)</button>
+        </div>` : ''}
+    </div>`;
+}
+window.toggleStreamMenu = function(ev, id) {
+    document.querySelectorAll('.cal-menu.open').forEach(el => { if (el.id !== `stream-menu-${id}`) el.classList.remove('open'); });
+    const menu = document.getElementById(`stream-menu-${id}`);
+    if (!menu) return;
+    menu.classList.toggle('open');
+    if (menu.classList.contains('open')) {
+        const rect = ev.currentTarget.getBoundingClientRect();
+        menu.style.position = 'fixed';
+        menu.style.top = (rect.bottom + 4) + 'px';
+        menu.style.left = rect.left + 'px';
+    }
+};
+window.openStream = function(url) {
+    window.open(url, '_blank', 'noopener');
+    document.querySelectorAll('.cal-menu.open').forEach(el => el.classList.remove('open'));
+};
+function findMatchById(id) {
+    const pools = [state.upcoming || [], state.results || [], state.recentlyFinished || []];
+    for (const p of pools) { const m = p.find(x => String(x.id) === String(id)); if (m) return m; }
+    return null;
+}
+window.toggleCalMenu = function(ev, id) {
+    // Close any other open menus
+    document.querySelectorAll('.cal-menu.open').forEach(el => { if (el.id !== `cal-menu-${id}`) el.classList.remove('open'); });
+    const menu = document.getElementById(`cal-menu-${id}`);
+    if (!menu) return;
+    menu.classList.toggle('open');
+    if (menu.classList.contains('open')) {
+        // Position near the button
+        const btn = ev.currentTarget;
+        const rect = btn.getBoundingClientRect();
+        menu.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+        menu.style.left = (rect.left + window.scrollX) + 'px';
+        menu.style.position = 'fixed';
+        menu.style.top = (rect.bottom + 4) + 'px';
+    }
+};
+document.addEventListener('click', () => {
+    document.querySelectorAll('.cal-menu.open').forEach(el => el.classList.remove('open'));
+});
+window.addToGoogleCal = function(id) { const m = findMatchById(id); if (m) { openGoogleCalendar(m); document.querySelectorAll('.cal-menu.open').forEach(el => el.classList.remove('open')); } };
+window.addToIcs = function(id) { const m = findMatchById(id); if (m) { downloadIcs(m); document.querySelectorAll('.cal-menu.open').forEach(el => el.classList.remove('open')); } };
+
+// ── Browser notifications ──
+function notifEnabled() {
+    return localStorage.getItem('cs2_notif_enabled') === 'true'
+        && 'Notification' in window && Notification.permission === 'granted';
+}
+function getNotifiedMatches() {
+    try { return new Set(JSON.parse(localStorage.getItem(NOTIFIED_KEY)) || []); }
+    catch { return new Set(); }
+}
+function saveNotifiedMatches(set) {
+    // Prune old entries (>7 days) to avoid unbounded growth
+    const arr = [...set].slice(-200);
+    localStorage.setItem(NOTIFIED_KEY, JSON.stringify(arr));
+}
+function updateNotifBtnUI() {
+    const btn = document.getElementById('notifToggleBtn');
+    const desc = document.getElementById('notifDesc');
+    const priorityCheckbox = document.getElementById('notifPriorityOnly');
+    if (priorityCheckbox) priorityCheckbox.checked = notifPriorityOnly();
+    if (!btn) return;
+    const pCount = getPriorityFavorites().length;
+    const scopeLabel = notifPriorityOnly() && pCount > 0 ? `priority ${pCount === 1 ? 'team' : 'teams'}` : 'favorite teams';
+    if (!('Notification' in window)) {
+        btn.textContent = 'Not supported'; btn.disabled = true;
+        btn.className = 'notif-toggle-btn disabled';
+        if (desc) desc.textContent = 'Your browser does not support notifications.';
+        return;
+    }
+    const enabled = notifEnabled();
+    if (Notification.permission === 'denied') {
+        btn.textContent = 'Blocked'; btn.disabled = true;
+        btn.className = 'notif-toggle-btn disabled';
+        if (desc) desc.textContent = 'Notifications are blocked. Enable them for this site in your browser settings.';
+    } else if (enabled) {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Enabled'; btn.disabled = false;
+        btn.className = 'notif-toggle-btn enabled';
+        if (desc) desc.textContent = `You'll get a browser alert 10 minutes before your ${scopeLabel} play.`;
+    } else {
+        btn.textContent = 'Enable'; btn.disabled = false;
+        btn.className = 'notif-toggle-btn';
+        if (desc) desc.textContent = `Get a browser alert 10 minutes before your ${scopeLabel} play. Works on desktop and mobile (add to home screen).`;
+    }
+}
+window.toggleMatchNotifications = async function() {
+    if (!('Notification' in window)) return;
+    if (notifEnabled()) {
+        localStorage.setItem('cs2_notif_enabled', 'false');
+        updateNotifBtnUI();
+        return;
+    }
+    if (Notification.permission === 'default') {
+        const p = await Notification.requestPermission();
+        if (p !== 'granted') { updateNotifBtnUI(); return; }
+    }
+    if (Notification.permission === 'granted') {
+        localStorage.setItem('cs2_notif_enabled', 'true');
+        // Fire a quick test notification so the user knows it's working
+        try { new Notification('CS2 Tracker', { body: 'Match notifications enabled. You\u2019ll be alerted 10 minutes before your favorites play.', icon: 'cs-favicon.svg', tag: 'cs2-test' }); } catch {}
+    }
+    updateNotifBtnUI();
+};
+function notifPriorityOnly() {
+    // Default to true if user has priority teams set; false otherwise.
+    const stored = localStorage.getItem('cs2_notif_priority_only');
+    if (stored === 'true') return true;
+    if (stored === 'false') return false;
+    return getPriorityFavorites().length > 0;
+}
+window.toggleNotifPriorityOnly = function(on) {
+    localStorage.setItem('cs2_notif_priority_only', on ? 'true' : 'false');
+};
+function checkMatchNotifications() {
+    if (!notifEnabled()) return;
+    const now = Date.now();
+    const notified = getNotifiedMatches();
+    const upcoming = state.upcoming || [];
+    const priority = getPriorityFavorites();
+    const priorityOnly = notifPriorityOnly() && priority.length > 0;
+    let changed = false;
+    for (const m of upcoming) {
+        if (!m || !m.time || m.isLive) continue;
+        if (priorityOnly && !matchInvolvesPriority(m, priority)) continue;
+        const t = new Date(m.time).getTime();
+        if (!Number.isFinite(t)) continue;
+        const lead = t - now;
+        // Fire if match starts within the next 10 min and hasn't started yet
+        if (lead > 0 && lead <= NOTIF_LEAD_MS && !notified.has(m.id)) {
+            const minutes = Math.max(1, Math.round(lead / 60000));
+            const isPriority = matchInvolvesPriority(m, priority);
+            try {
+                new Notification(`${isPriority ? '\u2B50 ' : ''}${m.team1.name} vs ${m.team2.name}`, {
+                    body: `${m.tournament}${m.format ? ' · ' + m.format : ''} — starts in ${minutes} min`,
+                    icon: 'cs-favicon.svg',
+                    tag: 'cs2-match-' + m.id,
+                    requireInteraction: false
+                });
+            } catch {}
+            notified.add(m.id);
+            changed = true;
+        }
+    }
+    if (changed) saveNotifiedMatches(notified);
 }
 
 // ── Init ──
@@ -2579,6 +3895,7 @@ async function init() {
     initTimezone();
     initTabs();
     migrateFavorites();
+    updateNotifBtnUI();
 
     const key = getApiKey();
     if (!key) {
@@ -2592,6 +3909,10 @@ async function init() {
     // Persistent UI intervals (no API calls)
     setInterval(updatePageTitle, 1000);
     setInterval(updateLastSynced, 15000);
+    // Notification watcher — check every 30s so we catch the 10-min mark
+    setInterval(checkMatchNotifications, 30 * 1000);
+    // Run once on startup to catch matches already inside the window
+    setTimeout(checkMatchNotifications, 2000);
 }
 
 // Expose showOnboarding for the hero button

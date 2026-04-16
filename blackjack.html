@@ -949,6 +949,9 @@ body::after{
 .card-face,.card-back,.chip,.ctrl-btn,.action-btn,#continue-btn,.split-tab,#stats-content,#stats-close{
   transition:border-radius 0.5s,background 0.5s,box-shadow 0.5s,border 0.5s;
 }
+.page-credit{position:fixed;bottom:6px;right:10px;font-size:10px;color:var(--muted);opacity:0.35;z-index:1}
+.page-credit a{color:var(--muted);text-decoration:none}
+.page-credit a:hover{text-decoration:underline;opacity:1}
 </style>
 </head>
 <body>
@@ -1033,6 +1036,8 @@ body::after{
     <button id="reset-stats" onclick="resetAll()">Reset Everything</button>
   </div>
 </div>
+
+<div class="page-credit">Made by <a href="https://ron.computer">Aaron</a></div>
 
 <!-- 8-bit SFX (retro mode only) -->
 <script>
