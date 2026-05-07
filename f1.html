@@ -167,13 +167,21 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .schedule-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Default: 3 columns (sprint weekend has FP1 + Sprint + Qualifying). */
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
+}
+/* Standard weekend has 4 non-race sessions (FP1, FP2, FP3, Qualifying). */
+.schedule-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.schedule-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.schedule-grid.cols-1 { grid-template-columns: 1fr; }
+@media (max-width: 540px) {
+    .schedule-grid, .schedule-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
 }
 .session-card {
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 10px; padding: 0.85rem; text-align: center;
-    transition: all 0.3s;
+    transition: all 0.3s; position: relative;
 }
 .session-card.past { opacity: var(--past-opacity); }
 .session-card.next {
@@ -195,6 +203,48 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .session-card .session-status .done { color: #4caf50; }
 .session-card .session-status .upcoming { color: var(--accent); }
+
+/* The Race itself spans the full width of the grid and gets larger
+   typography to highlight that it's the main event. */
+.session-card.is-race {
+    grid-column: 1 / -1;
+    padding: 1.4rem 1.25rem;
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+    border-width: 2px;
+}
+.session-card.is-race .session-name {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent), #ff4444, var(--accent));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: race-gradient 4s linear infinite;
+}
+.session-card.is-race .session-name::before {
+    content: '🏁 '; -webkit-text-fill-color: initial;
+}
+.session-card.is-race .session-date { font-size: 0.95rem; margin-bottom: 0.2rem; }
+.session-card.is-race .session-time { font-size: 1.5rem; }
+.session-card.is-race .session-status { font-size: 0.85rem; margin-top: 0.4rem; }
+@keyframes race-gradient { to { background-position: 200% center; } }
+
+/* Sprint sessions on a sprint weekend get a yellow accent treatment.
+   The yellow border + yellow text + ⚡ already signal "this is the sprint" —
+   no need for a redundant corner badge that just says "SPRINT" again. */
+.session-card.is-sprint {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, var(--bg-card), rgba(255,215,0,0.05));
+    overflow: hidden;
+}
+.session-card.is-sprint .session-name {
+    color: #ffd700;
+}
+.session-card.is-sprint .session-name::after {
+    content: ' ⚡';
+}
 
 /* Weather */
 .weather-widget {
@@ -240,7 +290,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* Calendar Export */
 .cal-export {
-    text-align: center; margin-bottom: 2rem;
+    text-align: center; margin-bottom: 2rem; position: relative;
 }
 .cal-export-btn {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -251,6 +301,22 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     cursor: pointer; transition: background 0.2s;
 }
 .cal-export-btn:hover { background: var(--accent-hover); }
+.cal-export-menu {
+    position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.35rem; z-index: 50;
+    box-shadow: 0 4px 16px var(--shadow);
+    display: none; min-width: 250px; text-align: left;
+}
+.cal-export-menu.open { display: block; }
+.cal-export-menu button {
+    display: flex; align-items: center; gap: 0.5rem; width: 100%;
+    background: none; border: none; color: var(--text-primary);
+    padding: 0.55rem 0.75rem; border-radius: 6px; font-family: inherit;
+    font-size: 0.85rem; text-align: left; cursor: pointer;
+}
+.cal-export-menu button:hover { background: var(--bg-card-hover); color: var(--accent); }
+.cal-export-menu .opt-meta { opacity: 0.6; font-size: 0.7rem; margin-left: auto; }
 
 /* Tabs */
 .tabs-container { margin-bottom: 2rem; }
@@ -897,7 +963,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     .navbar { padding: 0.5rem 1rem; }
     .container { padding: 1rem; }
     .tz-select { max-width: 130px; font-size: 0.75rem; }
-    .schedule-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+    /* Schedule grid columns are now controlled by .cols-N modifier classes
+       set by renderSchedule(). Keep the small-screen override below in sync. */
     .desktop-table { display: none; }
     .mobile-cards { display: block; }
     .weather-days { justify-content: center; }
@@ -1200,9 +1267,13 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
     <!-- Calendar Export -->
     <div class="cal-export" id="calExport" style="display:none">
-        <button class="cal-export-btn" id="calExportBtn">
+        <button class="cal-export-btn" id="calExportBtn" onclick="window.toggleF1CalMenu(event)">
             <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
         </button>
+        <div class="cal-export-menu" id="calExportMenu">
+            <button onclick="window.f1AddToGoogle()"><i class="fa-brands fa-google"></i> Google Calendar <span class="opt-meta">race only</span></button>
+            <button onclick="window.f1DownloadIcs()"><i class="fa-solid fa-bell"></i> Download .ics <span class="opt-meta">all sessions · 10-min reminder</span></button>
+        </div>
     </div>
 
     <!-- Tabs -->
@@ -1918,11 +1989,23 @@ function renderSchedule(race) {
     const sessions = getSessions(race);
     const now = DateTime.utc();
 
+    // Set column count based on the number of non-race sessions so they
+    // always distribute evenly. Sprint weekends have 3 (FP1, Sprint, Quali);
+    // standard weekends have 4 (FP1, FP2, FP3, Quali).
+    const nonRaceCount = sessions.filter(s => s.name !== 'Race').length;
+    grid.className = 'schedule-grid';
+    if (nonRaceCount >= 4) grid.classList.add('cols-4');
+    else if (nonRaceCount === 2) grid.classList.add('cols-2');
+    else if (nonRaceCount === 1) grid.classList.add('cols-1');
+    // Default (no extra class) = 3 columns
+
     let foundNext = false;
     grid.innerHTML = sessions.map(s => {
         const dt = fmtDate(s.date, s.time);
         const isPast = dt <= now;
         let cls = 'session-card';
+        if (s.name === 'Race') cls += ' is-race';
+        if (s.name === 'Sprint') cls += ' is-sprint';
         let statusHtml = '';
         if (isPast) {
             cls += ' past';
@@ -2257,13 +2340,49 @@ async function loadWeather(race) {
     }
 }
 
-// ---- Calendar Export (.ics) ----
+// ---- Calendar Export ----
+// Both Google Calendar (race only — URL API limit) and .ics download (all
+// sessions, with 10-min VALARM reminders that work in any standard
+// calendar app).
+let _calRace = null;
 function setupCalendarExport(race) {
-    const wrap = document.getElementById('calExport');
-    const btn = document.getElementById('calExportBtn');
-    wrap.style.display = '';
-    btn.onclick = () => downloadICS(race);
+    _calRace = race;
+    document.getElementById('calExport').style.display = '';
 }
+
+window.toggleF1CalMenu = function(ev) {
+    ev.stopPropagation();
+    document.getElementById('calExportMenu').classList.toggle('open');
+};
+// Close menu when clicking elsewhere
+document.addEventListener('click', () => {
+    const m = document.getElementById('calExportMenu');
+    if (m) m.classList.remove('open');
+});
+
+window.f1AddToGoogle = function() {
+    if (!_calRace) return;
+    const race = _calRace;
+    const dt = fmtDate(race.date, race.time);
+    const end = dt.plus({ hours: 2 });
+    const fmt = d => d.toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
+    const title = `F1: ${race.raceName} - Race`;
+    const location = `${race.Circuit.circuitName}, ${race.Circuit.Location.locality}, ${race.Circuit.Location.country}`;
+    const details = `Round ${race.round} · ${race.season} F1 Season\n\nFull schedule (all sessions): https://f1.wtf`;
+    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text=' + encodeURIComponent(title)
+        + '&dates=' + fmt(dt) + '/' + fmt(end)
+        + '&details=' + encodeURIComponent(details)
+        + '&location=' + encodeURIComponent(location);
+    window.open(url, '_blank', 'noopener');
+    document.getElementById('calExportMenu').classList.remove('open');
+};
+
+window.f1DownloadIcs = function() {
+    if (!_calRace) return;
+    downloadICS(_calRace);
+    document.getElementById('calExportMenu').classList.remove('open');
+};
 
 function downloadICS(race) {
     const sessions = getSessions(race);
@@ -2278,6 +2397,11 @@ SUMMARY:F1 ${race.raceName} - ${s.name}
 LOCATION:${race.Circuit.circuitName}, ${race.Circuit.Location.locality}, ${race.Circuit.Location.country}
 DESCRIPTION:${race.raceName} - ${s.name} at ${race.Circuit.circuitName}
 UID:${uid}
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:${race.raceName} ${s.name} starting soon
+TRIGGER:-PT10M
+END:VALARM
 END:VEVENT`;
     });
 

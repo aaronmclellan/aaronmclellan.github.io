@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg-helm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a14"/>
+    </linearGradient>
+    <linearGradient id="helm-red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff1744"/>
+      <stop offset="100%" stop-color="#a30019"/>
+    </linearGradient>
+    <linearGradient id="visor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a4060"/>
+      <stop offset="50%" stop-color="#0a1820"/>
+      <stop offset="100%" stop-color="#000"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg-helm)"/>
+
+  <!-- Helmet — 3/4 view, facing right, slightly tilted -->
+  <!-- Main shell -->
+  <path d="M12 30 Q12 12 32 12 Q52 12 54 30 L54 44 Q54 50 48 50 L18 50 Q12 50 12 44 Z" fill="url(#helm-red)"/>
+
+  <!-- Top accent stripes (Senna-style) -->
+  <rect x="22" y="12" width="20" height="3" fill="#fff"/>
+  <rect x="22" y="16" width="20" height="2" fill="#0a0a14"/>
+
+  <!-- Visor opening with depth -->
+  <path d="M16 26 Q19 22 32 22 L48 22 Q52 22 52 26 L52 34 Q52 36 50 36 L18 36 Q16 36 16 34 Z" fill="#000"/>
+  <!-- Visor itself -->
+  <path d="M18 25 Q21 23 32 23 L47 23 Q50 23 50 25 L50 33 Q50 35 48 35 L20 35 Q18 35 18 33 Z" fill="url(#visor)"/>
+
+  <!-- Visor reflection / highlight -->
+  <path d="M22 26 L44 26 L42 28 L24 28 Z" fill="#3a6080" opacity="0.5"/>
+  <path d="M26 30 L40 30 L38 31 L28 31 Z" fill="#fff" opacity="0.15"/>
+
+  <!-- Lower mouth/chin guard -->
+  <path d="M14 38 Q14 44 18 46 L24 46 Q24 44 22 42 L22 40 L14 40 Z" fill="#0a0a14"/>
+
+  <!-- Side accent panel -->
+  <rect x="18" y="42" width="6" height="6" rx="1" fill="#fff" opacity="0.85"/>
+  <rect x="20" y="44" width="2" height="2" fill="#ff1744"/>
+
+  <!-- Bottom rim -->
+  <rect x="12" y="48" width="42" height="2" fill="#0a0a14"/>
+</svg>

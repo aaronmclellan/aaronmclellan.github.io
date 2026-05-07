@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="bg-light" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#000"/>
+    </radialGradient>
+    <radialGradient id="redlight" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0%" stop-color="#ff5566"/>
+      <stop offset="40%" stop-color="#ff0033"/>
+      <stop offset="100%" stop-color="#7a0011"/>
+    </radialGradient>
+    <radialGradient id="redglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ff0033" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff0033" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="64" height="64" rx="12" fill="url(#bg-light)"/>
+
+  <!-- Faint glow halo behind the lights -->
+  <ellipse cx="32" cy="32" rx="30" ry="14" fill="url(#redglow)"/>
+
+  <!-- Light gantry housing — black panel with rounded ends -->
+  <rect x="4" y="22" width="56" height="20" rx="4" fill="#0a0a14" stroke="#2a2a3a" stroke-width="1"/>
+
+  <!-- Top mounting bar -->
+  <rect x="28" y="14" width="8" height="8" fill="#1a1a2e"/>
+  <rect x="26" y="12" width="12" height="3" rx="1" fill="#1a1a2e"/>
+
+  <!-- The 5 red lights -->
+  <circle cx="13" cy="32" r="4.5" fill="url(#redlight)"/>
+  <circle cx="22.5" cy="32" r="4.5" fill="url(#redlight)"/>
+  <circle cx="32" cy="32" r="4.5" fill="url(#redlight)"/>
+  <circle cx="41.5" cy="32" r="4.5" fill="url(#redlight)"/>
+  <circle cx="51" cy="32" r="4.5" fill="url(#redlight)"/>
+
+  <!-- Subtle highlight on each light to make them feel illuminated -->
+  <ellipse cx="13" cy="30" rx="2" ry="1.2" fill="#ffaabb" opacity="0.7"/>
+  <ellipse cx="22.5" cy="30" rx="2" ry="1.2" fill="#ffaabb" opacity="0.7"/>
+  <ellipse cx="32" cy="30" rx="2" ry="1.2" fill="#ffaabb" opacity="0.7"/>
+  <ellipse cx="41.5" cy="30" rx="2" ry="1.2" fill="#ffaabb" opacity="0.7"/>
+  <ellipse cx="51" cy="30" rx="2" ry="1.2" fill="#ffaabb" opacity="0.7"/>
+</svg>

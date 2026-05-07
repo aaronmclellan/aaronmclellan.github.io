@@ -910,7 +910,7 @@ a.match-action-btn { text-decoration: none; }
         <div class="notif-row" id="notifRow">
             <div class="notif-info">
                 <h4><i class="fa-solid fa-bell"></i> Match Notifications</h4>
-                <p id="notifDesc">Get a browser alert 10 minutes before your teams play.</p>
+                <p id="notifDesc">Get a browser alert 30 minutes before your teams play.</p>
                 <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--text-muted);margin-top:0.4rem;cursor:pointer;user-select:none;">
                     <input type="checkbox" id="notifPriorityOnly" onchange="window.toggleNotifPriorityOnly(this.checked)">
                     <span><i class="fa-solid fa-crown" style="color:var(--accent);font-size:0.75em"></i> Only notify for my priority teams</span>
@@ -1659,8 +1659,15 @@ function initTabs() {
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             stopLivePolling();
-        } else if (state.activeTab === 'live') {
-            startLivePolling();
+        } else {
+            // App came back to foreground — immediately check notifications
+            // and refresh data if it's been stale for more than 2 minutes.
+            if (typeof checkMatchNotifications === 'function') checkMatchNotifications();
+            const staleMs = Date.now() - (state.lastUpdated || 0);
+            if (staleMs > 2 * 60 * 1000 && typeof loadAllData === 'function') {
+                loadAllData();
+            }
+            if (state.activeTab === 'live') startLivePolling();
         }
     });
 }
@@ -2009,11 +2016,31 @@ function matchInvolvesFavorite(teamNames, favNames) {
     return favNames.some(fn => teamNames.some(tn => tn === fn || tn.includes(fn) || fn.includes(tn)));
 }
 
-async function fetchUpcoming(favNames) {
+// Strategy: fetch the minimum needed to show the user's favorites first.
+// We paginate ASC from now and stop as soon as we have a target number of
+// favorite-team matches AND we're at least 2 days past today (so the user
+// can see their next match plus a small buffer). The user can hit "Load
+// more" to fetch additional pages on-demand. This dramatically reduces
+// requests vs. always paginating to the end of the 30-day window.
+const FAV_TARGET_INITIAL = 3;
+const PAGES_HARD_CAP_INITIAL = 12;
+const PAGES_PER_LOAD_MORE = 6;
+
+async function fetchUpcoming(favNames, opts = {}) {
     const now = DateTime.now();
-    const all = [];
-    let after = null;
+    const append = !!opts.append;
+    const all = append ? (state.allUpcomingSeries || []).slice() : [];
+    let after = append ? state.upcomingNextCursor : null;
     let pages = 0;
+    const maxPages = append ? PAGES_PER_LOAD_MORE : PAGES_HARD_CAP_INITIAL;
+    const targetFavMatches = append ? Infinity : FAV_TARGET_INITIAL;
+    let favMatchesFound = 0;
+    if (!append) {
+        // Count favs already in `all` (none on initial — but be defensive).
+        favMatchesFound = all.filter(m => matchInvolvesFavorite([m.team1.name, m.team2.name], favNames)).length;
+    } else {
+        favMatchesFound = (state.allUpcomingSeries || []).filter(m => matchInvolvesFavorite([m.team1.name, m.team2.name], favNames)).length;
+    }
     // Start window 7 days in the past. This serves two purposes:
     //   1. Currently-live matches (started recently) surface in the Live tab
     //   2. Recent matches (even if finished) let us detect which tournaments
@@ -2023,10 +2050,14 @@ async function fetchUpcoming(favNames) {
     //      moves past matches to state.recentlyFinished so they don't
     //      clutter the Upcoming tab — only the tournament-association
     //      benefit remains.
-    const fromISO = now.minus({ days: 7 }).toISO();
+    // Only look back 6 hours — just enough to surface currently-live matches.
+    // Looking further back wastes pagination budget on already-finished
+    // matches and pushes real upcoming results out of the initial fetch.
+    const fromISO = now.minus({ hours: 6 }).toISO();
     const toISO = now.plus({ days: 30 }).toISO();
 
-    while (pages < 8) {
+    let hasNextPage = true;
+    while (pages < maxPages && favMatchesFound < targetFavMatches) {
         const vars = { from: fromISO, to: toISO, first: 50, orderDir: 'ASC' };
         if (after) vars.after = after;
 
@@ -2037,16 +2068,23 @@ async function fetchUpcoming(favNames) {
             if (!isCS2(n)) return;
             const startMs = DateTime.fromISO(n.startTimeScheduled).toMillis();
             const isLive = startMs <= Date.now() && startMs > Date.now() - 6 * 3600 * 1000;
-            all.push(buildMatchFromNode(n, { isLive }));
+            const m = buildMatchFromNode(n, { isLive });
+            all.push(m);
+            if (matchInvolvesFavorite([m.team1.name, m.team2.name], favNames)) {
+                favMatchesFound++;
+            }
         });
 
-        if (!data.allSeries.pageInfo || !data.allSeries.pageInfo.hasNextPage) break;
+        hasNextPage = !!(data.allSeries.pageInfo && data.allSeries.pageInfo.hasNextPage);
+        if (!hasNextPage) break;
         after = data.allSeries.pageInfo.endCursor;
         pages++;
     }
 
     // Keep the full, unfiltered list on state for the Tournaments view.
     state.allUpcomingSeries = all;
+    state.upcomingNextCursor = after;
+    state.upcomingHasMore = hasNextPage && (pages >= maxPages);
 
     // For Upcoming tab: include every match from any tournament where a
     // favorite team is playing. This gives users the full schedule for
@@ -2068,17 +2106,24 @@ async function fetchUpcoming(favNames) {
     return filtered;
 }
 
-async function fetchResults(favNames) {
+async function fetchResults(favNames, opts = {}) {
     const now = DateTime.now();
-    const all = [];
-    let after = null;
+    const append = !!opts.append;
+    const all = append ? (state.allResultsSeries || []).slice() : [];
+    let after = append ? state.resultsNextCursor : null;
     let pages = 0;
+    const maxPages = append ? PAGES_PER_LOAD_MORE : PAGES_HARD_CAP_INITIAL;
+    const targetFavMatches = append ? Infinity : FAV_TARGET_INITIAL;
+    let favMatchesFound = append
+        ? (state.allResultsSeries || []).filter(m => matchInvolvesFavorite([m.team1.name, m.team2.name], favNames)).length
+        : 0;
 
     // End window 6h ago — anything more recent is treated as "live" by fetchUpcoming
     const fromISO = now.minus({ days: 90 }).toISO();
     const toISO = now.minus({ hours: 6 }).toISO();
 
-    while (pages < 8) {
+    let hasNextPage = true;
+    while (pages < maxPages && favMatchesFound < targetFavMatches) {
         const vars = { from: fromISO, to: toISO, first: 50, orderDir: 'DESC' };
         if (after) vars.after = after;
 
@@ -2087,15 +2132,22 @@ async function fetchResults(favNames) {
         edges.forEach(e => {
             const n = e.node;
             if (!isCS2(n)) return;
-            all.push(buildMatchFromNode(n));
+            const m = buildMatchFromNode(n);
+            all.push(m);
+            if (matchInvolvesFavorite([m.team1.name, m.team2.name], favNames)) {
+                favMatchesFound++;
+            }
         });
 
-        if (!data.allSeries.pageInfo || !data.allSeries.pageInfo.hasNextPage) break;
+        hasNextPage = !!(data.allSeries.pageInfo && data.allSeries.pageInfo.hasNextPage);
+        if (!hasNextPage) break;
         after = data.allSeries.pageInfo.endCursor;
         pages++;
     }
 
     state.allResultsSeries = all;
+    state.resultsNextCursor = after;
+    state.resultsHasMore = hasNextPage && (pages >= maxPages);
     return all.filter(m => matchInvolvesFavorite([m.team1.name, m.team2.name], favNames));
 }
 
@@ -2457,7 +2509,11 @@ function renderUpcoming() {
     // Exclude live matches — those belong in the Live tab.
     const upcoming = (state.upcoming || []).filter(m => !m.isLive);
     if (upcoming.length === 0) {
-        panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-calendar"></i><p>No upcoming matches found in the next 30 days</p></div>`;
+        const loadMoreSlot = state.upcomingHasMore
+            ? `<p style="font-size:0.8rem;color:var(--text-muted);margin:0.75rem 0 0.5rem">Your favorites might play later in the window. Try loading more.</p>
+               <button class="btn-primary" onclick="window.loadMoreUpcoming()" id="loadMoreUpcomingBtn"><i class="fa-solid fa-arrow-down"></i> Load more matches</button>`
+            : '';
+        panel.innerHTML = `<div class="empty-state"><i class="fa-solid fa-calendar"></i><p>No upcoming matches found in the next 30 days for your favorites.</p>${loadMoreSlot}</div>`;
         return;
     }
 
@@ -2655,8 +2711,43 @@ function renderUpcoming() {
         }
     }
 
+    // "Load more" button — appears when there are still pages we haven't
+    // fetched. Lets the user request more matches on-demand instead of
+    // hammering GRID upfront.
+    if (state.upcomingHasMore) {
+        const note = filtered.length === 0
+            ? 'Didn\'t find any of your favorites in the next few days. Load more to keep searching.'
+            : 'Want to see more? Load the next batch of matches.';
+        html += `<div style="text-align:center;padding:1.5rem 1rem 0.5rem">
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.6rem">${note}</p>
+            <button class="btn-primary" onclick="window.loadMoreUpcoming()" id="loadMoreUpcomingBtn">
+                <i class="fa-solid fa-arrow-down"></i> Load more matches
+            </button>
+        </div>`;
+    }
+
     panel.innerHTML = html;
 }
+window.loadMoreUpcoming = async function() {
+    const btn = document.getElementById('loadMoreUpcomingBtn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner" style="display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite"></span> Loading...'; }
+    try {
+        const favs = getFavorites();
+        const more = await fetchUpcoming(favs, { append: true });
+        state.upcoming = more.filter(m => {
+            if (m.isLive) return true;
+            const ms = new Date(m.time).getTime();
+            return ms > Date.now();
+        });
+        renderHero();
+        renderUpcoming();
+        loadTournaments();
+        startCountdowns();
+    } catch (e) {
+        console.error('[cs2] load more upcoming failed:', e.message);
+        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-arrow-down"></i> Try again'; }
+    }
+};
 
 window.setUpcomingFilter = function(tid) {
     state.upcomingTournamentFilter = tid || '';
@@ -2761,9 +2852,32 @@ function renderResults() {
     } else {
         merged.forEach(m => { html += buildCard(m); });
     }
+
+    // Load-more button — fetches another batch of older results.
+    if (state.resultsHasMore) {
+        html += `<div style="text-align:center;padding:1.5rem 1rem 0.5rem">
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.6rem">Want older results? Load the next batch.</p>
+            <button class="btn-primary" onclick="window.loadMoreResults()" id="loadMoreResultsBtn">
+                <i class="fa-solid fa-arrow-down"></i> Load older results
+            </button>
+        </div>`;
+    }
+
     panel.innerHTML = html;
     setupLazyResultsHydration(merged);
 }
+window.loadMoreResults = async function() {
+    const btn = document.getElementById('loadMoreResultsBtn');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner" style="display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite"></span> Loading...'; }
+    try {
+        const favs = getFavorites();
+        state.results = await fetchResults(favs, { append: true });
+        renderResults();
+    } catch (e) {
+        console.error('[cs2] load more results failed:', e.message);
+        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-arrow-down"></i> Try again'; }
+    }
+};
 
 // Build the score HTML for a match card (used by both initial render and lazy update).
 function buildScoreHtml(match) {
@@ -3606,7 +3720,9 @@ async function loadAllData() {
     // exposes one). This handles the case where GRID returns "Group Stage"
     // as the series' tournament with no parent populated, but the tournament
     // endpoint reveals the real event ("IEM Rio 2026").
-    try { await backfillOrphanTournaments(); } catch (e) { console.warn('[cs2] backfill failed:', e.message); }
+    // Backfill skipped: GRID rejects both parentTournament + tournament(id:)
+    // on Open Access tier. Calling it just wastes requests with no benefit.
+    // try { await backfillOrphanTournaments(); } catch (e) { console.warn('[cs2] backfill failed:', e.message); }
 
     // Tournaments are computed client-side from the fetched data. The orphan
     // merge also mutates individual match objects to fix remaining orphan
@@ -3628,7 +3744,7 @@ async function loadAllData() {
 }
 
 // ── Calendar & Notifications ──
-const NOTIF_LEAD_MS = 10 * 60 * 1000; // 10 minutes
+const NOTIF_LEAD_MS = 30 * 60 * 1000; // 30 minutes — wider window so notifications still fire even if the app was backgrounded for a while
 const NOTIFIED_KEY = 'cs2_notified_matches';
 
 function icsEscape(s) { return String(s || '').replace(/([,;\\])/g, '\\$1').replace(/\n/g, '\\n'); }
@@ -3742,8 +3858,8 @@ function matchActionsHtml(match, opts) {
             <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
         </button>
         <div class="cal-menu" id="cal-menu-${match.id}">
-            <button onclick="event.stopPropagation();window.addToGoogleCal('${match.id}')"><i class="fa-brands fa-google"></i> Google Calendar</button>
-            <button onclick="event.stopPropagation();window.addToIcs('${match.id}')"><i class="fa-solid fa-download"></i> Download .ics (Apple/Outlook)</button>
+            <button onclick="event.stopPropagation();window.addToGoogleCal('${match.id}')"><i class="fa-brands fa-google"></i> Google Calendar <span style="opacity:0.6;font-size:0.7rem">· uses your defaults</span></button>
+            <button onclick="event.stopPropagation();window.addToIcs('${match.id}')"><i class="fa-solid fa-bell"></i> Download .ics <span style="opacity:0.6;font-size:0.7rem">· 10-min reminder</span></button>
         </div>` : ''}
     </div>`;
 }
@@ -3826,11 +3942,11 @@ function updateNotifBtnUI() {
     } else if (enabled) {
         btn.innerHTML = '<i class="fa-solid fa-check"></i> Enabled'; btn.disabled = false;
         btn.className = 'notif-toggle-btn enabled';
-        if (desc) desc.textContent = `You'll get a browser alert 10 minutes before your ${scopeLabel} play.`;
+        if (desc) desc.textContent = `You'll get a browser alert 30 minutes before your ${scopeLabel} play.`;
     } else {
         btn.textContent = 'Enable'; btn.disabled = false;
         btn.className = 'notif-toggle-btn';
-        if (desc) desc.textContent = `Get a browser alert 10 minutes before your ${scopeLabel} play. Works on desktop and mobile (add to home screen).`;
+        if (desc) desc.textContent = `Get a browser alert 30 minutes before your ${scopeLabel} play. Works on desktop and mobile (add to home screen).`;
     }
 }
 window.toggleMatchNotifications = async function() {
@@ -3847,7 +3963,7 @@ window.toggleMatchNotifications = async function() {
     if (Notification.permission === 'granted') {
         localStorage.setItem('cs2_notif_enabled', 'true');
         // Fire a quick test notification so the user knows it's working
-        try { new Notification('CS2 Tracker', { body: 'Match notifications enabled. You\u2019ll be alerted 10 minutes before your favorites play.', icon: 'cs-favicon.svg', tag: 'cs2-test' }); } catch {}
+        try { new Notification('CS2 Tracker', { body: 'Match notifications enabled. You\u2019ll be alerted 30 minutes before your favorites play.', icon: 'cs-favicon.svg', tag: 'cs2-test' }); } catch {}
     }
     updateNotifBtnUI();
 };
@@ -3875,7 +3991,7 @@ function checkMatchNotifications() {
         const t = new Date(m.time).getTime();
         if (!Number.isFinite(t)) continue;
         const lead = t - now;
-        // Fire if match starts within the next 10 min and hasn't started yet
+        // Fire if match starts within the next 30 min and hasn't started yet
         if (lead > 0 && lead <= NOTIF_LEAD_MS && !notified.has(m.id)) {
             const minutes = Math.max(1, Math.round(lead / 60000));
             const isPriority = matchInvolvesPriority(m, priority);

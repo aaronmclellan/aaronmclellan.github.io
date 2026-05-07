@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg-car" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a14"/>
+    </linearGradient>
+    <linearGradient id="red-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff1744"/>
+      <stop offset="100%" stop-color="#c4001f"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg-car)"/>
+
+  <!-- Side-profile F1 car silhouette, facing right -->
+  <!-- Track shadow under the car -->
+  <ellipse cx="32" cy="50" rx="24" ry="2" fill="#000" opacity="0.4"/>
+
+  <!-- Rear wing (taller, more pronounced) -->
+  <rect x="46" y="22" width="10" height="2" fill="url(#red-grad)"/>
+  <rect x="50" y="22" width="2" height="10" fill="url(#red-grad)"/>
+
+  <!-- Main body — sweeping silhouette from low front to higher rear -->
+  <path d="M8 38 L8 36 Q10 30 16 30 L24 30 Q26 24 32 24 L42 24 Q48 24 50 32 L52 38 L52 44 L8 44 Z" fill="url(#red-grad)"/>
+
+  <!-- Halo / cockpit opening -->
+  <path d="M27 26 Q32 22 37 26 L37 32 L27 32 Z" fill="#0a0a14"/>
+  <path d="M28 28 Q32 24 36 28 L36 30 L28 30 Z" fill="#1a1a2e"/>
+
+  <!-- Front wing (low, wide) -->
+  <rect x="3" y="40" width="9" height="3" rx="1" fill="url(#red-grad)"/>
+  <rect x="3" y="38" width="2" height="5" fill="url(#red-grad)"/>
+
+  <!-- Front tire -->
+  <ellipse cx="16" cy="46" rx="6" ry="6" fill="#0a0a14"/>
+  <circle cx="16" cy="46" r="2" fill="#444"/>
+
+  <!-- Rear tire (larger) -->
+  <ellipse cx="46" cy="47" rx="7" ry="7" fill="#0a0a14"/>
+  <circle cx="46" cy="47" r="2.5" fill="#444"/>
+
+  <!-- Speed accent line -->
+  <rect x="10" y="36" width="14" height="1" fill="#fff" opacity="0.5"/>
+</svg>
