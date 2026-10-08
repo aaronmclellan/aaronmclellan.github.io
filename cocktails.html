@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Next Round</title>
 <link rel="icon" type="image/svg+xml" href="cocktail-favicon.svg">
-<link rel="apple-touch-icon" href="cocktail-favicon.svg">
+<link rel="apple-touch-icon" href="cocktail-icon-180.png">
+<link rel="manifest" href="cocktails.webmanifest">
+<meta name="theme-color" content="#264840">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Next Round">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap">
 <script src="cocktails-data.js"></script>
@@ -54,6 +60,64 @@ a:hover { text-decoration: underline; }
     display: flex; justify-content: space-between; align-items: center;
     padding: 1rem 1.5rem; background: var(--bg-secondary);
     border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50;
+}
+.nav-count {
+    background: var(--accent); color: var(--bg); border-radius: 999px;
+    font-size: 0.68rem; font-weight: 700; padding: 0.05rem 0.45rem;
+}
+.nav-count:empty { display: none; }
+
+/* Drink of the day */
+.dotd {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem 0.9rem;
+    background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 14px;
+    padding: 0.85rem 1.25rem; margin-bottom: 1.5rem; color: var(--text-primary);
+    transition: border-color 0.15s;
+}
+.dotd:hover { border-color: var(--accent); text-decoration: none; }
+.dotd-label {
+    color: var(--accent); font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.dotd strong { font-size: 1.05rem; font-weight: 600; }
+.dotd .card-ings { flex: 1; min-width: 12rem; }
+.dotd-cta { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
+
+/* Landing: favorites and suggestions */
+.landing-section { margin-top: 2rem; }
+.landing-section h2 {
+    font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
+}
+.landing-section h2 i { color: var(--accent); }
+.section-sub { color: var(--text-muted); font-size: 0.82rem; margin: 0.15rem 0 0.75rem; }
+.landing-hint { margin-top: 1.75rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+.card-note { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.55rem; }
+
+/* My bar */
+.bar-layout { display: flex; gap: 1.25rem; align-items: flex-start; }
+.bar-picker {
+    flex: 0 0 320px; width: 320px; background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem 1.1rem; position: sticky; top: 80px;
+    max-height: calc(100vh - 100px); overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.bar-picker-toggle { display: none; }
+.bar-hint { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.75rem; }
+.bar-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1.25rem; }
+@media (max-width: 760px) {
+    .bar-layout { flex-direction: column; }
+    .bar-picker { position: static; flex: none; width: 100%; max-height: none; }
+    .bar-picker-toggle {
+        display: flex; align-items: center; gap: 0.5rem; width: 100%; background: none; border: none;
+        color: var(--text-primary); font-family: inherit; font-size: 0.95rem; font-weight: 600;
+        cursor: pointer; padding: 0;
+    }
+    .bar-picker-toggle i:first-child { color: var(--accent); }
+    .bar-picker-toggle .n { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
+    .bar-picker-toggle .chev { margin-left: auto; transition: transform 0.15s; }
+    .bar-picker.open .bar-picker-toggle { margin-bottom: 0.85rem; }
+    .bar-picker.open .chev { transform: rotate(180deg); }
+    .bar-picker:not(.open) .bar-picker-body { display: none; }
 }
 .brand {
     display: flex; align-items: center; gap: 0.6rem;
@@ -409,6 +473,28 @@ a.nav-btn:hover { text-decoration: none; }
     font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 500;
 }
+/* oz | ml switch next to "Ingredients" */
+.unit-toggle {
+    margin-left: 0.6rem; display: inline-flex; vertical-align: middle;
+    border: 1px solid var(--border); border-radius: 7px; overflow: hidden;
+}
+.unit-toggle button {
+    background: none; border: none; color: var(--text-muted); cursor: pointer;
+    font-family: inherit; font-size: 0.7rem; padding: 0.1rem 0.55rem; letter-spacing: 0;
+}
+.unit-toggle button.active { background: var(--accent-dim); color: var(--accent); font-weight: 600; }
+/* Share + favorite in the recipe header */
+.modal-actions { margin-left: auto; display: inline-flex; align-items: center; gap: 0.15rem; }
+.modal-actions .fav-btn { position: static; font-size: 1.15rem; }
+.share-btn.copied { color: var(--good); }
+.toast {
+    position: fixed; left: 50%; bottom: 1.5rem; z-index: 120;
+    transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+    background: var(--text-primary); color: var(--bg); font-weight: 600; font-size: 0.9rem;
+    padding: 0.6rem 1.1rem; border-radius: 999px; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    transition: opacity 0.2s, transform 0.2s; max-width: calc(100% - 2rem); text-align: center;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
 .recipe-list { list-style: none; padding: 0; }
 .recipe-list li {
     padding: 0.4rem 0; border-bottom: 1px solid var(--border);
@@ -475,6 +561,7 @@ a.nav-btn:hover { text-decoration: none; }
 .badge.medium   { background: var(--accent-dim); color: var(--accent); }
 .badge.zero     { background: rgba(126, 219, 166, 0.15); color: var(--good); }
 .badge.classic  { background: rgba(254, 230, 196, 0.12); color: var(--text-primary); }
+.badge.canmake  { background: rgba(126, 219, 166, 0.15); color: var(--good); }
 .badge.stiff    { background: rgba(224, 122, 122, 0.15); color: var(--bad); }
 .badge.template { background: var(--bg-secondary); color: var(--text-secondary); border-color: var(--border); }
 
@@ -507,6 +594,7 @@ a.nav-btn:hover { text-decoration: none; }
 
 <nav class="navbar">
     <a class="brand" href="#/"><i class="fa-solid fa-martini-glass-citrus"></i> Next Round</a>
+    <a class="nav-btn" id="navBar" href="#/bar"><i class="fa-solid fa-wine-bottle"></i> My bar <span class="nav-count" id="navBarCount"></span></a>
 </nav>
 
 <div class="container">
@@ -521,7 +609,9 @@ a.nav-btn:hover { text-decoration: none; }
                 <button id="landingSearchClear" class="landing-search-clear" aria-label="Clear search" style="display:none"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
+        <a class="dotd" id="drinkOfDay" href="#/"></a>
         <div class="spirit-grid" id="spiritGrid"></div>
+        <div id="landingExtras"></div>
         <div id="landingResults" style="display:none"></div>
     </div>
 
@@ -554,6 +644,28 @@ a.nav-btn:hover { text-decoration: none; }
         <div class="spirit-grid family-grid" id="familyGrid"></div>
         <div class="step-actions">
             <a class="nav-btn" id="familyAll" href="#/"><i class="fa-solid fa-list"></i> Show me all of them <span class="n" id="familyAllCount"></span></a>
+        </div>
+    </div>
+
+    <!-- My bar: tick the bottles you have, see what you can make -->
+    <div id="barView" style="display:none">
+        <div class="results-header">
+            <a class="nav-btn" href="#/" aria-label="Back" title="Back"><i class="fa-solid fa-arrow-left"></i></a>
+            <nav class="crumbs"><span><i class="fa-solid fa-wine-bottle"></i> My bar</span></nav>
+        </div>
+        <div class="bar-layout">
+            <aside class="bar-picker" id="barPicker">
+                <button type="button" class="bar-picker-toggle" id="barPickerToggle">
+                    <i class="fa-solid fa-wine-bottle"></i> Your bottles <span class="n" id="barBottleCount"></span>
+                    <i class="fa-solid fa-chevron-down chev"></i>
+                </button>
+                <div class="bar-picker-body">
+                    <p class="bar-hint">Tap what you have at home. Lemons, limes, oranges, sugar, honey, soda water and eggs start ticked.</p>
+                    <input class="search-input" id="barSearch" type="text" placeholder="Search bottles...">
+                    <div id="barIngredients"></div>
+                </div>
+            </aside>
+            <div class="bar-main" id="barResults"></div>
         </div>
     </div>
 
@@ -591,6 +703,7 @@ a.nav-btn:hover { text-decoration: none; }
                     <button class="icon-btn" id="filterToggle" title="Filter by ingredient" aria-label="Filter by ingredient"><i class="fa-solid fa-flask"></i><span class="btn-label">By ingredient</span><span class="filter-count-badge" id="filterCountBadge" style="display:none">0</span></button>
                     <input class="tb-search" id="nameSearch" type="text" placeholder="Search by name…">
                     <button class="icon-btn" id="favFilterBtn" title="Favorites only"><i class="fa-regular fa-heart"></i></button>
+                    <button class="icon-btn" id="barFilterBtn" title="Only drinks I can make with my bar" style="display:none"><i class="fa-solid fa-wine-bottle"></i></button>
                     <div class="view-toggle">
                         <button class="icon-btn active" id="viewGrid" title="Grid view"><i class="fa-solid fa-grip"></i></button>
                         <button class="icon-btn" id="viewList" title="List view"><i class="fa-solid fa-list"></i></button>
@@ -608,6 +721,7 @@ a.nav-btn:hover { text-decoration: none; }
 </div>
 
 <!-- Recipe modal -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="modal-overlay" id="recipeModal">
     <div class="modal-content" id="recipeContent"></div>
 </div>
@@ -696,6 +810,10 @@ const COMMON_KEYS = new Set([...PLAIN_KEYS, 'lemon_juice', 'lime_juice', 'angost
 const POLARIZING = new Set(['smoky', 'bitter', 'creamy', 'coffee', 'spicy']);
 const CARD_CATEGORY_RANK = { spirit: 1, liqueur: 2, amaro: 2, fortified: 2, other: 3, herb: 3, citrus: 4, sweetener: 4, bitters: 5 };
 
+// My bar: saved bottles, plus the staples most kitchens have (these start ticked)
+const BAR_KEY = 'cp_bar';
+const BAR_STAPLES = ['simple_syrup', 'sugar', 'honey', 'lemon_juice', 'lime_juice', 'orange_juice', 'seltzer', 'egg_white', 'whole_egg', 'saline'];
+
 const state = {
     cocktails: [],
     ingredients: [],
@@ -711,7 +829,11 @@ const state = {
     nameSearch: '',
     view: 'grid',           // 'grid' | 'list'
     favsOnly: false,
+    canMakeOnly: false,     // drinks page: only what my bar can make
     favorites: new Set(JSON.parse(localStorage.getItem('cp_favs') || '[]')),
+    units: localStorage.getItem('cp_units') === 'ml' ? 'ml' : 'oz',
+    bar: loadBar(),         // ingredient keys the user has at home
+    barSearch: '',
 };
 
 function saveFavorites() {
@@ -721,9 +843,62 @@ function toggleFavorite(name) {
     if (state.favorites.has(name)) state.favorites.delete(name);
     else state.favorites.add(name);
     saveFavorites();
+    refreshScreen();
+}
+// Re-render whatever is on screen after favorites, units or the bar change
+function refreshScreen() {
     if (state.screen === 'results') renderResults();
-    if (state.screen === 'landing') renderLandingSearch(landingSearchEl.value);
+    if (state.screen === 'landing') { renderLandingExtras(); renderLandingSearch(landingSearchEl.value); }
+    if (state.screen === 'bar') renderBarResults();
     if (state.recipe) renderRecipe(state.recipe);
+}
+
+// ── Units ──
+const ML_PER_OZ = 30;   // the bartender's round number (29.6 exactly)
+function qtyText(qty) {
+    const m = /^([\d.]+) oz( float)?$/.exec(qty || '');
+    if (state.units !== 'ml' || !m) return qty || '';
+    return `${Math.round(parseFloat(m[1]) * ML_PER_OZ * 2) / 2} ml${m[2] || ''}`;
+}
+function alcText(alc) {
+    return state.units === 'ml' ? `${Math.round(alc * ML_PER_OZ)} ml` : `${alc} oz`;
+}
+function setUnits(units) {
+    state.units = units;
+    localStorage.setItem('cp_units', units);
+    refreshScreen();
+}
+
+// ── My bar ──
+// Generic recipe ingredients ("Rum", "Vermouth") are covered by any of their specific bottles.
+const BAR_SUBS = {
+    rum: ['white_rum', 'aged_rum', 'black_rum', 'jamaican_rum', 'agricole'],
+    vermouth: ['dry_vermouth', 'sweet_vermouth', 'blanc_vermouth'],
+    brandy: ['cognac', 'apple_brandy', 'pisco'],
+    amaro: ['montenegro', 'nonino', 'ramazzotti', 'cio_ciaro'],
+};
+function loadBar() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(BAR_KEY));
+        if (Array.isArray(saved)) return new Set(saved);
+    } catch (err) { /* fall back to the staples */ }
+    return new Set(BAR_STAPLES);
+}
+function saveBar() {
+    localStorage.setItem(BAR_KEY, JSON.stringify([...state.bar]));
+}
+const isSpiritKey = k => state.ingByKey.get(k)?.category === 'spirit' && k !== ANY_SPIRIT;
+function barHas(k) {
+    if (k === ANY_SPIRIT) return [...state.bar].some(isSpiritKey);
+    return state.bar.has(k) || (BAR_SUBS[k] || []).some(s => state.bar.has(s));
+}
+function missingFromBar(c) {
+    return [...c.keys].filter(k => !barHas(k));
+}
+const canMake = c => missingFromBar(c).length === 0;
+// The bar counts once you've ticked something beyond the staples
+function barActive() {
+    return [...state.bar].some(k => !BAR_STAPLES.includes(k));
 }
 
 // ── Strength ──
@@ -785,7 +960,8 @@ function smallFamilies(pool) {
 }
 // Current picks, narrowed by flavor chips and the ingredient panel
 function refinedPool() {
-    return picksPool(state.spirit, state.style, state.family).filter(c => matchesFlavors(c) && hasAll(c, state.selected));
+    return picksPool(state.spirit, state.style, state.family)
+        .filter(c => matchesFlavors(c) && hasAll(c, state.selected) && (!state.canMakeOnly || !barActive() || canMake(c)));
 }
 // Household names, then other classics, then templates, then the fewest unusual ingredients
 function byApproachability(a, b) {
@@ -825,7 +1001,10 @@ function loadData() {
         c.slug = slug;
         state.bySlug.set(slug, c);
     });
+    state.ingByKey = new Map(state.ingredients.map(i => [i.key, i]));
+    state.uses = uses;
     renderSpiritLanding();
+    updateNavBar();
     route();
 }
 
@@ -846,6 +1025,7 @@ function viewPath() {
     if (screen === 'style') return pathFor(spirit);
     if (screen === 'family') return pathFor(spirit, style);
     if (screen === 'results') return pathFor(spirit, style, family);
+    if (screen === 'bar') return '/bar';
     return '/';
 }
 // A question is skipped when there's barely anything to choose between: returns where to go instead.
@@ -899,7 +1079,8 @@ function route(fromHashChange = false) {
         route(fromHashChange);
         return;
     }
-    if (!group) showLanding();
+    if (spiritId === 'bar') showBar();
+    else if (!group) showLanding();
     else if (!styleId) showStyleStep(group);
     else if (!familyId) showFamilyStep(group, style);
     else showResults(group, style, family);
@@ -925,6 +1106,8 @@ function showScreen(screen) {
     document.getElementById('styleView').style.display = screen === 'style' ? 'block' : 'none';
     document.getElementById('familyView').style.display = screen === 'family' ? 'block' : 'none';
     document.getElementById('resultsView').style.display = screen === 'results' ? 'block' : 'none';
+    document.getElementById('barView').style.display = screen === 'bar' ? 'block' : 'none';
+    document.getElementById('navBar').classList.toggle('active', screen === 'bar');
     window.scrollTo(0, 0);
 }
 
@@ -938,9 +1121,10 @@ function badgesHtml(c, { always = false } = {}) {
     const out = [];
     if (c.classic) out.push('<span class="badge classic"><i class="fa-solid fa-star"></i> Classic</span>');
     if (c.template) out.push('<span class="badge template"><i class="fa-solid fa-shuffle"></i> Any spirit</span>');
+    if (barActive() && canMake(c)) out.push('<span class="badge canmake"><i class="fa-solid fa-check"></i> In your bar</span>');
     // Cards only show the *interesting* strength signals: Zero, Low ABV or Strong (skip Medium)
     if (always || tier !== 'medium') {
-        out.push(`<span class="badge ${tier}"><i class="fa-solid fa-bolt"></i> ${STRENGTH_LABELS[tier]}${tier === 'zero' ? '' : ` · ${alc} oz`}</span>`);
+        out.push(`<span class="badge ${tier}"><i class="fa-solid fa-bolt"></i> ${STRENGTH_LABELS[tier]}${tier === 'zero' ? '' : ` · ${alcText(alc)}`}</span>`);
     }
     return out.join('');
 }
@@ -962,7 +1146,7 @@ function keyIngredientsHtml(c, highlight, max = 4) {
     const more = picks.length - max;
     return `<div class="card-ings">${shown.join(' · ')}${more > 0 ? ` <span class="more">+${more}</span>` : ''}</div>`;
 }
-function cardHtml(c, { list = false, highlight = () => false } = {}) {
+function cardHtml(c, { list = false, highlight = () => false, note = '' } = {}) {
     const link = `<a class="card-link" href="${drinkHref(c)}">${escapeHtml(c.name)}</a>`;
     const badges = badgesHtml(c);
     const ings = keyIngredientsHtml(c, highlight);
@@ -979,6 +1163,7 @@ function cardHtml(c, { list = false, highlight = () => false } = {}) {
         ${badges ? `<div class="badge-row">${badges}</div>` : ''}
         ${ings}
         ${flavorTagsHtml(c)}
+        ${note ? `<div class="card-note">${escapeHtml(note)}</div>` : ''}
     </div>`;
 }
 function onCardListClick(e) {
@@ -992,7 +1177,88 @@ function showLanding() {
     const firstLoad = state.screen === null;
     state.spirit = null;
     showScreen('landing');
+    renderLandingExtras();
     if (!firstLoad) { landingSearchEl.value = ''; renderLandingSearch(''); }
+}
+
+// ── Drink of the day ──
+// The classics in a fixed shuffled order (the same on every device), one per day. A drink that's
+// out of season is skipped that day and waits for the next pass, so nothing repeats until every
+// in-season classic has had its turn. Seasons follow the northern-hemisphere calendar.
+const ROTATION_START = Date.UTC(2026, 0, 1) / 86400000;   // day the rotation counts from
+const WARM_DRINKS = new Set(['Hot Toddy', 'Hot Buttered Rum', 'Egg Nog']);
+function inSeason(c, month) {   // month: 0 = January
+    if (WARM_DRINKS.has(c.name)) return month >= 10 || month <= 1;   // November to February
+    if (c.family === 'tropical') return month >= 3 && month <= 8;    // April to September
+    if (c.family === 'julep') return month >= 2 && month <= 8;       // March to September
+    return true;
+}
+function rotationOrder() {
+    const order = state.cocktails.filter(c => c.classic && !c.template).sort((a, b) => a.name.localeCompare(b.name));
+    let seed = 20260101;   // fixed seed, so every device shuffles the same way
+    const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 2 ** 32; };
+    for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+    }
+    return order;
+}
+function drinkOfTheDay(date = new Date()) {
+    const order = rotationOrder();
+    const today = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000;
+    let i = -1;
+    for (let day = Math.min(ROTATION_START, today); day <= today; day++) {
+        const month = new Date(day * 86400000).getUTCMonth();
+        let tries = 0;
+        do { i = (i + 1) % order.length; } while (!inSeason(order[i], month) && ++tries < order.length);
+    }
+    return order[i];
+}
+// Drinks most like your favorites, each with the favorite it came from.
+// Favorites take turns so one of them can't fill the whole row.
+function becauseYouLiked(favs, max = 4) {
+    const lists = favs.map(f => state.cocktails
+        .filter(x => !x.template && !state.favorites.has(x.name))
+        .map(x => ({ c: x, because: f, score: similarity(f, x) }))
+        .filter(x => x.score >= 5)
+        .sort((a, b) => b.score - a.score || byApproachability(a.c, b.c)));
+    const picks = [];
+    const taken = new Set();
+    for (let round = 0; picks.length < max && lists.some(l => l.length > round); round++) {
+        lists.forEach(l => {
+            const pick = l[round];
+            if (pick && !taken.has(pick.c) && picks.length < max) { picks.push(pick); taken.add(pick.c); }
+        });
+    }
+    return picks;
+}
+function landingSectionHtml(icon, title, sub, cards) {
+    return `<section class="landing-section">
+        <h2><i class="fa-solid ${icon}"></i> ${title}</h2>
+        <p class="section-sub">${sub}</p>
+        <div class="results-grid">${cards}</div>
+    </section>`;
+}
+function renderLandingExtras() {
+    const dotd = drinkOfTheDay();
+    const dotdEl = document.getElementById('drinkOfDay');
+    dotdEl.href = drinkHref(dotd);
+    dotdEl.innerHTML = `<span class="dotd-label"><i class="fa-solid fa-calendar-day"></i> Drink of the day</span>
+        <strong>${escapeHtml(dotd.name)}</strong>
+        ${keyIngredientsHtml(dotd, () => false, 5)}
+        <span class="dotd-cta">See recipe <i class="fa-solid fa-arrow-right"></i></span>`;
+
+    const favs = state.cocktails.filter(c => state.favorites.has(c.name)).sort((a, b) => a.name.localeCompare(b.name));
+    if (!favs.length) {
+        document.getElementById('landingExtras').innerHTML =
+            `<p class="landing-hint"><i class="fa-regular fa-heart"></i> Tap the heart on any drink to save it here, and we'll suggest what to try next.</p>`;
+        return;
+    }
+    const recs = becauseYouLiked(favs);
+    document.getElementById('landingExtras').innerHTML =
+        landingSectionHtml('fa-heart', 'Your favorites', `${plural(favs.length)} saved on this device.`, favs.map(c => cardHtml(c)).join('')) +
+        (recs.length ? landingSectionHtml('fa-wand-magic-sparkles', 'Try next', 'Picked from the drinks you saved.',
+            recs.map(({ c, because }) => cardHtml(c, { note: `Because you liked the ${because.name}` })).join('')) : '');
 }
 
 function renderSpiritLanding() {
@@ -1012,7 +1278,7 @@ function renderSpiritLanding() {
 function renderLandingSearch(query) {
     const results = document.getElementById('landingResults');
     const q = query.trim().toLowerCase();
-    document.getElementById('spiritGrid').style.display = q ? 'none' : '';
+    ['spiritGrid', 'drinkOfDay', 'landingExtras'].forEach(id => { document.getElementById(id).style.display = q ? 'none' : ''; });
     document.getElementById('landingSearchClear').style.display = q ? '' : 'none';
     results.style.display = q ? 'block' : 'none';
     if (!q) { results.innerHTML = ''; return; }
@@ -1230,8 +1496,12 @@ function renderResults() {
     }
     const keys = spiritKeys();
     const highlight = i => keys.has(i.key) || state.selected.has(i.key);
-    const list = state.view === 'list';
-    root.innerHTML = familyBreakdown(pool).map(({ f, drinks }) => {
+    root.innerHTML = familySectionsHtml(pool, { list: state.view === 'list', highlight });
+}
+
+// Drinks grouped by family, biggest family first, classics first within each
+function familySectionsHtml(pool, { list = false, highlight = () => false } = {}) {
+    return familyBreakdown(pool).map(({ f, drinks }) => {
         drinks.sort(byApproachability);
         const lead = leadClassic(drinks);
         return `<section class="family">
@@ -1285,7 +1555,7 @@ function renderRecipe(c) {
     const ingHtml = c.ingredients.map(i => {
         const isSel = state.selected.has(i.key);
         return `<li>
-            <span class="qty">${escapeHtml(i.qty || '')}</span>
+            <span class="qty">${escapeHtml(qtyText(i.qty))}</span>
             <span class="name" style="${isSel ? 'color:var(--accent);font-weight:600' : ''}">${escapeHtml(i.name)}</span>
         </li>`;
     }).join('');
@@ -1300,13 +1570,19 @@ function renderRecipe(c) {
     document.getElementById('recipeContent').innerHTML = `
         <button type="button" class="modal-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
         <h2><i class="fa-solid fa-martini-glass-citrus"></i> ${escapeHtml(c.name)}
-            ${favButtonHtml(c, ' style="position:static;margin-left:auto;font-size:1.2rem"')}
+            <span class="modal-actions">
+                <button type="button" class="fav-btn share-btn" data-share title="Share this drink" aria-label="Share this drink"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                ${favButtonHtml(c)}
+            </span>
         </h2>
         <div class="badge-row" style="margin-bottom:0.4rem">${badgesHtml(c, { always: true })}</div>
         ${family ? `<div class="recipe-family"><strong>${family.label}</strong> · ${family.blurb}</div>` : ''}
         ${flavorTagsHtml(c)}
         <div class="recipe-section">
-            <h4>Ingredients</h4>
+            <h4>Ingredients
+                <span class="unit-toggle" role="group" aria-label="Units">${['oz', 'ml'].map(u =>
+                    `<button type="button" data-units="${u}" class="${state.units === u ? 'active' : ''}" aria-pressed="${state.units === u}">${u}</button>`).join('')}</span>
+            </h4>
             <ul class="recipe-list">${ingHtml}</ul>
         </div>
         ${c.method ? `<div class="recipe-section"><h4>Method</h4><div class="recipe-line">${escapeHtml(c.method)}</div></div>` : ''}
@@ -1321,8 +1597,54 @@ function renderRecipe(c) {
     `;
 }
 
+// Short confirmation message at the bottom of the screen
+let toastTimer;
+function showToast(message) {
+    const el = document.getElementById('toast');
+    el.textContent = message;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+// Share sheet on phones and tablets, copy the link elsewhere
+async function shareDrink(c, btn) {
+    const url = `${location.href.split(/[?#]/)[0]}#/?drink=${c.slug}`;
+    const data = { title: c.name, text: `${c.name} on Next Round`, url };
+    // Only on the web: Chrome crashes the tab if a page opened from a local file asks to share
+    const shareSheet = navigator.share && /^https?:$/.test(location.protocol) && (!navigator.canShare || navigator.canShare(data));
+    if (shareSheet) {
+        try {
+            await navigator.share(data);
+            return;
+        } catch (err) {
+            if (err.name === 'AbortError') return;   // share sheet closed
+            // any other failure (blocked, unsupported here): copy the link instead
+        }
+    }
+    try {
+        await navigator.clipboard.writeText(url);
+    } catch (err) {
+        window.prompt('Copy this link:', url);
+        return;
+    }
+    showToast(`Link to the ${c.name} copied`);
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+    btn.title = 'Link copied';
+    setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i>';
+        btn.title = 'Share this drink';
+    }, 1600);
+}
+
 document.getElementById('recipeContent').addEventListener('click', (e) => {
     if (e.target.closest('[data-close]')) { closeRecipe(); return; }
+    const share = e.target.closest('[data-share]');
+    if (share) { shareDrink(state.recipe, share); return; }
+    const units = e.target.closest('[data-units]');
+    if (units) { setUnits(units.dataset.units); return; }
     const fav = e.target.closest('.fav-btn');
     if (fav) { toggleFavorite(fav.dataset.fav); return; }
     const chip = e.target.closest('.similar-chip');
@@ -1405,6 +1727,10 @@ document.getElementById('favFilterBtn').addEventListener('click', () => {
     document.getElementById('favFilterBtn').classList.toggle('active', state.favsOnly);
     renderResults();
 });
+document.getElementById('barFilterBtn').addEventListener('click', () => {
+    state.canMakeOnly = !state.canMakeOnly;
+    refreshResults();
+});
 function setView(view) {
     state.view = view;
     document.getElementById('viewGrid').classList.toggle('active', view === 'grid');
@@ -1438,6 +1764,9 @@ mqFilterDesktop.addEventListener('change', (e) => {
     if (e.matches) applyFilterDefault(); else setFilterOpen(false, false);  // keep the sheet from being stuck open on shrink
 });
 function updateFilterUI(resultCountVal) {
+    const barBtn = document.getElementById('barFilterBtn');
+    barBtn.style.display = barActive() ? '' : 'none';
+    barBtn.classList.toggle('active', state.canMakeOnly && barActive());
     const n = state.selected.size;
     const badge = document.getElementById('filterCountBadge');
     badge.style.display = n ? '' : 'none';
@@ -1458,6 +1787,101 @@ document.getElementById('filterClear').addEventListener('click', () => {
 function escapeHtml(s) {
     if (s == null) return '';
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ── My bar screen ──
+function showBar() {
+    if (state.screen === 'bar') return;
+    showScreen('bar');
+    // phones: open the bottle list until you've ticked something
+    document.getElementById('barPicker').classList.toggle('open', !barActive());
+    renderBarPicker();
+    renderBarResults();
+}
+function updateNavBar() {
+    const n = [...state.bar].filter(k => !BAR_STAPLES.includes(k)).length;
+    document.getElementById('navBarCount').textContent = n || '';
+}
+function renderBarPicker() {
+    const search = state.barSearch.toLowerCase();
+    const grouped = {};
+    state.ingredients.forEach(ing => {
+        if (ing.key === ANY_SPIRIT) return;
+        if (search && !ing.display.toLowerCase().includes(search)) return;
+        (grouped[ing.category] = grouped[ing.category] || []).push(ing);
+    });
+    const html = CATEGORY_ORDER.filter(cat => grouped[cat]).map(cat => {
+        const pills = grouped[cat]
+            .sort((a, b) => (state.uses[b.key] || 0) - (state.uses[a.key] || 0))
+            .map(ing => `<span class="ing-pill ${state.bar.has(ing.key) ? 'selected' : ''}" data-key="${ing.key}" title="Used in ${plural(state.uses[ing.key] || 0)}">${escapeHtml(ing.display)}</span>`)
+            .join('');
+        return `<div class="ingredient-cat">
+            <div class="ingredient-cat-title">${CATEGORY_LABELS[cat] || cat}</div>
+            <div class="ingredient-list">${pills}</div>
+        </div>`;
+    }).join('');
+    document.getElementById('barIngredients').innerHTML = html || '<div class="empty-state" style="padding:1rem"><div>No bottles match.</div></div>';
+    const bottles = [...state.bar].filter(k => !BAR_STAPLES.includes(k)).length;
+    document.getElementById('barBottleCount').textContent = bottles ? `(${bottles})` : '';
+}
+function renderBarResults() {
+    const makeable = state.cocktails.filter(canMake);
+    // Bottles that would unlock the most drinks you're one ingredient short of
+    const byBottle = new Map();
+    state.cocktails.forEach(c => {
+        if (c.template) return;
+        const missing = missingFromBar(c);
+        if (missing.length !== 1) return;
+        if (!byBottle.has(missing[0])) byBottle.set(missing[0], []);
+        byBottle.get(missing[0]).push(c);
+    });
+    const bottles = [...byBottle.entries()].sort((a, b) => b[1].length - a[1].length).slice(0, 6);
+    const bottleName = k => escapeHtml(state.ingByKey.get(k)?.display || k);
+
+    document.getElementById('barResults').innerHTML = `
+        <div class="panel">
+            <h2><i class="fa-solid fa-check"></i> You can make <span class="count">${makeable.length}</span></h2>
+            ${makeable.length
+                ? familySectionsHtml(makeable)
+                : `<div class="empty-state"><i class="fa-solid fa-wine-bottle"></i><div>Tick the bottles you have and the drinks you can make show up here.</div></div>`}
+        </div>
+        ${bottles.length ? `<div class="panel">
+            <h2><i class="fa-solid fa-cart-shopping"></i> One bottle away</h2>
+            <p class="family-blurb">The bottles that would unlock the most new drinks.</p>
+            ${bottles.map(([k, drinks]) => `<section class="family">
+                <div class="family-head">
+                    <h3>${bottleName(k)}</h3>
+                    <span class="family-like">unlocks ${plural(drinks.length)}</span>
+                    <span class="family-count">${drinks.length}</span>
+                </div>
+                <div class="results-grid">${drinks.sort(byApproachability).map(c => cardHtml(c)).join('')}</div>
+            </section>`).join('')}
+        </div>` : ''}`;
+}
+document.getElementById('barPickerToggle').addEventListener('click', () => {
+    document.getElementById('barPicker').classList.toggle('open');
+});
+document.getElementById('barIngredients').addEventListener('click', (e) => {
+    const pill = e.target.closest('.ing-pill');
+    if (!pill) return;
+    const k = pill.dataset.key;
+    if (state.bar.has(k)) state.bar.delete(k);
+    else state.bar.add(k);
+    saveBar();
+    updateNavBar();
+    renderBarPicker();
+    renderBarResults();
+});
+document.getElementById('barSearch').addEventListener('input', (e) => {
+    state.barSearch = e.target.value;
+    renderBarPicker();
+});
+document.getElementById('barResults').addEventListener('click', onCardListClick);
+document.getElementById('landingExtras').addEventListener('click', onCardListClick);
+
+// Offline support and "Add to Home Screen" (needs http(s), so skipped when opened as a local file)
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    navigator.serviceWorker.register('cocktails-sw.js', { scope: './cocktails' }).catch(() => {});
 }
 
 try {

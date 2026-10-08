@@ -1,0 +1,16 @@
+{
+  "id": "cocktails.html",
+  "name": "Next Round",
+  "short_name": "Next Round",
+  "description": "Find your next cocktail: pick a spirit, a vibe and a kind of drink.",
+  "start_url": "cocktails.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1e3a32",
+  "theme_color": "#264840",
+  "icons": [
+    { "src": "cocktail-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "cocktail-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "cocktail-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
