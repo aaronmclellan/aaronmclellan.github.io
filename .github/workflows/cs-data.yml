@@ -27,16 +27,18 @@ jobs:
         with:
           sparse-checkout: tools
 
+      # Start from the published branch so match files carry over between runs.
       - name: Previous snapshot
         run: |
-          if git fetch -q --depth=1 origin cs-data; then
-            git show FETCH_HEAD:cs2.json > prev.json
+          if git ls-remote --exit-code --heads origin cs-data > /dev/null; then
+            git clone -q --depth=1 --branch cs-data --single-branch \
+              "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" out
           else
-            echo '{}' > prev.json
+            mkdir -p out
           fi
 
       - name: Build
-        run: python3 tools/build_cs_data.py --prev prev.json --out out
+        run: python3 tools/build_cs_data.py --prev out/cs2.json --out out
 
       - name: Publish
         run: bash tools/publish_cs_data.sh out

@@ -1,23 +1,31 @@
 #!/usr/bin/env python3
-"""Build the CS2 tracker's data snapshot (cs2.json plus team calendar feeds).
+"""Build the CS2 tracker's data (cs2.json, match files and team calendars).
 
-    python3 tools/build_cs_data.py --prev prev.json --out out
+    python3 tools/build_cs_data.py --prev out/cs2.json --out out
     python3 tools/build_cs_data.py --prev out/cs2.json --out out --live-only
 
 The GRID Open Access key comes from $GRID_API_KEY (or ~/.grid_api_key), so it
 never has to live in a browser. .github/workflows/cs-data.yml runs this every
-10 minutes and force-pushes out/ to the cs-data branch; cs.html reads it from
-raw.githubusercontent.com.
+10 minutes on a clone of the cs-data branch and force-pushes the result back;
+cs.html reads it from raw.githubusercontent.com.
+
+Output:
+  cs2.json       schedule and results with series and map scores, events
+                 (prize pool, LAN or online, dates), Valve's standings with last
+                 month's ranks, and per-team map records and veto habits
+  m/<id>.json    per match with a ranked team: map veto, round winners and
+                 scoreboards. Written once a match finishes (and while live).
+  ics/<team>.ics calendar feed per ranked team
 
 A full run:
-  1. Valve's official VRS standings for the team list and rankings
+  1. Valve's official VRS standings, this month and last
      (github.com/ValveSoftware/counter-strike_regional_standings).
   2. GRID Central Data: every CS2 series from 2 days ago to 3 weeks out (the
      whole history window once a day), merged into the previous snapshot.
-  3. GRID Series State: scores for live and finished series. Finished scores
-     never change, so they are carried forward and fetched only once.
---live-only skips 1 and 2 and refreshes scores for live series. It exits with
-status 3 when nothing is live, which ends the workflow's polling loop.
+  3. GRID Series State: scores and match files for live and finished series.
+     Finished matches never change, so each is fetched once.
+--live-only skips 1 and 2 and refreshes live series. It exits with status 3
+when nothing is live, which ends the workflow's polling loop.
 
 Python 3.9+, standard library only.
 """
@@ -40,6 +48,7 @@ SERIES_STATE = 'https://api-op.grid.gg/live-data-feed/series-state/graphql'
 VRS_REPO = 'ValveSoftware/counter-strike_regional_standings'
 UA = 'cs2-tracker/1.0 (+https://www.ron.computer/cs.html)'
 CS2_TITLE_ID = 28
+SCHEMA = 2                          # bump to force a full re-read after format changes
 
 AHEAD = timedelta(days=21)          # schedule horizon
 HISTORY = timedelta(days=45)        # results kept in the snapshot
@@ -187,20 +196,32 @@ ROW_RE = re.compile(r'^\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s
 
 def fetch_vrs(prev, now):
     cached = prev.get('rankings')
-    if cached and cached.get('teams') and now - parse_time(cached['fetchedAt']) < VRS_EVERY:
+    if (cached and cached.get('teams') and prev.get('schema') == SCHEMA
+            and now - parse_time(cached['fetchedAt']) < VRS_EVERY):
         return cached
     headers = {'Accept': 'application/vnd.github+json'}
     if os.environ.get('GITHUB_TOKEN'):
         headers['Authorization'] = 'Bearer ' + os.environ['GITHUB_TOKEN']
+    raw = 'https://raw.githubusercontent.com/%s/main/live/' % VRS_REPO
     try:
         years = json.loads(http_get('https://api.github.com/repos/%s/contents/live' % VRS_REPO, headers))
-        year = max((y['name'] for y in years if y['type'] == 'dir' and y['name'].isdigit()), key=int)
-        files = json.loads(http_get('https://api.github.com/repos/%s/contents/live/%s' % (VRS_REPO, year), headers))
-        latest = max(f['name'] for f in files if re.match(r'standings_global_\d{4}_\d{2}_\d{2}\.md$', f['name']))
-        text = http_get('https://raw.githubusercontent.com/%s/main/live/%s/%s' % (VRS_REPO, year, latest))
+        years = sorted((y['name'] for y in years if y['type'] == 'dir' and y['name'].isdigit()), key=int)
+        files = []
+        for year in years[-2:]:  # last year too, so January still has a previous month
+            listing = json.loads(http_get('https://api.github.com/repos/%s/contents/live/%s' % (VRS_REPO, year), headers))
+            files += sorted(year + '/' + f['name'] for f in listing
+                            if re.match(r'standings_global_\d{4}_\d{2}_\d{2}\.md$', f['name']))
+        latest = files[-1]
+        text = http_get(raw + latest)
+        prev_text = http_get(raw + files[-2]) if len(files) > 1 else ''
     except Exception as e:  # keep the last good standings rather than failing the run
         log('VRS fetch failed (%s); keeping previous standings' % e)
         return cached
+    prev_rank = {}
+    for line in prev_text.splitlines():
+        m = ROW_RE.match(line)
+        if m:
+            prev_rank.setdefault(team_key(m.group(3)), int(m.group(1)))
     teams = []
     for line in text.splitlines():
         m = ROW_RE.match(line)
@@ -209,6 +230,7 @@ def fetch_vrs(prev, now):
         rank, points, name, roster = m.groups()
         teams.append({
             'rank': int(rank),
+            'prev': prev_rank.get(team_key(name)),  # rank in the previous month's standings
             'points': int(points),
             'name': name.strip(),
             'key': team_key(name),
@@ -220,10 +242,10 @@ def fetch_vrs(prev, now):
         log('VRS file %s had no rows; keeping previous standings' % latest)
         return cached
     date = re.search(r'(\d{4})_(\d{2})_(\d{2})', latest).groups()
-    log('VRS standings %s: %d teams' % ('-'.join(date), len(teams)))
+    log('VRS standings %s: %d teams (previous: %d)' % ('-'.join(date), len(teams), len(prev_rank)))
     return {
         'date': '-'.join(date),
-        'source': 'https://github.com/%s/blob/main/live/%s/%s' % (VRS_REPO, year, latest),
+        'source': 'https://github.com/%s/blob/main/live/%s' % (VRS_REPO, latest),
         'fetchedAt': iso(now),
         'teams': teams,
     }
@@ -235,6 +257,7 @@ class Schema:
     drop whatever it refuses, and remember that for the rest of the run."""
     title_filter = True
     streams = True
+    events = True
 
 
 def series_query():
@@ -242,6 +265,10 @@ def series_query():
     if Schema.title_filter:
         flt += ', titleId: %d' % CS2_TITLE_ID
     streams = 'streams { url }' if Schema.streams else ''
+    # Each series' tournament is a stage ("Group Stage"); its parent is the event.
+    event = 'logoUrl startDate endDate prizePool { amount } venueType'
+    tournament = ('tournament { id name nameShortened %s parent { id name nameShortened %s } }' % (event, event)
+                  if Schema.events else 'tournament { id name nameShortened }')
     return '''query AllSeries($from: String!, $to: String!, $after: String) {
   allSeries(filter: { %s }, first: 50, after: $after,
             orderBy: StartTimeScheduled, orderDirection: ASC) {
@@ -251,11 +278,11 @@ def series_query():
       title { nameShortened }
       format { name nameShortened }
       %s
-      tournament { id name nameShortened }
+      %s
       teams { baseInfo { id name nameShortened logoUrl colorPrimary } }
     } }
   }
-}''' % (flt, streams)
+}''' % (flt, streams, tournament)
 
 
 def series_page(key, frm, to, after):
@@ -273,6 +300,10 @@ def series_page(key, frm, to, after):
                 log('streams field rejected (%s); dropping it' % msg[:120])
                 Schema.streams = False
                 continue
+            if Schema.events and re.search(r'parent|prizePool|venueType|startDate|endDate|logoUrl', msg, re.I):
+                log('event fields rejected (%s); dropping them' % msg[:120])
+                Schema.events = False
+                continue
             raise
 
 
@@ -286,10 +317,31 @@ def map_name(name):
     return name[:1].upper() + name[1:] if name else None
 
 
-def compact_series(n):
+GENERIC_LOGO_RE = re.compile(r'/generic$')
+
+
+def event_info(t):
+    logo = t.get('logoUrl')
+    prize = (t.get('prizePool') or {}).get('amount')
+    return {
+        'name': (t.get('name') or '').strip(),
+        'short': (t.get('nameShortened') or '').strip(),
+        'logo': None if not logo or GENERIC_LOGO_RE.search(logo) else logo,
+        'start': t.get('startDate'),
+        'end': t.get('endDate'),
+        'prize': int(prize) if prize else None,
+        'venue': (t.get('venueType') or '').lower() or None,  # 'lan' or 'online'
+    }
+
+
+def compact_series(n, events):
+    """Series fields cs.html uses; records the series' event in `events`."""
     fmt = n.get('format') or {}
     m = re.search(r'(\d+)', fmt.get('nameShortened') or fmt.get('name') or '')
     t = n.get('tournament') or {}
+    event = t.get('parent') or t
+    if event.get('id') and 'startDate' in event:
+        events[event['id']] = event_info(event)
     teams = []
     for entry in n.get('teams') or []:
         b = (entry or {}).get('baseInfo') or {}
@@ -306,13 +358,14 @@ def compact_series(n):
         'time': n['startTimeScheduled'],
         'bo': int(m.group(1)) if m else None,
         'tournament': {'id': t.get('id'), 'name': (t.get('name') or '').strip(),
-                       'short': (t.get('nameShortened') or '').strip()},
+                       'short': (t.get('nameShortened') or '').strip(),
+                       'event': event.get('id') if 'startDate' in event else None},
         'teams': teams,
         'streams': [s['url'] for s in (n.get('streams') or []) if s and s.get('url')],
     }
 
 
-def fetch_window(key, lo, hi):
+def fetch_window(key, lo, hi, events):
     """Every CS2 series scheduled in [lo, hi], keyed by id."""
     out, after, pages = {}, None, 0
     while True:
@@ -325,7 +378,7 @@ def fetch_window(key, lo, hi):
             if TEST_TOURNAMENT_RE.match(((n.get('tournament') or {}).get('name') or '').strip()):
                 continue
             if n.get('id') and n.get('startTimeScheduled'):
-                out[n['id']] = compact_series(n)
+                out[n['id']] = compact_series(n, events)
         info = page.get('pageInfo') or {}
         if not info.get('hasNextPage') or pages >= 400:
             break
@@ -334,33 +387,53 @@ def fetch_window(key, lo, hi):
         # An accepted filter that matches nothing means the title id is wrong.
         log('titleId filter returned no CS2 series; filtering by title instead')
         Schema.title_filter = False
-        return fetch_window(key, lo, hi)
+        return fetch_window(key, lo, hi, events)
     log('series %s..%s: %d CS2 series over %d pages' % (iso(lo)[:10], iso(hi)[:10], len(out), pages))
     return out
 
 
 # ── GRID Series State ────────────────────────────────────────────────────────
+# One request per series gets the score plus everything the match details
+# view needs: map veto, round winners and per-player stats for each map.
 STATE_QUERY = '''query SeriesState($id: ID!) {
   seriesState(id: $id) {
-    valid started finished forfeited updatedAt
+    valid started finished forfeited updatedAt duration
+    draftActions { sequenceNumber type drafter { id type } draftable { type name } }
     teams { ... on SeriesTeamStateCs2 { id score won } }
     games {
-      sequenceNumber started finished
+      sequenceNumber started finished duration
       map { name }
-      teams { ... on GameTeamStateCs2 { id score won side } }
+      teams { ... on GameTeamStateCs2 { id score won side
+        players { ... on GamePlayerStateCs2 { id name kills deaths killAssistsGiven headshots damageDealt } } } }
+      segments { sequenceNumber teams { ... on SegmentTeamStateCs2 { id side won winType } } }
     }
   }
 }'''
 
+SIDES = {'counter-terrorists': 'CT', 'ct': 'CT', 'terrorists': 'T', 't': 'T'}
+WIN_TYPES = {'opponentEliminated': 'elim', 'bombExploded': 'bomb', 'bombDefused': 'defuse', 'timeExpired': 'time'}
+DURATION_RE = re.compile(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:([\d.]+)S)?$')
+
+
+def seconds(duration):
+    """'PT1H49M26.9S' -> 6566."""
+    m = DURATION_RE.match(duration or '')
+    if not m or not any(m.groups()):
+        return None
+    h, mins, secs = m.groups()
+    return int(int(h or 0) * 3600 + int(mins or 0) * 60 + float(secs or 0))
+
 
 def fetch_state(key, series_id):
     try:
-        st = grid(SERIES_STATE, STATE_QUERY, {'id': series_id}, key, STATE_GAP).get('seriesState')
+        return grid(SERIES_STATE, STATE_QUERY, {'id': series_id}, key, STATE_GAP).get('seriesState')
     except GridError as e:
         log('state %s: %s' % (series_id, str(e)[:160]))
         return None
-    if not st:
-        return None
+
+
+def compact_state(st):
+    """Scores for cs2.json: series score and each map's score."""
     return strip_empty({
         'valid': st.get('valid'),
         'started': st.get('started'),
@@ -380,9 +453,77 @@ def fetch_state(key, series_id):
     })
 
 
+def match_detail(series_id, st):
+    """The m/<id>.json file: veto, and per map the round winners and a
+    scoreboard. Player rows are [name, kills, deaths, assists, headshots,
+    damage] per map, plus rounds played in the series totals (for ADR)."""
+    games, totals = [], {}
+    for g in sorted((g for g in st.get('games') or [] if g and g.get('started')),
+                    key=lambda g: g.get('sequenceNumber') or 0):
+        rounds = []
+        for seg in sorted(g.get('segments') or [], key=lambda x: x.get('sequenceNumber') or 0):
+            winner = next((t for t in seg.get('teams') or [] if t and t.get('won')), None)
+            if winner:
+                side = (winner.get('side') or '').lower()
+                rounds.append([winner.get('id'), SIDES.get(side, side.upper() or None),
+                               WIN_TYPES.get(winner.get('winType'))])  # None when GRID says 'unknown'
+        players = {}
+        for t in g.get('teams') or []:
+            if not t:
+                continue
+            rows = []
+            for p in t.get('players') or []:
+                row = [p.get('name'), p.get('kills') or 0, p.get('deaths') or 0, p.get('killAssistsGiven') or 0,
+                       p.get('headshots') or 0, p.get('damageDealt') or 0]
+                rows.append(row)
+                tot = totals.setdefault((t.get('id'), p.get('id')), [p.get('name'), 0, 0, 0, 0, 0, 0])
+                for i in range(1, 6):
+                    tot[i] += row[i]
+                tot[6] += len(rounds)
+            rows.sort(key=lambda r: (-r[1], r[2]))
+            players[t.get('id')] = rows
+        games.append({'n': g.get('sequenceNumber'), 'map': map_name((g.get('map') or {}).get('name')),
+                      'live': not g.get('finished'), 'dur': seconds(g.get('duration')),
+                      'rounds': rounds, 'players': players})
+    series_players = {}
+    for (team_id, _), row in totals.items():
+        series_players.setdefault(team_id, []).append(row)
+    for rows in series_players.values():
+        rows.sort(key=lambda r: (-r[1], r[2]))
+    veto = []
+    for a in sorted(st.get('draftActions') or [], key=lambda a: int(a.get('sequenceNumber') or 0)):
+        drafter, item = a.get('drafter') or {}, a.get('draftable') or {}
+        by = drafter.get('id') if drafter.get('type') == 'team' else None  # None: the leftover decider
+        if item.get('type') == 'map':
+            veto.append([a.get('type'), by, map_name(item.get('name'))])
+        elif item.get('type') == 'side':
+            veto.append(['side', by, SIDES.get((item.get('name') or '').lower(), item.get('name'))])
+    if not any(r[1] for rows in series_players.values() for r in rows):
+        # Some lower-tier matches only report round winners: no scoreboard.
+        series_players = {}
+        for g in games:
+            g['players'] = {}
+    return {'id': series_id, 'updatedAt': st.get('updatedAt'), 'dur': seconds(st.get('duration')),
+            'veto': veto, 'games': games, 'players': series_players}
+
+
+def top_fragger(detail):
+    """[name, kills, deaths, team id] of the series' top fragger."""
+    best = None
+    for team_id, rows in detail['players'].items():
+        for r in rows:
+            if r[1] and (best is None or (r[1], -r[2]) > (best[1], -best[2])):
+                best = [r[0], r[1], r[2], team_id]
+    return best
+
+
 def is_live(s):
     st = s.get('state') or {}
     return bool(st.get('started')) and not st.get('finished')
+
+
+def is_ranked(s, ranked_keys):
+    return any(t.get('key') in ranked_keys for t in s['teams'])
 
 
 def is_live_candidate(s, now, live_only):
@@ -396,42 +537,80 @@ def is_live_candidate(s, now, live_only):
 
 
 def refresh_states(key, series, ranked_keys, now, live_only=False):
-    """Fetch scores; returns True when a match is in progress."""
+    """Fetch scores and match details. Returns (a match is in progress,
+    {series id: detail} for the m/ files to write)."""
     live = [s for s in series if is_live_candidate(s, now, live_only)]
     live_ids = {s['id'] for s in live}
     backlog = []
     if not live_only:
         for s in series:
             st = s.get('state') or {}
-            if st.get('finished') or s['id'] in live_ids:
+            if s['id'] in live_ids or parse_time(s['time']) > now:
                 continue
-            t = parse_time(s['time'])
-            if t > now:
-                continue
-            checked = s.get('stateCheckedAt')
-            if checked and now - parse_time(checked) < STATE_RETRY:
-                continue
-            if s.get('stateMisses', 0) >= STATE_MAX_MISSES:
-                continue
+            if st.get('finished'):
+                # Done, unless a ranked team's match still lacks its details.
+                if s.get('detail') or not st.get('started') or not is_ranked(s, ranked_keys):
+                    continue
+            else:
+                checked = s.get('stateCheckedAt')
+                if checked and now - parse_time(checked) < STATE_RETRY:
+                    continue
+                if s.get('stateMisses', 0) >= STATE_MAX_MISSES:
+                    continue
             backlog.append(s)
         # Ranked teams first, then most recent.
-        backlog.sort(key=lambda s: (not any(tm.get('key') in ranked_keys for tm in s['teams']),
-                                    -parse_time(s['time']).timestamp()))
+        backlog.sort(key=lambda s: (not is_ranked(s, ranked_keys), -parse_time(s['time']).timestamp()))
         backlog = backlog[:MAX_STATE_FETCHES]
-    got = 0
     targets = live + backlog
     with ThreadPoolExecutor(max_workers=STATE_WORKERS) as pool:
         states = list(pool.map(lambda s: fetch_state(key, s['id']), targets))
+    got, details = 0, {}
     for s, st in zip(targets, states):
         s['stateCheckedAt'] = iso(now)
-        if st:
-            s['state'] = st
-            s.pop('stateMisses', None)
-            got += 1
-        elif not s.get('state'):
-            s['stateMisses'] = s.get('stateMisses', 0) + 1
-    log('series state: %d live candidates, %d backlog, %d with data' % (len(live), len(backlog), got))
-    return any(is_live(s) for s in live)
+        if not st:
+            if not s.get('state'):
+                s['stateMisses'] = s.get('stateMisses', 0) + 1
+            continue
+        got += 1
+        s.pop('stateMisses', None)
+        s['state'] = compact_state(st)
+        if st.get('started'):
+            detail = match_detail(s['id'], st)
+            top = top_fragger(detail)
+            if top:
+                s['top'] = top
+            # Details only for matches with a ranked team, to keep the branch small.
+            if is_ranked(s, ranked_keys) and detail['games']:
+                details[s['id']] = detail
+                s['detail'] = 1
+    log('series state: %d live candidates, %d backlog, %d with data, %d match files'
+        % (len(live), len(backlog), got, len(details)))
+    return any(is_live(s) for s in live), details
+
+
+def team_stats(series, ranked_keys, detail_dir):
+    """Per ranked team and map: [maps won, maps lost, times picked, times
+    banned] over the history window."""
+    stats = {}
+    for s in series:
+        st = s.get('state') or {}
+        if not st.get('started'):
+            continue
+        keys = {t.get('id'): t.get('key') for t in s['teams']}
+        for g in st.get('games') or []:
+            if not g.get('finished') or not g.get('map'):
+                continue
+            for t in g.get('teams') or []:
+                k = keys.get(t.get('id'))
+                if k in ranked_keys:
+                    stats.setdefault(k, {}).setdefault(g['map'], [0, 0, 0, 0])[0 if t.get('won') else 1] += 1
+        path = detail_dir / (s['id'] + '.json')
+        if s.get('detail') and path.exists():
+            for kind, by, value in json.loads(path.read_text(encoding='utf-8')).get('veto', []):
+                k = keys.get(by)
+                if kind in ('pick', 'ban') and k in ranked_keys and value:
+                    stats.setdefault(k, {}).setdefault(value, [0, 0, 0, 0])[2 if kind == 'pick' else 3] += 1
+    return stats
 
 
 # ── Calendar feeds ───────────────────────────────────────────────────────────
@@ -455,7 +634,7 @@ def series_title(s):
     return '%s vs %s' % (na, nb)
 
 
-def write_ics(path, cal_name, series, now):
+def write_ics(path, cal_name, series, events, now):
     lines = [
         'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CS2 Pro Tracker//EN', 'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH', 'X-WR-CALNAME:' + ics_text(cal_name),
@@ -464,7 +643,8 @@ def write_ics(path, cal_name, series, now):
     for s in series:
         start = parse_time(s['time'])
         hours = {1: 1.5, 3: 3, 5: 5}.get(s.get('bo'), 2)
-        desc = [s['tournament'].get('name') or '']
+        event = (events.get(s['tournament'].get('event')) or {}).get('name') or s['tournament'].get('name') or 'CS2'
+        desc = [s['tournament'].get('name') or event]
         if s.get('bo'):
             desc.append('Best of %d' % s['bo'])
         desc += s.get('streams', [])[:3]
@@ -477,7 +657,7 @@ def write_ics(path, cal_name, series, now):
             'DTEND:' + ics_time(start + timedelta(hours=hours)),
             'SUMMARY:' + ics_text(series_title(s)),
             'DESCRIPTION:' + ics_text('\n'.join(d for d in desc if d)),
-            'LOCATION:' + ics_text(s['tournament'].get('name') or 'CS2'),
+            'LOCATION:' + ics_text(event),
             'END:VEVENT',
         ]
     lines.append('END:VCALENDAR')
@@ -495,7 +675,7 @@ def write_ics(path, cal_name, series, now):
     path.write_text('\r\n'.join(folded) + '\r\n', encoding='utf-8')
 
 
-def write_calendars(out, rankings, series, now):
+def write_calendars(out, rankings, series, events, now):
     cal_dir = out / 'ics'
     cal_dir.mkdir(parents=True, exist_ok=True)
     for old in cal_dir.glob('*.ics'):
@@ -510,7 +690,7 @@ def write_calendars(out, rankings, series, now):
     for team in (rankings or {}).get('teams', []):
         matches = by_key.get(team['key'])
         if matches:
-            write_ics(cal_dir / (team['key'] + '.ics'), team['name'] + ' (CS2)', matches, now)
+            write_ics(cal_dir / (team['key'] + '.ics'), team['name'] + ' (CS2)', matches, events, now)
             written += 1
     log('calendar feeds: %d teams' % written)
 
@@ -551,14 +731,18 @@ def main():
               if not TEST_TOURNAMENT_RE.match(s['tournament'].get('name') or '')}
     rankings = prev.get('rankings')
     full_at = prev.get('fullAt')
+    events = dict(prev.get('events') or {})
+    stats = prev.get('teamStats')
+    detail_dir = out / 'm'
+    detail_dir.mkdir(exist_ok=True)
 
     if not args.live_only:
         rankings = fetch_vrs(prev, now) or rankings
-        full = not full_at or now - parse_time(full_at) >= FULL_EVERY
+        full = not full_at or prev.get('schema') != SCHEMA or now - parse_time(full_at) >= FULL_EVERY
         lo = now - (HISTORY if full else RECENT)
         hi = now + AHEAD
         try:
-            fresh = fetch_window(key, lo, hi)
+            fresh = fetch_window(key, lo, hi, events)
         except GridError as e:
             # A failed scheduled run emails the repo owner, so skip quietly
             # while the published snapshot is still recent.
@@ -571,7 +755,7 @@ def main():
                 del series[sid]  # cancelled, or moved out of the window
         for sid, s in fresh.items():
             old = series.get(sid) or {}
-            for carry in ('state', 'stateCheckedAt', 'stateMisses'):
+            for carry in ('state', 'stateCheckedAt', 'stateMisses', 'detail', 'top'):
                 if carry in old:
                     s[carry] = old[carry]
             series[sid] = s
@@ -579,10 +763,24 @@ def main():
             full_at = iso(now)
         for sid in [sid for sid, s in series.items() if parse_time(s['time']) < now - HISTORY]:
             del series[sid]
+        for s in series.values():
+            if s.get('detail') and not (detail_dir / (s['id'] + '.json')).exists():
+                del s['detail']  # file went missing: fetch it again
 
     ordered = sorted(series.values(), key=lambda s: s['time'])
     ranked_keys = {t['key'] for t in (rankings or {}).get('teams', [])}
-    live = refresh_states(key, ordered, ranked_keys, now, live_only=args.live_only)
+    live, details = refresh_states(key, ordered, ranked_keys, now, live_only=args.live_only)
+    for sid, detail in details.items():
+        (detail_dir / (sid + '.json')).write_text(
+            json.dumps(strip_empty(detail), separators=(',', ':'), ensure_ascii=False), encoding='utf-8')
+    if not args.live_only:
+        keep = {s['id'] for s in ordered if s.get('detail')}
+        for f in detail_dir.glob('*.json'):
+            if f.stem not in keep:
+                f.unlink()
+        used = {s['tournament'].get('event') for s in ordered}
+        events = {k: v for k, v in events.items() if k in used}
+        stats = team_stats(ordered, ranked_keys, detail_dir)
 
     # Attach logos to the standings so the team picker can show them.
     if rankings:
@@ -597,17 +795,20 @@ def main():
 
     snapshot = strip_empty({
         'v': 1,
+        'schema': SCHEMA,
         'generatedAt': iso(now),
         'fullAt': full_at,
         'live': live,
         'rankings': rankings,
+        'events': events,
+        'teamStats': stats,
         'series': ordered,
     })
     tmp = out / 'cs2.json.tmp'
     tmp.write_text(json.dumps(snapshot, separators=(',', ':'), ensure_ascii=False), encoding='utf-8')
     tmp.replace(out / 'cs2.json')
     if not args.live_only:
-        write_calendars(out, rankings, ordered, now)
+        write_calendars(out, rankings, ordered, events, now)
     log('wrote %d series (%s)' % (len(ordered), 'live matches on' if live else 'nothing live'))
     if args.live_only and not live:
         sys.exit(3)

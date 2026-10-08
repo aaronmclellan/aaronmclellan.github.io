@@ -893,6 +893,136 @@ a.match-action-btn { text-decoration: none; }
 }
 .btn-primary.btn-small { padding: 0.6rem 1.1rem; font-size: 0.9rem; }
 
+/* Round history: CT and T colors */
+:root { --ct: #5b9bd5; --t: #e3a33b; }
+[data-theme="light"] { --ct: #2f6fb0; --t: #b97a12; }
+
+/* Cards: top fragger and last meeting */
+.match-top, .match-h2h {
+    text-align: center; font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.35rem;
+}
+.match-top i, .match-h2h i { color: var(--accent); font-size: 0.7rem; margin-right: 0.15rem; }
+.match-top span { color: var(--text-muted); }
+.match-h2h { color: var(--text-muted); }
+
+/* Valve rank movement */
+.rank-move { font-size: 0.7rem; font-weight: 700; margin-left: 0.3rem; white-space: nowrap; }
+.rank-move i { margin-right: 1px; }
+.rank-move.up { color: var(--win); }
+.rank-move.down { color: var(--loss); }
+.team-stat-value .rank-move { font-size: 0.75rem; vertical-align: 0.2em; }
+
+/* Map pool */
+.map-pool { display: grid; gap: 0.3rem; max-width: 560px; }
+.map-pool-row {
+    display: grid; grid-template-columns: 5.5rem 1fr 2.6rem minmax(0, 9rem);
+    align-items: center; gap: 0.5rem; font-size: 0.8rem;
+}
+.map-pool-name { font-weight: 600; }
+.map-pool-bar { height: 6px; border-radius: 3px; background: var(--bg-secondary); overflow: hidden; }
+.map-pool-bar span { display: block; height: 100%; background: var(--win); border-radius: 3px; }
+.map-pool-rec { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.map-pool-veto, .pool-compare td { font-size: 0.7rem; color: var(--text-muted); }
+.map-pool-veto span, .pool-compare .pick, .pool-compare .ban { margin-right: 0.4rem; white-space: nowrap; }
+.pick { color: var(--win); }
+.ban { color: var(--loss); }
+
+/* Tournament header with logo */
+.tournament-head { display: flex; gap: 0.85rem; align-items: flex-start; }
+.tournament-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; background: #f2f2f2; padding: 5px; flex-shrink: 0; }
+.tournament-status.venue { background: var(--bg-secondary); color: var(--text-secondary); }
+
+/* Match details */
+.match-details-content { max-width: 640px; }
+.match-details-score { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+.match-details-score > div { flex-basis: 100%; text-align: center; }
+.match-details-team { font-size: 0.9rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text-secondary); }
+.match-details-team .team-badge-sm { margin: 0; }
+.detail-section { margin-top: 1.25rem; }
+.detail-heading {
+    font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 0.5rem; display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;
+}
+.detail-heading i { color: var(--accent); }
+.detail-hint { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-muted); }
+.veto-list { list-style: none; counter-reset: veto; display: grid; gap: 0.25rem; }
+.veto-list li { counter-increment: veto; font-size: 0.82rem; color: var(--text-secondary); display: flex; gap: 0.4rem; align-items: baseline; flex-wrap: wrap; }
+.veto-list li::before { content: counter(veto); color: var(--text-muted); font-size: 0.7rem; width: 1rem; text-align: right; }
+.veto-list .veto-team { color: var(--text-primary); font-weight: 600; }
+.veto-list .veto-ban strong { color: var(--loss); }
+.veto-list .veto-pick strong { color: var(--win); }
+.veto-list .veto-decider strong { color: var(--accent); }
+.veto-side { font-size: 0.72rem; color: var(--text-muted); }
+.detail-map {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.6rem 0.75rem; margin-bottom: 0.5rem; cursor: pointer;
+}
+.detail-map:hover, .detail-map.active { border-color: var(--accent); }
+.detail-map-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.45rem; font-size: 0.85rem; }
+.detail-map-name { font-weight: 700; flex: 1; }
+.detail-map-score { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+.detail-map-score .w, .h2h-score .w { color: var(--win); }
+.detail-map-status { font-size: 0.72rem; color: var(--text-muted); min-width: 3.5rem; text-align: right; }
+.map-live { color: var(--loss); font-weight: 800; }
+.rounds { overflow-x: auto; scrollbar-width: thin; }
+.rounds-row { display: flex; gap: 2px; align-items: center; min-width: max-content; }
+.rounds-row + .rounds-row { margin-top: 2px; }
+.rounds-team { width: 2.6rem; flex-shrink: 0; font-size: 0.6rem; font-weight: 700; color: var(--text-muted); overflow: hidden; white-space: nowrap; }
+.rd {
+    width: 14px; height: 14px; border-radius: 3px; background: var(--bg-secondary);
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.rd.gap { margin-left: 6px; }
+.rd.win i { font-size: 0.5rem; color: #fff; }
+.rd.win.ct { background: var(--ct); }
+.rd.win.t { background: var(--t); }
+.rd.win.any { background: var(--text-muted); }
+.rounds-legend { display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.68rem; color: var(--text-muted); margin-top: 0.25rem; }
+.rounds-legend i { margin-right: 0.2rem; }
+.rounds-legend .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 0.25rem; vertical-align: -1px; }
+.swatch.ct { background: var(--ct); }
+.swatch.t { background: var(--t); }
+.hero-rounds { display: flex; justify-content: center; margin: 0.6rem auto 0; max-width: 100%; }
+.hero-rounds .rounds { max-width: 100%; }
+.scoreboard-tabs { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.scoreboard-tabs button {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary);
+    padding: 0.25rem 0.6rem; border-radius: 6px; font-family: inherit; font-size: 0.75rem; cursor: pointer;
+}
+.scoreboard-tabs button.active { background: var(--accent); color: #111; border-color: var(--accent); font-weight: 700; }
+.scoreboard-wrap { overflow-x: auto; }
+.scoreboard { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }
+.scoreboard th, .scoreboard td { padding: 0.35rem 0.4rem; text-align: right; white-space: nowrap; }
+.scoreboard th:first-child, .scoreboard td:first-child { text-align: left; }
+.scoreboard th { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+.scoreboard th:first-child { color: var(--text-primary); font-size: 0.8rem; font-weight: 700; }
+.scoreboard th .team-badge-sm { width: 20px; height: 20px; }
+.scoreboard td { border-bottom: 1px solid var(--border); }
+.scoreboard tr.top td:first-child { color: var(--accent); font-weight: 700; }
+.scoreboard tr.top i { font-size: 0.65rem; }
+.scoreboard .pos { color: var(--win); }
+.scoreboard .neg { color: var(--loss); }
+.h2h-row {
+    display: grid; grid-template-columns: 3.5rem 1fr auto; gap: 0.5rem; align-items: center;
+    font-size: 0.8rem; padding: 0.35rem 0; border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.h2h-row:hover .h2h-event { color: var(--accent); }
+.h2h-date { color: var(--text-muted); font-size: 0.72rem; }
+.h2h-event { color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.h2h-score { font-weight: 800; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.preview-form { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; padding: 0.2rem 0; }
+.preview-form > span:first-child { width: 7rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pool-compare { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.pool-compare th, .pool-compare td { padding: 0.3rem 0.4rem; text-align: left; border-bottom: 1px solid var(--border); }
+.pool-compare th { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
+.pool-compare td:first-child { font-weight: 600; font-size: 0.8rem; color: var(--text-primary); }
+.pool-compare strong { color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.pool-compare .muted { color: var(--text-muted); }
+.spinner-inline {
+    display: inline-block; width: 12px; height: 12px; border: 2px solid var(--border); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: -2px; margin-right: 0.3rem;
+}
+
 /* Toast */
 .toast {
     position: fixed; left: 50%; bottom: 1.5rem; z-index: 10000;
@@ -924,6 +1054,15 @@ a.match-action-btn { text-decoration: none; }
     .fav-nav-btn span { display: none; }
 }
 @media (max-width: 480px) {
+    /* Fit a full 24-round map: smaller cells, color only */
+    .rounds-row { gap: 1px; }
+    .rounds-team { width: 2rem; }
+    .rd { width: 9px; height: 11px; border-radius: 2px; }
+    .rd.gap { margin-left: 4px; }
+    .rd.win i { display: none; }
+    .match-details-content { padding: 1.1rem; }
+    .map-pool-row { grid-template-columns: 4.5rem 1fr 2.4rem; }
+    .map-pool-veto { grid-column: 1 / -1; margin: -0.2rem 0 0.2rem 0; }
     .navbar-brand { font-size: 1.3rem; }
     .navbar-brand span { display: none; }
     .navbar-controls { gap: 0.4rem; }
@@ -1119,6 +1258,9 @@ let state = {
     rankingsDate: '',
     rankByKey: new Map(),
     knownTeams: new Map(),   // key -> team object, for every team in the snapshot
+    events: {},              // event id -> { name, short, logo, start, end, prize, venue }
+    teamStats: {},           // team key -> { map: [won, lost, picked, banned] }
+    meetings: new Map(),     // 'keyA|keyB' -> finished matches between them, newest first
     matches: [],             // every series in the snapshot
     upcoming: [],            // live and upcoming matches in tournaments your teams play in
     results: [],             // finished matches involving your teams, newest first
@@ -1338,10 +1480,12 @@ function teamFromSnapshot(t) {
     if (!t || !t.name) return { ...NO_TEAM };
     const key = t.key || teamKey(t.name);
     const ranked = state.rankByKey.get(key);
+    const name = ranked ? ranked.name : t.name;  // Valve's spelling for ranked teams
     return {
         id: String(t.id || ''),
-        name: ranked ? ranked.name : t.name,  // Valve's spelling for ranked teams
-        tag: t.short || t.name.slice(0, 4).toUpperCase(),
+        name,
+        // GRID rarely sends a short name; abbreviate without the "Team " prefix.
+        tag: t.short || name.replace(/^team\s+/i, '').slice(0, 4).toUpperCase(),
         logoUrl: t.logo || (ranked && ranked.logo) || '',
         color: t.color || '#666',
         key,
@@ -1392,20 +1536,33 @@ function expandState(st) {
 function matchFromSeries(s) {
     const teams = (s.teams || []).map(teamFromSnapshot);
     const t = s.tournament || {};
-    const fullName = t.name || t.short || '';
-    const split = splitStageFromName(fullName);
+    // GRID gives each stage ("Group Stage") a parent event. Older snapshots
+    // only have "Event (Stage)" names, so split those.
+    const event = t.event && state.events[t.event];
+    let tournament, stage;
+    if (event) {
+        tournament = event.name;
+        stage = t.short && t.short !== event.short && t.short !== event.name ? t.short : '';
+    } else {
+        const split = splitStageFromName(t.name || t.short || '');
+        tournament = split.parent;
+        stage = split.stage;
+    }
     return {
         id: String(s.id),
         time: s.time,
         bo: s.bo || null,
         format: s.bo ? 'Bo' + s.bo : '',
-        tournament: split.parent || 'Unknown Tournament',
+        tournament: tournament || 'Unknown Tournament',
         tournamentId: t.id || null,
-        stage: split.stage,
+        eventId: event ? t.event : null,
+        stage,
         streams: (s.streams || []).map(url => ({ url, language: streamLabel(url) })),
         team1: teams[0] || { ...NO_TEAM },
         team2: teams[1] || { ...NO_TEAM },
         liveState: expandState(s.state),
+        top: s.top || null,       // [name, kills, deaths, team id]
+        hasDetail: !!s.detail,    // m/<id>.json exists: veto, rounds, scoreboard
     };
 }
 
@@ -1458,6 +1615,8 @@ function rebuildFromSnapshot(snap) {
     state.rankings = r.teams || [];
     state.rankingsDate = r.date || '';
     state.rankByKey = new Map(state.rankings.map(t => [t.key, t]));
+    state.events = snap.events || {};
+    state.teamStats = snap.teamStats || {};
     // Keep scores polled with a personal key when they're newer than the snapshot.
     const prev = new Map(state.matches.map(m => [m.id, m]));
     state.matches = (snap.series || []).map(s => {
@@ -1515,6 +1674,18 @@ function deriveViews() {
     const favTournaments = new Set(ahead.filter(m => m.involvesFavorite).map(m => m.tournament));
     state.upcoming = ahead.filter(m => favTournaments.has(m.tournament)).sort(byTimeAsc);
     state.results = past.filter(m => m.involvesFavorite).sort(byTimeDesc);
+    state.meetings = new Map();
+    past.slice().sort(byTimeDesc).forEach(m => {
+        if (!seriesScore(m) || isPlaceholderTeam(m.team1) || isPlaceholderTeam(m.team2)) return;
+        const k = pairKey(m.team1.key, m.team2.key);
+        if (!state.meetings.has(k)) state.meetings.set(k, []);
+        state.meetings.get(k).push(m);
+    });
+}
+function pairKey(a, b) { return a < b ? a + '|' + b : b + '|' + a; }
+// Earlier finished meetings between this match's two teams, newest first.
+function headToHead(match) {
+    return (state.meetings.get(pairKey(match.team1.key, match.team2.key)) || []).filter(m => m.id !== match.id);
 }
 function favUpcoming() { return state.upcoming.filter(m => m.involvesFavorite); }
 
@@ -1524,13 +1695,14 @@ function deriveTournaments(upcomingMatches, pastMatches) {
     const now = Date.now();
 
     allMatches.forEach(m => {
-        // Group by event name so "IEM Rio 2026 (Group Stage)" and "IEM Rio 2026
-        // (Playoffs)" become one event with two stages.
-        const groupKey = (m.tournament || '').trim().toLowerCase() || String(m.tournamentId || '');
+        // One entry per event, with its stages ("Group Stage", "Playoffs").
+        const name = (m.tournament || '').trim().toLowerCase();
+        const groupKey = m.eventId ? 'e' + m.eventId : (name ? 'n' + name : '');
         if (!groupKey) return;
         if (!tournMap[groupKey]) {
             tournMap[groupKey] = {
-                id: m.tournamentId || groupKey,
+                id: m.eventId || m.tournamentId || groupKey,
+                event: m.eventId ? state.events[m.eventId] : null,
                 name: m.tournament || 'Unknown Tournament',
                 teams: {}, stages: {},
                 matchCount: 0, upcomingMatchCount: 0,
@@ -1554,10 +1726,10 @@ function deriveTournaments(upcomingMatches, pastMatches) {
         [m.team1, m.team2].forEach(tm => { if (!isPlaceholderTeam(tm)) t.teams[tm.key] = tm; });
     });
 
-    // A series sometimes carries only a stage name ("Group Stage") with no
-    // event. Fold each one into the event it overlaps in dates and teams.
+    // Snapshots from before GRID event info sometimes carry only a stage name
+    // ("Group Stage"). Fold each into the event it overlaps in dates and teams.
     const tourneys = Object.values(tournMap);
-    const orphans = tourneys.filter(t => STAGE_WORDS_RE.test((t.name || '').trim()));
+    const orphans = tourneys.filter(t => !t.event && STAGE_WORDS_RE.test((t.name || '').trim()));
     const events = tourneys.filter(t => !STAGE_WORDS_RE.test((t.name || '').trim()));
     const fuzz = 2 * 24 * 3600 * 1000;
     orphans.forEach(orphan => {
@@ -1580,8 +1752,6 @@ function deriveTournaments(upcomingMatches, pastMatches) {
         best.upcomingMatchCount += orphan.upcomingMatchCount;
         if (orphan.earliestMatch < best.earliestMatch) best.earliestMatch = orphan.earliestMatch;
         if (orphan.latestMatch > best.latestMatch) best.latestMatch = orphan.latestMatch;
-        // Rename the matches too, so cards and calendar exports say "IEM Rio
-        // 2026" rather than "Group Stage".
         allMatches.forEach(m => {
             if (orphan.stageIds.has(String(m.tournamentId)) && m.tournament === orphan.name) {
                 m.tournament = best.name;
@@ -1594,14 +1764,19 @@ function deriveTournaments(upcomingMatches, pastMatches) {
     return tourneys
         .filter(t => !t._merged)
         .map(t => {
-            const startMs = Date.parse(t.earliestMatch), endMs = Date.parse(t.latestMatch);
+            // GRID's event dates when it has them, stretched to cover every match.
+            const ev = t.event || {};
+            let startMs = Date.parse(t.earliestMatch), endMs = Date.parse(t.latestMatch);
+            if (ev.start) startMs = Math.min(startMs, Date.parse(ev.start + 'T00:00:00Z'));
+            if (ev.end) endMs = Math.max(endMs, Date.parse(ev.end + 'T23:59:59Z'));
             let status;
-            if (startMs <= now && endMs >= now - 24 * 3600 * 1000) status = 'live';
+            if (startMs <= now && endMs >= now - (ev.end ? 0 : 24 * 3600 * 1000)) status = 'live';
             else if (startMs > now) status = 'upcoming';
             else status = 'past';
             return {
                 id: t.id, name: t.name,
-                startDate: t.earliestMatch, endDate: t.latestMatch,
+                logo: ev.logo || '', prize: ev.prize || 0, venue: ev.venue || '',
+                startMs, endMs, datesFromEvent: !!(ev.start && ev.end),
                 matchCount: t.matchCount, upcomingMatchCount: t.upcomingMatchCount,
                 status,
                 stages: Object.values(t.stages).sort((a, b) => Date.parse(a.earliest) - Date.parse(b.earliest)),
@@ -1612,8 +1787,8 @@ function deriveTournaments(upcomingMatches, pastMatches) {
             // Live first, then upcoming by start date, then past by end date.
             const rank = { live: 0, upcoming: 1, past: 2 };
             if (rank[a.status] !== rank[b.status]) return rank[a.status] - rank[b.status];
-            if (a.status === 'past') return Date.parse(b.endDate) - Date.parse(a.endDate);
-            return Date.parse(a.startDate) - Date.parse(b.startDate);
+            if (a.status === 'past') return b.endMs - a.endMs;
+            return a.startMs - b.startMs;
         });
 }
 
@@ -2046,7 +2221,7 @@ function renderFavoritesGrid(query) {
         return `<div class="team-pick-card ${sel ? 'selected' : ''} ${isPri ? 'priority' : ''}" data-name="${esc(t.name)}">
             ${badge}
             <div class="team-pick-info">
-                <div class="team-pick-name">${t.rank ? `<span class="vrs-rank lead">#${t.rank}</span>` : ''}${esc(t.name)}</div>
+                <div class="team-pick-name">${t.rank ? `<span class="vrs-rank lead">#${t.rank}</span>` : ''}${esc(t.name)}${t.rank ? rankMoveHtml(state.rankByKey.get(t.key)) : ''}</div>
                 <div class="team-pick-meta">${meta}</div>
             </div>
             <div class="team-pick-star"><i class="fa-${sel ? 'solid' : 'regular'} fa-star"></i></div>
@@ -2143,7 +2318,15 @@ function renderHero() {
             const map = liveGame.map && liveGame.map.name ? ' · ' + esc(mapName(liveGame.map.name)) : '';
             if (g1 && g2) mapLine = `<div class="hero-map-line">Map ${liveGame.sequenceNumber}${map} · <strong>${g1.score}-${g2.score}</strong></div>`;
         }
-        centerHtml = `<div class="hero-score">${sc ? sc[0].score : 0} <span>-</span> ${sc ? sc[1].score : 0}</div>${mapLine}<div class="live-pulse" style="margin-top:0.5rem">LIVE</div>`;
+        // Round history of the map in progress, from the match's detail file.
+        let roundsHtml = '';
+        if (match.hasDetail) {
+            const d = cachedDetail(match);
+            const g = d && d.games && (d.games.find(x => x.live) || d.games[d.games.length - 1]);
+            if (g) roundsHtml = `<div class="hero-rounds">${roundStripHtml(match, g)}</div>`;
+            loadDetail(match).then(fresh => { if (fresh) renderHero(); });
+        }
+        centerHtml = `<div class="hero-score">${sc ? sc[0].score : 0} <span>-</span> ${sc ? sc[1].score : 0}</div>${mapLine}${roundsHtml}<div class="live-pulse" style="margin-top:0.5rem">LIVE</div>`;
     } else if (match.status === 'starting') {
         centerHtml = '<div class="countdown-label">Due to start</div><div class="starting-pill">Waiting for the first map</div>';
     } else {
@@ -2296,6 +2479,7 @@ function renderUpcoming() {
             </div>
             ${when}
             <div class="match-time">${formatTime(match.time)}</div>
+            ${isTbd ? '' : lastMeetingHtml(match)}
             ${isTbd ? '' : matchActionsHtml(match)}
         </div>`;
     };
@@ -2371,6 +2555,15 @@ function renderUpcoming() {
     }
     panel.innerHTML = html;
 }
+// "Last met Oct 5: Vitality 2-1" under an upcoming card.
+function lastMeetingHtml(match) {
+    const last = headToHead(match)[0];
+    if (!last) return '';
+    const sc = seriesScore(last);
+    const winner = sc[0].won || sc[0].score > sc[1].score ? last.team1 : last.team2;
+    const hi = Math.max(sc[0].score, sc[1].score), lo = Math.min(sc[0].score, sc[1].score);
+    return `<div class="match-h2h"><i class="fa-solid fa-clock-rotate-left"></i> Last met ${DateTime.fromISO(last.time).setZone(state.selectedTz).toFormat('MMM d')}: ${esc(displayTeamName(winner))} won ${hi}-${lo}</div>`;
+}
 window.setUpcomingFilter = function(name) {
     state.upcomingTournamentFilter = name || '';
     renderUpcoming();
@@ -2383,6 +2576,12 @@ window.setUpcomingView = function(v) {
 };
 
 // ── Render: Results ──
+function topFraggerHtml(match) {
+    if (!match.top) return '';
+    const [name, kills, deaths, teamId] = match.top;
+    const team = String(teamId) === String(match.team2.id) ? match.team2 : match.team1;
+    return `<div class="match-top" title="Most kills in the series"><i class="fa-solid fa-crosshairs"></i> Top fragger: <strong>${esc(name)}</strong> ${kills}-${deaths} <span>(${esc(displayTeamName(team))})</span></div>`;
+}
 function buildScoreHtml(match) {
     const sc = seriesScore(match);
     if (!sc) return '<div class="match-score" style="font-size:0.75rem;font-weight:600;color:var(--text-muted)">no score</div>';
@@ -2424,6 +2623,7 @@ function renderResults() {
                 <div class="match-team right">${teamBadgeHtml(match.team2)}<div><div class="match-team-name">${teamNameHtml(match.team2)}</div></div></div>
             </div>
             ${mapBadgesHtml(match)}
+            ${topFraggerHtml(match)}
             <div class="match-time">${formatTime(match.time)}</div>
         </div>`;
     };
@@ -2460,6 +2660,11 @@ window.showMoreResults = function() {
 
 // ── Render: Tournaments ──
 const isProTeam = (tm) => tm.rank && tm.rank <= 50;
+function formatPrize(n) {
+    if (!n) return '';
+    return n >= 1e6 ? '$' + (n / 1e6).toFixed(n % 1e6 ? 2 : 0).replace(/\.?0+$/, '') + 'M'
+        : n >= 1e3 ? '$' + Math.round(n / 1e3) + 'K' : '$' + n;
+}
 function renderTournaments() {
     const panel = document.getElementById('panel-tournaments');
     const favKeys = favoriteKeys();
@@ -2507,15 +2712,17 @@ function renderTournaments() {
     }
 
     visible.forEach(t => {
-        const startFmt = t.startDate ? DateTime.fromISO(t.startDate).setZone(state.selectedTz).toFormat('MMM d') : '';
-        const endFmt = t.endDate ? DateTime.fromISO(t.endDate).setZone(state.selectedTz).toFormat('MMM d, yyyy') : '';
-        const dates = startFmt && endFmt && startFmt !== endFmt.split(',')[0] ? `${startFmt} &ndash; ${endFmt}` : (endFmt || startFmt);
+        // Event dates are calendar days; match-derived ones are moments.
+        const day = (ms) => t.datesFromEvent ? DateTime.fromMillis(ms, { zone: 'utc' }) : DateTime.fromMillis(ms).setZone(state.selectedTz);
+        const start = day(t.startMs), end = day(t.endMs);
+        const dates = start.hasSame(end, 'day') ? end.toFormat('MMM d, yyyy')
+            : `${start.toFormat(start.hasSame(end, 'year') ? 'MMM d' : 'MMM d, yyyy')} &ndash; ${end.toFormat('MMM d, yyyy')}`;
 
         let statusHtml = '';
         if (t.status === 'live') {
             statusHtml = '<span class="tournament-status live"><span class="live-dot"></span> Live now</span>';
         } else if (t.status === 'upcoming') {
-            const daysUntil = Math.max(0, Math.ceil((Date.parse(t.startDate) - now) / (24 * 3600 * 1000)));
+            const daysUntil = Math.max(0, Math.ceil((t.startMs - now) / (24 * 3600 * 1000)));
             if (daysUntil === 0) statusHtml = '<span class="tournament-status soon">Starts today</span>';
             else if (daysUntil === 1) statusHtml = '<span class="tournament-status soon">Starts tomorrow</span>';
             else statusHtml = `<span class="tournament-status ${daysUntil <= 7 ? 'soon' : 'upcoming'}">In ${daysUntil} days</span>`;
@@ -2532,6 +2739,8 @@ function renderTournaments() {
         const pc = proCount(t);
         const favBadge = involvesFav(t) ? '<i class="fa-solid fa-star tournament-fav-indicator" title="One of your teams is playing"></i>' : '';
         const proBadge = pc >= 2 ? `<span class="tournament-status pro" title="${pc} of Valve's top 50"><i class="fa-solid fa-medal"></i> ${pc} top-50</span>` : '';
+        const venueBadge = t.venue === 'lan' ? '<span class="tournament-status venue"><i class="fa-solid fa-building"></i> LAN</span>'
+            : t.venue === 'online' ? '<span class="tournament-status venue"><i class="fa-solid fa-wifi"></i> Online</span>' : '';
 
         // Your teams first, then by Valve rank, then alphabetically.
         const chips = t.teams.slice().sort((a, b) => {
@@ -2545,14 +2754,21 @@ function renderTournaments() {
         const overflow = chips.length - maxChips;
 
         html += `<div class="tournament-card">
-            <div class="tournament-name-row">
-                <div class="tournament-name">${favBadge}${esc(t.name)}</div>
-                ${statusHtml}
-                ${proBadge}
-            </div>
-            <div class="tournament-meta">
-                ${dates ? '<i class="fa-solid fa-calendar"></i> ' + dates : ''}
-                ${t.upcomingMatchCount > 0 ? ' &middot; <i class="fa-solid fa-clock"></i> ' + plural(t.upcomingMatchCount, 'upcoming match', 'upcoming matches') : ''}
+            <div class="tournament-head">
+                ${t.logo ? `<img class="tournament-logo" src="${esc(t.logo)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
+                <div style="min-width:0;flex:1">
+                    <div class="tournament-name-row">
+                        <div class="tournament-name">${favBadge}${esc(t.name)}</div>
+                        ${statusHtml}
+                        ${venueBadge}
+                        ${proBadge}
+                    </div>
+                    <div class="tournament-meta">
+                        <i class="fa-solid fa-calendar"></i> ${dates}
+                        ${t.prize ? ` &middot; <i class="fa-solid fa-sack-dollar"></i> ${formatPrize(t.prize)} prize pool` : ''}
+                        ${t.upcomingMatchCount > 0 ? ' &middot; <i class="fa-solid fa-clock"></i> ' + plural(t.upcomingMatchCount, 'upcoming match', 'upcoming matches') : ''}
+                    </div>
+                </div>
             </div>
             ${stageLine}
             ${chips.length ? `
@@ -2571,6 +2787,38 @@ window.setTournamentFilter = function(mode) {
 };
 
 // ── Render: Team Info ──
+// Movement since the previous month's Valve standings.
+function rankMoveHtml(ranked) {
+    if (!ranked || !ranked.prev || ranked.prev === ranked.rank) return '';
+    const d = ranked.prev - ranked.rank;
+    return d > 0
+        ? `<span class="rank-move up" title="Up ${d} since last month (#${ranked.prev})"><i class="fa-solid fa-caret-up"></i>${d}</span>`
+        : `<span class="rank-move down" title="Down ${-d} since last month (#${ranked.prev})"><i class="fa-solid fa-caret-down"></i>${-d}</span>`;
+}
+// Map records and veto habits over the last 45 days, most played first.
+function mapPoolRows(key) {
+    const stats = state.teamStats[key] || {};
+    return Object.entries(stats)
+        .map(([map, [won, lost, picked, banned]]) => ({ map, won, lost, picked, banned, played: won + lost }))
+        .filter(r => r.played || r.picked || r.banned)
+        .sort((a, b) => b.played - a.played || b.picked - a.picked || a.banned - b.banned || a.map.localeCompare(b.map));
+}
+function mapPoolHtml(key) {
+    const rows = mapPoolRows(key);
+    if (!rows.length) return '';
+    return `<div class="section-title team-info-subtitle" style="margin-top:0.75rem"><i class="fa-solid fa-map"></i> Map Pool <span class="section-sub">last 45 days</span></div>
+        <div class="map-pool">
+            ${rows.map(r => {
+                const pct = r.played ? Math.round(100 * r.won / r.played) : 0;
+                return `<div class="map-pool-row">
+                    <span class="map-pool-name">${esc(r.map)}</span>
+                    <span class="map-pool-bar" title="${r.played ? pct + '% of maps won' : 'Not played'}"><span style="width:${pct}%"></span></span>
+                    <span class="map-pool-rec">${r.played ? `${r.won}-${r.lost}` : '&ndash;'}</span>
+                    <span class="map-pool-veto">${r.picked ? `<span class="pick">picked ${r.picked}</span>` : ''}${r.banned ? `<span class="ban">banned ${r.banned}</span>` : ''}</span>
+                </div>`;
+            }).join('')}
+        </div>`;
+}
 function feedUrl(key) {
     return new URL(DATA_BASE + 'ics/' + key + '.ics', location.href).href;
 }
@@ -2612,12 +2860,12 @@ function renderTeamInfo() {
                 <div class="team-info-badge">${logo ? `<img src="${esc(logo)}" alt="${esc(tag)}" loading="lazy" onerror="this.parentNode.textContent=this.alt">` : esc(tag)}</div>
                 <div style="min-width:0">
                     <div class="team-info-name">${esc(name)}${priRank ? ` <span class="priority-match-indicator" style="margin-left:0.5rem"><i class="fa-solid fa-crown"></i> #${priRank}</span>` : ''}</div>
-                    <div class="team-info-meta">${ranked ? `#${ranked.rank} in Valve's rankings · ${ranked.points} pts` : "Not in Valve's top 150"}</div>
+                    <div class="team-info-meta">${ranked ? `#${ranked.rank} in Valve's rankings ${rankMoveHtml(ranked)} · ${ranked.points} pts` : "Not in Valve's top 150"}</div>
                     ${ranked && ranked.roster && ranked.roster.length ? `<div class="team-info-roster"><i class="fa-solid fa-user-group"></i> ${esc(ranked.roster.join(', '))}</div>` : ''}
                 </div>
             </div>
             <div class="team-info-stats">
-                <div class="team-stat"><div class="team-stat-value">${ranked ? '#' + ranked.rank : '&ndash;'}</div><div class="team-stat-label">Valve rank</div></div>
+                <div class="team-stat"><div class="team-stat-value">${ranked ? '#' + ranked.rank + rankMoveHtml(ranked) : '&ndash;'}</div><div class="team-stat-label">Valve rank</div></div>
                 <div class="team-stat"><div class="team-stat-value">${teamUpcoming.length}</div><div class="team-stat-label">Upcoming</div></div>
                 <div class="team-stat"><div class="team-stat-value">${decided.length ? `${wins}-${decided.length - wins}` : '&ndash;'}</div><div class="team-stat-label">Record (45 days)</div></div>
             </div>
@@ -2661,6 +2909,7 @@ function renderTeamInfo() {
                 html += row(m, right);
             });
         }
+        html += mapPoolHtml(key);
         html += '</div>';
     });
     panel.innerHTML = html;
@@ -2720,6 +2969,7 @@ function renderAll() {
     startCountdowns();
     updatePageTitle();
     updateLastSynced();
+    refreshOpenDetails();
 }
 
 // ── Today strip ──
@@ -2779,55 +3029,298 @@ function mapBadgesHtml(match) {
 function findMatchById(id) {
     return state.matches.find(m => m.id === String(id)) || null;
 }
-window.openMatchDetails = function(matchId) {
-    const match = findMatchById(matchId);
+
+// m/<id>.json: veto, round winners and scoreboards for matches with a ranked
+// team. The query string changes whenever GRID updates the match, so finished
+// matches cache and live ones refetch.
+const detailCache = new Map(); // id -> { url, data }
+function detailUrl(match) {
+    return DATA_BASE + 'm/' + match.id + '.json?v=' + encodeURIComponent((match.liveState && match.liveState.updatedAt) || '');
+}
+function cachedDetail(match) {
+    const hit = detailCache.get(match.id);
+    return hit ? hit.data : null;
+}
+// Resolves to true when new data arrived.
+async function loadDetail(match) {
+    if (!match.hasDetail) return false;
+    const url = detailUrl(match);
+    const hit = detailCache.get(match.id);
+    if (hit && hit.url === url) return false;
+    try {
+        const resp = await fetch(url);
+        if (!resp.ok) return false;
+        detailCache.set(match.id, { url, data: await resp.json() });
+        return true;
+    } catch { return false; }
+}
+
+function teamById(match, id) {
+    return String(id) === String(match.team2.id) ? match.team2 : match.team1;
+}
+function gameScore(match, n) {
+    const g = ((match.liveState && match.liveState.games) || []).find(x => x.sequenceNumber === n);
+    if (!g) return null;
+    const gt = g.teams || [];
+    const g1 = gt.find(t => String(t.id) === String(match.team1.id)) || gt[0];
+    const g2 = gt.find(t => String(t.id) === String(match.team2.id)) || gt[1];
+    return g1 && g2 && typeof g1.score === 'number' ? [g1.score, g2.score] : null;
+}
+
+function vetoHtml(match, detail) {
+    const veto = (detail && detail.veto) || [];
+    if (!veto.length) return '';
+    const items = [];
+    veto.forEach(([kind, by, value], i) => {
+        if (kind === 'side') return; // shown with the pick before it
+        const team = by ? `<span class="veto-team">${esc(displayTeamName(teamById(match, by)))}</span>` : '';
+        let text;
+        if (kind === 'ban') text = `${team} banned <strong>${esc(value)}</strong>`;
+        else if (by) text = `${team} picked <strong>${esc(value)}</strong>`;
+        else text = `<strong>${esc(value)}</strong> was left over`;
+        const next = veto[i + 1];
+        if (kind === 'pick' && next && next[0] === 'side' && next[1]) {
+            text += ` <span class="veto-side">${esc(displayTeamName(teamById(match, next[1])))} started ${esc(next[2])}</span>`;
+        }
+        items.push(`<li class="veto-${kind === 'pick' && !by ? 'decider' : kind}">${text}</li>`);
+    });
+    return `<div class="detail-section">
+        <div class="detail-heading"><i class="fa-solid fa-list-ol"></i> Map veto</div>
+        <ol class="veto-list">${items.join('')}</ol>
+    </div>`;
+}
+
+const WIN_ICONS = { elim: 'fa-skull', bomb: 'fa-bomb', defuse: 'fa-scissors', time: 'fa-hourglass-end' };
+const WIN_LABELS = { elim: 'eliminated the other team', bomb: 'bomb exploded', defuse: 'bomb defused', time: 'time ran out' };
+// Two rows of rounds, one per team, with a gap at halftime and at each
+// overtime half.
+function roundStripHtml(match, game) {
+    const rounds = (game && game.rounds) || [];
+    if (!rounds.length) return '';
+    const row = (team) => rounds.map(([winner, side, how], i) => {
+        const gap = i === 12 || (i >= 24 && (i - 24) % 3 === 0) ? ' gap' : '';
+        if (String(winner) !== String(team.id)) return `<span class="rd${gap}"></span>`;
+        const label = `Round ${i + 1}: ${displayTeamName(team)}${side ? ' on ' + side : ''}${WIN_LABELS[how] ? ', ' + WIN_LABELS[how] : ''}`;
+        const cls = side === 'CT' ? 'ct' : side === 'T' ? 't' : 'any';
+        return `<span class="rd win ${cls}${gap}" title="${esc(label)}">${WIN_ICONS[how] ? `<i class="fa-solid ${WIN_ICONS[how]}"></i>` : ''}</span>`;
+    }).join('');
+    return `<div class="rounds" aria-label="Round history">
+        <div class="rounds-row"><span class="rounds-team">${esc(match.team1.tag)}</span>${row(match.team1)}</div>
+        <div class="rounds-row"><span class="rounds-team">${esc(match.team2.tag)}</span>${row(match.team2)}</div>
+    </div>`;
+}
+
+function mapsHtml(match, detail, tab) {
+    const games = detail.games || [];
+    if (!games.length) return '';
+    return `<div class="detail-section">
+        <div class="detail-heading"><i class="fa-solid fa-map"></i> Maps <span class="detail-hint">tap a map for its scoreboard</span></div>
+        ${games.map((g, i) => {
+            const sc = gameScore(match, g.n);
+            const mins = g.dur ? Math.round(g.dur / 60) + ' min' : '';
+            const status = g.live ? '<span class="map-live">LIVE</span>' : mins;
+            const scoreHtml = sc ? `<span class="${sc[0] > sc[1] ? 'w' : ''}">${sc[0]}</span>-<span class="${sc[1] > sc[0] ? 'w' : ''}">${sc[1]}</span>` : '';
+            return `<div class="detail-map ${tab === i ? 'active' : ''}" onclick="window.setDetailTab(${i})">
+                <div class="detail-map-head">
+                    <span class="detail-map-name">Map ${g.n} · ${esc(g.map || '')}</span>
+                    <span class="detail-map-score">${scoreHtml}</span>
+                    <span class="detail-map-status">${status}</span>
+                </div>
+                ${roundStripHtml(match, g)}
+            </div>`;
+        }).join('')}
+        <div class="rounds-legend">
+            <span><i class="fa-solid fa-skull"></i> elimination</span>
+            <span><i class="fa-solid fa-bomb"></i> bomb</span>
+            <span><i class="fa-solid fa-scissors"></i> defuse</span>
+            <span><i class="fa-solid fa-hourglass-end"></i> time</span>
+            <span><span class="swatch ct"></span>CT</span>
+            <span><span class="swatch t"></span>T</span>
+        </div>
+    </div>`;
+}
+
+function scoreboardHtml(match, detail, tab) {
+    const games = detail.games || [];
+    const game = tab === 'all' ? null : games[tab];
+    const source = game ? game.players : detail.players;
+    if (!source || !Object.keys(source).length) return '';
+    const rows = [match.team1, match.team2].map(t => source[t.id] || source[String(t.id)] || []);
+    const best = Math.max(0, ...rows.flat().map(r => r[1]));
+    const table = (team, list) => !list.length ? '' : `<table class="scoreboard">
+        <thead><tr>
+            <th>${teamBadgeHtml(team, 'sm')}${esc(displayTeamName(team))}</th>
+            <th title="Kills">K</th><th title="Deaths">D</th><th title="Assists">A</th>
+            <th title="Kills minus deaths">+/-</th><th title="Average damage per round">ADR</th><th title="Share of kills that were headshots">HS%</th>
+        </tr></thead>
+        <tbody>${list.map(r => {
+            const [name, k, d, a, hs, dmg] = r;
+            const rounds = game ? (game.rounds || []).length : r[6];
+            const diff = k - d;
+            return `<tr class="${k === best && best > 0 ? 'top' : ''}">
+                <td>${k === best && best > 0 ? '<i class="fa-solid fa-crown" title="Top fragger"></i> ' : ''}${esc(name)}</td>
+                <td>${k}</td><td>${d}</td><td>${a}</td>
+                <td class="${diff > 0 ? 'pos' : diff < 0 ? 'neg' : ''}">${diff > 0 ? '+' : ''}${diff}</td>
+                <td>${rounds ? Math.round(dmg / rounds) : '&ndash;'}</td>
+                <td>${k ? Math.round(100 * hs / k) + '%' : '&ndash;'}</td>
+            </tr>`;
+        }).join('')}</tbody>
+    </table>`;
+    const tabs = games.length > 1 ? `<div class="scoreboard-tabs">
+        <button class="${tab === 'all' ? 'active' : ''}" onclick="window.setDetailTab('all')">All maps</button>
+        ${games.map((g, i) => `<button class="${tab === i ? 'active' : ''}" onclick="window.setDetailTab(${i})">${esc(g.map || 'Map ' + g.n)}</button>`).join('')}
+    </div>` : '';
+    return `<div class="detail-section">
+        <div class="detail-heading"><i class="fa-solid fa-table"></i> Scoreboard${game ? ': ' + esc(game.map || '') : games.length > 1 ? ': all maps' : ''}</div>
+        ${tabs}
+        <div class="scoreboard-wrap">${table(match.team1, rows[0])}${table(match.team2, rows[1])}</div>
+    </div>`;
+}
+
+function headToHeadHtml(match) {
+    const meetings = headToHead(match).slice(0, 5);
+    if (!meetings.length) return '';
+    let w1 = 0, w2 = 0;
+    const rowsHtml = meetings.map(m => {
+        const sc = seriesScore(m);
+        const firstIsTeam1 = m.team1.key === match.team1.key;
+        const s1 = firstIsTeam1 ? sc[0] : sc[1], s2 = firstIsTeam1 ? sc[1] : sc[0];
+        const team1Won = s1.won || s1.score > s2.score;
+        if (team1Won) w1++; else w2++;
+        return `<div class="h2h-row" onclick="window.openMatchDetails('${m.id}')">
+            <span class="h2h-date">${DateTime.fromISO(m.time).setZone(state.selectedTz).toFormat('MMM d')}</span>
+            <span class="h2h-event">${esc(m.tournament)}</span>
+            <span class="h2h-score"><span class="${team1Won ? 'w' : ''}">${s1.score}</span>-<span class="${team1Won ? '' : 'w'}">${s2.score}</span></span>
+        </div>`;
+    }).join('');
+    return `<div class="detail-section">
+        <div class="detail-heading"><i class="fa-solid fa-clock-rotate-left"></i> Head to head <span class="detail-hint">${esc(displayTeamName(match.team1))} ${w1}-${w2} ${esc(displayTeamName(match.team2))}, last 45 days</span></div>
+        ${rowsHtml}
+    </div>`;
+}
+
+// Upcoming matches: recent form and both map pools side by side.
+function previewHtml(match) {
+    if (isPlaceholderTeam(match.team1) || isPlaceholderTeam(match.team2)) return '';
+    const k1 = match.team1.key, k2 = match.team2.key;
+    let html = `<div class="detail-section">
+        <div class="detail-heading"><i class="fa-solid fa-chart-line"></i> Recent form</div>
+        <div class="preview-form"><span>${esc(displayTeamName(match.team1))}</span>${formRowHtml(k1, 5)}</div>
+        <div class="preview-form"><span>${esc(displayTeamName(match.team2))}</span>${formRowHtml(k2, 5)}</div>
+    </div>`;
+    const s1 = state.teamStats[k1] || {}, s2 = state.teamStats[k2] || {};
+    const maps = [...new Set([...Object.keys(s1), ...Object.keys(s2)])];
+    if (maps.length) {
+        const played = (s, m) => s[m] ? s[m][0] + s[m][1] : 0;
+        maps.sort((a, b) => (played(s1, b) + played(s2, b)) - (played(s1, a) + played(s2, a)) || a.localeCompare(b));
+        const cell = (s, m) => {
+            const r = s[m];
+            if (!r) return '<td class="muted">&ndash;</td>';
+            const [won, lost, picked, banned] = r;
+            const veto = [picked ? `<span class="pick">P${picked}</span>` : '', banned ? `<span class="ban">B${banned}</span>` : ''].join('');
+            return `<td>${won + lost ? `<strong>${won}-${lost}</strong>` : '<span class="muted">0-0</span>'} ${veto}</td>`;
+        };
+        html += `<div class="detail-section">
+            <div class="detail-heading"><i class="fa-solid fa-map"></i> Map pools <span class="detail-hint">maps won-lost, P picks, B bans, last 45 days</span></div>
+            <table class="pool-compare">
+                <thead><tr><th>Map</th><th>${esc(displayTeamName(match.team1))}</th><th>${esc(displayTeamName(match.team2))}</th></tr></thead>
+                <tbody>${maps.map(m => `<tr><td>${esc(m)}</td>${cell(s1, m)}${cell(s2, m)}</tr>`).join('')}</tbody>
+            </table>
+        </div>`;
+    }
+    return html;
+}
+
+let _detailView = null; // { id, tab: 'all' | map index }
+function renderMatchDetails() {
+    if (!_detailView) return;
+    const match = findMatchById(_detailView.id);
     if (!match) return;
+    const tab = _detailView.tab;
+    const detail = cachedDetail(match);
     const sc = seriesScore(match);
     let scoreHtml = '';
     if (sc) {
         const c1 = sc[0].score > sc[1].score ? 'w' : 'sep';
         const c2 = sc[1].score > sc[0].score ? 'w' : 'sep';
-        scoreHtml = `<div class="match-details-score"><span class="${c1}">${sc[0].score}</span> <span class="sep">-</span> <span class="${c2}">${sc[1].score}</span></div>`;
+        scoreHtml = `<div class="match-details-score">
+            <span class="match-details-team">${teamBadgeHtml(match.team1, 'sm')}${esc(displayTeamName(match.team1))}</span>
+            <span class="${c1}">${sc[0].score}</span> <span class="sep">-</span> <span class="${c2}">${sc[1].score}</span>
+            <span class="match-details-team">${esc(displayTeamName(match.team2))}${teamBadgeHtml(match.team2, 'sm')}</span>
+            ${match.status === 'live' ? '<div><span class="live-pulse" style="font-size:0.7rem">LIVE</span></div>' : ''}
+        </div>`;
     }
-    const games = (match.liveState && match.liveState.games) || [];
-    let gamesHtml;
-    if (games.length) {
-        gamesHtml = games.map(g => {
-            const gt = g.teams || [];
-            const g1 = gt.find(t => String(t.id) === String(match.team1.id)) || gt[0];
-            const g2 = gt.find(t => String(t.id) === String(match.team2.id)) || gt[1];
+
+    let body;
+    if (detail && detail.games && detail.games.length) {
+        body = vetoHtml(match, detail) + mapsHtml(match, detail, tab) + scoreboardHtml(match, detail, tab);
+    } else if (match.status === 'upcoming' || match.status === 'starting') {
+        const when = match.status === 'starting'
+            ? 'Due to start. Scores appear once the first map begins.'
+            : 'Starts ' + DateTime.fromISO(match.time).setZone(state.selectedTz).toRelative() + '.';
+        body = `<div class="match-details-note">${when}</div>` + previewHtml(match);
+    } else if (match.hasDetail) {
+        body = '<div class="match-details-note"><span class="spinner-inline"></span> Loading match stats...</div>';
+    } else {
+        // No detail file (no ranked team): map scores from the main feed.
+        const games = (match.liveState && match.liveState.games) || [];
+        body = games.length ? games.map(g => {
+            const score = gameScore(match, g.sequenceNumber);
             const label = g.finished ? 'Finished' : (g.started ? 'Live' : 'Not started');
-            const score = g1 && g2 && typeof g1.score === 'number' && g.started ? `${g1.score} - ${g2.score}` : '';
             return `<div class="match-details-game">
                 <div><div class="map-name">Map ${g.sequenceNumber}${g.map && g.map.name ? ' · ' + esc(mapName(g.map.name)) : ''}</div><div class="label">${label}</div></div>
-                <div class="score-cell">${score}</div>
+                <div class="score-cell">${score && g.started ? `${score[0]} - ${score[1]}` : ''}</div>
             </div>`;
-        }).join('');
-    } else if (match.status === 'upcoming' || match.status === 'starting') {
-        gamesHtml = `<div class="match-details-note">${match.status === 'starting' ? 'Due to start. Map scores appear once the first map begins.' : 'Starts ' + DateTime.fromISO(match.time).setZone(state.selectedTz).toRelative() + '.'}</div>`;
-    } else {
-        gamesHtml = '<div class="match-details-note">No map-by-map data for this match.</div>';
+        }).join('') : '<div class="match-details-note">No map-by-map data for this match.</div>';
     }
+
     document.getElementById('matchDetailsContent').innerHTML = `
         <button class="match-details-close" onclick="window.closeMatchDetails()" aria-label="Close">&times;</button>
         <div class="match-details-title">${esc(displayTeamName(match.team1))} vs ${esc(displayTeamName(match.team2))}</div>
         <div class="match-details-meta">${tournamentLabelHtml(match)}${match.format ? ' · ' + match.format : ''} · ${formatTime(match.time)}</div>
         ${scoreHtml}
-        ${gamesHtml}
+        ${body}
+        ${headToHeadHtml(match)}
         ${matchActionsHtml(match)}
     `;
-    document.getElementById('matchDetailsModal').classList.add('open');
+}
+window.openMatchDetails = function(matchId) {
+    const match = findMatchById(matchId);
+    if (!match) return;
+    const reopen = _detailView && _detailView.id === match.id;
+    _detailView = { id: match.id, tab: reopen ? _detailView.tab : 'all' };
+    renderMatchDetails();
+    const modal = document.getElementById('matchDetailsModal');
+    modal.classList.add('open');
+    if (!reopen) document.getElementById('matchDetailsContent').scrollTop = 0;
+    loadDetail(match).then(fresh => {
+        if (fresh && _detailView && _detailView.id === match.id) renderMatchDetails();
+    });
+};
+window.setDetailTab = function(tab) {
+    if (!_detailView) return;
+    _detailView.tab = _detailView.tab === tab && tab !== 'all' ? 'all' : tab;
+    renderMatchDetails();
 };
 window.closeMatchDetails = function() {
     document.getElementById('matchDetailsModal').classList.remove('open');
+    _detailView = null;
 };
 document.getElementById('matchDetailsModal').addEventListener('click', (e) => {
     if (e.target.id === 'matchDetailsModal') window.closeMatchDetails();
 });
+// Keep an open match fresh when new data lands.
+function refreshOpenDetails() {
+    if (!_detailView) return;
+    const match = findMatchById(_detailView.id);
+    if (!match) return;
+    renderMatchDetails();
+    loadDetail(match).then(fresh => { if (fresh && _detailView && _detailView.id === match.id) renderMatchDetails(); });
+}
 
 // ── Live tab tips ──
 const LIVE_TIPS = [
-    'Tip: tap a match card for map-by-map scores.',
+    'Tip: tap a match for the veto, round history and scoreboard.',
     'Tip: press L, U, R, T or I to jump between tabs.',
     "Tip: subscribe to a team's calendar from Team Info.",
     'Tip: copy your team link from Favorites to use it on your phone.',
@@ -2862,11 +3355,11 @@ function updatePageTitle() {
     const liveMatch = mine.find(m => m.isLive);
     if (liveMatch) {
         const sc = seriesScore(liveMatch);
-        document.title = `● LIVE ${liveMatch.team1.tag} ${sc ? sc[0].score + '-' + sc[1].score : 'vs'} ${liveMatch.team2.tag}`;
+        document.title = `● LIVE ${displayTeamName(liveMatch.team1)} ${sc ? sc[0].score + '-' + sc[1].score : 'vs'} ${displayTeamName(liveMatch.team2)}`;
         return;
     }
     const next = mine.find(m => m.status === 'upcoming');
-    document.title = next ? `(${getCountdown(next.time)}) ${next.team1.tag} vs ${next.team2.tag}` : 'CS2 Pro Tracker';
+    document.title = next ? `(${getCountdown(next.time)}) ${displayTeamName(next.team1)} vs ${displayTeamName(next.team2)}` : 'CS2 Pro Tracker';
 }
 
 // ── Keyboard shortcuts ──
@@ -2967,13 +3460,29 @@ function openGoogleCalendar(match) {
         + '&location=' + encodeURIComponent(d.tournament), '_blank', 'noopener');
 }
 
+// GRID's free tier sends no stream links, so map organizers to their official
+// English Twitch channels (checked October 2026). The first is the main stream.
+const BROADCASTERS = [
+    [/\b(IEM|ESL)\b|Intel Extreme Masters/i, [['ESL', 'eslcs']]],
+    [/\bBLAST\b/i, [['BLAST', 'blastpremier']]],
+    [/\bPGL\b|CS Asia Championships/i, [['PGL', 'pgl'], ['PGL second stream', 'pgl_cs2']]],
+    [/\bCCT\b|Champions of Champions/i, [['CCT', 'cct_cs'], ['CCT second stream', 'cct_cs2']]],
+    [/StarLadder|StarSeries/i, [['StarLadder', 'starladder_cs_en']]],
+    [/\bElisa\b/i, [['Elisa Esports', 'elisaesports']]],
+];
+function officialStreams(match) {
+    const hit = BROADCASTERS.find(([re]) => re.test(match.tournament || ''));
+    return hit ? hit[1].map(([label, channel]) => ({ url: 'https://www.twitch.tv/' + channel, language: `${label} (twitch.tv/${channel})` })) : [];
+}
+
 function matchActionsHtml(match) {
     if (!match || !match.time || match.status === 'finished') return '';
     const isLive = match.status === 'live' || match.status === 'starting';
     // Watch: a direct link for one stream, a menu for several, and a Twitch
-    // search for the event when GRID lists none.
+    // search for the event when there's no known channel.
     let watchHtml;
-    const streams = (match.streams || []).filter(s => s && s.url);
+    const listed = (match.streams || []).filter(s => s && s.url);
+    const streams = listed.length ? listed : officialStreams(match);
     if (streams.length === 1) {
         watchHtml = `<a class="match-action-btn ${isLive ? 'watch-live' : ''}" href="${esc(streams[0].url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="${esc(streams[0].language)}"><i class="fa-solid fa-play"></i> Watch</a>`;
     } else if (streams.length > 1) {
