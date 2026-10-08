@@ -769,7 +769,7 @@ function openSiteWindow(site) {
     if (site.external) {
         content = `<div class="open-external"><img src="${site.image}" alt="${site.title}"><p style="font-size:13px">${site.desc}</p><a href="${site.url}" target="_blank">Open ${site.title.replace(/\n/g,' ')} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px"></i></a></div>`;
     } else {
-        content = `<iframe src="${site.url}" title="${site.title}" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>`;
+        content = `<iframe src="${site.url}" title="${site.title}" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"></iframe>`;
     }
     const mob = window.innerWidth <= 640;
     const dr = document.getElementById('desktop').getBoundingClientRect();

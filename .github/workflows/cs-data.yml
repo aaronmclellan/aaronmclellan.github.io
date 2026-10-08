@@ -1,0 +1,54 @@
+# Snapshot CS2 schedules, results and rankings for cs.html.
+# The GRID key lives in the GRID_API_KEY repo secret, so the page needs no key.
+# Output goes to the cs-data branch (one force-pushed commit, no history).
+name: CS2 tracker data
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cs-data
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GRID_API_KEY: ${{ secrets.GRID_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools
+
+      - name: Previous snapshot
+        run: |
+          if git fetch -q --depth=1 origin cs-data; then
+            git show FETCH_HEAD:cs2.json > prev.json
+          else
+            echo '{}' > prev.json
+          fi
+
+      - name: Build
+        run: python3 tools/build_cs_data.py --prev prev.json --out out
+
+      - name: Publish
+        run: bash tools/publish_cs_data.sh out
+
+      # While a match is live, refresh its score about every 90 seconds until
+      # the next scheduled run takes over.
+      - name: Follow live matches
+        run: |
+          jq -e '.live == true' out/cs2.json > /dev/null || exit 0
+          end=$((SECONDS + 450))
+          while [ "$SECONDS" -lt "$end" ]; do
+            sleep 90
+            python3 tools/build_cs_data.py --prev out/cs2.json --out out --live-only || break
+            bash tools/publish_cs_data.sh out
+          done
