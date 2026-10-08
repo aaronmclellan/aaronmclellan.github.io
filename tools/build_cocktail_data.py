@@ -4,7 +4,7 @@
     python3 tools/build_cocktail_data.py ~/Downloads/Compendium.pdf
 
 Needs pypdf (pip3 install pypdf). Ingredient names are mapped to filter keys via
-tools/ingredients.json; if a name can't be mapped the build stops and lists it —
+tools/ingredients.json. If a name can't be mapped, the build stops and lists it;
 add an alias there and re-run. Fixes the PDF itself can't express (garnish lines
 that are really credits, which landing card a drink belongs on, etc.) live in the
 OVERRIDES section below.
@@ -257,7 +257,7 @@ def norm_glass(g):
     return g
 
 
-# ── 6. OVERRIDES — things the PDF doesn't say (or says in the wrong place) ──
+# ── 6. OVERRIDES: things the PDF doesn't say (or says in the wrong place) ──
 # Which landing card(s) a drink shows on. Default: every spirit group whose
 # ingredients it contains; vermouth/sherry/amaro-led drinks with no big spirit → lowabv.
 GROUPS = {
@@ -275,10 +275,85 @@ BASE_OVERRIDES = {
     **{n: ['lowabv'] for n in ('Bellini', 'St. Germain Cocktail', 'Carajillo', 'Duke', 'NA Mule')},
     **{n: ['aquavit'] for n in ('Dandelion & Burdock', 'Trident', 'Yellow Parrot', 'Death in the Afternoon')},
 }
-# Bright = citrus-forward or lengthened; bold = stirred, rich, or spirit-forward.
+# Drink families. Results are grouped by these, and each family is bright or bold.
+# First matching rule wins; FAMILY_OVERRIDES fixes the misfits.
 CITRUS = {'lemon_juice', 'lime_juice', 'orange_juice', 'grapefruit_juice', 'pineapple', 'cranberry'}
-STYLE_OVERRIDES = {'Americano': 'bright', 'St. Germain Cocktail': 'bright', 'Aperitivo Julep': 'bright',
-                   'Death in the Afternoon': 'bright', 'Bitter Giuseppe': 'bold'}
+TOPPERS = {'seltzer', 'sparkling', 'beer', 'coke'}
+FIZZ_RE = re.compile(r'seltzer|soda|sparkling|champagne|bubbles|cola|\bbeer\b|\bipa\b', re.I)
+CREAMY_KEYS = {'cream', 'whole_egg', 'butter', 'coffee_liqueur', 'cold_brew', 'espresso_batch'}
+TROPICAL_KEYS = {'pineapple', 'passion_fruit', 'falernum', 'allspice_dram', 'banana_liqueur'}
+BITTER_KEYS = {'campari', 'aperol', 'cynar', 'fernet', 'montenegro', 'cio_ciaro', 'china_china', 'suze',
+               'amaro', 'nonino', 'ramazzotti', 'punt_e_mes'}
+FORTIFIED_KEYS = {'dry_vermouth', 'sweet_vermouth', 'blanc_vermouth', 'vermouth', 'sherry', 'lillet_blanc',
+                  'lillet_rouge', 'cocchi_americano', 'cocchi'}
+FAMILY_STYLE = {'sour': 'bright', 'highball': 'bright', 'tropical': 'bright', 'julep': 'bright',
+                'old_fashioned': 'bold', 'stirred': 'bold', 'bitter': 'bold', 'creamy': 'bold'}
+FAMILY_OVERRIDES = {'Southern Belle': 'julep'}
+
+def oz(qty):
+    m = re.match(r'([\d.]+) oz', qty)
+    return float(m.group(1)) if m else 0
+
+def family_of(name, ingredients, method, glass):
+    if name in FAMILY_OVERRIDES:
+        return FAMILY_OVERRIDES[name]
+    keys = {i['key'] for i in ingredients}
+    citrus_oz = sum(oz(i['qty']) for i in ingredients if i['key'] in CITRUS)
+    shaken = re.search(r'shake|whip', method, re.I)
+    if keys & CREAMY_KEYS and not keys & CITRUS:
+        return 'creamy'
+    if keys & TOPPERS or FIZZ_RE.search(method):
+        return 'highball'
+    if (keys & TROPICAL_KEYS or ('orgeat' in keys and keys & GROUPS['rum'])) and (keys & CITRUS or shaken):
+        return 'tropical'
+    if 'mint' in keys and re.search(r'whip|dump|swizzle|crushed|pebble|julep|build', f'{method} {glass}', re.I):
+        return 'julep'
+    if keys & CITRUS and (shaken or citrus_oz >= 0.5):
+        return 'sour'
+    if keys & BITTER_KEYS:
+        return 'bitter'
+    if keys & FORTIFIED_KEYS:
+        return 'stirred'
+    return 'old_fashioned'
+
+# Flavor tags for the filter chips. Tropical/fizzy also follow the family.
+FLAVORS = {
+    'bitter': BITTER_KEYS,
+    'smoky': {'mezcal', 'peated_scotch'},
+    'herbal': {'green_chartreuse', 'yellow_chartreuse', 'absinthe', 'benedictine', 'mint', 'cucumber',
+               'drambuie', 'galliano', 'aquavit', 'creme_menthe', 'aloe'},
+    'floral': {'st_germain', 'creme_violette', 'orange_flower'},
+    'fruity': {'mure', 'cassis', 'raspberry', 'cherry_heering', 'apricot_liqueur', 'peche', 'creme_peche',
+               'pear', 'grenadine', 'cranberry', 'pamplemousse'},
+    'tropical': TROPICAL_KEYS | {'pine_gum'},
+    'spicy': {'ginger', 'ancho_reyes', 'hot_sauce', 'cinnamon_syrup', 'allspice_dram'},
+    'creamy': {'cream', 'egg_white', 'whole_egg', 'butter'},
+    'fizzy': TOPPERS,
+    'coffee': {'coffee_liqueur', 'cold_brew', 'espresso_batch', 'creme_cacao'},
+}
+FAMILY_FLAVOR = {'tropical': 'tropical', 'highball': 'fizzy'}
+
+# Drinks most people have heard of. They're shown first in their family with a "Classic" badge.
+CLASSICS = {
+    'Old Fashioned', 'Manhattan', 'Perfect Manhattan', 'Black Manhattan', 'Martini', 'Dirty Martini', 'Martinez',
+    'Negroni', 'Boulevardier', 'Americano', 'Old Pal', 'Daiquiri', 'Hemingway Daiquiri', 'Margarita', 'Paloma',
+    'Mojito', 'Moscow Mule', 'Dark and Stormy', 'Whiskey Sour (egg white)', 'Whiskey Sour (No egg white)',
+    'Gimlet', 'French 75', 'Sidecar', 'Mai Tai', 'Mint Julep', 'Sazerac', 'Vieux Carre', 'Aviation', 'Last Word',
+    'Penicillin', 'Paper Plane', 'Espresso Martini', 'Cosmopolitan', 'Pisco Sour', 'Bees Knees', 'Gold Rush',
+    'Clover Club', 'Corpse Reviver No. 2', 'Caipirinha', 'Piña Colada (Classic)', 'Long Island Iced Tea',
+    'White Russian', 'Hot Toddy', 'Brandy Alexander', 'Jungle Bird', 'Zombie', 'Hurricane', 'Singapore Sling',
+    'Ramos Gin Fizz', 'Tequila Sunrise', 'Kamikaze', 'Rusty Nail', 'Stinger', 'Jack Rose', 'Blood & Sand',
+    'Brown Derby', 'Hanky Panky', 'Bijou', 'Oaxacan Old Fashioned', 'Naked & Famous', 'Ward 8', 'Pimm’s Cup',
+    'Bellini', 'Egg Nog', 'Hot Buttered Rum', 'Gin Gin Mule', 'El Diablo', 'Pegu Club Cocktail', 'Brooklyn',
+    'White Lady', 'Pink Lady', 'Bramble', 'Southside', 'Harvey Wallbanger', 'Blue Hawaiian', 'Tom Collins',
+}
+# The household names among them. These lead their section ("Sours, like a Whiskey Sour").
+ICONIC = {
+    'Old Fashioned', 'Manhattan', 'Martini', 'Negroni', 'Daiquiri', 'Margarita', 'Mojito', 'Moscow Mule',
+    'Whiskey Sour (No egg white)', 'Gimlet', 'French 75', 'Sidecar', 'Mai Tai', 'Mint Julep', 'Cosmopolitan',
+    'Espresso Martini', 'Piña Colada (Classic)', 'Paloma', 'Dark and Stormy', 'Long Island Iced Tea',
+    'White Russian', 'Tequila Sunrise', 'Bellini', 'Americano', 'Pisco Sour', 'Caipirinha', 'Hot Toddy',
+}
 # Keep names stable where the PDF's title and heading disagree (favorites are saved by name).
 RENAMES = {'Alone In the Dark': 'Alone In The Dark'}
 # Credits / notes that the PDF typed straight after the garnish.
@@ -353,15 +428,22 @@ def build(pdf_path):
             base = BASE_OVERRIDES.get(name) or [g for g, ks in GROUPS.items() if keys & ks]
             if not base and keys & LOW_ABV_KEYS:
                 base = ['lowabv']
-        style = STYLE_OVERRIDES.get(name) or ('bright' if keys & CITRUS else 'bold')
+        method, glass = norm_method(fields['method']), norm_glass(fields['glass'])
+        family = family_of(name, ingredients, method, glass)
+        flavors = [f for f, ks in FLAVORS.items()
+                   if keys & ks or FAMILY_FLAVOR.get(family) == f or (f == 'fizzy' and FIZZ_RE.search(method))]
 
-        c = {'name': name, 'method': norm_method(fields['method']), 'glass': norm_glass(fields['glass']),
-             'garnish': fields['garnish'], 'origin': fields['origin']}
+        c = {'name': name, 'method': method, 'glass': glass, 'garnish': fields['garnish'], 'origin': fields['origin']}
         if notes:
             c['notes'] = notes
-        c.update(style=style, base=base, template=drink['template'], ingredients=ingredients)
-        if not c['template']:
-            del c['template']
+        c.update(family=family, style=FAMILY_STYLE[family], flavors=flavors, base=base)
+        if name in CLASSICS and not drink['template']:
+            c['classic'] = True
+            if name in ICONIC:
+                c['iconic'] = True
+        if drink['template']:
+            c['template'] = True
+        c['ingredients'] = ingredients
         cocktails.append(c)
 
     # Templates (Collins, Fix, …) whose name clashes with a real recipe get a suffix.
@@ -370,10 +452,10 @@ def build(pdf_path):
         if c.get('template'):
             if c['name'] in real_names:
                 c['name'] += ' (Any Spirit)'
-            c['notes'] = (c.get('notes', '') + ' Template — make it with whatever spirit you like.').strip()
+            c['notes'] = (c.get('notes', '') + ' A template: make it with whatever spirit you like.').strip()
 
     if unmapped:
-        sys.exit('Unmapped ingredient names — add aliases to tools/ingredients.json:\n  '
+        sys.exit('Unmapped ingredient names. Add aliases to tools/ingredients.json:\n  '
                  + '\n  '.join(f'{n!r} ×{k}' for n, k in unmapped.most_common()))
     problems = [c['name'] for c in cocktails if not c['base'] or not c['ingredients']]
     dupes = [n for n, k in Counter(c['name'] for c in cocktails).items() if k > 1]
@@ -389,6 +471,11 @@ def build(pdf_path):
     print(f'Wrote {len(cocktails)} drinks, {len(data["ingredients"])} ingredients → {out.relative_to(ROOT)}')
     print('Per landing card:', dict(Counter(b for c in cocktails for b in c['base'])))
     print('Style:', dict(Counter(c['style'] for c in cocktails)))
+    print('Family:', dict(Counter(c['family'] for c in cocktails)))
+    print('Flavor:', dict(Counter(f for c in cocktails for f in c['flavors'])))
+    missing = (CLASSICS | ICONIC) - {c['name'] for c in cocktails}
+    if missing:
+        print('Not in the PDF (ignored):', ', '.join(sorted(missing)))
 
 
 if __name__ == '__main__':

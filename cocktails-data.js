@@ -6,7 +6,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Twist Garnish (usually)",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin",
         "whiskey",
@@ -42,7 +44,7 @@ window.COCKTAIL_DATA = {
           "category": "bitters"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Buck",
@@ -50,7 +52,12 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Lime w/ ginger candy",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "gin",
         "whiskey",
@@ -94,7 +101,7 @@ window.COCKTAIL_DATA = {
           "category": "other"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Collins",
@@ -102,7 +109,11 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Kold Draft",
       "garnish": "Lemon Wedge",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fizzy"
+      ],
       "base": [
         "gin",
         "whiskey",
@@ -146,7 +157,7 @@ window.COCKTAIL_DATA = {
           "category": "other"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Fix",
@@ -154,7 +165,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Crushed",
       "garnish": "Lemon Wedge tucked in ice",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin",
         "whiskey",
@@ -190,7 +203,7 @@ window.COCKTAIL_DATA = {
           "category": "sweetener"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Fizz",
@@ -198,7 +211,12 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "None",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "creamy",
+        "fizzy"
+      ],
       "base": [
         "gin",
         "whiskey",
@@ -250,7 +268,7 @@ window.COCKTAIL_DATA = {
           "category": "other"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Julep",
@@ -258,7 +276,11 @@ window.COCKTAIL_DATA = {
       "glass": "Julep Tin",
       "garnish": "Lavish Mint Sprigs",
       "origin": "",
-      "style": "bold",
+      "family": "julep",
+      "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin",
         "whiskey",
@@ -294,7 +316,7 @@ window.COCKTAIL_DATA = {
           "category": "herb"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Old Fashioned (Any Spirit)",
@@ -302,7 +324,9 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Orange & lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin",
         "whiskey",
@@ -338,7 +362,7 @@ window.COCKTAIL_DATA = {
           "category": "bitters"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "Smash",
@@ -346,7 +370,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Crushed",
       "garnish": "Mint Bouquet",
       "origin": "",
+      "family": "julep",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin",
         "whiskey",
@@ -390,7 +418,7 @@ window.COCKTAIL_DATA = {
           "category": "herb"
         }
       ],
-      "notes": "Template \u2014 make it with whatever spirit you like."
+      "notes": "A template: make it with whatever spirit you like."
     },
     {
       "name": "1920's Cocktail",
@@ -398,7 +426,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -443,7 +473,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Brian Miller, Death & Company",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "coffee"
+      ],
       "base": [
         "whiskey"
       ],
@@ -488,7 +522,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "C.A. Tuck, 1937",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "coffee"
+      ],
       "base": [
         "gin"
       ],
@@ -533,7 +571,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "tequila"
       ],
@@ -578,7 +620,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "smoky",
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -639,7 +686,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "lowabv"
       ],
@@ -676,7 +725,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -721,7 +772,12 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "coffee"
+      ],
       "base": [
         "whiskey"
       ],
@@ -766,7 +822,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fizzy"
+      ],
       "base": [
         "rum"
       ],
@@ -811,7 +871,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -848,7 +912,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "smoky"
+      ],
       "base": [
         "tequila"
       ],
@@ -893,7 +962,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Peel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "vodka"
       ],
@@ -938,7 +1011,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura Bitters",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "whiskey"
       ],
@@ -991,7 +1068,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey",
         "brandy"
@@ -1037,10 +1116,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Orange Wedge, Sidecar of Seltzer",
       "origin": "Created in the 1860's in Italy. Was originally named the \"Milano-Torino\" (Campari is from Milan, Sweet Vermouth is from Torino). It was later renamed the \"Americano\" as an homage to all the American tourists that enjoyed it.",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fizzy"
+      ],
       "base": [
         "lowabv"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1oz Campari",
@@ -1074,7 +1160,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin",
         "brandy"
@@ -1120,7 +1208,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
@@ -1165,7 +1258,13 @@ window.COCKTAIL_DATA = {
       "glass": "Julep Cup",
       "garnish": "Mint bouquet",
       "origin": "Alex Day, Death & Company, NYC",
+      "family": "julep",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "herbal",
+        "fruity"
+      ],
       "base": [
         "lowabv"
       ],
@@ -1210,7 +1309,12 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "Dash Bitters Floated on Egg Foam",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "creamy",
+        "fizzy"
+      ],
       "base": [
         "brandy"
       ],
@@ -1279,7 +1383,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cucumber Wheel",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -1316,7 +1425,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "rum"
       ],
@@ -1353,7 +1467,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "rum"
       ],
@@ -1390,7 +1509,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Alex Day, Fall 2012",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical"
+      ],
       "base": [
         "tequila"
       ],
@@ -1451,7 +1574,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
@@ -1496,7 +1621,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "whiskey"
       ],
@@ -1533,7 +1662,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin",
         "whiskey"
@@ -1579,7 +1710,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Ground Cinnamon & Lemon Wedge",
       "origin": "Anthony Schmidt, Noble Experiment 2010",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "brandy"
       ],
@@ -1632,10 +1765,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "floral"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz Gin",
@@ -1685,7 +1823,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "Credit for its creation usually goes to Louis Eppinger, a German bartender who worked at the Grand Hotel in Yokohama, Japan, in the 1890s and early 1900s.",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "lowabv"
       ],
@@ -1738,7 +1878,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "creamy"
+      ],
       "base": [
         "tequila"
       ],
@@ -1799,7 +1944,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy",
+        "coffee"
+      ],
       "base": [
         "gin",
         "whiskey"
@@ -1845,7 +1995,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Big Ice",
       "garnish": "Lemon Peel",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -1898,7 +2052,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Peel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "floral"
+      ],
       "base": [
         "rum"
       ],
@@ -1951,7 +2109,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "brandy"
       ],
@@ -1996,7 +2156,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -2042,10 +2206,13 @@ window.COCKTAIL_DATA = {
       "garnish": "None",
       "origin": "",
       "notes": "Also delicious with Lavender Bitters",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz London Dry Gin",
@@ -2079,7 +2246,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -2124,10 +2295,17 @@ window.COCKTAIL_DATA = {
       "glass": "Flute or Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "fizzy"
+      ],
       "base": [
         "lowabv"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1oz Pear Liqueur",
@@ -2169,7 +2347,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -2214,7 +2396,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "smoky",
+        "tropical"
+      ],
       "base": [
         "tequila",
         "rum"
@@ -2252,7 +2439,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Peel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "rum",
         "brandy"
@@ -2306,7 +2495,12 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Kold Draft",
       "garnish": "Orange Half Moon",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
@@ -2359,10 +2553,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist, Cherry",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5oz London Dry Gin",
@@ -2404,7 +2603,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "lowabv"
       ],
@@ -2449,7 +2652,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "brandy"
       ],
@@ -2502,10 +2710,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz Rye",
@@ -2547,7 +2760,13 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Mint Spring",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "smoky",
+        "herbal",
+        "fruity"
+      ],
       "base": [
         "whiskey",
         "tequila"
@@ -2609,7 +2828,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "rum"
       ],
@@ -2662,7 +2885,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fruity"
+      ],
       "base": [
         "tequila"
       ],
@@ -2707,7 +2935,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "whiskey"
       ],
@@ -2760,10 +2992,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1oz Blended Scotch",
@@ -2821,7 +3058,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -2882,10 +3123,16 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical",
+        "creamy"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz Rum",
@@ -2935,7 +3182,9 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Pebble",
       "garnish": "Cherry, Lemon Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "vodka"
       ],
@@ -2980,7 +3229,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -3017,7 +3270,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "floral"
+      ],
       "base": [
         "gin"
       ],
@@ -3078,10 +3335,15 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Bourbon",
@@ -3115,7 +3377,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "smoky",
+        "tropical"
+      ],
       "base": [
         "whiskey",
         "tequila"
@@ -3177,10 +3444,15 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Pebble",
       "garnish": "None",
       "origin": "Dick Bradsell",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz London Dry Gin",
@@ -3230,10 +3502,16 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Grated Nutmeg",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy",
+        "coffee"
+      ],
       "base": [
         "brandy"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz Cognac",
@@ -3267,7 +3545,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Peel / Sugar Rim",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "brandy"
       ],
@@ -3328,10 +3608,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz Rye",
@@ -3373,7 +3658,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "rum"
       ],
@@ -3418,10 +3705,13 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2oz Bourbon",
@@ -3463,7 +3753,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "rum"
       ],
@@ -3516,7 +3810,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Twist or Wheel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
@@ -3553,10 +3849,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "None, top with one more cubes",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "rum"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Avua Cachaca",
@@ -3590,7 +3890,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -3635,7 +3937,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
@@ -3672,7 +3978,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Big Cube",
       "garnish": "",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "coffee"
+      ],
       "base": [
         "lowabv"
       ],
@@ -3701,7 +4011,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
@@ -3746,7 +4060,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "brandy"
       ],
@@ -3791,7 +4110,13 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "None",
       "origin": "Phil Ward, Death & Co",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "floral",
+        "creamy",
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
@@ -3844,7 +4169,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon twist",
       "origin": "Savoy Cocktail Book",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "brandy"
       ],
@@ -3897,7 +4226,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
@@ -3950,7 +4284,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "rum"
       ],
@@ -3995,7 +4331,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -4040,7 +4381,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Peel",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "lowabv"
       ],
@@ -4085,10 +4430,16 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura Dashes",
       "origin": "This Gin sour variation was the house drink of The Clover Club, an organization that met in Philadelphia's Bellevue-Stratford Hotel bar. Our spec is a Variation by Giuseppe Gonz\u00e1lez.",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "creamy"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5oz Gin",
@@ -4138,7 +4489,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cucumber Wheel",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -4183,7 +4539,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange & Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey",
         "brandy"
@@ -4237,7 +4597,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "None",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "smoky",
+        "coffee"
+      ],
       "base": [
         "whiskey"
       ],
@@ -4290,7 +4655,9 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Rock",
       "garnish": "Lemon & Orange Twists",
       "origin": "Brian Miller, Death & Co.",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey",
         "brandy"
@@ -4360,7 +4727,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "tequila",
         "rum"
@@ -4430,7 +4801,12 @@ window.COCKTAIL_DATA = {
       "glass": "Chilled Neat",
       "garnish": "Lemon Peel & Discard",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "smoky",
+        "floral"
+      ],
       "base": [
         "whiskey"
       ],
@@ -4475,7 +4851,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Pebble",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
@@ -4520,7 +4900,9 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "brandy"
       ],
@@ -4557,10 +4939,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "0.75 oz. London Dry Gin",
@@ -4610,7 +4997,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "vodka"
       ],
@@ -4655,10 +5047,16 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wheel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "vodka"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2oz Vodka",
@@ -4708,7 +5106,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -4753,7 +5156,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fruity"
+      ],
       "base": [
         "gin"
       ],
@@ -4798,10 +5206,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "rum"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Rum",
@@ -4835,7 +5247,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "brandy"
       ],
@@ -4880,7 +5296,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Mint Sprig",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "rum"
       ],
@@ -4925,7 +5345,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "aquavit"
       ],
@@ -5002,10 +5427,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Lime Wedge, Ginger Candy",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Goslings Dark Rum",
@@ -5047,7 +5479,12 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Big Rock",
       "garnish": "Orange Peel",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "fruity",
+        "spicy"
+      ],
       "base": [
         "whiskey"
       ],
@@ -5100,7 +5537,12 @@ window.COCKTAIL_DATA = {
       "glass": "Flute",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "fizzy"
+      ],
       "base": [
         "aquavit"
       ],
@@ -5129,7 +5571,9 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned",
       "garnish": "Mint Sprig with Angostura Float",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
@@ -5174,7 +5618,12 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "creamy",
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
@@ -5227,7 +5676,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey",
         "brandy"
@@ -5265,7 +5718,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Big Rock",
       "garnish": "Orange & Lemon Peel",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey",
         "brandy"
@@ -5303,7 +5760,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "smoky"
+      ],
       "base": [
         "tequila"
       ],
@@ -5348,7 +5810,12 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Crushed",
       "garnish": "Mint Spring / Angostura Float",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical",
+        "spicy"
+      ],
       "base": [
         "tequila"
       ],
@@ -5401,7 +5868,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Peel",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
@@ -5446,7 +5917,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist, Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "smoky"
+      ],
       "base": [
         "tequila"
       ],
@@ -5499,7 +5975,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "coffee"
+      ],
       "base": [
         "brandy"
       ],
@@ -5536,7 +6016,12 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Big Rock",
       "garnish": "Orange Peel",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "smoky"
+      ],
       "base": [
         "whiskey"
       ],
@@ -5581,7 +6066,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe, Topped w/ Bubbles",
       "garnish": "Angostura",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "lowabv"
       ],
@@ -5634,7 +6123,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Two Cucumber Wheels w/ Mint leave",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -5687,11 +6180,16 @@ window.COCKTAIL_DATA = {
       "glass": "Water Glass",
       "garnish": "Grated Cinnamon and Nutmeg",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "rum",
         "brandy"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "0.75 oz Aged Rum",
@@ -5749,10 +6247,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Lime Wheel",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "tequila"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -5802,7 +6307,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "spicy"
+      ],
       "base": [
         "tequila"
       ],
@@ -5855,7 +6365,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Block",
       "garnish": "Grapefruit Twist",
       "origin": "Phil Ward, Death & Co",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "floral"
+      ],
       "base": [
         "gin"
       ],
@@ -5892,7 +6406,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Heavy Cream Float",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "coffee"
+      ],
       "base": [
         "vodka"
       ],
@@ -5938,10 +6456,16 @@ window.COCKTAIL_DATA = {
       "garnish": "None",
       "origin": "",
       "notes": "House pour is a 4.25 oz pre-batch (vodka assumed as the default base). If a guest calls for another base spirit, use 1.5 oz of it with the N/A espresso batch. Note: After preparing two in one tin, when pouring out, you may fill one glass completely, then the other and need not worry about the foam being equal. Simply ensure you've employed a nice, long shake and they will balance out.",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "coffee"
+      ],
       "base": [
         "vodka"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Vodka",
@@ -5975,7 +6499,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -6020,7 +6546,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Phil Ward",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -6065,7 +6595,9 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
@@ -6110,7 +6642,11 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "Nutmeg",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "whiskey",
         "brandy"
@@ -6164,10 +6700,16 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon twist",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1 oz Plymouth Gin or Cognac",
@@ -6209,7 +6751,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "vodka"
       ],
@@ -6263,10 +6810,14 @@ window.COCKTAIL_DATA = {
       "garnish": "Lime wedge",
       "origin": "",
       "notes": "1.25 oz Lime Cordial if possible in place of both Lime and Simple",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -6300,10 +6851,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Mint Bouquet",
       "origin": "Audrey Saunders, The Pegu Club",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Beefeater Gin",
@@ -6354,10 +6912,13 @@ window.COCKTAIL_DATA = {
       "garnish": "Lemon Twist (placed in glass as you would an Old Fashioned)",
       "origin": "",
       "notes": "Shake with a Grapefruit peel for a subtle flavor change. This method is known as a \"Regal\"",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -6391,7 +6952,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -6444,10 +7009,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "Ada Coleman, Head Bartender of The American Bar at the Savoy Hotel, London, England, mid 1920s",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Beefeater Gin",
@@ -6481,10 +7051,15 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Orange Cresent",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "vodka"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Vodka",
@@ -6534,10 +7109,13 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "rum"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz White Rum",
@@ -6587,7 +7165,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "High five!",
       "origin": "Alex Day, The Varnish, 2011",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
@@ -6640,7 +7222,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "rum"
       ],
@@ -6677,10 +7261,15 @@ window.COCKTAIL_DATA = {
       "glass": "Toddy Glass",
       "garnish": "Grated Nutmeg & Cinnamon",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Aged Rum",
@@ -6714,10 +7303,14 @@ window.COCKTAIL_DATA = {
       "glass": "Toddy Glass",
       "garnish": "Grated Nutmeg & Cinnamon",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Bourbon",
@@ -6759,7 +7352,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
@@ -6812,10 +7410,16 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Mint Sprig/Umbrella/Orange Crescent",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1 oz Lime",
@@ -6881,7 +7485,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Grated Nutmeg",
       "origin": "Giuseppe Gonz\u00e1lez, Dutch Kills, 2009. Named after Pedro Infante, singer and actor from the golden age of Mexican cinema.",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "tequila"
       ],
@@ -6918,10 +7524,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime wheel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "brandy"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Lairds Bonded Apple Brandy",
@@ -6963,10 +7574,16 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Crescent",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": ".5 oz lime",
@@ -7024,10 +7641,13 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "vodka"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Vodka",
@@ -7069,7 +7689,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "tequila"
       ],
@@ -7122,7 +7746,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "floral"
+      ],
       "base": [
         "gin"
       ],
@@ -7167,10 +7796,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry on Garnish Pick",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "0.75 oz London Dry Gin",
@@ -7212,7 +7846,11 @@ window.COCKTAIL_DATA = {
       "glass": "Single Old Fashioned",
       "garnish": "Lemon Twist (discarded)",
       "origin": "Joaqu\u00edn Sim\u00f3, Death & Co, 2008",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "rum"
       ],
@@ -7273,7 +7911,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Salt Sprinkle",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "tequila"
       ],
@@ -7310,7 +7950,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "Audrey Saunders, Pegu Club",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -7348,13 +7992,19 @@ window.COCKTAIL_DATA = {
       "garnish": "Lemon Wedge",
       "origin": "Oak Beach Inn, Long Island NY, 1972",
       "notes": "Variations: AMF/Adios Motherfucker - sub Blue Curacao for Cointreau + Sprite for Coca Cola; Tokyo Tea - sub Midori for Cointreau + Sprite for Coca Cola; LA Water - sub Midori & Curacao for Cointreau + Sprite for Coca Cola",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fizzy"
+      ],
       "base": [
         "gin",
         "tequila",
         "rum",
         "vodka"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "0. 5 oz Vodka",
@@ -7420,7 +8070,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "Devon Tarby, Honeycut, 2013",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fruity"
+      ],
       "base": [
         "vodka"
       ],
@@ -7473,10 +8128,16 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Mint Bouquet, Umbrella, Gosling\u2019s float",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1 oz Agricole (Rhum Barboncourt)",
@@ -7542,10 +8203,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry on a pick",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Overproof Rye",
@@ -7579,7 +8244,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -7624,10 +8293,14 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Lime Wedge, 1/2 Salted Rim",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "tequila"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -7669,10 +8342,13 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Old Tom Gin",
@@ -7714,10 +8390,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2.25 oz London Gin",
@@ -7751,10 +8431,13 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Olive on pick",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2.25 oz London Gin",
@@ -7788,7 +8471,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "Ginger Candy",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "spicy"
+      ],
       "base": [
         "whiskey"
       ],
@@ -7833,7 +8521,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Block",
       "garnish": "3-5 Mezcal Spritz & Ginger Candy",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "spicy"
+      ],
       "base": [
         "tequila"
       ],
@@ -7878,7 +8570,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Lime wheel tucked into side of glass",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "tequila"
       ],
@@ -7923,10 +8619,16 @@ window.COCKTAIL_DATA = {
       "glass": "Bronze Julep Cup",
       "garnish": "Lavish Mint Bouquet",
       "origin": "",
-      "style": "bold",
+      "family": "julep",
+      "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -7960,7 +8662,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Grapefruit Cresant",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "tequila",
         "brandy"
@@ -8030,10 +8736,16 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Crushed",
       "garnish": "Mint Bouquet, Straw",
       "origin": "",
+      "family": "julep",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz White Rum",
@@ -8083,7 +8795,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -8120,10 +8836,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Lime Wedge and Ginger Candy",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "vodka"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Vodka",
@@ -8165,7 +8888,13 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Lime Wedge and Ginger Candy",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "tropical",
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "lowabv"
       ],
@@ -8210,10 +8939,17 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "smoky",
+        "herbal"
+      ],
       "base": [
         "tequila"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "0.75 Mezcal",
@@ -8255,10 +8991,16 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Kold Draft (Nick & Nora if up)",
       "garnish": "Orange Crescent (Twist if served up)",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1 oz Gin",
@@ -8292,7 +9034,12 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "smoky",
+        "herbal"
+      ],
       "base": [
         "tequila"
       ],
@@ -8337,7 +9084,13 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Ginger Candy",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "tropical",
+        "spicy",
+        "fizzy"
+      ],
       "base": [
         "brandy"
       ],
@@ -8390,10 +9143,15 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Flamed Orange twist",
       "origin": "Phil Ward, Death & Co.",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "smoky"
+      ],
       "base": [
         "tequila"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Reposado Tequila",
@@ -8435,7 +9193,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Mint Leaf",
       "origin": "Audrey Saunders, Pegu Club",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "fizzy"
+      ],
       "base": [
         "rum"
       ],
@@ -8488,10 +9251,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Express Orange Twist and rub rim of glass. Express Lemon Twist second and place next to Orange Twist. Do not rub Lemon Twist.",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -8525,10 +9292,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Rye",
@@ -8562,10 +9334,16 @@ window.COCKTAIL_DATA = {
       "glass": "Collins",
       "garnish": "Salted Lime Wedge",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "fizzy"
+      ],
       "base": [
         "tequila"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -8607,10 +9385,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "0.75 oz Bourbon",
@@ -8652,10 +9435,13 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -8713,10 +9499,15 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Block",
       "garnish": "3 Spritzes of Islay Scotch & Ginger Candy",
       "origin": "Sam Ross, Milk & Honey",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "spicy"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Blended Scotch",
@@ -8758,10 +9549,13 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -8803,10 +9597,16 @@ window.COCKTAIL_DATA = {
       "glass": "Collins",
       "garnish": "lime wedge/ginger candy",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "spicy"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": ".5 oz lime",
@@ -8864,7 +9664,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical"
+      ],
       "base": [
         "vodka"
       ],
@@ -8917,11 +9721,17 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "creamy"
+      ],
       "base": [
         "gin",
         "brandy"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Plymouth Gin",
@@ -8979,10 +9789,16 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura bitters on top of foam",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "brandy"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Pisco",
@@ -9032,10 +9848,17 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Mint Sprig/Umbrella",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical",
+        "creamy"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Rum",
@@ -9085,7 +9908,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -9130,7 +9957,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "Devon Tarby, The Varnish",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -9176,7 +10007,11 @@ window.COCKTAIL_DATA = {
       "garnish": "Mint Bouquet",
       "origin": "",
       "notes": "Variations: Hyde Park Swizzle: Sub Gin for Rum",
+      "family": "julep",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "rum"
       ],
@@ -9229,10 +10064,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins",
       "garnish": "Orange Twist, discard",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "floral",
+        "creamy",
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz London Dry Gin",
@@ -9298,7 +10140,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "whiskey"
       ],
@@ -9335,7 +10181,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora (Absinthe Rinse)",
       "garnish": "Cherry",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "whiskey"
       ],
@@ -9380,10 +10230,15 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Blended Scotch",
@@ -9409,7 +10264,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -9446,7 +10305,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin",
         "rum"
@@ -9500,7 +10363,11 @@ window.COCKTAIL_DATA = {
       "glass": "Footed Pilsner",
       "garnish": "Cherry/Cinnamon/Tall Straw",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "tropical"
+      ],
       "base": [
         "gin"
       ],
@@ -9561,10 +10428,13 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned, Neat (Absinthe Rinse)",
       "garnish": "Discarded Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Overproof Rye",
@@ -9614,7 +10484,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Classic, Adapted by Thomas Waugh, Death & Co, Winter 2012",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "whiskey"
       ],
@@ -9667,7 +10541,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -9712,10 +10590,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Orange twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "brandy"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1.5 oz Cognac",
@@ -9757,10 +10639,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Orange slice and cherry",
       "origin": "Raffles Hotel, Singapore",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz London Dry Gin",
@@ -9834,7 +10723,13 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "Nick Settle, Nitecap NY",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "smoky",
+        "herbal",
+        "tropical"
+      ],
       "base": [
         "whiskey",
         "tequila"
@@ -9888,7 +10783,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "",
       "origin": "",
-      "style": "bold",
+      "family": "julep",
+      "style": "bright",
+      "flavors": [
+        "herbal",
+        "fruity"
+      ],
       "base": [
         "whiskey"
       ],
@@ -9941,7 +10841,12 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Grapefruit twist",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "floral",
+        "fizzy"
+      ],
       "base": [
         "lowabv"
       ],
@@ -9978,10 +10883,15 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Crushed",
       "garnish": "Mint Sprig",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "brandy"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -10015,7 +10925,12 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Crushed",
       "garnish": "Mint Sprig",
       "origin": "Thomas Waugh",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "tropical",
+        "fizzy"
+      ],
       "base": [
         "gin"
       ],
@@ -10069,7 +10984,11 @@ window.COCKTAIL_DATA = {
       "garnish": "Lemon Twist, Cherry",
       "origin": "",
       "notes": "This drink is similar to a Bijou but includes a Campari rinse in the glass",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "gin"
       ],
@@ -10114,7 +11033,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -10151,7 +11072,9 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "Cucumber Wheel",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -10196,10 +11119,17 @@ window.COCKTAIL_DATA = {
       "glass": "Collins",
       "garnish": "Orange Crescent",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "tequila"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "3 oz OJ",
@@ -10249,7 +11179,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "tequila"
       ],
@@ -10294,7 +11226,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "spicy"
+      ],
       "base": [
         "rum"
       ],
@@ -10339,7 +11275,12 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "herbal"
+      ],
       "base": [
         "aquavit"
       ],
@@ -10392,7 +11333,9 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
@@ -10445,7 +11388,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "brandy"
       ],
@@ -10482,7 +11429,12 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "Grapefruit Twist",
       "origin": "",
+      "family": "highball",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fizzy"
+      ],
       "base": [
         "lowabv"
       ],
@@ -10527,7 +11479,14 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Cubes",
       "garnish": "No Garnish",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "bitter",
+        "creamy",
+        "fizzy",
+        "coffee"
+      ],
       "base": [
         "lowabv"
       ],
@@ -10588,11 +11547,16 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Cube",
       "garnish": "Lemon and Orange twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey",
         "brandy"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1 oz Rye",
@@ -10650,7 +11614,13 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Block",
       "garnish": "No garnish",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "bitter",
+        "fruity",
+        "spicy"
+      ],
       "base": [
         "vodka"
       ],
@@ -10703,10 +11673,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "fruity"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -10748,7 +11723,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "floral"
+      ],
       "base": [
         "gin"
       ],
@@ -10793,7 +11772,11 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Crushed",
       "garnish": "Cucumber",
       "origin": "Carrie Heller & Trevor Easter, The Normandie Club 2017",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "tequila"
       ],
@@ -10846,10 +11829,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura Bitters",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "whiskey"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -10891,10 +11879,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ King Cube",
       "garnish": "Lemon Twist (as you would an Old Fashioned)",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [],
       "base": [
         "whiskey"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -10928,10 +11920,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "creamy"
+      ],
       "base": [
         "gin"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1.5 oz. Plymouth Gin",
@@ -10981,7 +11978,12 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cucumber wheel",
       "origin": "",
+      "family": "julep",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "floral"
+      ],
       "base": [
         "gin"
       ],
@@ -11042,7 +12044,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "gin"
       ],
@@ -11079,10 +12085,17 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cinnamon",
       "origin": "",
+      "family": "creamy",
       "style": "bold",
+      "flavors": [
+        "creamy",
+        "coffee"
+      ],
       "base": [
         "vodka"
       ],
+      "classic": true,
+      "iconic": true,
       "ingredients": [
         {
           "raw": "1 oz Caffe Lolita",
@@ -11116,7 +12129,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry on Pick",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "brandy"
       ],
@@ -11161,7 +12178,13 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Lime Wheel + Umbrella",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "floral",
+        "fruity",
+        "spicy"
+      ],
       "base": [
         "gin"
       ],
@@ -11246,7 +12269,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "stirred",
       "style": "bold",
+      "flavors": [
+        "herbal"
+      ],
       "base": [
         "whiskey"
       ],
@@ -11291,7 +12318,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "family": "bitter",
       "style": "bold",
+      "flavors": [
+        "bitter"
+      ],
       "base": [
         "rum"
       ],
@@ -11344,7 +12375,12 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "family": "old_fashioned",
       "style": "bold",
+      "flavors": [
+        "herbal",
+        "fruity"
+      ],
       "base": [
         "aquavit"
       ],
@@ -11381,7 +12417,13 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime wheel",
       "origin": "",
+      "family": "sour",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "fruity",
+        "tropical"
+      ],
       "base": [
         "vodka"
       ],
@@ -11434,10 +12476,18 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Mint Sprig/Umbrella",
       "origin": "",
+      "family": "tropical",
       "style": "bright",
+      "flavors": [
+        "herbal",
+        "fruity",
+        "tropical",
+        "spicy"
+      ],
       "base": [
         "rum"
       ],
+      "classic": true,
       "ingredients": [
         {
           "raw": "1 oz White Rum (Havana Club)",

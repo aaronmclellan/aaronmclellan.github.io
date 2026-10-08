@@ -11,7 +11,7 @@
 <script src="cocktails-data.js"></script>
 <style>
 :root {
-    /* Inspired by Teddy's (San Antonio) — teal base, peach accents */
+    /* Inspired by Teddy's (San Antonio): teal base, peach accents */
     --bg: #1e3a32;
     --bg-secondary: #264840;
     --bg-card: #30574e;
@@ -28,7 +28,7 @@
 html { color-scheme: dark; scrollbar-color: var(--border) var(--bg); }
 ::selection { background: rgba(254, 230, 196, 0.28); color: var(--text-primary); }
 
-/* Scrollbars — teal thumb on the page background (Safari uses the ::-webkit rules) */
+/* Scrollbars: teal thumb on the page background (Safari uses the ::-webkit rules) */
 ::-webkit-scrollbar { width: 12px; height: 12px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
@@ -114,28 +114,89 @@ a.spirit-card:hover { text-decoration: none; }
     display: flex; align-items: center; gap: 0.75rem;
     margin-bottom: 1.25rem; flex-wrap: wrap;
 }
-.spirit-title {
-    flex: 1; font-size: 1.2rem; font-weight: 600;
-    display: flex; align-items: center; gap: 0.5rem;
+/* Your picks so far. Each one links back to its question. */
+.crumbs {
+    flex: 1; min-width: 0; font-size: 1.15rem; font-weight: 600;
+    display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;
 }
-.spirit-title i { color: var(--accent); }
+.crumbs i { color: var(--accent); }
+.crumbs a { color: var(--text-primary); }
+.crumbs a:hover { color: var(--accent); text-decoration: none; }
+.crumbs .sep { color: var(--text-muted); font-weight: 400; font-size: 0.9em; }
 .nav-btn.surprise:hover { border-color: var(--good); color: var(--good); }
+a.nav-btn:hover { text-decoration: none; }
 
-/* Style step (sour vs stirred) — bigger 2-col cards */
+/* Question steps: bright or bold?  →  what kind of drink? */
 .style-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .style-grid .spirit-card { padding: 2.25rem 1.25rem; }
 .style-grid .spirit-card .icon { font-size: 2.8rem; }
 .style-grid .spirit-card h3 { font-size: 1.25rem; }
-.style-skip {
+.family-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.family-grid .spirit-card { padding: 1.5rem 1.1rem; }
+.spirit-card .like { color: var(--accent); font-size: 0.88rem; }
+.spirit-card .kinds { color: var(--text-secondary); font-size: 0.8rem; }
+.step-actions {
     display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
     margin-top: 1.25rem;
 }
-
-/* Style chip in header — slightly distinct so it reads as the active style filter */
-#styleChip {
-    background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+.step-actions .n { color: var(--text-muted); font-size: 0.8rem; }
+@media (max-width: 760px) {
+    /* Phones: compact answer cards, icon on the left */
+    .style-grid .spirit-card, .family-grid .spirit-card {
+        display: grid; grid-template-columns: 2.5rem 1fr; column-gap: 1rem; row-gap: 0.2rem;
+        align-items: center; text-align: left; padding: 1rem 1.1rem;
+    }
+    .style-grid .spirit-card > *, .family-grid .spirit-card > * { grid-column: 2; }
+    .style-grid .spirit-card .icon, .family-grid .spirit-card .icon {
+        grid-column: 1; grid-row: 1 / span 4; font-size: 1.8rem; margin: 0; justify-self: center;
+    }
+    .style-grid .spirit-card h3 { font-size: 1.1rem; }
+    .spirit-card .count-pill { justify-self: start; margin-top: 0.25rem; }
 }
-#styleChip:hover { background: var(--accent); color: var(--bg); }
+
+/* Flavor chips: tap to want, tap again to avoid */
+.flavor-block { margin-bottom: 0.9rem; }
+.flavor-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.flavor-chip {
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary);
+    padding: 0.4rem 0.8rem; border-radius: 999px; font-family: inherit; font-size: 0.82rem;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;
+    white-space: nowrap; transition: all 0.15s;
+}
+.flavor-chip:hover { border-color: var(--accent); }
+.flavor-chip .n { color: var(--text-muted); font-size: 0.72rem; }
+.flavor-chip.want { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.flavor-chip.want .n { color: var(--accent); }
+.flavor-chip.avoid { background: rgba(224, 122, 122, 0.12); border-color: var(--bad); color: var(--bad); }
+.flavor-hint { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.45rem; }
+@media (max-width: 760px) {
+    /* Compact results header: icon-only buttons */
+    .results-header { gap: 0.5rem; }
+    .results-header .btn-label, #filterToggle .btn-label { display: none; }
+    .crumbs { font-size: 1rem; }
+    .results-main .toolbar { flex-wrap: nowrap; }
+    .results-main .toolbar .tb-search { flex: 1 1 auto; min-width: 0; }
+    .toolbar #filterToggle { padding: 0 0.7rem; }
+}
+@media (max-width: 760px) {
+    /* one swipeable row that bleeds to the screen edges */
+    .flavor-row {
+        flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+        margin: 0 -1.5rem; padding: 0 1.5rem;
+    }
+    .flavor-row::-webkit-scrollbar { display: none; }
+}
+
+/* Results grouped by drink family */
+.family + .family { margin-top: 1.75rem; }
+.family-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.family-head h3 { font-size: 1.1rem; font-weight: 600; }
+.family-like { color: var(--text-secondary); font-size: 0.88rem; }
+.family-count {
+    margin-left: auto; background: var(--bg-card); color: var(--text-secondary);
+    padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
+}
+.family-blurb { color: var(--text-muted); font-size: 0.82rem; margin: 0.15rem 0 0.75rem; }
 
 /* ── Results layout: collapsible filter sidebar + results ── */
 .results-layout { display: flex; gap: 1.25rem; align-items: flex-start; }
@@ -179,7 +240,7 @@ a.spirit-card:hover { text-decoration: none; }
 }
 .filter-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 60; }
 
-/* Filter toggle button in toolbar — styled as a primary action so it's discoverable */
+/* Filter toggle button in toolbar, styled as a primary action so it's discoverable */
 #filterToggle {
     width: auto; padding: 0 0.9rem; gap: 0.45rem; font-weight: 500;
     border-color: var(--accent); color: var(--accent);
@@ -231,7 +292,7 @@ a.spirit-card:hover { text-decoration: none; }
 .search-input::placeholder { color: var(--text-muted); }
 .search-input:focus { outline: none; border-color: var(--accent); }
 
-/* Landing search — direct "I know what I want" path */
+/* Landing search: the direct "I know what I want" path */
 .landing-search-wrap { position: relative; margin-top: 1rem; }
 .landing-search-wrap > i.fa-magnifying-glass {
     position: absolute; left: 0.95rem; top: 50%; transform: translateY(-50%);
@@ -304,21 +365,14 @@ a.spirit-card:hover { text-decoration: none; }
 .card-link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
 .card-link:focus-visible { outline: none; }
 .cocktail-card:has(.card-link:focus-visible) { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); }
-.cocktail-meta {
-    color: var(--text-muted); font-size: 0.75rem;
-    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;
+.card-ings { color: var(--text-secondary); font-size: 0.8rem; line-height: 1.45; }
+.card-ings .hl { color: var(--accent); font-weight: 600; }
+.card-ings .more { color: var(--text-muted); }
+.flavor-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.6rem; }
+.flavor-tag {
+    font-size: 0.68rem; padding: 0.1rem 0.5rem; border-radius: 999px;
+    background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border);
 }
-.cocktail-meta i { margin-right: 0.25rem; }
-.cocktail-meta span {
-    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    display: inline-flex; align-items: center;
-}
-.cocktail-ings { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
-.tag {
-    background: var(--bg-secondary); color: var(--text-secondary);
-    padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.7rem;
-}
-.tag.match { background: var(--accent-dim); color: var(--accent); font-weight: 600; }
 
 .empty-state {
     text-align: center; padding: 2rem 1rem; color: var(--text-secondary);
@@ -364,6 +418,7 @@ a.spirit-card:hover { text-decoration: none; }
 .recipe-list .qty { color: var(--text-secondary); font-weight: 600; min-width: 70px; }
 .recipe-list .name { color: var(--text-primary); flex: 1; text-align: right; }
 .recipe-line { color: var(--text-primary); font-size: 0.92rem; line-height: 1.7; }
+.recipe-family { color: var(--text-secondary); font-size: 0.85rem; }
 .origin-note {
     margin-top: 1rem; padding: 0.75rem;
     background: var(--bg-card); border-radius: 8px;
@@ -419,6 +474,7 @@ a.spirit-card:hover { text-decoration: none; }
 .badge.light    { background: rgba(126, 219, 166, 0.15); color: var(--good); }
 .badge.medium   { background: var(--accent-dim); color: var(--accent); }
 .badge.zero     { background: rgba(126, 219, 166, 0.15); color: var(--good); }
+.badge.classic  { background: rgba(254, 230, 196, 0.12); color: var(--text-primary); }
 .badge.stiff    { background: rgba(224, 122, 122, 0.15); color: var(--bad); }
 .badge.template { background: var(--bg-secondary); color: var(--text-secondary); border-color: var(--border); }
 
@@ -429,9 +485,11 @@ a.spirit-card:hover { text-decoration: none; }
     grid-template-columns: 1fr auto auto; align-items: center; gap: 0.75rem;
 }
 .results-list .cocktail-card h3 { font-size: 0.95rem; margin: 0; padding: 0; }
-.results-list .cocktail-card .cocktail-meta { margin: 0; font-size: 0.72rem; }
-.results-list .cocktail-card .cocktail-ings,
-.results-list .cocktail-card .badge-row { display: none; }
+.results-list .card-ings {
+    margin-top: 0.1rem; font-size: 0.75rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.results-list .flavor-tags, .results-list .badge-row { display: none; }
 .results-list .list-badges { display: inline-flex; gap: 0.3rem; }
 .results-list .fav-btn { position: relative; top: auto; right: auto; font-size: 1rem; }
 
@@ -456,7 +514,7 @@ a.spirit-card:hover { text-decoration: none; }
     <div id="spiritLanding">
         <div class="intro">
             <h1><i class="fa-solid fa-martini-glass-citrus"></i> What are you in the mood for?</h1>
-            <p>Pick a base spirit and discover your next favorite drink — or search below if you already know.</p>
+            <p>Pick a base spirit to find your next favorite drink, or search below if you already know what you want.</p>
             <div class="landing-search-wrap">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input id="landingSearch" class="landing-search" type="text" autocomplete="off" placeholder="Know what you want? Search by name or ingredient…">
@@ -467,33 +525,51 @@ a.spirit-card:hover { text-decoration: none; }
         <div id="landingResults" style="display:none"></div>
     </div>
 
-    <!-- Step 2: sour vs stirred -->
+    <!-- Step 2: bright or bold? -->
     <div id="styleView" style="display:none">
+        <div class="results-header">
+            <a class="nav-btn" href="#/" aria-label="Back a step" title="Back a step"><i class="fa-solid fa-arrow-left"></i></a>
+            <nav class="crumbs" id="styleCrumbs" aria-label="Your picks"></nav>
+        </div>
         <div class="intro">
-            <h1 id="styleHeader"><i class="fa-solid fa-martini-glass-citrus"></i> Bright or bold?</h1>
-            <p>Pick a vibe — or skip and see them all.</p>
+            <h1>Bright or bold?</h1>
+            <p>Pick a vibe, or see everything.</p>
         </div>
         <div class="spirit-grid style-grid" id="styleGrid"></div>
-        <div class="style-skip">
-            <button class="nav-btn" id="styleSkip"><i class="fa-solid fa-list"></i> Show me both — see all <span id="styleAllCount"></span></button>
-            <button class="nav-btn" id="styleBack"><i class="fa-solid fa-arrow-left"></i> Change spirit</button>
+        <div class="step-actions">
+            <a class="nav-btn" id="styleAll" href="#/"><i class="fa-solid fa-list"></i> Show me everything <span class="n" id="styleAllCount"></span></a>
         </div>
     </div>
 
-    <!-- Step 3: results + narrow-down panel -->
+    <!-- Step 3: what kind of drink? -->
+    <div id="familyView" style="display:none">
+        <div class="results-header">
+            <a class="nav-btn" id="familyUp" href="#/" aria-label="Back a step" title="Back a step"><i class="fa-solid fa-arrow-left"></i></a>
+            <nav class="crumbs" id="familyCrumbs" aria-label="Your picks"></nav>
+        </div>
+        <div class="intro">
+            <h1>What kind of drink?</h1>
+            <p>Pick a kind of drink, or see them all.</p>
+        </div>
+        <div class="spirit-grid family-grid" id="familyGrid"></div>
+        <div class="step-actions">
+            <a class="nav-btn" id="familyAll" href="#/"><i class="fa-solid fa-list"></i> Show me all of them <span class="n" id="familyAllCount"></span></a>
+        </div>
+    </div>
+
+    <!-- Step 4: the drinks -->
     <div id="resultsView" style="display:none">
         <div class="results-header">
-            <button class="nav-btn" id="changeSpirit"><i class="fa-solid fa-arrow-left"></i> Change spirit</button>
-            <div class="spirit-title" id="spiritTitle"></div>
-            <button class="nav-btn" id="styleChip" title="Change style"></button>
-            <button class="nav-btn surprise" id="surpriseBtn" title="Random pick"><i class="fa-solid fa-dice"></i> Surprise me</button>
+            <a class="nav-btn" id="upBtn" href="#/" aria-label="Back a step" title="Back a step"><i class="fa-solid fa-arrow-left"></i></a>
+            <nav class="crumbs" id="crumbs" aria-label="Your picks"></nav>
+            <button class="nav-btn surprise" id="surpriseBtn" title="Random pick" aria-label="Surprise me"><i class="fa-solid fa-dice"></i><span class="btn-label">Surprise me</span></button>
         </div>
 
         <div class="results-layout">
             <!-- Collapsible ingredient filter (sidebar on desktop, bottom sheet on mobile) -->
             <aside class="filter-sidebar" id="filterSidebar">
                 <div class="filter-head">
-                    <i class="fa-solid fa-flask"></i> Refine
+                    <i class="fa-solid fa-flask"></i> Ingredients
                     <span id="selectedCount">0 selected</span>
                     <button class="filter-close" id="filterClose" aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button>
                 </div>
@@ -507,8 +583,12 @@ a.spirit-card:hover { text-decoration: none; }
             <div class="filter-backdrop" id="filterBackdrop"></div>
 
             <div class="results-main">
+                <div class="flavor-block">
+                    <div class="flavor-row" id="flavorRow" role="group" aria-label="Flavors"></div>
+                    <div class="flavor-hint">Tap a flavor to find it, tap again to avoid it.</div>
+                </div>
                 <div class="toolbar">
-                    <button class="icon-btn" id="filterToggle" title="Filter by ingredient"><i class="fa-solid fa-flask"></i> Filter by ingredient <span class="filter-count-badge" id="filterCountBadge" style="display:none">0</span></button>
+                    <button class="icon-btn" id="filterToggle" title="Filter by ingredient" aria-label="Filter by ingredient"><i class="fa-solid fa-flask"></i><span class="btn-label">By ingredient</span><span class="filter-count-badge" id="filterCountBadge" style="display:none">0</span></button>
                     <input class="tb-search" id="nameSearch" type="text" placeholder="Search by name…">
                     <button class="icon-btn" id="favFilterBtn" title="Favorites only"><i class="fa-regular fa-heart"></i></button>
                     <div class="view-toggle">
@@ -551,7 +631,7 @@ const CATEGORY_LABELS = {
 
 // Landing cards. Which drinks sit on each card comes from each drink's `base` in
 // cocktails-data.js; `keys` are the ingredients highlighted as "the spirit" on cards
-// and left out of the refine panel.
+// and left out of the ingredient panel.
 const SPIRIT_GROUPS = [
     { id: 'gin',      label: 'Gin',                icon: 'fa-glass-water',         desc: 'Crisp, botanical, herbal',            keys: ['gin', 'old_tom_gin', 'navy_gin', 'genever'] },
     { id: 'whiskey',  label: 'Whiskey',            icon: 'fa-fire',                desc: 'Bourbon, rye, scotch, irish',         keys: ['bourbon', 'rye', 'scotch', 'peated_scotch', 'irish_whiskey', 'japanese_whisky'] },
@@ -563,24 +643,70 @@ const SPIRIT_GROUPS = [
     { id: 'aquavit',  label: 'Aquavit & Absinthe', icon: 'fa-wand-magic-sparkles', desc: 'Caraway, anise, Chartreuse',          keys: ['aquavit', 'absinthe'] },
     { id: 'surprise', label: 'Surprise me',        icon: 'fa-dice',                desc: 'Pick something at random',            keys: [], surprise: true },
 ];
-const ANY_SPIRIT = 'any_spirit';   // template drinks (Collins, Fix, …) — highlighted under every spirit
+const ANY_SPIRIT = 'any_spirit';   // template drinks (Collins, Fix, …) are highlighted under every spirit
 
 const STYLES = [
-    { id: 'bright', label: 'Bright', icon: 'fa-sun',  desc: 'Refreshing, citrusy, and light. Think Margaritas and Daiquiris.' },
-    { id: 'bold',   label: 'Bold',   icon: 'fa-fire', desc: 'Rich, spirit-forward, and strong. Think Old Fashioneds and Manhattans.' },
+    { id: 'bright', label: 'Bright', icon: 'fa-sun',  desc: 'Refreshing, citrusy, and light' },
+    { id: 'bold',   label: 'Bold',   icon: 'fa-fire', desc: 'Rich, spirit-forward, and strong' },
 ];
 
+// Results are grouped into these sections, in this order (bright families first).
+// Each drink's `family` is assigned in tools/build_cocktail_data.py.
+const FAMILIES = [
+    { id: 'sour',          label: 'Sours',                 short: 'Sours',          icon: 'fa-lemon',              blurb: 'Tart and refreshing. Spirit, citrus and a little sweetness.' },
+    { id: 'highball',      label: 'Highballs & Fizzes',    short: 'Highballs',      icon: 'fa-champagne-glasses',  blurb: 'Long, bubbly and easy-drinking.' },
+    { id: 'tropical',      label: 'Tiki & Tropical',       short: 'Tiki',           icon: 'fa-umbrella-beach',     blurb: 'Fruity, spiced and vacation-ready.' },
+    { id: 'julep',         label: 'Juleps & Smashes',      short: 'Juleps',         icon: 'fa-seedling',           blurb: 'Minty and ice-cold, usually over crushed ice.' },
+    { id: 'old_fashioned', label: 'Old Fashioned-style',   short: 'Old Fashioneds', icon: 'fa-whiskey-glass',      blurb: 'Spirit, a touch of sugar and bitters. Built to sip slowly.' },
+    { id: 'stirred',       label: 'Manhattans & Martinis', short: 'Manhattans',     icon: 'fa-martini-glass',      blurb: 'Stirred with vermouth or sherry. Silky and aromatic.' },
+    { id: 'bitter',        label: 'Bitter & Stirred',      short: 'Bitter',         icon: 'fa-droplet',            blurb: 'Negroni territory: Campari, amaro and friends.' },
+    { id: 'creamy',        label: 'Coffee & Dessert',      short: 'Dessert',        icon: 'fa-mug-hot',            blurb: 'Rich and indulgent, with cream, egg, coffee or chocolate.' },
+];
+// Question steps with fewer drinks than this (or only one real choice) are skipped.
+const SMALL_POOL = 6;
+// "Bright or bold?" is skipped when either side has fewer real (non-template) drinks than this,
+// and always for Low & No ABV, where "bold" would promise strong drinks.
+const MIN_STYLE_SIDE = 6;
+const NO_STYLE_QUESTION = new Set(['lowabv']);
+// A family gets its own answer card with at least this many real drinks, or if it holds a household name
+// (so the Moscow Mule never hides under "Something different"). Smaller ones share one card.
+const FAMILY_CARD_MIN = 3;
+
+const FLAVORS = [
+    { id: 'bitter',   label: 'Bitter' },
+    { id: 'smoky',    label: 'Smoky' },
+    { id: 'herbal',   label: 'Herbal' },
+    { id: 'floral',   label: 'Floral' },
+    { id: 'fruity',   label: 'Fruity' },
+    { id: 'tropical', label: 'Tropical' },
+    { id: 'spicy',    label: 'Spicy' },
+    { id: 'creamy',   label: 'Creamy' },
+    { id: 'fizzy',    label: 'Fizzy' },
+    { id: 'coffee',   label: 'Coffee & Cacao' },
+];
+const FLAVOR_LABELS = Object.fromEntries(FLAVORS.map(f => [f.id, f.label]));
+
 const STRENGTH_LABELS = { zero: 'Zero proof', light: 'Low ABV', medium: 'Medium', stiff: 'Strong' };
+
+// Card ingredient lines skip plain sugar and water, which don't help you choose.
+const PLAIN_KEYS = new Set(['simple_syrup', 'sugar', 'cane_syrup', 'demerara_syrup', 'saline', 'seltzer']);
+// Ingredients too common to say two drinks are alike
+const COMMON_KEYS = new Set([...PLAIN_KEYS, 'lemon_juice', 'lime_juice', 'angostura_bitters', 'orange_bitters', 'egg_white']);
+// Flavors people tend to love or hate: suggesting them to someone who didn't pick them is a risk
+const POLARIZING = new Set(['smoky', 'bitter', 'creamy', 'coffee', 'spicy']);
+const CARD_CATEGORY_RANK = { spirit: 1, liqueur: 2, amaro: 2, fortified: 2, other: 3, herb: 3, citrus: 4, sweetener: 4, bitters: 5 };
 
 const state = {
     cocktails: [],
     ingredients: [],
     bySlug: new Map(),
-    screen: null,           // 'landing' | 'style' | 'results' — mirrors the URL hash
+    screen: null,           // 'landing' | 'style' | 'family' | 'results' (mirrors the URL hash)
     spirit: null,           // selected SPIRIT_GROUPS entry
     style: null,            // 'bright' | 'bold' | null (= both)
+    family: null,           // FAMILIES id | null (= all)
     recipe: null,           // cocktail open in the recipe modal
-    selected: new Set(),    // refinement: extra required ingredients
+    flavors: new Map(),     // flavor id → 'want' | 'avoid'
+    selected: new Set(),    // ingredient panel: extra required ingredients
     search: '',
     nameSearch: '',
     view: 'grid',           // 'grid' | 'list'
@@ -630,13 +756,41 @@ function strengthOf(c) {
 // ── Filtering ──
 const inGroup = (c, group) => c.base.includes(group.id);
 const matchesStyle = (c, style) => !style || c.style === style;
+function matchesFlavors(c) {
+    for (const [f, mode] of state.flavors) {
+        if (c.flavors.includes(f) !== (mode === 'want')) return false;
+    }
+    return true;
+}
 function hasAll(c, keys) {
     for (const k of keys) if (!c.keys.has(k)) return false;
     return true;
 }
-// Current spirit + style, narrowed by the ingredients picked in the refine panel
+const matchesFamily = (c, family) => !family || c.family === family;
+// Drinks for a spirit, optionally narrowed to a style and a family
+function picksPool(group, style = null, family = null) {
+    const pool = state.cocktails.filter(c => inGroup(c, group) && matchesStyle(c, style));
+    if (family === MORE) {
+        const small = new Set(smallFamilies(pool).map(x => x.f.id));
+        return pool.filter(c => small.has(c.family));
+    }
+    return pool.filter(c => matchesFamily(c, family));
+}
+// Families too small for their own answer card. They share one "Something different" card,
+// unless there's only one of them, in which case it just gets a regular card.
+const MORE = 'more';
+function smallFamilies(pool) {
+    const small = familyBreakdown(pool).filter(x => !x.card);
+    return small.length > 1 ? small : [];
+}
+// Current picks, narrowed by flavor chips and the ingredient panel
 function refinedPool() {
-    return state.cocktails.filter(c => inGroup(c, state.spirit) && matchesStyle(c, state.style) && hasAll(c, state.selected));
+    return picksPool(state.spirit, state.style, state.family).filter(c => matchesFlavors(c) && hasAll(c, state.selected));
+}
+// Household names, then other classics, then templates, then the fewest unusual ingredients
+function byApproachability(a, b) {
+    return a.tier - b.tier || a.obscurity - b.obscurity
+        || a.ingredients.length - b.ingredients.length || a.name.localeCompare(b.name);
 }
 function spiritKeys() {
     return new Set([...state.spirit.keys, ANY_SPIRIT]);
@@ -656,9 +810,16 @@ function loadData() {
     if (!data) throw new Error('cocktails-data.js did not load');
     state.cocktails = data.cocktails;
     state.ingredients = data.ingredients;
+    const uses = {};
+    state.cocktails.forEach(c => c.ingredients.forEach(i => { uses[i.key] = (uses[i.key] || 0) + 1; }));
     state.cocktails.forEach(c => {
         c.keys = new Set(c.ingredients.map(i => i.key));
         c.strength = strengthOf(c);
+        c.tier = c.iconic ? 0 : c.classic ? 1 : c.template ? 2 : 3;
+        c.obscurity = [...c.keys].filter(k => k !== ANY_SPIRIT && uses[k] < 5).length;
+        c.spirits = new Set(c.ingredients.filter(i => i.category === 'spirit' && i.key !== ANY_SPIRIT).map(i => i.key));
+        c.distinct = new Set([...c.keys].filter(k => !COMMON_KEYS.has(k) && !c.spirits.has(k) && k !== ANY_SPIRIT));
+        c.baseName = c.name.replace(/\s*\(.*\)$/, '').toLowerCase();
         let slug = slugify(c.name);
         for (let n = 2; state.bySlug.has(slug); n++) slug = `${slugify(c.name)}-${n}`;
         c.slug = slug;
@@ -669,13 +830,53 @@ function loadData() {
 }
 
 // ── Routing ──
-// The URL hash mirrors where you are, so the back button works and any drink can be linked:
-//   #/  →  #/gin  →  #/gin/bright (or /bold, /all)  →  #/gin/bright?drink=aviation
+// The URL hash mirrors the questions you've answered, so the back button works and any drink can be linked:
+//   #/  →  #/gin (bright or bold?)  →  #/gin/bright (what kind?)  →  #/gin/bright/sour (the drinks)
+//   "all" stands in for "show me everything" at either question; ?drink=aviation opens a recipe on top.
 let recipePushed = false;   // the open recipe has its own history entry, so closing = going back
 
+function pathFor(group, style, family) {
+    if (!group) return '/';
+    if (style === undefined) return `/${group.id}`;
+    if (family === undefined) return `/${group.id}/${style || 'all'}`;
+    return `/${group.id}/${style || 'all'}/${family || 'all'}`;
+}
 function viewPath() {
-    if (state.screen === 'results') return `/${state.spirit.id}/${state.style || 'all'}`;
-    if (state.screen === 'style') return `/${state.spirit.id}`;
+    const { screen, spirit, style, family } = state;
+    if (screen === 'style') return pathFor(spirit);
+    if (screen === 'family') return pathFor(spirit, style);
+    if (screen === 'results') return pathFor(spirit, style, family);
+    return '/';
+}
+// A question is skipped when there's barely anything to choose between: returns where to go instead.
+function skipStyle(group) {
+    const pool = picksPool(group);
+    const styles = STYLES.filter(s => pool.some(c => c.style === s.id));
+    const lopsided = STYLES.some(s => pool.filter(c => c.style === s.id && !c.template).length < MIN_STYLE_SIDE);
+    const skip = pool.length <= SMALL_POOL || styles.length < 2 || lopsided || NO_STYLE_QUESTION.has(group.id);
+    return skip ? pathFor(group, styles.length === 1 ? styles[0].id : null) : null;
+}
+function skipFamily(group, style) {
+    const pool = picksPool(group, style);
+    const cards = familyBreakdown(pool).filter(x => x.card).length;
+    return pool.length <= SMALL_POOL || cards < 2 ? pathFor(group, style, null) : null;
+}
+// Families present in a pool, biggest first, and whether each one earns its own answer card
+function familyBreakdown(pool) {
+    return FAMILIES.map((f, order) => {
+        const drinks = pool.filter(c => c.family === f.id);
+        const real = drinks.filter(c => !c.template).length;
+        const card = real >= FAMILY_CARD_MIN || drinks.some(c => c.iconic);
+        return { f, order, drinks, real, card };
+    })
+        .filter(x => x.drinks.length)
+        .sort((a, b) => b.drinks.length - a.drinks.length || b.real - a.real || a.order - b.order);
+}
+// Nearest question above the drinks list that isn't skipped (for the back arrow)
+function upPath() {
+    const { spirit, style } = state;
+    if (!skipFamily(spirit, style)) return pathFor(spirit, style);
+    if (!skipStyle(spirit)) return pathFor(spirit);
     return '/';
 }
 function drinkHref(c) {
@@ -687,11 +888,21 @@ function go(hash, { replace = false } = {}) {
 }
 function route(fromHashChange = false) {
     const [path, query = ''] = location.hash.replace(/^#/, '').split('?');
-    const [spiritId, styleId] = path.split('/').filter(Boolean);
+    const [spiritId, styleId, familyId] = path.split('/').filter(Boolean);
     const group = SPIRIT_GROUPS.find(g => g.id === spiritId && !g.surprise);
+    const style = STYLES.some(s => s.id === styleId) ? styleId : null;
+    const family = familyId === MORE || FAMILIES.some(f => f.id === familyId) ? familyId : null;
+
+    const skip = group && (!styleId ? skipStyle(group) : !familyId ? skipFamily(group, style) : null);
+    if (skip) {
+        history.replaceState(null, '', `#${skip}${query ? '?' + query : ''}`);
+        route(fromHashChange);
+        return;
+    }
     if (!group) showLanding();
-    else if (styleId === 'all' || STYLES.some(s => s.id === styleId)) showResults(group, styleId === 'all' ? null : styleId);
-    else showStyleStep(group);
+    else if (!styleId) showStyleStep(group);
+    else if (!familyId) showFamilyStep(group, style);
+    else showResults(group, style, family);
 
     const drink = state.bySlug.get(new URLSearchParams(query).get('drink'));
     if (drink) {
@@ -712,6 +923,7 @@ function showScreen(screen) {
     state.screen = screen;
     document.getElementById('spiritLanding').style.display = screen === 'landing' ? 'block' : 'none';
     document.getElementById('styleView').style.display = screen === 'style' ? 'block' : 'none';
+    document.getElementById('familyView').style.display = screen === 'family' ? 'block' : 'none';
     document.getElementById('resultsView').style.display = screen === 'results' ? 'block' : 'none';
     window.scrollTo(0, 0);
 }
@@ -724,6 +936,7 @@ function favButtonHtml(c, attrs = '') {
 function badgesHtml(c, { always = false } = {}) {
     const { tier, alc } = c.strength;
     const out = [];
+    if (c.classic) out.push('<span class="badge classic"><i class="fa-solid fa-star"></i> Classic</span>');
     if (c.template) out.push('<span class="badge template"><i class="fa-solid fa-shuffle"></i> Any spirit</span>');
     // Cards only show the *interesting* strength signals: Zero, Low ABV or Strong (skip Medium)
     if (always || tier !== 'medium') {
@@ -731,26 +944,41 @@ function badgesHtml(c, { always = false } = {}) {
     }
     return out.join('');
 }
-// highlight(i): light up this ingredient tag; rank(i): sort order of tags (low first)
-function cardHtml(c, { list = false, highlight = () => false, rank = () => 0 } = {}) {
+function flavorTagsHtml(c) {
+    return c.flavors.length
+        ? `<div class="flavor-tags">${c.flavors.map(f => `<span class="flavor-tag">${FLAVOR_LABELS[f]}</span>`).join('')}</div>`
+        : '';
+}
+// The few ingredients that tell you what a drink is: highlighted ones, then spirits,
+// then liqueurs/amari/vermouths, and so on. Plain sugar and water are skipped.
+function keyIngredientsHtml(c, highlight, max = 4) {
+    const seen = new Set();
+    const picks = c.ingredients
+        .filter(i => !seen.has(i.key) && seen.add(i.key) && (!PLAIN_KEYS.has(i.key) || highlight(i)))
+        .map(i => ({ i, hl: highlight(i), rank: highlight(i) ? 0 : (CARD_CATEGORY_RANK[i.category] || 3) }))
+        .sort((a, b) => a.rank - b.rank);
+    const shown = picks.slice(0, max)
+        .map(({ i, hl }) => hl ? `<span class="hl">${escapeHtml(i.display)}</span>` : escapeHtml(i.display));
+    const more = picks.length - max;
+    return `<div class="card-ings">${shown.join(' · ')}${more > 0 ? ` <span class="more">+${more}</span>` : ''}</div>`;
+}
+function cardHtml(c, { list = false, highlight = () => false } = {}) {
     const link = `<a class="card-link" href="${drinkHref(c)}">${escapeHtml(c.name)}</a>`;
-    const meta = `<div class="cocktail-meta">${c.glass ? `<span><i class="fa-solid fa-wine-glass"></i>${escapeHtml(c.glass)}</span>` : ''}</div>`;
     const badges = badgesHtml(c);
+    const ings = keyIngredientsHtml(c, highlight);
     if (list) {
         return `<div class="cocktail-card">
-            <div><h3>${link}</h3>${meta}</div>
+            <div><h3>${link}</h3>${ings}</div>
             <span class="list-badges">${badges}</span>
             ${favButtonHtml(c)}
         </div>`;
     }
-    const tags = c.ingredients.slice().sort((a, b) => rank(a) - rank(b))
-        .map(i => `<span class="tag${highlight(i) ? ' match' : ''}">${escapeHtml(i.display)}</span>`).join('');
     return `<div class="cocktail-card">
         ${favButtonHtml(c)}
         <h3>${link}</h3>
         ${badges ? `<div class="badge-row">${badges}</div>` : ''}
-        ${meta}
-        <div class="cocktail-ings">${tags}</div>
+        ${ings}
+        ${flavorTagsHtml(c)}
     </div>`;
 }
 function onCardListClick(e) {
@@ -763,7 +991,6 @@ function showLanding() {
     if (state.screen === 'landing') return;
     const firstLoad = state.screen === null;
     state.spirit = null;
-    state.style = null;
     showScreen('landing');
     if (!firstLoad) { landingSearchEl.value = ''; renderLandingSearch(''); }
 }
@@ -803,7 +1030,7 @@ function renderLandingSearch(query) {
 
     const niceQ = escapeHtml(query.trim());
     if (scored.length === 0) {
-        results.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><div>No drinks match “${niceQ}”.</div><div style="font-size:0.85rem;margin-top:0.4rem">Try a different name or ingredient — or pick a spirit above.</div></div>`;
+        results.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><div>No drinks match “${niceQ}”.</div><div style="font-size:0.85rem;margin-top:0.4rem">Try a different name or ingredient, or pick a spirit above.</div></div>`;
         return;
     }
     results.innerHTML =
@@ -811,32 +1038,79 @@ function renderLandingSearch(query) {
         `<div class="results-grid">${scored.map(({ c, nameHit }) => cardHtml(c, { highlight: i => !nameHit && ingHit(i) })).join('')}</div>`;
 }
 
-// ── Step 2: bright vs bold ──
+function plural(n, word = 'drink') {
+    return `${n} ${word}${n === 1 ? '' : 's'}`;
+}
+// The best-known drink in a pool, if it's a classic ("like a Gimlet")
+function leadClassic(pool) {
+    const top = pool.slice().sort(byApproachability)[0];
+    return top && top.classic ? top : null;
+}
+
+// ── Step 2: bright or bold? ──
 function showStyleStep(group) {
     if (state.screen === 'style' && state.spirit === group) return;
     state.spirit = group;
-    state.style = null;
-    const pool = state.cocktails.filter(c => inGroup(c, group));
-    document.getElementById('styleHeader').innerHTML =
-        `<i class="fa-solid ${group.icon}"></i> ${escapeHtml(group.label)} — bright or bold?`;
+    const pool = picksPool(group);
+    document.getElementById('styleCrumbs').innerHTML = picksTrail(group);
     document.getElementById('styleGrid').innerHTML = STYLES.map(s => {
-        const n = pool.filter(c => c.style === s.id).length;
-        return `<a class="spirit-card" href="#/${group.id}/${s.id}">
+        const drinks = pool.filter(c => c.style === s.id);
+        const kinds = familyBreakdown(drinks).filter(x => x.real).map(x => x.f.short).join(' · ');
+        return `<a class="spirit-card" href="#${pathFor(group, s.id)}">
             <div class="icon"><i class="fa-solid ${s.icon}"></i></div>
-            <h3>${escapeHtml(s.label)}</h3>
-            <div class="desc">${escapeHtml(s.desc)}</div>
-            <div class="count-pill">${n} drink${n === 1 ? '' : 's'}</div>
+            <h3>${s.label}</h3>
+            <div class="desc">${s.desc}.</div>
+            <div class="kinds">${kinds}</div>
+            <div class="count-pill">${plural(drinks.length)}</div>
         </a>`;
     }).join('');
+    document.getElementById('styleAll').href = '#' + pathFor(group, null);
     document.getElementById('styleAllCount').textContent = `(${pool.length})`;
     showScreen('style');
 }
 
-// ── Step 3: results + refine panel ──
-function showResults(group, style) {
-    if (state.screen === 'results' && state.spirit === group && state.style === style) return;
+// ── Step 3: what kind of drink? ──
+function showFamilyStep(group, style) {
+    if (state.screen === 'family' && state.spirit === group && state.style === style) return;
     state.spirit = group;
     state.style = style;
+    const pool = picksPool(group, style);
+    document.getElementById('familyCrumbs').innerHTML = picksTrail(group, style);
+    document.getElementById('familyUp').href = '#' + (skipStyle(group) ? '/' : pathFor(group));
+    const small = smallFamilies(pool);
+    const answer = (path, icon, label, desc, drinks) => {
+        const lead = leadClassic(drinks);
+        return `<a class="spirit-card" href="#${path}">
+            <div class="icon"><i class="fa-solid ${icon}"></i></div>
+            <h3>${label}</h3>
+            <div class="desc">${desc}</div>
+            ${lead ? `<div class="like">${escapeHtml(likeA(lead.name))}</div>` : ''}
+            <div class="count-pill">${plural(drinks.length)}</div>
+        </a>`;
+    };
+    const smallIds = new Set(small.map(x => x.f.id));
+    const cards = familyBreakdown(pool).filter(x => !smallIds.has(x.f.id))
+        .map(({ f, drinks }) => answer(pathFor(group, style, f.id), f.icon, f.label, f.blurb, drinks));
+    if (small.length) {
+        const names = small.map(x => x.f.label);
+        const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
+        cards.push(answer(pathFor(group, style, MORE), 'fa-shuffle', 'Something different', `A few ${list}.`,
+            small.flatMap(x => x.drinks)));
+    }
+    document.getElementById('familyGrid').innerHTML = cards.join('');
+    document.getElementById('familyAll').href = '#' + pathFor(group, style, null);
+    document.getElementById('familyAllCount').textContent = `(${pool.length})`;
+    showScreen('family');
+}
+
+// ── Step 4: the drinks ──
+function showResults(group, style, family) {
+    if (state.screen === 'results' && state.spirit === group && state.style === style && state.family === family) return;
+    // New picks: start the filters fresh
+    state.spirit = group;
+    state.style = style;
+    state.family = family;
+    state.flavors.clear();
     state.selected.clear();
     state.search = '';
     state.nameSearch = '';
@@ -845,26 +1119,48 @@ function showResults(group, style) {
     document.getElementById('nameSearch').value = '';
     document.getElementById('favFilterBtn').classList.remove('active');
     applyFilterDefault();
-
-    document.getElementById('spiritTitle').innerHTML =
-        `<i class="fa-solid ${group.icon}"></i> ${escapeHtml(group.label)}`;
-    renderStyleChip();
     showScreen('results');
+    renderCrumbs();
+    refreshResults();
+}
+
+// "Gin › Bright › Sours": the picks so far, each linking back to the question it answered.
+// Pass only the picks made so far (style/family undefined = not asked yet).
+function picksTrail(spirit, style, family) {
+    const styleObj = STYLES.find(s => s.id === style);
+    const familyObj = FAMILIES.find(f => f.id === family);
+    const askedStyle = style !== undefined && !skipStyle(spirit);
+    return [
+        `<a href="#/"><i class="fa-solid ${spirit.icon}"></i> ${escapeHtml(spirit.label)}</a>`,
+        askedStyle ? `<a href="#${pathFor(spirit)}">${styleObj ? styleObj.label : 'Bright & bold'}</a>` : '',
+        family !== undefined ? `<span>${familyObj ? familyObj.label : family === MORE ? 'Something different' : 'All drinks'}</span>` : '',
+    ].filter(Boolean).join('<span class="sep">›</span>');
+}
+function renderCrumbs() {
+    document.getElementById('crumbs').innerHTML = picksTrail(state.spirit, state.style, state.family);
+    document.getElementById('upBtn').href = '#' + upPath();
+}
+
+// Everything on the results screen that depends on the current filters
+function refreshResults() {
+    renderFlavorChips();
     renderIngredients();
     renderResults();
 }
 
-function renderStyleChip() {
-    const chip = document.getElementById('styleChip');
-    if (!state.style) {
-        chip.innerHTML = `<i class="fa-solid fa-list"></i> Both styles`;
-    } else {
-        const s = STYLES.find(x => x.id === state.style);
-        chip.innerHTML = `<i class="fa-solid ${s.icon}"></i> ${escapeHtml(s.label)} <i class="fa-solid fa-pen-to-square" style="opacity:0.5;font-size:0.75em;margin-left:0.25rem"></i>`;
-    }
+function renderFlavorChips() {
+    const pool = refinedPool();
+    document.getElementById('flavorRow').innerHTML = FLAVORS.map(f => {
+        const mode = state.flavors.get(f.id);
+        const n = pool.filter(c => c.flavors.includes(f.id)).length;
+        if (!mode && n === 0) return '';     // wouldn't match anything here
+        const icon = mode === 'want' ? '<i class="fa-solid fa-check"></i> ' : mode === 'avoid' ? '<i class="fa-solid fa-ban"></i> ' : '';
+        const title = mode === 'want' ? 'Tap to avoid' : mode === 'avoid' ? 'Tap to clear' : `Show ${f.label.toLowerCase()} drinks`;
+        return `<button type="button" class="flavor-chip ${mode || ''}" data-flavor="${f.id}" title="${title}">${icon}${f.label}${mode === 'avoid' ? '' : ` <span class="n">${n}</span>`}</button>`;
+    }).join('');
 }
 
-// ── Render ingredient picker (grouped by category) ──
+// ── Ingredient panel (grouped by category) ──
 function renderIngredients() {
     const root = document.getElementById('ingredientCats');
     const search = state.search.toLowerCase();
@@ -905,6 +1201,11 @@ function renderIngredients() {
     document.getElementById('selectedCount').textContent = state.selected.size + ' selected';
 }
 
+function likeA(name) {
+    const short = name.replace(/\s*\(.*\)$/, '');
+    return `like ${/^[aeiou]/i.test(short) ? 'an' : 'a'} ${short}`;
+}
+
 function renderResults() {
     const root = document.getElementById('results');
     const summary = document.getElementById('resultsSummary');
@@ -915,35 +1216,55 @@ function renderResults() {
         pool = pool.filter(c => c.name.toLowerCase().includes(q));
     }
     if (state.favsOnly) pool = pool.filter(c => state.favorites.has(c.name));
-    pool.sort((a, b) => a.name.localeCompare(b.name));
     document.getElementById('resultCount').textContent = pool.length;
     updateFilterUI(pool.length);
 
-    const styleLabel = state.style ? STYLES.find(s => s.id === state.style).label.toLowerCase() : '';
-    const niceLabel = escapeHtml(state.spirit.label) + (styleLabel ? ` ${styleLabel}` : '');
-    const drinks = `<strong>${pool.length}</strong> ${niceLabel} drink${pool.length === 1 ? '' : 's'}`;
-    if (state.selected.size === 0) {
-        summary.innerHTML = `${drinks}. Tap any to see the recipe.`;
-    } else {
-        const selNames = [...state.selected].map(k => state.ingredients.find(i => i.key === k)?.display).filter(Boolean).join(', ');
-        summary.innerHTML = `${drinks} also with: ${escapeHtml(selNames)} <button type="button" class="clear-btn" data-clear-filters><i class="fa-solid fa-xmark"></i> Clear filters</button>`;
-    }
+    const filtered = state.flavors.size + state.selected.size > 0;
+    summary.innerHTML = `<strong>${pool.length}</strong> drink${pool.length === 1 ? '' : 's'}` +
+        (filtered ? ` <button type="button" class="clear-btn" data-clear-filters><i class="fa-solid fa-xmark"></i> Clear filters</button>`
+                  : '. Classics first. Tap any to see the recipe.');
 
     if (pool.length === 0) {
         root.innerHTML = '<div class="empty-state"><i class="fa-solid fa-circle-exclamation"></i><div>Nothing matches that combo. Try removing a filter.</div></div>';
         return;
     }
     const keys = spiritKeys();
-    const rank = i => keys.has(i.key) ? 0 : (state.selected.has(i.key) ? 1 : 2);
+    const highlight = i => keys.has(i.key) || state.selected.has(i.key);
     const list = state.view === 'list';
-    root.innerHTML = `<div class="${list ? 'results-list' : 'results-grid'}">` +
-        pool.map(c => cardHtml(c, { list, rank, highlight: i => rank(i) < 2 })).join('') + '</div>';
+    root.innerHTML = familyBreakdown(pool).map(({ f, drinks }) => {
+        drinks.sort(byApproachability);
+        const lead = leadClassic(drinks);
+        return `<section class="family">
+            <div class="family-head">
+                <h3>${f.label}</h3>
+                ${lead && !f.label.includes(lead.name) ? `<span class="family-like">${escapeHtml(likeA(lead.name))}</span>` : ''}
+                <span class="family-count">${drinks.length}</span>
+            </div>
+            <p class="family-blurb">${f.blurb}</p>
+            <div class="${list ? 'results-list' : 'results-grid'}">${drinks.map(c => cardHtml(c, { list, highlight })).join('')}</div>
+        </section>`;
+    }).join('');
 }
 
-function clearSelected() {
+function clearFilters() {
+    state.flavors.clear();
     state.selected.clear();
-    renderIngredients();
-    renderResults();
+    refreshResults();
+}
+
+// ── "If you like this, try" ──
+// Same family, same spirit, shared flavors and shared distinctive ingredients (Chartreuse, Campari…)
+// make two drinks alike; a polarizing flavor the original doesn't have counts against.
+function similarity(a, b) {
+    let score = a.family === b.family ? 3 : 0;
+    if ([...a.spirits].some(k => b.spirits.has(k))) score += 2;
+    else if (a.base.some(g => b.base.includes(g))) score += 1;
+    a.flavors.forEach(f => { if (b.flavors.includes(f)) score += 1; });
+    b.flavors.forEach(f => { if (POLARIZING.has(f) && !a.flavors.includes(f)) score -= 1.5; });
+    a.distinct.forEach(k => { if (b.distinct.has(k)) score += 1; });
+    // Riffs on the name: Daiquiri → Hemingway Daiquiri, Manhattan → Perfect Manhattan
+    if (a.baseName.includes(b.baseName) || b.baseName.includes(a.baseName)) score += 2;
+    return score;
 }
 
 // ── Recipe modal ──
@@ -968,24 +1289,22 @@ function renderRecipe(c) {
             <span class="name" style="${isSel ? 'color:var(--accent);font-weight:600' : ''}">${escapeHtml(i.name)}</span>
         </li>`;
     }).join('');
-    // Similar drinks: share ≥2 ingredients
     const similar = state.cocktails
-        .filter(x => x !== c)
-        .map(x => {
-            let overlap = 0;
-            x.keys.forEach(k => { if (c.keys.has(k)) overlap++; });
-            return { c: x, overlap };
-        })
-        .filter(x => x.overlap >= 2)
-        .sort((a, b) => b.overlap - a.overlap || a.c.name.localeCompare(b.c.name))
+        .filter(x => x !== c && !x.template)
+        .map(x => ({ c: x, score: similarity(c, x) }))
+        .filter(x => x.score >= 3)
+        .sort((a, b) => b.score - a.score || byApproachability(a.c, b.c))
         .slice(0, 6);
+    const family = FAMILIES.find(f => f.id === c.family);
 
     document.getElementById('recipeContent').innerHTML = `
         <button type="button" class="modal-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
         <h2><i class="fa-solid fa-martini-glass-citrus"></i> ${escapeHtml(c.name)}
             ${favButtonHtml(c, ' style="position:static;margin-left:auto;font-size:1.2rem"')}
         </h2>
-        <div class="badge-row" style="margin-bottom:0.75rem">${badgesHtml(c, { always: true })}</div>
+        <div class="badge-row" style="margin-bottom:0.4rem">${badgesHtml(c, { always: true })}</div>
+        ${family ? `<div class="recipe-family"><strong>${family.label}</strong> · ${family.blurb}</div>` : ''}
+        ${flavorTagsHtml(c)}
         <div class="recipe-section">
             <h4>Ingredients</h4>
             <ul class="recipe-list">${ingHtml}</ul>
@@ -1022,13 +1341,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ── Navigation buttons ──
-document.getElementById('changeSpirit').addEventListener('click', () => go('#/'));
-document.getElementById('styleBack').addEventListener('click', () => go('#/'));
-document.getElementById('styleChip').addEventListener('click', () => go(`#/${state.spirit.id}`));
-document.getElementById('styleSkip').addEventListener('click', () => go(`#/${state.spirit.id}/all`));
 document.getElementById('surpriseBtn').addEventListener('click', () => {
-    const pool = state.cocktails.filter(c => inGroup(c, state.spirit) && matchesStyle(c, state.style));
-    if (pool.length) go(drinkHref(randomItem(pool)));
+    const pool = refinedPool();
+    const pick = randomItem(pool.length ? pool : picksPool(state.spirit, state.style, state.family));
+    if (pick) go(drinkHref(pick));
 });
 document.getElementById('spiritGrid').addEventListener('click', (e) => {
     if (e.target.closest('[data-surprise]') && state.cocktails.length) go(drinkHref(randomItem(state.cocktails)));
@@ -1054,7 +1370,17 @@ document.getElementById('landingResults').addEventListener('click', onCardListCl
 // ── Results ──
 document.getElementById('results').addEventListener('click', onCardListClick);
 document.getElementById('resultsSummary').addEventListener('click', (e) => {
-    if (e.target.closest('[data-clear-filters]')) clearSelected();
+    if (e.target.closest('[data-clear-filters]')) clearFilters();
+});
+document.getElementById('flavorRow').addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-flavor]');
+    if (!chip) return;
+    const f = chip.dataset.flavor;
+    const mode = state.flavors.get(f);   // off → want → avoid → off
+    if (!mode) state.flavors.set(f, 'want');
+    else if (mode === 'want') state.flavors.set(f, 'avoid');
+    else state.flavors.delete(f);
+    refreshResults();
 });
 document.getElementById('ingredientCats').addEventListener('click', (e) => {
     const pill = e.target.closest('.ing-pill');
@@ -1062,8 +1388,7 @@ document.getElementById('ingredientCats').addEventListener('click', (e) => {
     const k = pill.dataset.key;
     if (state.selected.has(k)) state.selected.delete(k);
     else state.selected.add(k);
-    renderIngredients();
-    renderResults();
+    refreshResults();
 });
 document.getElementById('ingSearch').addEventListener('input', (e) => {
     state.search = e.target.value;
@@ -1089,9 +1414,9 @@ function setView(view) {
 document.getElementById('viewGrid').addEventListener('click', () => setView('grid'));
 document.getElementById('viewList').addEventListener('click', () => setView('list'));
 
-// ── Ingredient filter (collapsible sidebar / mobile sheet) ──
-// Default: open on desktop (discoverable), closed on mobile (it's a sheet).
-// The user's desktop choice is remembered so closing it sticks across visits.
+// ── Ingredient panel (collapsible sidebar / mobile sheet) ──
+// Flavors are the main filter now, so the panel starts closed; a desktop user who
+// opens it keeps it open across visits.
 const FILTER_PREF_KEY = 'cp_filter_open';
 const mqFilterDesktop = window.matchMedia('(min-width: 761px)');
 function setFilterOpen(open, persist) {
@@ -1103,12 +1428,11 @@ function setFilterOpen(open, persist) {
 function closeFilter() { setFilterOpen(false, false); }
 function toggleFilter() {
     const isOpen = document.getElementById('resultsView').classList.contains('filter-open');
-    setFilterOpen(!isOpen, true);   // explicit user intent — persist (desktop only)
+    setFilterOpen(!isOpen, true);   // explicit user intent, so remember it (desktop only)
 }
 function applyFilterDefault() {
     if (!mqFilterDesktop.matches) { setFilterOpen(false, false); return; }  // mobile: always start closed
-    const pref = localStorage.getItem(FILTER_PREF_KEY);
-    setFilterOpen(pref ? pref === 'open' : true, false);                    // desktop: open unless previously closed
+    setFilterOpen(localStorage.getItem(FILTER_PREF_KEY) === 'open', false);
 }
 mqFilterDesktop.addEventListener('change', (e) => {
     if (e.matches) applyFilterDefault(); else setFilterOpen(false, false);  // keep the sheet from being stuck open on shrink
@@ -1125,7 +1449,10 @@ document.getElementById('filterToggle').addEventListener('click', toggleFilter);
 document.getElementById('filterClose').addEventListener('click', closeFilter);
 document.getElementById('filterBackdrop').addEventListener('click', closeFilter);
 document.getElementById('filterApply').addEventListener('click', closeFilter);
-document.getElementById('filterClear').addEventListener('click', clearSelected);
+document.getElementById('filterClear').addEventListener('click', () => {
+    state.selected.clear();
+    refreshResults();
+});
 
 // ── Util ──
 function escapeHtml(s) {
