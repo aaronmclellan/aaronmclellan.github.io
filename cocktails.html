@@ -53,7 +53,7 @@ a:hover { text-decoration: underline; }
 .nav-btn:hover { border-color: var(--accent); }
 .nav-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+.container { max-width: 1440px; margin: 0 auto; padding: 1.5rem; }
 
 .intro {
     background: var(--bg-secondary); border: 1px solid var(--border);
@@ -125,25 +125,77 @@ a:hover { text-decoration: underline; }
 }
 #styleChip:hover { background: var(--accent); color: #1a1f2a; }
 
-/* Advanced details */
-.advanced {
-    margin-bottom: 1rem; background: var(--bg-secondary);
-    border: 1px solid var(--border); border-radius: 14px;
+/* ── Results layout: collapsible filter sidebar + results ── */
+.results-layout { display: flex; gap: 1.25rem; align-items: flex-start; }
+.results-main { flex: 1; min-width: 0; }
+
+.filter-sidebar {
+    flex: 0 0 290px; width: 290px;
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1rem 1.1rem;
+    position: sticky; top: 80px;
+    max-height: calc(100vh - 100px); overflow-y: auto;
+    display: none;                       /* collapsed by default */
 }
-.advanced summary {
-    list-style: none; cursor: pointer; padding: 0.85rem 1.25rem;
-    font-weight: 500; font-size: 0.9rem; color: var(--text-secondary);
-    display: flex; align-items: center; gap: 0.5rem;
-    text-transform: uppercase; letter-spacing: 0.05em;
+#resultsView.filter-open .filter-sidebar { display: block; }
+.filter-head {
+    display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.85rem;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-secondary);
 }
-.advanced summary::-webkit-details-marker { display: none; }
-.advanced summary::after {
-    content: '▾'; margin-left: auto; transition: transform 0.15s;
+.filter-head i { color: var(--accent); }
+.filter-head #selectedCount {
+    margin-left: auto; color: var(--text-muted);
+    text-transform: none; letter-spacing: 0; font-size: 0.72rem;
 }
-.advanced[open] summary::after { transform: rotate(180deg); }
-.advanced summary i { color: var(--accent); }
-.advanced summary .count { margin-left: 0; }
-.advanced-body { padding: 0 1.25rem 1.25rem; }
+.filter-close {
+    display: none; background: none; border: 1px solid var(--border);
+    color: var(--text-secondary); width: 28px; height: 28px; flex: 0 0 auto;
+    border-radius: 7px; cursor: pointer; align-items: center; justify-content: center;
+}
+.filter-close:hover { border-color: var(--bad); color: var(--bad); }
+.filter-actions { display: none; gap: 0.5rem; margin-top: 1rem; }
+.filter-actions .clear-btn {
+    background: none; border: 1px solid var(--border); color: var(--text-secondary);
+    padding: 0.6rem 0.9rem; border-radius: 8px; font-family: inherit; font-size: 0.85rem; cursor: pointer;
+}
+.filter-actions .clear-btn:hover { border-color: var(--bad); color: var(--bad); }
+.filter-actions .filter-apply {
+    flex: 1; background: var(--accent-dim); border: 1px solid var(--accent); color: var(--accent);
+    padding: 0.6rem 0.9rem; border-radius: 8px; font-family: inherit; font-size: 0.9rem;
+    font-weight: 600; cursor: pointer;
+}
+.filter-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 60; }
+
+/* Filter toggle button in toolbar — styled as a primary action so it's discoverable */
+#filterToggle {
+    width: auto; padding: 0 0.9rem; gap: 0.45rem; font-weight: 500;
+    border-color: var(--accent); color: var(--accent);
+}
+#filterToggle:hover { background: var(--accent-dim); }
+#filterToggle.has-filters { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.filter-count-badge {
+    background: var(--accent); color: var(--bg); border-radius: 999px;
+    font-size: 0.66rem; font-weight: 700; padding: 0.05rem 0.4rem;
+    min-width: 1.15rem; text-align: center;
+}
+
+@media (max-width: 760px) {
+    .filter-sidebar {
+        position: fixed; left: 0; right: 0; bottom: 0; top: auto;
+        width: 100%; flex-basis: auto; max-height: 82vh;
+        border-radius: 18px 18px 0 0; border-bottom: none; z-index: 70;
+        display: block; transform: translateY(110%); transition: transform 0.28s ease;
+    }
+    #resultsView.filter-open .filter-sidebar { transform: translateY(0); }
+    #resultsView.filter-open .filter-backdrop { display: block; }
+    .filter-sidebar::before {
+        content: ''; display: block; width: 40px; height: 4px;
+        border-radius: 2px; background: var(--border); margin: 0 auto 0.9rem;
+    }
+    .filter-close { display: inline-flex; }
+    .filter-actions { display: flex; }
+}
 
 .panel {
     background: var(--bg-secondary); border: 1px solid var(--border);
@@ -166,6 +218,26 @@ a:hover { text-decoration: underline; }
 }
 .search-input::placeholder { color: var(--text-muted); }
 .search-input:focus { outline: none; border-color: var(--accent); }
+
+/* Landing search — direct "I know what I want" path */
+.landing-search-wrap { position: relative; margin-top: 1rem; }
+.landing-search-wrap > i.fa-magnifying-glass {
+    position: absolute; left: 0.95rem; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 0.9rem; pointer-events: none;
+}
+.landing-search {
+    width: 100%; background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); padding: 0.7rem 2.6rem; border-radius: 10px;
+    font-family: inherit; font-size: 0.95rem; transition: border-color 0.15s;
+}
+.landing-search::placeholder { color: var(--text-muted); }
+.landing-search:focus { outline: none; border-color: var(--accent); }
+.landing-search-clear {
+    position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--text-muted); cursor: pointer;
+    font-size: 0.95rem; padding: 0.3rem; line-height: 1;
+}
+.landing-search-clear:hover { color: var(--bad); }
 
 .mode-toggle { display: flex; gap: 0.4rem; margin-bottom: 0.85rem; }
 .mode-toggle button {
@@ -393,9 +465,15 @@ a:hover { text-decoration: underline; }
     <div id="spiritLanding">
         <div class="intro">
             <h1><i class="fa-solid fa-martini-glass-citrus"></i> What are you in the mood for?</h1>
-            <p>Pick a base spirit and discover your next favorite drink.</p>
+            <p>Pick a base spirit and discover your next favorite drink — or search below if you already know.</p>
+            <div class="landing-search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="landingSearch" class="landing-search" type="text" autocomplete="off" placeholder="Know what you want? Search by name or ingredient…">
+                <button id="landingSearchClear" class="landing-search-clear" aria-label="Clear search" style="display:none"><i class="fa-solid fa-xmark"></i></button>
+            </div>
         </div>
         <div class="spirit-grid" id="spiritGrid"></div>
+        <div id="landingResults" style="display:none"></div>
     </div>
 
     <!-- Step 2: sour vs stirred -->
@@ -420,28 +498,40 @@ a:hover { text-decoration: underline; }
             <button class="nav-btn surprise" id="surpriseBtn" title="Random pick"><i class="fa-solid fa-dice"></i> Surprise me</button>
         </div>
 
-        <!-- Advanced: specific ingredient pills (collapsed by default) -->
-        <details class="advanced" id="advanced">
-            <summary><i class="fa-solid fa-flask"></i> Filter by specific ingredient <span class="count" id="selectedCount">0</span></summary>
-            <div class="advanced-body">
+        <div class="results-layout">
+            <!-- Collapsible ingredient filter (sidebar on desktop, bottom sheet on mobile) -->
+            <aside class="filter-sidebar" id="filterSidebar">
+                <div class="filter-head">
+                    <i class="fa-solid fa-flask"></i> Refine
+                    <span id="selectedCount">0 selected</span>
+                    <button class="filter-close" id="filterClose" aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button>
+                </div>
                 <input class="search-input" id="ingSearch" type="text" placeholder="Search ingredients...">
                 <div id="ingredientCats"></div>
-            </div>
-        </details>
+                <div class="filter-actions">
+                    <button class="clear-btn" id="filterClear">Clear</button>
+                    <button class="filter-apply" id="filterApply">Show <span id="filterApplyCount">0</span> drinks</button>
+                </div>
+            </aside>
+            <div class="filter-backdrop" id="filterBackdrop"></div>
 
-        <div class="toolbar">
-            <input class="tb-search" id="nameSearch" type="text" placeholder="Search by name…">
-            <button class="icon-btn" id="favFilterBtn" title="Favorites only"><i class="fa-regular fa-heart"></i></button>
-            <div class="view-toggle">
-                <button class="icon-btn active" id="viewGrid" title="Grid view"><i class="fa-solid fa-grip"></i></button>
-                <button class="icon-btn" id="viewList" title="List view"><i class="fa-solid fa-list"></i></button>
-            </div>
-        </div>
+            <div class="results-main">
+                <div class="toolbar">
+                    <button class="icon-btn" id="filterToggle" title="Filter by ingredient"><i class="fa-solid fa-flask"></i> Filter by ingredient <span class="filter-count-badge" id="filterCountBadge" style="display:none">0</span></button>
+                    <input class="tb-search" id="nameSearch" type="text" placeholder="Search by name…">
+                    <button class="icon-btn" id="favFilterBtn" title="Favorites only"><i class="fa-regular fa-heart"></i></button>
+                    <div class="view-toggle">
+                        <button class="icon-btn active" id="viewGrid" title="Grid view"><i class="fa-solid fa-grip"></i></button>
+                        <button class="icon-btn" id="viewList" title="List view"><i class="fa-solid fa-list"></i></button>
+                    </div>
+                </div>
 
-        <div class="panel">
-            <h2><i class="fa-solid fa-list"></i> Order this <span class="count" id="resultCount">0</span></h2>
-            <div class="results-summary" id="resultsSummary"></div>
-            <div id="results"></div>
+                <div class="panel">
+                    <h2><i class="fa-solid fa-list"></i> Order this <span class="count" id="resultCount">0</span></h2>
+                    <div class="results-summary" id="resultsSummary"></div>
+                    <div id="results"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -631,6 +721,80 @@ function renderSpiritLanding() {
     });
 }
 
+// ── Direct search from the landing page (for when you already know the drink) ──
+function renderLandingSearch(query) {
+    const grid = document.getElementById('spiritGrid');
+    const results = document.getElementById('landingResults');
+    const clearBtn = document.getElementById('landingSearchClear');
+    const q = query.trim().toLowerCase();
+
+    if (!q) {
+        grid.style.display = '';
+        results.style.display = 'none';
+        results.innerHTML = '';
+        clearBtn.style.display = 'none';
+        return;
+    }
+
+    clearBtn.style.display = '';
+    grid.style.display = 'none';
+    results.style.display = 'block';
+
+    // Rank: name-prefix match, then name-contains, then ingredient-only match
+    const scored = [];
+    state.cocktails.forEach(c => {
+        const nameLc = c.name.toLowerCase();
+        const nameHit = nameLc.includes(q);
+        const ingHit = c.ingredients.some(i => (i.display || i.name || '').toLowerCase().includes(q));
+        if (!nameHit && !ingHit) return;
+        const score = nameLc.startsWith(q) ? 0 : (nameHit ? 1 : 2);
+        scored.push({ c, score, nameHit });
+    });
+    scored.sort((a, b) => a.score - b.score || a.c.name.localeCompare(b.c.name));
+
+    const niceQ = escapeHtml(query.trim());
+    if (scored.length === 0) {
+        results.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><div>No drinks match “${niceQ}”.</div><div style="font-size:0.85rem;margin-top:0.4rem">Try a different name or ingredient — or pick a spirit above.</div></div>`;
+        return;
+    }
+
+    const cards = scored.slice(0, 60).map(({ c, nameHit }) => {
+        const tags = c.ingredients.filter(i => i.key).map(i => {
+            const hit = !nameHit && (i.display || i.name || '').toLowerCase().includes(q);
+            return `<span class="tag ${hit ? 'match' : ''}">${escapeHtml(i.display)}</span>`;
+        }).join('');
+        const isFav = state.favorites.has(c.name);
+        const favBtn = `<button class="fav-btn${isFav ? ' active' : ''}" data-fav="${escapeHtml(c.name)}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}"><i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i></button>`;
+        return `<div class="cocktail-card" data-name="${escapeHtml(c.name)}">
+            ${favBtn}
+            <h3>${escapeHtml(c.name)}</h3>
+            <div class="cocktail-meta">
+                ${c.glass ? `<span><i class="fa-solid fa-wine-glass"></i>${escapeHtml(c.glass)}</span>` : ''}
+            </div>
+            <div class="cocktail-ings">${tags}</div>
+        </div>`;
+    }).join('');
+
+    results.innerHTML =
+        `<div class="results-summary"><strong>${scored.length}</strong> drink${scored.length === 1 ? '' : 's'} match “${niceQ}”. Tap any to see the recipe.</div>` +
+        `<div class="results-grid">${cards}</div>` +
+        (scored.length > 60 ? `<div class="results-summary" style="margin-top:1rem;text-align:center">Showing top 60 of ${scored.length}.</div>` : '');
+
+    results.querySelectorAll('.fav-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const name = btn.dataset.fav;
+            if (state.favorites.has(name)) state.favorites.delete(name);
+            else state.favorites.add(name);
+            saveFavorites();
+            renderLandingSearch(query);
+        });
+    });
+    results.querySelectorAll('.cocktail-card').forEach(card => {
+        card.addEventListener('click', () => openRecipe(card.dataset.name));
+    });
+}
+
 function pickSpirit(id) {
     const group = SPIRIT_GROUPS.find(g => g.id === id);
     if (!group) return;
@@ -681,8 +845,7 @@ function pickStyle(style) {
     state.nameSearch = '';
     state.glass = null;
     state.favsOnly = false;
-    const adv = document.getElementById('advanced');
-    if (adv) adv.open = false;
+    applyFilterDefault();
     const ns = document.getElementById('nameSearch'); if (ns) ns.value = '';
     const favBtn = document.getElementById('favFilterBtn'); if (favBtn) favBtn.classList.remove('active');
 
@@ -738,6 +901,8 @@ function backToLanding() {
     document.getElementById('resultsView').style.display = 'none';
     document.getElementById('styleView').style.display = 'none';
     document.getElementById('spiritLanding').style.display = 'block';
+    const ls = document.getElementById('landingSearch');
+    if (ls) { ls.value = ''; renderLandingSearch(''); }
 }
 
 // ── Render ingredient picker (grouped by category) ──
@@ -832,6 +997,7 @@ function renderResults() {
 
     pool.sort((a, b) => a.name.localeCompare(b.name));
     counter.textContent = pool.length;
+    updateFilterUI(pool.length);
 
     const styleLabel = state.style ? STYLES.find(s => s.id === state.style).label.toLowerCase() : '';
     const niceLabel = styleLabel ? `${escapeHtml(state.spirit.label)} ${styleLabel}` : `${escapeHtml(state.spirit.label)}`;
@@ -994,7 +1160,9 @@ document.getElementById('recipeModal').addEventListener('click', (e) => {
     if (e.target === document.getElementById('recipeModal')) closeRecipe();
 });
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && document.getElementById('recipeModal').classList.contains('open')) closeRecipe();
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('recipeModal').classList.contains('open')) { closeRecipe(); return; }
+    if (document.getElementById('resultsView').classList.contains('filter-open')) closeFilter();
 });
 
 // ── Header buttons ──
@@ -1012,6 +1180,22 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 // ── Style step buttons ──
 document.getElementById('styleSkip').addEventListener('click', () => pickStyle(null));
 document.getElementById('styleBack').addEventListener('click', backToLanding);
+
+// ── Landing search (direct recipe lookup) ──
+const landingSearchEl = document.getElementById('landingSearch');
+landingSearchEl.addEventListener('input', (e) => renderLandingSearch(e.target.value));
+landingSearchEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && landingSearchEl.value) {
+        e.stopPropagation();
+        landingSearchEl.value = '';
+        renderLandingSearch('');
+    }
+});
+document.getElementById('landingSearchClear').addEventListener('click', () => {
+    landingSearchEl.value = '';
+    renderLandingSearch('');
+    landingSearchEl.focus();
+});
 
 // ── Search ──
 document.getElementById('ingSearch').addEventListener('input', (e) => {
@@ -1039,6 +1223,49 @@ document.getElementById('viewList').addEventListener('click', () => {
     state.view = 'list';
     document.getElementById('viewList').classList.add('active');
     document.getElementById('viewGrid').classList.remove('active');
+    renderResults();
+});
+
+// ── Ingredient filter (collapsible sidebar / mobile sheet) ──
+// Default: open on desktop (discoverable), closed on mobile (it's a sheet).
+// The user's desktop choice is remembered so closing it sticks across visits.
+const FILTER_PREF_KEY = 'cp_filter_open';
+const mqFilterDesktop = window.matchMedia('(min-width: 761px)');
+function setFilterOpen(open, persist) {
+    document.getElementById('resultsView').classList.toggle('filter-open', open);
+    if (persist && mqFilterDesktop.matches) {
+        localStorage.setItem(FILTER_PREF_KEY, open ? 'open' : 'closed');
+    }
+}
+function closeFilter() { setFilterOpen(false, false); }
+function toggleFilter() {
+    const isOpen = document.getElementById('resultsView').classList.contains('filter-open');
+    setFilterOpen(!isOpen, true);   // explicit user intent — persist (desktop only)
+}
+function applyFilterDefault() {
+    if (!mqFilterDesktop.matches) { setFilterOpen(false, false); return; }  // mobile: always start closed
+    const pref = localStorage.getItem(FILTER_PREF_KEY);
+    setFilterOpen(pref ? pref === 'open' : true, false);                    // desktop: open unless previously closed
+}
+mqFilterDesktop.addEventListener('change', (e) => {
+    if (e.matches) applyFilterDefault(); else setFilterOpen(false, false);  // keep the sheet from being stuck open on shrink
+});
+function updateFilterUI(resultCountVal) {
+    const n = state.selected.size;
+    const badge = document.getElementById('filterCountBadge');
+    if (badge) { badge.style.display = n ? '' : 'none'; badge.textContent = n; }
+    const toggle = document.getElementById('filterToggle');
+    if (toggle) toggle.classList.toggle('has-filters', n > 0);
+    const ac = document.getElementById('filterApplyCount');
+    if (ac && resultCountVal != null) ac.textContent = resultCountVal;
+}
+document.getElementById('filterToggle').addEventListener('click', toggleFilter);
+document.getElementById('filterClose').addEventListener('click', closeFilter);
+document.getElementById('filterBackdrop').addEventListener('click', closeFilter);
+document.getElementById('filterApply').addEventListener('click', closeFilter);
+document.getElementById('filterClear').addEventListener('click', () => {
+    state.selected.clear();
+    renderIngredients();
     renderResults();
 });
 
