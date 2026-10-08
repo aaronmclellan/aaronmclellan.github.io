@@ -1,0 +1,888 @@
+{
+  "_comment": "Ingredient catalog for tools/build_cocktail_data.py. \"aliases\" maps a lowercased, accent-free ingredient name from the PDF to a catalog key.",
+  "ingredients": [
+    {
+      "key": "amaro",
+      "display": "Amaro",
+      "category": "amaro"
+    },
+    {
+      "key": "cio_ciaro",
+      "display": "Amaro Cio Ciaro",
+      "category": "amaro"
+    },
+    {
+      "key": "montenegro",
+      "display": "Amaro Montenegro",
+      "category": "amaro"
+    },
+    {
+      "key": "nonino",
+      "display": "Amaro Nonino",
+      "category": "amaro"
+    },
+    {
+      "key": "ramazzotti",
+      "display": "Amaro Ramazzotti",
+      "category": "amaro"
+    },
+    {
+      "key": "aperol",
+      "display": "Aperol",
+      "category": "amaro"
+    },
+    {
+      "key": "campari",
+      "display": "Campari",
+      "category": "amaro"
+    },
+    {
+      "key": "china_china",
+      "display": "China China",
+      "category": "amaro"
+    },
+    {
+      "key": "cynar",
+      "display": "Cynar",
+      "category": "amaro"
+    },
+    {
+      "key": "fernet",
+      "display": "Fernet",
+      "category": "amaro"
+    },
+    {
+      "key": "punt_e_mes",
+      "display": "Punt e Mes",
+      "category": "amaro"
+    },
+    {
+      "key": "suze",
+      "display": "Suze",
+      "category": "amaro"
+    },
+    {
+      "key": "angostura_bitters",
+      "display": "Angostura Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "bitter_truth",
+      "display": "Bitter Truth Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "bitters_other",
+      "display": "Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "cardamom_bitters",
+      "display": "Cardamom Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "chocolate_bitters",
+      "display": "Chocolate Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "mole_bitters",
+      "display": "Mole Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "orange_bitters",
+      "display": "Orange Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "peychauds_bitters",
+      "display": "Peychaud's Bitters",
+      "category": "bitters"
+    },
+    {
+      "key": "cranberry",
+      "display": "Cranberry Juice",
+      "category": "citrus"
+    },
+    {
+      "key": "grapefruit_juice",
+      "display": "Grapefruit Juice",
+      "category": "citrus"
+    },
+    {
+      "key": "lemon_juice",
+      "display": "Lemon Juice",
+      "category": "citrus"
+    },
+    {
+      "key": "lime_juice",
+      "display": "Lime Juice",
+      "category": "citrus"
+    },
+    {
+      "key": "orange_juice",
+      "display": "Orange Juice",
+      "category": "citrus"
+    },
+    {
+      "key": "pineapple",
+      "display": "Pineapple",
+      "category": "citrus"
+    },
+    {
+      "key": "blanc_vermouth",
+      "display": "Blanc Vermouth",
+      "category": "fortified"
+    },
+    {
+      "key": "cocchi",
+      "display": "Cocchi",
+      "category": "fortified"
+    },
+    {
+      "key": "cocchi_americano",
+      "display": "Cocchi Americano",
+      "category": "fortified"
+    },
+    {
+      "key": "dry_vermouth",
+      "display": "Dry Vermouth",
+      "category": "fortified"
+    },
+    {
+      "key": "lillet_blanc",
+      "display": "Lillet Blanc",
+      "category": "fortified"
+    },
+    {
+      "key": "lillet_rouge",
+      "display": "Lillet Rouge",
+      "category": "fortified"
+    },
+    {
+      "key": "sherry",
+      "display": "Sherry",
+      "category": "fortified"
+    },
+    {
+      "key": "sweet_vermouth",
+      "display": "Sweet Vermouth",
+      "category": "fortified"
+    },
+    {
+      "key": "vermouth",
+      "display": "Vermouth",
+      "category": "fortified"
+    },
+    {
+      "key": "mint",
+      "display": "Mint",
+      "category": "herb"
+    },
+    {
+      "key": "absinthe",
+      "display": "Absinthe",
+      "category": "liqueur"
+    },
+    {
+      "key": "allspice_dram",
+      "display": "Allspice Dram",
+      "category": "liqueur"
+    },
+    {
+      "key": "aloe",
+      "display": "Aloe Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "amaretto",
+      "display": "Amaretto",
+      "category": "liqueur"
+    },
+    {
+      "key": "ancho_reyes",
+      "display": "Ancho Reyes",
+      "category": "liqueur"
+    },
+    {
+      "key": "apricot_liqueur",
+      "display": "Apricot Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "banana_liqueur",
+      "display": "Banana Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "benedictine",
+      "display": "Benedictine",
+      "category": "liqueur"
+    },
+    {
+      "key": "cherry_heering",
+      "display": "Cherry Heering",
+      "category": "liqueur"
+    },
+    {
+      "key": "coffee_liqueur",
+      "display": "Coffee Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "cointreau",
+      "display": "Cointreau",
+      "category": "liqueur"
+    },
+    {
+      "key": "creme_cacao",
+      "display": "Crème de Cacao",
+      "category": "liqueur"
+    },
+    {
+      "key": "cassis",
+      "display": "Crème de Cassis",
+      "category": "liqueur"
+    },
+    {
+      "key": "creme_menthe",
+      "display": "Crème de Menthe",
+      "category": "liqueur"
+    },
+    {
+      "key": "mure",
+      "display": "Crème de Mûre",
+      "category": "liqueur"
+    },
+    {
+      "key": "creme_peche",
+      "display": "Crème de Pêche",
+      "category": "liqueur"
+    },
+    {
+      "key": "creme_violette",
+      "display": "Crème de Violette",
+      "category": "liqueur"
+    },
+    {
+      "key": "drambuie",
+      "display": "Drambuie",
+      "category": "liqueur"
+    },
+    {
+      "key": "dry_curacao",
+      "display": "Dry Curaçao",
+      "category": "liqueur"
+    },
+    {
+      "key": "galliano",
+      "display": "Galliano",
+      "category": "liqueur"
+    },
+    {
+      "key": "green_chartreuse",
+      "display": "Green Chartreuse",
+      "category": "liqueur"
+    },
+    {
+      "key": "licor_43",
+      "display": "Licor 43",
+      "category": "liqueur"
+    },
+    {
+      "key": "maraschino",
+      "display": "Maraschino Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "pamplemousse",
+      "display": "Pamplemousse (Grapefruit Liqueur)",
+      "category": "liqueur"
+    },
+    {
+      "key": "peche",
+      "display": "Peach Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "pear",
+      "display": "Pear Brandy/Liqueur",
+      "category": "liqueur"
+    },
+    {
+      "key": "pimms",
+      "display": "Pimm's",
+      "category": "liqueur"
+    },
+    {
+      "key": "st_germain",
+      "display": "St-Germain (Elderflower)",
+      "category": "liqueur"
+    },
+    {
+      "key": "falernum",
+      "display": "Velvet Falernum",
+      "category": "liqueur"
+    },
+    {
+      "key": "yellow_chartreuse",
+      "display": "Yellow Chartreuse",
+      "category": "liqueur"
+    },
+    {
+      "key": "beer",
+      "display": "Beer",
+      "category": "other"
+    },
+    {
+      "key": "butter",
+      "display": "Butter",
+      "category": "other"
+    },
+    {
+      "key": "coke",
+      "display": "Coca-Cola",
+      "category": "other"
+    },
+    {
+      "key": "cold_brew",
+      "display": "Cold Brew Coffee",
+      "category": "other"
+    },
+    {
+      "key": "cream",
+      "display": "Cream",
+      "category": "other"
+    },
+    {
+      "key": "cucumber",
+      "display": "Cucumber",
+      "category": "other"
+    },
+    {
+      "key": "egg_white",
+      "display": "Egg White",
+      "category": "other"
+    },
+    {
+      "key": "espresso_batch",
+      "display": "Espresso Batch",
+      "category": "other"
+    },
+    {
+      "key": "hot_sauce",
+      "display": "Hot Sauce",
+      "category": "other"
+    },
+    {
+      "key": "olive_brine",
+      "display": "Olive Brine",
+      "category": "other"
+    },
+    {
+      "key": "orange_flower",
+      "display": "Orange Flower Water",
+      "category": "other"
+    },
+    {
+      "key": "passion_fruit",
+      "display": "Passion Fruit",
+      "category": "other"
+    },
+    {
+      "key": "raspberry",
+      "display": "Raspberry",
+      "category": "other"
+    },
+    {
+      "key": "saline",
+      "display": "Saline Solution",
+      "category": "other"
+    },
+    {
+      "key": "seltzer",
+      "display": "Seltzer / Soda",
+      "category": "other"
+    },
+    {
+      "key": "sparkling",
+      "display": "Sparkling Wine",
+      "category": "other"
+    },
+    {
+      "key": "whole_egg",
+      "display": "Whole Egg",
+      "category": "other"
+    },
+    {
+      "key": "aged_rum",
+      "display": "Aged Rum",
+      "category": "spirit"
+    },
+    {
+      "key": "apple_brandy",
+      "display": "Apple Brandy / Applejack",
+      "category": "spirit"
+    },
+    {
+      "key": "aquavit",
+      "display": "Aquavit",
+      "category": "spirit"
+    },
+    {
+      "key": "arrack",
+      "display": "Batavia Arrack",
+      "category": "spirit"
+    },
+    {
+      "key": "black_rum",
+      "display": "Black Rum",
+      "category": "spirit"
+    },
+    {
+      "key": "tequila",
+      "display": "Blanco Tequila",
+      "category": "spirit"
+    },
+    {
+      "key": "bourbon",
+      "display": "Bourbon",
+      "category": "spirit"
+    },
+    {
+      "key": "cachaca",
+      "display": "Cachaça",
+      "category": "spirit"
+    },
+    {
+      "key": "cognac",
+      "display": "Cognac",
+      "category": "spirit"
+    },
+    {
+      "key": "genever",
+      "display": "Genever",
+      "category": "spirit"
+    },
+    {
+      "key": "gin",
+      "display": "Gin",
+      "category": "spirit"
+    },
+    {
+      "key": "irish_whiskey",
+      "display": "Irish Whiskey",
+      "category": "spirit"
+    },
+    {
+      "key": "jamaican_rum",
+      "display": "Jamaican Rum",
+      "category": "spirit"
+    },
+    {
+      "key": "mezcal",
+      "display": "Mezcal",
+      "category": "spirit"
+    },
+    {
+      "key": "navy_gin",
+      "display": "Navy Strength Gin",
+      "category": "spirit"
+    },
+    {
+      "key": "old_tom_gin",
+      "display": "Old Tom Gin",
+      "category": "spirit"
+    },
+    {
+      "key": "peated_scotch",
+      "display": "Peated Scotch",
+      "category": "spirit"
+    },
+    {
+      "key": "pisco",
+      "display": "Pisco",
+      "category": "spirit"
+    },
+    {
+      "key": "reposado_tequila",
+      "display": "Reposado Tequila",
+      "category": "spirit"
+    },
+    {
+      "key": "agricole",
+      "display": "Rhum Agricole",
+      "category": "spirit"
+    },
+    {
+      "key": "rum",
+      "display": "Rum",
+      "category": "spirit"
+    },
+    {
+      "key": "rye",
+      "display": "Rye Whiskey",
+      "category": "spirit"
+    },
+    {
+      "key": "scotch",
+      "display": "Scotch",
+      "category": "spirit"
+    },
+    {
+      "key": "any_spirit",
+      "display": "Spirit of Choice",
+      "category": "spirit"
+    },
+    {
+      "key": "vodka",
+      "display": "Vodka",
+      "category": "spirit"
+    },
+    {
+      "key": "white_rum",
+      "display": "White Rum",
+      "category": "spirit"
+    },
+    {
+      "key": "cane_syrup",
+      "display": "Cane Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "cinnamon_syrup",
+      "display": "Cinnamon Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "demerara_syrup",
+      "display": "Demerara Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "ginger",
+      "display": "Ginger",
+      "category": "sweetener"
+    },
+    {
+      "key": "grenadine",
+      "display": "Grenadine",
+      "category": "sweetener"
+    },
+    {
+      "key": "honey",
+      "display": "Honey Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "maple_syrup",
+      "display": "Maple Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "orgeat",
+      "display": "Orgeat (Almond)",
+      "category": "sweetener"
+    },
+    {
+      "key": "pine_gum",
+      "display": "Pineapple Gum Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "simple_syrup",
+      "display": "Simple Syrup",
+      "category": "sweetener"
+    },
+    {
+      "key": "sugar",
+      "display": "Sugar",
+      "category": "sweetener"
+    },
+    {
+      "key": "vanilla",
+      "display": "Vanilla",
+      "category": "sweetener"
+    }
+  ],
+  "aliases": {
+    "(scant) lemon juice": "lemon_juice",
+    "(scant) lime juice": "lime_juice",
+    "0.5 oz goslings": "black_rum",
+    "5 oz vodka": "vodka",
+    "75 oz grenadine": "grenadine",
+    "absinth": "absinthe",
+    "absinth rinse": "absinthe",
+    "absinthe": "absinthe",
+    "absinthe rinse on glass": "absinthe",
+    "aged rum": "aged_rum",
+    "agricole": "agricole",
+    "allspice dram": "allspice_dram",
+    "aloe liqueur": "aloe",
+    "amaretto": "amaretto",
+    "amaro averna": "amaro",
+    "amaro cio ciaro": "cio_ciaro",
+    "amaro ciocaro": "amaro",
+    "amaro di angostura": "amaro",
+    "amaro nonino": "amaro",
+    "amontillado sherry": "sherry",
+    "ancho reyes": "ancho_reyes",
+    "ango": "angostura_bitters",
+    "angostura": "angostura_bitters",
+    "angostura bitters": "angostura_bitters",
+    "aperol": "aperol",
+    "apple brandy": "apple_brandy",
+    "applejack": "apple_brandy",
+    "appleton": "aged_rum",
+    "appleton estate signature": "aged_rum",
+    "apricot": "apricot_liqueur",
+    "apricot liqueur": "apricot_liqueur",
+    "aquavit": "aquavit",
+    "ardbeg uigeadail": "peated_scotch",
+    "avua cachaca": "cachaca",
+    "banana liqueur": "banana_liqueur",
+    "batavia arrack": "arrack",
+    "beefeater gin": "gin",
+    "benedictine": "benedictine",
+    "bitter truth bitters": "bitter_truth",
+    "bittermen's chocolate mole bitters": "mole_bitters",
+    "bitters": "bitters_other",
+    "black rum": "black_rum",
+    "black strap or pot still black rum": "black_rum",
+    "blackstrap rum": "rum",
+    "blanc vermouth": "blanc_vermouth",
+    "blanco tequila": "tequila",
+    "blended scotch": "scotch",
+    "blue curacao": "dry_curacao",
+    "bourbon": "bourbon",
+    "buffalo trace bourbon": "bourbon",
+    "cachaca": "cachaca",
+    "cafe lolita": "coffee_liqueur",
+    "caffe lolita": "coffee_liqueur",
+    "calvados": "apple_brandy",
+    "campari": "campari",
+    "cana brava 7 year": "aged_rum",
+    "cane": "cane_syrup",
+    "cane syrup": "cane_syrup",
+    "carpano antica": "sweet_vermouth",
+    "champagne": "sparkling",
+    "cherry heering": "cherry_heering",
+    "cherry herring": "cherry_heering",
+    "china china": "china_china",
+    "china-china amer": "china_china",
+    "chocolate bitters": "chocolate_bitters",
+    "cinnamon syrup": "cinnamon_syrup",
+    "cio ciaro": "cio_ciaro",
+    "clear creek 2 yr pomme": "apple_brandy",
+    "clear creek 2yr pomme": "apple_brandy",
+    "clear creek 8 year apple brandy": "apple_brandy",
+    "clear creek pear liqueur": "pear",
+    "club soda": "seltzer",
+    "coca cola": "coke",
+    "cocchi americano": "cocchi_americano",
+    "cocchi di torino": "cocchi",
+    "cocchi torino": "cocchi",
+    "coco cream": "cream",
+    "coconut cream": "cream",
+    "cognac": "cognac",
+    "cointreau": "cointreau",
+    "cold brew": "cold_brew",
+    "cold brew concentrate": "cold_brew",
+    "cranberry juice": "cranberry",
+    "cream": "cream",
+    "cream float": "cream",
+    "creme de cacao": "creme_cacao",
+    "creme de cassis": "cassis",
+    "creme de mure": "mure",
+    "creme de peche": "creme_peche",
+    "creme de violette": "creme_violette",
+    "cucumber": "cucumber",
+    "cucumber slices": "cucumber",
+    "cucumber wheels": "cucumber",
+    "cynar": "cynar",
+    "dem": "demerara_syrup",
+    "demerara": "demerara_syrup",
+    "demerara gomme syrup": "demerara_syrup",
+    "demerara syrup": "demerara_syrup",
+    "dirty sue": "olive_brine",
+    "dolin blanc": "blanc_vermouth",
+    "dolin blanc vermouth": "blanc_vermouth",
+    "dolin dolin dry": "dry_vermouth",
+    "dolin dry vermouth": "dry_vermouth",
+    "drambuie": "drambuie",
+    "dry curacao": "dry_curacao",
+    "dry sparkling wine": "sparkling",
+    "dry vermouth": "dry_vermouth",
+    "egg white": "egg_white",
+    "es angostura biters": "angostura_bitters",
+    "es angostura bitters": "angostura_bitters",
+    "es bittermen's chocolate mole bitters": "mole_bitters",
+    "es house orange bitters": "orange_bitters",
+    "es peychaud bitters": "peychauds_bitters",
+    "falernum": "falernum",
+    "fernet": "fernet",
+    "fernet branca": "fernet",
+    "fino sherry": "sherry",
+    "framboise": "raspberry",
+    "galliano": "galliano",
+    "genever": "genever",
+    "giffard abricot": "apricot_liqueur",
+    "giffard cassis": "cassis",
+    "giffard madagascar vanilla": "vanilla",
+    "giffard passion fruit": "passion_fruit",
+    "gin": "gin",
+    "ginger": "ginger",
+    "ginger syrup": "ginger",
+    "goslings": "black_rum",
+    "goslings dark rum": "black_rum",
+    "grand marnier": "dry_curacao",
+    "grapefruit": "grapefruit_juice",
+    "grapefruit juice": "grapefruit_juice",
+    "green chartreuse": "green_chartreuse",
+    "grenadine": "grenadine",
+    "groult reserve calvados": "apple_brandy",
+    "heavy cream": "cream",
+    "highland scotch": "scotch",
+    "honey": "honey",
+    "honey syrup": "honey",
+    "hot sauce": "hot_sauce",
+    "house grenadine": "grenadine",
+    "house orange bitters": "orange_bitters",
+    "house sweet vermouth": "sweet_vermouth",
+    "ipa beer": "beer",
+    "irish": "irish_whiskey",
+    "irish whiskey": "irish_whiskey",
+    "islay scotch": "scotch",
+    "jamaican": "jamaican_rum",
+    "jamaican rum": "jamaican_rum",
+    "krogstad aquavit": "aquavit",
+    "laird's apple brandy": "apple_brandy",
+    "laird's bonded apple brandy": "apple_brandy",
+    "lairds bonded apple brandy": "apple_brandy",
+    "laphroaig": "peated_scotch",
+    "lemon": "lemon_juice",
+    "lemon juice": "lemon_juice",
+    "lemon wedges": "lemon_juice",
+    "licor 43": "licor_43",
+    "lightly aged rum": "aged_rum",
+    "lillet": "lillet_blanc",
+    "lillet blanc": "lillet_blanc",
+    "lillet rouge": "lillet_rouge",
+    "lime": "lime_juice",
+    "lime juice": "lime_juice",
+    "lime juicezz": "lime_juice",
+    "lime segment": "lime_juice",
+    "lime wedges": "lime_juice",
+    "london dry gin": "gin",
+    "london gin": "gin",
+    "lustau amontillado sherry": "sherry",
+    "luxardo maraschino liqueur": "maraschino",
+    "maple": "maple_syrup",
+    "maple syrup": "maple_syrup",
+    "maraschino": "maraschino",
+    "mezcal": "mezcal",
+    "mint": "mint",
+    "mint leaves": "mint",
+    "mint sprigs": "mint",
+    "mole bitters": "mole_bitters",
+    "montenegro": "montenegro",
+    "muddle mint + cucumber": "mint",
+    "n/a espresso batch": "espresso_batch",
+    "navy gin": "navy_gin",
+    "nonino": "nonino",
+    "of goslings": "black_rum",
+    "of orange flower water": "orange_flower",
+    "of saline": "saline",
+    "oj": "orange_juice",
+    "old tom gin": "old_tom_gin",
+    "orange bitters": "orange_bitters",
+    "orange flower water": "orange_flower",
+    "orange juice": "orange_juice",
+    "orange or cardamom bitters": "cardamom_bitters",
+    "orgeat": "orgeat",
+    "overproof rye": "rye",
+    "palu cortado or fino": "sherry",
+    "pamplemousse": "pamplemousse",
+    "pamplemousse liqueur": "pamplemousse",
+    "paranubes rum": "rum",
+    "passionfruit liqueur": "passion_fruit",
+    "peach bitters": "bitters_other",
+    "pear brandy": "pear",
+    "pear liqueur": "pear",
+    "peche de vigne": "peche",
+    "peychaud bitters": "peychauds_bitters",
+    "peychauds": "peychauds_bitters",
+    "peychauds bitters": "peychauds_bitters",
+    "pf dry": "dry_curacao",
+    "pf dry curacao": "dry_curacao",
+    "pierre ferrand 1840": "dry_curacao",
+    "pierre ferrand ambre cognac": "cognac",
+    "pierre ferrand dry": "dry_curacao",
+    "pierre ferrand dry curacao": "dry_curacao",
+    "pimms": "pimms",
+    "pimms #1": "pimms",
+    "pinch mint leaves": "mint",
+    "pine gum": "pine_gum",
+    "pineapple": "pineapple",
+    "pineapple gum": "pine_gum",
+    "pineapple gum syrup": "pine_gum",
+    "pineapple juice": "pineapple",
+    "pisco": "pisco",
+    "plymouth gin": "gin",
+    "plymouth gin or cognac": "gin",
+    "punt e mes": "punt_e_mes",
+    "punt y mes": "punt_e_mes",
+    "ramazotti": "ramazzotti",
+    "ramazzotti": "ramazzotti",
+    "raspberry": "raspberry",
+    "raspberry syrup": "raspberry",
+    "raw honey": "honey",
+    "reposado tequila": "reposado_tequila",
+    "rittenhouse": "rye",
+    "rittenhouse rye": "rye",
+    "ron zacapa": "aged_rum",
+    "rum": "rum",
+    "rye": "rye",
+    "rye whiskey": "rye",
+    "saline": "saline",
+    "salt solution": "saline",
+    "scant 0.5 oz simple syrup": "simple_syrup",
+    "scotch": "scotch",
+    "seltzer": "seltzer",
+    "seltzer water": "seltzer",
+    "sherry": "sherry",
+    "simple": "simple_syrup",
+    "simple syrup": "simple_syrup",
+    "smith & cross": "jamaican_rum",
+    "smith and cross": "jamaican_rum",
+    "soda water": "seltzer",
+    "sparkling wine": "sparkling",
+    "spirit": "any_spirit",
+    "st germain": "st_germain",
+    "st-germain": "st_germain",
+    "st-germain elderflower liqueur": "st_germain",
+    "st. germain": "st_germain",
+    "suze": "suze",
+    "sweet vermouth": "sweet_vermouth",
+    "tanqueray 10": "gin",
+    "tapatio tequila 110": "tequila",
+    "tequila": "tequila",
+    "tequila cabeza": "tequila",
+    "top coca cola": "coke",
+    "unsalted butter at room temp": "butter",
+    "vanille de madagascar": "vanilla",
+    "velvet falernum": "falernum",
+    "vermouth": "vermouth",
+    "violette": "creme_violette",
+    "vodka": "vodka",
+    "white creme de cacao": "creme_cacao",
+    "white creme de menthe": "creme_menthe",
+    "white rum": "white_rum",
+    "white sugar cube": "sugar",
+    "whole egg": "whole_egg",
+    "yellow chartreuce": "yellow_chartreuse",
+    "yellow chartreuse": "yellow_chartreuse"
+  }
+}

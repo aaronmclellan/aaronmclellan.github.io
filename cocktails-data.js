@@ -1,11 +1,407 @@
 window.COCKTAIL_DATA = {
   "cocktails": [
     {
+      "name": "Aromatic",
+      "method": "Stir with ice",
+      "glass": "Nick & Nora",
+      "garnish": "Twist Garnish (usually)",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "1 oz Vermouth",
+          "qty": "1 oz",
+          "name": "Vermouth",
+          "key": "vermouth",
+          "display": "Vermouth",
+          "category": "fortified"
+        },
+        {
+          "raw": "1 dash Bitters",
+          "qty": "1 dash",
+          "name": "Bitters",
+          "key": "bitters_other",
+          "display": "Bitters",
+          "category": "bitters"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Buck",
+      "method": "Short Shake / Strain / Seltzer / Ice",
+      "glass": "Collins w/ Cubes",
+      "garnish": "Lime w/ ginger candy",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.75 oz Ginger Syrup",
+          "qty": "0.75 oz",
+          "name": "Ginger Syrup",
+          "key": "ginger",
+          "display": "Ginger",
+          "category": "sweetener"
+        },
+        {
+          "raw": "0.5 oz Lime Juice",
+          "qty": "0.5 oz",
+          "name": "Lime Juice",
+          "key": "lime_juice",
+          "display": "Lime Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": "Seltzer",
+          "qty": "Top",
+          "name": "Seltzer",
+          "key": "seltzer",
+          "display": "Seltzer / Soda",
+          "category": "other"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Collins",
+      "method": "Short Shake / Strain / Seltzer",
+      "glass": "Collins w/ Kold Draft",
+      "garnish": "Lemon Wedge",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "1 oz Lemon Juice",
+          "qty": "1 oz",
+          "name": "Lemon Juice",
+          "key": "lemon_juice",
+          "display": "Lemon Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": "0.75 oz Simple Syrup",
+          "qty": "0.75 oz",
+          "name": "Simple Syrup",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "2 oz Seltzer Water",
+          "qty": "2 oz",
+          "name": "Seltzer Water",
+          "key": "seltzer",
+          "display": "Seltzer / Soda",
+          "category": "other"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Fix",
+      "method": "Whip / Dump",
+      "glass": "Double Old Fashioned w/ Crushed",
+      "garnish": "Lemon Wedge tucked in ice",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.75 oz Lemon Juice",
+          "qty": "0.75 oz",
+          "name": "Lemon Juice",
+          "key": "lemon_juice",
+          "display": "Lemon Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": "0.75 oz Simple Syrup",
+          "qty": "0.75 oz",
+          "name": "Simple Syrup",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Fizz",
+      "method": "Dry shake / Shake / Double Strain / Top Seltzer",
+      "glass": "Fizz Glass",
+      "garnish": "None",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.75 oz Lemon Juice",
+          "qty": "0.75 oz",
+          "name": "Lemon Juice",
+          "key": "lemon_juice",
+          "display": "Lemon Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": "0.75 oz Simple Syrup",
+          "qty": "0.75 oz",
+          "name": "Simple Syrup",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "Egg White",
+          "qty": "1",
+          "name": "Egg White",
+          "key": "egg_white",
+          "display": "Egg White",
+          "category": "other"
+        },
+        {
+          "raw": "Seltzer",
+          "qty": "Top",
+          "name": "Seltzer",
+          "key": "seltzer",
+          "display": "Seltzer / Soda",
+          "category": "other"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Julep",
+      "method": "Muddle mint / Build / Swizzle / Top more ice",
+      "glass": "Julep Tin",
+      "garnish": "Lavish Mint Sprigs",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "1 tsp Demerara Syrup",
+          "qty": "1 tsp",
+          "name": "Demerara Syrup",
+          "key": "demerara_syrup",
+          "display": "Demerara Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "Mint Sprigs",
+          "qty": "",
+          "name": "Mint Sprigs",
+          "key": "mint",
+          "display": "Mint",
+          "category": "herb"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Old Fashioned (Any Spirit)",
+      "method": "Stir / Strain",
+      "glass": "Old Fashioned w/ Block",
+      "garnish": "Orange & lemon Twist",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit",
+          "qty": "2 oz",
+          "name": "Spirit",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "2 dash angostura Bitters",
+          "qty": "2 dashes",
+          "name": "angostura Bitters",
+          "key": "angostura_bitters",
+          "display": "Angostura Bitters",
+          "category": "bitters"
+        },
+        {
+          "raw": "2 dash bitter truth bitters",
+          "qty": "2 dashes",
+          "name": "Bitter Truth Bitters",
+          "key": "bitter_truth",
+          "display": "Bitter Truth Bitters",
+          "category": "bitters"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
+      "name": "Smash",
+      "method": "Muddle / Whip / Dump",
+      "glass": "Double Old Fashioned w/ Crushed",
+      "garnish": "Mint Bouquet",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin",
+        "whiskey",
+        "tequila",
+        "rum",
+        "vodka",
+        "brandy"
+      ],
+      "template": true,
+      "ingredients": [
+        {
+          "raw": "2 oz Spirit (Bourbon, Rye, Gin, or Vodka are the best)",
+          "qty": "2 oz",
+          "name": "Spirit (Bourbon, Rye, Gin, or Vodka are the best)",
+          "key": "any_spirit",
+          "display": "Spirit of Choice",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.75 oz Simple Syrup",
+          "qty": "0.75 oz",
+          "name": "Simple Syrup",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "4 Lemon Wedges (half a lemon)",
+          "qty": "4",
+          "name": "Lemon Wedges (half a lemon)",
+          "key": "lemon_juice",
+          "display": "Lemon Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": "7-8 Mint Leaves",
+          "qty": "7-8",
+          "name": "Mint Leaves",
+          "key": "mint",
+          "display": "Mint",
+          "category": "herb"
+        }
+      ],
+      "notes": "Template \u2014 make it with whatever spirit you like."
+    },
+    {
       "name": "1920's Cocktail",
       "method": "Stir / Strain",
-      "glass": "Nic & Nora",
+      "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye Whiskey",
@@ -33,7 +429,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Orange bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Orange bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -47,6 +443,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Brian Miller, Death & Company",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Bourbon",
@@ -59,7 +459,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.75 oz Lemon juice",
           "qty": "0.75 oz",
-          "name": "Lemon Juice",
+          "name": "Lemon juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
           "category": "citrus"
@@ -67,7 +467,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.75 oz Cr\u00e8me de cacao",
           "qty": "0.75 oz",
-          "name": "Cr\u00e8me de Cacao",
+          "name": "Cr\u00e8me de cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
           "category": "liqueur"
@@ -88,6 +488,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "C.A. Tuck, 1937",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz London Dry Gin",
@@ -107,7 +511,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.50 oz White Cr\u00e8me de Cacao",
-          "qty": "0.50 oz",
+          "qty": "0.5 oz",
           "name": "White Cr\u00e8me de Cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
@@ -129,10 +533,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2oz Reposado Tequila",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Reposado Tequila",
           "key": "reposado_tequila",
           "display": "Reposado Tequila",
@@ -140,7 +548,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Cynar",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -148,7 +556,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey Syrup",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Honey Syrup",
           "key": "honey",
           "display": "Honey Syrup",
@@ -156,7 +564,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Lemon",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -170,10 +578,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Blended Scotch",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -181,15 +593,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Laphroaig",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Laphroaig",
-          "key": "laphroaig",
-          "display": "Laphroaig (Peated Scotch)",
+          "key": "peated_scotch",
+          "display": "Peated Scotch",
           "category": "spirit"
         },
         {
           "raw": "1oz Lime",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -197,7 +609,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Simple",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -205,7 +617,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "4dash Orange Bitters",
-          "qty": "4dash",
+          "qty": "4 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -213,7 +625,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "4dash Absinthe",
-          "qty": "4dash",
+          "qty": "4 dashes",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -227,6 +639,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Amontillado Sherry",
@@ -246,7 +662,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Orange Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -256,14 +672,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Affinity",
-      "method": "build/Stir / Strain",
-      "glass": "N+N",
+      "method": "Build / Stir / Strain",
+      "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Scotch",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -271,7 +691,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Dry Vermouth",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Dry Vermouth",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -279,7 +699,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Sweet Vermouth",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -287,7 +707,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Ango",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Ango",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -301,10 +721,14 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Bourbon",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -312,7 +736,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Amaro Cio Ciaro",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Amaro Cio Ciaro",
           "key": "cio_ciaro",
           "display": "Amaro Cio Ciaro",
@@ -320,7 +744,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Creme de Cacao",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Creme de Cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
@@ -328,7 +752,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -342,10 +766,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1oz Aged Rum",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Aged Rum",
           "key": "aged_rum",
           "display": "Aged Rum",
@@ -353,7 +781,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lime Juice",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lime Juice",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -361,7 +789,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Honey Syrup",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Honey Syrup",
           "key": "honey",
           "display": "Honey Syrup",
@@ -369,7 +797,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Sparkling Wine",
-          "qty": "",
+          "qty": "Top",
           "name": "Sparkling Wine",
           "key": "sparkling",
           "display": "Sparkling Wine",
@@ -383,6 +811,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2.25 oz Gin",
@@ -402,7 +834,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -416,10 +848,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Mezcal",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Mezcal",
           "key": "mezcal",
           "display": "Mezcal",
@@ -427,7 +863,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Fernet Branca",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Fernet Branca",
           "key": "fernet",
           "display": "Fernet",
@@ -435,15 +871,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz PF Dry Curacao",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "PF Dry Curacao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
         {
           "raw": ".5oz Sweet Vermouth",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -457,6 +893,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Peel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Vodka",
@@ -468,7 +908,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Pear Liqueur",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Pear Liqueur",
           "key": "pear",
           "display": "Pear Brandy/Liqueur",
@@ -477,14 +917,14 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1oz Lime",
           "qty": "1 oz",
-          "name": "Lime Juice",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
         },
         {
           "raw": ".5oz Maple Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Maple Syrup",
           "key": "maple_syrup",
           "display": "Maple Syrup",
@@ -494,14 +934,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Amaretto Sour",
-      "method": "Dry Shake/ Shake / Double Strain",
+      "method": "Dry Shake / Shake / Double Strain",
       "glass": "Coupe",
       "garnish": "Angostura Bitters",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Rye",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -509,7 +953,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Amaretto",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Amaretto",
           "key": "amaretto",
           "display": "Amaretto",
@@ -517,7 +961,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -525,7 +969,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Simple",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -533,7 +977,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg White",
-          "qty": "",
+          "qty": "1",
           "name": "Egg White",
           "key": "egg_white",
           "display": "Egg White",
@@ -547,10 +991,15 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1oz Rye",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -558,15 +1007,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Applejack (Bottled in Bond)",
-          "qty": "1oz",
-          "name": "Applejack",
+          "qty": "1 oz",
+          "name": "Applejack (Bottled in Bond)",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
           "category": "spirit"
         },
         {
           "raw": "1tsp Demerara Syrup",
-          "qty": "1tsp",
+          "qty": "1 tsp",
           "name": "Demerara Syrup",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -574,7 +1023,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3dash Orange Bitters",
-          "qty": "3dash",
+          "qty": "3 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -585,13 +1034,17 @@ window.COCKTAIL_DATA = {
     {
       "name": "Americano",
       "method": "Build / Top with Seltzer",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Orange Wedge, Sidecar of Seltzer",
       "origin": "Created in the 1860's in Italy. Was originally named the \"Milano-Torino\" (Campari is from Milan, Sweet Vermouth is from Torino). It was later renamed the \"Americano\" as an homage to all the American tourists that enjoyed it.",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1oz Campari",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -599,7 +1052,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Sweet Vermouth",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -607,7 +1060,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Seltzer Water",
-          "qty": "",
+          "qty": "Top",
           "name": "Seltzer Water",
           "key": "seltzer",
           "display": "Seltzer / Soda",
@@ -621,6 +1074,11 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Cognac",
@@ -648,7 +1106,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 Dash Orange Bitters",
-          "qty": "2 Dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -662,10 +1120,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": ".75oz Cacha\u00e7a",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cacha\u00e7a",
           "key": "cachaca",
           "display": "Cacha\u00e7a",
@@ -673,7 +1135,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz China China",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "China China",
           "key": "china_china",
           "display": "China China",
@@ -681,7 +1143,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Banana Liqueur",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Banana Liqueur",
           "key": "banana_liqueur",
           "display": "Banana Liqueur",
@@ -689,7 +1151,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 Lime",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -703,10 +1165,14 @@ window.COCKTAIL_DATA = {
       "glass": "Julep Cup",
       "garnish": "Mint bouquet",
       "origin": "Alex Day, Death & Company, NYC",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "2oz Dolin Dolin Dry",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Dolin Dolin Dry",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -714,7 +1180,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Amaro Cio Ciaro",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Amaro Cio Ciaro",
           "key": "cio_ciaro",
           "display": "Amaro Cio Ciaro",
@@ -744,11 +1210,15 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "Dash Bitters Floated on Egg Foam",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1oz Clear Creek 8 Year Apple Brandy",
           "qty": "1 oz",
-          "name": "Apple Brandy",
+          "name": "Clear Creek 8 Year Apple Brandy",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
           "category": "spirit"
@@ -756,22 +1226,22 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1oz Laird's Bonded Apple Brandy",
           "qty": "1 oz",
-          "name": "Apple Brandy",
+          "name": "Laird's Bonded Apple Brandy",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
           "category": "spirit"
         },
         {
           "raw": ".75oz Lime",
-          "qty": ".75 oz",
-          "name": "Lime Juice",
+          "qty": "0.75 oz",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
         },
         {
           "raw": ".75oz Simple Syrup",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Simple Syrup",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -805,14 +1275,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Archangel",
-      "method": "Muddle/ Stir / Double Strain",
+      "method": "Muddle / Stir / Double Strain",
       "glass": "Nick & Nora",
       "garnish": "Cucumber Wheel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2.25oz Gin",
-          "qty": "2.25oz",
+          "qty": "2.25 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -820,7 +1294,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Aperol",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Aperol",
           "key": "aperol",
           "display": "Aperol",
@@ -838,14 +1312,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Archbishop",
-      "method": "Stir/ Strain",
+      "method": "Stir / Strain",
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Smith & Cross",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Smith & Cross",
           "key": "jamaican_rum",
           "display": "Jamaican Rum",
@@ -853,7 +1331,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Campari",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -861,7 +1339,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Green Chartreuse",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Green Chartreuse",
           "key": "green_chartreuse",
           "display": "Green Chartreuse",
@@ -875,10 +1353,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Smith & Cross",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Smith & Cross",
           "key": "jamaican_rum",
           "display": "Jamaican Rum",
@@ -886,7 +1368,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Aperol",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Aperol",
           "key": "aperol",
           "display": "Aperol",
@@ -894,7 +1376,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Yellow Chartreuse",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -908,6 +1390,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Alex Day, Fall 2012",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -965,6 +1451,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -992,7 +1482,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -1006,6 +1496,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Scotch",
@@ -1017,15 +1511,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey",
-          "qty": ".75 oz",
-          "name": "Honey Syrup",
+          "qty": "0.75 oz",
+          "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
           "category": "sweetener"
         },
         {
           "raw": "Cream Float",
-          "qty": "",
+          "qty": "Float",
           "name": "Cream",
           "key": "cream",
           "display": "Cream",
@@ -1039,10 +1533,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1oz Gin",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -1050,7 +1549,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Blended Scotch",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -1058,7 +1557,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Sweet Vermouth",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -1066,7 +1565,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1080,10 +1579,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Ground Cinnamon & Lemon Wedge",
       "origin": "Anthony Schmidt, Noble Experiment 2010",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Clear Creek 2 Yr Pomme",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Clear Creek 2 Yr Pomme",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
@@ -1091,7 +1594,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Laird's Apple Brandy",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Laird's Apple Brandy",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
@@ -1099,7 +1602,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon Juice",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1107,7 +1610,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Orgeat",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Orgeat",
           "key": "orgeat",
           "display": "Orgeat (Almond)",
@@ -1115,7 +1618,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Angostura Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -1129,10 +1632,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2oz Gin",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -1140,7 +1647,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1148,7 +1655,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Simple Syrup",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Simple Syrup",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -1156,7 +1663,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Creme de Violette",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Creme de Violette",
           "key": "creme_violette",
           "display": "Cr\u00e8me de Violette",
@@ -1164,7 +1671,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Maraschino",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -1178,10 +1685,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "Credit for its creation usually goes to Louis Eppinger, a German bartender who worked at the Grand Hotel in Yokohama, Japan, in the 1890s and early 1900s.",
+      "style": "bold",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Lustau Amontillado Sherry",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Lustau Amontillado Sherry",
           "key": "sherry",
           "display": "Sherry",
@@ -1189,7 +1700,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1.25oz Dolin Dry Vermouth",
-          "qty": "1.25oz",
+          "qty": "1.25 oz",
           "name": "Dolin Dry Vermouth",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -1197,7 +1708,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Dolin Blanc Vermouth",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Dolin Blanc Vermouth",
           "key": "blanc_vermouth",
           "display": "Blanc Vermouth",
@@ -1205,7 +1716,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Orange bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Orange bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1213,7 +1724,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Angostura bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Angostura bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -1223,14 +1734,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Bamboozle",
-      "method": "Dry Shake/ Shake / Double Strain",
+      "method": "Dry Shake / Shake / Double Strain",
       "glass": "Coupe",
       "garnish": "Angostura",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Tequila",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Tequila",
           "key": "tequila",
           "display": "Blanco Tequila",
@@ -1238,7 +1753,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Aperol",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Aperol",
           "key": "aperol",
           "display": "Aperol",
@@ -1246,7 +1761,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1254,7 +1769,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -1262,7 +1777,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1270,7 +1785,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg White",
-          "qty": "",
+          "qty": "1",
           "name": "Egg White",
           "key": "egg_white",
           "display": "Egg White",
@@ -1284,10 +1799,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "No Garnish",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": ".75 oz Gin",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -1295,23 +1815,23 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Blended Scotch",
-          "qty": ".75 oz",
-          "name": "Scotch",
+          "qty": "0.75 oz",
+          "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
           "category": "spirit"
         },
         {
           "raw": ".75 oz Creme De Cacao",
-          "qty": ".75 oz",
-          "name": "Cr\u00e8me de Cacao",
+          "qty": "0.75 oz",
+          "name": "Creme De Cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
           "category": "liqueur"
         },
         {
           "raw": ".75 oz Cream",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cream",
           "key": "cream",
           "display": "Cream",
@@ -1322,13 +1842,17 @@ window.COCKTAIL_DATA = {
     {
       "name": "Battle Of New Orleans",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned / Big Ice",
+      "glass": "Old Fashioned w/ Big Ice",
       "garnish": "Lemon Peel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Bourbon",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -1336,7 +1860,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1tsp Demerara",
-          "qty": "1tsp",
+          "qty": "1 tsp",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -1344,7 +1868,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Peychauds Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Peychauds Bitters",
           "key": "peychauds_bitters",
           "display": "Peychaud's Bitters",
@@ -1352,7 +1876,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Orange Bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1360,7 +1884,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Absinthe",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -1372,12 +1896,16 @@ window.COCKTAIL_DATA = {
       "name": "Battle Of Trafalgar",
       "method": "Shake / Strain",
       "glass": "Double Old Fashioned w/ Kold Draft",
-      "garnish": "",
+      "garnish": "Orange Peel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Pimms",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Pimms",
           "key": "pimms",
           "display": "Pimm's",
@@ -1385,7 +1913,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz St Germain",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "St Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -1393,7 +1921,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Batavia Arrack",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Batavia Arrack",
           "key": "arrack",
           "display": "Batavia Arrack",
@@ -1401,7 +1929,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lime",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -1409,7 +1937,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Honey Syrup",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Honey Syrup",
           "key": "honey",
           "display": "Honey Syrup",
@@ -1423,6 +1951,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -1434,15 +1966,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lemon",
-          "qty": ".75 oz",
-          "name": "Lemon Juice",
+          "qty": "0.75 oz",
+          "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
           "category": "citrus"
         },
         {
           "raw": ".75 oz Orgeat",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Orgeat",
           "key": "orgeat",
           "display": "Orgeat (Almond)",
@@ -1450,8 +1982,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "4 Dash Ango",
-          "qty": "4 dash",
-          "name": "Angostura Bitters",
+          "qty": "4 dashes",
+          "name": "Ango",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
           "category": "bitters"
@@ -1464,10 +1996,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Bourbon",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -1475,7 +2011,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1tsp Raw Honey",
-          "qty": "1tsp",
+          "qty": "1 tsp",
           "name": "Raw Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -1483,7 +2019,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Angostura Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -1491,7 +2027,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Absinthe",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -1505,10 +2041,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "notes": "Also delicious with Lavender Bitters",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2oz London Dry Gin",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "London Dry Gin",
           "key": "gin",
           "display": "Gin",
@@ -1516,7 +2057,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon Juice",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1524,7 +2065,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey Syrup",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Honey Syrup",
           "key": "honey",
           "display": "Honey Syrup",
@@ -1538,10 +2079,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Blended Scotch",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -1549,7 +2094,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Ramazotti",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Ramazotti",
           "key": "ramazzotti",
           "display": "Amaro Ramazzotti",
@@ -1557,7 +2102,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Campari",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -1565,7 +2110,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2drops Saline",
-          "qty": "2drops",
+          "qty": "2 drops",
           "name": "Saline",
           "key": "saline",
           "display": "Saline Solution",
@@ -1579,10 +2124,14 @@ window.COCKTAIL_DATA = {
       "glass": "Flute or Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1oz Pear Liqueur",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Pear Liqueur",
           "key": "pear",
           "display": "Pear Brandy/Liqueur",
@@ -1590,7 +2139,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lemon",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1598,7 +2147,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Simple",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -1606,7 +2155,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Sparkling Wine",
-          "qty": "",
+          "qty": "Top",
           "name": "Sparkling Wine",
           "key": "sparkling",
           "display": "Sparkling Wine",
@@ -1620,10 +2169,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Rye",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -1631,7 +2184,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Dry Vermouth",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Dry Vermouth",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -1639,7 +2192,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Maraschino",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -1647,7 +2200,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Cynar",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -1661,10 +2214,15 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "tequila",
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Mezcal",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Mezcal",
           "key": "mezcal",
           "display": "Mezcal",
@@ -1672,15 +2230,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Smith and Cross (or other Jamaican Pot Still Aged)",
-          "qty": ".5oz",
-          "name": "Smith and Cross",
+          "qty": "0.5 oz",
+          "name": "Smith and Cross (or other Jamaican Pot Still Aged)",
           "key": "jamaican_rum",
           "display": "Jamaican Rum",
           "category": "spirit"
         },
         {
           "raw": ".5oz Velvet Falernum",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Velvet Falernum",
           "key": "falernum",
           "display": "Velvet Falernum",
@@ -1694,10 +2252,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Peel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": ".75oz Cognac",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cognac",
           "key": "cognac",
           "display": "Cognac",
@@ -1705,7 +2268,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz White Rum",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "White Rum",
           "key": "white_rum",
           "display": "White Rum",
@@ -1713,7 +2276,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1721,7 +2284,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Cointreau",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cointreau",
           "key": "cointreau",
           "display": "Cointreau",
@@ -1729,7 +2292,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1tsp Cane Syrup",
-          "qty": "1tsp",
+          "qty": "1 tsp",
           "name": "Cane Syrup",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -1743,10 +2306,14 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Kold Draft",
       "garnish": "Orange Half Moon",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1oz Gin",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -1754,7 +2321,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Campari",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -1762,7 +2329,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Grapefruit",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Grapefruit",
           "key": "grapefruit_juice",
           "display": "Grapefruit Juice",
@@ -1770,7 +2337,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lemon",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1778,7 +2345,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Simple",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -1792,10 +2359,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist, Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz London Dry Gin",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "London Dry Gin",
           "key": "gin",
           "display": "Gin",
@@ -1803,7 +2374,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Sweet Vermouth",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -1811,7 +2382,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Green Chartreuse",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Green Chartreuse",
           "key": "green_chartreuse",
           "display": "Green Chartreuse",
@@ -1819,7 +2390,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Orange Bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1833,10 +2404,14 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "2oz Cynar",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -1844,7 +2419,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Sweet Vermouth",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -1852,7 +2427,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Lemon",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1860,7 +2435,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "8dash Orange Bitters",
-          "qty": "8dash",
+          "qty": "8 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1874,10 +2449,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2oz Cognac",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Cognac",
           "key": "cognac",
           "display": "Cognac",
@@ -1885,7 +2464,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Creme de Cassis",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Creme de Cassis",
           "key": "cassis",
           "display": "Cr\u00e8me de Cassis",
@@ -1893,7 +2472,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Lemon",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -1901,7 +2480,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Pine Gum",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Pine Gum",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
@@ -1909,7 +2488,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Simple",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -1923,10 +2502,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Rye",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -1934,7 +2517,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Amaro Averna",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Amaro Averna",
           "key": "amaro",
           "display": "Amaro",
@@ -1942,7 +2525,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Angostura Bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -1950,7 +2533,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Orange Bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -1960,14 +2543,19 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Black Smoke",
-      "method": "Muddle /Shake / Double Strain",
+      "method": "Muddle / Shake / Double Strain",
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Mint Spring",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey",
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Mezcal",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Mezcal",
           "key": "mezcal",
           "display": "Mezcal",
@@ -1975,15 +2563,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Laphroaig",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Laphroaig",
-          "key": "laphroaig",
-          "display": "Laphroaig (Peated Scotch)",
+          "key": "peated_scotch",
+          "display": "Peated Scotch",
           "category": "spirit"
         },
         {
           "raw": ".75oz Cr\u00e8me de Mure",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cr\u00e8me de Mure",
           "key": "mure",
           "display": "Cr\u00e8me de M\u00fbre",
@@ -1991,7 +2579,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Lime",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -1999,7 +2587,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Simple",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -2021,18 +2609,22 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
-          "raw": "1oz Blackstrap Rum",
+          "raw": "1oz Blackstrap Rum (such as Cruzan)",
           "qty": "1 oz",
-          "name": "Black Rum",
-          "key": "black_rum",
-          "display": "Black Rum",
+          "name": "Blackstrap Rum (such as Cruzan)",
+          "key": "rum",
+          "display": "Rum",
           "category": "spirit"
         },
         {
           "raw": ".5oz Campari",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -2040,8 +2632,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Fernet Branca",
-          "qty": ".5 oz",
-          "name": "Fernet",
+          "qty": "0.5 oz",
+          "name": "Fernet Branca",
           "key": "fernet",
           "display": "Fernet",
           "category": "amaro"
@@ -2070,10 +2662,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": ".75oz Tequila",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Tequila",
           "key": "tequila",
           "display": "Blanco Tequila",
@@ -2081,7 +2677,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Montenegro",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Montenegro",
           "key": "montenegro",
           "display": "Amaro Montenegro",
@@ -2089,7 +2685,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Apricot",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Apricot",
           "key": "apricot_liqueur",
           "display": "Apricot Liqueur",
@@ -2097,7 +2693,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2111,10 +2707,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Rye",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -2122,7 +2722,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Raspberry",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Raspberry",
           "key": "raspberry",
           "display": "Raspberry",
@@ -2130,7 +2730,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Grenadine",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
@@ -2138,7 +2738,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Grapefruit",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Grapefruit",
           "key": "grapefruit_juice",
           "display": "Grapefruit Juice",
@@ -2146,7 +2746,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lemon",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2160,10 +2760,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1oz Blended Scotch",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -2171,7 +2775,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Orange Juice",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Orange Juice",
           "key": "orange_juice",
           "display": "Orange Juice",
@@ -2179,7 +2783,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Cherry Heering",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cherry Heering",
           "key": "cherry_heering",
           "display": "Cherry Heering",
@@ -2187,7 +2791,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Cocchi Torino",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cocchi Torino",
           "key": "cocchi",
           "display": "Cocchi",
@@ -2195,7 +2799,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon Juice",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2203,7 +2807,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -2217,10 +2821,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Rye",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -2228,7 +2836,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Sweet Vermouth",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -2236,7 +2844,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Amaro Cio Ciaro",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Amaro Cio Ciaro",
           "key": "cio_ciaro",
           "display": "Amaro Cio Ciaro",
@@ -2244,7 +2852,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Maraschino",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -2252,7 +2860,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Angostura Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -2260,7 +2868,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -2272,12 +2880,16 @@ window.COCKTAIL_DATA = {
       "name": "Blue Hawaiian",
       "method": "Whip / Dump / Top Pebble",
       "glass": "Goblet",
-      "garnish": " SUBJECT TO REVIEW",
+      "garnish": "",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2oz Rum",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Rum",
           "key": "rum",
           "display": "Rum",
@@ -2285,7 +2897,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1.5oz Pineapple",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Pineapple",
           "key": "pineapple",
           "display": "Pineapple",
@@ -2293,7 +2905,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Coconut Cream",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Coconut Cream",
           "key": "cream",
           "display": "Cream",
@@ -2301,15 +2913,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Blue Curacao",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Blue Curacao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
         {
           "raw": ".75oz Lime",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -2323,10 +2935,14 @@ window.COCKTAIL_DATA = {
       "glass": "Collins w/ Pebble",
       "garnish": "Cherry, Lemon Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "2oz Vodka",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Vodka",
           "key": "vodka",
           "display": "Vodka",
@@ -2334,15 +2950,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Blue Curacao",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Blue Curacao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
         {
           "raw": "1oz Lemon",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2350,7 +2966,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Cane Syrup",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Cane Syrup",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -2364,10 +2980,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Blended Scotch",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -2375,7 +2995,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Sweet Vermouth",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -2383,7 +3003,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Benedictine",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Benedictine",
           "key": "benedictine",
           "display": "Benedictine",
@@ -2397,10 +3017,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "No Garnish",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Gin",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -2408,7 +3032,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz St Germain",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "St Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -2416,7 +3040,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lime",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -2424,7 +3048,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Grapefruit",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Grapefruit",
           "key": "grapefruit_juice",
           "display": "Grapefruit Juice",
@@ -2432,7 +3056,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Cane Syrup",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Cane Syrup",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -2440,7 +3064,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Peychauds",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Peychauds",
           "key": "peychauds_bitters",
           "display": "Peychaud's Bitters",
@@ -2454,6 +3078,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Bourbon",
@@ -2487,10 +3115,15 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey",
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1oz Bourbon",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -2498,7 +3131,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Mezcal",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Mezcal",
           "key": "mezcal",
           "display": "Mezcal",
@@ -2506,7 +3139,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Pineapple",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Pineapple",
           "key": "pineapple",
           "display": "Pineapple",
@@ -2514,7 +3147,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lime",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -2522,7 +3155,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Cane Syrup",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Cane Syrup",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -2530,7 +3163,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Pine Gum",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Pine Gum",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
@@ -2544,10 +3177,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Pebble",
       "garnish": "None",
       "origin": "Dick Bradsell",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2oz London Dry Gin",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "London Dry Gin",
           "key": "gin",
           "display": "Gin",
@@ -2555,7 +3192,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2563,7 +3200,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Simple",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -2571,7 +3208,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Float Creme de Mure",
-          "qty": ".25oz Float",
+          "qty": "0.25 oz float",
           "name": "Creme de Mure",
           "key": "mure",
           "display": "Cr\u00e8me de M\u00fbre",
@@ -2579,7 +3216,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Float Framboise",
-          "qty": ".25oz Float",
+          "qty": "0.25 oz float",
           "name": "Framboise",
           "key": "raspberry",
           "display": "Raspberry",
@@ -2589,14 +3226,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Brandy Alexander",
-      "method": "Stir/Strain/float",
-      "glass": "Nick+Nora",
+      "method": "Stir / Strain / Float",
+      "glass": "Nick & Nora",
       "garnish": "Grated Nutmeg",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2oz Cognac",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Cognac",
           "key": "cognac",
           "display": "Cognac",
@@ -2604,7 +3245,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz White Cr\u00e8me de Cacao",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "White Cr\u00e8me de Cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
@@ -2612,8 +3253,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Cream Float",
-          "qty": "",
-          "name": "Cream Float",
+          "qty": "Float",
+          "name": "Cream",
           "key": "cream",
           "display": "Cream",
           "category": "other"
@@ -2626,10 +3267,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Peel / Sugar Rim",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Cognac",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Cognac",
           "key": "cognac",
           "display": "Cognac",
@@ -2637,7 +3282,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz PF Dry",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "PF Dry",
           "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
@@ -2645,7 +3290,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Maraschino",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -2653,7 +3298,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2661,7 +3306,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1tsp Demerara",
-          "qty": "1tsp",
+          "qty": "1 tsp",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -2669,7 +3314,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Ango",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Ango",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -2680,13 +3325,17 @@ window.COCKTAIL_DATA = {
     {
       "name": "Brooklyn",
       "method": "Stir / Strain",
-      "glass": "Nick and Nora",
+      "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Rye",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -2694,7 +3343,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Dry Vermouth",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Dry Vermouth",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -2702,7 +3351,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz China-China Amer",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "China-China Amer",
           "key": "china_china",
           "display": "China China",
@@ -2710,7 +3359,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1tsp Maraschino",
-          "qty": "1tsp",
+          "qty": "1 tsp",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -2724,10 +3373,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2oz Jamaican Rum",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Jamaican Rum",
           "key": "jamaican_rum",
           "display": "Jamaican Rum",
@@ -2735,7 +3388,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lime",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -2743,7 +3396,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -2751,7 +3404,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "4dash Angostura",
-          "qty": "4dash",
+          "qty": "4 dashes",
           "name": "Angostura",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -2765,10 +3418,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2oz Bourbon",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -2776,7 +3433,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Grapefruit Juice",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Grapefruit Juice",
           "key": "grapefruit_juice",
           "display": "Grapefruit Juice",
@@ -2784,7 +3441,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey Syrup",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Honey Syrup",
           "key": "honey",
           "display": "Honey Syrup",
@@ -2792,7 +3449,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Lemon Juice",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -2802,14 +3459,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Bumblebee",
-      "method": "Dry Shake/ Shake / Double Strain",
+      "method": "Dry Shake / Shake / Double Strain",
       "glass": "Coupe",
       "garnish": "Angostura",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Appleton Estate Signature",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Appleton Estate Signature",
           "key": "aged_rum",
           "display": "Aged Rum",
@@ -2817,7 +3478,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Smith & Cross",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Smith & Cross",
           "key": "jamaican_rum",
           "display": "Jamaican Rum",
@@ -2825,7 +3486,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Lime",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -2833,7 +3494,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Honey",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -2841,7 +3502,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg White",
-          "qty": "",
+          "qty": "1",
           "name": "Egg White",
           "key": "egg_white",
           "display": "Egg White",
@@ -2855,10 +3516,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Twist or Wheel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2oz Gin",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -2866,7 +3531,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 Lime",
-          "qty": "1",
+          "qty": "1 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -2874,7 +3539,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 Honey Syrup",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "Honey Syrup",
           "key": "honey",
           "display": "Honey Syrup",
@@ -2884,10 +3549,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Caipirinha",
-      "method": "Muddle lime wedges simple / add booze / shake with 5 cubes / dump",
-      "glass": "Double Old Fashioned Glass",
+      "method": "Muddle lime wedges simple / Add booze / Shake with 5 cubes / Dump",
+      "glass": "Double Old Fashioned",
       "garnish": "None, top with one more cubes",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Avua Cachaca",
@@ -2921,6 +3590,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Blended Scotch",
@@ -2962,10 +3635,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Gin",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -2973,7 +3650,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Campari",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -2981,7 +3658,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Sweet Vermouth",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -2991,14 +3668,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Carajillo",
-      "method": "Shake/Strain",
-      "glass": "Old Fashioned w/Big Cube",
+      "method": "Shake / Strain",
+      "glass": "Old Fashioned w/ Big Cube",
       "garnish": "",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Licor 43",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Licor 43",
           "key": "licor_43",
           "display": "Licor 43",
@@ -3006,7 +3687,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1.5 Cold Brew",
-          "qty": "1.5",
+          "qty": "1.5 oz",
           "name": "Cold Brew",
           "key": "cold_brew",
           "display": "Cold Brew Coffee",
@@ -3020,10 +3701,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1oz Gin",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -3031,7 +3716,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Dry Vermouth",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Dry Vermouth",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -3039,7 +3724,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Campari",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -3047,7 +3732,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Saline",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Saline",
           "key": "saline",
           "display": "Saline Solution",
@@ -3061,6 +3746,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -3072,7 +3761,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Cynar",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -3080,7 +3769,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Yellow Chartreuse",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -3088,7 +3777,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -3102,10 +3791,14 @@ window.COCKTAIL_DATA = {
       "glass": "Fizz Glass",
       "garnish": "None",
       "origin": "Phil Ward, Death & Co",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2oz Gin",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -3113,7 +3806,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz St. Germain",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "St. Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -3121,7 +3814,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon Juice",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -3129,7 +3822,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Simple Syrup",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Simple Syrup",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -3151,6 +3844,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon twist",
       "origin": "Savoy Cocktail Book",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -3178,8 +3875,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "scant 0.5 oz Simple Syrup",
-          "qty": "",
-          "name": "scant 0.5 oz Simple Syrup",
+          "qty": "0.5 oz",
+          "name": "Simple Syrup (scant)",
           "key": "simple_syrup",
           "display": "Simple Syrup",
           "category": "sweetener"
@@ -3200,10 +3897,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2oz White Rum",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "White Rum",
           "key": "white_rum",
           "display": "White Rum",
@@ -3211,7 +3912,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Pineapple Juice",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Pineapple Juice",
           "key": "pineapple",
           "display": "Pineapple",
@@ -3219,7 +3920,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lime",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -3227,7 +3928,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Maple",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Maple",
           "key": "maple_syrup",
           "display": "Maple Syrup",
@@ -3235,7 +3936,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "8 -10 Mint Leaves",
-          "qty": "8 -10",
+          "qty": "8-10",
           "name": "Mint Leaves",
           "key": "mint",
           "display": "Mint",
@@ -3249,6 +3950,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Aged Rum",
@@ -3268,7 +3973,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/4 oz Honey",
-          "qty": "1/4 oz",
+          "qty": "0.25 oz",
           "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -3276,7 +3981,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -3286,10 +3991,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Chin Up",
-      "method": "Build/Press cucumbers in bottom of glass/Ice/Stir/x2strain",
+      "method": "Build / Press cucumbers in bottom of glass / Ice / Stir / X2strain",
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -3318,7 +4027,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "3 cucumber wheels",
           "qty": "3",
-          "name": "cucumber wheels",
+          "name": "Cucumber Wheels",
           "key": "cucumber",
           "display": "Cucumber",
           "category": "other"
@@ -3331,6 +4040,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Peel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1 3/4 Dry Vermouth",
@@ -3342,7 +4055,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3/4 Blanc Vermouth",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Blanc Vermouth",
           "key": "blanc_vermouth",
           "display": "Blanc Vermouth",
@@ -3350,7 +4063,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/2 oz Benedictine",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Benedictine",
           "key": "benedictine",
           "display": "Benedictine",
@@ -3358,7 +4071,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/4 oz Absinthe",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -3371,11 +4084,15 @@ window.COCKTAIL_DATA = {
       "method": "Dry Shake / Shake / Double Strain",
       "glass": "Coupe",
       "garnish": "Angostura Dashes",
-      "origin": "This Gin sour variation was the house drink of The Clover Club, an organization that met in Philadelphia's Bellevue Straford Hotel bar. Our spec is a Variation by Guiseppe Gonzalez.",
+      "origin": "This Gin sour variation was the house drink of The Clover Club, an organization that met in Philadelphia's Bellevue-Stratford Hotel bar. Our spec is a Variation by Giuseppe Gonz\u00e1lez.",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Gin",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -3383,7 +4100,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Dry Vermouth",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Dry Vermouth",
           "key": "dry_vermouth",
           "display": "Dry Vermouth",
@@ -3391,7 +4108,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -3399,7 +4116,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Raspberry Syrup",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Raspberry Syrup",
           "key": "raspberry",
           "display": "Raspberry",
@@ -3407,7 +4124,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg White",
-          "qty": "",
+          "qty": "1",
           "name": "Egg White",
           "key": "egg_white",
           "display": "Egg White",
@@ -3417,10 +4134,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Cobble Hill",
-      "method": "Build / Stir w/ cucumbers in bottom of glass (press)",
+      "method": "Build / Stir w/ Cucumbers in bottom of glass (press)",
       "glass": "Nick & Nora",
       "garnish": "Cucumber Wheel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -3449,7 +4170,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "3 cucumber wheels",
           "qty": "3",
-          "name": "cucumber wheels",
+          "name": "Cucumber Wheels",
           "key": "cucumber",
           "display": "Cucumber",
           "category": "other"
@@ -3462,10 +4183,15 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange & Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1oz Bourbon",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -3473,7 +4199,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Cognac",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Cognac",
           "key": "cognac",
           "display": "Cognac",
@@ -3481,7 +4207,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Benedictine",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Benedictine",
           "key": "benedictine",
           "display": "Benedictine",
@@ -3489,7 +4215,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Pierre Ferrand Dry",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Pierre Ferrand Dry",
           "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
@@ -3497,7 +4223,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Angostura",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Angostura",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -3511,18 +4237,22 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "None",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1oz Laphroaig",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Laphroaig",
-          "key": "laphroaig",
-          "display": "Laphroaig (Peated Scotch)",
+          "key": "peated_scotch",
+          "display": "Peated Scotch",
           "category": "spirit"
         },
         {
           "raw": "1oz Blended Scotch",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
@@ -3530,7 +4260,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Cafe Lolita",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Cafe Lolita",
           "key": "coffee_liqueur",
           "display": "Coffee Liqueur",
@@ -3538,7 +4268,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Sweet Vermouth",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -3546,7 +4276,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Mole Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Mole Bitters",
           "key": "mole_bitters",
           "display": "Mole Bitters",
@@ -3555,49 +4285,21 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
-      "name": "Collins",
-      "method": "Short Shake / Strain / Seltzer",
-      "glass": "Collins with KD",
-      "garnish": "Lemon Wedge",
-      "origin": "",
-      "ingredients": [
-        {
-          "raw": "1 oz Lemon Juice",
-          "qty": "1 oz",
-          "name": "Lemon Juice",
-          "key": "lemon_juice",
-          "display": "Lemon Juice",
-          "category": "citrus"
-        },
-        {
-          "raw": "0.75 oz Simple Syrup",
-          "qty": "0.75 oz",
-          "name": "Simple Syrup",
-          "key": "simple_syrup",
-          "display": "Simple Syrup",
-          "category": "sweetener"
-        },
-        {
-          "raw": "2 oz Seltzer Water",
-          "qty": "2 oz",
-          "name": "Seltzer Water",
-          "key": "seltzer",
-          "display": "Seltzer / Soda",
-          "category": "other"
-        }
-      ]
-    },
-    {
       "name": "Conference",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned with rock",
+      "glass": "Old Fashioned w/ Rock",
       "garnish": "Lemon & Orange Twists",
       "origin": "Brian Miller, Death & Co.",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "0.5 oz Rittenhouse Rye",
           "qty": "0.5 oz",
-          "name": "Rye",
+          "name": "Rittenhouse Rye",
           "key": "rye",
           "display": "Rye Whiskey",
           "category": "spirit"
@@ -3605,23 +4307,23 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.5 oz Buffalo Trace Bourbon",
           "qty": "0.5 oz",
-          "name": "Bourbon",
+          "name": "Buffalo Trace Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
           "category": "spirit"
         },
         {
-          "raw": "0.5 oz Calvados",
+          "raw": "0.5 oz Groult Reserve Calvados",
           "qty": "0.5 oz",
-          "name": "Apple Brandy",
+          "name": "Groult Reserve Calvados",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
           "category": "spirit"
         },
         {
-          "raw": "0.5 oz Cognac",
+          "raw": "0.5 oz Pierre Ferrand Ambre Cognac",
           "qty": "0.5 oz",
-          "name": "Cognac",
+          "name": "Pierre Ferrand Ambre Cognac",
           "key": "cognac",
           "display": "Cognac",
           "category": "spirit"
@@ -3635,9 +4337,9 @@ window.COCKTAIL_DATA = {
           "category": "bitters"
         },
         {
-          "raw": "1 Dash Chocolate Mole Bitters",
+          "raw": "1 Dash Bittermen's Chocolate Mole Bitters",
           "qty": "1 dash",
-          "name": "Mole Bitters",
+          "name": "Bittermen's Chocolate Mole Bitters",
           "key": "mole_bitters",
           "display": "Mole Bitters",
           "category": "bitters"
@@ -3645,7 +4347,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 tsp Demerara Gomme Syrup",
           "qty": "1 tsp",
-          "name": "Demerara Syrup",
+          "name": "Demerara Gomme Syrup",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
           "category": "sweetener"
@@ -3658,6 +4360,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila",
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Reposado Tequila",
@@ -3677,31 +4384,31 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Lime",
-          "qty": ".5 oz",
-          "name": "Lime Juice",
+          "qty": "0.5 oz",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
         },
         {
           "raw": ".5 oz Lemon",
-          "qty": ".5 oz",
-          "name": "Lemon Juice",
+          "qty": "0.5 oz",
+          "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
           "category": "citrus"
         },
         {
-          "raw": ".75 oz Simple",
-          "qty": ".75 oz",
-          "name": "Simple Syrup",
+          "raw": ".75 oz simple",
+          "qty": "0.75 oz",
+          "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
           "category": "sweetener"
         },
         {
-          "raw": "3 Dash Orange Bitters",
-          "qty": "3 dash",
+          "raw": "3 dash Orange Bitters",
+          "qty": "3 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -3709,7 +4416,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg White",
-          "qty": "",
+          "qty": "1",
           "name": "Egg White",
           "key": "egg_white",
           "display": "Egg White",
@@ -3723,6 +4430,10 @@ window.COCKTAIL_DATA = {
       "glass": "Chilled Neat",
       "garnish": "Lemon Peel & Discard",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Irish Whiskey",
@@ -3734,19 +4445,27 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz St Germain",
-          "qty": ".5 oz",
-          "name": "St-Germain",
+          "qty": "0.5 oz",
+          "name": "St Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
           "category": "liqueur"
         },
         {
           "raw": "2 Dash Orange Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
           "category": "bitters"
+        },
+        {
+          "raw": "Laphroig Spray",
+          "qty": "Spray",
+          "name": "Laphroaig",
+          "key": "peated_scotch",
+          "display": "Peated Scotch",
+          "category": "spirit"
         }
       ]
     },
@@ -3756,10 +4475,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Pebble",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2oz Blackstrap Rum",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Blackstrap Rum",
           "key": "rum",
           "display": "Rum",
@@ -3767,7 +4490,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Velvet Falernum",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Velvet Falernum",
           "key": "falernum",
           "display": "Velvet Falernum",
@@ -3775,7 +4498,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lime",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -3783,7 +4506,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3dash Ango",
-          "qty": "3dash",
+          "qty": "3 dashes",
           "name": "Ango",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -3797,6 +4520,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Calvados",
@@ -3830,10 +4557,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz. London Dry Gin",
-          "qty": "0.75 oz.",
+          "qty": "0.75 oz",
           "name": "London Dry Gin",
           "key": "gin",
           "display": "Gin",
@@ -3841,15 +4572,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.75 oz. Pierre Ferrand Dry Curacao",
-          "qty": "0.75 oz.",
+          "qty": "0.75 oz",
           "name": "Pierre Ferrand Dry Curacao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
         {
           "raw": "0.75 oz. Lillet",
-          "qty": "0.75 oz.",
+          "qty": "0.75 oz",
           "name": "Lillet",
           "key": "lillet_blanc",
           "display": "Lillet Blanc",
@@ -3857,7 +4588,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.75 oz. Lemon Juice",
-          "qty": "0.75 oz.",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -3865,8 +4596,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Absinthe rinse on glass",
-          "qty": "",
-          "name": "Absinthe rinse on glass",
+          "qty": "Rinse",
+          "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
           "category": "liqueur"
@@ -3879,10 +4610,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "2oz Vodka",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Vodka",
           "key": "vodka",
           "display": "Vodka",
@@ -3890,7 +4625,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Lime",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -3898,7 +4633,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Pineapple Gum Syrup",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Pineapple Gum Syrup",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
@@ -3906,7 +4641,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Grenadine",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
@@ -3920,10 +4655,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wheel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "2oz Vodka",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Vodka",
           "key": "vodka",
           "display": "Vodka",
@@ -3931,7 +4670,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Cointreau",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cointreau",
           "key": "cointreau",
           "display": "Cointreau",
@@ -3939,7 +4678,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Cranberry Juice",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Cranberry Juice",
           "key": "cranberry",
           "display": "Cranberry Juice",
@@ -3947,7 +4686,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lime Juice",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lime Juice",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -3955,11 +4694,56 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Simple Syrup",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Simple Syrup",
           "key": "simple_syrup",
           "display": "Simple Syrup",
           "category": "sweetener"
+        }
+      ]
+    },
+    {
+      "name": "Creole",
+      "method": "Stir / Strain",
+      "glass": "Nick & Nora",
+      "garnish": "Lemon",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
+      "ingredients": [
+        {
+          "raw": "1.5 oz Rye",
+          "qty": "1.5 oz",
+          "name": "Rye",
+          "key": "rye",
+          "display": "Rye Whiskey",
+          "category": "spirit"
+        },
+        {
+          "raw": "1/2 oz Punt e mes",
+          "qty": "0.5 oz",
+          "name": "Punt e mes",
+          "key": "punt_e_mes",
+          "display": "Punt e Mes",
+          "category": "amaro"
+        },
+        {
+          "raw": "1/2 oz Cio Ciaro",
+          "qty": "0.5 oz",
+          "name": "Cio Ciaro",
+          "key": "cio_ciaro",
+          "display": "Amaro Cio Ciaro",
+          "category": "amaro"
+        },
+        {
+          "raw": "1/2 oz Benedictine",
+          "qty": "0.5 oz",
+          "name": "Benedictine",
+          "key": "benedictine",
+          "display": "Benedictine",
+          "category": "liqueur"
         }
       ]
     },
@@ -3969,10 +4753,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": ".75oz Gin",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -3980,7 +4768,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Pamplemousse Liqueur",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Pamplemousse Liqueur",
           "key": "pamplemousse",
           "display": "Pamplemousse (Grapefruit Liqueur)",
@@ -3988,7 +4776,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Montenegro",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Montenegro",
           "key": "montenegro",
           "display": "Amaro Montenegro",
@@ -3996,7 +4784,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Lemon",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -4010,6 +4798,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rum",
@@ -4043,6 +4835,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "No Garnish",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -4054,15 +4850,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/2 Yellow Chartreuce",
-          "qty": "1/2",
-          "name": "Yellow Chartreuce",
+          "qty": "0.5 oz",
+          "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
           "category": "liqueur"
         },
         {
           "raw": ".75 Lemon",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -4070,7 +4866,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 Honey",
-          "qty": ".5",
+          "qty": "0.5 oz",
           "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -4080,22 +4876,26 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Daisy De Santiago",
-      "method": "Shake/Strain",
-      "glass": "Old Fashioned Glass with KD",
+      "method": "Shake / Strain",
+      "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Mint Sprig",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
-          "raw": "2 oz White Rum",
+          "raw": "2 oz White Rum (Well Havana Club or Bacardi will do)",
           "qty": "2 oz",
-          "name": "White Rum",
+          "name": "White Rum (Well Havana Club or Bacardi will do)",
           "key": "white_rum",
           "display": "White Rum",
           "category": "spirit"
         },
         {
           "raw": ".25 oz Yellow Chartreuse",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -4104,15 +4904,15 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz Lime",
           "qty": "1 oz",
-          "name": "Lime Juice",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
         },
         {
           "raw": ".50 oz Simple",
-          "qty": ".50 oz",
-          "name": "Simple Syrup",
+          "qty": "0.5 oz",
+          "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
           "category": "sweetener"
@@ -4125,10 +4925,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "aquavit"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz Krogstad Aquavit",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "Krogstad Aquavit",
           "key": "aquavit",
           "display": "Aquavit",
@@ -4136,7 +4940,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Absinthe",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -4144,7 +4948,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Fernet Branca",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Fernet Branca",
           "key": "fernet",
           "display": "Fernet",
@@ -4152,7 +4956,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Green Chartreuse",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Green Chartreuse",
           "key": "green_chartreuse",
           "display": "Green Chartreuse",
@@ -4160,7 +4964,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Yellow Chartreuse",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -4168,7 +4972,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Aloe Liqueur",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Aloe Liqueur",
           "key": "aloe",
           "display": "Aloe Liqueur",
@@ -4176,7 +4980,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Lemon",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -4184,7 +4988,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Simple",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -4195,9 +4999,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Dark and Stormy",
       "method": "Short Shake / Strain / Seltzer / Ice",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Lime Wedge, Ginger Candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Goslings Dark Rum",
@@ -4225,7 +5033,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Seltzer",
-          "qty": "",
+          "qty": "Top",
           "name": "Seltzer",
           "key": "seltzer",
           "display": "Seltzer / Soda",
@@ -4236,9 +5044,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Dead Language",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned / Big Rock",
+      "glass": "Old Fashioned w/ Big Rock",
       "garnish": "Orange Peel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Rye",
@@ -4250,23 +5062,31 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Cocchi Di Torino",
-          "qty": ".75 oz",
-          "name": "Sweet Vermouth",
-          "key": "sweet_vermouth",
-          "display": "Sweet Vermouth",
+          "qty": "0.75 oz",
+          "name": "Cocchi Di Torino",
+          "key": "cocchi",
+          "display": "Cocchi",
           "category": "fortified"
         },
         {
+          "raw": "1/2 oz Ancho Reyes",
+          "qty": "0.5 oz",
+          "name": "Ancho Reyes",
+          "key": "ancho_reyes",
+          "display": "Ancho Reyes",
+          "category": "liqueur"
+        },
+        {
           "raw": "1/4 oz Frambois",
-          "qty": ".25 oz",
-          "name": "Raspberry",
+          "qty": "0.25 oz",
+          "name": "Framboise",
           "key": "raspberry",
           "display": "Raspberry",
           "category": "other"
         },
         {
           "raw": "2 Dash Mole Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Mole Bitters",
           "key": "mole_bitters",
           "display": "Mole Bitters",
@@ -4275,11 +5095,181 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
+      "name": "Death in the Afternoon",
+      "method": "Pour Absinthe Top with Champagne",
+      "glass": "Flute",
+      "garnish": "Lemon Twist",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "aquavit"
+      ],
+      "ingredients": [
+        {
+          "raw": "Champagne",
+          "qty": "Top",
+          "name": "Champagne",
+          "key": "sparkling",
+          "display": "Sparkling Wine",
+          "category": "other"
+        },
+        {
+          "raw": "1/2 oz Absinthe",
+          "qty": "0.5 oz",
+          "name": "Absinthe",
+          "key": "absinthe",
+          "display": "Absinthe",
+          "category": "liqueur"
+        }
+      ]
+    },
+    {
+      "name": "Death in the Gulfstream",
+      "method": "Whip / Dump / Crushed / Float Angostura",
+      "glass": "Old Fashioned",
+      "garnish": "Mint Sprig with Angostura Float",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
+      "ingredients": [
+        {
+          "raw": "2 oz Genever",
+          "qty": "2 oz",
+          "name": "Genever",
+          "key": "genever",
+          "display": "Genever",
+          "category": "spirit"
+        },
+        {
+          "raw": "1 oz Lime",
+          "qty": "1 oz",
+          "name": "Lime",
+          "key": "lime_juice",
+          "display": "Lime Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": ".75 Simple",
+          "qty": "0.75 oz",
+          "name": "Simple",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "3 dash Angostura",
+          "qty": "3 dashes",
+          "name": "Angostura",
+          "key": "angostura_bitters",
+          "display": "Angostura Bitters",
+          "category": "bitters"
+        }
+      ]
+    },
+    {
+      "name": "Diamond Fizz",
+      "method": "Dry Shake / Shake / Double Strain / Top With Champagne",
+      "glass": "Fizz Glass",
+      "garnish": "No Garnish",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
+      "ingredients": [
+        {
+          "raw": "2 oz Gin",
+          "qty": "2 oz",
+          "name": "Gin",
+          "key": "gin",
+          "display": "Gin",
+          "category": "spirit"
+        },
+        {
+          "raw": ".75 oz lemon",
+          "qty": "0.75 oz",
+          "name": "Lemon",
+          "key": "lemon_juice",
+          "display": "Lemon Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": ".75 oz Simple",
+          "qty": "0.75 oz",
+          "name": "Simple",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "Egg White",
+          "qty": "1",
+          "name": "Egg White",
+          "key": "egg_white",
+          "display": "Egg White",
+          "category": "other"
+        },
+        {
+          "raw": "Top Champagne",
+          "qty": "Top",
+          "name": "Champagne",
+          "key": "sparkling",
+          "display": "Sparkling Wine",
+          "category": "other"
+        }
+      ]
+    },
+    {
+      "name": "Diamondback",
+      "method": "Stir / Strain",
+      "glass": "Coupe",
+      "garnish": "Cherry",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
+      "ingredients": [
+        {
+          "raw": "1.5 oz Rye",
+          "qty": "1.5 oz",
+          "name": "Rye",
+          "key": "rye",
+          "display": "Rye Whiskey",
+          "category": "spirit"
+        },
+        {
+          "raw": ".75 oz Applejack",
+          "qty": "0.75 oz",
+          "name": "Applejack",
+          "key": "apple_brandy",
+          "display": "Apple Brandy / Applejack",
+          "category": "spirit"
+        },
+        {
+          "raw": ".75 oz Green Chartreuse",
+          "qty": "0.75 oz",
+          "name": "Green Chartreuse",
+          "key": "green_chartreuse",
+          "display": "Green Chartreuse",
+          "category": "liqueur"
+        }
+      ]
+    },
+    {
       "name": "Diamondback Lounge",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned / Big Rock",
+      "glass": "Old Fashioned w/ Big Rock",
       "garnish": "Orange & Lemon Peel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Rye",
@@ -4291,7 +5281,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Yellow Chartreuse",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -4299,7 +5289,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Applejack",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Applejack",
           "key": "apple_brandy",
           "display": "Apple Brandy / Applejack",
@@ -4308,48 +5298,19 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
-      "name": "Dirty Martini",
-      "method": "Stir / Strain",
-      "glass": "Nick & Nora",
-      "garnish": "Olive on pick",
-      "origin": "",
-      "ingredients": [
-        {
-          "raw": "2.25 oz London Gin",
-          "qty": "2.25 oz",
-          "name": "London Gin",
-          "key": "gin",
-          "display": "Gin",
-          "category": "spirit"
-        },
-        {
-          "raw": "1/2 oz Dirty Sue",
-          "qty": "1/2 oz",
-          "name": "Dirty Sue",
-          "key": "olive_brine",
-          "display": "Olive Brine",
-          "category": "other"
-        },
-        {
-          "raw": "1/4 oz Dry Vermouth",
-          "qty": "1/4 oz",
-          "name": "Dry Vermouth",
-          "key": "dry_vermouth",
-          "display": "Dry Vermouth",
-          "category": "fortified"
-        }
-      ]
-    },
-    {
       "name": "Division Bell",
       "method": "Shake / Double Strain",
       "glass": "Nick & Nora",
-      "garnish": "",
+      "garnish": "No Garnish",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": ".75 oz Mezcal",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Mezcal",
           "key": "mezcal",
           "display": "Mezcal",
@@ -4357,7 +5318,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Maraschino",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -4365,7 +5326,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lime",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -4373,7 +5334,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Aperol",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Aperol",
           "key": "aperol",
           "display": "Aperol",
@@ -4384,14 +5345,18 @@ window.COCKTAIL_DATA = {
     {
       "name": "Dolores Park Swizzle",
       "method": "Whip / Dump",
-      "glass": "Collins / Crushed ice",
+      "glass": "Collins w/ Crushed",
       "garnish": "Mint Spring / Angostura Float",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Amontillado Sherry",
           "qty": "1 oz",
-          "name": "Sherry",
+          "name": "Amontillado Sherry",
           "key": "sherry",
           "display": "Sherry",
           "category": "fortified"
@@ -4406,15 +5371,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/4 oz Velvet Falernum",
-          "qty": ".25 oz",
-          "name": "Falernum",
+          "qty": "0.25 oz",
+          "name": "Velvet Falernum",
           "key": "falernum",
           "display": "Velvet Falernum",
           "category": "liqueur"
         },
         {
           "raw": "3/4 oz Ginger",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Ginger",
           "key": "ginger",
           "display": "Ginger",
@@ -4422,8 +5387,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3/4 oz Lime",
-          "qty": ".75 oz",
-          "name": "Lime Juice",
+          "qty": "0.75 oz",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
@@ -4436,6 +5401,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Peel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -4447,7 +5416,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/2 oz Sweet Vermouth",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -4455,16 +5424,16 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/4 oz Grand Marnier",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Grand Marnier",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
         {
           "raw": "1/4 oz Fernet Branca",
-          "qty": ".25 oz",
-          "name": "Fernet",
+          "qty": "0.25 oz",
+          "name": "Fernet Branca",
           "key": "fernet",
           "display": "Fernet",
           "category": "amaro"
@@ -4475,8 +5444,12 @@ window.COCKTAIL_DATA = {
       "name": "Dr. Livingston",
       "method": "Stir / Strain",
       "glass": "Double Old Fashioned w/ Rock",
-      "garnish": "",
+      "garnish": "Orange Twist, Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Mezcal",
@@ -4488,7 +5461,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Amaro CioCaro",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Amaro CioCaro",
           "key": "amaro",
           "display": "Amaro",
@@ -4496,7 +5469,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Vanille de Madagascar",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Vanille de Madagascar",
           "key": "vanilla",
           "display": "Vanilla",
@@ -4504,7 +5477,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "6dash Chocolate Bitters",
-          "qty": "6dash",
+          "qty": "6 dashes",
           "name": "Chocolate Bitters",
           "key": "chocolate_bitters",
           "display": "Chocolate Bitters",
@@ -4512,7 +5485,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Angostura Bitters",
-          "qty": "2dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -4526,6 +5499,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 1/4 oz Cognac",
@@ -4537,15 +5514,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/2 oz Creme De Cacao",
-          "qty": ".5 oz",
-          "name": "Cr\u00e8me de Cacao",
+          "qty": "0.5 oz",
+          "name": "Creme De Cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
           "category": "liqueur"
         },
         {
           "raw": "1/4 oz Amaretto",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Amaretto",
           "key": "amaretto",
           "display": "Amaretto",
@@ -4556,13 +5533,17 @@ window.COCKTAIL_DATA = {
     {
       "name": "Drunk Uncle",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned / Big Rock",
+      "glass": "Old Fashioned w/ Big Rock",
       "garnish": "Orange Peel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": ".75 oz Laphroig",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Laphroaig",
           "key": "peated_scotch",
           "display": "Peated Scotch",
@@ -4570,15 +5551,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Blended Scotch",
-          "qty": ".75 oz",
-          "name": "Scotch",
+          "qty": "0.75 oz",
+          "name": "Blended Scotch",
           "key": "scotch",
           "display": "Scotch",
           "category": "spirit"
         },
         {
           "raw": ".75 oz Sweet Vermouth",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -4586,7 +5567,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Cynar",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -4597,13 +5578,17 @@ window.COCKTAIL_DATA = {
     {
       "name": "Duke",
       "method": "Dry Shake / Shake / Double Strain",
-      "glass": "Coupe Top W/ Bubbles",
+      "glass": "Coupe, Topped w/ Bubbles",
       "garnish": "Angostura",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": ".75 oz Maraschino",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Maraschino",
           "key": "maraschino",
           "display": "Maraschino Liqueur",
@@ -4611,15 +5596,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz PF Dry",
-          "qty": ".75 oz",
-          "name": "Dry Cura\u00e7ao",
+          "qty": "0.75 oz",
+          "name": "PF Dry",
           "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
         {
           "raw": ".75 oz Orange Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Orange Juice",
           "key": "orange_juice",
           "display": "Orange Juice",
@@ -4627,7 +5612,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lemon Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -4649,6 +5634,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Two Cucumber Wheels w/ Mint leave",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -4698,6 +5687,11 @@ window.COCKTAIL_DATA = {
       "glass": "Water Glass",
       "garnish": "Grated Cinnamon and Nutmeg",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz Aged Rum",
@@ -4742,7 +5736,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 whole egg",
           "qty": "1",
-          "name": "whole egg",
+          "name": "Whole Egg",
           "key": "whole_egg",
           "display": "Whole Egg",
           "category": "other"
@@ -4752,9 +5746,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "El Diablo",
       "method": "Short Shake / Strain / Seltzer / Ice / Cassis",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Lime Wheel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -4790,7 +5788,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.25 oz Float, Giffard Cassis",
-          "qty": "0.25 oz Float,",
+          "qty": "0.25 oz float",
           "name": "Giffard Cassis",
           "key": "cassis",
           "display": "Cr\u00e8me de Cassis",
@@ -4804,6 +5802,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Tequila",
@@ -4832,7 +5834,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "3 Lime Wedges (cut in half)",
           "qty": "3",
-          "name": "Lime Wedges",
+          "name": "Lime Wedges (cut in half)",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
@@ -4840,7 +5842,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "3 Cucumber wheels (cut in half)",
           "qty": "3",
-          "name": "Cucumber wheels",
+          "name": "Cucumber wheels (cut in half)",
           "key": "cucumber",
           "display": "Cucumber",
           "category": "other"
@@ -4850,9 +5852,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Elder Fashion",
       "method": "Stir / Strain",
-      "glass": "Double Old Fashioned w/ Block Ice",
+      "glass": "Double Old Fashioned w/ Block",
       "garnish": "Grapefruit Twist",
       "origin": "Phil Ward, Death & Co",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -4872,7 +5878,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Orange Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -4886,10 +5892,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Heavy Cream Float",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "2oz Vodka",
-          "qty": "2oz",
+          "qty": "2 oz",
           "name": "Vodka",
           "key": "vodka",
           "display": "Vodka",
@@ -4897,7 +5907,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Creme de Cacao",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Creme de Cacao",
           "key": "creme_cacao",
           "display": "Cr\u00e8me de Cacao",
@@ -4905,7 +5915,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Cold Brew Concentrate",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Cold Brew Concentrate",
           "key": "cold_brew",
           "display": "Cold Brew Coffee",
@@ -4913,7 +5923,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Cane Syrup",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Cane Syrup",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -4925,18 +5935,34 @@ window.COCKTAIL_DATA = {
       "name": "Espresso Martini",
       "method": "Shake / Double Strain",
       "glass": "Coupe",
-      "garnish": "None *If guest calls for another base spirit:",
+      "garnish": "None",
       "origin": "",
+      "notes": "House pour is a 4.25 oz pre-batch (vodka assumed as the default base). If a guest calls for another base spirit, use 1.5 oz of it with the N/A espresso batch. Note: After preparing two in one tin, when pouring out, you may fill one glass completely, then the other and need not worry about the foam being equal. Simply ensure you've employed a nice, long shake and they will balance out.",
+      "style": "bold",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
-          "raw": "4.25 oz Batch",
-          "qty": "4.25 oz",
-          "name": "Batch"
+          "raw": "1.5 oz Vodka",
+          "qty": "1.5 oz",
+          "name": "Vodka",
+          "key": "vodka",
+          "display": "Vodka",
+          "category": "spirit"
+        },
+        {
+          "raw": "2.75 oz N/A Espresso Batch",
+          "qty": "2.75 oz",
+          "name": "N/A Espresso Batch",
+          "key": "espresso_batch",
+          "display": "Espresso Batch",
+          "category": "other"
         },
         {
           "raw": "5 Drops of Saline",
-          "qty": "5 Drops",
-          "name": "of Saline",
+          "qty": "5 drops",
+          "name": "Saline",
           "key": "saline",
           "display": "Saline Solution",
           "category": "other"
@@ -4949,6 +5975,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -4968,7 +5998,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -4990,6 +6020,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Phil Ward",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz Rye",
@@ -5028,9 +6062,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Fitzgerald",
       "method": "Shake / Double Strain",
-      "glass": "Rocks Ice: Block",
+      "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz London Dry Gin",
@@ -5050,7 +6088,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lemon Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -5058,7 +6096,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 Dash Angostura Bitters",
-          "qty": "2 Dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -5067,81 +6105,20 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
-      "name": "Fix",
-      "method": "Whip / Dump",
-      "glass": "Double Old Fashioned with crushed",
-      "garnish": "Lemon Wedge tucked in ice",
-      "origin": "",
-      "ingredients": [
-        {
-          "raw": "0.75 oz Lemon Juice",
-          "qty": "0.75 oz",
-          "name": "Lemon Juice",
-          "key": "lemon_juice",
-          "display": "Lemon Juice",
-          "category": "citrus"
-        },
-        {
-          "raw": "0.75 oz Simple Syrup",
-          "qty": "0.75 oz",
-          "name": "Simple Syrup",
-          "key": "simple_syrup",
-          "display": "Simple Syrup",
-          "category": "sweetener"
-        }
-      ]
-    },
-    {
-      "name": "Fizz",
-      "method": "dry shake/ Shake / Double Strain / Top Seltzer",
-      "glass": "Fizz Glass",
-      "garnish": "None",
-      "origin": "",
-      "ingredients": [
-        {
-          "raw": "0.75 oz Lemon Juice",
-          "qty": "0.75 oz",
-          "name": "Lemon Juice",
-          "key": "lemon_juice",
-          "display": "Lemon Juice",
-          "category": "citrus"
-        },
-        {
-          "raw": "0.75 oz Simple Syrup",
-          "qty": "0.75 oz",
-          "name": "Simple Syrup",
-          "key": "simple_syrup",
-          "display": "Simple Syrup",
-          "category": "sweetener"
-        },
-        {
-          "raw": "Egg White",
-          "qty": "",
-          "name": "Egg White",
-          "key": "egg_white",
-          "display": "Egg White",
-          "category": "other"
-        },
-        {
-          "raw": "Seltzer",
-          "qty": "",
-          "name": "Seltzer",
-          "key": "seltzer",
-          "display": "Seltzer / Soda",
-          "category": "other"
-        }
-      ]
-    },
-    {
       "name": "Flip",
-      "method": "Whip/Hard Shake/Double Strain",
-      "glass": "Fizz glass",
+      "method": "Whip / Hard Shake / Double Strain",
+      "glass": "Fizz Glass",
       "garnish": "Nutmeg",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": ".75 Cane Syrup",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cane Syrup",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -5157,7 +6134,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 Rye",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Rye",
           "key": "rye",
           "display": "Rye Whiskey",
@@ -5172,7 +6149,7 @@ window.COCKTAIL_DATA = {
           "category": "spirit"
         },
         {
-          "raw": "1 Whole Egg",
+          "raw": "Whole Egg",
           "qty": "1",
           "name": "Whole Egg",
           "key": "whole_egg",
@@ -5187,6 +6164,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Plymouth Gin or Cognac",
@@ -5214,7 +6195,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Dry Sparkling Wine",
-          "qty": "",
+          "qty": "Top",
           "name": "Dry Sparkling Wine",
           "key": "sparkling",
           "display": "Sparkling Wine",
@@ -5224,30 +6205,26 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "French Martini",
-      "method": "Shake/Double Strain",
+      "method": "Shake / Double Strain",
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
-          "raw": "2 Vodka",
-          "qty": "2 oz",
-          "name": "Vodka",
-          "key": "vodka",
-          "display": "Vodka",
-          "category": "spirit"
-        },
-        {
           "raw": ".5 Lime",
-          "qty": ".5 oz",
-          "name": "Lime Juice",
+          "qty": "0.5 oz",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
         },
         {
           "raw": ".75 Pineapple Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Pineapple Juice",
           "key": "pineapple",
           "display": "Pineapple",
@@ -5255,7 +6232,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 Raspberry Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Raspberry Syrup",
           "key": "raspberry",
           "display": "Raspberry",
@@ -5263,11 +6240,19 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 Pineapple Gum",
-          "qty": ".25 oz",
-          "name": "Pineapple Gum Syrup",
+          "qty": "0.25 oz",
+          "name": "Pineapple Gum",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
           "category": "sweetener"
+        },
+        {
+          "raw": "2 Vodka",
+          "qty": "2 oz",
+          "name": "Vodka",
+          "key": "vodka",
+          "display": "Vodka",
+          "category": "spirit"
         }
       ]
     },
@@ -5275,8 +6260,13 @@ window.COCKTAIL_DATA = {
       "name": "Gimlet",
       "method": "Shake / Double Strain",
       "glass": "Coupe",
-      "garnish": "Lime wedge *1.25 oz Lime Cordial if possible in place of both Lime and Simple",
+      "garnish": "Lime wedge",
       "origin": "",
+      "notes": "1.25 oz Lime Cordial if possible in place of both Lime and Simple",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -5307,9 +6297,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Gin Gin Mule",
       "method": "Short Shake / Strain / Seltzer / Ice",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Mint Bouquet",
       "origin": "Audrey Saunders, The Pegu Club",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Beefeater Gin",
@@ -5355,10 +6349,15 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Gold Rush",
-      "method": "Shake/ Strain",
-      "glass": "Old Fashioned with Kold Draft",
-      "garnish": "Lemon Twist (placed in glass as you would an Old Fashioned) *Shake with a Grapefruit peel for a subtle flavor change. This method is known as a \"Regal\"",
+      "method": "Shake / Strain",
+      "glass": "Old Fashioned w/ Kold Draft",
+      "garnish": "Lemon Twist (placed in glass as you would an Old Fashioned)",
       "origin": "",
+      "notes": "Shake with a Grapefruit peel for a subtle flavor change. This method is known as a \"Regal\"",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -5392,6 +6391,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -5419,7 +6422,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -5441,6 +6444,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "Ada Coleman, Head Bartender of The American Bar at the Savoy Hotel, London, England, mid 1920s",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Beefeater Gin",
@@ -5460,7 +6467,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 teaspoon Fernet Branca",
-          "qty": "1 teaspoon",
+          "qty": "1 tsp",
           "name": "Fernet Branca",
           "key": "fernet",
           "display": "Fernet",
@@ -5471,9 +6478,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Harvey Wallbanger",
       "method": "Build / Shake / Strain",
-      "glass": "Collins w/ cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Orange Cresent",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Vodka",
@@ -5523,6 +6534,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz White Rum",
@@ -5558,8 +6573,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.50 oz Simple Syrup (depending on sweetness of Grapefruit)",
-          "qty": "0.50 oz",
-          "name": "Simple Syrup",
+          "qty": "0.5 oz",
+          "name": "Simple Syrup (depending on sweetness of Grapefruit)",
           "key": "simple_syrup",
           "display": "Simple Syrup",
           "category": "sweetener"
@@ -5572,6 +6587,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "High five!",
       "origin": "Alex Day, The Varnish, 2011",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Beefeater Gin",
@@ -5621,6 +6640,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz White Rum",
@@ -5654,6 +6677,10 @@ window.COCKTAIL_DATA = {
       "glass": "Toddy Glass",
       "garnish": "Grated Nutmeg & Cinnamon",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Aged Rum",
@@ -5674,7 +6701,10 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 tsp Unsalted Butter at room temp",
           "qty": "1 tsp",
-          "name": "Unsalted Butter at room temp"
+          "name": "Unsalted Butter at room temp",
+          "key": "butter",
+          "display": "Butter",
+          "category": "other"
         }
       ]
     },
@@ -5684,6 +6714,10 @@ window.COCKTAIL_DATA = {
       "glass": "Toddy Glass",
       "garnish": "Grated Nutmeg & Cinnamon",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Bourbon",
@@ -5704,7 +6738,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.75 oz lemon juice",
           "qty": "0.75 oz",
-          "name": "lemon juice",
+          "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
           "category": "citrus"
@@ -5725,6 +6759,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rum",
@@ -5745,15 +6783,15 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.75 oz Pineapple Juice",
           "qty": "0.75 oz",
-          "name": "Pineapple",
+          "name": "Pineapple Juice",
           "key": "pineapple",
           "display": "Pineapple",
           "category": "citrus"
         },
         {
-          "raw": "0.5 oz Apricot",
+          "raw": "0.5 oz Giffard Abricot",
           "qty": "0.5 oz",
-          "name": "Apricot Liqueur",
+          "name": "Giffard Abricot",
           "key": "apricot_liqueur",
           "display": "Apricot Liqueur",
           "category": "liqueur"
@@ -5761,7 +6799,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.5 oz Pineapple Gum",
           "qty": "0.5 oz",
-          "name": "Pineapple Gum Syrup",
+          "name": "Pineapple Gum",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
           "category": "sweetener"
@@ -5770,10 +6808,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Hurricane",
-      "method": "whip/dump",
+      "method": "Whip / Dump",
       "glass": "Goblet",
       "garnish": "Mint Sprig/Umbrella/Orange Crescent",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Lime",
@@ -5793,7 +6835,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Simple",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -5801,7 +6843,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Grenadine",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
@@ -5809,7 +6851,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 Giffard Passion Fruit",
-          "qty": "1",
+          "qty": "1 oz",
           "name": "Giffard Passion Fruit",
           "key": "passion_fruit",
           "display": "Passion Fruit",
@@ -5817,15 +6859,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 White Rum (Plantation 3 star or Havana Club)",
-          "qty": "1",
-          "name": "White Rum",
+          "qty": "1 oz",
+          "name": "White Rum (Plantation 3 star or Havana Club)",
           "key": "white_rum",
           "display": "White Rum",
           "category": "spirit"
         },
         {
           "raw": "1 Cana Brava 7 year",
-          "qty": "1",
+          "qty": "1 oz",
           "name": "Cana Brava 7 year",
           "key": "aged_rum",
           "display": "Aged Rum",
@@ -5837,8 +6879,12 @@ window.COCKTAIL_DATA = {
       "name": "Infante",
       "method": "Build / Shake / Double Strain",
       "glass": "Coupe",
-      "garnish": "Grated Nutmeg Guiseppe Gonzalez, Dutch Kills, 2009 Named after Pedro Infante Singer and actor from golden age of Mexican cinema",
-      "origin": "",
+      "garnish": "Grated Nutmeg",
+      "origin": "Giuseppe Gonz\u00e1lez, Dutch Kills, 2009. Named after Pedro Infante, singer and actor from the golden age of Mexican cinema.",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Tequila",
@@ -5872,6 +6918,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime wheel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Lairds Bonded Apple Brandy",
@@ -5909,15 +6959,19 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Jungle Bird",
-      "method": "Shake/ Strain",
-      "glass": "Double OF w/ Kold Draft",
+      "method": "Shake / Strain",
+      "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Orange Crescent",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": ".5 oz lime",
-          "qty": ".5 oz",
-          "name": "lime",
+          "qty": "0.5 oz",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
@@ -5925,14 +6979,14 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz pineapple",
           "qty": "1 oz",
-          "name": "pineapple",
+          "name": "Pineapple",
           "key": "pineapple",
           "display": "Pineapple",
           "category": "citrus"
         },
         {
           "raw": ".5 oz Pineapple Gum",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Pineapple Gum",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
@@ -5940,7 +6994,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Campari",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Campari",
           "key": "campari",
           "display": "Campari",
@@ -5948,7 +7002,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Appleton",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Appleton",
           "key": "aged_rum",
           "display": "Aged Rum",
@@ -5957,7 +7011,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz Black Strap or Pot Still Black Rum (Cruzan or Hamilton)",
           "qty": "1 oz",
-          "name": "Black Strap or Pot Still Black Rum",
+          "name": "Black Strap or Pot Still Black Rum (Cruzan or Hamilton)",
           "key": "black_rum",
           "display": "Black Rum",
           "category": "spirit"
@@ -5970,6 +7024,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Vodka",
@@ -5989,7 +7047,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lime Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lime Juice",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -5997,7 +7055,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Tsp Demerara",
-          "qty": "Tsp",
+          "qty": "1 tsp",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -6011,6 +7069,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Reposado Tequila",
@@ -6060,10 +7122,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": ".75 Gin",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -6071,7 +7137,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 St Germain",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "St Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -6079,7 +7145,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 Amaro Nonino",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "Amaro Nonino",
           "key": "amaro",
           "display": "Amaro",
@@ -6087,7 +7153,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 Lime",
-          "qty": ".75",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -6101,6 +7167,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry on Garnish Pick",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz London Dry Gin",
@@ -6140,8 +7210,12 @@ window.COCKTAIL_DATA = {
       "name": "Latin Quarter",
       "method": "Build / Stir / Strain",
       "glass": "Single Old Fashioned",
-      "garnish": "Lemon Twist discarded Joaquin Simo Death & Co 2008",
-      "origin": "",
+      "garnish": "Lemon Twist (discarded)",
+      "origin": "Joaqu\u00edn Sim\u00f3, Death & Co, 2008",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Ron Zacapa",
@@ -6161,7 +7235,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Mole Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Mole Bitters",
           "key": "mole_bitters",
           "display": "Mole Bitters",
@@ -6185,8 +7259,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Absinth Rinse",
-          "qty": "",
-          "name": "Absinth Rinse",
+          "qty": "Rinse",
+          "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
           "category": "liqueur"
@@ -6199,6 +7273,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Salt Sprinkle",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Tequila",
@@ -6232,6 +7310,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "Audrey Saunders, Pegu Club",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -6262,35 +7344,70 @@ window.COCKTAIL_DATA = {
     {
       "name": "Long Island Iced Tea",
       "method": "Short Shake / Strain / Top Coca Cola",
-      "glass": "Collins with cubes",
-      "garnish": "Lemon Wedge Single Recipe",
-      "origin": "",
+      "glass": "Collins w/ Cubes",
+      "garnish": "Lemon Wedge",
+      "origin": "Oak Beach Inn, Long Island NY, 1972",
+      "notes": "Variations: AMF/Adios Motherfucker - sub Blue Curacao for Cointreau + Sprite for Coca Cola; Tokyo Tea - sub Midori for Cointreau + Sprite for Coca Cola; LA Water - sub Midori & Curacao for Cointreau + Sprite for Coca Cola",
+      "style": "bright",
+      "base": [
+        "gin",
+        "tequila",
+        "rum",
+        "vodka"
+      ],
       "ingredients": [
         {
-          "raw": ".5 oz Lemon Juice",
-          "qty": ".5 oz",
+          "raw": "0. 5 oz Vodka",
+          "qty": "0.5 oz",
+          "name": "Vodka",
+          "key": "vodka",
+          "display": "Vodka",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.5 oz Gin",
+          "qty": "0.5 oz",
+          "name": "Gin",
+          "key": "gin",
+          "display": "Gin",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.5 oz Tequila",
+          "qty": "0.5 oz",
+          "name": "Tequila",
+          "key": "tequila",
+          "display": "Blanco Tequila",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.5 oz White Rum",
+          "qty": "0.5 oz",
+          "name": "White Rum",
+          "key": "white_rum",
+          "display": "White Rum",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.5 oz Cointreau",
+          "qty": "0.5 oz",
+          "name": "Cointreau",
+          "key": "cointreau",
+          "display": "Cointreau",
+          "category": "liqueur"
+        },
+        {
+          "raw": "0.5 oz Lemon Juice",
+          "qty": "0.5 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
           "category": "citrus"
         },
         {
-          "raw": ".5 oz Dry Cura\u00e7ao",
-          "qty": ".5 oz",
-          "name": "Dry Cura\u00e7ao",
-          "key": "curacao",
-          "display": "Dry Cura\u00e7ao",
-          "category": "liqueur"
-        },
-        {
-          "raw": "2 oz Batch",
-          "qty": "2 oz",
-          "name": "Batch"
-        },
-        {
-          "raw": "Top Coca Cola",
-          "qty": "",
-          "name": "Top Coca Cola",
+          "raw": "Coca Cola",
+          "qty": "Top",
+          "name": "Coca Cola",
           "key": "coke",
           "display": "Coca-Cola",
           "category": "other"
@@ -6303,6 +7420,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "Devon Tarby, Honeycut, 2013",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Vodka",
@@ -6352,11 +7473,15 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Mint Bouquet, Umbrella, Gosling\u2019s float",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Agricole (Rhum Barboncourt)",
           "qty": "1 oz",
-          "name": "Agricole",
+          "name": "Agricole (Rhum Barboncourt)",
           "key": "agricole",
           "display": "Rhum Agricole",
           "category": "spirit"
@@ -6364,7 +7489,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz Jamaican (Appleton)",
           "qty": "1 oz",
-          "name": "Jamaican",
+          "name": "Jamaican (Appleton)",
           "key": "jamaican_rum",
           "display": "Jamaican Rum",
           "category": "spirit"
@@ -6381,7 +7506,7 @@ window.COCKTAIL_DATA = {
           "raw": "0.5 oz Pierre Ferrand Dry Cura\u00e7ao",
           "qty": "0.5 oz",
           "name": "Pierre Ferrand Dry Cura\u00e7ao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
@@ -6395,7 +7520,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3 dash Angostura Bitters",
-          "qty": "3 dash",
+          "qty": "3 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -6403,8 +7528,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Float 0.5 oz Goslings",
-          "qty": "Float",
-          "name": "0.5 oz Goslings",
+          "qty": "0.5 oz float",
+          "name": "Goslings",
           "key": "black_rum",
           "display": "Black Rum",
           "category": "spirit"
@@ -6417,6 +7542,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry on a pick",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Overproof Rye",
@@ -6436,7 +7565,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 Dash Angostura Bitters",
-          "qty": "2 Dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -6450,6 +7579,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Rittenhouse",
@@ -6488,9 +7621,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Margarita",
       "method": "Shake / Strain",
-      "glass": "Old Fashioned with Kold Draft",
+      "glass": "Old Fashioned w/ Kold Draft",
       "garnish": "Lime Wedge, 1/2 Salted Rim",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -6532,6 +7669,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Old Tom Gin",
@@ -6559,8 +7700,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes House Orange bitters",
-          "qty": "2 dash",
-          "name": "es House Orange bitters",
+          "qty": "2 dashes",
+          "name": "House Orange bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
           "category": "bitters"
@@ -6570,9 +7711,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Martini",
       "method": "Stir / Strain",
-      "glass": "NIck & Nora",
-      "garnish": "Lemon twist Dirty Martini",
+      "glass": "Nick & Nora",
+      "garnish": "Lemon twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2.25 oz London Gin",
@@ -6593,10 +7738,47 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 dash Orange Bitters (if requested with a twist, no bitters if with olive)",
           "qty": "1 dash",
-          "name": "Orange Bitters",
+          "name": "Orange Bitters (if requested with a twist, no bitters if with olive)",
           "key": "orange_bitters",
           "display": "Orange Bitters",
           "category": "bitters"
+        }
+      ]
+    },
+    {
+      "name": "Dirty Martini",
+      "method": "Stir / Strain",
+      "glass": "Nick & Nora",
+      "garnish": "Olive on pick",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
+      "ingredients": [
+        {
+          "raw": "2.25 oz London Gin",
+          "qty": "2.25 oz",
+          "name": "London Gin",
+          "key": "gin",
+          "display": "Gin",
+          "category": "spirit"
+        },
+        {
+          "raw": "1/2 oz Dirty Sue",
+          "qty": "0.5 oz",
+          "name": "Dirty Sue",
+          "key": "olive_brine",
+          "display": "Olive Brine",
+          "category": "other"
+        },
+        {
+          "raw": "1/4 oz Dry Vermouth",
+          "qty": "0.25 oz",
+          "name": "Dry Vermouth",
+          "key": "dry_vermouth",
+          "display": "Dry Vermouth",
+          "category": "fortified"
         }
       ]
     },
@@ -6606,10 +7788,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned",
       "garnish": "Ginger Candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 Bourbon",
-          "qty": "1.5",
+          "qty": "1.5 oz",
           "name": "Bourbon",
           "key": "bourbon",
           "display": "Bourbon",
@@ -6647,6 +7833,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Block",
       "garnish": "3-5 Mezcal Spritz & Ginger Candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Reposado Tequila",
@@ -6685,9 +7875,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Mexican Firing Squad",
       "method": "Shake / Strain",
-      "glass": "Double Old Fashioned with KD",
+      "glass": "Double Old Fashioned w/ Kold Draft",
       "garnish": "Lime wheel tucked into side of glass",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -6715,8 +7909,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes Angostura Biters",
-          "qty": "2 dash",
-          "name": "es Angostura Biters",
+          "qty": "2 dashes",
+          "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
           "category": "bitters"
@@ -6729,6 +7923,10 @@ window.COCKTAIL_DATA = {
       "glass": "Bronze Julep Cup",
       "garnish": "Lavish Mint Bouquet",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -6762,6 +7960,11 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Grapefruit Cresant",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Tequila",
@@ -6823,10 +8026,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Mojito",
-      "method": "Build in Glass/ Press Mint with sugar cube and lime / Add Simple, Rum, pack with pebble, swizzle, more pebble.",
-      "glass": "Collins with Crushed",
+      "method": "Build in Glass / Press Mint with sugar cube and lime / Add Simple, Rum, pack with pebble, swizzle, more pebble.",
+      "glass": "Collins w/ Crushed",
       "garnish": "Mint Bouquet, Straw",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz White Rum",
@@ -6876,6 +8083,10 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -6895,8 +8106,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes Angostura Bitters",
-          "qty": "2 dash",
-          "name": "es Angostura Bitters",
+          "qty": "2 dashes",
+          "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
           "category": "bitters"
@@ -6906,9 +8117,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Moscow Mule",
       "method": "Short Shake / Strain / Seltzer / Ice",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Lime Wedge and Ginger Candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Vodka",
@@ -6936,7 +8151,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Seltzer",
-          "qty": "",
+          "qty": "Top",
           "name": "Seltzer",
           "key": "seltzer",
           "display": "Seltzer / Soda",
@@ -6947,14 +8162,18 @@ window.COCKTAIL_DATA = {
     {
       "name": "NA Mule",
       "method": "Short Shake / Strain / Seltzer / Ice",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Lime Wedge and Ginger Candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Pineapple Juice",
           "qty": "1.5 oz",
-          "name": "Pineapple",
+          "name": "Pineapple Juice",
           "key": "pineapple",
           "display": "Pineapple",
           "category": "citrus"
@@ -6962,7 +8181,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz Ginger Syrup",
           "qty": "1 oz",
-          "name": "Ginger",
+          "name": "Ginger Syrup",
           "key": "ginger",
           "display": "Ginger",
           "category": "sweetener"
@@ -6977,7 +8196,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Seltzer",
-          "qty": "",
+          "qty": "Top",
           "name": "Seltzer",
           "key": "seltzer",
           "display": "Seltzer / Soda",
@@ -6991,10 +8210,14 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "0.75 Mezcal",
-          "qty": "0.75",
+          "qty": "0.75 oz",
           "name": "Mezcal",
           "key": "mezcal",
           "display": "Mezcal",
@@ -7029,9 +8252,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Negroni",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned w/ KD (Nick & Nora if requested up)",
+      "glass": "Old Fashioned w/ Kold Draft (Nick & Nora if up)",
       "garnish": "Orange Crescent (Twist if served up)",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Gin",
@@ -7060,11 +8287,60 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
+      "name": "Noble Savage",
+      "method": "Stir / Strain",
+      "glass": "Old Fashioned w/ Kold Draft",
+      "garnish": "Orange Twist",
+      "origin": "",
+      "style": "bold",
+      "base": [
+        "tequila"
+      ],
+      "ingredients": [
+        {
+          "raw": ".5 oz Benedictine",
+          "qty": "0.5 oz",
+          "name": "Benedictine",
+          "key": "benedictine",
+          "display": "Benedictine",
+          "category": "liqueur"
+        },
+        {
+          "raw": ".75 dolin blanc",
+          "qty": "0.75 oz",
+          "name": "Dolin Blanc",
+          "key": "blanc_vermouth",
+          "display": "Blanc Vermouth",
+          "category": "fortified"
+        },
+        {
+          "raw": "1.5 oz mezcal",
+          "qty": "1.5 oz",
+          "name": "Mezcal",
+          "key": "mezcal",
+          "display": "Mezcal",
+          "category": "spirit"
+        },
+        {
+          "raw": "2 dashes orange bitters",
+          "qty": "2 dashes",
+          "name": "Orange Bitters",
+          "key": "orange_bitters",
+          "display": "Orange Bitters",
+          "category": "bitters"
+        }
+      ]
+    },
+    {
       "name": "None But The Brave",
       "method": "Build / Short Shake / Strain / Top w/ Soda",
-      "glass": "Collins w/ cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Ginger Candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -7100,7 +8376,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Seltzer",
-          "qty": "",
+          "qty": "Top",
           "name": "Seltzer",
           "key": "seltzer",
           "display": "Seltzer / Soda",
@@ -7114,6 +8390,10 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Flamed Orange twist",
       "origin": "Phil Ward, Death & Co.",
+      "style": "bold",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Reposado Tequila",
@@ -7141,8 +8421,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes Angostura Bitters",
-          "qty": "2 dash",
-          "name": "es Angostura Bitters",
+          "qty": "2 dashes",
+          "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
           "category": "bitters"
@@ -7155,6 +8435,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Mint Leaf",
       "origin": "Audrey Saunders, Pegu Club",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Lightly Aged Rum",
@@ -7182,8 +8466,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes Angostura Bitters",
-          "qty": "2 dash",
-          "name": "es Angostura Bitters",
+          "qty": "2 dashes",
+          "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
           "category": "bitters"
@@ -7191,7 +8475,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "4-5 mint leaves",
           "qty": "4-5",
-          "name": "mint leaves",
+          "name": "Mint Leaves",
           "key": "mint",
           "display": "Mint",
           "category": "herb"
@@ -7200,25 +8484,37 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Old Fashioned",
-      "method": "Stir / Strain",
-      "glass": "Old Fashioned w/ Block",
-      "garnish": "Orange & lemon Twist",
+      "method": "Build / Stir / Strain",
+      "glass": "Double Old Fashioned w/ Rock",
+      "garnish": "Express Orange Twist and rub rim of glass. Express Lemon Twist second and place next to Orange Twist. Do not rub Lemon Twist.",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
-          "raw": "2 dash angostura Bitters",
-          "qty": "2 dash",
-          "name": "angostura Bitters",
-          "key": "angostura_bitters",
-          "display": "Angostura Bitters",
-          "category": "bitters"
+          "raw": "2 oz Bourbon",
+          "qty": "2 oz",
+          "name": "Bourbon",
+          "key": "bourbon",
+          "display": "Bourbon",
+          "category": "spirit"
         },
         {
-          "raw": "2 dash bitter truth bitters",
-          "qty": "2 dash",
-          "name": "bitter truth bitters",
-          "key": "bitter_truth",
-          "display": "Bitter Truth Bitters",
+          "raw": "1 tsp Demerara Syrup",
+          "qty": "1 tsp",
+          "name": "Demerara Syrup",
+          "key": "demerara_syrup",
+          "display": "Demerara Syrup",
+          "category": "sweetener"
+        },
+        {
+          "raw": "4 dash Angostura Bitters",
+          "qty": "4 dashes",
+          "name": "Angostura Bitters",
+          "key": "angostura_bitters",
+          "display": "Angostura Bitters",
           "category": "bitters"
         }
       ]
@@ -7226,9 +8522,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Old Pal",
       "method": "Stir / Strain",
-      "glass": "Nick and Nora",
+      "glass": "Nick & Nora",
       "garnish": "Lemon twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Rye",
@@ -7258,10 +8558,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Paloma",
-      "method": "Short Shake/ Top w Soda / KD",
+      "method": "Short Shake / Top w Soda / KD",
       "glass": "Collins",
       "garnish": "Salted Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blanco Tequila",
@@ -7273,7 +8577,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Simple Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Simple Syrup",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -7281,7 +8585,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Lime Juice",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Lime Juice",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -7303,6 +8607,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz Bourbon",
@@ -7344,6 +8652,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Gin",
@@ -7387,7 +8699,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Tsp Demerara",
-          "qty": "Tsp",
+          "qty": "1 tsp",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -7401,6 +8713,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Block",
       "garnish": "3 Spritzes of Islay Scotch & Ginger Candy",
       "origin": "Sam Ross, Milk & Honey",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blended Scotch",
@@ -7442,6 +8758,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -7479,47 +8799,51 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Pimm\u2019s Cup",
-      "method": "muddle/short shake/double strain",
+      "method": "Muddle / Short shake / Double strain",
       "glass": "Collins",
       "garnish": "lime wedge/ginger candy",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": ".5 oz lime",
-          "qty": ".5 oz",
-          "name": "lime",
+          "qty": "0.5 oz",
+          "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
         },
         {
           "raw": ".5 oz ginger syrup",
-          "qty": ".5 oz",
-          "name": "ginger syrup",
+          "qty": "0.5 oz",
+          "name": "Ginger Syrup",
           "key": "ginger",
           "display": "Ginger",
           "category": "sweetener"
         },
         {
           "raw": ".5 gin",
-          "qty": ".5",
-          "name": "gin",
+          "qty": "0.5 oz",
+          "name": "Gin",
           "key": "gin",
           "display": "Gin",
           "category": "spirit"
         },
         {
           "raw": "1.5 pimm\u2019s #1",
-          "qty": "1.5",
-          "name": "pimm\u2019s #1",
+          "qty": "1.5 oz",
+          "name": "Pimm\u2019s #1",
           "key": "pimms",
           "display": "Pimm's",
           "category": "liqueur"
         },
         {
           "raw": "Pinch mint leaves",
-          "qty": "",
-          "name": "Pinch mint leaves",
+          "qty": "Pinch",
+          "name": "Mint Leaves",
           "key": "mint",
           "display": "Mint",
           "category": "herb"
@@ -7527,7 +8851,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "4 cucumber slices",
           "qty": "4",
-          "name": "cucumber slices",
+          "name": "Cucumber Slices",
           "key": "cucumber",
           "display": "Cucumber",
           "category": "other"
@@ -7540,10 +8864,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": ".75oz Vodka",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Vodka",
           "key": "vodka",
           "display": "Vodka",
@@ -7551,7 +8879,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Vanille de Madagascar",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Vanille de Madagascar",
           "key": "vanilla",
           "display": "Vanilla",
@@ -7559,7 +8887,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Pineapple",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Pineapple",
           "key": "pineapple",
           "display": "Pineapple",
@@ -7567,7 +8895,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Lime",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -7575,7 +8903,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Pine Gum",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Pine Gum",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
@@ -7589,6 +8917,11 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Plymouth Gin",
@@ -7632,7 +8965,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg white",
-          "qty": "",
+          "qty": "1",
           "name": "Egg white",
           "key": "egg_white",
           "display": "Egg White",
@@ -7646,6 +8979,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Angostura bitters on top of foam",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Pisco",
@@ -7681,7 +9018,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg white",
-          "qty": "",
+          "qty": "1",
           "name": "Egg white",
           "key": "egg_white",
           "display": "Egg White",
@@ -7691,10 +9028,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Pi\u00f1a Colada (Classic)",
-      "method": "Whip / Dump / Crushed Ice/ Top with Goslings",
+      "method": "Whip / Dump / Crushed Ice / Top with Goslings",
       "glass": "Goblet",
       "garnish": "Mint Sprig/Umbrella",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rum",
@@ -7730,8 +9071,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.5 oz Float of Goslings",
-          "qty": "0.5 oz Float",
-          "name": "of Goslings",
+          "qty": "0.5 oz float",
+          "name": "Goslings",
           "key": "black_rum",
           "display": "Black Rum",
           "category": "spirit"
@@ -7744,6 +9085,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz London Dry Gin",
@@ -7782,9 +9127,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Pop Quiz",
       "method": "Stir / Strain",
-      "glass": "Old Fashioned w/ R\ufeffock",
+      "glass": "Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "Devon Tarby, The Varnish",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -7812,8 +9161,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes Bittermen's Chocolate Mole Bitters",
-          "qty": "2 dash",
-          "name": "es Bittermen's Chocolate Mole Bitters",
+          "qty": "2 dashes",
+          "name": "Bittermen's Chocolate Mole Bitters",
           "key": "mole_bitters",
           "display": "Mole Bitters",
           "category": "bitters"
@@ -7822,10 +9171,15 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Queens Park Swizzle",
-      "method": "Muddle / Whip / Dump / Swizzle / layer Angostura & Peychaud's Bitters / More Pebble",
+      "method": "Muddle / Whip / Dump / Swizzle / Layer Angostura & Peychaud's Bitters / More Pebble",
       "glass": "Collins",
-      "garnish": "Mint Bouquet Variations: Hyde Park Swizzle: Sub Gin for Rum",
+      "garnish": "Mint Bouquet",
       "origin": "",
+      "notes": "Variations: Hyde Park Swizzle: Sub Gin for Rum",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz White Rum",
@@ -7862,7 +9216,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "10 mint leaves",
           "qty": "10",
-          "name": "mint leaves",
+          "name": "Mint Leaves",
           "key": "mint",
           "display": "Mint",
           "category": "herb"
@@ -7871,10 +9225,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Ramos Gin Fizz",
-      "method": "Dry Shake/Shake/Shake/Shake/Shake/Shake/Strain over soda/pull soda into small tin and top drink with soda until head has risen as high as it can go without toppling",
+      "method": "Dry Shake / Shake / Shake / Shake / Shake / Shake / Strain over soda / Pull soda into small tin and top drink with soda until head has risen as high as it can go without toppling",
       "glass": "Collins",
       "garnish": "Orange Twist, discard",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz London Dry Gin",
@@ -7903,7 +9261,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.5 oz (scant) Lime Juice",
           "qty": "0.5 oz",
-          "name": "(scant) Lime Juice",
+          "name": "Lime Juice (scant)",
           "key": "lime_juice",
           "display": "Lime Juice",
           "category": "citrus"
@@ -7911,15 +9269,15 @@ window.COCKTAIL_DATA = {
         {
           "raw": "0.5 oz (scant) Lemon Juice",
           "qty": "0.5 oz",
-          "name": "(scant) Lemon Juice",
+          "name": "Lemon Juice (scant)",
           "key": "lemon_juice",
           "display": "Lemon Juice",
           "category": "citrus"
         },
         {
           "raw": "3 Drops of Orange Flower Water",
-          "qty": "3 Drops",
-          "name": "of Orange Flower Water",
+          "qty": "3 drops",
+          "name": "Orange Flower Water",
           "key": "orange_flower",
           "display": "Orange Flower Water",
           "category": "other"
@@ -7940,6 +9298,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -7970,9 +9332,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Remember The Maine",
       "method": "Build / Stir / Strain / 1 Spray of Absinthe to finish",
-      "glass": "Absinthe rinsed Nick & Nora",
+      "glass": "Nick & Nora (Absinthe Rinse)",
       "garnish": "Cherry",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -8000,7 +9366,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -8014,6 +9380,10 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blended Scotch",
@@ -8039,6 +9409,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Irish",
@@ -8072,10 +9446,15 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin",
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": ".75oz Gin",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Gin",
           "key": "gin",
           "display": "Gin",
@@ -8083,15 +9462,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Paranubes Rum",
-          "qty": ".75 oz",
-          "name": "Rum",
+          "qty": "0.75 oz",
+          "name": "Paranubes Rum",
           "key": "rum",
           "display": "Rum",
           "category": "spirit"
         },
         {
           "raw": ".75oz Yellow Chartreuse",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -8099,7 +9478,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Cocchi Americano",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cocchi Americano",
           "key": "cocchi_americano",
           "display": "Cocchi Americano",
@@ -8107,7 +9486,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2dash Orange Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -8117,14 +9496,18 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Saturn",
-      "method": "Whip w/Pebble / Open Pour (Dump)",
+      "method": "Whip w/ Pebble / Open Pour (Dump)",
       "glass": "Footed Pilsner",
       "garnish": "Cherry/Cinnamon/Tall Straw",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": ".5 oz Lemon",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Lemon",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -8132,7 +9515,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Simple",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -8140,7 +9523,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Orgeat",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Orgeat",
           "key": "orgeat",
           "display": "Orgeat (Almond)",
@@ -8148,7 +9531,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Falernum",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Falernum",
           "key": "falernum",
           "display": "Velvet Falernum",
@@ -8156,8 +9539,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Passionfruit Liqueur (Chinola)",
-          "qty": ".5 oz",
-          "name": "Passionfruit Liqueur",
+          "qty": "0.5 oz",
+          "name": "Passionfruit Liqueur (Chinola)",
           "key": "passion_fruit",
           "display": "Passion Fruit",
           "category": "other"
@@ -8175,9 +9558,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Sazerac",
       "method": "Stir / Strain",
-      "glass": "Absinthe rinsed Single Old Fashioned/ Neat",
+      "glass": "Old Fashioned, Neat (Absinthe Rinse)",
       "garnish": "Discarded Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Overproof Rye",
@@ -8205,15 +9592,15 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "10 dashes Peychaud Bitters",
-          "qty": "10 dash",
-          "name": "es Peychaud Bitters",
+          "qty": "10 dashes",
+          "name": "Peychaud Bitters",
           "key": "peychauds_bitters",
           "display": "Peychaud's Bitters",
           "category": "bitters"
         },
         {
           "raw": "5 dash Angostura Bitters",
-          "qty": "5 dash",
+          "qty": "5 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -8227,6 +9614,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "None",
       "origin": "Classic, Adapted by Thomas Waugh, Death & Co, Winter 2012",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Rye",
@@ -8276,6 +9667,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz Gin",
@@ -8317,6 +9712,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Orange twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Cognac",
@@ -8330,7 +9729,7 @@ window.COCKTAIL_DATA = {
           "raw": "1 oz Pierre Ferrand Dry Curacao",
           "qty": "1 oz",
           "name": "Pierre Ferrand Dry Curacao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
@@ -8344,7 +9743,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 Tsp Demerara",
-          "qty": "1 Tsp",
+          "qty": "1 tsp",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -8355,9 +9754,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Singapore Sling",
       "method": "Shake / Strain",
-      "glass": "Collins with cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Orange slice and cherry",
       "origin": "Raffles Hotel, Singapore",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz London Dry Gin",
@@ -8409,7 +9812,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1/8 oz Grenadine",
-          "qty": "1/8 oz",
+          "qty": "0.125 oz",
           "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
@@ -8426,109 +9829,16 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
-      "name": "Single Recipe",
-      "method": "Short Shake / Strain / Top Coca Cola",
-      "glass": "Collins with cubes",
-      "garnish": "Lemon Wedge",
-      "origin": "Oak Beach Inn, Long Island NY, 1972 Variations: AMF/Adios Motherfucker - sub Blue Curacao for Cointreau + Sprite for Coca Cola Tokyo Tea - sub Midori for Cointreau + Sprite for Coca Cola LA Water - sub Midori & Curacao for Cointreau + Sprite for Coca Cola",
-      "ingredients": [
-        {
-          "raw": "0. 5 oz Vodka",
-          "qty": "0.",
-          "name": "5 oz Vodka",
-          "key": "vodka",
-          "display": "Vodka",
-          "category": "spirit"
-        },
-        {
-          "raw": "0.5 oz Gin",
-          "qty": "0.5 oz",
-          "name": "Gin",
-          "key": "gin",
-          "display": "Gin",
-          "category": "spirit"
-        },
-        {
-          "raw": "0.5 oz Tequila",
-          "qty": "0.5 oz",
-          "name": "Tequila",
-          "key": "tequila",
-          "display": "Blanco Tequila",
-          "category": "spirit"
-        },
-        {
-          "raw": "0.5 oz White Rum",
-          "qty": "0.5 oz",
-          "name": "White Rum",
-          "key": "white_rum",
-          "display": "White Rum",
-          "category": "spirit"
-        },
-        {
-          "raw": "0.5 oz Cointreau",
-          "qty": "0.5 oz",
-          "name": "Cointreau",
-          "key": "cointreau",
-          "display": "Cointreau",
-          "category": "liqueur"
-        },
-        {
-          "raw": "0.5 oz Lemon Juice",
-          "qty": "0.5 oz",
-          "name": "Lemon Juice",
-          "key": "lemon_juice",
-          "display": "Lemon Juice",
-          "category": "citrus"
-        },
-        {
-          "raw": "Coca Cola",
-          "qty": "",
-          "name": "Coca Cola",
-          "key": "coke",
-          "display": "Coca-Cola",
-          "category": "other"
-        }
-      ]
-    },
-    {
-      "name": "Smash",
-      "method": "Muddle / Whip / Dump",
-      "glass": "Double Old Fashioned with Crushed",
-      "garnish": "Mint Bouquet",
-      "origin": "",
-      "ingredients": [
-        {
-          "raw": "0.75 oz Simple Syrup",
-          "qty": "0.75 oz",
-          "name": "Simple Syrup",
-          "key": "simple_syrup",
-          "display": "Simple Syrup",
-          "category": "sweetener"
-        },
-        {
-          "raw": "4 Lemon Wedges (half a lemon)",
-          "qty": "4",
-          "name": "Lemon Wedges",
-          "key": "lemon_juice",
-          "display": "Lemon Juice",
-          "category": "citrus"
-        },
-        {
-          "raw": "7-8 Mint Leaves",
-          "qty": "7-8",
-          "name": "Mint Leaves",
-          "key": "mint",
-          "display": "Mint",
-          "category": "herb"
-        }
-      ]
-    },
-    {
       "name": "Smooth Operator",
       "method": "Build / Stir",
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "Nick Settle, Nitecap NY",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz Tequila Cabeza",
@@ -8578,6 +9888,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -8589,7 +9903,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz P\u00eache de Vigne",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "P\u00eache de Vigne",
           "key": "peche",
           "display": "Peach Liqueur",
@@ -8597,7 +9911,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5oz Honey",
-          "qty": ".5oz",
+          "qty": "0.5 oz",
           "name": "Honey",
           "key": "honey",
           "display": "Honey Syrup",
@@ -8605,7 +9919,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25oz Cane",
-          "qty": ".25oz",
+          "qty": "0.25 oz",
           "name": "Cane",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -8624,13 +9938,17 @@ window.COCKTAIL_DATA = {
     {
       "name": "St. Germain Cocktail",
       "method": "Build / Stir",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Grapefruit twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz. St. Germain",
-          "qty": "1.5 oz.",
+          "qty": "1.5 oz",
           "name": "St. Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -8638,7 +9956,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 oz. Sparkling wine",
-          "qty": "2 oz.",
+          "qty": "2 oz",
           "name": "Sparkling wine",
           "key": "sparkling",
           "display": "Sparkling Wine",
@@ -8646,7 +9964,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3 oz. Soda water",
-          "qty": "3 oz.",
+          "qty": "3 oz",
           "name": "Soda water",
           "key": "seltzer",
           "display": "Seltzer / Soda",
@@ -8657,9 +9975,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Stinger",
       "method": "Short Shake / Strain",
-      "glass": "Old Fashioned with Crushed",
+      "glass": "Old Fashioned w/ Crushed",
       "garnish": "Mint Sprig",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Cognac",
@@ -8679,7 +10001,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 Teaspoon Simple Syrup",
-          "qty": "1 Teaspoon",
+          "qty": "1 tsp",
           "name": "Simple Syrup",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -8690,9 +10012,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Strange Brew",
       "method": "Build / Swizzle / Top IPA",
-      "glass": "Collins with crushed",
+      "glass": "Collins w/ Crushed",
       "garnish": "Mint Sprig",
       "origin": "Thomas Waugh",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Tanqueray 10",
@@ -8728,7 +10054,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "IPA Beer",
-          "qty": "",
+          "qty": "Top",
           "name": "IPA Beer",
           "key": "beer",
           "display": "Beer",
@@ -8739,13 +10065,18 @@ window.COCKTAIL_DATA = {
     {
       "name": "Tailspin",
       "method": "Stir / Strain",
-      "glass": "Nick & Nora w/ Campari Rinse",
-      "garnish": "Lemon Twist, Cherry *This drink is similar to a Bijou but includes a Campari rinse in the glass",
+      "glass": "Nick & Nora (Campari Rinse)",
+      "garnish": "Lemon Twist, Cherry",
       "origin": "",
+      "notes": "This drink is similar to a Bijou but includes a Campari rinse in the glass",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5oz London Dry Gin",
-          "qty": "1.5oz",
+          "qty": "1.5 oz",
           "name": "London Dry Gin",
           "key": "gin",
           "display": "Gin",
@@ -8753,7 +10084,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz House Sweet Vermouth",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "House Sweet Vermouth",
           "key": "sweet_vermouth",
           "display": "Sweet Vermouth",
@@ -8761,7 +10092,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75oz Green Chartreuse",
-          "qty": ".75oz",
+          "qty": "0.75 oz",
           "name": "Green Chartreuse",
           "key": "green_chartreuse",
           "display": "Green Chartreuse",
@@ -8769,7 +10100,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1dash Orange Bitters",
-          "qty": "1dash",
+          "qty": "1 dash",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -8783,6 +10114,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -8796,7 +10131,7 @@ window.COCKTAIL_DATA = {
           "raw": "0.5 oz Dry Curacao",
           "qty": "0.5 oz",
           "name": "Dry Curacao",
-          "key": "curacao",
+          "key": "dry_curacao",
           "display": "Dry Cura\u00e7ao",
           "category": "liqueur"
         },
@@ -8813,9 +10148,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Tattletale",
       "method": "Build / Stir",
-      "glass": "Double",
+      "glass": "Double Old Fashioned",
       "garnish": "Cucumber Wheel",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1.25 oz Highland Scotch",
@@ -8843,7 +10182,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "3 dash Angostura Bitters",
-          "qty": "3 dash",
+          "qty": "3 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -8857,6 +10196,10 @@ window.COCKTAIL_DATA = {
       "glass": "Collins",
       "garnish": "Orange Crescent",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "3 oz OJ",
@@ -8869,7 +10212,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz pineapple",
           "qty": "1 oz",
-          "name": "pineapple",
+          "name": "Pineapple",
           "key": "pineapple",
           "display": "Pineapple",
           "category": "citrus"
@@ -8877,14 +10220,14 @@ window.COCKTAIL_DATA = {
         {
           "raw": "2 oz tequila",
           "qty": "2 oz",
-          "name": "tequila",
+          "name": "Tequila",
           "key": "tequila",
           "display": "Blanco Tequila",
           "category": "spirit"
         },
         {
           "raw": ".25 oz Lime",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -8892,8 +10235,8 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Float .75 oz grenadine",
-          "qty": "Float",
-          "name": ".75 oz grenadine",
+          "qty": "0.75 oz float",
+          "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
           "category": "sweetener"
@@ -8906,6 +10249,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Tequila",
@@ -8933,7 +10280,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -8947,6 +10294,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lime Wedge",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rum",
@@ -8974,7 +10325,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Hot Sauce",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Hot Sauce",
           "key": "hot_sauce",
           "display": "Hot Sauce",
@@ -8988,6 +10339,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "aquavit"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Aquavit",
@@ -9037,6 +10392,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "No Garnish",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Rye",
@@ -9056,7 +10415,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Orgeat",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Orgeat",
           "key": "orgeat",
           "display": "Orgeat (Almond)",
@@ -9064,7 +10423,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Tsp Demerara",
-          "qty": "Tsp",
+          "qty": "1 tsp",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -9083,9 +10442,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Valedictorian",
       "method": "Stir / Strain",
-      "glass": "OF / Block",
+      "glass": "Old Fashioned w/ Block",
       "garnish": "Lemon twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Applejack",
@@ -9097,7 +10460,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Cynar",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -9116,9 +10479,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Vatican City",
       "method": "Short Shake / Strain / Seltzer / Ice",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "Grapefruit Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Suze",
@@ -9138,7 +10505,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Simple",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
@@ -9157,9 +10524,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Verdo",
       "method": "Short Shake / Strain / Seltzer / Ice",
-      "glass": "Collins with Cubes",
+      "glass": "Collins w/ Cubes",
       "garnish": "No Garnish",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "lowabv"
+      ],
       "ingredients": [
         {
           "raw": "1 oz China China",
@@ -9179,7 +10550,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Orgeat",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Orgeat",
           "key": "orgeat",
           "display": "Orgeat (Almond)",
@@ -9187,7 +10558,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Cream",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cream",
           "key": "cream",
           "display": "Cream",
@@ -9200,6 +10571,14 @@ window.COCKTAIL_DATA = {
           "key": "cold_brew",
           "display": "Cold Brew Coffee",
           "category": "other"
+        },
+        {
+          "raw": "Top Club Soda",
+          "qty": "Top",
+          "name": "Club Soda",
+          "key": "seltzer",
+          "display": "Seltzer / Soda",
+          "category": "other"
         }
       ]
     },
@@ -9209,6 +10588,11 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Cube",
       "garnish": "Lemon and Orange twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey",
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Rye",
@@ -9244,16 +10628,16 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dashes Angostura Bitters",
-          "qty": "2 dash",
-          "name": "es Angostura Bitters",
+          "qty": "2 dashes",
+          "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
           "category": "bitters"
         },
         {
           "raw": "2 dashes Peychaud Bitters",
-          "qty": "2 dash",
-          "name": "es Peychaud Bitters",
+          "qty": "2 dashes",
+          "name": "Peychaud Bitters",
           "key": "peychauds_bitters",
           "display": "Peychaud's Bitters",
           "category": "bitters"
@@ -9263,9 +10647,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Waltz #2",
       "method": "Shake / Strain",
-      "glass": "Double Old Fashioned with Block",
+      "glass": "Double Old Fashioned w/ Block",
       "garnish": "No garnish",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Vodka",
@@ -9277,7 +10665,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Pear Brandy",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Pear Brandy",
           "key": "pear",
           "display": "Pear Brandy/Liqueur",
@@ -9285,7 +10673,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Montenegro",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Montenegro",
           "key": "montenegro",
           "display": "Amaro Montenegro",
@@ -9293,7 +10681,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lemon Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -9301,7 +10689,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Cinnamon Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Cinnamon Syrup",
           "key": "cinnamon_syrup",
           "display": "Cinnamon Syrup",
@@ -9315,6 +10703,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Rye",
@@ -9356,6 +10748,10 @@ window.COCKTAIL_DATA = {
       "glass": "Nick & Nora",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "0.75 oz Gin",
@@ -9394,9 +10790,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "We Made This",
       "method": "Muddle cucumber into booze / Strain / Build / Whip / Dump",
-      "glass": "Collins with Crushed",
+      "glass": "Collins w/ Crushed",
       "garnish": "Cucumber",
       "origin": "Carrie Heller & Trevor Easter, The Normandie Club 2017",
+      "style": "bright",
+      "base": [
+        "tequila"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Blanco Tequila",
@@ -9441,44 +10841,15 @@ window.COCKTAIL_DATA = {
       ]
     },
     {
-      "name": "Whiskey Sour (No egg white)",
-      "method": "Shake / Strain",
-      "glass": "Double Old Fashioned with King Cube",
-      "garnish": "Lemon Twist (as you would an Old Fashioned)",
-      "origin": "",
-      "ingredients": [
-        {
-          "raw": "2 oz Bourbon",
-          "qty": "2 oz",
-          "name": "Bourbon",
-          "key": "bourbon",
-          "display": "Bourbon",
-          "category": "spirit"
-        },
-        {
-          "raw": "0.75 oz Lemon Juice",
-          "qty": "0.75 oz",
-          "name": "Lemon Juice",
-          "key": "lemon_juice",
-          "display": "Lemon Juice",
-          "category": "citrus"
-        },
-        {
-          "raw": "0.75 oz Simple Syrup",
-          "qty": "0.75 oz",
-          "name": "Simple Syrup",
-          "key": "simple_syrup",
-          "display": "Simple Syrup",
-          "category": "sweetener"
-        }
-      ]
-    },
-    {
       "name": "Whiskey Sour (egg white)",
       "method": "Dry Shake / Shake / Double Strain",
       "glass": "Coupe",
-      "garnish": "Angostura Bitters Whiskey Sour (No egg white)",
+      "garnish": "Angostura Bitters",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Bourbon",
@@ -9506,11 +10877,48 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "Egg white",
-          "qty": "",
+          "qty": "1",
           "name": "Egg white",
           "key": "egg_white",
           "display": "Egg White",
           "category": "other"
+        }
+      ]
+    },
+    {
+      "name": "Whiskey Sour (No egg white)",
+      "method": "Shake / Strain",
+      "glass": "Double Old Fashioned w/ King Cube",
+      "garnish": "Lemon Twist (as you would an Old Fashioned)",
+      "origin": "",
+      "style": "bright",
+      "base": [
+        "whiskey"
+      ],
+      "ingredients": [
+        {
+          "raw": "2 oz Bourbon",
+          "qty": "2 oz",
+          "name": "Bourbon",
+          "key": "bourbon",
+          "display": "Bourbon",
+          "category": "spirit"
+        },
+        {
+          "raw": "0.75 oz Lemon Juice",
+          "qty": "0.75 oz",
+          "name": "Lemon Juice",
+          "key": "lemon_juice",
+          "display": "Lemon Juice",
+          "category": "citrus"
+        },
+        {
+          "raw": "0.75 oz Simple Syrup",
+          "qty": "0.75 oz",
+          "name": "Simple Syrup",
+          "key": "simple_syrup",
+          "display": "Simple Syrup",
+          "category": "sweetener"
         }
       ]
     },
@@ -9520,10 +10928,14 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz. Plymouth Gin",
-          "qty": "1.5 oz.",
+          "qty": "1.5 oz",
           "name": "Plymouth Gin",
           "key": "gin",
           "display": "Gin",
@@ -9531,7 +10943,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 oz. Cointreau",
-          "qty": "1 oz.",
+          "qty": "1 oz",
           "name": "Cointreau",
           "key": "cointreau",
           "display": "Cointreau",
@@ -9539,7 +10951,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.25 oz. Dem",
-          "qty": "0.25 oz.",
+          "qty": "0.25 oz",
           "name": "Dem",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -9547,7 +10959,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "0.75 oz. Lemon Juice",
-          "qty": "0.75 oz.",
+          "qty": "0.75 oz",
           "name": "Lemon Juice",
           "key": "lemon_juice",
           "display": "Lemon Juice",
@@ -9556,7 +10968,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 egg white",
           "qty": "1",
-          "name": "egg white",
+          "name": "Egg White",
           "key": "egg_white",
           "display": "Egg White",
           "category": "other"
@@ -9569,6 +10981,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Cucumber wheel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.75 oz Gin",
@@ -9580,7 +10996,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz St Germain",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "St Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -9596,19 +11012,27 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 Simple",
-          "qty": ".5",
+          "qty": "0.5 oz",
           "name": "Simple",
           "key": "simple_syrup",
           "display": "Simple Syrup",
           "category": "sweetener"
         },
         {
-          "raw": "Muddle Mint + Cucumber",
-          "qty": "",
-          "name": "Muddle Mint + Cucumber",
+          "raw": "Muddle Mint",
+          "qty": "Muddle",
+          "name": "Mint",
           "key": "mint",
           "display": "Mint",
           "category": "herb"
+        },
+        {
+          "raw": "Muddle Cucumber",
+          "qty": "Muddle",
+          "name": "Cucumber",
+          "key": "cucumber",
+          "display": "Cucumber",
+          "category": "other"
         }
       ]
     },
@@ -9618,6 +11042,10 @@ window.COCKTAIL_DATA = {
       "glass": "Old Fashioned w/ Block",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz London Dry Gin",
@@ -9647,10 +11075,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "White Russian",
-      "method": "Stir/ Strain/ Float Cream",
+      "method": "Stir / Strain / Float Cream",
       "glass": "Nick & Nora",
-      "garnish": "",
+      "garnish": "Cinnamon",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Caffe Lolita",
@@ -9663,7 +11095,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "2 oz vodka",
           "qty": "2 oz",
-          "name": "vodka",
+          "name": "Vodka",
           "key": "vodka",
           "display": "Vodka",
           "category": "spirit"
@@ -9681,9 +11113,13 @@ window.COCKTAIL_DATA = {
     {
       "name": "Widows Kiss",
       "method": "Stir / Strain",
-      "glass": "Nick + Nora",
+      "glass": "Nick & Nora",
       "garnish": "Cherry on Pick",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "brandy"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Apple Brandy",
@@ -9695,7 +11131,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Yellow Chartreuse",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -9703,7 +11139,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Benedictine",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Benedictine",
           "key": "benedictine",
           "display": "Benedictine",
@@ -9711,7 +11147,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 Dash Ango",
-          "qty": "2 Dash",
+          "qty": "2 dashes",
           "name": "Ango",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -9725,6 +11161,10 @@ window.COCKTAIL_DATA = {
       "glass": "Goblet",
       "garnish": "Lime Wheel + Umbrella",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "gin"
+      ],
       "ingredients": [
         {
           "raw": "1 oz Gin",
@@ -9736,7 +11176,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Old Tom Gin",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Old Tom Gin",
           "key": "old_tom_gin",
           "display": "Old Tom Gin",
@@ -9744,7 +11184,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Navy Gin",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Navy Gin",
           "key": "navy_gin",
           "display": "Navy Strength Gin",
@@ -9752,7 +11192,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz St Germain",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "St Germain",
           "key": "st_germain",
           "display": "St-Germain (Elderflower)",
@@ -9760,7 +11200,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Lime Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lime Juice",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -9768,7 +11208,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Grapefruit Juice",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Grapefruit Juice",
           "key": "grapefruit_juice",
           "display": "Grapefruit Juice",
@@ -9776,7 +11216,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Ginger Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Ginger Syrup",
           "key": "ginger",
           "display": "Ginger",
@@ -9784,7 +11224,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Grenadine",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
@@ -9792,7 +11232,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Angostura Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -9806,6 +11246,10 @@ window.COCKTAIL_DATA = {
       "glass": "Coupe",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "whiskey"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Blended Scotch",
@@ -9825,7 +11269,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Benedictine",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Benedictine",
           "key": "benedictine",
           "display": "Benedictine",
@@ -9833,7 +11277,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 dash Orange Bitters",
-          "qty": "2 dash",
+          "qty": "2 dashes",
           "name": "Orange Bitters",
           "key": "orange_bitters",
           "display": "Orange Bitters",
@@ -9847,6 +11291,10 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Orange Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1.5 oz Jamaican",
@@ -9858,7 +11306,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Cynar",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Cynar",
           "key": "cynar",
           "display": "Cynar",
@@ -9866,7 +11314,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".75 oz Montenegro",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Montenegro",
           "key": "montenegro",
           "display": "Amaro Montenegro",
@@ -9874,7 +11322,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Cane",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Cane",
           "key": "cane_syrup",
           "display": "Cane Syrup",
@@ -9882,7 +11330,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "4 Dash orange or Cardamom bitters",
-          "qty": "4 Dash",
+          "qty": "4 dashes",
           "name": "orange or Cardamom bitters",
           "key": "cardamom_bitters",
           "display": "Cardamom Bitters",
@@ -9896,10 +11344,14 @@ window.COCKTAIL_DATA = {
       "glass": "Double Old Fashioned w/ Rock",
       "garnish": "Lemon Twist",
       "origin": "",
+      "style": "bold",
+      "base": [
+        "aquavit"
+      ],
       "ingredients": [
         {
           "raw": "1oz Absinthe",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -9907,7 +11359,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Yellow Chartreuse",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Yellow Chartreuse",
           "key": "yellow_chartreuse",
           "display": "Yellow Chartreuse",
@@ -9915,7 +11367,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1oz Apricot Liqueur",
-          "qty": "1oz",
+          "qty": "1 oz",
           "name": "Apricot Liqueur",
           "key": "apricot_liqueur",
           "display": "Apricot Liqueur",
@@ -9925,10 +11377,14 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Yes Man",
-      "method": "Build /muddle/ Shake / Strain",
+      "method": "Build / Muddle / Shake / Strain",
       "glass": "Coupe",
       "garnish": "Lime wheel",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "vodka"
+      ],
       "ingredients": [
         {
           "raw": "2 oz Vodka",
@@ -9948,7 +11404,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Pineapple Gum Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Pineapple Gum Syrup",
           "key": "pine_gum",
           "display": "Pineapple Gum Syrup",
@@ -9956,7 +11412,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Apricot",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Apricot",
           "key": "apricot_liqueur",
           "display": "Apricot Liqueur",
@@ -9965,7 +11421,7 @@ window.COCKTAIL_DATA = {
         {
           "raw": "3 cucumber wheels",
           "qty": "3",
-          "name": "cucumber wheels",
+          "name": "Cucumber Wheels",
           "key": "cucumber",
           "display": "Cucumber",
           "category": "other"
@@ -9974,15 +11430,19 @@ window.COCKTAIL_DATA = {
     },
     {
       "name": "Zombie",
-      "method": "Whip w/pebble/ Open Pour (Dump)",
+      "method": "Whip w/ Pebble / Open Pour (Dump)",
       "glass": "Goblet",
       "garnish": "Mint Sprig/Umbrella",
       "origin": "",
+      "style": "bright",
+      "base": [
+        "rum"
+      ],
       "ingredients": [
         {
           "raw": "1 oz White Rum (Havana Club)",
           "qty": "1 oz",
-          "name": "White Rum",
+          "name": "White Rum (Havana Club)",
           "key": "white_rum",
           "display": "White Rum",
           "category": "spirit"
@@ -9990,14 +11450,14 @@ window.COCKTAIL_DATA = {
         {
           "raw": "1 oz Black Rum (Cruzan or Goslings)",
           "qty": "1 oz",
-          "name": "Black Rum",
+          "name": "Black Rum (Cruzan or Goslings)",
           "key": "black_rum",
           "display": "Black Rum",
           "category": "spirit"
         },
         {
           "raw": ".75 oz Lime",
-          "qty": ".75 oz",
+          "qty": "0.75 oz",
           "name": "Lime",
           "key": "lime_juice",
           "display": "Lime Juice",
@@ -10005,7 +11465,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Grapefruit",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Grapefruit",
           "key": "grapefruit_juice",
           "display": "Grapefruit Juice",
@@ -10013,7 +11473,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".5 oz Cinnamon Syrup",
-          "qty": ".5 oz",
+          "qty": "0.5 oz",
           "name": "Cinnamon Syrup",
           "key": "cinnamon_syrup",
           "display": "Cinnamon Syrup",
@@ -10021,7 +11481,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Demerara",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Demerara",
           "key": "demerara_syrup",
           "display": "Demerara Syrup",
@@ -10029,7 +11489,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": ".25 oz Velvet Falernum",
-          "qty": ".25 oz",
+          "qty": "0.25 oz",
           "name": "Velvet Falernum",
           "key": "falernum",
           "display": "Velvet Falernum",
@@ -10037,7 +11497,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "1 Tsp Grenadine",
-          "qty": "1 Tsp",
+          "qty": "1 tsp",
           "name": "Grenadine",
           "key": "grenadine",
           "display": "Grenadine",
@@ -10045,7 +11505,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "2 Dash Angostura Bitters",
-          "qty": "2 Dash",
+          "qty": "2 dashes",
           "name": "Angostura Bitters",
           "key": "angostura_bitters",
           "display": "Angostura Bitters",
@@ -10053,7 +11513,7 @@ window.COCKTAIL_DATA = {
         },
         {
           "raw": "8 Dash Absinthe",
-          "qty": "8 Dash",
+          "qty": "8 dashes",
           "name": "Absinthe",
           "key": "absinthe",
           "display": "Absinthe",
@@ -10234,6 +11694,11 @@ window.COCKTAIL_DATA = {
       "category": "fortified"
     },
     {
+      "key": "vermouth",
+      "display": "Vermouth",
+      "category": "fortified"
+    },
+    {
       "key": "mint",
       "display": "Mint",
       "category": "herb"
@@ -10256,6 +11721,11 @@ window.COCKTAIL_DATA = {
     {
       "key": "amaretto",
       "display": "Amaretto",
+      "category": "liqueur"
+    },
+    {
+      "key": "ancho_reyes",
+      "display": "Ancho Reyes",
       "category": "liqueur"
     },
     {
@@ -10324,11 +11794,6 @@ window.COCKTAIL_DATA = {
       "category": "liqueur"
     },
     {
-      "key": "curacao",
-      "display": "Dry Cura\u00e7ao",
-      "category": "liqueur"
-    },
-    {
       "key": "dry_curacao",
       "display": "Dry Cura\u00e7ao",
       "category": "liqueur"
@@ -10394,6 +11859,11 @@ window.COCKTAIL_DATA = {
       "category": "other"
     },
     {
+      "key": "butter",
+      "display": "Butter",
+      "category": "other"
+    },
+    {
       "key": "coke",
       "display": "Coca-Cola",
       "category": "other"
@@ -10416,6 +11886,11 @@ window.COCKTAIL_DATA = {
     {
       "key": "egg_white",
       "display": "Egg White",
+      "category": "other"
+    },
+    {
+      "key": "espresso_batch",
+      "display": "Espresso Batch",
       "category": "other"
     },
     {
@@ -10509,6 +11984,11 @@ window.COCKTAIL_DATA = {
       "category": "spirit"
     },
     {
+      "key": "genever",
+      "display": "Genever",
+      "category": "spirit"
+    },
+    {
       "key": "gin",
       "display": "Gin",
       "category": "spirit"
@@ -10521,11 +12001,6 @@ window.COCKTAIL_DATA = {
     {
       "key": "jamaican_rum",
       "display": "Jamaican Rum",
-      "category": "spirit"
-    },
-    {
-      "key": "laphroaig",
-      "display": "Laphroaig (Peated Scotch)",
       "category": "spirit"
     },
     {
@@ -10576,6 +12051,11 @@ window.COCKTAIL_DATA = {
     {
       "key": "scotch",
       "display": "Scotch",
+      "category": "spirit"
+    },
+    {
+      "key": "any_spirit",
+      "display": "Spirit of Choice",
       "category": "spirit"
     },
     {
