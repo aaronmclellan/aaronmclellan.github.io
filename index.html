@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ron</title>
+    <meta name="description" content="aaron mclellan's retro desktop full of small web apps: f1, cs2, cocktails, hail watch, blackjack and more.">
+    <link rel="canonical" href="https://www.ron.computer/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ron.computer/">
+    <meta property="og:title" content="ron.computer">
+    <meta property="og:description" content="aaron mclellan's retro desktop full of small web apps: f1, cs2, cocktails, hail watch, blackjack and more.">
+    <meta property="og:image" content="https://www.ron.computer/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="crying-sunglasses-cowboy.png" sizes="32x32" type="image/png">
+    <script>
+      // Apply the saved theme before first paint so it doesn't flash XP.
+      try { const t = localStorage.getItem('winTheme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J61JMC33K6"></script>
     <script>
@@ -184,7 +198,7 @@ body{font-family:var(--font);font-size:var(--font-size);color:var(--text-color)}
 [data-theme="xp"] #clock,[data-theme="vista"] #clock{color:#fff}
 
 /* ========== START MENU ========== */
-#start-menu{position:fixed;bottom:var(--taskbar-height);left:0;background:var(--menu-bg);border:var(--menu-border);border-radius:var(--menu-border-radius);box-shadow:var(--menu-shadow);z-index:9500;display:none;min-width:300px;overflow:hidden}
+#start-menu{position:fixed;bottom:var(--taskbar-height);left:0;background:var(--menu-bg);border:var(--menu-border);border-radius:var(--menu-border-radius);box-shadow:var(--menu-shadow);z-index:9500;display:none;min-width:300px;max-height:calc(100% - var(--taskbar-height));overflow-x:hidden;overflow-y:auto}
 #start-menu.open{display:block}
 .start-menu-header{background:var(--menu-header-bg);height:var(--menu-header-height);display:flex;align-items:center;padding:8px 10px;gap:10px;color:#fff}
 .start-menu-header img{width:36px;height:36px;border-radius:4px;object-fit:cover;border:2px solid rgba(255,255,255,0.5)}
@@ -201,6 +215,53 @@ body{font-family:var(--font);font-size:var(--font-size);color:var(--text-color)}
 .start-menu-label{padding:4px 16px;font-size:10px;opacity:0.5;font-weight:bold;text-transform:uppercase;color:var(--text-color)}
 .start-menu-shutdown{background:var(--menu-bg);padding:4px 0;border-top:var(--menu-separator)}
 [data-theme="xp"] .start-menu-shutdown{background:#ece9d8}
+.start-menu-item.has-sub::after{content:"\25B6";margin-left:auto;font-size:8px;opacity:0.7}
+.start-menu-item.sub-open{background:var(--menu-item-hover);color:var(--menu-item-hover-text)}
+#start-flyout{position:fixed;z-index:9550;display:none;background:var(--menu-bg);border:var(--menu-border);border-radius:var(--ctx-radius);box-shadow:var(--menu-shadow);min-width:190px;padding:4px 0}
+#start-flyout.open{display:block}
+
+/* ========== TRAY ALERTS ========== */
+#tray-icons{display:flex;align-items:center;gap:2px}
+.tray-icon{opacity:1;font-size:13px;animation:trayIn 0.3s ease-out}
+@keyframes trayIn{from{transform:scale(0)}to{transform:scale(1)}}
+#balloon{position:fixed;bottom:calc(var(--taskbar-height) + 12px);right:8px;z-index:9600;display:none;width:290px;max-width:calc(100vw - 16px);background:#ffffe1;color:#000;border:1px solid #000;border-radius:8px;padding:8px 26px 10px 10px;font-family:Tahoma,"Segoe UI",sans-serif;font-size:11px;line-height:1.4;box-shadow:2px 2px 6px rgba(0,0,0,0.3);cursor:pointer}
+#balloon.show{display:block;animation:clippyBounce 0.25s ease-out}
+#balloon::before,#balloon::after{content:"";position:absolute;right:var(--tail,20px);border:7px solid transparent;border-bottom:0}
+#balloon::before{bottom:-8px;border-top-color:#000}
+#balloon::after{bottom:-6px;border-top-color:#ffffe1}
+.balloon-title{font-weight:bold;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.balloon-close{position:absolute;top:4px;right:6px;width:16px;height:16px;border:1px solid #888;border-radius:3px;background:#fff;font-size:11px;line-height:1;cursor:pointer;color:#333;font-family:sans-serif;padding:0}
+.balloon-close:hover{background:#e81123;color:#fff;border-color:#e81123}
+
+/* ========== ALT+TAB SWITCHER ========== */
+#switcher{position:fixed;left:50%;top:45%;transform:translate(-50%,-50%);z-index:9900;display:none;background:var(--window-bg);border:var(--window-border);border-radius:var(--window-border-radius);box-shadow:var(--window-shadow);padding:12px;color:var(--text-color);font-family:var(--font);max-width:calc(100vw - 32px)}
+#switcher.open{display:block}
+.switcher-items{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.switcher-item{width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:28px;border:2px solid transparent;border-radius:4px;cursor:pointer}
+.switcher-item.sel{border-color:var(--highlight-bg);background:rgba(100,150,255,0.2)}
+.switcher-title{margin-top:10px;padding:4px 10px;text-align:center;font-weight:bold;font-size:12px;border:var(--bevel-in);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ========== RECYCLE BIN ========== */
+.rb-wrap{display:flex;flex-direction:column;height:100%;background:#fff;color:#000;font-size:11px;font-family:var(--font)}
+.rb-toolbar{display:flex;gap:4px;padding:4px 6px;background:#ece9d8;border-bottom:1px solid #aca899}
+.rb-toolbar button,.props-btns button,.dialog-btns button{font-family:var(--font);font-size:11px;padding:3px 12px;cursor:pointer;background:#f4f3ee;border:1px solid #888;border-radius:3px;color:#000}
+.rb-toolbar button:disabled{opacity:0.45;cursor:default}
+.rb-list{flex:1;overflow:auto}
+.rb-row{display:grid;grid-template-columns:1.5fr 1fr 0.9fr;gap:8px;padding:3px 8px;align-items:center;white-space:nowrap}
+.rb-row span{overflow:hidden;text-overflow:ellipsis}
+.rb-row.head{background:#f4f3ee;border-bottom:1px solid #d5d1c4;font-weight:bold;position:sticky;top:0}
+.rb-row.item{cursor:default}
+.rb-row.item.sel{background:var(--highlight-bg);color:var(--highlight-text)}
+.rb-row i{width:16px;text-align:center;margin-right:4px;color:#4a90d9}
+.rb-row.item.sel i{color:inherit}
+.dialog-wrap{display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:16px;color:#000;font-family:var(--font);font-size:12px;background:#fff}
+.dialog-msg{display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.dialog-msg i{font-size:28px;color:#e81123}
+.dialog-btns{display:flex;justify-content:flex-end}
+
+/* ========== DRAGGING ========== */
+/* An iframe under the cursor would swallow the mouse events a drag needs. */
+body.dragging .window-content iframe{pointer-events:none}
 
 /* ========== CONTEXT MENU ========== */
 #context-menu{position:fixed;background:var(--ctx-bg);border:var(--ctx-border);border-radius:var(--ctx-radius);box-shadow:var(--ctx-shadow);z-index:9800;display:none;min-width:180px;padding:4px 0}
@@ -306,6 +367,11 @@ body{font-family:var(--font);font-size:var(--font-size);color:var(--text-color)}
 .wallpaper-opt:hover{border-color:#666}
 .wallpaper-opt.active{border-color:#3169C6;border-width:3px}
 .wallpaper-opt span{position:absolute;bottom:2px;left:2px;font-size:9px;color:#fff;text-shadow:0 1px 2px #000;background:rgba(0,0,0,0.4);padding:0 3px;border-radius:2px}
+.props-head{display:flex;align-items:center;gap:12px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #ccc;font-size:14px}
+.props-head i{font-size:32px;width:40px;text-align:center}
+.props-desc{font-size:12px;line-height:1.5;margin:10px 0}
+.props-shot{display:block;max-width:100%;max-height:170px;margin:0 auto 12px;border:1px solid #ccc;border-radius:3px;object-fit:contain}
+.props-btns{display:flex;gap:6px;justify-content:flex-end}
 
 /* ========== CLIPPY ========== */
 #clippy{position:fixed;bottom:calc(var(--taskbar-height) + 10px);right:16px;z-index:8500;display:none;cursor:pointer;animation:clippyBounce 0.4s ease-out}
@@ -370,32 +436,22 @@ body{font-family:var(--font);font-size:var(--font-size);color:var(--text-color)}
 <div id="snap-indicator"></div>
 
 <!-- CONTEXT MENU -->
-<div id="context-menu">
-    <div class="ctx-item" onclick="arrangeIcons('grid')"><i class="fa-solid fa-border-all" style="width:16px"></i> Arrange Icons</div>
-    <div class="ctx-item" onclick="arrangeIcons('name')"><i class="fa-solid fa-arrow-down-a-z" style="width:16px"></i> Sort by Name</div>
-    <hr class="ctx-separator">
-    <div class="ctx-item" onclick="location.reload()"><i class="fa-solid fa-rotate-right" style="width:16px"></i> Refresh</div>
-    <hr class="ctx-separator">
-    <div class="ctx-item" onclick="openDisplayProps(); closeContextMenu()"><i class="fa-solid fa-palette" style="width:16px"></i> Display Properties</div>
-    <div class="ctx-item" onclick="openAboutWindow(); closeContextMenu()"><i class="fa-solid fa-circle-info" style="width:16px"></i> Properties</div>
-</div>
+<div id="context-menu"></div>
 
 <!-- START MENU -->
 <div id="start-menu">
     <div class="start-menu-header">
-        <img src="ron.jpg" alt="avatar">
+        <img src="ron-avatar.jpg" alt="avatar">
         <span>aaron mclellan</span>
     </div>
     <div class="start-menu-sidebar-95">Windows</div>
     <div class="start-menu-items">
         <div class="start-menu-item" onclick="openAboutWindow();closeStartMenu()"><i class="fa-solid fa-user"></i> About Me</div>
         <hr class="start-menu-separator">
-        <div class="start-menu-label">Programs</div>
-        <div class="start-menu-item" onclick="openExplorer();closeStartMenu()"><i class="fa-solid fa-folder-open"></i> File Explorer</div>
-        <div class="start-menu-item" onclick="openPaint();closeStartMenu()"><i class="fa-solid fa-paintbrush"></i> Paint</div>
-        <div class="start-menu-item" onclick="openMinesweeper();closeStartMenu()"><i class="fa-solid fa-bomb"></i> Minesweeper</div>
-        <div class="start-menu-item" onclick="openMediaPlayer();closeStartMenu()"><i class="fa-solid fa-music"></i> Media Player</div>
-        <div class="start-menu-item" onclick="openCmd();closeStartMenu()"><i class="fa-solid fa-terminal"></i> Command Prompt</div>
+        <div class="start-menu-label">Projects</div>
+        <div id="start-projects"></div>
+        <hr class="start-menu-separator">
+        <div class="start-menu-item has-sub" id="start-programs" onclick="openFlyout()" onmouseenter="openFlyout()"><i class="fa-solid fa-folder"></i> Programs</div>
         <hr class="start-menu-separator">
         <div class="start-menu-label">Links</div>
         <div class="start-menu-item" onclick="window.open('https://bsky.app/profile/ron.computer','_blank');closeStartMenu()"><i class="fa-brands fa-bluesky"></i> Bluesky</div>
@@ -408,15 +464,17 @@ body{font-family:var(--font);font-size:var(--font-size);color:var(--text-color)}
         </div>
     </div>
 </div>
+<div id="start-flyout"></div>
 
 <!-- TASKBAR -->
 <div id="taskbar">
     <button id="start-btn" onclick="toggleStartMenu()">
-        <img src="ron.jpg" alt="" class="start-avatar">
+        <img src="ron-avatar.jpg" alt="" class="start-avatar">
         <span>Start</span>
     </button>
     <div id="taskbar-windows"></div>
     <div id="system-tray">
+        <span id="tray-icons"></span>
         <button class="tray-btn" id="sound-btn" onclick="toggleSound()" title="Sound"><i class="fa-solid fa-volume-xmark"></i></button>
         <select id="theme-select" onchange="setTheme(this.value)" title="Theme">
             <option value="95">Windows 95</option>
@@ -437,9 +495,15 @@ body{font-family:var(--font);font-size:var(--font-size);color:var(--text-color)}
     <div class="clippy-char">&#128206;</div>
 </div>
 
+<!-- TRAY BALLOON -->
+<div id="balloon"></div>
+
+<!-- ALT+TAB SWITCHER -->
+<div id="switcher"><div class="switcher-items" id="switcher-items"></div><div class="switcher-title" id="switcher-title"></div></div>
+
 <!-- SCREENSAVER -->
 <div id="screensaver">
-    <img src="ron.jpg" class="ss-logo" id="ss-logo" alt="">
+    <img src="ron-avatar.jpg" class="ss-logo" id="ss-logo" alt="">
 </div>
 
 <script>
@@ -456,6 +520,8 @@ const S = {
     screensaverTimer: null, screensaverActive: false,
     clippyTimer: null, clippyIndex: 0,
     minesState: null, minesTimer: null,
+    focusedId: null, mru: [], switcher: null, restoring: false,
+    longPress: null, f1: null,
 };
 
 /* ==============================================
@@ -468,18 +534,58 @@ const sites = [
     { id:'blackjack',title:'blackjack',icon:'fa-solid fa-diamond',color:'#2d7a30',url:'./blackjack.html',image:'blackjack.png',external:false,desc:'full featured blackjack game with multiple themes'},
     { id:'tenor',title:'tenor gif\ndownloader',icon:'fa-solid fa-film',color:'#5865f2',url:'./tenor.html',image:'tenor.png',external:false,desc:'download any tenor gif'},
     { id:'delim',title:'delim tool',icon:'fa-solid fa-table-columns',color:'#4a90d9',url:'./delim.html',image:'delim.jpg',external:false,desc:'split, join, and transform delimited text'},
-    { id:'cs2',title:'cs2 tracker',icon:'fa-solid fa-crosshairs',color:'#f59e0b',url:'./cs.html',image:'cs2.png',external:false,desc:'live cs2 match schedules, results, and favorites tracker powered by grid.gg'},
+    { id:'cs2',title:'cs2 tracker',icon:'fa-solid fa-crosshairs',color:'#f59e0b',url:'./cs.html',image:'cs-favicon.svg',external:false,desc:'live cs2 match schedules, results, and favorites tracker powered by grid.gg'},
     { id:'cocktails',title:'cocktail\npicker',icon:'fa-solid fa-martini-glass-citrus',color:'#f59e0b',url:'./cocktails.html',image:'cocktail-favicon.svg',external:false,desc:'pick the ingredients you have and find which cocktails to make from a 209-drink compendium'},
     { id:'hail',title:'hail watch',icon:'fa-solid fa-cloud-bolt',color:'#4fc3f7',url:'./hail.html',image:'hail-favicon.svg',external:false,desc:'live hail alerts and forecast for leander tx using the national weather service'},
 ];
+// Built-in programs, by window id. Sites, apps and the "props:" / "trash:"
+// windows can all be opened by id, which is what deep links
+// (ron.computer/#cocktails) and session restore use.
+const apps = {
+    about:{title:'About Me',icon:'fa-solid fa-user',color:'#3169C6',open:()=>openAboutWindow()},
+    explorer:{title:'File Explorer',icon:'fa-solid fa-folder-open',color:'#f0c040',open:()=>openExplorer(),program:true},
+    paint:{title:'Paint',icon:'fa-solid fa-paintbrush',color:'#e07020',open:()=>openPaint(),program:true},
+    minesweeper:{title:'Minesweeper',icon:'fa-solid fa-bomb',color:'#e63946',open:()=>openMinesweeper(),program:true},
+    mediaplayer:{title:'Media Player',icon:'fa-solid fa-music',color:'#9b59b6',open:()=>openMediaPlayer(),program:true},
+    notepad:{title:'Notepad',icon:'fa-solid fa-file-lines',color:'#4a90d9',open:()=>openNotepad(),program:true},
+    cmd:{title:'Command Prompt',icon:'fa-solid fa-terminal',color:'#00cc44',open:()=>openCmd(),program:true},
+    recyclebin:{title:'Recycle Bin',icon:'fa-solid fa-trash-can',color:'#888',open:()=>openRecycleBin()},
+    sysprops:{title:'System Properties',icon:'fa-solid fa-gear',color:'#4a90d9',open:()=>openSysProps()},
+    displayprops:{title:'Display Properties',icon:'fa-solid fa-palette',color:'#9b59b6',open:()=>openDisplayProps()},
+};
 const desktopApps = [
-    { id:'mycomputer',title:'My Computer',icon:'fa-solid fa-desktop',color:'#4a90d9',action:'openExplorer'},
-    { id:'recyclebin',title:'Recycle Bin',icon:'fa-solid fa-trash-can',color:'#888',action:'openRecycleBin'},
-    { id:'minesweeper',title:'Minesweeper',icon:'fa-solid fa-bomb',color:'#e63946',action:'openMinesweeper'},
-    { id:'paint',title:'Paint',icon:'fa-solid fa-paintbrush',color:'#e07020',action:'openPaint'},
-    { id:'cmd',title:'Command\nPrompt',icon:'fa-solid fa-terminal',color:'#00cc44',action:'openCmd'},
-    { id:'mediaplayer',title:'Media Player',icon:'fa-solid fa-music',color:'#9b59b6',action:'openMediaPlayer'},
+    { id:'mycomputer',title:'My Computer',icon:'fa-solid fa-desktop',color:'#4a90d9',open:'explorer'},
+    { id:'recyclebin',title:'Recycle Bin',icon:'fa-solid fa-trash-can',color:'#888',open:'recyclebin'},
+    { id:'minesweeper',title:'Minesweeper',icon:'fa-solid fa-bomb',color:'#e63946',open:'minesweeper'},
+    { id:'paint',title:'Paint',icon:'fa-solid fa-paintbrush',color:'#e07020',open:'paint'},
+    { id:'notepad',title:'Notepad',icon:'fa-solid fa-file-lines',color:'#4a90d9',open:'notepad'},
+    { id:'cmd',title:'Command\nPrompt',icon:'fa-solid fa-terminal',color:'#00cc44',open:'cmd'},
+    { id:'mediaplayer',title:'Media Player',icon:'fa-solid fa-music',color:'#9b59b6',open:'mediaplayer'},
 ];
+// Old pages that still live in the repo. "Restore" opens them.
+const trash = [
+    { id:'ron.rip',file:'ron.rip.html',title:'ron.rip.html',from:'C:\\Sites\\ron.rip',deleted:'4/11/2026'},
+    { id:'ron.computer',file:'ron.computer.html',title:'ron.computer.html',from:'C:\\Sites\\ron.computer',deleted:'4/11/2026'},
+    { id:'favicons',file:'favicon-preview.html',title:'f1 favicon drafts.html',from:'C:\\Sites\\f1.wtf',deleted:'5/7/2026'},
+];
+
+function canOpen(id) {
+    if (!id) return false;
+    if (sites.some(s => s.id === id) || apps[id]) return true;
+    if (id.startsWith('props:')) return sites.some(s => s.id === id.slice(6));
+    if (id.startsWith('trash:')) return trash.some(t => t.id === id.slice(6));
+    return false;
+}
+function openById(id) {
+    if (!canOpen(id)) return false;
+    const site = sites.find(s => s.id === id);
+    if (site) openSiteWindow(site);
+    else if (apps[id]) apps[id].open();
+    else if (id.startsWith('props:')) openProps(id.slice(6));
+    else openTrashItem(id.slice(6));
+    return true;
+}
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 /* ==============================================
    WALLPAPERS
@@ -526,6 +632,9 @@ const clippyMsgs = [
     "Check out Minesweeper if you need a break.",
     "Open the Start menu to find all the apps.",
     "Try the Command Prompt - type 'help' to get started!",
+    "Right-click an icon to see what it is before you open it.",
+    "Hold Alt and press ` (or Tab on a Mac) to switch windows.",
+    "The address bar follows the window you're in, so you can share a link straight to it.",
 ];
 
 /* ==============================================
@@ -564,8 +673,8 @@ function updateBootText(t) {
 /* ==============================================
    BOOT SEQUENCE
    ============================================== */
-function runBoot() {
-    if (sessionStorage.getItem('booted')) {
+function runBoot(skip) {
+    if (skip || sessionStorage.getItem('booted')) {
         document.getElementById('boot-screen').style.display = 'none';
         return;
     }
@@ -649,7 +758,21 @@ function updateClock() {
     const now = new Date();
     const h = now.getHours() % 12 || 12;
     const m = String(now.getMinutes()).padStart(2, '0');
-    document.getElementById('clock').textContent = `${h}:${m} ${now.getHours() >= 12 ? 'PM' : 'AM'}`;
+    const clock = document.getElementById('clock');
+    clock.textContent = `${h}:${m} ${now.getHours() >= 12 ? 'PM' : 'AM'}`;
+    let tip = now.toLocaleDateString(undefined, {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+    if (S.f1) {
+        const when = new Date(S.f1.start).toLocaleString(undefined, {weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit'});
+        tip += `\nNext F1: ${S.f1.name}, ${when} (${relTime(S.f1.start - now)})`;
+    }
+    clock.title = tip;
+}
+function relTime(ms) {
+    if (ms <= 0) return 'on now';
+    const m = Math.round(ms / 60000), h = Math.floor(m / 60), d = Math.floor(h / 24);
+    if (d) return `in ${d}d ${h % 24}h`;
+    if (h) return `in ${h}h ${m % 60}m`;
+    return `in ${m}m`;
 }
 
 /* ==============================================
@@ -658,27 +781,85 @@ function updateClock() {
 function createIcons() {
     const desktop = document.getElementById('desktop');
     const allItems = [...sites.map(s => ({...s, type:'site'})), ...desktopApps.map(a => ({...a, type:'app'}))];
-    const saved = (() => { try { return JSON.parse(localStorage.getItem('iconPositions')); } catch(e) { return null; } })();
-    allItems.forEach((item, i) => {
+    allItems.forEach(item => {
         const el = document.createElement('div');
         el.className = 'desktop-icon';
         el.dataset.id = item.id;
-        const col = Math.floor(i / 8), row = i % 8;
-        let x = 10 + col * 100, y = 10 + row * 95;
-        if (saved?.[item.id]) { x = saved[item.id].x; y = saved[item.id].y; }
-        el.style.left = x + 'px'; el.style.top = y + 'px';
+        if (item.desc) el.title = item.desc;
         el.innerHTML = `<div class="icon-image" style="color:${item.color}"><i class="${item.icon}"></i></div><span class="icon-label">${(item.title||'').replace(/\n/g,'<br>')}</span>`;
         el.addEventListener('mousedown', e => onIconMouseDown(e, item));
-        el.addEventListener('dblclick', e => onIconDblClick(e, item));
+        el.addEventListener('dblclick', e => { e.stopPropagation(); openIcon(item); });
+        el.addEventListener('contextmenu', e => { e.preventDefault(); e.stopPropagation(); showIconMenu(item, e.clientX, e.clientY); });
         el.addEventListener('touchstart', e => onIconTouchStart(e, item), {passive:false});
         desktop.appendChild(el);
         S.icons.push({id:item.id, el, data:item});
     });
+    layoutIcons();
+}
+const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), Math.max(lo, hi));
+// Icon grid for the current screen. Rows follow the desktop height so no icon
+// ends up behind the taskbar.
+function iconGrid() {
+    const d = document.getElementById('desktop');
+    const mob = window.innerWidth <= 640;
+    const g = {W:d.clientWidth, H:d.clientHeight, colW:mob ? 88 : 100, rowH:95, iconW:mob ? 80 : 90, iconH:90};
+    g.rows = Math.max(1, Math.floor((g.H - 10 - g.iconH) / g.rowH) + 1);
+    return g;
+}
+function flowIcons(ids, pos, g, fromRight) {
+    ids.forEach((id, i) => {
+        const col = Math.floor(i / g.rows), row = i % g.rows;
+        pos[id] = {x: fromRight ? g.W - 10 - g.iconW - col * g.colW : 10 + col * g.colW, y: 10 + row * g.rowH};
+    });
+    return pos;
+}
+// Projects fill columns from the left and the built-in programs from the
+// right edge. When the screen is too narrow for both, programs follow projects.
+function autoLayout() {
+    const g = iconGrid(), projects = sites.map(s => s.id), programs = desktopApps.map(a => a.id);
+    const leftEnd = 10 + Math.ceil(projects.length / g.rows) * g.colW;
+    const rightStart = g.W - 10 - Math.ceil(programs.length / g.rows) * g.colW + (g.colW - g.iconW);
+    if (leftEnd <= rightStart) return flowIcons(programs, flowIcons(projects, {}, g, false), g, true);
+    return flowIcons([...projects, ...programs], {}, g, false);
+}
+function positionsFit(pos) {
+    const g = iconGrid();
+    return !!pos && S.icons.every(ic => {
+        const p = pos[ic.id];
+        return p && p.x >= 0 && p.y >= 0 && p.x + g.iconW <= g.W && p.y + 80 <= g.H;
+    });
+}
+function applyIconPositions(pos) {
+    S.icons.forEach(ic => { ic.el.style.left = pos[ic.id].x + 'px'; ic.el.style.top = pos[ic.id].y + 'px'; });
+}
+// Icons the visitor dragged keep their spots while they all fit on screen.
+// Otherwise (smaller screen, or a new icon) use the automatic layout.
+function layoutIcons() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('iconPositions')); } catch(e) {}
+    applyIconPositions(positionsFit(saved) ? saved : autoLayout());
 }
 function saveIconPositions() {
     const p = {};
     S.icons.forEach(ic => { p[ic.id] = {x:parseInt(ic.el.style.left), y:parseInt(ic.el.style.top)}; });
     localStorage.setItem('iconPositions', JSON.stringify(p));
+}
+function openIcon(item) { openById(item.type === 'site' ? item.id : item.open); }
+function startIconDrag(el, item, x, y, touch) {
+    const g = iconGrid();
+    return {el, item, touch, startX:x, startY:y, origLeft:parseInt(el.style.left), origTop:parseInt(el.style.top), maxX:g.W - g.iconW, maxY:g.H - 80, moved:false};
+}
+function moveIconDrag(x, y) {
+    const d = S.dragIcon, dx = x - d.startX, dy = y - d.startY, slop = d.touch ? 8 : 3;
+    if (Math.abs(dx) > slop || Math.abs(dy) > slop) { d.moved = true; clearTimeout(S.longPress); }
+    if (d.moved) { d.el.style.left = clamp(d.origLeft + dx, 0, d.maxX) + 'px'; d.el.style.top = clamp(d.origTop + dy, 0, d.maxY) + 'px'; }
+}
+function endIconDrag() {
+    const d = S.dragIcon;
+    if (!d) return;
+    S.dragIcon = null; clearTimeout(S.longPress);
+    if (d.moved) saveIconPositions();
+    else if (d.touch && !d.menu) openIcon(d.item); // on phones a tap opens
 }
 function onIconMouseDown(e, item) {
     e.stopPropagation(); if (e.button === 2) return;
@@ -686,35 +867,43 @@ function onIconMouseDown(e, item) {
     const el = e.currentTarget;
     if (!e.ctrlKey && !e.metaKey) clearSelection();
     el.classList.add('selected'); S.selectedIcons.add(item.id);
-    S.dragIcon = {el, startX:e.clientX, startY:e.clientY, origLeft:parseInt(el.style.left), origTop:parseInt(el.style.top), moved:false};
+    S.dragIcon = startIconDrag(el, item, e.clientX, e.clientY, false);
 }
-function onIconDblClick(e, item) {
-    e.stopPropagation();
-    if (item.type === 'site') openSiteWindow(item);
-    else if (item.action) window[item.action]?.();
-}
-let lastTap = 0;
 function onIconTouchStart(e, item) {
     e.preventDefault();
-    if (Date.now() - lastTap < 350) onIconDblClick(e, item);
-    lastTap = Date.now();
+    closeContextMenu(); closeStartMenu();
     const el = e.currentTarget; clearSelection();
     el.classList.add('selected'); S.selectedIcons.add(item.id);
     const t = e.touches[0];
-    S.dragIcon = {el, startX:t.clientX, startY:t.clientY, origLeft:parseInt(el.style.left), origTop:parseInt(el.style.top), moved:false};
+    S.dragIcon = startIconDrag(el, item, t.clientX, t.clientY, true);
+    // Long press opens the icon's menu, like a right-click.
+    clearTimeout(S.longPress);
+    S.longPress = setTimeout(() => {
+        const d = S.dragIcon;
+        if (d && !d.moved) { d.menu = true; showIconMenu(item, t.clientX, t.clientY); }
+    }, 550);
 }
 function clearSelection() { S.selectedIcons.clear(); document.querySelectorAll('.desktop-icon.selected').forEach(el => el.classList.remove('selected')); }
 function arrangeIcons(mode) {
     closeContextMenu();
-    const allItems = [...sites, ...desktopApps];
-    if (mode === 'name') allItems.sort((a, b) => a.title.localeCompare(b.title));
-    allItems.forEach((item, i) => {
-        const ic = S.icons.find(ic => ic.id === item.id);
-        if (!ic) return;
-        ic.el.style.left = (10 + Math.floor(i/8)*85) + 'px';
-        ic.el.style.top = (10 + (i%8)*80) + 'px';
-    });
-    saveIconPositions();
+    if (mode === 'name') {
+        const ids = [...sites, ...desktopApps].sort((a, b) => a.title.localeCompare(b.title)).map(x => x.id);
+        applyIconPositions(flowIcons(ids, {}, iconGrid(), false));
+        saveIconPositions();
+    } else {
+        // Forget dragged positions so the layout adapts to every screen again.
+        localStorage.removeItem('iconPositions');
+        applyIconPositions(autoLayout());
+    }
+}
+function showIconMenu(item, x, y) {
+    const items = [{label:'<b>Open</b>', icon:'fa-regular fa-window-maximize', run:() => openIcon(item)}];
+    if (item.type === 'site') items.push({label:'Open in new tab', icon:'fa-solid fa-arrow-up-right-from-square', run:() => window.open(item.url, '_blank')});
+    items.push({label:'Copy link', icon:'fa-solid fa-link', run:() => copyLink(item.type === 'site' ? item.id : item.open)});
+    if (item.type === 'site') items.push('-', {label:'Properties', icon:'fa-solid fa-circle-info', run:() => openProps(item.id)});
+    else if (item.id === 'recyclebin') items.push('-', {label:'Empty Recycle Bin', icon:'fa-solid fa-trash-can', run:() => emptyRecycleBin()});
+    else if (item.id === 'mycomputer') items.push('-', {label:'Properties', icon:'fa-solid fa-circle-info', run:() => openSysProps()});
+    showMenu(items, x, y);
 }
 
 /* ==============================================
@@ -722,7 +911,7 @@ function arrangeIcons(mode) {
    ============================================== */
 function createAppWindow(opts) {
     const existing = S.windows.find(w => w.siteId === opts.id && !w.closed);
-    if (existing) { restoreWindow(existing.id); focusWindow(existing.id); return null; }
+    if (existing) { if (existing.minimized) restoreWindow(existing.id); else focusWindow(existing.id); return null; }
     const id = S.nextWinId++;
     const mob = window.innerWidth <= 640;
     const dr = document.getElementById('desktop').getBoundingClientRect();
@@ -740,23 +929,31 @@ function createAppWindow(opts) {
         ? `<button class="window-title-btn" onclick="window.open('${opts.siteUrl}','_blank')" title="Open in new tab" style="font-size:10px"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>`
         : '';
     el.innerHTML = `<div class="window-title" data-wid="${id}"><span class="window-title-icon" style="color:${win.color}"><i class="${win.icon}"></i></span><span class="window-title-text">${opts.title}</span><div class="window-title-btns">${openInTabBtn}<button class="window-title-btn" onclick="minimizeWindow(${id})" title="Minimize">&#8211;</button><button class="window-title-btn" onclick="toggleMaximize(${id})" title="Maximize">&#9633;</button><button class="window-title-btn close-btn" onclick="closeWindow(${id})" title="Close">&#10005;</button></div></div><div class="window-content">${opts.content}</div><div class="window-resize" data-wid="${id}"></div>`;
+    // Drop the open animation once it has played, or it would replay every
+    // time the window comes back from the taskbar.
+    el.addEventListener('animationend', () => { el.style.animation = 'none'; }, {once:true});
     document.getElementById('desktop').appendChild(el);
-    focusWindow(id); renderTaskbarWindows();
+    focusWindow(id);
     // Wire events
-    el.querySelector('.window-title').addEventListener('mousedown', e => {
+    const title = el.querySelector('.window-title');
+    title.addEventListener('mousedown', e => {
         if (e.target.closest('.window-title-btn')) return;
         focusWindow(id);
         const w = S.windows.find(w => w.id === id);
         if (w.maximized) return;
         S.dragWindow = {id, startX:e.clientX, startY:e.clientY, origX:w.x, origY:w.y};
+        document.body.classList.add('dragging');
     });
+    title.addEventListener('dblclick', e => { if (!e.target.closest('.window-title-btn')) toggleMaximize(id); });
     el.querySelector('.window-resize').addEventListener('mousedown', e => {
         e.stopPropagation(); focusWindow(id);
         const w = S.windows.find(w => w.id === id);
         if (w.maximized) return;
         S.resizeWindow = {id, startX:e.clientX, startY:e.clientY, origW:w.w, origH:w.h};
+        document.body.classList.add('dragging');
     });
     el.addEventListener('mousedown', () => focusWindow(id));
+    el.querySelectorAll('iframe').forEach(f => hookFrame(f, id));
     if (opts.onMount) opts.onMount(el, id);
     return id;
 }
@@ -764,19 +961,49 @@ function createAppWindow(opts) {
 /* ==============================================
    SITE WINDOWS
    ============================================== */
-function openSiteWindow(site) {
-    let content;
-    if (site.external) {
-        content = `<div class="open-external"><img src="${site.image}" alt="${site.title}"><p style="font-size:13px">${site.desc}</p><a href="${site.url}" target="_blank">Open ${site.title.replace(/\n/g,' ')} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px"></i></a></div>`;
-    } else {
-        content = `<iframe src="${site.url}" title="${site.title}" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"></iframe>`;
-    }
+// Pages run in same-origin iframes. Popups (stream links and such) escape the
+// sandbox so outside sites open normally in their own tab.
+const FRAME_SANDBOX = 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads';
+function openPageWindow(o) {
     const mob = window.innerWidth <= 640;
     const dr = document.getElementById('desktop').getBoundingClientRect();
-    createAppWindow({id:site.id, title:site.title.replace(/\n/g,' '), icon:site.icon, color:site.color,
+    createAppWindow({id:o.id, title:o.title, icon:o.icon, color:o.color,
         w: mob ? dr.width-8 : Math.min(900,dr.width-40),
-        h: mob ? dr.height-8 : Math.min(dr.height-60,dr.height-40),
-        content, siteUrl: site.external ? null : site.url});
+        h: mob ? dr.height-8 : dr.height-60,
+        content:`<iframe src="${o.url}" title="${esc(o.title)}" sandbox="${FRAME_SANDBOX}"></iframe>`,
+        siteUrl:o.url});
+}
+function openSiteWindow(site) {
+    const title = site.title.replace(/\n/g,' ');
+    if (site.external) {
+        createAppWindow({id:site.id, title, icon:site.icon, color:site.color, w:500, h:420,
+            content:`<div class="open-external"><img src="${site.image}" alt="${title}"><p style="font-size:13px">${site.desc}</p><a href="${site.url}" target="_blank">Open ${title} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px"></i></a></div>`});
+        return;
+    }
+    openPageWindow({id:site.id, title, icon:site.icon, color:site.color, url:site.url});
+}
+// An iframe keeps its mouse and key events to itself, so the desktop listens
+// inside each one: clicking an app window brings it to the front, using an app
+// keeps the screensaver away, and the window switcher works from inside apps.
+function hookFrame(iframe, id) {
+    iframe.addEventListener('load', () => {
+        let doc;
+        try { doc = iframe.contentDocument; } catch(e) { return; }
+        if (!doc) return;
+        doc.addEventListener('pointerdown', () => { focusWindow(id); closeStartMenu(); closeContextMenu(); noteActivity(); }, true);
+        ['mousemove','wheel','touchstart','scroll','input'].forEach(t => doc.addEventListener(t, noteActivity, {capture:true, passive:true}));
+        doc.addEventListener('keydown', e => { noteActivity(); switcherKeyDown(e); }, true);
+        doc.addEventListener('keyup', switcherKeyUp, true);
+    });
+}
+function openProps(id) {
+    const s = sites.find(x => x.id === id);
+    if (!s) return;
+    const name = s.title.replace(/\n/g,' ');
+    createAppWindow({id:'props:' + id, title:name + ' Properties', icon:'fa-solid fa-circle-info', color:s.color,
+        w:340, h:Math.min(440, document.getElementById('desktop').clientHeight - 8),
+        content:`<div class="props-wrap"><div class="props-head"><i class="${s.icon}" style="color:${s.color}"></i><b>${name}</b></div><div class="props-row"><span>Type:</span><span>Web app</span></div><div class="props-row"><span>Location:</span><span>www.ron.computer/${s.url.replace('./','')}</span></div><p class="props-desc">${s.desc}</p>${s.image ? `<img class="props-shot" src="${s.image}" alt="">` : ''}<div class="props-btns"><button onclick="openById('${id}')">Open</button><button onclick="copyLink('${id}')">Copy link</button></div></div>`
+    });
 }
 
 /* ==============================================
@@ -786,7 +1013,7 @@ function openAboutWindow() {
     const mob = window.innerWidth <= 640;
     createAppWindow({id:'about', title:'About Me', icon:'fa-solid fa-user', color:'#3169C6',
         x: mob ? 4 : 150, y:80, w: mob ? Math.min(340,window.innerWidth-16) : 380, h:380,
-        content:`<div class="about-content"><img src="ron.jpg" alt="Profile" class="about-avatar"><h2>aaron mclellan</h2><p>director of front-end engineering at <a href="https://www.s3.com" target="_blank">S3</a></p><p>i make websites as a form of self expression.<br>sometimes silly, sometimes useful, sometimes pointless</p><p style="font-size:11px;opacity:0.7;margin-top:4px">double-click the icons on the desktop to check them out.<br>drag them around, right-click for options, and try the different themes.</p><p><a href="https://bsky.app/profile/ron.computer" target="_blank"><i class="fa-brands fa-bluesky"></i> bluesky</a>&nbsp;&nbsp;<a href="https://github.com/aaronmclellan" target="_blank"><i class="fa-brands fa-github"></i> github</a></p><br><p style="font-size:10px;opacity:0.5">vue.js &bull; tailwind css &bull; bootstrap</p></div>`
+        content:`<div class="about-content"><img src="ron-avatar.jpg" alt="Profile" class="about-avatar"><h2>aaron mclellan</h2><p>director of front-end engineering at <a href="https://www.s3.com" target="_blank">S3</a></p><p>i make websites as a form of self expression.<br>sometimes silly, sometimes useful, sometimes pointless</p><p style="font-size:11px;opacity:0.7;margin-top:4px">double-click the icons on the desktop to check them out.<br>drag them around, right-click for options, and try the different themes.</p><p><a href="https://bsky.app/profile/ron.computer" target="_blank"><i class="fa-brands fa-bluesky"></i> bluesky</a>&nbsp;&nbsp;<a href="https://github.com/aaronmclellan" target="_blank"><i class="fa-brands fa-github"></i> github</a></p><br><p style="font-size:10px;opacity:0.5">vue.js &bull; tailwind css &bull; bootstrap</p></div>`
     });
 }
 
@@ -794,9 +1021,31 @@ function openAboutWindow() {
    RECYCLE BIN
    ============================================== */
 function openRecycleBin() {
+    const rows = trash.map(t => `<div class="rb-row item" data-id="${t.id}"><span><i class="fa-solid fa-file-code"></i>${t.title}</span><span>${t.from}</span><span>${t.deleted}</span></div>`).join('');
     createAppWindow({id:'recyclebin', title:'Recycle Bin', icon:'fa-solid fa-trash-can', color:'#888',
-        w:320, h:220,
-        content:`<div class="about-content" style="display:flex;align-items:center;justify-content:center;opacity:0.4"><p><i class="fa-solid fa-trash-can" style="font-size:48px"></i><br><br>Recycle Bin is empty</p></div>`
+        w:460, h:250,
+        content:`<div class="rb-wrap"><div class="rb-toolbar"><button class="rb-restore" disabled>Restore</button><button onclick="emptyRecycleBin()">Empty Recycle Bin</button></div><div class="rb-list"><div class="rb-row head"><span>Name</span><span>Original Location</span><span>Date Deleted</span></div>${rows}</div></div>`,
+        onMount(el) {
+            const restore = el.querySelector('.rb-restore');
+            let sel = null;
+            el.querySelectorAll('.rb-row.item').forEach(row => {
+                row.addEventListener('click', () => {
+                    el.querySelectorAll('.rb-row.sel').forEach(r => r.classList.remove('sel'));
+                    row.classList.add('sel'); sel = row.dataset.id; restore.disabled = false;
+                });
+                row.addEventListener('dblclick', () => openTrashItem(row.dataset.id));
+            });
+            restore.addEventListener('click', () => { if (sel) openTrashItem(sel); });
+        }
+    });
+}
+function openTrashItem(id) {
+    const t = trash.find(x => x.id === id);
+    if (t) openPageWindow({id:'trash:' + id, title:t.title, icon:'fa-solid fa-file-code', color:'#888', url:'./' + t.file});
+}
+function emptyRecycleBin() {
+    createAppWindow({id:'rb-error', title:'Error Deleting File', icon:'fa-solid fa-circle-xmark', color:'#e81123', w:340, h:170,
+        content:`<div class="dialog-wrap"><div class="dialog-msg"><i class="fa-solid fa-circle-xmark"></i><div>Cannot empty the Recycle Bin.<br>These files have sentimental value.</div></div><div class="dialog-btns"><button onclick="closeWindowFor('rb-error')">OK</button></div></div>`
     });
 }
 
@@ -1021,13 +1270,15 @@ function cmdExec(cmd) {
     const args = c.split(/\s+/);
     out.textContent += `C:\\> ${cmd}\n`;
     if (!c) {}
-    else if (c==='help') out.textContent += 'Available commands:\n  help     - Show this message\n  dir/ls   - List sites\n  cls      - Clear screen\n  open [n] - Open a site by name\n  theme [t]- Set theme (95/98/xp/vista)\n  echo [t] - Print text\n  date     - Show date\n  time     - Show time\n  ver      - Show version\n  whoami   - Who are you?\n  color    - Random color\n  about    - About me\n  exit     - Close prompt\n';
+    else if (c==='help') out.textContent += 'Available commands:\n  help     - Show this message\n  dir/ls   - List sites\n  cls      - Clear screen\n  open [n] - Open a site or program\n  theme [t]- Set theme (95/98/xp/vista)\n  echo [t] - Print text\n  date     - Show date\n  time     - Show time\n  ver      - Show version\n  whoami   - Who are you?\n  color    - Random color\n  about    - About me\n  exit     - Close prompt\n';
     else if (c==='dir'||c==='ls') { out.textContent += '\n Directory of C:\\Sites\n\n'; sites.forEach(s => out.textContent += `  ${s.title.replace(/\n/g,' ').padEnd(20)} ${s.desc}\n`); out.textContent += `\n  ${sites.length} file(s)\n`; }
     else if (c==='cls'||c==='clear') out.textContent = '';
     else if (args[0]==='open') {
         const name = args.slice(1).join(' ');
-        const site = sites.find(s => s.id === name || s.title.replace(/\n/g,' ').toLowerCase().includes(name));
+        const site = name && sites.find(s => s.id === name || s.title.replace(/\n/g,' ').toLowerCase().includes(name));
+        const app = name && Object.keys(apps).find(k => k === name || apps[k].title.toLowerCase().includes(name));
         if (site) { openSiteWindow(site); out.textContent += `Opening ${site.title.replace(/\n/g,' ')}...\n`; }
+        else if (app) { openById(app); out.textContent += `Opening ${apps[app].title}...\n`; }
         else out.textContent += `Unknown site: ${name}. Try "dir" to see available sites.\n`;
     }
     else if (args[0]==='theme') {
@@ -1145,12 +1396,12 @@ function pianoInit(el) {
 /* ==============================================
    FILE EXPLORER
    ============================================== */
+function programItems() {
+    return Object.entries(apps).filter(([, a]) => a.program && a.title !== 'File Explorer')
+        .map(([id, a]) => `<div class="explorer-file" ondblclick="openById('${id}')"><i class="${a.icon}" style="color:${a.color}"></i><span>${a.title}</span></div>`).join('');
+}
 function openExplorer() {
     const siteItems = sites.map(s => `<div class="explorer-file" ondblclick="openSiteWindow(sites.find(x=>x.id==='${s.id}'))"><i class="${s.icon}" style="color:${s.color}"></i><span>${s.title.replace(/\n/g,' ')}</span></div>`).join('');
-    const appItems = ['Paint:fa-solid fa-paintbrush:openPaint','Minesweeper:fa-solid fa-bomb:openMinesweeper','Media Player:fa-solid fa-music:openMediaPlayer','Command Prompt:fa-solid fa-terminal:openCmd'].map(a => {
-        const [name,icon,fn] = a.split(':');
-        return `<div class="explorer-file" ondblclick="${fn}()"><i class="${icon}" style="color:#4a90d9"></i><span>${name}</span></div>`;
-    }).join('');
 
     createAppWindow({id:'explorer', title:'File Explorer', icon:'fa-solid fa-folder-open', color:'#f0c040',
         w:580, h:380,
@@ -1165,10 +1416,7 @@ function explorerNav(el, section) {
     if (section === 'sites') {
         files.innerHTML = sites.map(s => `<div class="explorer-file" ondblclick="openSiteWindow(sites.find(x=>x.id==='${s.id}'))"><i class="${s.icon}" style="color:${s.color}"></i><span>${s.title.replace(/\n/g,' ')}</span></div>`).join('');
     } else if (section === 'apps') {
-        files.innerHTML = ['Paint:fa-solid fa-paintbrush:openPaint','Minesweeper:fa-solid fa-bomb:openMinesweeper','Media Player:fa-solid fa-music:openMediaPlayer','Command Prompt:fa-solid fa-terminal:openCmd'].map(a => {
-            const [name,icon,fn] = a.split(':');
-            return `<div class="explorer-file" ondblclick="${fn}()"><i class="${icon}" style="color:#4a90d9"></i><span>${name}</span></div>`;
-        }).join('');
+        files.innerHTML = programItems();
     } else if (section === 'docs') {
         files.innerHTML = '<div style="padding:20px;opacity:0.4;text-align:center;width:100%"><i class="fa-solid fa-folder-open" style="font-size:32px"></i><br><br>This folder is empty</div>';
     }
@@ -1206,21 +1454,59 @@ function openDisplayProps() {
 function focusWindow(id) {
     const el = document.getElementById('window-'+id);
     if (!el) return;
+    if (S.focusedId === id && +el.style.zIndex === S.nextZ) return;
     el.style.zIndex = ++S.nextZ;
     document.querySelectorAll('.window').forEach(w => w.classList.add('inactive'));
     el.classList.remove('inactive');
+    S.focusedId = id;
+    S.mru = [id, ...S.mru.filter(x => x !== id)];
+    renderTaskbarWindows(); updateHash(); saveSession();
 }
-function minimizeWindow(id) {
-    const w = S.windows.find(w => w.id===id); if(!w) return;
+const zOf = w => parseInt(document.getElementById('window-' + w.id)?.style.zIndex) || 0;
+// After a close or minimize, focus passes to the topmost window still showing.
+function focusTopWindow() {
+    S.focusedId = null;
+    const top = S.windows.filter(w => !w.closed && !w.minimized).sort((a, b) => zOf(b) - zOf(a))[0];
+    if (top) { focusWindow(top.id); return; }
+    document.querySelectorAll('.window').forEach(w => w.classList.add('inactive'));
+    renderTaskbarWindows(); updateHash(); saveSession();
+}
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Shrink a window into its taskbar button, or grow it back out.
+function animateTaskbar(el, id, reverse) {
+    const btn = document.querySelector(`.taskbar-window-btn[data-wid="${id}"]`);
+    if (reduceMotion || !btn || !el.animate) return null;
+    const from = el.getBoundingClientRect(), to = btn.getBoundingClientRect();
+    if (!from.width || !from.height) return null;
+    const shrunk = `translate(${to.left - from.left}px,${to.top - from.top}px) scale(${to.width / from.width},${to.height / from.height})`;
+    const frames = [{transformOrigin:'0 0', transform:'none', opacity:1}, {transformOrigin:'0 0', transform:shrunk, opacity:0.3}];
+    return el.animate(reverse ? frames.reverse() : frames, {duration:180, easing:reverse ? 'ease-out' : 'ease-in'});
+}
+function minimizeWindow(id, instant) {
+    const w = S.windows.find(w => w.id===id); if(!w || w.minimized) return;
     w.minimized = true;
-    const el = document.getElementById('window-'+id); if(el) el.classList.add('minimized');
-    renderTaskbarWindows();
+    S.mru = [...S.mru.filter(x => x !== id), id];
+    const el = document.getElementById('window-'+id);
+    let hidden = false;
+    const hide = () => {
+        if (hidden || !w.minimized) return;
+        hidden = true;
+        if (el) el.classList.add('minimized');
+        if (S.focusedId === id) focusTopWindow(); else { renderTaskbarWindows(); saveSession(); }
+    };
+    const anim = el && !instant ? animateTaskbar(el, id, false) : null;
+    // The timer covers a tab that isn't painting, where the animation never ends.
+    if (anim) { anim.onfinish = hide; setTimeout(hide, 250); } else hide();
 }
 function restoreWindow(id) {
     const w = S.windows.find(w => w.id===id); if(!w) return;
-    w.minimized = false;
-    const el = document.getElementById('window-'+id); if(el) el.classList.remove('minimized');
-    focusWindow(id); renderTaskbarWindows();
+    const el = document.getElementById('window-'+id);
+    if (w.minimized) {
+        w.minimized = false;
+        if (el) { el.classList.remove('minimized'); animateTaskbar(el, id, true); }
+        S.focusedId = null;
+    }
+    focusWindow(id);
 }
 function toggleMaximize(id) {
     const w = S.windows.find(w => w.id===id); if(!w) return;
@@ -1235,14 +1521,118 @@ function toggleMaximize(id) {
         w.x=0;w.y=0;w.w=d.clientWidth;w.h=d.clientHeight;
         el.style.left='0';el.style.top='0';el.style.width='100%';el.style.height='100%';el.style.borderRadius='0';
     }
-    focusWindow(id);
+    focusWindow(id); saveSession();
 }
 function closeWindow(id) {
     const w = S.windows.find(w => w.id===id); if(!w) return;
     w.closed = true;
     const el = document.getElementById('window-'+id); if(el) el.remove();
     if (w.siteId==='minesweeper' && S.minesTimer) clearInterval(S.minesTimer);
-    renderTaskbarWindows(); playBlip();
+    S.mru = S.mru.filter(x => x !== id);
+    if (S.focusedId === id) focusTopWindow(); else { renderTaskbarWindows(); saveSession(); }
+    playBlip();
+}
+function closeWindowFor(siteId) {
+    const w = S.windows.find(x => x.siteId === siteId && !x.closed);
+    if (w) closeWindow(w.id);
+}
+// Keep part of the title bar on screen so a window can always be dragged back.
+function clampWin(w) {
+    const d = document.getElementById('desktop');
+    w.w = Math.min(w.w, d.clientWidth); w.h = Math.min(w.h, d.clientHeight);
+    w.x = clamp(w.x, 80 - w.w, d.clientWidth - 80);
+    w.y = clamp(w.y, 0, d.clientHeight - 30);
+}
+function applyRect(w) {
+    const el = document.getElementById('window-' + w.id);
+    if (el) { el.style.left = w.x+'px'; el.style.top = w.y+'px'; el.style.width = w.w+'px'; el.style.height = w.h+'px'; }
+}
+
+/* ==============================================
+   SESSION RESTORE & DEEP LINKS
+   ============================================== */
+function saveSession() {
+    if (S.restoring) return;
+    const open = S.windows.filter(w => !w.closed && canOpen(w.siteId)).sort((a, b) => zOf(a) - zOf(b)).map(w => {
+        const r = w.maximized && w.prevRect ? w.prevRect : w;
+        return {id:w.siteId, x:r.x, y:r.y, w:r.w, h:r.h, max:w.maximized, min:w.minimized};
+    });
+    try { localStorage.setItem('openWindows', JSON.stringify(open)); } catch(e) {}
+}
+// Reopen the windows from the last visit where they were, bottom to top.
+function restoreSession() {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem('openWindows')) || []; } catch(e) {}
+    const d = document.getElementById('desktop');
+    S.restoring = true;
+    list.forEach(s => {
+        if (!openById(s.id)) return;
+        const w = S.windows.find(x => x.siteId === s.id && !x.closed);
+        if (!w) return;
+        if (s.w <= d.clientWidth && s.h <= d.clientHeight) { Object.assign(w, {x:s.x, y:s.y, w:s.w, h:s.h}); clampWin(w); applyRect(w); }
+        if (s.max) toggleMaximize(w.id);
+        if (s.min) minimizeWindow(w.id, true);
+    });
+    S.restoring = false;
+    return list.length > 0;
+}
+// The address bar follows the focused window (ron.computer/#cocktails), so
+// any window can be shared or bookmarked.
+function updateHash() {
+    if (S.restoring) return;
+    const w = S.windows.find(x => x.id === S.focusedId && !x.closed && !x.minimized);
+    const h = w && canOpen(w.siteId) ? '#' + w.siteId : '';
+    if (location.hash === h) return;
+    try { history.replaceState(null, '', h || location.pathname + location.search); } catch(e) {}
+}
+function copyLink(id) {
+    const url = 'https://www.ron.computer/#' + id;
+    const done = ok => showBalloon({title: ok ? 'Link copied' : 'Link to share', text:url, icon:'fa-solid fa-link', color:'#3169C6', timeout:5000});
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => done(true), () => done(false));
+    else done(false);
+}
+window.addEventListener('hashchange', () => openById(decodeURIComponent(location.hash.slice(1))));
+
+/* ==============================================
+   WINDOW SWITCHER (Alt+` or Alt+Tab)
+   ============================================== */
+// Alt+Tab belongs to the OS on Windows, so Alt+` works too. On a Mac,
+// Option+Tab reaches the page.
+function switcherKeyDown(e) {
+    if (e.altKey && (e.key === 'Tab' || e.code === 'Backquote')) {
+        const list = S.mru.filter(id => S.windows.some(w => w.id === id && !w.closed));
+        if (!list.length) return;
+        e.preventDefault();
+        if (!S.switcher) { S.switcher = {list, i:0}; closeStartMenu(); closeContextMenu(); }
+        const n = S.switcher.list.length;
+        S.switcher.i = (S.switcher.i + (e.shiftKey ? n - 1 : 1)) % n;
+        renderSwitcher();
+    } else if (e.key === 'Escape' && S.switcher) {
+        e.preventDefault(); closeSwitcher(false);
+    }
+}
+function switcherKeyUp(e) { if (S.switcher && e.key === 'Alt') closeSwitcher(true); }
+function renderSwitcher() {
+    const sw = S.switcher, items = document.getElementById('switcher-items');
+    items.innerHTML = sw.list.map((id, i) => {
+        const w = S.windows.find(x => x.id === id);
+        return `<div class="switcher-item${i === sw.i ? ' sel' : ''}" data-i="${i}" title="${esc(w.title)}"><i class="${w.icon}" style="color:${w.color}"></i></div>`;
+    }).join('');
+    items.querySelectorAll('.switcher-item').forEach(el => el.addEventListener('click', () => { sw.i = +el.dataset.i; closeSwitcher(true); }));
+    document.getElementById('switcher-title').textContent = S.windows.find(x => x.id === sw.list[sw.i]).title;
+    document.getElementById('switcher').classList.add('open');
+}
+function closeSwitcher(commit) {
+    const sw = S.switcher;
+    if (!sw) return;
+    S.switcher = null;
+    document.getElementById('switcher').classList.remove('open');
+    if (!commit) return;
+    const id = sw.list[sw.i];
+    restoreWindow(id);
+    // Move the keyboard along too, out of the window we came from.
+    const target = document.querySelector(`#window-${id} iframe, #window-${id} input, #window-${id} textarea`);
+    if (target) target.focus(); else document.activeElement?.blur?.();
 }
 
 /* ==============================================
@@ -1276,6 +1666,7 @@ function applySnap(id, zone) {
     el.style.left=w.x+'px';el.style.top=w.y+'px';el.style.width=w.w+'px';el.style.height=w.h+'px';
     if (zone==='full') el.style.borderRadius='0';
     document.getElementById('snap-indicator').style.display = 'none';
+    saveSession();
 }
 
 /* ==============================================
@@ -1286,15 +1677,14 @@ function renderTaskbarWindows() {
     c.innerHTML = '';
     S.windows.filter(w => !w.closed).forEach(win => {
         const btn = document.createElement('button');
-        btn.className = 'taskbar-window-btn' + (win.minimized ? '' : ' active');
+        btn.className = 'taskbar-window-btn' + (win.id === S.focusedId && !win.minimized ? ' active' : '');
+        btn.dataset.wid = win.id;
+        btn.title = win.title;
         btn.innerHTML = `<i class="${win.icon}" style="color:${win.color};font-size:12px"></i> ${win.title}`;
         btn.onclick = () => {
             if (win.minimized) restoreWindow(win.id);
-            else {
-                const el = document.getElementById('window-'+win.id);
-                if (el && parseInt(el.style.zIndex) === S.nextZ) minimizeWindow(win.id);
-                else focusWindow(win.id);
-            }
+            else if (win.id === S.focusedId) minimizeWindow(win.id);
+            else focusWindow(win.id);
         };
         c.appendChild(btn);
     });
@@ -1303,20 +1693,210 @@ function renderTaskbarWindows() {
 /* ==============================================
    START MENU & CONTEXT MENU
    ============================================== */
-function toggleStartMenu() { S.startMenuOpen=!S.startMenuOpen; document.getElementById('start-menu').classList.toggle('open',S.startMenuOpen); closeContextMenu(); }
-function closeStartMenu() { S.startMenuOpen=false; document.getElementById('start-menu').classList.remove('open'); }
-function showContextMenu(x,y) {
-    const m=document.getElementById('context-menu'); m.style.left=x+'px'; m.style.top=y+'px'; m.classList.add('open'); S.contextMenuOpen=true;
-    const r=m.getBoundingClientRect();
-    if(r.right>window.innerWidth) m.style.left=(x-r.width)+'px';
-    if(r.bottom>window.innerHeight) m.style.top=(y-r.height)+'px';
+function toggleStartMenu() { S.startMenuOpen=!S.startMenuOpen; document.getElementById('start-menu').classList.toggle('open',S.startMenuOpen); closeContextMenu(); if (!S.startMenuOpen) closeFlyout(); }
+function closeStartMenu() { S.startMenuOpen=false; document.getElementById('start-menu').classList.remove('open'); closeFlyout(); }
+function buildStartMenu() {
+    document.getElementById('start-projects').innerHTML = sites.map(s => `<div class="start-menu-item" onclick="openById('${s.id}');closeStartMenu()" title="${esc(s.desc)}"><i class="${s.icon}" style="color:${s.color}"></i> ${s.title.replace(/\n/g,' ')}</div>`).join('');
+    document.getElementById('start-flyout').innerHTML = Object.entries(apps).filter(([, a]) => a.program)
+        .map(([id, a]) => `<div class="start-menu-item" onclick="openById('${id}');closeStartMenu()"><i class="${a.icon}"></i> ${a.title}</div>`).join('');
+    // Pointing at any other item closes the Programs flyout, like Windows.
+    document.querySelectorAll('#start-menu .start-menu-item:not(#start-programs)').forEach(el => el.addEventListener('mouseenter', closeFlyout));
+}
+function openFlyout() {
+    const f = document.getElementById('start-flyout'), item = document.getElementById('start-programs');
+    f.classList.add('open'); item.classList.add('sub-open');
+    const r = item.getBoundingClientRect(), bottom = document.getElementById('taskbar').getBoundingClientRect().top;
+    let left = r.right - 3;
+    // No room on the right (phones): overlap the Start menu instead.
+    if (left + f.offsetWidth > window.innerWidth - 4) left = Math.max(4, window.innerWidth - f.offsetWidth - 4);
+    f.style.left = left + 'px';
+    f.style.top = Math.max(0, Math.min(r.top - 4, bottom - f.offsetHeight)) + 'px';
+}
+function closeFlyout() {
+    document.getElementById('start-flyout').classList.remove('open');
+    document.getElementById('start-programs').classList.remove('sub-open');
+}
+// items: [{label, icon, run}] with '-' for a separator.
+function showMenu(items, x, y) {
+    const m = document.getElementById('context-menu');
+    m.innerHTML = '';
+    items.forEach(it => {
+        if (it === '-') { m.insertAdjacentHTML('beforeend', '<hr class="ctx-separator">'); return; }
+        const d = document.createElement('div');
+        d.className = 'ctx-item';
+        d.innerHTML = `<i class="${it.icon}" style="width:16px"></i> ${it.label}`;
+        d.addEventListener('click', () => { closeContextMenu(); it.run(); });
+        m.appendChild(d);
+    });
+    closeStartMenu();
+    m.style.left = x + 'px'; m.style.top = y + 'px'; m.classList.add('open'); S.contextMenuOpen = true;
+    const r = m.getBoundingClientRect();
+    if (r.right > window.innerWidth) m.style.left = Math.max(0, x - r.width) + 'px';
+    if (r.bottom > window.innerHeight) m.style.top = Math.max(0, y - r.height) + 'px';
+}
+function showDesktopMenu(x, y) {
+    showMenu([
+        {label:'Arrange Icons', icon:'fa-solid fa-border-all', run:() => arrangeIcons('grid')},
+        {label:'Sort by Name', icon:'fa-solid fa-arrow-down-a-z', run:() => arrangeIcons('name')},
+        '-',
+        {label:'Refresh', icon:'fa-solid fa-rotate-right', run:() => location.reload()},
+        '-',
+        {label:'Display Properties', icon:'fa-solid fa-palette', run:() => openDisplayProps()},
+        {label:'Properties', icon:'fa-solid fa-circle-info', run:() => openAboutWindow()},
+    ], x, y);
 }
 function closeContextMenu() { document.getElementById('context-menu').classList.remove('open'); S.contextMenuOpen=false; }
+
+/* ==============================================
+   TRAY ALERTS
+   ============================================== */
+// The apps' own data, surfaced in the system tray: hail warnings for the ZIP
+// saved in Hail Watch, matches for teams favorited in the CS2 tracker, and the
+// next F1 race (in the clock tooltip, plus a heads-up near lights out).
+function setTray(key, item) {
+    const c = document.getElementById('tray-icons');
+    let b = c.querySelector(`[data-key="${key}"]`);
+    if (!item) { if (b) b.remove(); return; }
+    if (!b) { b = document.createElement('button'); b.className = 'tray-btn tray-icon'; b.dataset.key = key; c.appendChild(b); }
+    b.title = item.title;
+    b.innerHTML = `<i class="${item.icon}" style="color:${item.color}"></i>`;
+    b.onclick = () => openById(item.open);
+}
+const balloons = [];
+let balloonTimer = null;
+function showBalloon(b) {
+    balloons.push(b);
+    if (balloons.length === 1) renderBalloon();
+}
+function nextBalloon() { balloons.shift(); renderBalloon(); }
+function renderBalloon() {
+    const el = document.getElementById('balloon'), b = balloons[0];
+    clearTimeout(balloonTimer);
+    if (!b) { el.classList.remove('show'); return; }
+    if (document.getElementById('clippy').classList.contains('show')) dismissClippy();
+    el.innerHTML = `<button class="balloon-close" title="Close">&times;</button><div class="balloon-title"><i class="${b.icon}" style="color:${b.color}"></i>${esc(b.title)}</div><div>${esc(b.text)}</div>`;
+    el.onclick = e => { if (!e.target.closest('.balloon-close') && b.open) openById(b.open); nextBalloon(); };
+    el.classList.remove('show'); void el.offsetWidth; el.classList.add('show');
+    // Point the tail at the tray icon, or at the clock.
+    const anchor = (b.key && document.querySelector(`.tray-icon[data-key="${b.key}"]`)) || document.getElementById('clock');
+    const a = anchor.getBoundingClientRect(), r = el.getBoundingClientRect();
+    el.style.setProperty('--tail', clamp(r.right - (a.left + a.width / 2) - 7, 10, r.width - 24) + 'px');
+    balloonTimer = setTimeout(nextBalloon, b.timeout || 15000);
+}
+// Each alert pops a balloon once; the tray icon stays while it's current.
+function alertOnce(id, b) {
+    let seen = {};
+    try { seen = JSON.parse(localStorage.getItem('trayAlertsSeen')) || {}; } catch(e) {}
+    if (seen[id]) return;
+    const now = Date.now();
+    for (const k in seen) if (now - seen[k] > 7 * 864e5) delete seen[k];
+    seen[id] = now;
+    try { localStorage.setItem('trayAlertsSeen', JSON.stringify(seen)); } catch(e) {}
+    showBalloon(b);
+}
+async function checkHail() {
+    const zip = localStorage.getItem('hailZip');
+    if (!zip) return; // only for visitors who use Hail Watch
+    let loc = null;
+    try { loc = JSON.parse(localStorage.getItem('trayHailLoc')); } catch(e) {}
+    if (!loc || loc.zip !== zip) {
+        const r = await fetch('https://api.zippopotam.us/us/' + zip);
+        if (!r.ok) return;
+        const p = (await r.json()).places[0];
+        loc = {zip, lat:p.latitude, lon:p.longitude, name:`${p['place name']}, ${p['state abbreviation']}`};
+        localStorage.setItem('trayHailLoc', JSON.stringify(loc));
+    }
+    const r = await fetch(`https://api.weather.gov/alerts/active?point=${loc.lat},${loc.lon}`);
+    if (!r.ok) return;
+    const hail = ((await r.json()).features || []).filter(f => /hail/i.test(f.properties?.event || '') || /hail/i.test(f.properties?.description || ''));
+    if (!hail.length) { setTray('hail', null); return; }
+    const p = hail[0].properties;
+    const item = {icon:'fa-solid fa-cloud-bolt', color:'#4fc3f7', title:`${p.event} (${loc.name})`, open:'hail'};
+    setTray('hail', item);
+    alertOnce('hail:' + hail[0].id, {...item, key:'hail', title:p.event, text:p.headline || `Hail is possible in ${loc.name}.`});
+}
+async function checkF1() {
+    let c = null;
+    try { c = JSON.parse(localStorage.getItem('trayF1')); } catch(e) {}
+    if (!c || Date.now() - c.ts > 30 * 60e3) {
+        const r = await fetch('https://api.jolpi.ca/ergast/f1/current/next/?format=json');
+        if (!r.ok) return;
+        const race = (await r.json()).MRData?.RaceTable?.Races?.[0];
+        c = {ts:Date.now(), race: race ? {id:race.season + '-' + race.round, name:race.raceName, start:Date.parse(race.date + 'T' + (race.time || '12:00:00Z'))} : null};
+        localStorage.setItem('trayF1', JSON.stringify(c));
+    }
+    S.f1 = c.race; updateClock();
+    const race = c.race, until = race ? race.start - Date.now() : NaN;
+    // Tray icon from an hour before lights out until the race should be over.
+    if (!race || !(until <= 3600e3 && until > -2.5 * 3600e3)) { setTray('f1', null); return; }
+    const live = until <= 0;
+    const item = {icon:'fa-solid fa-flag-checkered', color:'#e10600', title:`${race.name}: ${live ? 'on now' : 'lights out ' + relTime(until)}`, open:'f1'};
+    setTray('f1', item);
+    alertOnce(`f1:${race.id}:${live ? 'live' : 'soon'}`, {...item, key:'f1', title:'f1.wtf', text:live ? `The ${race.name} is on now.` : `The ${race.name} starts ${relTime(until)}.`});
+}
+// Per-team calendar feeds the CS2 data Action publishes. cs.html saves the
+// favorite teams' keys, which are also the feed file names.
+const CS_ICS = 'https://raw.githubusercontent.com/aaronmclellan/aaronmclellan.github.io/cs-data/ics/';
+async function checkCS2() {
+    let keys = [];
+    try { keys = JSON.parse(localStorage.getItem('cs2_favorite_keys')) || []; } catch(e) {}
+    if (!keys.length) { setTray('cs2', null); return; }
+    const now = Date.now(), seen = new Set(), live = [], soon = [];
+    await Promise.all(keys.slice(0, 8).map(async k => {
+        const r = await fetch(CS_ICS + encodeURIComponent(k) + '.ics?t=' + Math.floor(now / 300000), {cache:'no-cache'}).catch(() => null);
+        if (!r || !r.ok) return;
+        parseIcs(await r.text()).forEach(ev => {
+            // Finished matches carry a score ("A 2-1 B") instead of "vs".
+            if (seen.has(ev.uid) || !/ vs /.test(ev.summary || '')) return;
+            seen.add(ev.uid);
+            if (ev.start <= now && now < ev.end) live.push(ev);
+            else if (ev.start > now && ev.start - now <= 15 * 60e3) soon.push(ev);
+        });
+    }));
+    const first = live[0] || soon[0];
+    if (!first) { setTray('cs2', null); return; }
+    const status = ev => ev.start <= now ? 'on now' : 'starts ' + relTime(ev.start - now);
+    const item = {icon:'fa-solid fa-crosshairs', color:'#f59e0b', title:`${first.summary}: ${status(first)}`, open:'cs2'};
+    setTray('cs2', item);
+    [...live, ...soon].forEach(ev => alertOnce(`cs2:${ev.uid}:${ev.start <= now ? 'live' : 'soon'}`,
+        {...item, key:'cs2', title:'cs2 tracker', text:`${ev.summary} ${ev.start <= now ? 'is on now' : status(ev)}${ev.where ? ' (' + ev.where + ')' : ''}.`}));
+}
+function parseIcs(text) {
+    const unesc = v => v.replace(/\\n/gi, ' ').replace(/\\([,;\\])/g, '$1');
+    const date = v => Date.UTC(+v.slice(0,4), +v.slice(4,6) - 1, +v.slice(6,8), +v.slice(9,11), +v.slice(11,13), +v.slice(13,15));
+    const out = [];
+    let ev = null;
+    text.replace(/\r?\n[ \t]/g, '').split(/\r?\n/).forEach(line => {
+        if (line === 'BEGIN:VEVENT') ev = {};
+        else if (line === 'END:VEVENT') { if (ev) out.push(ev); ev = null; }
+        else if (ev) {
+            const i = line.indexOf(':'), key = line.slice(0, i).split(';')[0], v = line.slice(i + 1);
+            if (key === 'UID') ev.uid = v;
+            else if (key === 'SUMMARY') ev.summary = unesc(v);
+            else if (key === 'LOCATION') ev.where = unesc(v);
+            else if (key === 'DTSTART') ev.start = date(v);
+            else if (key === 'DTEND') ev.end = date(v);
+        }
+    });
+    return out;
+}
+function runTrayChecks() {
+    [checkHail, checkCS2, checkF1].forEach(fn => fn().catch(e => console.warn('[tray]', e)));
+}
+// Favorites or the ZIP changed in an app window: refresh right away.
+window.addEventListener('storage', e => {
+    if (e.key === 'cs2_favorite_keys') checkCS2().catch(() => {});
+    if (e.key === 'hailZip') checkHail().catch(() => {});
+});
 
 /* ==============================================
    CLIPPY
    ============================================== */
 function showClippy() {
+    // Don't interrupt someone using one of the apps, or talk over a balloon.
+    const busy = S.windows.some(w => w.id === S.focusedId && !w.minimized && document.querySelector(`#window-${w.id} iframe`))
+        || document.getElementById('balloon').classList.contains('show');
+    if (busy) { clearTimeout(S.clippyTimer); S.clippyTimer = setTimeout(showClippy, 30000); return; }
     const el = document.getElementById('clippy');
     const text = document.getElementById('clippy-text');
     text.textContent = clippyMsgs[S.clippyIndex % clippyMsgs.length];
@@ -1361,30 +1941,28 @@ function stopScreensaver() {
     S.screensaverActive = false;
     document.getElementById('screensaver').classList.remove('active');
     if (ssAnim) cancelAnimationFrame(ssAnim);
-    resetScreensaverTimer();
 }
-function resetScreensaverTimer() {
-    clearTimeout(S.screensaverTimer);
-    S.screensaverTimer = setTimeout(startScreensaver, 60000);
+// Any input, on the desktop or inside an app window, counts as activity.
+function noteActivity() {
+    S.lastActivity = Date.now();
+    if (S.screensaverActive) stopScreensaver();
 }
 
 /* ==============================================
    GLOBAL EVENTS
    ============================================== */
 document.addEventListener('mousemove', e => {
-    resetScreensaverTimer();
-    if (S.screensaverActive) { stopScreensaver(); return; }
+    const waking = S.screensaverActive;
+    noteActivity();
+    if (waking) return;
     // Icon drag
-    if (S.dragIcon) {
-        const d = S.dragIcon, dx = e.clientX-d.startX, dy = e.clientY-d.startY;
-        if (Math.abs(dx)>3||Math.abs(dy)>3) d.moved = true;
-        if (d.moved) { d.el.style.left=Math.max(0,d.origLeft+dx)+'px'; d.el.style.top=Math.max(0,d.origTop+dy)+'px'; }
-    }
+    if (S.dragIcon) moveIconDrag(e.clientX, e.clientY);
     // Window drag + snap
     if (S.dragWindow) {
         const d = S.dragWindow, w = S.windows.find(w => w.id===d.id), el = document.getElementById('window-'+d.id);
         if (w && el) {
-            w.x = d.origX+(e.clientX-d.startX); w.y = Math.max(0,d.origY+(e.clientY-d.startY));
+            w.x = d.origX+(e.clientX-d.startX); w.y = d.origY+(e.clientY-d.startY);
+            clampWin(w);
             el.style.left=w.x+'px'; el.style.top=w.y+'px';
             S.snapZone = checkSnap(e.clientX, e.clientY);
         }
@@ -1411,26 +1989,24 @@ document.addEventListener('mousemove', e => {
         });
     }
 });
+['touchstart','wheel'].forEach(t => document.addEventListener(t, noteActivity, {capture:true, passive:true}));
+document.addEventListener('scroll', noteActivity, {capture:true, passive:true});
 
 document.addEventListener('touchmove', e => {
-    if (S.dragIcon) {
-        e.preventDefault();
-        const t=e.touches[0], d=S.dragIcon, dx=t.clientX-d.startX, dy=t.clientY-d.startY;
-        if(Math.abs(dx)>3||Math.abs(dy)>3) d.moved=true;
-        if(d.moved) { d.el.style.left=Math.max(0,d.origLeft+dx)+'px'; d.el.style.top=Math.max(0,d.origTop+dy)+'px'; }
-    }
+    if (S.dragIcon) { e.preventDefault(); moveIconDrag(e.touches[0].clientX, e.touches[0].clientY); }
 }, {passive:false});
 
 document.addEventListener('mouseup', () => {
-    if (S.dragIcon) { if(S.dragIcon.moved) saveIconPositions(); S.dragIcon=null; }
+    endIconDrag();
     if (S.dragWindow && S.snapZone) { applySnap(S.dragWindow.id, S.snapZone); S.snapZone=null; }
+    else if (S.dragWindow || S.resizeWindow) saveSession();
     document.getElementById('snap-indicator').style.display = 'none';
     S.dragWindow = null; S.resizeWindow = null;
+    document.body.classList.remove('dragging');
     if (S.selectionStart) { S.selectionStart=null; document.getElementById('selection-rect').style.display='none'; }
 });
-document.addEventListener('touchend', () => {
-    if(S.dragIcon) { if(S.dragIcon.moved) saveIconPositions(); S.dragIcon=null; }
-});
+document.addEventListener('touchend', endIconDrag);
+document.addEventListener('touchcancel', () => { S.dragIcon = null; clearTimeout(S.longPress); });
 
 document.getElementById('desktop').addEventListener('mousedown', e => {
     if (e.target===document.getElementById('desktop')||e.target===document.getElementById('selection-rect')) {
@@ -1440,17 +2016,46 @@ document.getElementById('desktop').addEventListener('mousedown', e => {
 });
 document.getElementById('desktop').addEventListener('contextmenu', e => {
     e.preventDefault(); closeStartMenu();
-    if (!e.target.closest('.desktop-icon')&&!e.target.closest('.window')) showContextMenu(e.clientX,e.clientY);
+    if (!e.target.closest('.desktop-icon')&&!e.target.closest('.window')) showDesktopMenu(e.clientX,e.clientY);
 });
 document.addEventListener('mousedown', e => {
-    if(!e.target.closest('#start-menu')&&!e.target.closest('#start-btn')) closeStartMenu();
+    if(!e.target.closest('#start-menu')&&!e.target.closest('#start-flyout')&&!e.target.closest('#start-btn')) closeStartMenu();
     if(!e.target.closest('#context-menu')) closeContextMenu();
+    if(!e.target.closest('#switcher')) closeSwitcher(false);
 });
 document.addEventListener('keydown', e => {
-    resetScreensaverTimer();
-    if (S.screensaverActive) { stopScreensaver(); return; }
-    if(e.ctrlKey&&e.altKey&&e.key==='Delete'){e.preventDefault();showBSOD();}
+    const waking = S.screensaverActive;
+    noteActivity();
+    if (waking) return;
+    if(e.ctrlKey&&e.altKey&&e.key==='Delete'){e.preventDefault();showBSOD();return;}
+    switcherKeyDown(e);
+    if (e.key === 'Escape') {
+        if (e.ctrlKey) { e.preventDefault(); toggleStartMenu(); }
+        else { closeStartMenu(); closeContextMenu(); }
+    }
 });
+document.addEventListener('keyup', switcherKeyUp);
+// Focus moved into an app window's iframe (covers pages the desktop can't
+// reach into, like a site an app navigated to).
+window.addEventListener('blur', () => setTimeout(() => {
+    const f = document.activeElement;
+    const win = f && f.tagName === 'IFRAME' && f.closest('.window');
+    if (win) focusWindow(+win.id.slice(7));
+}));
+// Re-fit icons and windows whenever the desktop changes size, including a
+// page that loaded in a hidden tab and only got its real size later.
+let resizeTimer = null;
+function onDesktopResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        const d = document.getElementById('desktop');
+        if (d.clientWidth < 100 || d.clientHeight < 100) return;
+        layoutIcons();
+        S.windows.filter(w => !w.closed && !w.maximized).forEach(w => { clampWin(w); applyRect(w); });
+    }, 100);
+}
+if (window.ResizeObserver) new ResizeObserver(onDesktopResize).observe(document.getElementById('desktop'));
+else window.addEventListener('resize', onDesktopResize);
 
 /* ==============================================
    INIT
@@ -1463,11 +2068,20 @@ document.addEventListener('keydown', e => {
     document.querySelector('#sound-btn i').className = S.soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
 
     createIcons();
+    buildStartMenu();
     updateClock(); setInterval(updateClock, 10000);
-    runBoot();
+
+    // ron.computer/#cocktails skips the boot screen and opens that window on
+    // top of whatever was open last time.
+    const linked = decodeURIComponent(location.hash.slice(1));
+    const deepLink = canOpen(linked);
+    runBoot(deepLink);
+    restoreSession();
+    if (deepLink) openById(linked);
+    updateHash();
 
     // Welcome window on first visit
-    if (!localStorage.getItem('welcomed')) {
+    if (!deepLink && !localStorage.getItem('welcomed')) {
         const delay = sessionStorage.getItem('booted') ? 200 : 1200;
         setTimeout(() => { openAboutWindow(); localStorage.setItem('welcomed','1'); }, delay);
     }
@@ -1475,8 +2089,13 @@ document.addEventListener('keydown', e => {
     // Clippy
     initClippy();
 
-    // Screensaver
-    resetScreensaverTimer();
+    // Screensaver after a minute without input anywhere
+    S.lastActivity = Date.now();
+    setInterval(() => { if (!S.screensaverActive && Date.now() - S.lastActivity > 60000) startScreensaver(); }, 5000);
+
+    // Tray alerts
+    setTimeout(runTrayChecks, 2500);
+    setInterval(() => { if (!document.hidden) runTrayChecks(); }, 5 * 60e3);
 })();
 </script>
 </body>

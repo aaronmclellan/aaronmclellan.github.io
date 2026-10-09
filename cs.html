@@ -1319,7 +1319,13 @@ function getFavorites() {
     try { return JSON.parse(localStorage.getItem('cs2_favorites')) || []; }
     catch { return []; }
 }
-function setFavorites(favs) { localStorage.setItem('cs2_favorites', JSON.stringify(favs)); }
+function setFavorites(favs) { localStorage.setItem('cs2_favorites', JSON.stringify(favs)); publishFavoriteKeys(); }
+// The desktop (index.html) checks these teams' calendar feeds (ics/<key>.ics)
+// to show a tray alert when one of them is playing. Priority teams first.
+function publishFavoriteKeys() {
+    const keys = [...new Set([...getPriorityFavorites(), ...getFavorites()].map(teamKey))];
+    try { localStorage.setItem('cs2_favorite_keys', JSON.stringify(keys)); } catch {}
+}
 function favoriteKeys() { return new Set(getFavorites().map(teamKey)); }
 function isFavorite(name) {
     const k = teamKey(name);
@@ -1345,7 +1351,7 @@ function getPriorityFavorites() {
     try { return JSON.parse(localStorage.getItem('cs2_priority_favorites')) || []; }
     catch { return []; }
 }
-function setPriorityFavorites(list) { localStorage.setItem('cs2_priority_favorites', JSON.stringify(list)); }
+function setPriorityFavorites(list) { localStorage.setItem('cs2_priority_favorites', JSON.stringify(list)); publishFavoriteKeys(); }
 function togglePriority(name) {
     if (!isFavorite(name)) return { ok: false, reason: 'not-favorited' };
     const k = teamKey(name);
@@ -1633,6 +1639,7 @@ function rebuildFromSnapshot(snap) {
         if (t.key && !isPlaceholderTeam(t) && !state.knownTeams.has(t.key)) state.knownTeams.set(t.key, t);
     }));
     canonicalizeFavorites();
+    publishFavoriteKeys();
     deriveViews();
 }
 
