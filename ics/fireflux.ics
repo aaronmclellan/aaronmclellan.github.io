@@ -1,0 +1,119 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fire Flux (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3004168@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T134500Z
+DTEND:20260928T164500Z
+SUMMARY:Fire Flux 2-0 BIG Academy
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012665@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T170000Z
+DTEND:20260929T200000Z
+SUMMARY:Fire Flux 1-0 Navi Junior
+DESCRIPTION:ESEA  League Season 58 - Europe Super Playoffs (Playoffs)\nBest
+  of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA  League Season 58 - Europe Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012508@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T173000Z
+DTEND:20260929T203000Z
+SUMMARY:Fire Flux vs Fever Squad
+DESCRIPTION:ESEA  League Season 58 - Europe Super Playoffs (Playoffs)\nBest
+  of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA  League Season 58 - Europe Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012853@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T170000Z
+DTEND:20260930T200000Z
+SUMMARY:Fire Flux 2-1 Young Tigeres
+DESCRIPTION:ESEA  League Season 58 - Europe Super Playoffs (Playoffs)\nBest
+  of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA  League Season 58 - Europe Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004176@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T134500Z
+DTEND:20261001T164500Z
+SUMMARY:FORZE Reload 2-1 Fire Flux
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004182@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T134500Z
+DTEND:20261002T164500Z
+SUMMARY:Fire Flux 2-0 MORROW
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004184@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T134500Z
+DTEND:20261003T164500Z
+SUMMARY:Spirit Academy 2-1 Fire Flux
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003943@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T171300Z
+DTEND:20261007T201300Z
+SUMMARY:Noir Verse 1-2 Fire Flux
+DESCRIPTION:CCT 2026 Europe Series 11 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003946@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T140000Z
+DTEND:20261008T170000Z
+SUMMARY:megoshort 0-2 Fire Flux
+DESCRIPTION:CCT 2026 Europe Series 11 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014423@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:Lilmix 0-2 Fire Flux
+DESCRIPTION:NODWIN Clutch Series #13 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015304@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T171500Z
+DTEND:20261009T201500Z
+SUMMARY:Lavked 0-2 Fire Flux
+DESCRIPTION:NODWIN Clutch Series #13 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+END:VCALENDAR

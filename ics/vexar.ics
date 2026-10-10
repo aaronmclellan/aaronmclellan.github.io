@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Vexar (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3012168@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T190000Z
+DTEND:20260927T220000Z
+SUMMARY:Vexar vs Banda LFO
+DESCRIPTION:CyberClash Season 1 (Group Stage)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:CyberClash Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012221@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:Vexar 0-2 Saint Sinners
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013274@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T170000Z
+DTEND:20261007T200000Z
+SUMMARY:Privateer Gaming 2-1 Vexar
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+END:VCALENDAR

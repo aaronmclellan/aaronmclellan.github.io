@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:LAG (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3012220@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T003000Z
+DTEND:20260927T033000Z
+SUMMARY:SportsBetExpert 2-0 LAG
+DESCRIPTION:ESEA League Season 58 - North America Super Playoffs (Playoffs)
+ \nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA League Season 58 - North America Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008857@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T010000Z
+DTEND:20260928T040000Z
+SUMMARY:regain 0-2 LAG
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 North America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008858@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T010000Z
+DTEND:20260930T040000Z
+SUMMARY:LAG 1-2 Marsborne
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 North America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 North America
+END:VEVENT
+END:VCALENDAR

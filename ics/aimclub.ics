@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:aimclub (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3011784@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T110000Z
+DTEND:20260927T140000Z
+SUMMARY:Aimclub vs Inner Circle Academy
+DESCRIPTION:Tipsport Open Cup 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:Tipsport Open Cup 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012929@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T080000Z
+DTEND:20261001T093000Z
+SUMMARY:Aimclub vs ABT Esports
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012932@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T093000Z
+DTEND:20261001T110000Z
+SUMMARY:Aimclub vs Falcons Force
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013109@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T104000Z
+DTEND:20261001T121000Z
+SUMMARY:Next Up vs Aimclub
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012936@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T114500Z
+DTEND:20261001T131500Z
+SUMMARY:PURE vs Aimclub
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012938@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T130000Z
+DTEND:20261001T143000Z
+SUMMARY:Navi Junior 0-1 Aimclub
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012916@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T133000Z
+DTEND:20261002T163000Z
+SUMMARY:Team UNiTY vs Aimclub
+DESCRIPTION:FOX Legacy Season 1 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012919@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T100000Z
+DTEND:20261003T130000Z
+SUMMARY:sAw vs Aimclub
+DESCRIPTION:FOX Legacy Season 1 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+END:VCALENDAR

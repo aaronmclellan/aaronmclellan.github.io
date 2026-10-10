@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Yawara (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2996539@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260926T210000Z
+DTEND:20260927T000000Z
+SUMMARY:METANOIA WOLVES 1-2 Yawara Esports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996541@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T210000Z
+DTEND:20260928T000000Z
+SUMMARY:Yawara Esports 0-2 Turma do Pagode
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004221@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T160000Z
+DTEND:20261001T190000Z
+SUMMARY:Yawara Esports 2-0 BORRACHEIROS
+DESCRIPTION:CCT 2026 South America Series 6 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004228@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T130000Z
+DTEND:20261003T160000Z
+SUMMARY:Turma do Pagode 2-0 Yawara Esports
+DESCRIPTION:CCT 2026 South America Series 6 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014568@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T210000Z
+DTEND:20261008T000000Z
+SUMMARY:low cortisol gaming 0-2 Yawara Esports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015163@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T210000Z
+DTEND:20261009T000000Z
+SUMMARY:GREMIO 0-2 Yawara Esports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008878@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T210000Z
+DTEND:20261011T000000Z
+SUMMARY:Yawara Esports vs ex-Keyd Stars
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+END:VCALENDAR

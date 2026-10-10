@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Ground Zero (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2999918@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T090000Z
+DTEND:20260927T120000Z
+SUMMARY:Ground Zero Gaming 2-1 Rooster
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Oceania (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Oceania
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2999919@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T090000Z
+DTEND:20260928T120000Z
+SUMMARY:Ground Zero Gaming 0-2 THUNDER dOWNUNDER
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Oceania (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Oceania
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009783@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T010000Z
+DTEND:20261010T023000Z
+SUMMARY:Ground Zero Gaming 1-0 KZG
+DESCRIPTION:ANZC LAN Spring 2026 (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:ANZC LAN Spring 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009784@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T023000Z
+DTEND:20261010T053000Z
+SUMMARY:BGNS Orange 0-2 Ground Zero Gaming
+DESCRIPTION:ANZC LAN Spring 2026 (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:ANZC LAN Spring 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009792@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T233000Z
+DTEND:20261011T010000Z
+SUMMARY:Ground Zero Gaming vs Abyssal
+DESCRIPTION:ANZC LAN Spring 2026 (Playoffs)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:ANZC LAN Spring 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014800@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261026T030000Z
+DTEND:20261026T060000Z
+SUMMARY:Ground Zero Gaming vs Finishers
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+END:VCALENDAR

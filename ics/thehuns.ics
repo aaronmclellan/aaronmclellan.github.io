@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Huns (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2996511@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T130000Z
+DTEND:20260927T160000Z
+SUMMARY:The Huns Esports 2-0 Rare Atom
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996512@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T130000Z
+DTEND:20260928T160000Z
+SUMMARY:NEXVOID 2-0 The Huns Esports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012858@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T030000Z
+DTEND:20261001T060000Z
+SUMMARY:The Huns Esports vs 1337
+DESCRIPTION:ESN Fall Showdown 2026 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:ESN Fall Showdown 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012862@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T060000Z
+DTEND:20261002T090000Z
+SUMMARY:5star eSports vs The Huns Esports
+DESCRIPTION:ESN Fall Showdown 2026 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:ESN Fall Showdown 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012864@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T030000Z
+DTEND:20261003T060000Z
+SUMMARY:Team Space vs The Huns Esports
+DESCRIPTION:ESN Fall Showdown 2026 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:ESN Fall Showdown 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012865@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T060000Z
+DTEND:20261003T090000Z
+SUMMARY:NEXVOID vs The Huns Esports
+DESCRIPTION:ESN Fall Showdown 2026 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:ESN Fall Showdown 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012867@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T060000Z
+DTEND:20261004T090000Z
+SUMMARY:The Huns Esports vs 5star eSports
+DESCRIPTION:ESN Fall Showdown 2026 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:ESN Fall Showdown 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014579@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:The KnockoutX vs The Huns Esports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008941@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T160000Z
+SUMMARY:Team XDM 0-2 The Huns Esports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008952@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T130000Z
+DTEND:20261009T160000Z
+SUMMARY:The Huns Esports 1-2 Alter Ego
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+END:VCALENDAR

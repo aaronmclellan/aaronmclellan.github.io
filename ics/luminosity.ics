@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Luminosity (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3008961@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T100000Z
+DTEND:20261001T130000Z
+SUMMARY:B8 0-2 Luminosity Gaming
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008530@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T150000Z
+DTEND:20261002T180000Z
+SUMMARY:Luminosity Gaming 2-1 BIG
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008534@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T150000Z
+DTEND:20261003T180000Z
+SUMMARY:Luminosity Gaming 0-2 Nemiga
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008536@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T120000Z
+DTEND:20261004T150000Z
+SUMMARY:Luminosity Gaming 1-2 Astralis
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+END:VCALENDAR

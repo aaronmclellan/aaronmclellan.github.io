@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PARIVISION (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3002929@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T090000Z
+DTEND:20261003T120000Z
+SUMMARY:Legacy 1-2 Parivision
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002933@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T090000Z
+DTEND:20261004T120000Z
+SUMMARY:Team Spirit 2-1 Parivision
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002941@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261005T090000Z
+DTEND:20261005T120000Z
+SUMMARY:Parivision 1-2 FURIA
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002949@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261006T120000Z
+DTEND:20261006T150000Z
+SUMMARY:G2 Esports 1-2 Parivision
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002956@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T140500Z
+DTEND:20261007T170500Z
+SUMMARY:Natus Vincere 1-2 Parivision
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002959@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T112800Z
+DTEND:20261009T142800Z
+SUMMARY:Team Vitality 2-0 Parivision
+DESCRIPTION:ESL Pro League Season 24 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006808@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261014T143000Z
+DTEND:20261014T173000Z
+SUMMARY:Legacy vs Parivision
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+END:VCALENDAR

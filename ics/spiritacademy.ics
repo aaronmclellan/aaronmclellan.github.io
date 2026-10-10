@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Spirit Academy (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3004034@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T140000Z
+DTEND:20260927T170000Z
+SUMMARY:Spirit Academy 0-2 megoshort
+DESCRIPTION:CCT 2026 Europe Series 10 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004172@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T140000Z
+DTEND:20260929T170000Z
+SUMMARY:Spirit Academy 0-0 Phantom Academy
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012798@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T150000Z
+DTEND:20260929T180000Z
+SUMMARY:Spirit Academy 2-0 Phantom Academy
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004180@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T144000Z
+DTEND:20261001T174000Z
+SUMMARY:Spirit Academy 1-2 mellren
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004181@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T110000Z
+DTEND:20261002T140000Z
+SUMMARY:Spirit Academy 2-0 MAYBE
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004184@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T134500Z
+DTEND:20261003T164500Z
+SUMMARY:Spirit Academy 2-1 Fire Flux
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004185@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T110000Z
+DTEND:20261004T140000Z
+SUMMARY:mellren 0-2 Spirit Academy
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004186@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T134500Z
+DTEND:20261004T164500Z
+SUMMARY:FORZE Reload 1-2 Spirit Academy
+DESCRIPTION:CCT 2026 Challengers Europe Series 7 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 7
+END:VEVENT
+END:VCALENDAR

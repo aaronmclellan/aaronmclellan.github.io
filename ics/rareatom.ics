@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Rare Atom (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2996511@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T130000Z
+DTEND:20260927T160000Z
+SUMMARY:The Huns Esports 2-0 Rare Atom
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014583@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:bLight.blue vs Rare Atom
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008940@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T160000Z
+SUMMARY:Just Swing 2-1 Rare Atom
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008945@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T130000Z
+DTEND:20261009T160000Z
+SUMMARY:Vitalem Aerem 2-1 Rare Atom
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+END:VCALENDAR

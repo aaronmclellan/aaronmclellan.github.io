@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nexus (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2997991@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T080000Z
+DTEND:20260927T110000Z
+SUMMARY:Nexus 2-1 Black Phoenix
+DESCRIPTION:European Pro League Series 9 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:European Pro League Series 9
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012505@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T111000Z
+DTEND:20260928T141000Z
+SUMMARY:Nexus 1-2 mellren
+DESCRIPTION:European Pro League Series 9 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:European Pro League Series 9
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2997995@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T080000Z
+DTEND:20260929T110000Z
+SUMMARY:Bushido Wildcats 0-2 Nexus
+DESCRIPTION:European Pro League Series 9 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:European Pro League Series 9
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004042@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T154500Z
+DTEND:20260929T184500Z
+SUMMARY:ex-RUSTEC 0-2 Nexus
+DESCRIPTION:CCT 2026 Europe Series 10 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004049@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T110000Z
+DTEND:20261001T140000Z
+SUMMARY:PCIFIC Esports 0-2 Nexus
+DESCRIPTION:CCT 2026 Europe Series 10 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013436@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T160000Z
+DTEND:20261002T190000Z
+SUMMARY:Nexus vs 6yuB
+DESCRIPTION:CyberClash Season 1 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004059@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T172500Z
+DTEND:20261003T202500Z
+SUMMARY:Lavked 0-2 Nexus
+DESCRIPTION:CCT 2026 Europe Series 10 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004075@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T140000Z
+DTEND:20261008T170000Z
+SUMMARY:Cybershoke 0-2 Nexus
+DESCRIPTION:CCT 2026 Europe Series 10 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004079@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T140000Z
+DTEND:20261009T170000Z
+SUMMARY:Nexus 2-0 Acend
+DESCRIPTION:CCT 2026 Europe Series 10 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004082@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T134500Z
+DTEND:20261010T164500Z
+SUMMARY:Nexus 0-2 Black Phoenix
+DESCRIPTION:CCT 2026 Europe Series 10 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+END:VCALENDAR

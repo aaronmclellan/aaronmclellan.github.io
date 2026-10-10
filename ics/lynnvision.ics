@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lynn Vision (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2996510@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T130000Z
+DTEND:20260927T160000Z
+SUMMARY:Lynn Vision 2-0 NEXVOID
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996513@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T130000Z
+DTEND:20260929T160000Z
+SUMMARY:Lynn Vision 1-2 NEXVOID
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008937@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T160000Z
+SUMMARY:Lynn Vision 2-1 Chinggis Warriors
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008954@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T130000Z
+DTEND:20261010T160000Z
+SUMMARY:The KnockoutX 0-2 Lynn Vision
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+END:VCALENDAR

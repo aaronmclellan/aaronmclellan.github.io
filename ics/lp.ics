@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:LP (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014574@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T210000Z
+DTEND:20261008T000000Z
+SUMMARY:METANOIA WOLVES 0-2 LP
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008862@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T210000Z
+DTEND:20261009T000000Z
+SUMMARY:Turma do Pagode 0-2 LP
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008875@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T210000Z
+DTEND:20261011T000000Z
+SUMMARY:Bounty Hunters Esports vs LP
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+END:VCALENDAR

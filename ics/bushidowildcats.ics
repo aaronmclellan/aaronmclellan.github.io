@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Bushido Wildcats (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3011919@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T080000Z
+DTEND:20260927T110000Z
+SUMMARY:Bushido Wildcats 1-2 Phantom Academy
+DESCRIPTION:CCT 2026 Europe Series 10 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2997993@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T080000Z
+DTEND:20260928T110000Z
+SUMMARY:Bushido Wildcats 0-2 Leo Team
+DESCRIPTION:European Pro League Series 9 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:European Pro League Series 9
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3010918@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T072000Z
+DTEND:20260929T085000Z
+SUMMARY:Bushido Wildcats 0-1 Vision
+DESCRIPTION:FRAG Season 18 (Group Stage)\nBest of 1\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:FRAG Season 18
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2997995@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T080000Z
+DTEND:20260929T110000Z
+SUMMARY:Bushido Wildcats 0-2 Nexus
+DESCRIPTION:European Pro League Series 9 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:European Pro League Series 9
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3010925@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T090000Z
+DTEND:20260929T120000Z
+SUMMARY:DEPO 0-2 Bushido Wildcats
+DESCRIPTION:FRAG Season 18 (Group Stage)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:FRAG Season 18
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012743@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T120000Z
+DTEND:20260929T150000Z
+SUMMARY:Vision 0-2 Bushido Wildcats
+DESCRIPTION:FRAG Season 18 (Group Stage)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:FRAG Season 18
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012667@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T091000Z
+DTEND:20260930T121000Z
+SUMMARY:ARCRED 0-2 Bushido Wildcats
+DESCRIPTION:FRAG Season 18 (Playoffs)\nBest of 3\nhttps://www.ron.computer/
+ cs.html
+LOCATION:FRAG Season 18
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012668@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T112000Z
+DTEND:20260930T142000Z
+SUMMARY:Rune Eaters 2-1 Bushido Wildcats
+DESCRIPTION:FRAG Season 18 (Playoffs)\nBest of 3\nhttps://www.ron.computer/
+ cs.html
+LOCATION:FRAG Season 18
+END:VEVENT
+END:VCALENDAR

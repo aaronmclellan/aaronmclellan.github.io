@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Last Resort (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3006906@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:The Last Resort 2-0 Privateer Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013270@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T170000Z
+DTEND:20261007T200000Z
+SUMMARY:The Last Resort 1-2 Saint Sinners
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013281@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T160000Z
+SUMMARY:The Last Resort 1-2 Privateer Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+END:VCALENDAR

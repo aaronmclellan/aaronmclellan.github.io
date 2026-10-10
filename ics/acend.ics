@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Acend (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3012390@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T110000Z
+DTEND:20260927T140000Z
+SUMMARY:Acend 0-2 BET-M
+DESCRIPTION:NODWIN Clutch Series #12 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013217@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T120000Z
+DTEND:20261007T150000Z
+SUMMARY:Acend vs Sashi
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004073@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T080000Z
+DTEND:20261008T110000Z
+SUMMARY:Acend 2-1 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 10 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013224@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T090000Z
+DTEND:20261009T120000Z
+SUMMARY:HOTU 2-0 Acend
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004079@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T140000Z
+DTEND:20261009T170000Z
+SUMMARY:Nexus 2-0 Acend
+DESCRIPTION:CCT 2026 Europe Series 10 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 10
+END:VEVENT
+END:VCALENDAR

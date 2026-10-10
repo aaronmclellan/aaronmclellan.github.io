@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:GamerLegion (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3008652@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T120000Z
+DTEND:20260927T150000Z
+SUMMARY:GamerLegion 2-1 3DMAX
+DESCRIPTION:1win Private Club #1 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008654@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T190000Z
+DTEND:20260927T220000Z
+SUMMARY:SINNERS 0-2 GamerLegion
+DESCRIPTION:1win Private Club #1 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008655@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T110000Z
+DTEND:20260928T140000Z
+SUMMARY:Magic Esport 0-2 GamerLegion
+DESCRIPTION:1win Private Club #1 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008656@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T140000Z
+DTEND:20260928T190000Z
+SUMMARY:Ninjas in Pyjamas 3-1 GamerLegion
+DESCRIPTION:1win Private Club #1 (Playoffs)\nBest of 5\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013220@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T090000Z
+DTEND:20261008T120000Z
+SUMMARY:GamerLegion 2-0 BET-M
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013225@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T120000Z
+DTEND:20261009T150000Z
+SUMMARY:GamerLegion 2-0 SINNERS
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013229@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T130000Z
+DTEND:20261010T160000Z
+SUMMARY:GamerLegion 1-2 PRIVATE
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,119 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Turma do Pagode (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2996538@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260926T210000Z
+DTEND:20260927T000000Z
+SUMMARY:Turma do Pagode 2-1 ALKA
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996541@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T210000Z
+DTEND:20260928T000000Z
+SUMMARY:Yawara Esports 0-2 Turma do Pagode
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996542@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T210000Z
+DTEND:20260929T000000Z
+SUMMARY:Galorys 0-2 Turma do Pagode
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996543@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T210000Z
+DTEND:20260930T000000Z
+SUMMARY:Procyon 0-2 Turma do Pagode
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004223@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T220000Z
+DTEND:20261002T010000Z
+SUMMARY:Turma do Pagode 2-0 MIBR fe
+DESCRIPTION:CCT 2026 South America Series 6 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004228@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T130000Z
+DTEND:20261003T160000Z
+SUMMARY:Turma do Pagode 2-0 Yawara Esports
+DESCRIPTION:CCT 2026 South America Series 6 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004233@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T180000Z
+DTEND:20261004T210000Z
+SUMMARY:Turma do Pagode 2-0 Bounty Hunters
+DESCRIPTION:CCT 2026 South America Series 6 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004234@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T210000Z
+DTEND:20261005T000000Z
+SUMMARY:Galorys 1-2 Turma do Pagode
+DESCRIPTION:CCT 2026 South America Series 6 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014573@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T210000Z
+DTEND:20261008T000000Z
+SUMMARY:Turma do Pagode 2-1 BORRACHEIROS
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008862@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T210000Z
+DTEND:20261009T000000Z
+SUMMARY:Turma do Pagode 0-2 LP
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008874@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T210000Z
+DTEND:20261010T000000Z
+SUMMARY:Turma do Pagode 0-2 Galorys
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 South America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 South America
+END:VEVENT
+END:VCALENDAR

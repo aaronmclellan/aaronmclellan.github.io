@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Legacy (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3002929@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T090000Z
+DTEND:20261003T120000Z
+SUMMARY:Legacy 1-2 Parivision
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002934@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261004T090000Z
+DTEND:20261004T120000Z
+SUMMARY:ShindeN 0-2 Legacy
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002944@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261005T112500Z
+DTEND:20261005T142500Z
+SUMMARY:Legacy 0-2 1WIN
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002954@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261006T170000Z
+DTEND:20261006T200000Z
+SUMMARY:Legacy 1-2 M80
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006808@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261014T143000Z
+DTEND:20261014T173000Z
+SUMMARY:Legacy vs Parivision
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+END:VCALENDAR

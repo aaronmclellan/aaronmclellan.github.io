@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:fnatic (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3010967@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T110000Z
+DTEND:20260927T140000Z
+SUMMARY:Fnatic 1-2 Nemesis
+DESCRIPTION:Stake Ranked Episode 5 - Closed Qualifier (Playoffs)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 5 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008525@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T121500Z
+DTEND:20261001T151500Z
+SUMMARY:BIG 2-1 Fnatic
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008529@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T100000Z
+DTEND:20261002T130000Z
+SUMMARY:B8 0-2 Fnatic
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008533@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T123000Z
+DTEND:20261003T153000Z
+SUMMARY:Fnatic 2-0 Alliance
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008535@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T173000Z
+DTEND:20261003T203000Z
+SUMMARY:Astralis 2-0 Fnatic
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013218@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T150000Z
+DTEND:20261007T180000Z
+SUMMARY:Fnatic 2-1 Phantom Esports
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013226@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T150000Z
+DTEND:20261009T180000Z
+SUMMARY:Fnatic 2-1 K27
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013228@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T100000Z
+DTEND:20261010T130000Z
+SUMMARY:HOTU 1-2 Fnatic
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014779@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261014T100000Z
+DTEND:20261014T130000Z
+SUMMARY:HOTU vs Fnatic
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+END:VCALENDAR

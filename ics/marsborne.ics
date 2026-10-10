@@ -1,0 +1,169 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Marsborne (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-2996571@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T010000Z
+DTEND:20260927T040000Z
+SUMMARY:Marsborne 2-0 Detonate
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 North America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012501@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T010000Z
+DTEND:20260928T040000Z
+SUMMARY:Marsborne 2-0 FarmVille
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 North America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-2996573@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T010000Z
+DTEND:20260929T040000Z
+SUMMARY:regain 0-2 Marsborne
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 North America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008858@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T010000Z
+DTEND:20260930T040000Z
+SUMMARY:LAG 1-2 Marsborne
+DESCRIPTION:ESL Challenger League Season 52 - Cup #2 North America (Playoff
+ s)\nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #2 North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009712@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T210000Z
+DTEND:20261001T000000Z
+SUMMARY:Marsborne vs SportsBetExpert
+DESCRIPTION:ESEA Advanced Season 58 - NA (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:ESEA Advanced Season 58 - NA
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014806@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T013500Z
+DTEND:20261008T063500Z
+SUMMARY:Marsborne 0-0 Without a Roof
+DESCRIPTION:Crossfire Season 6 (Playoffs)\nBest of 5\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Crossfire Season 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014595@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T145000Z
+DTEND:20261009T162000Z
+SUMMARY:NRG 0-1 Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015429@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T160500Z
+DTEND:20261009T173500Z
+SUMMARY:NRG 1-0 Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015521@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T170000Z
+DTEND:20261009T200000Z
+SUMMARY:Elusive vs Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015462@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T192500Z
+DTEND:20261009T205500Z
+SUMMARY:Hairy Scary Bandits 0-1 Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014605@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T204000Z
+DTEND:20261009T221000Z
+SUMMARY:Marsborne 1-0 The Last Dance
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014623@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T140000Z
+DTEND:20261010T153000Z
+SUMMARY:Marsborne 1-0 Without a Roof
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015518@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T154000Z
+DTEND:20261010T171000Z
+SUMMARY:DENDELE CS 1-0 Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015525@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T173000Z
+DTEND:20261010T190000Z
+SUMMARY:Elusive 0-1 Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015798@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T181000Z
+DTEND:20261010T211000Z
+SUMMARY:Elusive 0-2 Marsborne
+DESCRIPTION:FRAG University (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015527@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T194500Z
+DTEND:20261010T224500Z
+SUMMARY:Marsborne vs SportsBetExpert
+DESCRIPTION:FRAG University (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+END:VCALENDAR

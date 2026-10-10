@@ -1,0 +1,189 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NAVI Junior (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3012385@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T120000Z
+DTEND:20260928T150000Z
+SUMMARY:Navi Junior 2-1 Chaos Enforcers
+DESCRIPTION:ESEA  League Season 58 - Europe Super Playoffs (Playoffs)\nBest
+  of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA  League Season 58 - Europe Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012665@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T170000Z
+DTEND:20260929T200000Z
+SUMMARY:Fire Flux 1-0 Navi Junior
+DESCRIPTION:ESEA  League Season 58 - Europe Super Playoffs (Playoffs)\nBest
+  of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA  League Season 58 - Europe Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013107@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T080000Z
+DTEND:20261001T093000Z
+SUMMARY:Navi Junior vs Next Up
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012931@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T092500Z
+DTEND:20261001T105500Z
+SUMMARY:Navi Junior vs ABT Esports
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012934@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T104000Z
+DTEND:20261001T121000Z
+SUMMARY:Navi Junior vs PURE
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012935@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T115000Z
+DTEND:20261001T132000Z
+SUMMARY:Navi Junior 1-0 Falcons Force
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012938@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261001T130000Z
+DTEND:20261001T143000Z
+SUMMARY:Navi Junior 0-1 Aimclub
+DESCRIPTION:FOX Legacy Season 1 (Group Stage)\nBest of 1\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012914@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T100000Z
+DTEND:20261002T130000Z
+SUMMARY:sAw vs Navi Junior
+DESCRIPTION:FOX Legacy Season 1 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014239@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T150000Z
+DTEND:20261007T163000Z
+SUMMARY:sAw vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014243@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T161500Z
+DTEND:20261007T174500Z
+SUMMARY:Rebels Gaming vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014247@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T173000Z
+DTEND:20261007T190000Z
+SUMMARY:Famalicao vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014250@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T184500Z
+DTEND:20261007T201500Z
+SUMMARY:Lazer Cats vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014253@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T200000Z
+DTEND:20261007T213000Z
+SUMMARY:Sangal vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014257@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T140000Z
+DTEND:20261008T170000Z
+SUMMARY:WBT vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014263@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T133000Z
+DTEND:20261009T163000Z
+SUMMARY:Navi Junior 2-1 G2 Ares
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015361@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T100000Z
+DTEND:20261010T130000Z
+SUMMARY:FaZe Clan 2-1 Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014268@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T144500Z
+DTEND:20261010T174500Z
+SUMMARY:Sangal 1-2 Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014269@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T182000Z
+DTEND:20261010T212000Z
+SUMMARY:FaZe Clan 2-0 Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+END:VCALENDAR

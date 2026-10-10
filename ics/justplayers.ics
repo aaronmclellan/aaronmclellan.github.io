@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Just Players (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013263@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:Just Players 2-0 Revise
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013277@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T170000Z
+DTEND:20261007T200000Z
+SUMMARY:Just Players 2-1 HyperSpirit
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013285@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:Just Players 2-0 ENCE
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013287@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T130000Z
+DTEND:20261009T160000Z
+SUMMARY:Leo Team 1-2 Just Players
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015438@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T170000Z
+DTEND:20261009T200000Z
+SUMMARY:Saint Sinners 0-2 Just Players
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+END:VCALENDAR

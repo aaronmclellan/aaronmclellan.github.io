@@ -1,0 +1,149 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:SportsBetExpert (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3012220@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260927T003000Z
+DTEND:20260927T033000Z
+SUMMARY:SportsBetExpert 2-0 LAG
+DESCRIPTION:ESEA League Season 58 - North America Super Playoffs (Playoffs)
+ \nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA League Season 58 - North America Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012504@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260928T003000Z
+DTEND:20260928T033000Z
+SUMMARY:SportsBetExpert 1-2 Without a Roof
+DESCRIPTION:ESEA League Season 58 - North America Super Playoffs (Playoffs)
+ \nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA League Season 58 - North America Super Playoffs
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009712@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T210000Z
+DTEND:20261001T000000Z
+SUMMARY:Marsborne vs SportsBetExpert
+DESCRIPTION:ESEA Advanced Season 58 - NA (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:ESEA Advanced Season 58 - NA
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013134@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T120000Z
+DTEND:20261002T133000Z
+SUMMARY:SportsBetExpert vs HAVU
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013146@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T133000Z
+DTEND:20261002T150000Z
+SUMMARY:BBL vs SportsBetExpert
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013157@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T142500Z
+DTEND:20261002T155500Z
+SUMMARY:Sangal vs SportsBetExpert
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013168@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T153000Z
+DTEND:20261002T170000Z
+SUMMARY:Ninjas in Pyjamas vs SportsBetExpert
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013181@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T161500Z
+DTEND:20261002T174500Z
+SUMMARY:SportsBetExpert vs XEPT
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014607@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T191500Z
+DTEND:20261009T204500Z
+SUMMARY:SportsBetExpert 1-0 Fathom Gaming
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014609@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T202000Z
+DTEND:20261009T215000Z
+SUMMARY:Wildcard 1-0 SportsBetExpert
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014613@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T214000Z
+DTEND:20261009T231000Z
+SUMMARY:NXG Esports 0-1 SportsBetExpert
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015517@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T154000Z
+DTEND:20261010T171000Z
+SUMMARY:Imperial 1-0 SportsBetExpert
+DESCRIPTION:FRAG University (Group Stage)\nBest of 1\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015523@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T173000Z
+DTEND:20261010T203000Z
+SUMMARY:Fathom Gaming 0-2 SportsBetExpert
+DESCRIPTION:FRAG University (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015527@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T194500Z
+DTEND:20261010T224500Z
+SUMMARY:Marsborne vs SportsBetExpert
+DESCRIPTION:FRAG University (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:FRAG University
+END:VEVENT
+END:VCALENDAR

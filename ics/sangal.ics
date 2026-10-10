@@ -1,0 +1,239 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Sangal (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3011863@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T163000Z
+DTEND:20260929T180000Z
+SUMMARY:ENCE vs Sangal
+DESCRIPTION:Urban Riga Open Season 7 (Group Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011864@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T173000Z
+DTEND:20260929T190000Z
+SUMMARY:Aimhaus vs Sangal
+DESCRIPTION:Urban Riga Open Season 7 (Group Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011866@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T183000Z
+DTEND:20260929T200000Z
+SUMMARY:Sangal vs HyperSpirit
+DESCRIPTION:Urban Riga Open Season 7 (Group Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011869@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T100000Z
+DTEND:20260930T130000Z
+SUMMARY:KUUSAMO vs Sangal
+DESCRIPTION:Urban Riga Open Season 7 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011870@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T130000Z
+DTEND:20260930T160000Z
+SUMMARY:IC Academy vs Sangal
+DESCRIPTION:Urban Riga Open Season 7 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013133@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T120000Z
+DTEND:20261002T133000Z
+SUMMARY:BBL vs Sangal
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013144@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T133000Z
+DTEND:20261002T150000Z
+SUMMARY:Ninjas in Pyjamas vs Sangal
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013157@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T142500Z
+DTEND:20261002T155500Z
+SUMMARY:Sangal vs SportsBetExpert
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013170@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T151500Z
+DTEND:20261002T164500Z
+SUMMARY:Sangal vs XEPT
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013182@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261002T162500Z
+DTEND:20261002T175500Z
+SUMMARY:HAVU vs Sangal
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013702@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261003T090000Z
+DTEND:20261003T120000Z
+SUMMARY:Sangal vs Eternal Fire
+DESCRIPTION:ROG JOURNEY Autumn 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:ROG JOURNEY Autumn 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014240@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T150000Z
+DTEND:20261007T163000Z
+SUMMARY:Sangal vs Famalicao
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014244@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T161500Z
+DTEND:20261007T174500Z
+SUMMARY:Sangal vs Lazer Cats
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014246@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T173000Z
+DTEND:20261007T190000Z
+SUMMARY:Sangal vs Rebels Gaming
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014248@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T184500Z
+DTEND:20261007T201500Z
+SUMMARY:Sangal vs sAw
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014253@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T200000Z
+DTEND:20261007T213000Z
+SUMMARY:Sangal vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014255@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T100000Z
+DTEND:20261008T130000Z
+SUMMARY:OG 0-2 Sangal
+DESCRIPTION:Roman Imperium Cup IX (Play-Ins)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014258@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:FaZe Clan 2-1 Sangal
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015283@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T100000Z
+DTEND:20261009T130000Z
+SUMMARY:EAC 0-2 Sangal
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014264@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261009T173000Z
+DTEND:20261009T203000Z
+SUMMARY:Sangal 2-1 G2 Ares
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015362@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T100000Z
+DTEND:20261010T130000Z
+SUMMARY:Sangal vs PURE
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014268@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261010T144500Z
+DTEND:20261010T174500Z
+SUMMARY:Sangal 1-2 Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014768@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261012T100000Z
+DTEND:20261012T130000Z
+SUMMARY:Inner Circle vs Sangal
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ENCE (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3011863@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T163000Z
+DTEND:20260929T180000Z
+SUMMARY:ENCE vs Sangal
+DESCRIPTION:Urban Riga Open Season 7 (Group Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011865@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T173000Z
+DTEND:20260929T190000Z
+SUMMARY:HyperSpirit vs ENCE
+DESCRIPTION:Urban Riga Open Season 7 (Group Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011867@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260929T183000Z
+DTEND:20260929T200000Z
+SUMMARY:ENCE vs Aimhaus
+DESCRIPTION:Urban Riga Open Season 7 (Group Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3011871@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20260930T130000Z
+DTEND:20260930T160000Z
+SUMMARY:ENCE vs INFURITY Gaming
+DESCRIPTION:Urban Riga Open Season 7 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Urban Riga Open Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013268@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:mouz NXT 2-1 ENCE
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013271@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261007T170000Z
+DTEND:20261007T200000Z
+SUMMARY:MAYBE 0-2 ENCE
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013280@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T160000Z
+SUMMARY:Sökerorg 0-2 ENCE
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013285@aaronmclellan.github.io
+DTSTAMP:20261010T204800Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:Just Players 2-0 ENCE
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+END:VCALENDAR
