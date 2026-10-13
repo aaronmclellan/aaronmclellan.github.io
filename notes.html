@@ -724,12 +724,14 @@ const bc = 'BroadcastChannel' in window ? new BroadcastChannel('ron-notes') : nu
 const GENERAL = 'f:General';
 const TRASH_DAYS = 30;
 let D = { notes: [], folders: [], tomb: {} };   // synced: notes, folders, deletions
-let P = { view: 'all', activeId: null, theme: 'auto', sbOpen: true, sort: 'edited', tipHidden: false };   // this device only
+let P = { view: 'all', activeId: null, theme: 'auto', sbOpen: true, sort: 'edited', tipHidden: false, device: '' };   // this device only
 let S = null;           // sync settings for this device
 let KEY = null;         // AES-GCM key derived from the passphrase (non-extractable, never leaves this device)
 let legacyPass = null;  // passphrase from the first version's settings, kept in memory only until migration finishes
 
 const byId = id => D.notes.find(n => n.id === id);
+// Record an edit made on this device.
+const touch = n => { n.updated = now(); n.dev = P.device; };
 const active = () => P.activeId ? byId(P.activeId) : null;
 const liveFolders = () => D.folders.filter(f => !f.deleted).sort((a, b) =>
   a.id === GENERAL ? -1 : b.id === GENERAL ? 1 : (a.created - b.created) || a.name.localeCompare(b.name));
@@ -742,6 +744,7 @@ function cleanNote(n) {
     id: String(n.id), title: String(n.title || ''), content: String(n.content || ''),
     folder: String(n.folder || GENERAL), tags: Array.isArray(n.tags) ? n.tags.map(String) : [],
     pinned: !!n.pinned, created: +n.created || +n.updated || 0, updated: +n.updated || 0, trashed: +n.trashed || 0,
+    dev: String(n.dev || ''),   // which device made the latest edit
   };
 }
 const publicNote = n => cleanNote(n);
@@ -795,6 +798,7 @@ async function loadState() {
     }
   }
   if (prefs) Object.assign(P, prefs);
+  if (!P.device) P.device = gid();
   S = sync || null;
   KEY = key || null;
   if (!S) {
@@ -1004,14 +1008,18 @@ function applyRemote(r) {
     const l = local.get(rn.id);
     if (!l) { out.push({ ...rn, synced: rn.updated }); res.changed = true; continue; }
     if (l.updated === rn.updated) { l.synced = rn.updated; out.push(l); continue; }
-    // Notes carried over from the first version have no sync history: newest simply wins, as it did there.
-    const known = l.synced != null, localEdited = l.updated !== l.synced, remoteEdited = rn.updated !== l.synced;
-    if (known && localEdited && remoteEdited && (l.title !== rn.title || l.content !== rn.content)) {
+    // A conflict needs edits on two different devices since the version this one last synced. A copy that is
+    // older than that (GitHub can briefly return the previous version right after a save), or that was made on
+    // this same device (another tab), is just an earlier draft: the newest wins. Notes carried over from the
+    // first version have no sync history, so newest wins there too, as it did before.
+    const known = l.synced != null, localEdited = l.updated !== l.synced, remoteEdited = rn.updated > l.synced;
+    const sameDevice = !!l.dev && l.dev === rn.dev;
+    if (known && !sameDevice && localEdited && remoteEdited && (l.title !== rn.title || l.content !== rn.content)) {
       // Edited on two devices since the last sync: newest stays, the other is kept as a copy.
       const remoteWins = rn.updated > l.updated;
       const lose = remoteWins ? l : rn;
       out.push(remoteWins ? { ...rn, synced: rn.updated } : l);
-      out.push({ ...cleanNote(lose), id: gid(), title: (lose.title || 'Untitled') + ' (conflicting copy)', pinned: false, updated: now(), synced: 0 });
+      out.push({ ...cleanNote(lose), id: gid(), title: (lose.title || 'Untitled') + ' (conflicting copy)', pinned: false, updated: now(), dev: P.device, synced: 0 });
       res.changed = true; res.conflicts++;
     } else if (rn.updated > l.updated) { out.push({ ...rn, synced: rn.updated }); res.changed = true; }
     else out.push(l);
@@ -1027,18 +1035,19 @@ function applyRemote(r) {
 }
 
 async function pushChanges() {
-  const groups = {};
-  for (const n of D.notes.filter(syncable)) (groups[bucketOf(n.id)] = groups[bucketOf(n.id)] || []).push(n);
   const files = {}, sent = {}, fps = {};
   let size = 0;
   for (let i = 0; i < BUCKETS; i++) {
-    const b = i.toString(16), notes = groups[b] || [], fp = bucketFP(notes);
+    // Typing can continue while this runs: take the open note's latest text, and remember exactly which
+    // version of each note went up, so anything typed after this point still counts as unsynced.
+    flushEditor();
+    const b = i.toString(16), notes = D.notes.filter(n => syncable(n) && bucketOf(n.id) === b).map(publicNote), fp = bucketFP(notes);
     if (S.fp[b] === fp || (S.fp[b] === undefined && !notes.length)) continue;
-    const content = await seal({ notes: notes.map(publicNote) });
+    for (const n of notes) sent[n.id] = n.updated;
+    const content = await seal({ notes });
     files['notes-' + b + '.enc'] = { content };
     size = Math.max(size, content.length);
     fps[b] = fp;
-    for (const n of notes) sent[n.id] = n.updated;
   }
   const meta = metaOf(), mfp = metaFP(meta);
   if (S.fp.meta !== mfp) { files['meta.enc'] = { content: await seal(meta) }; fps.meta = mfp; }
@@ -1438,7 +1447,7 @@ function newNote(opts = {}) {
     id: gid(), title: opts.title || '', content: opts.content || '',
     folder: P.view.startsWith('f:') ? P.view : GENERAL,
     tags: P.view.startsWith('tag:') ? [P.view.slice(4)] : [],
-    created: now(), updated: now(),
+    created: now(), updated: now(), dev: P.device,
   });
   D.notes.unshift(n);
   $('search').value = '';
@@ -1485,14 +1494,14 @@ function cleanupEmpty(n) {
 }
 function togglePin(id = edId) {
   const n = byId(id); if (!n) return;
-  n.pinned = !n.pinned; n.updated = now();
+  n.pinned = !n.pinned; touch(n);
   if (id === edId) updatePin();
   changed(); renderList();
 }
 function duplicateNote(id) {
   flushEditor();
   const n = byId(id); if (!n) return;
-  const copy = cleanNote({ ...n, id: gid(), title: (n.title || 'Untitled') + ' copy', pinned: false, created: now(), updated: now() });
+  const copy = cleanNote({ ...n, id: gid(), title: (n.title || 'Untitled') + ' copy', pinned: false, created: now(), updated: now(), dev: P.device });
   D.notes.unshift(copy);
   changed(); renderSidebar(); openNote(copy.id);
 }
@@ -1501,13 +1510,13 @@ function trashNote(id) {
   const n = byId(id); if (!n) return;
   if (id === edId) closeEditor();
   if (!byId(id)) return;   // it was empty and is already gone
-  n.trashed = now(); n.updated = now();
+  n.trashed = now(); touch(n);
   changed(); renderSidebar(); renderList();
-  toast('Moved to Trash', 'Undo', () => { const m = byId(id); if (m) { m.trashed = 0; m.updated = now(); changed(); renderSidebar(); renderList(); } });
+  toast('Moved to Trash', 'Undo', () => { const m = byId(id); if (m) { m.trashed = 0; touch(m); changed(); renderSidebar(); renderList(); } });
 }
 function restoreNote(id = edId) {
   const n = byId(id); if (!n) return;
-  n.trashed = 0; n.updated = now();
+  n.trashed = 0; touch(n);
   changed(); renderSidebar();
   if (id === edId) loadEditor(n);
   renderList();
@@ -1527,7 +1536,7 @@ async function emptyTrash() {
 }
 function moveNote(id, folder) {
   const n = byId(id); if (!n || folderOf(n) === folder) return;
-  n.folder = folder; n.updated = now();
+  n.folder = folder; touch(n);
   if (id === edId) renderMeta();
   changed(); renderSidebar(); renderList();
   toast('Moved to ' + folderName(folder));
@@ -1592,7 +1601,7 @@ function flushEditor() {
 function onEditorChange() {
   const n = byId(edId);
   if (!n || n.trashed) return;
-  n.updated = now(); edDirty = true;
+  touch(n); edDirty = true;
   clearTimeout(edTimer);
   edTimer = setTimeout(() => { flushEditor(); persist(); renderListSoon(); }, 400);
   updateCounts(); scheduleSync();
@@ -1613,12 +1622,12 @@ function renderMeta() {
 function addTag(raw) {
   const n = byId(edId), t = String(raw || '').trim().replace(/^#+/, '').replace(/\s+/g, '-').toLowerCase().slice(0, 40);
   if (!n || !t || n.tags.includes(t)) return;
-  n.tags.push(t); n.updated = now();
+  n.tags.push(t); touch(n);
   changed(); renderMeta(); renderSidebar(); renderList();
 }
 function removeTag(t) {
   const n = byId(edId); if (!n) return;
-  n.tags = n.tags.filter(x => x !== t); n.updated = now();
+  n.tags = n.tags.filter(x => x !== t); touch(n);
   changed(); renderMeta(); renderSidebar(); renderList();
 }
 
@@ -1975,7 +1984,7 @@ $('img-file').addEventListener('change', e => { [...e.target.files].forEach(inse
 /* Title, folder, tags */
 $('title-input').addEventListener('input', () => {
   const n = byId(edId); if (!n || n.trashed) return;
-  n.title = $('title-input').value; edLoaded.title = n.title; n.updated = now();
+  n.title = $('title-input').value; edLoaded.title = n.title; touch(n);
   persist(); scheduleSync(); renderListSoon(); updateCounts();
 });
 $('title-input').addEventListener('keydown', e => {
@@ -2269,7 +2278,7 @@ async function restoreBackup(file) {
   for (const n of r.notes) {
     const l = byId(n.id);
     // Restored notes get a fresh timestamp so a deletion recorded on another device doesn't remove them again.
-    if (!l) { D.notes.push({ ...n, updated: Math.max(n.updated, (D.tomb[n.id] || 0) + 1, now()) }); delete D.tomb[n.id]; added++; }
+    if (!l) { D.notes.push({ ...n, updated: Math.max(n.updated, (D.tomb[n.id] || 0) + 1, now()), dev: P.device }); delete D.tomb[n.id]; added++; }
     else if (n.updated > l.updated) { Object.assign(l, n); updated++; }
   }
   ensureFolders(); changed(); renderSidebar(); renderList();
