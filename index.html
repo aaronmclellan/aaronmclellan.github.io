@@ -537,6 +537,7 @@ const sites = [
     { id:'cs2',title:'cs2 tracker',icon:'fa-solid fa-crosshairs',color:'#f59e0b',url:'./cs.html',image:'cs-favicon.svg',external:false,desc:'live cs2 match schedules, results, and favorites tracker powered by grid.gg'},
     { id:'cocktails',title:'cocktail\npicker',icon:'fa-solid fa-martini-glass-citrus',color:'#f59e0b',url:'./cocktails.html',image:'cocktail-favicon.svg',external:false,desc:'pick the ingredients you have and find which cocktails to make from a 209-drink compendium'},
     { id:'hail',title:'hail watch',icon:'fa-solid fa-cloud-bolt',color:'#4fc3f7',url:'./hail.html',image:'hail-favicon.svg',external:false,desc:'live hail alerts and forecast for leander tx using the national weather service'},
+    { id:'ants',title:'ant farm',icon:'fa-solid fa-bug',color:'#c3532c',url:'./ants.html',image:'ants-favicon.svg',external:false,desc:'an idle ant farm with weather, bugs to catch and queens that fly the nest. it keeps digging while you are away, and pops out to sit on your desktop'},
 ];
 // Built-in programs, by window id. Sites, apps and the "props:" / "trash:"
 // windows can all be opened by id, which is what deep links
@@ -1880,13 +1881,26 @@ function parseIcs(text) {
     });
     return out;
 }
+// The ant farm leaves a note when flying the nest would at least double its
+// queens, so the tray can nudge from the desktop.
+function checkAnts() {
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem('antfarm.status')); } catch(e) {}
+    if (!s || !s.ready) { setTray('ants', null); return; }
+    const q = `${s.gain} queen${s.gain === 1 ? '' : 's'}`;
+    const item = {icon:'fa-solid fa-feather-pointed', color:'#c3532c', title:`Ant farm: flying the nest would bring ${q}`, open:'ants'};
+    setTray('ants', item);
+    alertOnce('ants:' + s.colony, {...item, key:'ants', title:'ant farm', text:`Your queens are ready to fly the nest: +${q}.`});
+}
 function runTrayChecks() {
     [checkHail, checkCS2, checkF1].forEach(fn => fn().catch(e => console.warn('[tray]', e)));
+    checkAnts();
 }
 // Favorites or the ZIP changed in an app window: refresh right away.
 window.addEventListener('storage', e => {
     if (e.key === 'cs2_favorite_keys') checkCS2().catch(() => {});
     if (e.key === 'hailZip') checkHail().catch(() => {});
+    if (e.key === 'antfarm.status') checkAnts();
 });
 
 /* ==============================================

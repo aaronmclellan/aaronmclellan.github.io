@@ -238,37 +238,103 @@ a{color:var(--accent);}
 .fs{width:1px;height:18px;background:var(--border);margin:0 4px;flex-shrink:0;}
 
 /* Content area */
-#editor{flex:1;overflow-y:auto;padding:20px 24px 80px;outline:none;line-height:1.7;font-size:.95rem;min-height:120px;position:relative;word-wrap:break-word;overflow-wrap:break-word;}
+#ed-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:60px;}
+#editor{flex:1 0 auto;padding:20px 24px 24px;outline:none;line-height:1.7;font-size:.95rem;min-height:120px;position:relative;word-wrap:break-word;overflow-wrap:break-word;}
 #editor.is-empty::before{content:attr(data-placeholder);position:absolute;left:24px;top:20px;color:var(--text3);pointer-events:none;}
-#editor h1{font-size:1.6rem;margin:16px 0 8px;font-weight:700;line-height:1.3;}
-#editor h2{font-size:1.3rem;margin:14px 0 6px;font-weight:600;line-height:1.35;}
-#editor h3{font-size:1.1rem;margin:12px 0 4px;font-weight:600;}
-#editor>:first-child{margin-top:0;}
-#editor img{max-width:100%;height:auto;border-radius:var(--r);margin:8px 0;display:block;}
-#editor ul,#editor ol{padding-left:24px;margin:4px 0;}
-#editor li{margin:2px 0;}
-#editor a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
-#editor blockquote{border-left:3px solid var(--accent);margin:8px 0;padding:4px 16px;color:var(--text2);background:var(--accentA);border-radius:0 var(--rs) var(--rs) 0;}
-#editor pre{background:var(--code);border:1px solid var(--codeB);border-radius:var(--r);padding:12px 16px;margin:8px 0;font-family:var(--mono);font-size:.85rem;line-height:1.5;overflow-x:auto;white-space:pre;}
-#editor code{background:var(--code);border:1px solid var(--codeB);border-radius:var(--rs);padding:1px 5px;font-family:var(--mono);font-size:.85em;}
-#editor pre code{background:none;border:none;padding:0;border-radius:0;}
-#editor hr{border:none;height:2px;background:var(--border);margin:16px 0;border-radius:1px;}
-#editor table{border-collapse:collapse;margin:8px 0;font-size:.9em;}
-#editor td,#editor th{border:1px solid var(--border);padding:4px 8px;text-align:left;vertical-align:top;}
+:is(#editor,.note-view) h1{font-size:1.6rem;margin:16px 0 8px;font-weight:700;line-height:1.3;}
+:is(#editor,.note-view) h2{font-size:1.3rem;margin:14px 0 6px;font-weight:600;line-height:1.35;}
+:is(#editor,.note-view) h3{font-size:1.1rem;margin:12px 0 4px;font-weight:600;}
+:is(#editor,.note-view)>:first-child{margin-top:0;}
+:is(#editor,.note-view) img{max-width:100%;height:auto;border-radius:var(--r);margin:8px 0;display:block;}
+:is(#editor,.note-view) ul,:is(#editor,.note-view) ol{padding-left:24px;margin:4px 0;}
+:is(#editor,.note-view) li{margin:2px 0;}
+:is(#editor,.note-view) a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
+:is(#editor,.note-view) blockquote{border-left:3px solid var(--accent);margin:8px 0;padding:4px 16px;color:var(--text2);background:var(--accentA);border-radius:0 var(--rs) var(--rs) 0;}
+:is(#editor,.note-view) pre{background:var(--code);border:1px solid var(--codeB);border-radius:var(--r);padding:12px 16px;margin:8px 0;font-family:var(--mono);font-size:.85rem;line-height:1.5;overflow-x:auto;white-space:pre;}
+:is(#editor,.note-view) code{background:var(--code);border:1px solid var(--codeB);border-radius:var(--rs);padding:1px 5px;font-family:var(--mono);font-size:.85em;}
+:is(#editor,.note-view) pre code{background:none;border:none;padding:0;border-radius:0;}
+:is(#editor,.note-view) hr{border:none;height:2px;background:var(--border);margin:16px 0;border-radius:1px;}
+:is(#editor,.note-view) table{border-collapse:collapse;margin:8px 0;font-size:.9em;}
+:is(#editor,.note-view) td,:is(#editor,.note-view) th{border:1px solid var(--border);padding:4px 8px;text-align:left;vertical-align:top;}
 #editor[contenteditable="false"]{opacity:.85;}
 
 /* To-do items: a plain div with data-todo, the box is drawn by ::before */
-#editor div[data-todo]{position:relative;padding-left:28px;margin:3px 0;line-height:1.6;}
-#editor div[data-todo]::before{
+:is(#editor,.note-view) div[data-todo]{position:relative;padding-left:28px;margin:3px 0;line-height:1.6;}
+:is(#editor,.note-view) div[data-todo]::before{
   content:'';position:absolute;left:0;top:.2em;width:18px;height:18px;
   border:2px solid var(--text3);border-radius:5px;cursor:pointer;transition:all .15s;
 }
-#editor div[data-todo="true"]::before{
+:is(#editor,.note-view) div[data-todo="true"]::before{
   background:var(--accent);border-color:var(--accent);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 7l3 3 5-5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:center;background-size:14px;
 }
-#editor div[data-todo="true"]{color:var(--text3);text-decoration:line-through;}
+:is(#editor,.note-view) div[data-todo="true"]{color:var(--text3);text-decoration:line-through;}
+:is(#editor,.note-view) div[data-todo][data-indent="1"]{margin-left:28px;}
+:is(#editor,.note-view) div[data-todo][data-indent="2"]{margin-left:56px;}
+:is(#editor,.note-view) div[data-todo][data-indent="3"]{margin-left:84px;}
+:is(#editor,.note-view) div[data-todo][data-indent="4"]{margin-left:112px;}
+:is(#editor,.note-view) div[data-todo][data-indent="5"]{margin-left:140px;}
+#editor.hide-done div[data-todo="true"]{display:none;}
+:is(#editor,.note-view) td{min-width:60px;}
+/* Arrow left of an item that has sub-items: click to fold them away */
+:is(#editor,.note-view) div[data-todo]:not([data-indent]):has(+ div[data-todo][data-indent="1"])::after,
+:is(#editor,.note-view) div[data-todo][data-indent="1"]:has(+ div[data-todo][data-indent="2"])::after,
+:is(#editor,.note-view) div[data-todo][data-indent="2"]:has(+ div[data-todo][data-indent="3"])::after,
+:is(#editor,.note-view) div[data-todo][data-indent="3"]:has(+ div[data-todo][data-indent="4"])::after,
+:is(#editor,.note-view) div[data-todo][data-indent="4"]:has(+ div[data-todo][data-indent="5"])::after{
+  content:'';position:absolute;left:-15px;top:.62em;width:6px;height:6px;
+  border-right:2px solid var(--text3);border-bottom:2px solid var(--text3);transform:rotate(45deg);cursor:pointer;
+  text-decoration:none;
+}
+:is(#editor,.note-view) div[data-todo][data-folded="true"]::after{transform:rotate(-45deg);top:.5em;border-color:var(--accent);}
+/* Links to other notes */
+:is(#editor,.note-view) a[data-note]{color:var(--accent);text-decoration:none;background:var(--accentA);padding:1px 6px;border-radius:5px;cursor:pointer;font-weight:500;white-space:nowrap;}
+:is(#editor,.note-view) a[data-note]:hover{background:var(--tagBg);}
+:is(#editor,.note-view) a[data-note][data-broken]{color:var(--text3);background:none;text-decoration:line-through;cursor:default;}
+/* Due dates on checklist items */
+:is(#editor,.note-view) time[datetime]{display:inline-block;font-size:.72rem;font-weight:600;line-height:1.5;padding:0 7px;border-radius:10px;background:var(--btn);color:var(--text2);margin-left:4px;cursor:pointer;text-decoration:none;vertical-align:1px;white-space:nowrap;}
+:is(#editor,.note-view) time[data-when="overdue"]{background:rgba(255,92,92,.15);color:var(--danger);}
+:is(#editor,.note-view) time[data-when="today"]{background:var(--accentA);color:var(--accent);}
+:is(#editor,.note-view) time[data-when="soon"]{color:var(--warn);}
+:is(#editor,.note-view) div[data-todo="true"] time[datetime]{opacity:.6;}
+#editor [data-flash]{animation:flash 1.6s ease;}
+@keyframes flash{0%,40%{background:var(--accentA);}100%{background:transparent;}}
+::highlight(search){background:rgba(255,196,77,.4);color:inherit;}
+mark{background:rgba(255,196,77,.5);color:var(--text);border-radius:2px;padding:0 1px;}
+#backlinks{margin:0 24px 16px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--r);background:var(--bar);}
+.bl-head{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:6px;}
+.bl-item{display:flex;flex-direction:column;gap:1px;width:100%;text-align:left;background:none;border:none;padding:6px 8px;border-radius:var(--rs);cursor:pointer;color:var(--text);}
+.bl-item:hover{background:var(--btnH);}
+.bl-item b{font-size:.82rem;font-weight:600;}
+.bl-item span{font-size:.74rem;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
+#archive-bar{padding:8px 16px;display:flex;align-items:center;gap:10px;background:var(--accentA);border-bottom:1px solid var(--border);font-size:.8rem;color:var(--text2);}
+#archive-bar span{flex:1;}
+/* Search filters */
+.filters{display:none;gap:6px;flex-wrap:wrap;}
+.lh.searching .filters{display:flex;}
+.chip{padding:3px 10px;border-radius:14px;border:1px solid var(--border);background:none;color:var(--text2);font-size:.72rem;cursor:pointer;}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* Upcoming */
+.due-head{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);padding:12px 10px 4px;}
+.due-head.overdue{color:var(--danger);}
+.due-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:var(--r);}
+.due-row:hover{background:var(--cardH);}
+.due-box{width:18px;height:18px;border:2px solid var(--text3);border-radius:5px;background:none;cursor:pointer;flex-shrink:0;margin-top:2px;}
+.due-box:hover{border-color:var(--accent);}
+.due-main{flex:1;min-width:0;cursor:pointer;}
+.due-main b{display:block;font-size:.84rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.due-main span{font-size:.7rem;color:var(--text3);}
+.fl-count.alert{background:var(--danger);color:#fff;}
+/* App lock */
+#lock{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px;}
+#lock[hidden]{display:none;}
+.lock-box{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;max-width:300px;width:100%;}
+.lock-box svg{width:44px;height:44px;color:var(--text3);}
+.lock-box h2{font-size:1.1rem;}
+.lock-box .inp{text-align:center;letter-spacing:4px;font-size:1.1rem;}
+body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.locked #toast{visibility:hidden!important;}
+#done-bar{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
 
 /* Status bar */
 #status-bar{padding:4px 16px;display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);font-size:.68rem;color:var(--text3);padding-bottom:calc(4px + var(--sab));}
@@ -306,6 +372,7 @@ a{color:var(--accent);}
 .m-btn:disabled{opacity:.5;cursor:default;}
 #fab{display:none;position:fixed;right:calc(18px + var(--sar));bottom:calc(22px + var(--sab));width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;border:none;box-shadow:0 6px 20px rgba(0,0,0,.35);align-items:center;justify-content:center;z-index:30;cursor:pointer;}
 #fab svg{width:26px;height:26px;}
+#fab{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
 
 /* ═══════════════════════════════════════════════════════
    MODALS, MENUS, TOAST
@@ -326,6 +393,39 @@ a{color:var(--accent);}
 .ci:hover{background:var(--btnH);}
 .ci.danger{color:var(--danger);}
 .ci-sep{height:1px;background:var(--border);margin:4px 2px;}
+.ci.on{background:var(--btnH);}
+.ci-hint{margin-left:auto;font-family:var(--mono);font-size:.68rem;color:var(--text3);padding-left:16px;white-space:nowrap;}
+#slash{position:fixed;z-index:210;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:4px;min-width:230px;max-height:290px;overflow-y:auto;display:none;}
+#slash.show{display:block;}
+
+/* Quick switcher */
+#qs{align-items:flex-start;padding-top:12vh;}
+.qs-box{max-width:560px;padding:10px;}
+#qs-input{margin-bottom:6px;font-size:1rem;}
+#qs-list{max-height:min(420px,55vh);overflow-y:auto;}
+.qs-item{display:flex;flex-direction:column;align-items:flex-start;gap:1px;width:100%;text-align:left;padding:8px 10px;border:none;background:none;border-radius:var(--rs);cursor:pointer;color:var(--text);}
+.qs-item b{font-size:.86rem;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.qs-item span{font-size:.72rem;color:var(--text3);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.qs-item.on{background:var(--accentA);}
+.qs-item.on b{color:var(--accent);}
+.qs-hint{font-size:.68rem;color:var(--text3);padding:6px 10px 2px;}
+
+/* Version history */
+.hist-box{max-width:880px;height:min(82vh,680px);display:flex;flex-direction:column;}
+.hist-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.hist-head h3{margin:0;}
+.hist-body{flex:1;min-height:0;display:grid;grid-template-columns:230px 1fr;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+#hist-list{overflow-y:auto;border-right:1px solid var(--border);padding:4px;}
+.hv{display:flex;flex-direction:column;gap:1px;width:100%;text-align:left;padding:8px 10px;border:none;background:none;border-radius:var(--rs);cursor:pointer;color:var(--text);}
+.hv b{font-size:.8rem;font-weight:600;}
+.hv span{font-size:.7rem;color:var(--text3);}
+.hv.on{background:var(--accentA);}
+.hv.on b{color:var(--accent);}
+.hv-more{margin:8px;}
+#hist-view{overflow-y:auto;padding:16px 20px;line-height:1.7;font-size:.92rem;background:var(--editor);}
+.hv-title{font-size:1.3rem;margin:0 0 10px;}
+.hist-foot{display:flex;align-items:center;gap:10px;margin-top:10px;}
+.hist-foot .hint{flex:1;margin:0;}
 #toast{position:fixed;left:50%;bottom:calc(24px + var(--sab));transform:translate(-50%,16px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:.82rem;display:flex;gap:16px;align-items:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:300;max-width:calc(100vw - 32px);box-shadow:var(--shadow);}
 #toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto;}
 #toast button{background:none;border:none;color:var(--accent);font-weight:700;cursor:pointer;font-size:inherit;filter:brightness(.85);}
@@ -419,8 +519,10 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
   #ed-top .ib svg{width:20px;height:20px;}
   #back-btn{display:flex;}
   #title-input{font-size:1.15rem;}
-  #editor{padding:16px 16px 40vh;font-size:16px;}
-  #editor.is-empty::before{left:16px;top:16px;}
+  #editor{padding:16px 16px 24px 22px;font-size:16px;}
+  #ed-scroll{padding-bottom:40vh;}
+  #backlinks{margin:0 12px;}
+  #editor.is-empty::before{left:22px;top:16px;}
   #meta-bar{padding:6px 12px;}
   .fb{width:38px;height:36px;}
   input,select,textarea,.inp,.search-bar input,#tag-input{font-size:16px!important;}
@@ -429,6 +531,12 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
   #toast{bottom:calc(92px + var(--sab));}
   .modal{align-items:flex-end;padding:0;padding-top:calc(24px + var(--sat));}
   .mbox,.mbox.wide{max-width:none;border-radius:16px 16px 0 0;padding-bottom:calc(20px + var(--sab));border-bottom:none;}
+  #qs{align-items:flex-start;padding:calc(10px + var(--sat)) 10px 0;}
+  .qs-box{border-radius:var(--rl);border-bottom:1px solid var(--border);padding-bottom:10px;}
+  .hist-box{height:94dvh;}
+  .hist-body{grid-template-columns:1fr;grid-template-rows:minmax(110px,32%) 1fr;}
+  #hist-list{border-right:none;border-bottom:1px solid var(--border);}
+  #hist-view{padding:12px 14px;}
 }
 </style>
 </head>
@@ -464,6 +572,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
       <h2 id="list-title">All Notes</h2>
       <div class="lh-btns">
         <button class="ib" id="expand-btn" data-act="toggleSidebar" data-tip="Show sidebar" aria-label="Show sidebar" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="ib" data-act="newMenu" data-tip="Today's note, templates" aria-label="Today's note and templates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg></button>
         <button class="ib" data-act="newNote" data-tip="New note (Alt+N)" aria-label="New note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></button>
       </div>
     </div>
@@ -478,6 +587,13 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
         <option value="created">Created</option>
         <option value="title">A to Z</option>
       </select>
+    </div>
+    <div class="filters" id="filters">
+      <button class="chip" data-act="filter" data-f="todo">Unchecked items</button>
+      <button class="chip" data-act="filter" data-f="due">Due dates</button>
+      <button class="chip" data-act="filter" data-f="week">Edited this week</button>
+      <button class="chip" data-act="filter" data-f="pinned">Pinned</button>
+      <button class="chip" data-act="filter" data-f="images">Images</button>
     </div>
   </div>
   <div id="sync-tip" class="banner" hidden>
@@ -506,6 +622,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
       <button class="ib" data-act="noteMenu" data-tip="More" aria-label="More actions"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
     </div>
   </div>
+  <div id="archive-bar" hidden><span>This note is archived. It stays out of your lists until you bring it back.</span><button class="m-btn sec sm" data-act="unarchive">Unarchive</button></div>
   <div id="trash-bar" hidden>
     <span>This note is in the Trash.</span>
     <button class="m-btn pri sm" data-act="restoreNote">Restore</button>
@@ -526,6 +643,9 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="fb" data-act="fmt" data-cmd="strikeThrough" data-tip="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
     <div class="fs"></div>
     <button class="fb" data-act="fmt" data-cmd="todo" data-tip="Checklist" aria-label="Checklist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><path d="M5 7l1.5 1.5L9 5"/><line x1="14" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><line x1="14" y1="17" x2="21" y2="17"/></svg></button>
+    <button class="fb" data-act="fmt" data-cmd="outdent" data-tip="Move left (Shift+Tab)" aria-label="Move left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="7 8 3 12 7 16"/></svg></button>
+    <button class="fb" data-act="fmt" data-cmd="due" data-tip="Due date (or type @fri)" aria-label="Due date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><path d="M9 15l2 2 4-4"/></svg></button>
+    <button class="fb" data-act="fmt" data-cmd="indent" data-tip="Move right (Tab)" aria-label="Move right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="3 8 7 12 3 16"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertUnorderedList" data-tip="Bullet list" aria-label="Bullet list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4.5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertOrderedList" data-tip="Numbered list" aria-label="Numbered list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="20" y2="12"/><line x1="10" y1="18" x2="20" y2="18"/><text x="3" y="8" font-size="7" fill="currentColor" stroke="none" font-weight="700">1</text><text x="3" y="14" font-size="7" fill="currentColor" stroke="none" font-weight="700">2</text><text x="3" y="20" font-size="7" fill="currentColor" stroke="none" font-weight="700">3</text></svg></button>
     <div class="fs"></div>
@@ -541,7 +661,11 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="fb" data-act="fmt" data-cmd="hr" data-tip="Divider" aria-label="Divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="2" y1="12" x2="22" y2="12"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="clear" data-tip="Clear formatting" aria-label="Clear formatting" style="font-size:.7rem">Tx</button>
   </div>
-  <div id="editor" contenteditable="true" data-placeholder="Start writing... (try - , # , [] or > at the start of a line)" spellcheck="true"></div>
+  <div id="done-bar" hidden><span id="done-msg"></span><button class="linkbtn" data-act="showDone">Show them</button></div>
+  <div id="ed-scroll">
+    <div id="editor" contenteditable="true" data-placeholder="Start writing... (try - , # , [] or > at the start of a line, or / for more)" spellcheck="true"></div>
+    <div id="backlinks" hidden><div class="bl-head">Linked from</div><div id="bl-list"></div></div>
+  </div>
   <div id="status-bar"><span id="wc">0 words</span><span id="edited"></span><button class="sync-btn" data-act="syncClick"><span class="dot" data-sync-dot></span><span data-sync-label>This device only</span></button></div>
 </main>
 </div>
@@ -593,7 +717,40 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
   </div>
 </div>
 
+<!-- QUICK SWITCHER -->
+<div class="modal" id="qs" data-act="closeModal">
+  <div class="mbox qs-box" role="dialog" aria-label="Go to a note">
+    <input class="inp" id="qs-input" placeholder="Go to a note, or type a title to create one" autocomplete="off" spellcheck="false" enterkeyhint="go">
+    <div id="qs-list" role="listbox"></div>
+    <div class="qs-hint desk-only">Up and down to choose, Enter to open, Esc to close</div>
+  </div>
+</div>
+
+<!-- VERSION HISTORY -->
+<div class="modal" id="hist" data-act="closeModal">
+  <div class="mbox hist-box" role="dialog" aria-label="Version history">
+    <div class="hist-head"><h3>Version history</h3><button class="ib" data-act="closeHist" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button></div>
+    <div class="hist-body"><div id="hist-list"></div><div id="hist-view" class="note-view"></div></div>
+    <div class="hist-foot"><span id="hist-msg" class="hint"></span><button class="m-btn pri" id="hist-restore" data-act="histRestore" disabled>Restore this version</button></div>
+  </div>
+</div>
+
+<!-- APP LOCK -->
+<div id="lock" hidden>
+  <div class="lock-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+    <h2>Notes is locked</h2>
+    <button class="m-btn pri" id="lock-bio" data-act="unlockBio" hidden>Unlock</button>
+    <form id="lock-form" onsubmit="return false" style="display:flex;gap:6px;width:100%">
+      <input class="inp" type="password" id="lock-pin" inputmode="numeric" autocomplete="off" placeholder="PIN" aria-label="PIN">
+      <button class="m-btn sec" type="button" data-act="unlockPin">OK</button>
+    </form>
+    <p class="hint" id="lock-msg"></p>
+  </div>
+</div>
+
 <div id="ctx" role="menu"></div>
+<div id="slash" role="listbox" aria-label="Insert"></div>
 <div id="toast" role="status" aria-live="polite"><span id="toast-msg"></span><button id="toast-btn" data-act="toastAction" hidden></button></div>
 <input type="file" id="img-file" accept="image/*" multiple hidden>
 <input type="file" id="backup-file" accept=".json,application/json" hidden>
@@ -634,6 +791,7 @@ function plain(n) {
   textCache.set(n.id, { html: n.content, text });
   return text;
 }
+const noteTitle = n => n.title.trim() || plain(n).split('\n').map(s => s.trim()).find(Boolean) || 'New note';
 const isEmptyNote = n => !n.title.trim() && !plain(n).trim() && !/<(img|hr|table)\b/i.test(n.content);
 // Brand new blank notes stay on this device until something is typed in them.
 const syncable = n => n.synced != null || !isEmptyNote(n);
@@ -722,9 +880,10 @@ const bc = 'BroadcastChannel' in window ? new BroadcastChannel('ron-notes') : nu
    STATE
    ═══════════════════════════════════════════════════════ */
 const GENERAL = 'f:General';
+const TEMPLATES = 'f:Templates', DAILY = 'f:Daily';   // fixed ids, so two devices never create duplicates
 const TRASH_DAYS = 30;
 let D = { notes: [], folders: [], tomb: {} };   // synced: notes, folders, deletions
-let P = { view: 'all', activeId: null, theme: 'auto', sbOpen: true, sort: 'edited', tipHidden: false, device: '' };   // this device only
+let P = { view: 'all', activeId: null, theme: 'auto', sbOpen: true, sort: 'edited', tipHidden: false, device: '', recent: [], filters: [], lock: null };   // this device only
 let S = null;           // sync settings for this device
 let KEY = null;         // AES-GCM key derived from the passphrase (non-extractable, never leaves this device)
 let legacyPass = null;  // passphrase from the first version's settings, kept in memory only until migration finishes
@@ -737,6 +896,16 @@ const liveFolders = () => D.folders.filter(f => !f.deleted).sort((a, b) =>
   a.id === GENERAL ? -1 : b.id === GENERAL ? 1 : (a.created - b.created) || a.name.localeCompare(b.name));
 const folderOf = n => D.folders.some(f => f.id === n.folder && !f.deleted) ? n.folder : GENERAL;
 const folderName = id => (D.folders.find(f => f.id === id) || { name: 'General' }).name;
+const isTemplate = n => folderOf(n) === TEMPLATES;
+const listed = n => !n.trashed && !n.archived;   // shows up in normal lists
+const templates = () => D.notes.filter(n => !n.trashed && isTemplate(n)).sort((a, b) => a.title.localeCompare(b.title));
+const templateName = t => t.title.replace(/\{\{\s*\w+\s*\}\}/g, '').replace(/\s+/g, ' ').trim() || 'Untitled';
+function ensureFolder(id, name) {
+  let f = D.folders.find(x => x.id === id);
+  if (!f) D.folders.push(f = cleanFolder({ id, name, created: now(), updated: now() }));
+  else if (f.deleted) { f.deleted = 0; f.updated = now(); }
+  return f;
+}
 const allTags = () => [...new Set(D.notes.filter(n => !n.trashed).flatMap(n => n.tags))].sort();
 
 function cleanNote(n) {
@@ -745,6 +914,9 @@ function cleanNote(n) {
     folder: String(n.folder || GENERAL), tags: Array.isArray(n.tags) ? n.tags.map(String) : [],
     pinned: !!n.pinned, created: +n.created || +n.updated || 0, updated: +n.updated || 0, trashed: +n.trashed || 0,
     dev: String(n.dev || ''),   // which device made the latest edit
+    daily: String(n.daily || ''),   // YYYY-MM-DD for a daily note
+    hideDone: !!n.hideDone,         // checked items hidden in this note
+    archived: +n.archived || 0,     // when it was archived (0 = not archived)
   };
 }
 const publicNote = n => cleanNote(n);
@@ -773,6 +945,7 @@ function dropNote(id) {
   // A blank note that never synced exists nowhere else, so it needs no record of the deletion.
   if (!n || syncable(n)) D.tomb[id] = now();
   textCache.delete(id);
+  store.set(histKey(id), null);
 }
 function purgeTrash() {
   const cutoff = now() - TRASH_DAYS * 864e5, old = now() - 365 * 864e5;
@@ -1021,7 +1194,10 @@ function applyRemote(r) {
       out.push(remoteWins ? { ...rn, synced: rn.updated } : l);
       out.push({ ...cleanNote(lose), id: gid(), title: (lose.title || 'Untitled') + ' (conflicting copy)', pinned: false, updated: now(), dev: P.device, synced: 0 });
       res.changed = true; res.conflicts++;
-    } else if (rn.updated > l.updated) { out.push({ ...rn, synced: rn.updated }); res.changed = true; }
+    } else if (rn.updated > l.updated) {
+      if (l.title !== rn.title || l.content !== rn.content) snapshot(l.id, { t: l.updated, title: l.title, content: l.content, src: 'sync' });
+      out.push({ ...rn, synced: rn.updated }); res.changed = true;
+    }
     else out.push(l);
   }
   for (const l of D.notes) if (!seen.has(l.id)) out.push(l);
@@ -1237,7 +1413,7 @@ async function stopSyncing() {
 /* ═══════════════════════════════════════════════════════
    SANITIZING (pasted HTML and anything loaded into the editor)
    ═══════════════════════════════════════════════════════ */
-const KEEP = { B: 1, STRONG: 'B', I: 1, EM: 'I', U: 1, S: 1, STRIKE: 'S', DEL: 'S', H1: 1, H2: 1, H3: 1, H4: 'H3', H5: 'H3', H6: 'H3', UL: 1, OL: 1, LI: 1, BLOCKQUOTE: 1, PRE: 1, CODE: 1, A: 1, IMG: 1, HR: 1, BR: 1, DIV: 1, P: 'DIV', TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TD: 1, TH: 1 };
+const KEEP = { TIME: 1, B: 1, STRONG: 'B', I: 1, EM: 'I', U: 1, S: 1, STRIKE: 'S', DEL: 'S', H1: 1, H2: 1, H3: 1, H4: 'H3', H5: 'H3', H6: 'H3', UL: 1, OL: 1, LI: 1, BLOCKQUOTE: 1, PRE: 1, CODE: 1, A: 1, IMG: 1, HR: 1, BR: 1, DIV: 1, P: 'DIV', TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TD: 1, TH: 1 };
 const DROP = /^(SCRIPT|STYLE|META|LINK|TITLE|HEAD|IFRAME|OBJECT|EMBED|SVG|MATH|TEMPLATE|NOSCRIPT|BUTTON|INPUT|SELECT|TEXTAREA|FORM|VIDEO|AUDIO|CANVAS)$/i;
 function cleanHTML(html) {
   const doc = parser.parseFromString(html || '', 'text/html');
@@ -1253,9 +1429,21 @@ function cleanHTML(html) {
       if (!as) { walk(node, dst); continue; }
       const el = doc.createElement(as === 1 ? tag : as);
       if (tag === 'A') {
-        const href = node.getAttribute('href') || '';
-        if (!/^(https?:|mailto:|tel:)/i.test(href)) { walk(node, dst); continue; }
-        el.setAttribute('href', href);
+        const noteId = node.getAttribute('data-note') || '';
+        if (/^[\w:.-]{1,80}$/.test(noteId)) { el.setAttribute('data-note', noteId); el.setAttribute('contenteditable', 'false'); }
+        else {
+          const href = node.getAttribute('href') || '';
+          if (!/^(https?:|mailto:|tel:)/i.test(href)) { walk(node, dst); continue; }
+          el.setAttribute('href', href);
+        }
+      }
+      if (tag === 'TIME') {
+        const d = node.getAttribute('datetime') || '';
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) { walk(node, dst); continue; }
+        el.setAttribute('datetime', d); el.setAttribute('contenteditable', 'false');
+        el.textContent = shortDate(d);
+        dst.appendChild(el);
+        continue;
       }
       if (tag === 'IMG') {
         const src = node.getAttribute('src') || '';
@@ -1263,7 +1451,12 @@ function cleanHTML(html) {
         el.setAttribute('src', src);
         const alt = node.getAttribute('alt'); if (alt) el.setAttribute('alt', alt);
       }
-      if (tag === 'DIV' && node.hasAttribute('data-todo')) el.setAttribute('data-todo', node.getAttribute('data-todo') === 'true' ? 'true' : 'false');
+      if (tag === 'DIV' && node.hasAttribute('data-todo')) {
+        el.setAttribute('data-todo', node.getAttribute('data-todo') === 'true' ? 'true' : 'false');
+        const lv = Math.min(MAX_INDENT, parseInt(node.getAttribute('data-indent'), 10) || 0);
+        if (lv > 0) el.setAttribute('data-indent', lv);
+        if (node.getAttribute('data-folded') === 'true') el.setAttribute('data-folded', 'true');
+      }
       if (tag === 'OL' && +node.getAttribute('start') > 1) el.setAttribute('start', +node.getAttribute('start'));
       for (const a of ['colspan', 'rowspan']) if ((tag === 'TD' || tag === 'TH') && node.getAttribute(a)) el.setAttribute(a, +node.getAttribute(a) || 1);
       walk(node, el);
@@ -1290,7 +1483,9 @@ function toMarkdown(html) {
     if (t === 'I' || t === 'EM') return mark('*', inline(n));
     if (t === 'S' || t === 'STRIKE' || t === 'DEL') return mark('~~', inline(n));
     if (t === 'CODE') return '`' + n.textContent + '`';
+    if (t === 'A' && n.hasAttribute('data-note')) return '[[' + inline(n) + ']]';
     if (t === 'A') return '[' + inline(n) + '](' + (n.getAttribute('href') || '') + ')';
+    if (t === 'TIME') return '(due ' + n.getAttribute('datetime') + ')';
     if (t === 'IMG') { const s = n.getAttribute('src') || ''; return s.startsWith('data:') ? '(image)' : '![](' + s + ')'; }
     if (BLOCK.test(t)) { emit(n, ''); return ''; }
     return inline(n);
@@ -1320,8 +1515,13 @@ function toMarkdown(html) {
         else out.push(prefix + bullet.trim());
       }
     }
-    else if (el.hasAttribute('data-todo')) out.push(prefix + (el.getAttribute('data-todo') === 'true' ? '- [x] ' : '- [ ] ') + inline(el).trim());
-    else if (t === 'TABLE') { for (const tr of el.querySelectorAll('tr')) out.push(prefix + '| ' + [...tr.children].map(c => inline(c).trim()).join(' | ') + ' |'); }
+    else if (el.hasAttribute('data-todo')) out.push(prefix + '  '.repeat(levelOf(el)) + (el.getAttribute('data-todo') === 'true' ? '- [x] ' : '- [ ] ') + inline(el).trim());
+    else if (t === 'TABLE') {
+      [...el.querySelectorAll('tr')].forEach((tr, i) => {
+        out.push(prefix + '| ' + [...tr.children].map(c => inline(c).trim()).join(' | ') + ' |');
+        if (i === 0) out.push(prefix + '|' + ' --- |'.repeat(tr.children.length));   // Markdown needs a header row
+      });
+    }
     else { const start = out.length; block(el, prefix); if (out.length === start) out.push(prefix.trimEnd()); }
   }
   block(parser.parseFromString(html || '', 'text/html').body, '');
@@ -1341,23 +1541,33 @@ const ICON = {
   trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>',
   pin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 10.76a2 2 0 01-1.11 1.79l-1.78.9A2 2 0 005 15.24V16a1 1 0 001 1h12a1 1 0 001-1v-.76a2 2 0 00-1.11-1.79l-1.78-.9A2 2 0 0115 10.76V7a1 1 0 011-1 2 2 0 000-4H8a2 2 0 000 4 1 1 0 011 1z"/><rect x="11" y="16" width="2" height="6" rx="1"/></svg>',
   check: '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>',
+  today: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>',
+  due: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M5 3L2 6"/><path d="M19 3l3 3"/></svg>',
+  archive: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 002 2h12a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>',
 };
 function viewTitle() {
   const v = P.view;
   if (v === 'trash') return 'Trash';
+  if (v === 'archive') return 'Archive';
+  if (v === 'upcoming') return 'Upcoming';
   if (v.startsWith('tag:')) return '#' + v.slice(4);
   if (v.startsWith('f:')) return folderName(v);
   return 'All Notes';
 }
 function renderSidebar() {
-  const live = D.notes.filter(n => !n.trashed), counts = {}, tags = {};
+  const live = D.notes.filter(listed), counts = {}, tags = {};
+  const notes = live.filter(n => !isTemplate(n));
   for (const n of live) {
     counts[folderOf(n)] = (counts[folderOf(n)] || 0) + 1;
-    for (const t of n.tags) tags[t] = (tags[t] || 0) + 1;
+    if (!isTemplate(n)) for (const t of n.tags) tags[t] = (tags[t] || 0) + 1;
   }
   const item = (view, icon, name, count, editable) =>
     `<div class="fl-item${P.view === view ? ' active' : ''}" data-act="view" data-view="${esc(view)}"${view.startsWith('f:') ? ` data-drop="${esc(view)}"` : ''}>${icon}<span class="fl-name">${esc(name)}</span><span class="fl-count">${count}</span>${editable ? `<button class="fl-more" data-act="folderMenu" data-id="${esc(view)}" aria-label="Folder options">⋯</button>` : ''}</div>`;
-  let h = item('all', ICON.all, 'All Notes', live.length);
+  let h = item('all', ICON.all, 'All Notes', notes.length);
+  h += `<div class="fl-item" data-act="today">${ICON.today}<span class="fl-name">Today</span></div>`;
+  const urgent = dueItems().filter(d => !d.done && d.due <= dayKey()).length;
+  h += `<div class="fl-item${P.view === 'upcoming' ? ' active' : ''}" data-act="view" data-view="upcoming">${ICON.due}<span class="fl-name">Upcoming</span>${urgent ? `<span class="fl-count alert" title="Due today or overdue">${urgent}</span>` : ''}</div>`;
+  if ('setAppBadge' in navigator) (urgent ? navigator.setAppBadge(urgent) : navigator.clearAppBadge()).catch(() => {});
   h += '<div class="fl-head">Folders</div>';
   for (const f of liveFolders()) h += item(f.id, ICON.folder, f.name, counts[f.id] || 0, f.id !== GENERAL);
   const tagList = Object.keys(tags).sort();
@@ -1365,7 +1575,8 @@ function renderSidebar() {
     h += '<div class="fl-head">Tags</div>';
     for (const t of tagList) h += item('tag:' + t, '<span class="fl-hash">#</span>', t, tags[t]);
   }
-  h += '<div style="height:10px"></div>' + item('trash', ICON.trash, 'Trash', D.notes.length - live.length);
+  h += '<div style="height:10px"></div>' + item('archive', ICON.archive, 'Archive', D.notes.filter(n => n.archived && !n.trashed).length);
+  h += item('trash', ICON.trash, 'Trash', D.notes.filter(n => n.trashed).length);
   $('folder-list').innerHTML = h;
 }
 function setView(v) {
@@ -1386,14 +1597,25 @@ function toggleSidebar() {
 /* ═══════════════════════════════════════════════════════
    NOTE LIST
    ═══════════════════════════════════════════════════════ */
+const searchWords = () => { const q = $('search').value.trim().toLowerCase(); return q ? q.split(/\s+/) : []; };
+const FILTERS = {
+  todo: n => n.content.includes('data-todo="false"'),
+  due: n => n.content.includes('<time'),
+  week: n => n.updated > now() - 7 * 864e5,
+  pinned: n => n.pinned,
+  images: n => /<img\b/i.test(n.content),
+};
 function visibleNotes() {
-  const q = $('search').value.trim().toLowerCase(), v = P.view, words = q ? q.split(/\s+/) : [];
+  const v = P.view, words = searchWords(), filters = (P.filters || []).filter(f => FILTERS[f]);
   const ns = D.notes.filter(n => {
     if (v === 'trash' ? !n.trashed : n.trashed) return false;
+    if (v === 'archive' ? !n.archived : (n.archived && v !== 'trash')) return false;
     if (v.startsWith('f:') && folderOf(n) !== v) return false;
     if (v.startsWith('tag:') && !n.tags.includes(v.slice(4))) return false;
+    if (v !== TEMPLATES && v !== 'trash' && isTemplate(n)) return false;   // templates only show in their folder
+    if (filters.some(f => !FILTERS[f](n))) return false;
     if (!words.length) return true;
-    const hay = (n.title + '\n' + plain(n) + '\n' + n.tags.join(' ')).toLowerCase();
+    const hay = (n.title + '\n' + plain(n) + '\n' + n.tags.join(' ') + '\n' + folderName(folderOf(n))).toLowerCase();
     return words.every(w => hay.includes(w));
   });
   const cardTitle = n => (n.title.trim() || plain(n).trim()).toLowerCase();
@@ -1403,36 +1625,59 @@ function visibleNotes() {
     : (a, b) => b.updated - a.updated;
   return ns.sort((a, b) => (v !== 'trash' && b.pinned - a.pinned) || by(a, b));
 }
+// Escape text and wrap any of the search words in <mark>.
+function markWords(text, words) {
+  if (!words.length) return esc(text);
+  const re = new RegExp('(' + words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'gi');
+  return text.split(re).map((part, i) => i % 2 ? '<mark>' + esc(part) + '</mark>' : esc(part)).join('');
+}
+// The bit of a note around the first search match.
+function matchSnippet(text, words) {
+  const low = text.toLowerCase();
+  let at = -1;
+  for (const w of words) { const i = low.indexOf(w); if (i >= 0 && (at < 0 || i < at)) at = i; }
+  if (at < 0) return '';
+  const start = Math.max(0, at - 40);
+  return (start ? '...' : '') + text.slice(start, at + 120).replace(/\s+/g, ' ').trim();
+}
 function cardHTML(n) {
+  const words = searchWords();
   const lines = plain(n).split('\n').map(s => s.trim()).filter(Boolean);
   const title = n.title.trim() || lines.shift() || 'New note';
-  const preview = lines.join(' ').slice(0, 160);
+  const body = lines.join(' ');
+  const preview = (words.length && matchSnippet(body, words)) || body.slice(0, 160);
   const done = (n.content.match(/data-todo="true"/g) || []).length, open = (n.content.match(/data-todo="false"/g) || []).length;
   const meta = [];
   if (P.view === 'trash') {
     const left = Math.max(0, Math.ceil((n.trashed + TRASH_DAYS * 864e5 - now()) / 864e5));
     meta.push(`<span>Deletes in ${left} day${left === 1 ? '' : 's'}</span>`);
-  } else meta.push(`<span>${esc(when(n.updated))}</span>`);
+  } else if (P.view === 'archive') meta.push(`<span>Archived ${esc(whenLower(n.archived))}</span>`);
+  else meta.push(`<span>${esc(when(n.updated))}</span>`);
   if (!P.view.startsWith('f:') && folderOf(n) !== GENERAL) meta.push(`<span class="nc-folder">${ICON.folder}${esc(folderName(folderOf(n)))}</span>`);
   if (done + open) meta.push(`<span class="nc-todo${open ? '' : ' done'}">${ICON.check}${done}/${done + open}</span>`);
   for (const t of n.tags) meta.push(`<button class="tag tag-sm" data-act="view" data-view="tag:${esc(t)}">${esc(t)}</button>`);
   return `<div class="nc${n.id === P.activeId ? ' active' : ''}" data-act="open" data-id="${esc(n.id)}"${touchUI.matches ? '' : ' draggable="true"'}>`
     + (n.pinned && P.view !== 'trash' ? `<span class="nc-pin">${ICON.pin}</span>` : '')
-    + `<div class="nc-title">${esc(title)}</div>`
-    + (preview ? `<div class="nc-preview">${esc(preview)}</div>` : '')
+    + `<div class="nc-title">${markWords(title, words)}</div>`
+    + (preview ? `<div class="nc-preview">${markWords(preview, words)}</div>` : '')
     + `<div class="nc-meta">${meta.join('')}</div></div>`;
 }
 function renderList() {
-  const el = $('note-items'), ns = visibleNotes(), title = viewTitle(), q = $('search').value.trim();
+  const el = $('note-items'), title = viewTitle(), q = $('search').value.trim();
   $('list-title').textContent = title; $('mob-title').textContent = title;
+  updateFilterChips();
+  $('sort-sel').hidden = P.view === 'upcoming';
+  if (P.view === 'upcoming') { $('trash-head').hidden = true; renderUpcoming(); return; }
+  const ns = visibleNotes();
   $('trash-head').hidden = P.view !== 'trash' || !ns.length;
   if (!ns.length) {
-    const msg = q ? 'No notes match "' + esc(q) + '"' : P.view === 'trash' ? 'Trash is empty' : 'No notes here yet';
-    el.innerHTML = `<div class="empty">${P.view === 'trash' ? ICON.trash : ICON.all}<p>${msg}</p>${!q && P.view !== 'trash' ? '<button class="m-btn pri" data-act="newNote">New note</button>' : ''}</div>`;
+    const msg = q ? 'No notes match "' + esc(q) + '"' : (P.filters || []).length ? 'No notes match these filters' : P.view === 'trash' ? 'Trash is empty' : P.view === 'archive' ? 'Nothing archived. Archive a note from its ... menu to tuck it away without deleting it.' : 'No notes here yet';
+    el.innerHTML = (P.view === TEMPLATES ? TEMPLATE_HINT : '') + `<div class="empty">${P.view === 'trash' ? ICON.trash : P.view === 'archive' ? ICON.archive : ICON.all}<p>${msg}</p>${!q && !(P.filters || []).length && P.view !== 'trash' && P.view !== 'archive' ? '<button class="m-btn pri" data-act="newNote">New note</button>' : ''}</div>`;
     return;
   }
-  el.innerHTML = ns.map(cardHTML).join('');
+  el.innerHTML = (P.view === TEMPLATES ? TEMPLATE_HINT : '') + ns.map(cardHTML).join('');
 }
+const TEMPLATE_HINT = '<div class="banner" style="margin:4px 2px 8px">Notes in this folder are templates. Start a note from one with the calendar button next to New note (or press and hold + on a phone), or type / in any note. {{date}}, {{weekday}} and {{time}} fill themselves in.</div>';
 let listRAF = 0;
 function renderListSoon() { if (!listRAF) listRAF = requestAnimationFrame(() => { listRAF = 0; renderList(); }); }
 
@@ -1445,8 +1690,9 @@ function newNote(opts = {}) {
   if (P.view === 'trash') { P.view = 'all'; savePrefs(); }
   const n = cleanNote({
     id: gid(), title: opts.title || '', content: opts.content || '',
-    folder: P.view.startsWith('f:') ? P.view : GENERAL,
-    tags: P.view.startsWith('tag:') ? [P.view.slice(4)] : [],
+    folder: opts.folder || (P.view.startsWith('f:') ? P.view : GENERAL),
+    tags: opts.tags || (P.view.startsWith('tag:') ? [P.view.slice(4)] : []),
+    daily: opts.daily || '',
     created: now(), updated: now(), dev: P.device,
   });
   D.notes.unshift(n);
@@ -1456,14 +1702,17 @@ function newNote(opts = {}) {
   renderSidebar();
   openNote(n.id);
   // Focus right away (inside the tap) so phones show the keyboard.
-  if (isMobile() || opts.content) focusEditor(!!opts.content); else $('title-input').focus();
+  if (isMobile() || opts.content || opts.title) focusEditor(!!opts.content); else $('title-input').focus();
   return n;
 }
 function openNote(id) {
   const n = byId(id);
   if (!n) return;
-  if (edId && edId !== id) { flushEditor(); cleanupEmpty(byId(edId)); }
-  P.activeId = id; savePrefs();
+  flushEditor();   // even for the same note: reloading it must not drop the last few keystrokes
+  if (edId && edId !== id) cleanupEmpty(byId(edId));
+  P.activeId = id;
+  P.recent = [id, ...(P.recent || []).filter(x => x !== id)].slice(0, 30);
+  savePrefs();
   loadEditor(n);
   $('editor-panel').classList.remove('none');
   if (isMobile()) {
@@ -1542,6 +1791,84 @@ function moveNote(id, folder) {
   toast('Moved to ' + folderName(folder));
 }
 
+/* Archive */
+function archiveNote(id, on = true) {
+  flushEditor();
+  const n = byId(id); if (!n) return;
+  n.archived = on ? now() : 0; touch(n);
+  changed(); renderSidebar(); renderList();
+  if (id === edId) updateArchiveBar();
+  if (on) toast('Archived', 'Undo', () => archiveNote(id, false));
+  else toast('Back in your notes');
+}
+function updateArchiveBar() { const n = byId(edId); $('archive-bar').hidden = !(n && n.archived && !n.trashed); }
+
+/* Daily note and templates */
+const dayKey = (d = new Date()) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+const longDate = () => new Date().toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+function fillTemplate(s) {
+  const d = new Date();
+  return s.replace(/\{\{\s*(date|weekday|time)\s*\}\}/gi, (_, k) => esc(
+    k.toLowerCase() === 'time' ? d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+    : k.toLowerCase() === 'weekday' ? d.toLocaleDateString([], { weekday: 'long' })
+    : d.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' })));
+}
+// Today's note lives in the Daily folder and starts from a template called "Daily" if there is one.
+function openToday() {
+  closeSidebar();
+  const key = dayKey();
+  const today = D.notes.filter(n => n.daily === key && !n.trashed).sort((a, b) => a.created - b.created)[0];
+  if (today) { openNote(today.id); if (!isMobile()) focusEditor(true); return; }
+  ensureFolder(DAILY, 'Daily');
+  const tpl = templates().find(t => /^daily\b/i.test(templateName(t)));
+  newNote({ title: longDate(), content: tpl ? fillTemplate(tpl.content) : '', folder: DAILY, daily: key, tags: tpl ? tpl.tags.slice() : [] });
+}
+function newFromTemplate(id) {
+  const t = byId(id); if (!t) return;
+  flushEditor();
+  newNote({
+    title: fillTemplate(t.title), content: fillTemplate(t.content), tags: t.tags.slice(),
+    folder: P.view.startsWith('f:') && P.view !== TEMPLATES ? P.view : GENERAL,
+  });
+}
+function saveAsTemplate(id) {
+  flushEditor();
+  const n = byId(id); if (!n) return;
+  ensureFolder(TEMPLATES, 'Templates');
+  D.notes.unshift(cleanNote({ ...n, id: gid(), folder: TEMPLATES, pinned: false, daily: '', hideDone: false, created: now(), updated: now(), dev: P.device }));
+  changed(); renderSidebar();
+  toast('Saved as a template', 'Show', () => setView(TEMPLATES));
+}
+const STARTER_TEMPLATES = [
+  ['Daily', '<h2>Top 3 today</h2><div data-todo="false"><br></div><div data-todo="false"><br></div><div data-todo="false"><br></div><h2>Notes</h2><div><br></div>'],
+  ['Meeting {{date}}', '<div><b>With:</b> </div><h2>Agenda</h2><ul><li><br></li></ul><h2>Notes</h2><div><br></div><h2>Action items</h2><div data-todo="false"><br></div>'],
+  ['Packing list', '<div data-todo="false">Clothes</div><div data-todo="false" data-indent="1">Socks and underwear</div><div data-todo="false" data-indent="1">Shirts</div><div data-todo="false" data-indent="1">Pants</div><div data-todo="false">Toiletries</div><div data-todo="false" data-indent="1">Toothbrush and toothpaste</div><div data-todo="false" data-indent="1">Deodorant</div><div data-todo="false">Tech</div><div data-todo="false" data-indent="1">Phone charger</div><div data-todo="false" data-indent="1">Headphones</div><div data-todo="false">Documents</div><div data-todo="false" data-indent="1">ID or passport</div>'],
+];
+function addStarterTemplates() {
+  ensureFolder(TEMPLATES, 'Templates');
+  for (const [title, content] of STARTER_TEMPLATES) D.notes.push(cleanNote({ id: gid(), title, content, folder: TEMPLATES, created: now(), updated: now(), dev: P.device }));
+  changed(); setView(TEMPLATES);
+  toast('Added 3 starter templates. Edit them like any note.');
+}
+// Make a note to link to without leaving the current one.
+function createLinkedNote(title) {
+  const cur = byId(edId);
+  const n = cleanNote({ id: gid(), title: title.trim(), folder: cur && !isTemplate(cur) ? folderOf(cur) : GENERAL, created: now(), updated: now(), dev: P.device });
+  D.notes.unshift(n);
+  changed(); renderSidebar(); renderListSoon();
+  return n;
+}
+function newMenuItems() {
+  const tpls = templates();
+  return [
+    { label: "Today's note", fn: openToday },
+    { label: 'Blank note', fn: () => newNote() },
+    '-',
+    ...tpls.map(t => ({ label: 'Template: ' + templateName(t), fn: () => newFromTemplate(t.id) })),
+    tpls.length ? { label: 'Edit templates', fn: () => setView(TEMPLATES) } : { label: 'Add starter templates', fn: addStarterTemplates },
+  ];
+}
+
 /* Folders */
 async function newFolder() {
   const name = await dialog({ title: 'New folder', input: '', placeholder: 'Folder name', ok: 'Create' });
@@ -1573,6 +1900,12 @@ async function deleteFolder(id) {
    ═══════════════════════════════════════════════════════ */
 const ed = $('editor');
 let edId = null, edDirty = false, edTimer = null, edLoaded = { title: '', content: '' }, lastRange = null;
+let edSnapDone = false, edSnapAt = 0;
+// The first change in an editing session saves the version from before it; long sessions save one every 10 minutes.
+function beginEdit(n) {
+  if (!edSnapDone) { edSnapDone = true; edSnapAt = now(); snapshot(n.id, { t: n.updated, title: edLoaded.title, content: edLoaded.content }); }
+  else if (now() - edSnapAt > 10 * 60e3) { edSnapAt = now(); snapshot(n.id, { t: n.updated, title: n.title, content: n.content }); }
+}
 document.execCommand('defaultParagraphSeparator', false, 'div');
 
 function loadEditor(n, keepCaret) {
@@ -1581,13 +1914,19 @@ function loadEditor(n, keepCaret) {
   $('title-input').value = n.title;
   ed.innerHTML = cleanHTML(n.content);
   edLoaded = { title: n.title, content: n.content };
+  edSnapDone = false;
+  ed.classList.toggle('hide-done', !!n.hideDone);
+  applyFolds();
   const ro = !!n.trashed;
   ed.contentEditable = ro ? 'false' : 'true';
   $('title-input').readOnly = ro;
   $('trash-bar').hidden = !ro; $('meta-bar').hidden = ro; $('fmt-bar').hidden = ro;
   $('pin-btn').hidden = ro;
   renderMeta(); updatePin(); updateCounts();
-  if (caret != null) setCaretOffset(caret); else if (!keepCaret) ed.scrollTop = 0;
+  refreshInline();
+  renderBacklinks(); updateArchiveBar();
+  if (caret != null) setCaretOffset(caret); else if (!keepCaret) $('ed-scroll').scrollTop = 0;
+  highlightSearch();
 }
 function flushEditor() {
   clearTimeout(edTimer);
@@ -1595,15 +1934,72 @@ function flushEditor() {
   edDirty = false;
   const n = byId(edId);
   if (!n) return;
-  n.content = ed.innerHTML;
+  n.content = stripScreenOnly(ed.innerHTML);
   edLoaded.content = n.content;
+}
+// Attributes that only describe how things look right now (folded, overdue, a deleted link target): never saved.
+const stripScreenOnly = html => html.replace(/<(div|a|time)\b[^>]*>/g, tag => tag.replace(/ (hidden=""|data-broken=""|data-flash=""|data-when="[a-z]*")/g, ''));
+// Note links show the target's current title; due dates get their overdue / today colours.
+function refreshInline(root = ed) {
+  for (const a of root.querySelectorAll('a[data-note]')) {
+    const target = byId(a.getAttribute('data-note'));
+    if (target && !target.trashed) {
+      const title = noteTitle(target);
+      if (a.textContent !== title) a.textContent = title;
+      a.removeAttribute('data-broken');
+    } else a.setAttribute('data-broken', '');
+  }
+  const today = dayKey(), week = dayKey(new Date(now() + 6 * 864e5));
+  for (const tm of root.querySelectorAll('time[datetime]')) {
+    const d = tm.getAttribute('datetime'), done = tm.closest('[data-todo="true"]');
+    const w = done ? '' : d < today ? 'overdue' : d === today ? 'today' : d <= week ? 'soon' : '';
+    if (w) tm.setAttribute('data-when', w); else tm.removeAttribute('data-when');
+  }
+}
+function renderBacklinks() {
+  const n = byId(edId), box = $('backlinks');
+  if (!n) { box.hidden = true; return; }
+  const needle = 'data-note="' + n.id + '"';
+  const from = D.notes.filter(x => !x.trashed && x.id !== n.id && x.content.includes(needle));
+  box.hidden = !from.length;
+  $('bl-list').innerHTML = from.map(x => {
+    const doc = parser.parseFromString(x.content, 'text/html'), a = doc.querySelector('a[data-note="' + CSS.escape(n.id) + '"]');
+    const block = a && blockOfIn(a), line = block ? block.textContent.replace(/\s+/g, ' ').trim().slice(0, 140) : '';
+    return `<button class="bl-item" data-act="open" data-id="${esc(x.id)}"><b>${esc(noteTitle(x))}</b>${line ? `<span>${esc(line)}</span>` : ''}</button>`;
+  }).join('');
+}
+const blockOfIn = el => { while (el && el.tagName !== 'BODY' && !/^(DIV|P|LI|H[1-6]|BLOCKQUOTE|TD)$/.test(el.tagName)) el = el.parentElement; return el && el.tagName !== 'BODY' ? el : null; };
+// Search words highlighted in the open note (CSS Custom Highlights: nothing in the note itself changes).
+function highlightSearch(scroll = true) {
+  if (!window.CSS || !CSS.highlights || typeof Highlight === 'undefined') return;
+  CSS.highlights.delete('search');
+  const words = searchWords().filter(w => w.length > 1);
+  if (!words.length || !edId) return;
+  const ranges = [], w = document.createTreeWalker(ed, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = w.nextNode()) && ranges.length < 200) {
+    const low = node.data.toLowerCase();
+    for (const word of words) {
+      let i = low.indexOf(word);
+      while (i >= 0) { const r = document.createRange(); r.setStart(node, i); r.setEnd(node, i + word.length); ranges.push(r); i = low.indexOf(word, i + word.length); }
+    }
+  }
+  if (!ranges.length) return;
+  CSS.highlights.set('search', new Highlight(...ranges));
+  if (scroll) {
+    const first = ranges.sort((a, b) => a.compareBoundaryPoints(Range.START_TO_START, b))[0].getBoundingClientRect(), box = $('ed-scroll').getBoundingClientRect();
+    if (first.top < box.top || first.bottom > box.bottom) $('ed-scroll').scrollTop += first.top - box.top - box.height / 3;
+  }
 }
 function onEditorChange() {
   const n = byId(edId);
   if (!n || n.trashed) return;
+  beginEdit(n);
   touch(n); edDirty = true;
+  applyFolds();
+  if (window.CSS && CSS.highlights) CSS.highlights.delete('search');
   clearTimeout(edTimer);
-  edTimer = setTimeout(() => { flushEditor(); persist(); renderListSoon(); }, 400);
+  edTimer = setTimeout(() => { flushEditor(); persist(); renderListSoon(); renderSidebar(); }, 400);
   updateCounts(); scheduleSync();
 }
 function updateCounts() {
@@ -1677,7 +2073,50 @@ function caretAtStartOf(el) {
   return r.toString() === '';
 }
 
-/* Checklists */
+/* Checklists. Sub-items are the same flat <div data-todo> lines with a data-indent level (1 to 5). */
+const MAX_INDENT = 5;
+const levelOf = el => Math.min(MAX_INDENT, parseInt(el.getAttribute('data-indent'), 10) || 0);
+const setLevel = (el, n) => n > 0 ? el.setAttribute('data-indent', n) : el.removeAttribute('data-indent');
+const untodo = el => { el.removeAttribute('data-todo'); el.removeAttribute('data-indent'); };
+const isTodo = el => !!el && el.nodeType === 1 && el.hasAttribute('data-todo');
+// The checklist items under the caret or selection.
+function selectedTodos() {
+  const s = getSelection(); if (!s.rangeCount || !ed.contains(s.anchorNode)) return [];
+  if (s.isCollapsed) { const b = blockOf(s.anchorNode); return isTodo(b) ? [b] : []; }
+  const r = s.getRangeAt(0);
+  return [...ed.querySelectorAll('[data-todo]')].filter(d => r.intersectsNode(d));
+}
+// Tab / Shift+Tab: move items one level in or out, taking their sub-items along.
+// An item can sit at most one level deeper than the item above it.
+function shiftTodos(items, dir) {
+  const group = [];
+  for (const t of items) {
+    if (group.includes(t)) continue;
+    group.push(t);
+    const base = levelOf(t);
+    for (let n = t.nextElementSibling; isTodo(n) && levelOf(n) > base; n = n.nextElementSibling) if (!group.includes(n)) group.push(n);
+  }
+  if (!group.length) return;
+  const first = group[0], prev = first.previousElementSibling;
+  if (dir > 0) {
+    const max = isTodo(prev) ? levelOf(prev) + 1 : 0;
+    if (levelOf(first) >= max || group.some(t => levelOf(t) >= MAX_INDENT)) return;
+  }
+  for (const t of group) setLevel(t, Math.max(0, levelOf(t) + dir));
+  // Keep the outline valid below the moved items (no item more than one level under its neighbour above).
+  for (let n = group[group.length - 1].nextElementSibling; isTodo(n); n = n.nextElementSibling) {
+    const above = n.previousElementSibling;
+    if (levelOf(n) > levelOf(above) + 1) setLevel(n, levelOf(above) + 1); else break;
+  }
+  onEditorChange();
+}
+function indentCmd(dir) {
+  restoreSel();
+  const items = selectedTodos();
+  if (items.length) { shiftTodos(items, dir); return; }
+  const s = getSelection(), node = s.anchorNode && (s.anchorNode.nodeType === 3 ? s.anchorNode.parentElement : s.anchorNode);
+  if (node && node.closest('li')) { document.execCommand(dir > 0 ? 'indent' : 'outdent'); onEditorChange(); }
+}
 function toggleTodo() {
   restoreSel();
   const s = getSelection(); if (!s.rangeCount) return;
@@ -1691,21 +2130,98 @@ function toggleTodo() {
   }).filter(Boolean);
   if (!blocks.length) return;
   const on = blocks.some(b => !b.hasAttribute('data-todo'));
-  for (const b of blocks) on ? (b.hasAttribute('data-todo') || b.setAttribute('data-todo', 'false')) : b.removeAttribute('data-todo');
+  for (const b of blocks) on ? (b.hasAttribute('data-todo') || b.setAttribute('data-todo', 'false')) : untodo(b);
   onEditorChange();
 }
 function toggleCheck(t) {
   if (ed.contentEditable !== 'true') return;
-  t.setAttribute('data-todo', t.getAttribute('data-todo') === 'true' ? 'false' : 'true');
+  const val = t.getAttribute('data-todo') === 'true' ? 'false' : 'true';
+  t.setAttribute('data-todo', val);
+  // Sub-items follow their parent.
+  for (let n = t.nextElementSibling; isTodo(n) && levelOf(n) > levelOf(t); n = n.nextElementSibling) n.setAttribute('data-todo', val);
   onEditorChange();
+}
+const hasKids = t => { const n = t.nextElementSibling; return isTodo(n) && levelOf(n) > levelOf(t); };
+const caretAtEndOf = el => { const s = getSelection(); if (!s.rangeCount || !s.isCollapsed) return false; const r = document.createRange(); r.selectNodeContents(el); r.setStart(s.anchorNode, s.anchorOffset); return r.toString() === ''; };
+// Folded items hide their sub-items. "hidden" is for the screen only and is stripped before saving.
+function applyFolds() {
+  let hideBelow = -1;
+  for (const el of ed.children) {
+    let hide = false;
+    if (isTodo(el)) {
+      const lv = levelOf(el);
+      if (hideBelow >= 0 && lv > hideBelow) hide = true;
+      else hideBelow = el.getAttribute('data-folded') === 'true' ? lv : -1;
+    } else hideBelow = -1;
+    if (el.hidden !== hide) el.hidden = hide;
+  }
+  // Don't leave the caret inside something that just got folded away.
+  const s = getSelection(), b = s.rangeCount && ed.contains(s.anchorNode) ? blockOf(s.anchorNode) : null;
+  if (b && b.hidden) {
+    let p = b.previousElementSibling; while (p && p.hidden) p = p.previousElementSibling;
+    if (p) { const r = document.createRange(); r.selectNodeContents(p); r.collapse(false); s.removeAllRanges(); s.addRange(r); }
+  }
+  updateDoneBar();
+}
+function toggleFold(t) {
+  if (t.getAttribute('data-folded') === 'true') t.removeAttribute('data-folded'); else t.setAttribute('data-folded', 'true');
+  applyFolds();
+  if (ed.contentEditable === 'true') onEditorChange();
+}
+function updateDoneBar() {
+  const n = byId(edId), count = n && n.hideDone ? ed.querySelectorAll('[data-todo="true"]').length : 0;
+  $('done-bar').hidden = !count;
+  if (count) $('done-msg').textContent = count + ' checked item' + (count === 1 ? '' : 's') + ' hidden.';
+}
+function toggleHideDone(id) {
+  const n = byId(id); if (!n) return;
+  n.hideDone = !n.hideDone; touch(n); changed();
+  if (id === edId) { ed.classList.toggle('hide-done', n.hideDone); updateDoneBar(); }
+  toast(n.hideDone ? 'Checked items hidden in this note' : 'Checked items shown');
+}
+// Change a note's checklist HTML, in the editor if it's open or straight in the saved copy if not.
+function editNoteDom(id, fn) {
+  flushEditor();
+  const n = byId(id); if (!n || n.trashed) return;
+  if (id === edId) { beginEdit(n); fn(ed); onEditorChange(); flushEditor(); persist(); return; }
+  snapshot(n.id, { t: n.updated, title: n.title, content: n.content });
+  const doc = parser.parseFromString(n.content, 'text/html');
+  fn(doc.body);
+  n.content = doc.body.innerHTML; touch(n);
+  changed(); renderList();
+}
+const uncheckAll = root => root.querySelectorAll('[data-todo="true"]').forEach(el => el.setAttribute('data-todo', 'false'));
+// Within each checklist, ticked items (with their sub-items) go below the unticked ones.
+function sortChecked(root) {
+  const order = items => {
+    const base = Math.min(...items.map(levelOf)), groups = [];
+    for (const el of items) { if (!groups.length || levelOf(el) <= base) groups.push([el]); else groups[groups.length - 1].push(el); }
+    const sorted = groups.map(g => [g[0], ...(g.length > 1 ? order(g.slice(1)) : [])]);
+    const done = g => g[0].getAttribute('data-todo') === 'true';
+    return [...sorted.filter(g => !done(g)), ...sorted.filter(done)].flat();
+  };
+  let run = [];
+  const flush = () => {
+    if (run.length > 1) { const anchor = run[run.length - 1].nextSibling, parent = run[0].parentNode; for (const el of order(run)) parent.insertBefore(el, anchor); }
+    run = [];
+  };
+  for (const el of [...root.children]) { if (isTodo(el)) run.push(el); else flush(); }
+  flush();
 }
 function todoAt(target, x, y) {
   const t = target && target.closest ? target.closest('[data-todo]') : null;
   if (!t || !ed.contains(t)) return null;
   const r = t.getBoundingClientRect();
-  return x - r.left <= 26 && y - r.top <= 30 ? t : null;
+  return x >= r.left && x - r.left <= 26 && y - r.top <= 30 ? t : null;
 }
-ed.addEventListener('mousedown', e => { if (todoAt(e.target, e.clientX, e.clientY)) e.preventDefault(); });
+// The arrow to the left of an item that has sub-items.
+function foldAt(target, x, y) {
+  const near = el => { const r = el.getBoundingClientRect(); return x < r.left && x >= r.left - 26 && y >= r.top && y - r.top <= 30; };
+  let t = target && target.closest ? target.closest('[data-todo]') : null;
+  if (!t || !ed.contains(t)) t = [...ed.querySelectorAll('[data-todo]')].find(el => !el.hidden && near(el));
+  return t && near(t) && hasKids(t) ? t : null;
+}
+ed.addEventListener('mousedown', e => { if (todoAt(e.target, e.clientX, e.clientY) || foldAt(e.target, e.clientX, e.clientY)) e.preventDefault(); });
 let touchStart = null;
 ed.addEventListener('touchstart', e => { const p = e.touches[0]; touchStart = { x: p.clientX, y: p.clientY, t: now(), target: e.target }; }, { passive: true });
 ed.addEventListener('touchend', e => {
@@ -1714,12 +2230,25 @@ ed.addEventListener('touchend', e => {
   if (!s || e.changedTouches.length !== 1) return;
   const p = e.changedTouches[0];
   if (Math.abs(p.clientX - s.x) + Math.abs(p.clientY - s.y) > 10 || now() - s.t > 600) return;
-  const t = todoAt(s.target, p.clientX, p.clientY);
+  const t = todoAt(s.target, p.clientX, p.clientY), f = !t && foldAt(s.target, p.clientX, p.clientY);
   if (t) { e.preventDefault(); toggleCheck(t); }
+  else if (f) { e.preventDefault(); toggleFold(f); }
 }, { passive: false });
 ed.addEventListener('click', e => {
   const t = todoAt(e.target, e.clientX, e.clientY);
   if (t) { toggleCheck(t); return; }
+  const f = foldAt(e.target, e.clientX, e.clientY);
+  if (f) { toggleFold(f); return; }
+  const nl = e.target.closest('a[data-note]');
+  if (nl && ed.contains(nl)) {
+    e.preventDefault();
+    const target = byId(nl.getAttribute('data-note'));
+    if (target && !target.trashed) { openNote(target.id); if (!isMobile()) focusEditor(false); }
+    else toast('That note was deleted');
+    return;
+  }
+  const tm = e.target.closest('time[datetime]');
+  if (tm && ed.contains(tm) && ed.contentEditable === 'true') { pickDue(tm.closest('[data-todo]'), tm.getAttribute('datetime')); return; }
   const a = e.target.closest('a');
   if (a && ed.contains(a) && (e.metaKey || e.ctrlKey || touchUI.matches || ed.contentEditable !== 'true')) {
     e.preventDefault();
@@ -1730,16 +2259,35 @@ ed.addEventListener('click', e => {
 /* Typing */
 ed.addEventListener('keydown', e => {
   if (e.isComposing) return;
+  if (slash) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const k = slash.items.length; slash.i = (slash.i + (e.key === 'ArrowDown' ? 1 : -1) + k) % k; renderSlash(); return; }
+    if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); pickSlash(slash.i); return; }
+    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closeSlash(); return; }
+  }
   if (e.key === 'Tab') {
     const s = getSelection(), node = s.anchorNode && (s.anchorNode.nodeType === 3 ? s.anchorNode.parentElement : s.anchorNode);
     if (node && node.closest('pre')) { e.preventDefault(); document.execCommand('insertText', false, '  '); return; }
+    const cell = node && node.closest('td,th');
+    if (cell && ed.contains(cell)) { e.preventDefault(); tableTab(cell, e.shiftKey); return; }
+    const items = selectedTodos();
+    if (items.length) { e.preventDefault(); shiftTodos(items, e.shiftKey ? -1 : 1); return; }
     if (node && node.closest('li')) { e.preventDefault(); document.execCommand(e.shiftKey ? 'outdent' : 'indent'); onEditorChange(); return; }
   }
   if (e.key === 'Enter' && !e.shiftKey) {
+    typedDue(true);   // "@fri" then Enter works like "@fri" then space
     const b = blockOf(getSelection().anchorNode);
-    if (b && b.hasAttribute('data-todo') && !b.textContent.trim()) {
-      // Enter on an empty checklist item ends the list.
-      e.preventDefault(); b.removeAttribute('data-todo'); onEditorChange(); return;
+    if (isTodo(b) && b.getAttribute('data-folded') === 'true' && hasKids(b) && caretAtEndOf(b)) {
+      // New item after a folded one goes below its hidden sub-items, not between them.
+      e.preventDefault();
+      let last = b; while (isTodo(last.nextElementSibling) && levelOf(last.nextElementSibling) > levelOf(b)) last = last.nextElementSibling;
+      const d = document.createElement('div'); d.setAttribute('data-todo', 'false'); setLevel(d, levelOf(b)); d.innerHTML = '<br>';
+      last.after(d); placeCaret(d, 0); onEditorChange(); return;
+    }
+    if (isTodo(b) && !b.textContent.trim()) {
+      // Enter on an empty checklist item steps out one level, or ends the list at the top level.
+      e.preventDefault();
+      if (levelOf(b) > 0) shiftTodos([b], -1); else { untodo(b); onEditorChange(); }
+      return;
     }
     if (b && b.tagName === 'PRE') { e.preventDefault(); codeEnter(b); return; }
     const q = b && (b.tagName === 'BLOCKQUOTE' ? b : b.closest('blockquote'));
@@ -1747,7 +2295,11 @@ ed.addEventListener('keydown', e => {
   }
   if (e.key === 'Backspace') {
     const b = blockOf(getSelection().anchorNode);
-    if (b && b.hasAttribute('data-todo') && caretAtStartOf(b)) { e.preventDefault(); b.removeAttribute('data-todo'); onEditorChange(); }
+    if (isTodo(b) && caretAtStartOf(b) && getSelection().isCollapsed) {
+      // Backspace at the start of an item: step out a level first, then turn it back into a plain line.
+      e.preventDefault();
+      if (levelOf(b) > 0) shiftTodos([b], -1); else { untodo(b); onEditorChange(); }
+    }
   }
 });
 // Enter inside a code block adds a line; Enter on an empty last line leaves the block.
@@ -1767,6 +2319,11 @@ function codeEnter(pre) {
   onEditorChange();
 }
 ed.addEventListener('input', e => {
+  if (slash) updateSlash();
+  else if (e.inputType === 'insertText' && /\/$/.test(e.data || '')) maybeOpenSlash();
+  else if (e.inputType === 'insertText' && /\[$/.test(e.data || '')) maybeOpenLinkPicker();
+  if (e.inputType === 'insertText' && /\]$/.test(e.data || '')) typedLink();
+  if (e.inputType === 'insertText' && /[\s\u00a0]$/.test(e.data || '')) typedDue(false);
   if (e.inputType === 'insertParagraph') fixNewTodo();
   if (e.inputType === 'insertText' && /[\s\u00a0]$/.test(e.data || '')) markdownShortcut();
   if (e.inputType === 'insertText' && /-$/.test(e.data || '')) dashToHr();
@@ -1777,11 +2334,16 @@ function fixNewTodo() {
   if (!b) return;
   const prev = b.previousElementSibling;
   if (b.hasAttribute('data-todo')) {
-    if (prev && prev.hasAttribute('data-todo') && !prev.textContent.trim() && !b.textContent.trim()) {
-      // Keyboards that skip keydown (some Android ones): Enter on an empty item still ends the list.
-      prev.remove(); b.removeAttribute('data-todo');
-    } else b.setAttribute('data-todo', 'false');
-  } else if (prev && prev.hasAttribute('data-todo') && prev.textContent.trim()) b.setAttribute('data-todo', 'false');
+    if (isTodo(prev) && !prev.textContent.trim() && !b.textContent.trim()) {
+      // Keyboards that skip keydown (some Android ones): Enter on an empty item still steps out or ends the list.
+      const lv = levelOf(prev);
+      prev.remove();
+      if (lv > 0) setLevel(b, lv - 1); else untodo(b);
+    } else {
+      b.setAttribute('data-todo', 'false');
+      if (isTodo(prev)) setLevel(b, levelOf(prev));
+    }
+  } else if (isTodo(prev) && prev.textContent.trim()) { b.setAttribute('data-todo', 'false'); setLevel(b, levelOf(prev)); }
 }
 // Markdown-style shortcuts typed at the start of a line: "# ", "## ", "- ", "1. ", "[] ", "[x] ", "> "
 function markdownShortcut() {
@@ -1808,6 +2370,299 @@ function markdownShortcut() {
     if (blk) { blk.setAttribute('data-todo', k === '[x]' ? 'true' : 'false'); if (!blk.textContent) { blk.innerHTML = '<br>'; placeCaret(blk, 0); } }
   }
 }
+/* Due dates on checklist items: <time datetime="YYYY-MM-DD"> */
+const isoDay = d => dayKey(d);
+function shortDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number), dt = new Date(y, m - 1, d);
+  return dt.toLocaleDateString([], { month: 'short', day: 'numeric', year: y === new Date().getFullYear() ? undefined : 'numeric' });
+}
+// "@today", "@tmrw", "@fri", "@oct 20", "@10/20", "@2026-10-20", "@3d", "@2w"
+function parseDue(token) {
+  const t = token.toLowerCase().replace(/[\s\u00a0]+/g, ' '), d = new Date(); d.setHours(12, 0, 0, 0);
+  if (t === 'today' || t === 'tod') return isoDay(d);
+  if (t === 'tomorrow' || t === 'tmrw' || t === 'tom') { d.setDate(d.getDate() + 1); return isoDay(d); }
+  const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'], wi = days.findIndex(x => t.startsWith(x) && 'sunday monday tuesday wednesday thursday friday saturday tues thur thurs weds'.split(' ').concat(days).some(full => full.startsWith(t)));
+  if (wi >= 0 && t.length >= 3) { d.setDate(d.getDate() + ((wi - d.getDay() + 7) % 7)); return isoDay(d); }
+  let m = /^(\d+)([dw])$/.exec(t);
+  if (m) { d.setDate(d.getDate() + +m[1] * (m[2] === 'w' ? 7 : 1)); return isoDay(d); }
+  m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(t);
+  if (m) return isoDay(new Date(+m[1], +m[2] - 1, +m[3], 12));
+  m = /^([a-z]{3,9}) ?(\d{1,2})$/.exec(t);
+  if (m) {
+    const mi = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'].findIndex(x => x.startsWith(m[1]));
+    if (mi < 0) return null;
+    const out = new Date(d.getFullYear(), mi, +m[2], 12);
+    if (out < d && d - out > 864e5) out.setFullYear(out.getFullYear() + 1);   // "jan 5" in December means next January
+    return out.getMonth() === mi ? isoDay(out) : null;
+  }
+  m = /^(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?$/.exec(t);
+  if (m) {
+    let y = m[3] ? +m[3] : d.getFullYear(); if (y < 100) y += 2000;
+    const out = new Date(y, +m[1] - 1, +m[2], 12);
+    if (!m[3] && out < d && d - out > 864e5) out.setFullYear(y + 1);   // "1/5" in December means next January
+    return out.getMonth() === +m[1] - 1 ? isoDay(out) : null;
+  }
+  return null;
+}
+function setDue(todo, iso, at) {
+  if (!todo) return;
+  todo.querySelectorAll('time[datetime]').forEach(x => x.remove());
+  if (iso) {
+    const tm = document.createElement('time');
+    tm.setAttribute('datetime', iso); tm.setAttribute('contenteditable', 'false'); tm.textContent = shortDate(iso);
+    if (at) { at.insertNode(tm); }
+    else {
+      const last = todo.lastChild;
+      if (last && last.nodeName === 'BR') todo.insertBefore(tm, last); else todo.appendChild(tm);
+      tm.before(document.createTextNode(' '));
+    }
+  }
+  refreshInline();
+  onEditorChange();
+}
+// "@token" inside a checklist item becomes a due date, once followed by a space or Enter.
+function typedDue(atEnter) {
+  const s = getSelection(), node = s.anchorNode;
+  if (!s.isCollapsed || !node || node.nodeType !== 3) return;
+  const todo = blockOf(node);
+  if (!isTodo(todo)) return;
+  const re = new RegExp('(^|[\\s\\u00a0])@([a-z]{3,9}[\\s\\u00a0]\\d{1,2}|[\\w/+-]{2,12})' + (atEnter ? '' : '[\\s\\u00a0]') + '$', 'i');
+  const m = re.exec(node.data.slice(0, s.anchorOffset));
+  if (!m) return;
+  const iso = parseDue(m[2]); if (!iso) return;
+  const start = s.anchorOffset - (m[0].length - m[1].length), r = document.createRange();
+  r.setStart(node, start); r.setEnd(node, s.anchorOffset);
+  r.deleteContents();
+  const tm = document.createElement('time');
+  tm.setAttribute('datetime', iso); tm.setAttribute('contenteditable', 'false'); tm.textContent = shortDate(iso);
+  todo.querySelectorAll('time[datetime]').forEach(x => x.remove());
+  r.insertNode(tm);
+  const space = document.createTextNode('\u00a0'); tm.after(space);
+  placeCaret(space, 1);
+  refreshInline();
+}
+async function pickDue(todo, current) {
+  if (!todo) { toast('Put the cursor on a checklist item first'); return; }
+  const v = await dialog({ title: current ? 'Change due date' : 'Due date', text: 'Clear the date to remove it. Tip: type @today, @fri or @10/20 at the end of an item.', input: current || dayKey(), type: 'date', ok: 'Save' });
+  if (v === null) { restoreSel(); return; }
+  setDue(todo, /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : '');
+}
+// Every checklist item with a due date, across notes (cached per note).
+const dueCache = new Map();
+function dueItems() {
+  const out = [];
+  for (const n of D.notes) {
+    if (!listed(n) || isTemplate(n) || !n.content.includes('<time')) continue;
+    let c = dueCache.get(n.id);
+    if (!c || c.html !== n.content) {
+      const doc = parser.parseFromString(n.content, 'text/html'), items = [];
+      [...doc.body.querySelectorAll('[data-todo]')].forEach((el, idx) => {
+        const tm = el.querySelector('time[datetime]'); if (!tm) return;
+        const copy = el.cloneNode(true); copy.querySelectorAll('time').forEach(x => x.remove());
+        items.push({ idx, due: tm.getAttribute('datetime'), done: el.getAttribute('data-todo') === 'true', text: copy.textContent.replace(/\s+/g, ' ').trim() || 'Untitled item' });
+      });
+      dueCache.set(n.id, c = { html: n.content, items });
+    }
+    for (const it of c.items) out.push({ ...it, note: n });
+  }
+  return out;
+}
+function renderUpcoming() {
+  const words = searchWords(), today = dayKey(), tmrw = dayKey(new Date(now() + 864e5)), week = dayKey(new Date(now() + 6 * 864e5));
+  const items = dueItems().filter(d => !d.done && words.every(w => (d.text + ' ' + noteTitle(d.note)).toLowerCase().includes(w))).sort((a, b) => a.due.localeCompare(b.due));
+  const groups = [['Overdue', d => d.due < today, 'overdue'], ['Today', d => d.due === today], ['Tomorrow', d => d.due === tmrw], ['Next 7 days', d => d.due > tmrw && d.due <= week], ['Later', d => d.due > week]];
+  let h = '';
+  for (const [label, test, cls] of groups) {
+    const rows = items.filter(test); if (!rows.length) continue;
+    h += `<div class="due-head${cls ? ' ' + cls : ''}">${label}</div>`;
+    h += rows.map(d => `<div class="due-row"><button class="due-box" data-act="dueTick" data-id="${esc(d.note.id)}" data-idx="${d.idx}" aria-label="Tick off"></button><div class="due-main" data-act="dueOpen" data-id="${esc(d.note.id)}" data-idx="${d.idx}"><b>${markWords(d.text, words)}</b><span>${esc(noteTitle(d.note))} · ${esc(label === 'Today' || label === 'Tomorrow' ? label : shortDate(d.due))}</span></div></div>`).join('');
+  }
+  $('note-items').innerHTML = h || `<div class="empty">${ICON.due}<p>Nothing due${words.length ? ' that matches' : ''}.</p><p class="hint">Give a checklist item a date by typing @today, @fri or @10/20 at the end of it, or with the calendar button in the toolbar.</p></div>`;
+}
+function tickDue(id, idx) {
+  editNoteDom(id, root => {
+    const el = root.querySelectorAll('[data-todo]')[idx]; if (!el) return;
+    el.setAttribute('data-todo', 'true');
+    for (let n = el.nextElementSibling; isTodo(n) && levelOf(n) > levelOf(el); n = n.nextElementSibling) n.setAttribute('data-todo', 'true');
+  });
+  renderSidebar(); renderList();
+  toast('Done', 'Undo', () => {
+    editNoteDom(id, root => { const el = root.querySelectorAll('[data-todo]')[idx]; if (el) el.setAttribute('data-todo', 'false'); });
+    renderSidebar(); renderList();
+  });
+}
+function openDue(id, idx) {
+  openNote(id);
+  const el = ed.querySelectorAll('[data-todo]')[idx]; if (!el) return;
+  el.scrollIntoView({ block: 'center' });
+  el.setAttribute('data-flash', '');
+  setTimeout(() => el.removeAttribute('data-flash'), 1700);
+}
+
+/* Tables */
+function insertTable() {
+  restoreSel();
+  const row = '<tr>' + '<td><br></td>'.repeat(3) + '</tr>';
+  document.execCommand('insertHTML', false, '<table><tbody>' + row.repeat(3) + '</tbody></table><div><br></div>');
+  const tables = [...ed.querySelectorAll('table')], s = getSelection();
+  const t = tables.reverse().find(x => s.rangeCount && x.compareDocumentPosition(s.anchorNode) & Node.DOCUMENT_POSITION_FOLLOWING) || tables[0];
+  if (t) cellCaret(t.querySelector('td'));
+}
+function cellCaret(c) { const r = document.createRange(); r.selectNodeContents(c); r.collapse(false); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+// Tab moves to the next cell and adds a row at the end; Shift+Tab goes back.
+function tableTab(cell, back) {
+  const table = cell.closest('table'), cells = [...table.querySelectorAll('td,th')];
+  let i = cells.indexOf(cell) + (back ? -1 : 1);
+  if (i >= cells.length) {
+    const last = cell.closest('tr'), tr = document.createElement('tr');
+    for (let k = 0; k < last.children.length; k++) { const td = document.createElement('td'); td.innerHTML = '<br>'; tr.appendChild(td); }
+    last.after(tr); cellCaret(tr.firstChild); onEditorChange(); return;
+  }
+  if (i >= 0) cellCaret(cells[i]);
+}
+
+/* "/" insert menu: type / at the start of a line or after a space */
+let slash = null;
+function slashCommands() {
+  const time = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  return [
+    // These always apply the format (the toolbar buttons toggle it), so picking one on a line that already has it changes nothing.
+    { label: 'Checklist', hint: '[] ', keys: 'todo task check checkbox', run: () => { const b = blockOf(getSelection().anchorNode); if (!isTodo(b)) runFmt('todo'); } },
+    { label: 'Bullet list', hint: '- ', keys: 'bullet list ul', run: () => { if (!document.queryCommandState('insertUnorderedList')) runFmt('insertUnorderedList'); } },
+    { label: 'Numbered list', hint: '1. ', keys: 'number numbered ordered list ol', run: () => { if (!document.queryCommandState('insertOrderedList')) runFmt('insertOrderedList'); } },
+    { label: 'Heading 1', hint: '# ', keys: 'h1 heading title', run: () => setBlock('H1') },
+    { label: 'Heading 2', hint: '## ', keys: 'h2 heading subtitle', run: () => setBlock('H2') },
+    { label: 'Heading 3', hint: '### ', keys: 'h3 heading', run: () => setBlock('H3') },
+    { label: 'Quote', hint: '> ', keys: 'quote blockquote', run: () => setBlock('BLOCKQUOTE') },
+    { label: 'Code block', hint: '', keys: 'code pre snippet', run: () => runFmt('code') },
+    { label: 'Table', hint: '', keys: 'table grid', run: insertTable },
+    { label: 'Divider', hint: '---', keys: 'divider hr line rule separator', run: () => runFmt('hr') },
+    { label: 'Image', hint: '', keys: 'image photo picture', run: () => runFmt('image') },
+    { label: 'Link', hint: MOD + ' K', keys: 'link url web', run: () => runFmt('link') },
+    { label: 'Link to a note', hint: '[[', keys: 'note link page wiki', run: () => { document.execCommand('insertText', false, '[['); maybeOpenLinkPicker(); } },
+    { label: 'Due date', hint: '@fri', keys: 'due date deadline remind', run: () => runFmt('due') },
+    { label: "Today's date", hint: '', keys: 'date today day', run: () => document.execCommand('insertText', false, longDate()) },
+    { label: 'Current time', hint: '', keys: 'time now clock', run: () => document.execCommand('insertText', false, time()) },
+    ...templates().filter(t => t.id !== edId).map(t => ({ label: 'Template: ' + templateName(t), hint: '', keys: 'template ' + templateName(t).toLowerCase(), run: () => { document.execCommand('insertHTML', false, cleanHTML(fillTemplate(t.content))); } })),
+  ];
+}
+function setBlock(tag) {
+  const b = blockOf(getSelection().anchorNode);
+  if (isTodo(b)) untodo(b);
+  if (!b || b.tagName !== tag) document.execCommand('formatBlock', false, tag);
+}
+function maybeOpenSlash() {
+  const s = getSelection(), node = s.anchorNode;
+  if (!s.isCollapsed || !node || node.nodeType !== 3) return;
+  const off = s.anchorOffset - 1;
+  if (node.data[off] !== '/' || node.parentElement.closest('pre,code,a')) return;
+  if (off > 0 && !/\s/.test(node.data[off - 1])) return;
+  if (off === 0) {
+    const b = blockOf(node), r = document.createRange();
+    r.selectNodeContents(b || ed); r.setEnd(node, 0);
+    if (r.toString() && !/\s$/.test(r.toString())) return;
+  }
+  slash = { node, offset: off, i: 0, items: [] };
+  updateSlash();
+}
+// "[[" opens a picker of notes to link to.
+function maybeOpenLinkPicker() {
+  const s = getSelection(), node = s.anchorNode;
+  if (!s.isCollapsed || !node || node.nodeType !== 3) return;
+  const off = s.anchorOffset - 2;
+  if (off < 0 || node.data.substr(off, 2) !== '[[' || node.parentElement.closest('pre,code,a')) return;
+  slash = { node, offset: off, i: 0, items: [], kind: 'link' };
+  updateSlash();
+}
+function linkTargets(raw) {
+  const q = raw.trim().toLowerCase(), rank = new Map((P.recent || []).map((id, i) => [id, i]));
+  const scored = [];
+  for (const n of D.notes) {
+    if (n.trashed || n.id === edId || isTemplate(n)) continue;
+    const t = noteTitle(n).toLowerCase();
+    const s = !q ? 1 : t === q ? 100 : t.startsWith(q) ? 80 : t.includes(q) ? 50 : subseq(q, t) ? 20 : 0;
+    if (s) scored.push({ n, s: s + (rank.has(n.id) ? 10 - rank.get(n.id) / 3 : 0) - (n.archived ? 5 : 0) });
+  }
+  scored.sort((a, b) => b.s - a.s || b.n.updated - a.n.updated);
+  const items = scored.slice(0, 8).map(({ n }) => ({ label: noteTitle(n), hint: n.archived ? 'archived' : folderName(folderOf(n)), run: () => insertNoteLink(n) }));
+  if (q && !scored.some(x => noteTitle(x.n).toLowerCase() === q)) items.push({ label: 'New note "' + raw.trim() + '"', hint: '+', run: () => insertNoteLink(createLinkedNote(raw)) });
+  return items;
+}
+// Inserted by hand: execCommand moves a non-editable link out of its line in Chrome.
+function insertNoteLink(n) {
+  const s = getSelection(); if (!s.rangeCount || !ed.contains(s.anchorNode)) return;
+  const r = s.getRangeAt(0); r.deleteContents();
+  const a = document.createElement('a'), space = document.createTextNode('\u00a0');
+  a.setAttribute('data-note', n.id); a.setAttribute('contenteditable', 'false'); a.textContent = noteTitle(n);
+  r.insertNode(space); r.insertNode(a);
+  placeCaret(space, 1);
+  refreshInline(); onEditorChange();
+}
+// Typing [[Some title]] in full links it too (making the note if needed).
+function typedLink() {
+  const s = getSelection(), node = s.anchorNode;
+  if (!s.isCollapsed || !node || node.nodeType !== 3 || node.parentElement.closest('pre,code,a')) return;
+  const before = node.data.slice(0, s.anchorOffset), m = /\[\[([^\[\]\n]{1,80})\]\]$/.exec(before);
+  if (!m) return;
+  closeSlash();
+  const title = m[1].trim(); if (!title) return;
+  const target = D.notes.find(n => !n.trashed && n.id !== edId && noteTitle(n).toLowerCase() === title.toLowerCase()) || createLinkedNote(title);
+  const r = document.createRange(); r.setStart(node, s.anchorOffset - m[0].length); r.setEnd(node, s.anchorOffset);
+  s.removeAllRanges(); s.addRange(r);
+  document.execCommand('delete');
+  insertNoteLink(target);
+}
+function closeSlash() { slash = null; $('slash').classList.remove('show'); }
+function updateSlash() {
+  if (!slash) return;
+  const s = getSelection(), { node, offset } = slash, mark = slash.kind === 'link' ? '[[' : '/';
+  if (!node.isConnected || node.data.substr(offset, mark.length) !== mark || !s.rangeCount || s.anchorNode !== node || s.anchorOffset < offset + mark.length) { closeSlash(); return; }
+  const raw = node.data.slice(offset + mark.length, s.anchorOffset), q = raw.toLowerCase();
+  let items;
+  if (slash.kind === 'link') {
+    if (q.length > 80 || /[\[\]]/.test(q)) { closeSlash(); return; }
+    items = linkTargets(raw);
+  } else {
+    if (q.length > 24 || /\s/.test(q)) { closeSlash(); return; }
+    items = slashCommands().filter(c => !q || c.label.toLowerCase().includes(q) || c.keys.split(' ').some(k => k.startsWith(q)));
+    items.sort((a, b) => b.label.toLowerCase().startsWith(q) - a.label.toLowerCase().startsWith(q));
+  }
+  if (!items.length) { closeSlash(); return; }
+  slash.items = items;
+  slash.i = Math.min(slash.i, items.length - 1);
+  renderSlash();
+}
+function renderSlash() {
+  const m = $('slash');
+  m.innerHTML = slash.items.map((c, i) => `<button class="ci${i === slash.i ? ' on' : ''}" data-i="${i}">${esc(c.label)}${c.hint ? `<span class="ci-hint">${esc(c.hint)}</span>` : ''}</button>`).join('');
+  m.classList.add('show');
+  // Below the "/", or above it when the window edge or the phone keyboard is close.
+  const r = document.createRange(); r.setStart(slash.node, slash.offset); r.setEnd(slash.node, Math.min(slash.node.length, slash.offset + 1));
+  const c = r.getBoundingClientRect(), vv = window.visualViewport, bottom = vv ? vv.offsetTop + vv.height : innerHeight;
+  let top = c.bottom + 6;
+  if (top + m.offsetHeight > bottom - 8) top = Math.max(8, c.top - m.offsetHeight - 6);
+  m.style.top = top + 'px';
+  m.style.left = Math.max(8, Math.min(c.left, innerWidth - m.offsetWidth - 8)) + 'px';
+  const on = m.querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' });
+}
+function pickSlash(i) {
+  const cmd = slash && slash.items[i]; if (!cmd) return;
+  const { node, offset } = slash, s = getSelection();
+  const end = s.anchorNode === node ? s.anchorOffset : offset + (slash.kind === 'link' ? 2 : 1);
+  closeSlash();
+  const r = document.createRange(); r.setStart(node, offset); r.setEnd(node, end);
+  s.removeAllRanges(); s.addRange(r);
+  document.execCommand('delete');
+  lastRange = getSelection().getRangeAt(0).cloneRange();
+  cmd.run();
+  onEditorChange();
+}
+// Keep the caret (and the phone keyboard) in the note while choosing.
+$('slash').addEventListener('mousedown', e => e.preventDefault());
+$('slash').addEventListener('pointerdown', e => e.preventDefault());
+$('slash').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) pickSlash(+b.dataset.i); });
+$('ed-scroll').addEventListener('scroll', () => { if (slash) closeSlash(); });
+
 // "---" on its own line becomes a divider.
 function dashToHr() {
   const s = getSelection(), node = s.anchorNode;
@@ -1886,13 +2741,15 @@ async function insertImageFile(file) {
 /* Toolbar */
 const FMT = {
   todo: toggleTodo,
+  indent: () => indentCmd(1), outdent: () => indentCmd(-1),
+  due: () => { restoreSel(); const b = blockOf(getSelection().anchorNode); const tm = isTodo(b) && b.querySelector('time[datetime]'); pickDue(isTodo(b) ? b : null, tm ? tm.getAttribute('datetime') : ''); },
   h1: () => toggleBlock('H1'), h2: () => toggleBlock('H2'), h3: () => toggleBlock('H3'),
   quote: () => toggleBlock('BLOCKQUOTE'),
   code: insertCodeBlock, inlineCode: toggleInlineCode,
   hr: () => { restoreSel(); document.execCommand('insertHorizontalRule'); },
   link: insertLink,
   image: () => $('img-file').click(),
-  clear: () => { restoreSel(); document.execCommand('removeFormat'); document.execCommand('unlink'); const b = currentBlock(); if (b && b.tagName !== 'LI') { document.execCommand('formatBlock', false, 'div'); const nb = currentBlock(); if (nb) nb.removeAttribute('data-todo'); } },
+  clear: () => { restoreSel(); document.execCommand('removeFormat'); document.execCommand('unlink'); const b = currentBlock(); if (b && b.tagName !== 'LI') { document.execCommand('formatBlock', false, 'div'); const nb = currentBlock(); if (nb) untodo(nb); } },
 };
 function runFmt(cmd) {
   if (ed.contentEditable !== 'true') return;
@@ -1973,6 +2830,7 @@ function updateFmtState() {
   });
 }
 document.addEventListener('selectionchange', () => {
+  if (slash) updateSlash();
   const s = getSelection();
   if (s.rangeCount && ed.contains(s.anchorNode)) { lastRange = s.getRangeAt(0).cloneRange(); updateFmtState(); }
 });
@@ -1984,6 +2842,7 @@ $('img-file').addEventListener('change', e => { [...e.target.files].forEach(inse
 /* Title, folder, tags */
 $('title-input').addEventListener('input', () => {
   const n = byId(edId); if (!n || n.trashed) return;
+  beginEdit(n);
   n.title = $('title-input').value; edLoaded.title = n.title; touch(n);
   persist(); scheduleSync(); renderListSoon(); updateCounts();
 });
@@ -1997,12 +2856,28 @@ $('tag-input').addEventListener('keydown', e => {
   else if (e.key === 'Backspace' && !inp.value) { const n = byId(edId); if (n && n.tags.length) removeTag(n.tags[n.tags.length - 1]); }
 });
 $('tag-input').addEventListener('change', e => { if (e.target.value.trim()) { addTag(e.target.value); e.target.value = ''; } });
-$('search').addEventListener('input', renderList);
+$('search').addEventListener('input', () => { renderList(); highlightSearch(false); });
+$('search').addEventListener('focus', () => $('search').closest('.lh').classList.add('searching'));
+$('search').addEventListener('blur', () => setTimeout(updateFilterChips, 150));
+// Filter chips show while searching or when a filter is on.
+function updateFilterChips() {
+  const on = P.filters || [];
+  document.querySelectorAll('#filters .chip').forEach(c => c.classList.toggle('on', on.includes(c.dataset.f)));
+  const lh = $('search').closest('.lh');
+  lh.classList.toggle('searching', document.activeElement === $('search') || !!$('search').value || !!on.length);
+}
+$('filters').addEventListener('mousedown', e => e.preventDefault());
 $('search').addEventListener('keydown', e => {
   if (e.key === 'Enter') { const first = visibleNotes()[0]; if (first) { openNote(first.id); if (!isMobile()) focusEditor(true); } }
   if (e.key === 'Escape' && $('search').value) { e.stopPropagation(); $('search').value = ''; renderList(); }
 });
 $('sort-sel').addEventListener('change', e => { P.sort = e.target.value; savePrefs(); renderList(); });
+
+/* + button on phones: press and hold for today's note and templates */
+let fabTimer = null, fabLong = false;
+$('fab').addEventListener('pointerdown', () => { fabLong = false; clearTimeout(fabTimer); fabTimer = setTimeout(() => { fabLong = true; showMenu($('fab'), newMenuItems()); }, 450); });
+for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) $('fab').addEventListener(ev, () => clearTimeout(fabTimer));
+$('fab').addEventListener('contextmenu', e => e.preventDefault());
 
 /* Drag notes onto folders (mouse only) */
 $('note-items').addEventListener('dragstart', e => {
@@ -2038,17 +2913,31 @@ function showMenu(anchor, items) {
   m.classList.add('show');
   const r = m.getBoundingClientRect();
   let x, y;
-  if (anchor instanceof Element) { const a = anchor.getBoundingClientRect(); x = a.right - r.width; y = a.bottom + 4; if (x < 8) x = a.left; }
+  if (anchor instanceof Element) {
+    const a = anchor.getBoundingClientRect();
+    x = a.right - r.width; y = a.bottom + 4;
+    if (x < 8) x = a.left;
+    if (y + r.height > innerHeight - 8) y = a.top - r.height - 4;   // open upward near the bottom (the + button)
+  }
   else { x = anchor.x; y = anchor.y; }
   m.style.left = Math.max(8, Math.min(x, innerWidth - r.width - 8)) + 'px';
   m.style.top = Math.max(8, Math.min(y, innerHeight - r.height - 8)) + 'px';
 }
 const hideMenu = () => $('ctx').classList.remove('show');
 function noteMenuItems(id) {
+  flushEditor();
   const n = byId(id); if (!n) return [];
-  if (n.trashed) return [{ label: 'Restore', fn: () => restoreNote(id) }, { label: 'Delete forever', danger: true, fn: () => deleteForever(id) }];
+  if (n.trashed) return [{ label: 'Restore', fn: () => restoreNote(id) }, { label: 'Version history', fn: () => openHistory(id) }, { label: 'Delete forever', danger: true, fn: () => deleteForever(id) }];
+  const todos = /data-todo=/.test(n.content), done = /data-todo="true"/.test(n.content);
   return [
     { label: n.pinned ? 'Unpin' : 'Pin to top', fn: () => togglePin(id) },
+    todos && { label: n.hideDone ? 'Show checked items' : 'Hide checked items', fn: () => toggleHideDone(id) },
+    done && { label: 'Uncheck all', fn: () => { editNoteDom(id, uncheckAll); toast('All items unchecked'); } },
+    done && { label: 'Move checked to bottom', fn: () => editNoteDom(id, sortChecked) },
+    '-',
+    { label: 'Version history', fn: () => openHistory(id) },
+    isTemplate(n) ? { label: 'New note from this template', fn: () => newFromTemplate(id) } : { label: 'Save as template', fn: () => saveAsTemplate(id) },
+    { label: n.archived ? 'Unarchive' : 'Archive', fn: () => archiveNote(id, !n.archived) },
     { label: 'Duplicate', fn: () => duplicateNote(id) },
     { label: 'Copy as Markdown', fn: async () => { flushEditor(); toast(await copyText(noteMarkdown(byId(id))) ? 'Copied as Markdown' : "Couldn't copy"); } },
     { label: 'Download .md', fn: () => { flushEditor(); const m = byId(id); download(new Blob([noteMarkdown(m)], { type: 'text/markdown' }), fileName(m) + '.md'); } },
@@ -2060,7 +2949,7 @@ function noteMenuItems(id) {
 const folderMenuItems = id => [{ label: 'Rename', fn: () => renameFolder(id) }, { label: 'Delete folder', danger: true, fn: () => deleteFolder(id) }];
 
 let dlgResolve = null;
-function dialog({ title, text = '', input = null, placeholder = '', ok = 'OK', cancel = 'Cancel', danger = false, type = 'text' }) {
+function dialog({ title, text = '', input = null, placeholder = '', ok = 'OK', cancel = 'Cancel', danger = false, type = 'text', inputmode = '' }) {
   if (dlgResolve) dlgResolve(null);
   return new Promise(resolve => {
     dlgResolve = resolve;
@@ -2068,6 +2957,7 @@ function dialog({ title, text = '', input = null, placeholder = '', ok = 'OK', c
     $('dlg-text').textContent = text; $('dlg-text').hidden = !text;
     const inp = $('dlg-input');
     inp.hidden = input === null; inp.type = type; inp.value = input || ''; inp.placeholder = placeholder;
+    if (inputmode) inp.setAttribute('inputmode', inputmode); else inp.removeAttribute('inputmode');
     $('dlg-ok').textContent = ok; $('dlg-ok').className = 'm-btn ' + (danger ? 'danger' : 'pri');
     $('dlg-cancel').textContent = cancel; $('dlg-cancel').hidden = !cancel;
     $('dlg').classList.add('show');
@@ -2089,6 +2979,260 @@ function toast(msg, action, fn) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => $('toast').classList.remove('show'), action ? 6000 : 2800);
 }
+
+/* ═══════════════════════════════════════════════════════
+   QUICK SWITCHER (Cmd/Ctrl+P or K)
+   ═══════════════════════════════════════════════════════ */
+let qs = { items: [], i: 0 };
+const subseq = (q, s) => { let i = 0; for (const c of s) if (c === q[i] && ++i === q.length) return true; return !q.length; };
+function openSwitcher() {
+  hideMenu(); closeSlash(); closeSidebar();
+  $('qs-input').value = '';
+  qsUpdate();
+  $('qs').classList.add('show');
+  $('qs-input').focus();
+}
+const closeSwitcher = () => $('qs').classList.remove('show');
+function qsUpdate() {
+  const raw = $('qs-input').value.trim(), q = raw.toLowerCase();
+  const live = D.notes.filter(n => !n.trashed);
+  const rank = new Map((P.recent || []).map((id, i) => [id, i]));
+  let items;
+  if (!q) {
+    const recent = (P.recent || []).map(byId).filter(n => n && !n.trashed);
+    const rest = live.filter(n => !rank.has(n.id) && !isTemplate(n) && !n.archived).sort((a, b) => b.updated - a.updated);
+    items = [{ type: 'today' }, ...[...recent, ...rest].slice(0, 40).map(n => ({ type: 'note', n }))];
+  } else {
+    const scored = [];
+    for (const n of live) {
+      const t = noteTitle(n).toLowerCase();
+      let s = t === q ? 100 : t.startsWith(q) ? 80 : t.split(/[^\p{L}\p{N}]+/u).some(w => w.startsWith(q)) ? 60 : t.includes(q) ? 45 : subseq(q, t) ? 25 : 0;
+      let snip = '';
+      if (!s) {
+        const body = plain(n), at = body.toLowerCase().indexOf(q);
+        if (at >= 0) { s = 10; snip = (at > 30 ? '...' : '') + body.slice(Math.max(0, at - 30), at + 70).replace(/\s+/g, ' ').trim(); }
+      }
+      if (s) scored.push({ type: 'note', n, s: s + (rank.has(n.id) ? 5 - rank.get(n.id) / 6 : 0) - (isTemplate(n) || n.archived ? 5 : 0), snip });
+    }
+    scored.sort((a, b) => b.s - a.s || b.n.updated - a.n.updated);
+    items = scored.slice(0, 40);
+    if ('today'.startsWith(q)) items.unshift({ type: 'today' });
+    if (!live.some(n => noteTitle(n).toLowerCase() === q)) items.push({ type: 'create', title: raw });
+  }
+  qs = { items, i: 0 };
+  renderSwitcher();
+}
+function renderSwitcher() {
+  $('qs-list').innerHTML = qs.items.map((it, i) => {
+    let main, sub;
+    if (it.type === 'today') { main = "Today's note"; sub = longDate(); }
+    else if (it.type === 'create') { main = 'Create "' + it.title + '"'; sub = 'New note'; }
+    else { main = noteTitle(it.n); sub = it.snip || (it.n.archived ? 'Archived, ' : '') + folderName(folderOf(it.n)) + ', edited ' + whenLower(it.n.updated); }
+    return `<button class="qs-item${i === qs.i ? ' on' : ''}" data-act="qsPick" data-i="${i}" role="option"><b>${esc(main)}</b><span>${esc(sub)}</span></button>`;
+  }).join('');
+  const on = $('qs-list').querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' });
+}
+function qsPick(i) {
+  const it = qs.items[i]; if (!it) return;
+  closeSwitcher();
+  if (it.type === 'today') openToday();
+  else if (it.type === 'create') newNote({ title: it.title });
+  else { openNote(it.n.id); if (!isMobile()) focusEditor(true); }
+}
+$('qs-input').addEventListener('input', qsUpdate);
+$('qs-input').addEventListener('keydown', e => {
+  if (e.isComposing) return;
+  const k = qs.items.length;
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && k) { e.preventDefault(); qs.i = (qs.i + (e.key === 'ArrowDown' ? 1 : -1) + k) % k; renderSwitcher(); }
+  else if (e.key === 'Enter') { e.preventDefault(); qsPick(qs.i); }
+});
+
+/* ═══════════════════════════════════════════════════════
+   VERSION HISTORY
+   Earlier versions are kept on each device (before every editing
+   session, every 10 minutes while editing, and before another
+   device's edit replaces the text). Synced notes can also look
+   back through the gist's own history on GitHub.
+   ═══════════════════════════════════════════════════════ */
+const histKey = id => 'hist:' + id;
+const HIST_MAX = 60, HIST_DAYS = 180;
+let histQueue = Promise.resolve();
+function snapshot(id, v) {
+  if (!v || (!String(v.title || '').trim() && !htmlText(v.content).trim())) return;
+  histQueue = histQueue.then(async () => {
+    const list = (await store.get(histKey(id))) || [], last = list[0];
+    if (last && last.title === v.title && last.content === v.content) return;
+    // Edits streaming in from another device: one saved version per 10 minutes is plenty.
+    if (v.src === 'sync' && last && last.src === 'sync' && now() - last.saved < 10 * 60e3) return;
+    list.unshift({ t: v.t || now(), saved: now(), title: v.title, content: v.content, src: v.src || 'local' });
+    const cutoff = now() - HIST_DAYS * 864e5;
+    await store.set(histKey(id), list.filter(x => x.saved >= cutoff).slice(0, HIST_MAX));
+  }).catch(() => {});
+}
+let hist = null;
+const HIST_SRC = { current: 'Current version', local: 'Saved on this device', sync: 'Before an edit from another device', github: 'From GitHub history', restore: 'Before you restored an older version' };
+const stamp = t => new Date(t).toLocaleString([], { month: 'short', day: 'numeric', year: new Date(t).getFullYear() === new Date().getFullYear() ? undefined : 'numeric', hour: 'numeric', minute: '2-digit' });
+async function openHistory(id) {
+  flushEditor();
+  const n = byId(id); if (!n) return;
+  await histQueue;
+  hist = { id, versions: [], page: 1, more: !!(S && S.gistId && KEY), sel: 0, loading: false };
+  addVersions([{ t: n.updated, title: n.title, content: n.content, src: 'current' }, ...((await store.get(histKey(id))) || [])]);
+  $('hist-msg').textContent = '';
+  $('hist').classList.add('show');
+  showVersion(0);
+}
+function addVersions(list) {
+  const seen = new Set(hist.versions.map(v => v.key));
+  for (const v of list) {
+    const key = fnv(v.title + '\u0000' + v.content);
+    if (!seen.has(key)) { seen.add(key); hist.versions.push({ ...v, key }); }
+  }
+  const [cur, ...rest] = hist.versions;
+  hist.versions = [cur, ...rest.sort((a, b) => b.t - a.t)];
+}
+function renderHistory() {
+  $('hist-list').innerHTML = hist.versions.map((v, i) => `<button class="hv${i === hist.sel ? ' on' : ''}" data-act="histPick" data-i="${i}"><b>${esc(i ? stamp(v.t) : 'Now')}</b><span>${esc(HIST_SRC[v.src] || '')}</span></button>`).join('')
+    + (hist.versions.length < 2 && !hist.more ? '<p class="hint" style="padding:8px 10px">No earlier versions yet. They are saved as you edit.</p>' : '')
+    + (hist.more ? `<button class="m-btn sec sm hv-more" data-act="histMore"${hist.loading ? ' disabled' : ''}>${hist.loading ? 'Looking...' : 'Look further back on GitHub'}</button>` : '');
+}
+function showVersion(i) {
+  if (!hist || !hist.versions[i]) return;
+  hist.sel = i;
+  const v = hist.versions[i];
+  $('hist-view').innerHTML = (v.title ? `<h1 class="hv-title">${esc(v.title)}</h1>` : '') + cleanHTML(v.content);
+  refreshInline($('hist-view'));
+  $('hist-view').scrollTop = 0;
+  $('hist-restore').disabled = i === 0;
+  renderHistory();
+}
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length); let next = 0;
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (next < items.length) { const k = next++; try { out[k] = await fn(items[k]); } catch (e) { out[k] = null; } }
+  }));
+  return out;
+}
+// Each save to the gist is a revision; fetch this note's file as it was in each one.
+async function loadGithubVersions() {
+  if (!hist || hist.loading || !S || !S.gistId) return;
+  hist.loading = true; renderHistory();
+  try {
+    if (!S.login) { const r = await gh('GET', '/user'); if (r.ok) { S.login = (await r.json()).login || ''; saveSync(); } }
+    const res = await gh('GET', '/gists/' + S.gistId + '/commits?per_page=30&page=' + hist.page);
+    if (!res.ok) throw httpError(res);
+    const commits = await res.json(), file = 'notes-' + bucketOf(hist.id) + '.enc', id = hist.id;
+    const texts = await mapLimit(commits, 6, async c => {
+      const r = await fetch('https://gist.githubusercontent.com/' + S.login + '/' + S.gistId + '/raw/' + c.version + '/' + file);
+      return r.ok ? r.text() : null;
+    });
+    if (!hist || hist.id !== id) return;
+    const found = [], seenText = new Set();
+    for (const text of texts) {
+      if (!text || seenText.has(text)) continue;
+      seenText.add(text);
+      try { const n = ((await unseal(text)).notes || []).find(x => x.id === id); if (n) found.push({ t: +n.updated || 0, title: n.title || '', content: n.content || '', src: 'github' }); } catch (e) {}
+    }
+    const before = hist.versions.length;
+    addVersions(found);
+    hist.page++; hist.more = commits.length === 30;
+    $('hist-msg').textContent = hist.versions.length > before ? '' : hist.more ? 'No other versions in that stretch. You can look further back.' : 'That is everything on GitHub.';
+  } catch (e) {
+    $('hist-msg').textContent = e instanceof SyncError && SYNC_MESSAGES[e.code] ? SYNC_MESSAGES[e.code] : "Couldn't reach GitHub.";
+  }
+  if (hist) { hist.loading = false; renderHistory(); }
+}
+function restoreVersion() {
+  const v = hist && hist.versions[hist.sel], n = v && byId(hist.id);
+  if (!n || hist.sel === 0) return;
+  flushEditor();
+  snapshot(n.id, { t: n.updated, title: n.title, content: n.content, src: 'restore' });
+  n.title = v.title; n.content = v.content; touch(n);
+  changed(); renderList();
+  if (n.id === edId) loadEditor(n);
+  $('hist').classList.remove('show'); hist = null;
+  toast('Version restored. The text it replaced is in the history too.');
+}
+
+/* ═══════════════════════════════════════════════════════
+   APP LOCK
+   A privacy screen: a PIN, plus Face ID / Touch ID / Windows Hello
+   through a passkey that never leaves this device's keychain.
+   It keeps people out of the app; notes on disk are not re-encrypted.
+   ═══════════════════════════════════════════════════════ */
+let locked = false, lastActive = now(), hiddenAt = 0, pinFails = 0, pinWait = 0;
+const bioName = () => /iPhone|iPad/.test(navigator.userAgent) ? 'Face ID' : /Mac/.test(navigator.userAgent) ? 'Touch ID' : /Windows/.test(navigator.userAgent) ? 'Windows Hello' : /Android/.test(navigator.userAgent) ? 'your fingerprint' : 'your device unlock';
+async function bioAvailable() {
+  try { return !!(window.PublicKeyCredential && await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()); } catch (e) { return false; }
+}
+async function hashPin(pin, salt) {
+  const base = await crypto.subtle.importKey('raw', te.encode(pin), 'PBKDF2', false, ['deriveBits']);
+  return b64(new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: unb64(salt), iterations: 150000, hash: 'SHA-256' }, base, 256)));
+}
+function lockNow() {
+  if (!P.lock || locked) return;
+  flushEditor(); persistNow();
+  closeSlash(); hideMenu();
+  locked = true;
+  document.body.classList.add('locked');
+  $('lock').hidden = false;
+  $('lock-bio').hidden = !P.lock.credId;
+  $('lock-bio').textContent = 'Unlock with ' + bioName();
+  $('lock-pin').value = ''; $('lock-msg').textContent = '';
+  if (!P.lock.credId && !touchUI.matches) setTimeout(() => $('lock-pin').focus(), 50);
+}
+function unlockDone() {
+  locked = false; lastActive = now(); pinFails = 0;
+  document.body.classList.remove('locked');
+  $('lock').hidden = true;
+}
+async function unlockBio() {
+  try {
+    await navigator.credentials.get({ publicKey: { challenge: crypto.getRandomValues(new Uint8Array(32)), allowCredentials: [{ type: 'public-key', id: unb64url(P.lock.credId) }], userVerification: 'required', timeout: 60000 } });
+    unlockDone();
+  } catch (e) { $('lock-msg').textContent = "That didn't work. Try again, or use your PIN."; }
+}
+async function unlockPin() {
+  if (now() < pinWait) { $('lock-msg').textContent = 'Too many tries. Wait a few seconds.'; return; }
+  const pin = $('lock-pin').value;
+  if (pin && await hashPin(pin, P.lock.salt) === P.lock.hash) { unlockDone(); return; }
+  pinFails++;
+  if (pinFails >= 5) { pinWait = now() + 30e3; pinFails = 0; }
+  $('lock-pin').value = '';
+  $('lock-msg').textContent = pinWait > now() ? 'Too many tries. Wait 30 seconds.' : 'Wrong PIN.';
+}
+async function setupLock() {
+  const pin = await dialog({ title: 'Choose a PIN', text: 'At least 4 digits. You use it to unlock Notes on this device, and as the backup if ' + bioName() + " isn't available.", input: '', type: 'password', inputmode: 'numeric', ok: 'Next' });
+  if (pin === null) return;
+  if (!/^\d{4,12}$/.test(pin)) { toast('Use 4 to 12 digits'); return; }
+  const again = await dialog({ title: 'Enter the PIN again', input: '', type: 'password', inputmode: 'numeric', ok: 'Save' });
+  if (again === null) return;
+  if (again !== pin) { toast("The PINs didn't match"); return; }
+  const salt = randomSalt();
+  P.lock = { salt, hash: await hashPin(pin, salt), credId: '', after: 5 };
+  savePrefs();
+  if (await bioAvailable() && await dialog({ title: 'Also use ' + bioName() + '?', text: 'Unlock with ' + bioName() + ' instead of typing the PIN.', ok: 'Use ' + bioName(), cancel: 'Just the PIN' })) await addBio();
+  toast('App lock is on');
+  renderSettings();
+}
+async function addBio() {
+  try {
+    const cred = await navigator.credentials.create({ publicKey: {
+      rp: { name: 'Notes', id: location.hostname },
+      user: { id: crypto.getRandomValues(new Uint8Array(16)), name: 'Notes app lock', displayName: 'Notes app lock' },
+      challenge: crypto.getRandomValues(new Uint8Array(32)),
+      pubKeyCredParams: [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
+      authenticatorSelection: { authenticatorAttachment: 'platform', userVerification: 'required', residentKey: 'discouraged' },
+      timeout: 60000, attestation: 'none',
+    } });
+    P.lock.credId = b64url(new Uint8Array(cred.rawId)); savePrefs();
+  } catch (e) { toast(bioName() + " wasn't set up. The PIN still works."); }
+}
+const markActive = () => { lastActive = now(); };
+for (const ev of ['pointerdown', 'keydown', 'wheel', 'touchstart']) document.addEventListener(ev, markActive, { passive: true, capture: true });
+setInterval(() => {
+  if (P.lock && !locked && P.lock.after > 0 && document.visibilityState === 'visible' && now() - lastActive > P.lock.after * 60e3) lockNow();
+}, 15e3);
 
 /* ═══════════════════════════════════════════════════════
    THEME
@@ -2150,11 +3294,22 @@ function renderSettings() {
     <p class="hint">${D.notes.length} note${D.notes.length === 1 ? '' : 's'}, ${size > 1e6 ? (size / 1e6).toFixed(1) + ' MB' : Math.max(1, Math.round(size / 1e3)) + ' KB'} on this device.</p></section>`;
   const privacy = `<section class="set-sec"><h4>Privacy</h4><p>This page is public, but your notes are not part of it. They're stored on your own devices, and the synced copy is encrypted with your passphrase before it's uploaded, so GitHub only ever holds scrambled data. Anyone else who opens this page gets their own empty notebook.</p></section>`;
   const keys = touchUI.matches ? '' : `<section class="set-sec"><h4>Shortcuts</h4><div class="kbd-list">
-    <kbd>Alt N</kbd><span>New note (add ${MOD} while typing)</span><kbd>/</kbd><span>Search</span><kbd>${MOD} S</kbd><span>Sync now</span>
+    <kbd>Alt N</kbd><span>New note (add ${MOD} while typing)</span><kbd>${MOD} P</kbd><span>Jump to a note (${MOD} K works too)</span>
+    <kbd>/</kbd><span>Search; in a note, the insert menu</span><kbd>[[</kbd><span>Link to another note</span><kbd>@fri</kbd><span>Due date on a checklist item (@today, @tmrw, @10/20, @3d)</span><kbd>${MOD} S</kbd><span>Sync now</span>
     <kbd>${MOD} K</kbd><span>Add a link (in a note)</span><kbd>${MOD} Shift L</kbd><span>Checklist</span>
+    <kbd>Tab / Shift Tab</kbd><span>Nest a checklist item under the one above, or move it back out</span>
     <kbd>- &nbsp;1. &nbsp;[] &nbsp;# &nbsp;&gt;</kbd><span>Bullets, numbers, checklist, heading, quote</span>
     <kbd>---</kbd><span>Divider</span><kbd>${MOD}-click</kbd><span>Open a link</span></div></section>`;
-  $('settings-body').innerHTML = sync + theme + backup + privacy + keys;
+  const lockAfter = [[0, 'As soon as I leave the app'], [1, 'After 1 minute away'], [5, 'After 5 minutes away'], [15, 'After 15 minutes away'], [60, 'After 1 hour away']];
+  const lock = `<section class="set-sec"><h4>App lock</h4>${P.lock
+    ? `<p>On. Unlock with ${P.lock.credId ? bioName() + ' or your PIN' : 'your PIN'}.</p>
+      <label for="lock-after">Lock</label><select class="inp" id="lock-after">${lockAfter.map(([v, l]) => `<option value="${v}"${P.lock.after === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
+      <div class="row"><button class="m-btn sec" data-act="lockNow">Lock now</button>${P.lock.credId ? '' : `<button class="m-btn sec" data-act="addBio" data-bio>Add ${bioName()}</button>`}<button class="m-btn ghost-danger" data-act="lockOff">Turn off</button></div>`
+    : `<p>Ask for a PIN (or ${bioName()}, if this device has it) when you come back to Notes on this device.</p><div class="row"><button class="m-btn sec" data-act="lockOn">Turn on app lock</button></div>`}
+    <p class="hint">This keeps other people out of the app on this device. It's separate from the sync passphrase.</p></section>`;
+  $('settings-body').innerHTML = sync + theme + lock + backup + privacy + keys;
+  const la = $('lock-after'); if (la) la.addEventListener('change', () => { P.lock.after = +la.value; savePrefs(); });
+  if (P.lock && !P.lock.credId) bioAvailable().then(ok => { const b = document.querySelector('[data-bio]'); if (b && !ok) b.remove(); });
   if (S) renderSyncCard();
 }
 let cardShape = '';
@@ -2294,7 +3449,15 @@ $('backup-file').addEventListener('change', e => { const f = e.target.files[0]; 
 const ACT = {
   view: el => setView(el.dataset.view),
   open: el => { openNote(el.dataset.id); },
-  newNote: () => newNote(),
+  newNote: (el) => { if (el.id === 'fab' && fabLong) { fabLong = false; return; } newNote(); },
+  newMenu: el => showMenu(el, newMenuItems()),
+  today: () => openToday(),
+  qsPick: el => qsPick(+el.dataset.i),
+  histPick: el => showVersion(+el.dataset.i),
+  histMore: () => loadGithubVersions(),
+  histRestore: () => restoreVersion(),
+  closeHist: () => { $('hist').classList.remove('show'); hist = null; },
+  showDone: () => { if (edId) toggleHideDone(edId); },
   newFolder: () => newFolder(),
   folderMenu: el => showMenu(el, folderMenuItems(el.dataset.id)),
   toggleSidebar, openSidebar, closeSidebar,
@@ -2355,10 +3518,21 @@ const ACT = {
   },
   backup: downloadBackup,
   restoreBackup: () => $('backup-file').click(),
+  filter: el => { const f = el.dataset.f, on = P.filters || []; P.filters = on.includes(f) ? on.filter(x => x !== f) : [...on, f]; savePrefs(); renderList(); },
+  dueTick: el => tickDue(el.dataset.id, +el.dataset.idx),
+  dueOpen: el => openDue(el.dataset.id, +el.dataset.idx),
+  unarchive: () => { if (edId) archiveNote(edId, false); },
+  lockOn: () => setupLock(),
+  lockOff: async () => { if (await dialog({ title: 'Turn off app lock?', ok: 'Turn off', danger: true })) { P.lock = null; savePrefs(); renderSettings(); toast('App lock is off'); } },
+  lockNow: () => { closeSettings(); lockNow(); },
+  addBio: async () => { await addBio(); renderSettings(); },
+  unlockBio: () => unlockBio(),
+  unlockPin: () => unlockPin(),
 };
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
-  if (!e.target.closest('#ctx')) hideMenu();
+  if (!e.target.closest('#ctx') && !(fabLong && e.target.closest('#fab'))) hideMenu();
+  if (slash && !e.target.closest('#slash')) closeSlash();
   if (!el || !ACT[el.dataset.act]) return;
   if (el.tagName === 'A') e.preventDefault();
   ACT[el.dataset.act](el, e);
@@ -2370,10 +3544,14 @@ document.addEventListener('contextmenu', e => {
   if (f && f.dataset.drop !== GENERAL) { e.preventDefault(); showMenu({ x: e.clientX, y: e.clientY }, folderMenuItems(f.dataset.drop)); }
 });
 document.addEventListener('keydown', e => {
+  if (locked) { if (e.key === 'Enter' && e.target.id === 'lock-pin') { e.preventDefault(); unlockPin(); } return; }
   const mod = e.metaKey || e.ctrlKey;
   const typing = e.target.closest && e.target.closest('input,textarea,select,[contenteditable="true"]');
   if (e.key === 'Escape') {
     if ($('ctx').classList.contains('show')) { hideMenu(); return; }
+    if (slash) { closeSlash(); return; }
+    if ($('qs').classList.contains('show')) { closeSwitcher(); return; }
+    if ($('hist').classList.contains('show')) { $('hist').classList.remove('show'); hist = null; return; }
     if ($('dlg').classList.contains('show')) { closeDialog(false); return; }
     if ($('scan-modal').classList.contains('show')) { stopScan(); return; }
     if ($('link-modal').classList.contains('show')) { $('link-modal').classList.remove('show'); return; }
@@ -2392,7 +3570,8 @@ document.addEventListener('keydown', e => {
     if (S) { sync(); toast('Syncing'); } else toast('Saved on this device');
     return;
   }
-  if (mod && e.key.toLowerCase() === 'k') { e.preventDefault(); if (document.activeElement === ed) insertLink(); else { $('search').focus(); $('search').select(); } return; }
+  if (mod && !e.shiftKey && e.key.toLowerCase() === 'p') { e.preventDefault(); openSwitcher(); return; }
+  if (mod && e.key.toLowerCase() === 'k') { e.preventDefault(); if (document.activeElement === ed) insertLink(); else openSwitcher(); return; }
   if (mod && e.shiftKey && e.key.toLowerCase() === 'l' && document.activeElement === ed) { e.preventDefault(); runFmt('todo'); return; }
   if (!typing && !mod && e.key === '/') { e.preventDefault(); $('search').focus(); $('search').select(); }
 });
@@ -2406,7 +3585,7 @@ function afterRemoteChange() {
   const n = byId(edId);
   if (!n) { closeEditor(); return; }
   if (!edDirty && (n.content !== edLoaded.content || n.title !== edLoaded.title || !!n.trashed !== (ed.contentEditable === 'false'))) loadEditor(n, true);
-  else { renderMeta(); updatePin(); updateCounts(); }
+  else { renderMeta(); updatePin(); updateCounts(); refreshInline(); renderBacklinks(); updateArchiveBar(); }
 }
 let wasMobile = null;
 function applyLayout() {
@@ -2487,10 +3666,16 @@ setInterval(() => {
   if (document.visibilityState !== 'visible') return;
   if (S && navigator.onLine && !syncRun && !needsUser() && now() - lastAttempt > 25e3) sync();
 }, 30e3);
-setInterval(() => { if (document.visibilityState === 'visible') { renderList(); if (edId) updateCounts(); } }, 60e3);
+setInterval(() => { if (document.visibilityState === 'visible') { renderList(); if (edId) { updateCounts(); refreshInline(); } } }, 60e3);
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') { if (S && now() - lastAttempt > 3000) sync(); }
-  else { persistNow(); if (S && hasLocalChanges()) sync(); }
+  if (document.visibilityState === 'visible') {
+    if (P.lock && !locked && now() - hiddenAt >= P.lock.after * 60e3) lockNow();
+    if (S && now() - lastAttempt > 3000) sync();
+  } else {
+    hiddenAt = now();
+    if (P.lock && P.lock.after === 0) lockNow();   // so the app switcher shows the lock screen
+    persistNow(); if (S && hasLocalChanges()) sync();
+  }
 });
 window.addEventListener('pagehide', () => persistNow());
 window.addEventListener('online', () => { if (S) sync(); });
@@ -2499,9 +3684,10 @@ window.addEventListener('focus', () => { if (S && !needsUser() && now() - lastAt
 
 (async function init() {
   await loadState();
+  if (P.lock) lockNow();
   applyTheme();
   purgeTrash();
-  if (!(P.view === 'all' || P.view === 'trash' || P.view.startsWith('tag:') || liveFolders().some(f => f.id === P.view))) P.view = 'all';
+  if (!(['all', 'trash', 'archive', 'upcoming'].includes(P.view) || P.view.startsWith('tag:') || liveFolders().some(f => f.id === P.view))) P.view = 'all';
   $('sort-sel').value = P.sort;
   // Desktop reopens the last note; phones start on the list.
   const last = !isMobile() && P.activeId && byId(P.activeId);

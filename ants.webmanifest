@@ -1,0 +1,17 @@
+{
+  "id": "ants.html",
+  "name": "Ant Farm",
+  "short_name": "Ant Farm",
+  "description": "An idle ant farm that keeps digging while you're away.",
+  "start_url": "ants.html",
+  "scope": "./ants",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#15100b",
+  "theme_color": "#1d160f",
+  "icons": [
+    { "src": "ants-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "ants-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "ants-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
