@@ -42,7 +42,7 @@ html { touch-action: manipulation; -webkit-text-size-adjust: 100%; }
 /* Phones zoom in on text boxes with small type, so on touch screens they get 16px. */
 @media (pointer: coarse) { input, textarea, select, .rename, .code, .name-row input { font-size: 16px !important; } }
 body {
-    --sab: calc(env(safe-area-inset-bottom) - var(--gap, 0px));
+    --sab: env(safe-area-inset-bottom);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg); color: var(--text);
     line-height: 1.45; font-size: 14px;
@@ -153,7 +153,7 @@ body.ovl .ov-box {
     background: var(--bg2); border: 1px solid var(--border); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); padding: 0 0.5rem 0.5rem;
 }
 .ov-pop { left: 50%; transform: translateX(-50%); width: min(28rem, calc(100vw - 1rem)); bottom: calc(var(--dockh) + 1rem + var(--sab)); max-height: calc(100dvh - var(--sat) - var(--dockh) - 4rem); border-radius: 16px; }
-.ov-sheet { left: 0; right: 0; bottom: calc(0px - var(--gap, 0px)); max-height: min(64dvh, 36rem); border-radius: 18px 18px 0 0; padding-bottom: calc(var(--dockh) + 1.25rem + env(safe-area-inset-bottom)) !important; }
+.ov-sheet { left: 0; right: 0; bottom: 0; max-height: min(64dvh, 36rem); border-radius: 18px 18px 0 0; padding-bottom: calc(var(--dockh) + 1.25rem + env(safe-area-inset-bottom)) !important; }
 .ov-pane { top: calc(var(--sat) + 0.5rem); right: 0; bottom: calc(var(--dockh) + 1rem + var(--sab)); width: min(25rem, 90vw); border-radius: 16px 0 0 16px; border-right: none !important; }
 .ov-goal { left: 0.5rem; width: min(22rem, calc(100vw - 1rem)); border-radius: 14px; }
 /* Fly the nest: a ring button on the farm on wide screens, opening a card beside it. */
@@ -3431,20 +3431,21 @@ function layout() {
         const inTop = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0;
         // Under a notch the status bar blurs what sits just below it, so the farm starts a little lower.
         const top = inTop ? inTop + 28 : 0;
-        // Home screen apps on recent iPhones report a viewport short by the
-        // status bar's height, leaving an empty strip along the bottom; the
-        // farm and the dock reach down into it.
+        // Home screen apps on recent iPhones get a viewport short by the
+        // status bar's height: the strip below it, with the home bar in it,
+        // can't be drawn on. The dock then needs no room for the home bar.
         const lost = navigator.standalone === true ? Math.round(screen.height - vh) : 0;
         lay.gap = lost > 10 && Math.abs(lost - inTop) < 12 ? lost : 0;
-        root.setProperty('--sat', top + 'px'); root.setProperty('--gap', lay.gap + 'px');
-        const fh = Math.round(Math.min(vh + lay.gap - top, vw * 2));
+        root.setProperty('--sat', top + 'px');
+        if (lay.gap) root.setProperty('--sab', '0px'); else root.removeProperty('--sab');
+        const fh = Math.round(Math.min(vh - top, vw * 2));
         root.setProperty('--fh', fh + 'px');
         // The followed ant's card stays clear of the dock.
         lay.insetB = Math.max(0, Math.round(top + fh - $('dock').getBoundingClientRect().top + 8));
         return;
     }
     lay.insetB = lay.gap = 0;
-    root.removeProperty('--sat'); root.removeProperty('--gap');
+    root.removeProperty('--sat'); root.removeProperty('--sab');
     const pad = vw < 700 ? 10 : 16, barH = compact ? 0 : $('bar').offsetHeight, ph = vh - barH - pad * 2;
     // The farm takes the full height; the panel gets the width that's left, within reason.
     let fh = ph, fw = Math.round(fh / 2), pw = Math.min(420, vw - pad * 3 - fw);
