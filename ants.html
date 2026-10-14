@@ -2954,7 +2954,9 @@ function checkGuide() {
 }
 let guideFocus = null;
 function updateGuide() {
-    const on = guideOn(), g = on ? GUIDE[st.guide] : null, focus = g ? g.focus : null;
+    const on = guideOn(), g = on ? GUIDE[st.guide] : null;
+    // Fly the nest only pulses once the queens can actually go.
+    const focus = g && (g.focus !== 'nestBar' || canFly()) ? g.focus : null;
     $('goalCard').hidden = !on;
     if (!on && lay.open === 'goal') openOv(null);
     if (focus !== guideFocus) {
