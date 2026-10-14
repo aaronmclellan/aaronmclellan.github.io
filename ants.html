@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>Ant Farm</title>
 <meta name="description" content="An idle ant farm. Watch the colony dig, forage and grow, even from a little picture in picture window on your desktop.">
 <link rel="icon" type="image/svg+xml" href="ants-favicon.svg">
@@ -37,7 +37,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--bg); }
 html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+/* Double taps buy upgrades and drop crumbs; they never zoom the page. */
+html { touch-action: manipulation; -webkit-text-size-adjust: 100%; }
+/* Phones zoom in on text boxes with small type, so on touch screens they get 16px. */
+@media (pointer: coarse) { input, textarea, select, .rename, .code, .name-row input { font-size: 16px !important; } }
 body {
+    --sab: calc(env(safe-area-inset-bottom) - var(--gap, 0px));
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg); color: var(--text);
     line-height: 1.45; font-size: 14px;
@@ -112,13 +117,13 @@ body.ovl .panel { display: none; }
 body.ovl .stage { position: fixed; top: 0; left: 0; right: 0; padding-top: var(--sat); }
 body.ovl .farm { width: 100vw; border-radius: 0; box-shadow: none; }
 body:not(.ovl) .goal-pill { display: none; }
-body.ovl .goal-pill:not([hidden]) { display: inline-flex; position: fixed; z-index: 11; left: 0.5rem; max-width: calc(100vw - 4.5rem); bottom: calc(var(--dockh) + 1rem + env(safe-area-inset-bottom)); }
+body.ovl .goal-pill:not([hidden]) { display: inline-flex; position: fixed; z-index: 11; left: 0.5rem; max-width: calc(100vw - 4.5rem); bottom: calc(var(--dockh) + 1rem + var(--sab)); }
 .pill.goal-pill { background: rgba(242, 169, 59, 0.92); border-color: rgba(255, 220, 160, 0.5); color: #2a1a08; max-width: 100%; }
 .goal-pill i { color: #2a1a08; }
 .goal-pill b { overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
 .goal-pill small { color: rgba(42, 26, 8, 0.75); font-weight: 600; }
 .dock {
-    position: fixed; z-index: 12; left: 50%; transform: translateX(-50%); bottom: calc(0.5rem + env(safe-area-inset-bottom));
+    position: fixed; z-index: 12; left: 50%; transform: translateX(-50%); bottom: calc(0.5rem + var(--sab));
     width: min(28rem, calc(100vw - 1rem)); height: var(--dockh); padding: 0 0.25rem;
     background: rgba(20, 14, 8, 0.88); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px;
     backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -147,9 +152,9 @@ body.ovl .ov-box {
     display: block; position: fixed; z-index: 11; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
     background: var(--bg2); border: 1px solid var(--border); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); padding: 0 0.5rem 0.5rem;
 }
-.ov-pop { left: 50%; transform: translateX(-50%); width: min(28rem, calc(100vw - 1rem)); bottom: calc(var(--dockh) + 1rem + env(safe-area-inset-bottom)); max-height: calc(100dvh - var(--sat) - var(--dockh) - 4rem); border-radius: 16px; }
-.ov-sheet { left: 0; right: 0; bottom: 0; max-height: min(64dvh, 36rem); border-radius: 18px 18px 0 0; padding-bottom: calc(var(--dockh) + 1.25rem + env(safe-area-inset-bottom)) !important; }
-.ov-pane { top: calc(var(--sat) + 0.5rem); right: 0; bottom: calc(var(--dockh) + 1rem + env(safe-area-inset-bottom)); width: min(25rem, 90vw); border-radius: 16px 0 0 16px; border-right: none !important; }
+.ov-pop { left: 50%; transform: translateX(-50%); width: min(28rem, calc(100vw - 1rem)); bottom: calc(var(--dockh) + 1rem + var(--sab)); max-height: calc(100dvh - var(--sat) - var(--dockh) - 4rem); border-radius: 16px; }
+.ov-sheet { left: 0; right: 0; bottom: calc(0px - var(--gap, 0px)); max-height: min(64dvh, 36rem); border-radius: 18px 18px 0 0; padding-bottom: calc(var(--dockh) + 1.25rem + env(safe-area-inset-bottom)) !important; }
+.ov-pane { top: calc(var(--sat) + 0.5rem); right: 0; bottom: calc(var(--dockh) + 1rem + var(--sab)); width: min(25rem, 90vw); border-radius: 16px 0 0 16px; border-right: none !important; }
 .ov-goal { left: 0.5rem; width: min(22rem, calc(100vw - 1rem)); border-radius: 14px; }
 /* Fly the nest: a ring button on the farm on wide screens, opening a card beside it. */
 .farm-fly { position: absolute; z-index: 2; right: 0.6rem; bottom: 0.6rem; padding: 0; background: none; border: none; cursor: pointer; border-radius: 50%; }
@@ -180,7 +185,7 @@ body.ovl .ov-pop, body.ovl .ov-sheet, body.ovl .ov-goal { background: var(--card
 .ov-pop > .nest .nest-perks { order: 4; }
 #ovFly .nest-text small { display: block; overflow: visible; }
 #ovFly .nest-text b { font-size: 1rem; }
-body.ovl .zoom { position: fixed; z-index: 3; right: 0.6rem; bottom: calc(var(--dockh) + 1.1rem + env(safe-area-inset-bottom)); }
+body.ovl .zoom { position: fixed; z-index: 3; right: 0.6rem; bottom: calc(var(--dockh) + 1.1rem + var(--sab)); }
 body.ovl #zIn, body.ovl #zOut, body.ovl .zoom.idle { display: none; }
 body.ovl .toast { top: calc(var(--sat) + 5.7rem); bottom: auto; transform: translate(-50%, -1rem); }
 body.ovl .toast.show { transform: translate(-50%, 0); }
@@ -425,7 +430,7 @@ label.btn { cursor: pointer; }
     max-width: calc(100vw - 2rem); transition: transform 0.25s, opacity 0.25s, visibility 0.25s; pointer-events: none;
 }
 .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
-.pipvid { position: fixed; right: 0; bottom: 0; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
+.pipvid { position: fixed; right: 0; bottom: 0; width: 4px; height: 8px; opacity: 0.01; pointer-events: none; }
 
 @media (max-width: 520px) {
     .bar { padding: 0.5rem 0.7rem; padding-top: calc(0.5rem + env(safe-area-inset-top)); }
@@ -2772,20 +2777,39 @@ function closeDocPip() {
     $('away').hidden = true;
     resize(); kick(); updatePipBtn();
 }
-async function openVideoPip() {
+// Safari only opens picture in picture straight from a tap, with nothing
+// awaited first, so the video starts as the finger goes down on Pop out and
+// the window opens when it lifts.
+let pipPrepAt = 0;
+function prepVideoPip() {
+    if (canDocPip || !canVidPip || pip.mode) return;
     if (!pip.vid) {
         const v = document.createElement('video');
-        v.muted = true; v.playsInline = true; v.className = 'pipvid'; v.setAttribute('aria-hidden', 'true');
+        v.muted = true; v.playsInline = true; v.autoplay = true; v.className = 'pipvid'; v.setAttribute('aria-hidden', 'true');
         v.addEventListener('leavepictureinpicture', closeVideoPip);
         document.body.append(v);
         pip.vid = v;
     }
+    if (!pip.stream) { pip.stream = cv.captureStream(30); pip.vid.srcObject = pip.stream; pip.vid.play().catch(() => {}); }
+    // Let it go if the tap never lands.
+    clearTimeout(pipPrepAt);
+    pipPrepAt = setTimeout(() => { if (pip.mode !== 'video') closeVideoPip(); }, 5000);
+}
+async function openVideoPip() {
+    prepVideoPip();
+    const v = pip.vid;
+    let req;
+    try { req = v.requestPictureInPicture(); } catch (e) { req = Promise.reject(e); }
     pip.mode = 'video'; resize(); render(performance.now() / 1000);
-    pip.stream = cv.captureStream(30);
-    pip.vid.srcObject = pip.stream;
     try {
-        await pip.vid.play();
-        await pip.vid.requestPictureInPicture();
+        try { await req; }
+        catch (e) {
+            // No frame yet (say, opened from the keyboard): wait for one and
+            // ask again, which Chrome allows a moment after the tap.
+            if (e.name !== 'InvalidStateError') throw e;
+            if (v.readyState < 1) await new Promise(r => v.addEventListener('loadedmetadata', r, {once:true}));
+            await v.requestPictureInPicture();
+        }
         st.stats.pip = 1;
         if (!pip.worker) {
             // Background tabs throttle timers but not workers, so a worker keeps
@@ -2798,7 +2822,7 @@ async function openVideoPip() {
     } catch (e) {
         console.warn('Video picture in picture failed', e);
         closeVideoPip();
-        toast('Could not open picture in picture');
+        toast(navigator.standalone ? "Couldn't pop out from the home screen app. It may work from Safari instead." : 'Could not open picture in picture');
     }
 }
 function closeVideoPip() {
@@ -3382,7 +3406,7 @@ const mqPhone = matchMedia('(orientation: portrait) and (max-width: 900px)');
 const insetProbe = document.createElement('div');
 insetProbe.style.cssText = 'position:fixed;left:0;top:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)';
 document.body.append(insetProbe);
-const lay = {mode:'', open:null, insetB:0};
+const lay = {mode:'', open:null, insetB:0, gap:0};
 const OV = {goal:'goalPop', jobs:'ovJobs', up:'ovUp', fly:'ovFly', ants:'ovAnts', stats:'ovStats', more:'ovMore'};
 // Which overlay each card moves to on a phone. A marker keeps its place in
 // the panel for when the screen turns or widens.
@@ -3404,13 +3428,23 @@ function layout() {
     const vw = innerWidth, vh = innerHeight;
     $('zoomCtl').hidden = false;
     if (phone) {
-        const top = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0, fh = Math.round(Math.min(vh - top, vw * 2));
+        const inTop = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0;
+        // Under a notch the status bar blurs what sits just below it, so the farm starts a little lower.
+        const top = inTop ? inTop + 28 : 0;
+        // Home screen apps on recent iPhones report a viewport short by the
+        // status bar's height, leaving an empty strip along the bottom; the
+        // farm and the dock reach down into it.
+        const lost = navigator.standalone === true ? Math.round(screen.height - vh) : 0;
+        lay.gap = lost > 10 && Math.abs(lost - inTop) < 12 ? lost : 0;
+        root.setProperty('--sat', top + 'px'); root.setProperty('--gap', lay.gap + 'px');
+        const fh = Math.round(Math.min(vh + lay.gap - top, vw * 2));
         root.setProperty('--fh', fh + 'px');
         // The followed ant's card stays clear of the dock.
         lay.insetB = Math.max(0, Math.round(top + fh - $('dock').getBoundingClientRect().top + 8));
         return;
     }
-    lay.insetB = 0;
+    lay.insetB = lay.gap = 0;
+    root.removeProperty('--sat'); root.removeProperty('--gap');
     const pad = vw < 700 ? 10 : 16, barH = compact ? 0 : $('bar').offsetHeight, ph = vh - barH - pad * 2;
     // The farm takes the full height; the panel gets the width that's left, within reason.
     let fh = ph, fw = Math.round(fh / 2), pw = Math.min(420, vw - pad * 3 - fw);
@@ -3464,6 +3498,8 @@ document.addEventListener('pointerdown', e => {
     // On a wide screen the Fly card and the More pane close with a click anywhere else.
     if (lay.mode === 'side' && lay.open && !e.target.closest('#ovFly, #farmFly, #ovMore, #helpBtn, #moveBtn')) openOv(null);
 });
+// Safari's own pinch would zoom the whole page; the farm handles pinches itself.
+document.addEventListener('gesturestart', e => e.preventDefault());
 document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
     if (!$('menu').hidden) closeMenu();
@@ -3628,6 +3664,15 @@ function showMore(card) {
     $(card).scrollIntoView({block:'start'});
 }
 $('helpBtn').addEventListener('click', () => showMore('helpCard'));
+let lifeTaps = [];
+$('lifetime').addEventListener('click', () => {
+    const now = Date.now();
+    lifeTaps = lifeTaps.filter(t => now - t < 1500).concat(now);
+    if (lifeTaps.length < 3) return;
+    lifeTaps = [];
+    const cs = getComputedStyle(insetProbe);
+    toast(`screen ${screen.width}x${screen.height}, view ${innerWidth}x${innerHeight}, insets ${cs.paddingTop} ${cs.paddingBottom}, gap ${lay.gap}, app ${navigator.standalone === true}`);
+});
 $('moveBtn').addEventListener('click', () => showMore('moveCard'));
 $('buyMode').addEventListener('click', e => {
     const b = e.target.closest('button');
@@ -3652,6 +3697,7 @@ onAch = a => {
     chime(true);
 };
 $('autoBuy').addEventListener('change', e => { st.auto = e.target.checked; });
+$('pipBtn').addEventListener('pointerdown', prepVideoPip);
 $('pipBtn').addEventListener('click', () => { closeMenu(); togglePip(); });
 $('backBtn').addEventListener('click', () => { if (pip.win) pip.win.close(); });
 $('flyBtn').addEventListener('click', () => {
