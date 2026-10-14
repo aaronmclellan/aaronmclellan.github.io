@@ -31,20 +31,24 @@
     --accent-dim: rgba(242, 169, 59, 0.16);
     --green: #94c35c;
     --red: #e0654c;
+    --sat: env(safe-area-inset-top);
+    --dockh: 3.7rem;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--bg); }
+html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg); color: var(--text);
-    min-height: 100vh; line-height: 1.45; font-size: 14px;
+    line-height: 1.45; font-size: 14px;
     -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column;
 }
 button { font: inherit; color: inherit; }
 a { color: var(--accent); }
 
 .bar {
-    position: sticky; top: 0; z-index: 20;
+    flex: none; z-index: 20;
     display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
     padding: 0.6rem 1rem; background: var(--bg2); border-bottom: 1px solid var(--border);
     padding-top: calc(0.6rem + env(safe-area-inset-top));
@@ -73,29 +77,155 @@ a { color: var(--accent); }
 .btn.primary:hover:not(:disabled) { background: #ffb94f; }
 .btn.on { border-color: var(--accent); background: var(--accent-dim); }
 
-.layout {
-    max-width: 1400px; margin: 0 auto; padding: 1rem;
-    padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));
-    display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr);
-}
-@media (min-width: 1000px) {
-    .layout { grid-template-columns: minmax(0, 1fr) 360px; align-items: start; }
-    .panel { position: sticky; top: 4.2rem; max-height: calc(100vh - 5.2rem); overflow-y: auto; scrollbar-width: thin; }
-}
+.bar .lbl { display: none; }
 
+/* The page never scrolls. On wider screens the tall farm sits beside a panel
+   that scrolls by itself. On a phone held upright the farm fills the screen
+   and everything else lives on top of it: numbers over the sky, a dock along
+   the bottom, and the cards, sheets and panes the dock opens. layout() works
+   out the sizes. */
+.layout {
+    flex: 1; min-height: 0; display: flex; justify-content: center; align-items: flex-start; gap: var(--gap);
+    padding: var(--pad); padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right));
+}
+.stage { flex: none; }
 .farm {
-    position: relative; width: 100%; aspect-ratio: 16 / 9;
-    border-radius: 12px; overflow: hidden; background: #0d0a07;
+    position: relative; width: var(--fw, 320px); height: var(--fh, 480px);
+    border-radius: 12px; overflow: hidden; background: var(--bg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
-.farm canvas { display: block; width: 100%; height: 100%; cursor: pointer; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
-.zoom { position: absolute; right: 0.6rem; bottom: 0.6rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.farm canvas { display: block; width: 100%; height: 100%; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.panel { flex: none; width: var(--pw, 360px); height: var(--ph, 480px); min-height: 0; display: flex; flex-direction: column; }
+.panel-head { flex: none; display: flex; flex-direction: column; gap: 0.6rem; padding-bottom: 0.75rem; }
+.panel-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+body.compact .bar { display: none; }
+body.compact .nest { padding: 0.55rem 0.75rem; }
+body.compact .nest-text small { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+body.compact .nest-text b { font-size: 0.95rem; }
+.tabpane > .nest-perks { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0 0.9rem 0.6rem; }
+.tabpane > .nest-perks summary { margin-top: 0.6rem; }
+
+/* Phones held upright */
+.dock, .ov-box, .goal-pill { display: none; }
+body.ovl .layout { display: block; padding: 0; }
+body.ovl .panel { display: none; }
+body.ovl .stage { position: fixed; top: 0; left: 0; right: 0; padding-top: var(--sat); }
+body.ovl .farm { width: 100vw; border-radius: 0; box-shadow: none; }
+body:not(.ovl) .goal-pill { display: none; }
+body.ovl .goal-pill:not([hidden]) { display: inline-flex; position: fixed; z-index: 11; left: 0.5rem; max-width: calc(100vw - 4.5rem); bottom: calc(var(--dockh) + 1rem + env(safe-area-inset-bottom)); }
+.pill.goal-pill { background: rgba(242, 169, 59, 0.92); border-color: rgba(255, 220, 160, 0.5); color: #2a1a08; max-width: 100%; }
+.goal-pill i { color: #2a1a08; }
+.goal-pill b { overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
+.goal-pill small { color: rgba(42, 26, 8, 0.75); font-weight: 600; }
+.dock {
+    position: fixed; z-index: 12; left: 50%; transform: translateX(-50%); bottom: calc(0.5rem + env(safe-area-inset-bottom));
+    width: min(28rem, calc(100vw - 1rem)); height: var(--dockh); padding: 0 0.25rem;
+    background: rgba(20, 14, 8, 0.88); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+body.ovl .dock { display: flex; align-items: stretch; }
+.dock button {
+    position: relative; flex: 1; min-width: 0; background: none; border: none; border-radius: 14px; margin: 0.3rem 0.1rem; color: var(--muted); cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.15rem; font-size: 0.66rem; font-weight: 700;
+}
+.dock button i { font-size: 1.05rem; color: var(--text); }
+.dock button.on { color: var(--text); background: var(--accent-dim); }
+.dock button.on i { color: var(--accent); }
+.dock .tab-badge { position: absolute; top: 0.1rem; left: calc(50% + 0.3rem); }
+.dock-fly .ring { position: relative; width: 2.5rem; height: 2.5rem; flex: none; display: grid; place-items: center; margin-top: -1.2rem; border-radius: 50%; background: var(--card2); border: 1px solid var(--border); }
+.dock-fly .ring i { color: var(--accent); }
+.dock-fly svg { position: absolute; inset: -3px; width: calc(100% + 6px); height: calc(100% + 6px); transform: rotate(-90deg); }
+.dock-fly circle { fill: none; stroke-width: 3; }
+.dock-fly .track { stroke: rgba(255, 255, 255, 0.08); }
+.dock-fly .prog { stroke: var(--accent); stroke-linecap: round; transition: stroke-dasharray 0.4s; }
+.dock-fly.locked .prog { stroke: var(--muted); }
+.dock-fly.ready .prog { stroke: #ffd54a; }
+.dock-fly.ready .ring { animation: glow 1.8s ease-in-out infinite; }
+.dock-fly.ready .ring i { color: #ffd54a; }
+.ov-box[hidden] { display: none !important; }
+body.ovl .ov-box {
+    display: block; position: fixed; z-index: 11; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+    background: var(--bg2); border: 1px solid var(--border); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); padding: 0 0.5rem 0.5rem;
+}
+.ov-pop { left: 50%; transform: translateX(-50%); width: min(28rem, calc(100vw - 1rem)); bottom: calc(var(--dockh) + 1rem + env(safe-area-inset-bottom)); max-height: calc(100dvh - var(--sat) - var(--dockh) - 4rem); border-radius: 16px; }
+.ov-sheet { left: 0; right: 0; bottom: 0; max-height: min(64dvh, 36rem); border-radius: 18px 18px 0 0; padding-bottom: calc(var(--dockh) + 1.25rem + env(safe-area-inset-bottom)) !important; }
+.ov-pane { top: calc(var(--sat) + 0.5rem); right: 0; bottom: calc(var(--dockh) + 1rem + env(safe-area-inset-bottom)); width: min(25rem, 90vw); border-radius: 16px 0 0 16px; border-right: none !important; }
+.ov-goal { left: 0.5rem; width: min(22rem, calc(100vw - 1rem)); border-radius: 14px; }
+/* Fly the nest: a ring button on the farm on wide screens, opening a card beside it. */
+.farm-fly { position: absolute; z-index: 2; right: 0.6rem; bottom: 0.6rem; padding: 0; background: none; border: none; cursor: pointer; border-radius: 50%; }
+.farm-fly .ring { margin: 0; width: 2.9rem; height: 2.9rem; }
+.farm-fly .ring i { font-size: 1.1rem; }
+body.ovl .farm-fly { display: none; }
+body:not(.ovl) #ovFly:not([hidden]) {
+    display: block; position: fixed; z-index: 30; width: min(21rem, calc(100vw - 1rem)); transform: none; max-height: none;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); padding: 0.45rem 0.35rem 0.35rem;
+}
+.ov-head { position: sticky; top: 0; z-index: 2; display: flex; justify-content: flex-end; padding: 0.4rem 0 0.3rem; background: var(--bg2); }
+.ov-x { width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 1px solid var(--border); background: var(--card2); color: var(--text); cursor: pointer; display: grid; place-items: center; font-size: 0.85rem; }
+.ov-box > * + * { margin-top: 0.5rem; }
+.ov-box .ov-head + * { margin-top: 0; }
+.ov-box .tabpane { display: flex !important; }
+.ov-box .card, .ov-box .nest { border-radius: 12px; }
+/* One card each: the box is the card, with its close button in the corner. */
+body.ovl .ov-pop, body.ovl .ov-sheet, body.ovl .ov-goal { background: var(--card); padding: 0.45rem 0.35rem 0.35rem; }
+.ov-pop .ov-head, .ov-sheet .ov-head, .ov-goal .ov-head { position: absolute; top: 0.5rem; right: 0.55rem; padding: 0; background: none; }
+.ov-pop > .card, .ov-sheet > .card, .ov-goal > .card, .ov-pop > .nest { background: none; border: none; padding: 0.35rem 0.5rem; }
+.ov-pop > .card > h2, .ov-sheet > .card > h2, .ov-goal > .card > h2 { padding-right: 2.5rem; min-height: 1.9rem; }
+#ovFly .ov-head { position: absolute; top: 0.5rem; right: 0.55rem; padding: 0; background: none; }
+.ov-pop > .nest { display: flex; flex-direction: column; background: none; border: none; padding: 0.35rem 0.5rem; }
+.ov-pop > .nest .nest-main { display: contents; }
+.ov-pop > .nest .nest-text { order: 1; padding-right: 2.5rem; }
+.ov-pop > .nest .nest-bar { order: 2; margin: 0.6rem 0; }
+.ov-pop > .nest #flyBtn { order: 3; padding: 0.6rem; }
+.ov-pop > .nest .nest-perks { order: 4; }
+#ovFly .nest-text small { display: block; overflow: visible; }
+#ovFly .nest-text b { font-size: 1rem; }
+body.ovl .zoom { position: fixed; z-index: 3; right: 0.6rem; bottom: calc(var(--dockh) + 1.1rem + env(safe-area-inset-bottom)); }
+body.ovl #zIn, body.ovl #zOut, body.ovl .zoom.idle { display: none; }
+body.ovl .toast { top: calc(var(--sat) + 5.7rem); bottom: auto; transform: translate(-50%, -1rem); }
+body.ovl .toast.show { transform: translate(-50%, 0); }
+
+/* The numbers that matter most, over the sky. */
+.hud { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: flex; flex-direction: column; align-items: stretch; gap: 0.35rem; padding: 0.5rem; pointer-events: none; }
+.hud-line { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.menu-btn { margin-left: auto; }
+.pill {
+    display: inline-flex; align-items: center; gap: 0.3rem; height: 1.85rem; padding: 0 0.55rem; border-radius: 999px;
+    background: rgba(20, 14, 8, 0.68); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    font-size: 0.8rem; color: var(--text); white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.pill i { color: var(--accent); font-size: 0.75rem; }
+.pill b { font-weight: 800; }
+.pill small { color: var(--muted); font-size: 0.7rem; }
+button.pill { pointer-events: auto; cursor: pointer; font: inherit; font-size: 0.8rem; }
+button.pill:hover { border-color: var(--accent); }
+.menu-btn { display: none !important; }
+body.compact .menu-btn { display: inline-flex !important; }
+.hud .buffs { margin: 0; }
+/* The strip shrinks with the farm, not the screen. */
+.farm { container-type: inline-size; }
+@container (max-width: 300px) { .hud, .hud-line { gap: 0.25rem; } .hud { padding: 0.4rem; } #hRate, #hCap, #hBroodSub, #hWx { display: none; } .pill { padding: 0 0.45rem; } }
+.hud .buff { background: rgba(20, 14, 8, 0.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.menu {
+    position: absolute; right: 0.5rem; top: 2.75rem; z-index: 6; width: min(15rem, calc(100% - 1rem));
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.5rem;
+    display: flex; flex-direction: column; gap: 0.4rem; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+.menu[hidden] { display: none; }
+.menu .farm-name { font-size: 0.85rem; padding: 0.35rem 0.4rem; white-space: normal; }
+.menu .bar-actions { flex-direction: column; align-items: stretch; }
+.menu .btn { justify-content: flex-start; }
+.menu .btn span, .menu .lbl { display: inline; }
+.tab-badge { min-width: 1.15rem; height: 1.15rem; padding: 0 0.3rem; border-radius: 999px; background: var(--accent); color: #2a1a08; font-size: 0.68rem; font-weight: 800; display: inline-grid; place-items: center; }
+.tab-badge[hidden] { display: none; }
+.zoom { position: absolute; right: 0.6rem; bottom: 4rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .zoom button {
     width: 2rem; height: 2rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.14);
     background: rgba(20, 14, 8, 0.62); color: var(--text); cursor: pointer; font-size: 0.8rem;
     display: grid; place-items: center; backdrop-filter: blur(3px);
 }
 .zoom button:hover { border-color: var(--accent); }
+.zoom[hidden] { display: none; }
 .zoom button:disabled { opacity: 0.35; cursor: default; }
 .away {
     position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -104,6 +234,8 @@ a { color: var(--accent); }
 }
 .away i { font-size: 2rem; color: var(--accent); }
 .away[hidden], .sheet[hidden] { display: none; }
+.away { z-index: 3; }
+.sheet { z-index: 4; }
 .sheet {
     position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem;
     background: rgba(10, 7, 4, 0.6); backdrop-filter: blur(2px);
@@ -119,20 +251,18 @@ a { color: var(--accent); }
 .sheet-card li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.88rem; padding: 0.35rem 0.6rem; border-radius: 8px; background: var(--card2); }
 .sheet-card li b { font-variant-numeric: tabular-nums; }
 
-.stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.5rem; margin-top: 0.75rem; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
 .stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 0.5rem 0.7rem; display: flex; flex-direction: column; min-width: 0; }
 .stat .k { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); display: flex; gap: 0.4rem; align-items: center; }
 .stat .k i { color: var(--accent); font-size: 0.7rem; }
 .stat b { font-size: 1.25rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.3; }
 .stat small { color: var(--muted); font-size: 0.74rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
 .stat small#sWxSub { white-space: normal; line-height: 1.3; }
-.buffs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+.buffs { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .buffs[hidden] { display: none; }
 .buff { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.6rem; border-radius: 999px; background: var(--accent-dim); border: 1px solid rgba(242, 169, 59, 0.4); font-size: 0.78rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .buff i { color: var(--accent); }
 .buff.gold { background: rgba(255, 213, 74, 0.18); border-color: #ffd54a; }
-.hint { color: var(--muted); font-size: 0.78rem; margin-top: 0.65rem; }
-.hint i { color: var(--accent); margin-right: 0.25rem; }
 
 .panel { display: flex; flex-direction: column; gap: 0.75rem; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 0.9rem; }
@@ -142,15 +272,18 @@ a { color: var(--accent); }
 }
 .muted { color: var(--muted); font-size: 0.8rem; }
 
-.job { display: grid; grid-template-columns: 92px 1fr 46px; align-items: center; column-gap: 0.55rem; padding: 0.25rem 0; }
-.job label { display: flex; align-items: center; gap: 0.45rem; font-weight: 600; font-size: 0.85rem; }
-.job label i { color: var(--accent); width: 1rem; text-align: center; }
-.job input { width: 100%; accent-color: var(--accent); }
-.job-n { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
-.job small { grid-column: 2 / 4; color: var(--muted); font-size: 0.72rem; margin-top: -0.15rem; font-variant-numeric: tabular-nums; }
+/* Jobs: one bar split three ways, with two dividers to drag. */
+.jobbar { position: relative; display: flex; height: 2.1rem; border-radius: 9px; overflow: hidden; background: var(--card2); touch-action: none; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
+.jobbar .seg { display: flex; align-items: center; justify-content: center; gap: 0.3rem; min-width: 0; overflow: hidden; white-space: nowrap; font-size: 0.74rem; font-weight: 600; color: #2a1a08; }
+.jobbar .seg b { font-weight: 800; }
+.grip { position: absolute; top: 0; bottom: 0; width: 1.6rem; margin-left: -0.8rem; padding: 0; background: none; border: none; cursor: ew-resize; display: grid; place-items: center; }
+.grip::before { content: ''; width: 4px; height: 68%; border-radius: 2px; background: #1d160f; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.55); }
+.grip:focus-visible { outline: none; }
+.grip:focus-visible::before { background: var(--text); }
+.jobs-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; margin-top: 0.55rem; font-size: 0.72rem; color: var(--muted); line-height: 1.3; font-variant-numeric: tabular-nums; }
+.jobs-legend b { display: flex; align-items: center; gap: 0.35rem; color: var(--text); font-size: 0.8rem; margin-bottom: 0.1rem; }
+.jobs-legend b i { width: 0.6rem; height: 0.6rem; border-radius: 2px; }
 .card h2 .muted { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 0.74rem; }
-.split { display: flex; height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: 0.45rem; background: var(--card2); }
-.split i { display: block; height: 100%; transition: width 0.2s; }
 .s-forage { background: var(--accent); }
 .s-dig { background: #b9784a; }
 .s-nurse { background: #e9dcc4; }
@@ -194,7 +327,7 @@ a { color: var(--accent); }
 .up.tier { border-color: rgba(242, 169, 59, 0.45); }
 .up.tier .up-ic { background: var(--accent-dim); }
 
-.nest { margin-top: 0.75rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.85rem; transition: border-color 0.3s, background 0.3s; }
+.nest { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.85rem; transition: border-color 0.3s, background 0.3s; }
 .nest-main { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .nest-text { display: flex; flex-direction: column; min-width: 0; }
 .nest-text b { font-size: 1rem; font-weight: 800; }
@@ -226,18 +359,19 @@ a { color: var(--accent); }
 .perks li.got { color: var(--text); }
 .perks li.got i { color: var(--green); }
 
-.help summary { cursor: pointer; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
-.help summary::-webkit-details-marker { display: none; }
-.help summary::after { content: '+'; font-size: 1rem; line-height: 1; }
-.help[open] summary::after { content: '\2212'; }
-.help ul { margin: 0.7rem 0 0 1rem; display: grid; gap: 0.35rem; font-size: 0.8rem; color: var(--muted); }
+.help ul { margin: 0 0 0 1rem; display: grid; gap: 0.4rem; font-size: 0.8rem; color: var(--muted); }
 .help li b { color: var(--text); }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0 0.2rem 0.5rem; }
+/* On a wide screen the More pane slides over the panel; layout() places it. */
+body:not(.ovl) #ovMore:not([hidden]) {
+    display: block; position: fixed; z-index: 30; right: auto; bottom: auto; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+    background: var(--bg2); border: 1px solid var(--border) !important; border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); padding: 0 0.5rem 0.5rem;
+}
+#ovMore .card { scroll-margin-top: 2.9rem; }
 .linkbtn { background: none; border: none; color: var(--dim); font-size: 0.75rem; cursor: pointer; padding: 0.2rem; }
 .linkbtn:hover { color: var(--text); }
 .linkbtn.danger:hover { color: var(--red); }
 .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 4px; }
-@media (min-width: 1000px) { .tabs { position: sticky; top: 0; z-index: 3; } }
 .tabs button { background: none; border: none; border-radius: 9px; padding: 0.45rem 0.5rem; font-weight: 700; font-size: 0.85rem; color: var(--muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
 .tabs button[aria-selected="true"] { background: var(--accent-dim); color: var(--text); }
 .tabs button i { color: var(--accent); }
@@ -285,7 +419,7 @@ a { color: var(--accent); }
 label.btn { cursor: pointer; }
 
 .toast {
-    position: fixed; left: 50%; bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 50; transform: translate(-50%, 1rem);
+    position: fixed; left: 50%; bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 50; transform: translate(-50%, 1rem); text-align: center;
     background: #2f2419; border: 1px solid var(--accent); border-radius: 10px;
     padding: 0.55rem 0.95rem; font-weight: 600; font-size: 0.85rem; opacity: 0; visibility: hidden;
     max-width: calc(100vw - 2rem); transition: transform 0.25s, opacity 0.25s, visibility 0.25s; pointer-events: none;
@@ -293,11 +427,9 @@ label.btn { cursor: pointer; }
 .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
 .pipvid { position: fixed; right: 0; bottom: 0; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
 
-@media (max-width: 760px) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 520px) {
-    .layout { padding: 0.6rem; gap: 0.75rem; }
     .bar { padding: 0.5rem 0.7rem; padding-top: calc(0.5rem + env(safe-area-inset-top)); }
-    #pipBtn span, #installBtn span { display: none; }
+    .bar #pipBtn span, .bar #installBtn span { display: none; }
     .zoom { right: 0.4rem; bottom: 0.4rem; }
     .zoom button { width: 1.8rem; height: 1.8rem; }
     .stat { padding: 0.45rem 0.55rem; }
@@ -306,24 +438,42 @@ label.btn { cursor: pointer; }
 </style>
 </head>
 <body>
-<header class="bar">
-    <div class="brand"><i class="fa-solid fa-bug"></i> ant farm <button class="farm-name" id="colonyName" title="Name your farm"></button></div>
-    <div class="bar-actions">
+<header class="bar" id="bar">
+    <div class="brand" id="brand"><i class="fa-solid fa-bug"></i> ant farm <button class="farm-name" id="colonyName" title="Name your farm"></button></div>
+    <div class="bar-actions" id="barActions">
         <button class="btn" id="installBtn" hidden title="Install the ant farm as an app"><i class="fa-solid fa-download"></i> <span>Install</span></button>
-        <button class="btn icon" id="soundBtn" title="Weather sounds" aria-label="Weather sounds" aria-pressed="false"><i class="fa-solid fa-volume-xmark"></i></button>
+        <button class="btn icon" id="helpBtn" title="How it works" aria-label="How it works"><i class="fa-solid fa-circle-question"></i><span class="lbl">How it works</span></button>
+        <button class="btn icon" id="moveBtn" title="Move or reset your farm" aria-label="Move or reset your farm"><i class="fa-solid fa-right-left"></i><span class="lbl">Move or reset your farm</span></button>
+        <button class="btn icon" id="soundBtn" title="Weather sounds" aria-label="Weather sounds" aria-pressed="false"><i class="fa-solid fa-volume-xmark"></i><span class="lbl">Weather sounds</span></button>
         <button class="btn" id="pipBtn" title="Keep the farm in a small window that floats over everything"><i class="fa-regular fa-window-restore"></i> <span>Pop out</span></button>
     </div>
 </header>
 
-<main class="layout">
+<main class="layout" id="layout">
     <section class="stage">
         <div class="farm" id="farm">
             <canvas id="cv" role="img" aria-label="An ant farm. Click it to drop crumbs for the ants, or tap an ant to follow it."></canvas>
+            <div class="hud" id="hud">
+                <div class="hud-line">
+                    <button class="pill" data-stat="food"><i class="fa-solid fa-apple-whole"></i><b id="hFood">0</b><small id="hRate"></small></button>
+                    <button class="pill" data-stat="ants"><i class="fa-solid fa-bug"></i><b id="hAnts">0</b><small id="hCap"></small></button>
+                    <button class="pill" data-stat="queens"><i class="fa-solid fa-crown"></i><b id="hQueens">0</b></button>
+                    <button class="pill menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i class="fa-solid fa-bars"></i></button>
+                </div>
+                <div class="hud-line">
+                    <button class="pill" data-stat="brood"><i class="fa-solid fa-egg"></i><b id="hBrood">0</b><small id="hBroodSub"></small></button>
+                    <button class="pill" data-stat="nest"><i class="fa-solid fa-person-digging"></i><b id="hNest">0</b></button>
+                    <button class="pill" data-stat="wx"><i class="fa-solid fa-sun" id="hWxIcon"></i><b id="hWx">Clear</b></button>
+                </div>
+                <div class="buffs" id="buffs" hidden></div>
+            </div>
+            <div class="menu" id="menu" hidden></div>
             <div class="zoom" id="zoomCtl">
                 <button id="zIn" title="Zoom in" aria-label="Zoom in"><i class="fa-solid fa-plus"></i></button>
                 <button id="zOut" title="Zoom out" aria-label="Zoom out"><i class="fa-solid fa-minus"></i></button>
                 <button id="zFit" title="Show the whole farm" aria-label="Show the whole farm"><i class="fa-solid fa-expand"></i></button>
             </div>
+            <button class="farm-fly dock-fly" id="farmFly" data-ov="fly" title="Fly the nest" aria-label="Fly the nest"><span class="ring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="track" cx="22" cy="22" r="20"/><circle class="prog fly-ring" cx="22" cy="22" r="20" stroke-dasharray="0 126"/></svg><i class="fa-solid fa-feather-pointed"></i></span></button>
             <div class="away" id="away" hidden>
                 <i class="fa-regular fa-window-restore"></i>
                 <p>Your ant farm is floating in its own little window.</p>
@@ -331,79 +481,113 @@ label.btn { cursor: pointer; }
             </div>
             <div class="sheet" id="sheet" hidden></div>
         </div>
-        <div class="stats">
-            <div class="stat"><span class="k"><i class="fa-solid fa-apple-whole"></i> Food</span><b id="sFood">0</b><small id="sRate"></small></div>
-            <div class="stat"><span class="k"><i class="fa-solid fa-bug"></i> Ants</span><b id="sAnts">0</b><small id="sCap"></small></div>
-            <div class="stat"><span class="k"><i class="fa-solid fa-egg"></i> Brood</span><b id="sBrood">0</b><small id="sLay"></small></div>
-            <div class="stat"><span class="k"><i class="fa-solid fa-person-digging"></i> Chambers</span><b id="sNest">0</b><small id="sNestSub"></small></div>
-            <div class="stat"><span class="k"><i class="fa-solid fa-crown"></i> Queens</span><b id="sQueens">0</b><small id="sBonus"></small></div>
-            <div class="stat"><span class="k"><i class="fa-solid fa-sun" id="wxIcon"></i> Weather</span><b id="sWx">Clear</b><small id="sWxSub"></small><small id="sWxNext"></small></div>
-        </div>
-        <div class="nest" id="nestBar">
-            <div class="nest-main">
-                <div class="nest-text"><b id="flyTitle">Fly the nest</b><small id="flySub"></small></div>
-                <button class="btn primary" id="flyBtn"><i class="fa-solid fa-feather-pointed"></i> Fly the nest</button>
-            </div>
-            <div class="nest-bar" aria-hidden="true"><i id="flyProg"></i></div>
-            <details class="nest-perks"><summary>Queen perks</summary><ul class="perks" id="perks"></ul></details>
-        </div>
-        <div class="buffs" id="buffs" hidden></div>
-        <p class="hint" id="hint"><i class="fa-solid fa-hand-pointer"></i>Click the farm to drop crumbs, tap an ant to follow it, and catch the bugs that wander by. Pop it out to keep it floating on your desktop.</p>
     </section>
 
-    <aside class="panel">
-        <div class="tabs" id="tabs" role="tablist">
-            <button role="tab" data-tab="farm" aria-selected="true"><i class="fa-solid fa-seedling"></i> Farm</button>
-            <button role="tab" data-tab="ants" aria-selected="false"><i class="fa-solid fa-bug"></i> Ants</button>
-            <button role="tab" data-tab="stats" aria-selected="false"><i class="fa-solid fa-chart-simple"></i> Stats</button>
-        </div>
-        <section class="tabpane" id="tab-farm">
-        <div class="card goal" id="goalCard" hidden>
-            <h2>Next goal <span class="muted" id="goalStep"></span></h2>
-            <p class="goal-title"><i class="fa-solid fa-flag" id="goalIcon"></i><b id="goalTitle"></b><span class="goal-count" id="goalCount"></span></p>
-            <div class="goal-prog" aria-hidden="true"><i id="goalProg"></i></div>
-            <p class="muted" id="goalWhy"></p>
-            <div class="goal-foot"><span id="goalReward"></span><button class="linkbtn" id="goalSkip">Skip the guide</button></div>
-        </div>
-
-        <div class="card" id="jobCard">
-            <h2>Jobs <span class="muted">every ant does one</span></h2>
-            <div class="split" id="split" aria-hidden="true"><i class="s-forage"></i><i class="s-dig"></i><i class="s-nurse"></i></div>
-            <div class="job">
-                <label for="wForage"><i class="fa-solid fa-apple-whole"></i> Forage</label>
-                <input type="range" id="wForage" min="0" max="100" step="5">
-                <span class="job-n" id="nForage">0%</span>
-                <small id="eForage"></small>
+    <aside class="panel" id="panel">
+        <div class="panel-head" id="panelHead">
+            <div class="tabs" id="tabs" role="tablist">
+                <button role="tab" data-tab="farm" aria-selected="true"><i class="fa-solid fa-seedling"></i> Farm <span class="tab-badge" id="farmBadge" hidden></span></button>
+                <button role="tab" data-tab="ants" aria-selected="false"><i class="fa-solid fa-bug"></i> Ants</button>
+                <button role="tab" data-tab="stats" aria-selected="false"><i class="fa-solid fa-chart-simple"></i> Stats</button>
             </div>
-            <div class="job">
-                <label for="wDig"><i class="fa-solid fa-person-digging"></i> Dig</label>
-                <input type="range" id="wDig" min="0" max="100" step="5">
-                <span class="job-n" id="nDig">0%</span>
-                <small id="eDig"></small>
-            </div>
-            <div class="job">
-                <label for="wNurse"><i class="fa-solid fa-egg"></i> Nurse</label>
-                <input type="range" id="wNurse" min="0" max="100" step="5">
-                <span class="job-n" id="nNurse">0%</span>
-                <small id="eNurse"></small>
-            </div>
-            <p class="tip" id="jobTip"></p>
         </div>
+        <div class="panel-body" id="panelBody">
+            <section class="tabpane" id="tab-farm">
+                <div class="card goal" id="goalCard" hidden>
+                    <h2>Next goal <span class="muted" id="goalStep"></span></h2>
+                    <p class="goal-title"><i class="fa-solid fa-flag" id="goalIcon"></i><b id="goalTitle"></b><span class="goal-count" id="goalCount"></span></p>
+                    <div class="goal-prog" aria-hidden="true"><i id="goalProg"></i></div>
+                    <p class="muted" id="goalWhy"></p>
+                    <div class="goal-foot"><span id="goalReward"></span><button class="linkbtn" id="goalSkip">Skip the guide</button></div>
+                </div>
 
-        <div class="card" id="upCard">
-            <h2>Upgrades <span class="h2-tools"><label class="auto" id="autoWrap" hidden title="Spends spare food, a tenth of what's stored, on the cheapest upgrade. Finding new foods is up to you."><input type="checkbox" id="autoBuy"> auto-buy</label><span class="seg" id="buyMode" role="group" aria-label="How many to buy"><button data-n="1">x1</button><button data-n="10">x10</button><button data-n="max">Max</button></span></span></h2>
-            <div id="ups"></div>
+                <div class="card" id="upCard">
+                    <h2>Upgrades <span class="h2-tools"><label class="auto" id="autoWrap" hidden title="Spends spare food, a tenth of what's stored, on the cheapest upgrade. Finding new foods is up to you."><input type="checkbox" id="autoBuy"> auto-buy</label><span class="seg" id="buyMode" role="group" aria-label="How many to buy"><button data-n="1">x1</button><button data-n="10">x10</button><button data-n="max">Max</button></span></span></h2>
+                    <div id="ups"></div>
+                </div>
+
+                <div class="card" id="jobCard">
+                    <h2>Jobs <span class="muted">drag to share out the work</span></h2>
+                    <div class="jobbar" id="jobBar">
+                        <div class="seg s-forage" id="seg-forage"></div><div class="seg s-dig" id="seg-dig"></div><div class="seg s-nurse" id="seg-nurse"></div>
+                        <button class="grip" id="grip1" role="slider" aria-label="Foragers and diggers" aria-valuemin="0" aria-valuemax="100"></button>
+                        <button class="grip" id="grip2" role="slider" aria-label="Diggers and nurses" aria-valuemin="0" aria-valuemax="100"></button>
+                    </div>
+                    <div class="jobs-legend">
+                        <div><b><i class="s-forage"></i>Forage</b><span id="e-forage"></span></div>
+                        <div><b><i class="s-dig"></i>Dig</b><span id="e-dig"></span></div>
+                        <div><b><i class="s-nurse"></i>Nurse</b><span id="e-nurse"></span></div>
+                    </div>
+                    <p class="tip" id="jobTip"></p>
+                </div>
+
+            </section>
+
+            <section class="tabpane" id="tab-ants" hidden>
+                <div class="card">
+                    <h2>Your ants <span class="muted" id="rosterCount"></span></h2>
+                    <div class="queen-row" id="queenRow"></div>
+                    <div class="roster-tools">
+                        <select id="rosterSort" aria-label="Sort ants"><option value="old">Oldest first</option><option value="new">Newest first</option><option value="trips">Most trips</option><option value="name">By name</option></select>
+                        <label class="auto"><input type="checkbox" id="showStyles" checked> styles</label>
+                        <span class="seg" id="rosterRole" role="group" aria-label="Show"><button data-r="all">All</button><button data-r="forage">Foragers</button><button data-r="dig">Diggers</button><button data-r="nurse">Nurses</button><button data-r="fav" aria-label="Starred"><i class="fa-solid fa-star"></i></button></span>
+                    </div>
+                    <p class="muted roster-note">Every ant you can see on the farm has a name and a story. Tap one to read it.</p>
+                    <div class="roster" id="roster"></div>
+                </div>
+            </section>
+
+            <section class="tabpane" id="tab-stats" hidden>
+                <div class="stats" id="statsGrid">
+                    <div class="stat"><span class="k"><i class="fa-solid fa-apple-whole"></i> Food</span><b id="sFood">0</b><small id="sRate"></small></div>
+                    <div class="stat"><span class="k"><i class="fa-solid fa-bug"></i> Ants</span><b id="sAnts">0</b><small id="sCap"></small></div>
+                    <div class="stat"><span class="k"><i class="fa-solid fa-egg"></i> Brood</span><b id="sBrood">0</b><small id="sLay"></small></div>
+                    <div class="stat"><span class="k"><i class="fa-solid fa-person-digging"></i> Chambers</span><b id="sNest">0</b><small id="sNestSub"></small></div>
+                    <div class="stat"><span class="k"><i class="fa-solid fa-crown"></i> Queens</span><b id="sQueens">0</b><small id="sBonus"></small></div>
+                    <div class="stat"><span class="k"><i class="fa-solid fa-sun" id="wxIcon"></i> Weather</span><b id="sWx">Clear</b><small id="sWxSub"></small><small id="sWxNext"></small></div>
+                </div>
+                <div class="card" id="achCard">
+                    <h2>Achievements <span class="muted" id="achCount"></span></h2>
+                    <div class="ach" id="ach"></div>
+                    <p class="ach-desc" id="achDesc">Each one makes everything 2% better, for good.</p>
+                </div>
+
+                <div class="card"><h2>This farm</h2><div class="name-row"><input id="farmName" maxlength="32" placeholder="Name your farm" aria-label="Farm name" autocomplete="off"></div><dl class="facts" id="statFarm"></dl></div>
+                <div class="card"><h2>All time</h2><dl class="facts" id="statAll"></dl></div>
+                <div class="card"><h2>Past farms</h2><ul class="history" id="history"></ul></div>
+            </section>
         </div>
-
-        <div class="card">
-            <h2>Achievements <span class="muted" id="achCount"></span></h2>
-            <div class="ach" id="ach"></div>
-            <p class="ach-desc" id="achDesc">Each one makes everything 2% better, for good.</p>
+    </aside>
+</main>
+<button class="pill goal-pill" id="goalPill" hidden><i class="fa-solid fa-flag" id="goalPillIcon"></i><b id="goalPillTitle"></b><small id="goalPillCount"></small></button>
+<nav class="dock" id="dock" aria-label="Farm controls">
+    <button data-ov="jobs"><i class="fa-solid fa-sliders"></i>Jobs</button>
+    <button data-ov="up"><i class="fa-solid fa-arrow-up"></i>Upgrades<span class="tab-badge" id="dockBadge" hidden></span></button>
+    <button data-ov="fly" class="dock-fly" id="dockFly"><span class="ring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="track" cx="22" cy="22" r="20"/><circle class="prog fly-ring" cx="22" cy="22" r="20" stroke-dasharray="0 126"/></svg><i class="fa-solid fa-feather-pointed"></i></span>Fly</button>
+    <button data-ov="ants"><i class="fa-solid fa-bug"></i>Ants</button>
+    <button data-ov="stats"><i class="fa-solid fa-chart-simple"></i>Stats</button>
+</nav>
+<div class="ov-box ov-goal" id="goalPop" role="dialog" aria-label="Next goal" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div class="ov-box ov-pop" id="ovJobs" role="dialog" aria-label="Jobs" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div class="ov-box ov-sheet" id="ovUp" role="dialog" aria-label="Upgrades" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div class="ov-box ov-pop" id="ovFly" role="dialog" aria-label="Fly the nest" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="nest" id="nestBar">
+        <div class="nest-main">
+            <div class="nest-text"><b id="flyTitle">Fly the nest</b><small id="flySub"></small></div>
+            <button class="btn primary" id="flyBtn"><i class="fa-solid fa-feather-pointed"></i> Fly the nest</button>
         </div>
-
-        <details class="card help">
-            <summary>How it works</summary>
+        <div class="nest-bar" aria-hidden="true"><i id="flyProg"></i></div>
+        <details class="nest-perks"><summary>Queen perks</summary><ul class="perks" id="perks"></ul></details>
+    </div>
+</div>
+<div class="ov-box ov-pane" id="ovAnts" role="dialog" aria-label="Your ants" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div class="ov-box ov-pane" id="ovStats" role="dialog" aria-label="Stats" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div class="ov-box ov-pane" id="ovMore" role="dialog" aria-label="Help, moving and reset" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <section class="tabpane" id="tab-more">
+        <div class="card help" id="helpCard">
+            <h2>How it works</h2>
             <ul>
+                <li id="hint"><b>Tap the farm</b> to drop crumbs for the ants, tap an ant to follow it, and catch the bugs that wander by. Pop it out to keep it floating on your desktop.</li>
                 <li><b>Foragers</b> walk up to the surface and haul food back to the store chambers.</li>
                 <li><b>Diggers</b> tunnel out new chambers. More nest means room for more ants.</li>
                 <li><b>Nurses</b> help the queen lay and raise the brood faster. Every egg costs a little food.</li>
@@ -412,52 +596,32 @@ label.btn { cursor: pointer; }
                 <li><b>Zoom</b> with the buttons, a pinch or ctrl + scroll, and tap an ant to follow it around.</li>
                 <li>The farm keeps going while you're away, for up to 8 hours.</li>
                 <li><b>Fly the nest</b> once the colony has 120 ants: queens leave to start a fresh farm. This farm resets, but every queen makes all your ants 10% better for good, and waiting longer sends more queens.</li>
-                <li>On a phone, add it to your home screen to use it like an app.</li>
+                <li>On a phone, the buttons along the bottom open your jobs, upgrades, ants and stats, and the menu at the top right has the rest. Add it to your home screen to use it like an app.</li>
             </ul>
-        </details>
-
-        <div class="foot">
-            <span class="muted" id="lifetime"></span>
-            <span><button class="linkbtn" id="moveLink">Move to another device</button> <button class="linkbtn danger" id="resetBtn">Reset everything</button></span>
         </div>
-        </section>
-
-        <section class="tabpane" id="tab-ants" hidden>
-            <div class="card">
-                <h2>Your ants <span class="muted" id="rosterCount"></span></h2>
-                <div class="queen-row" id="queenRow"></div>
-                <div class="roster-tools">
-                    <select id="rosterSort" aria-label="Sort ants"><option value="old">Oldest first</option><option value="new">Newest first</option><option value="trips">Most trips</option><option value="name">By name</option></select>
-                    <label class="auto"><input type="checkbox" id="showStyles" checked> styles</label>
-                    <span class="seg" id="rosterRole" role="group" aria-label="Show"><button data-r="all">All</button><button data-r="forage">Foragers</button><button data-r="dig">Diggers</button><button data-r="nurse">Nurses</button><button data-r="fav" aria-label="Starred"><i class="fa-solid fa-star"></i></button></span>
-                </div>
-                <p class="muted roster-note">Every ant you can see on the farm has a name and a story. Tap one to read it.</p>
-                <div class="roster" id="roster"></div>
-            </div>
-        </section>
-
-        <section class="tabpane" id="tab-stats" hidden>
-            <div class="card"><h2>This farm</h2><div class="name-row"><input id="farmName" maxlength="32" placeholder="Name your farm" aria-label="Farm name" autocomplete="off"></div><dl class="facts" id="statFarm"></dl></div>
-            <div class="card"><h2>All time</h2><dl class="facts" id="statAll"></dl></div>
-            <div class="card"><h2>Past farms</h2><ul class="history" id="history"></ul></div>
-            <div class="card" id="moveCard">
-                <h2>Move your farm</h2>
-                <p class="muted">Copy a save code on this device, then paste it into the ant farm on your other one. Loading a code replaces the farm on that device, so play on one at a time.</p>
-                <div class="move-row"><button class="btn" id="copyCode"><i class="fa-regular fa-copy"></i> Copy save code</button><button class="btn" id="dlCode"><i class="fa-solid fa-download"></i> Download backup</button></div>
-                <textarea id="codeOut" class="code" readonly hidden aria-label="Your save code"></textarea>
-                <textarea id="codeIn" class="code" placeholder="Paste a save code here" aria-label="Save code to load"></textarea>
-                <div class="move-row"><button class="btn" id="loadCode"><i class="fa-solid fa-file-import"></i> Load this farm</button><label class="btn" for="codeFile"><i class="fa-regular fa-folder-open"></i> Open a backup</label><input type="file" id="codeFile" accept=".txt,text/plain" hidden></div>
-                <p class="err" id="codeErr" role="alert"></p>
-            </div>
-        </section>
-    </aside>
-</main>
+        <div class="card" id="moveCard">
+            <h2>Move your farm</h2>
+            <p class="muted">Copy a save code on this device, then paste it into the ant farm on your other one. Loading a code replaces the farm on that device, so play on one at a time.</p>
+            <div class="move-row"><button class="btn" id="copyCode"><i class="fa-regular fa-copy"></i> Copy save code</button><button class="btn" id="dlCode"><i class="fa-solid fa-download"></i> Download backup</button></div>
+            <textarea id="codeOut" class="code" readonly hidden aria-label="Your save code"></textarea>
+            <textarea id="codeIn" class="code" placeholder="Paste a save code here" aria-label="Save code to load"></textarea>
+            <div class="move-row"><button class="btn" id="loadCode"><i class="fa-solid fa-file-import"></i> Load this farm</button><label class="btn" for="codeFile"><i class="fa-regular fa-folder-open"></i> Open a backup</label><input type="file" id="codeFile" accept=".txt,text/plain" hidden></div>
+            <p class="err" id="codeErr" role="alert"></p>
+        </div>
+        <div class="foot" id="footRow">
+            <span class="muted" id="lifetime"></span>
+            <button class="linkbtn danger" id="resetBtn">Reset everything</button>
+        </div>
+    </section>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
 'use strict';
 /* CORE START: the colony model, with no DOM. It also runs headless for balance testing. */
-const W = 384, H = 216, GROUND = 40, MARGIN = 7, STEP = 2.2, TR = 2.3;
+// A tall farm, 1:2, so it fills a phone screen held upright and sits beside
+// the panel on a computer.
+const W = 200, H = 400, GROUND = 64, MARGIN = 7, STEP = 2.2, TR = 2.3, WORLD = `${W}x${H}x${GROUND}`;
 const TAU = Math.PI * 2;
 
 function mulberry32(a) {
@@ -609,7 +773,7 @@ function freshState(prev) {
 function genSoil(seed) {
     const R = mulberry32(seed);
     solid = new Uint8Array(W * H); layer = new Uint8Array(W * H); grain = new Uint8Array(W * H); deco = new Uint8Array(W * H);
-    nest.EX = Math.round(W * (0.3 + R() * 0.14));
+    nest.EX = Math.round(W * (0.36 + R() * 0.12));
     const bands = [0.25, 0.5, 0.76].map(f => ({y:GROUND + f * (H - GROUND), a:2 + R() * 4, f:0.015 + R() * 0.03, p:R() * TAU, a2:0.6 + R() * 1.4, f2:0.08 + R() * 0.08, p2:R() * TAU}));
     for (let x = 0; x < W; x++) {
         const ys = bands.map(b => b.y + Math.sin(x * b.f + b.p) * b.a + Math.sin(x * b.f2 + b.p2) * b.a2);
@@ -845,7 +1009,7 @@ function packNest() {
     return {
         n: nest.nodes.map(n => n.k ? [n.x, n.y, n.p, 1, n.cx, n.cy, n.rx, n.ry, n.ex, n.ey, n.prog, n.work, n.role] : [n.x, n.y, n.p, n.edge ? 2 : 0]),
         h: nest.heads.map(h => [h.n, r2(h.a), h.len, h.tgt, r2(h.pref), h.ch ? 1 : 0]),
-        s: nest.steps, f: nest.full ? 1 : 0,
+        s: nest.steps, f: nest.full ? 1 : 0, w: WORLD,
     };
 }
 function unpackNest(d) {
@@ -1035,7 +1199,7 @@ function flushSoil() {
 function resize() {
     const win = cv.ownerDocument.defaultView || window;
     let cw, ch, dpr = 1;
-    if (pip.mode === 'video') { cw = 960; ch = 540; }
+    if (pip.mode === 'video') { cw = 450; ch = 900; }
     else {
         const r = cv.getBoundingClientRect();
         dpr = Math.min(win.devicePixelRatio || 1, 2);
@@ -1081,9 +1245,9 @@ function follow(a) {
 }
 function stopFollow() { cam.follow = null; camUI(); }
 function camUI() {
-    cv.style.touchAction = cam.tz > 1.01 || cam.follow ? 'none' : 'pan-y';
     $('zOut').disabled = $('zFit').disabled = cam.tz <= 1.01 && !cam.follow;
     $('zIn').disabled = cam.tz >= 5.99;
+    $('zoomCtl').classList.toggle('idle', cam.tz <= 1.01 && !cam.follow);
 }
 
 /* ---------- scenery ---------- */
@@ -1096,7 +1260,7 @@ function buildScenery() {
         blades.push({x, h:1.6 + R() * 4.2, lean:(R() - 0.5) * 1.4, c:Math.floor(R() * 3)});
     }
     stars = Array.from({length:46}, () => ({x:R() * W, y:2 + R() * (GROUND - 20), r:0.25 + R() * 0.45, ph:R() * TAU}));
-    clouds = Array.from({length:4}, (_, k) => ({x:R() * (W + 80), y:5 + R() * 14, v:0.8 + R() * 1.6, s:0.7 + R() * 0.6, k}));
+    clouds = Array.from({length:4}, (_, k) => ({x:R() * (W + 80), y:12 + R() * GROUND * 0.35, v:0.8 + R() * 1.6, s:0.7 + R() * 0.6, k}));
     speckles = Array.from({length:110}, () => ({u:R() * 2 - 1, v:R(), c:R() < 0.5}));
     overcast = Array.from({length:9}, (_, k) => ({x:k * 52 + R() * 20, y:3 + R() * 9, s:1 + R() * 0.7, v:1 + R()}));
     puddles = [];
@@ -1105,11 +1269,11 @@ function buildScenery() {
         if (Math.abs(x - nest.EX + 25) < 45 || Math.abs(x - FX) < 18 || puddles.some(p => Math.abs(p.x - x) < 30)) continue;
         puddles.push({x, w:4 + R() * 5});
     }
-    fogBands = Array.from({length:5}, () => ({x:R() * W, y:GROUND - 3 - R() * 14, w:50 + R() * 50, v:1 + R() * 2}));
-    flies = Array.from({length:7}, () => ({x:R() * W, y:GROUND - 3 - R() * 20, ph:R() * TAU, sp:0.5 + R()}));
+    fogBands = Array.from({length:5}, () => ({x:R() * W, y:GROUND - 3 - R() * 22, w:50 + R() * 50, v:1 + R() * 2}));
+    flies = Array.from({length:7}, () => ({x:R() * W, y:GROUND - 3 - R() * 26, ph:R() * TAU, sp:0.5 + R()}));
 }
 function mound() {
-    const h = Math.min(13, 1.2 + Math.sqrt(nest.dug) * 0.09), L = 6 + h * 2.4;
+    const h = Math.min(13, 1.2 + Math.sqrt(nest.dug) * 0.09), L = 5 + h * 2.1;
     return {h, L, x:nest.EX - 3.5 - L};
 }
 let moundCache = null;
@@ -1507,7 +1671,7 @@ function drawSkyPix(sky, t) {
     pc.drawImage(skyBake.cv, 0, 0);
     if (sky.h > 5.8 && sky.h < 19.8 && cover < 0.95) {
         if (!sunCv) sunCv = discCanvas(7, 13, '#ffe9a8', '#fff6d0');
-        const p = (sky.h - 5.8) / 14, sx = W * (0.06 + 0.88 * p) * P, sy = (GROUND - 4 - Math.sin(p * Math.PI) * 27) * P;
+        const p = (sky.h - 5.8) / 14, sx = W * (0.06 + 0.88 * p) * P, sy = (GROUND - 5 - Math.sin(p * Math.PI) * (GROUND - 40)) * P;
         pc.globalAlpha = 1 - cover; pc.drawImage(sunCv, Math.round(sx - sunCv.width / 2), Math.round(sy - sunCv.height / 2)); pc.globalAlpha = 1;
     }
     const wind = 1 + wxv.wind * 4, tone = sky.night > 0.5 ? 'night' : wxv.storm > 0.5 ? 'storm' : 'day';
@@ -1530,7 +1694,7 @@ function drawNightPix(sky, t) {
     if (!moonCv) { moonCv = discCanvas(6, 0, '#f0ecd6', '#fffbea'); const c = moonCv.getContext('2d'); c.fillStyle = '#cfc9b0'; c.fillRect(5, 6, 2, 2); c.fillRect(9, 9, 2, 1); c.fillRect(7, 10, 1, 1); }
     const h = sky.h >= 19 ? sky.h - 19 : sky.h + 5, p = Math.min(1, h / 11.5);
     pc.globalAlpha = vis;
-    pc.drawImage(moonCv, Math.round(W * (0.08 + 0.84 * p) * P - moonCv.width / 2), Math.round((GROUND - 6 - Math.sin(p * Math.PI) * 24) * P - moonCv.height / 2));
+    pc.drawImage(moonCv, Math.round(W * (0.08 + 0.84 * p) * P - moonCv.width / 2), Math.round((GROUND - 7 - Math.sin(p * Math.PI) * (GROUND - 42)) * P - moonCv.height / 2));
     pc.globalAlpha = 1;
 }
 
@@ -1706,22 +1870,27 @@ function pixText(s, x, y, col, o) {
 function drawHud() {
     const c = ctx, r = rates();
     c.setTransform(1, 0, 0, 1, 0, 0);
-    const fs = hudFont(), pad = Math.round(fs * 0.5), h = Math.round(fs * 1.6), b = Math.max(2, Math.round(fs / 8));
-    const row = (parts, x0, y, fill) => {
-        let w = fs * 1.1;
-        for (const p of parts) w += c.measureText(p[0]).width;
-        hudBox(x0, y, w, h, fill, '#3a2d20', b);
-        let x = x0 + fs * 0.55;
-        for (const [s, col] of parts) { c.fillStyle = col; c.fillText(s, x, y + h / 2 + 1); x += c.measureText(s).width; }
-        return w;
-    };
-    row([[fmt(st.food) + ' food', '#f4c47c'], [' +' + fmt(r.food) + '/s', '#cbb9a3'], ['  ' + fmt(Math.floor(st.ants)) + '/' + fmt(r.cap) + ' ants', '#f3e9dc']], pad, pad, 'rgba(14,10,6,0.85)');
-    const y2 = pad + h + b * 2, parts = [[WX[wxNow].name, '#cfe0f5']];
-    for (const bf of activeBuffs()) parts.push([`  ${BUFF_NAMES[bf.k]} x${bf.m}`, bf.gold ? '#ffd54a' : '#f4c47c']);
-    const w2 = row(parts, pad, y2, 'rgba(14,10,6,0.85)');
+    const fs = hudFont(), pad = Math.round(fs * 0.5), h = Math.round(fs * 1.6), b = Math.max(2, Math.round(fs / 8)), dark = 'rgba(14,10,6,0.85)';
+    const chips = [
+        {parts:[[fmt(st.food) + ' food', '#f4c47c'], [' +' + fmt(r.food) + '/s', '#cbb9a3']], fill:dark},
+        {parts:[[fmt(Math.floor(st.ants)) + '/' + fmt(r.cap) + ' ants', '#f3e9dc']], fill:dark},
+        {parts:[[WX[wxNow].name, '#cfe0f5']], fill:dark},
+    ];
+    for (const bf of activeBuffs()) chips.push({parts:[[`${BUFF_NAMES[bf.k]} x${bf.m}`, bf.gold ? '#ffd54a' : '#f4c47c']], fill:dark});
     const n = affordable();
-    if (n) row([[n === 1 ? '1 upgrade ready' : n + ' upgrades ready', '#2a1a08']], pad + w2 + b * 2, y2, '#f2a93b');
-    if (flyWorth()) row([['Ready to fly the nest', '#2a1a08']], pad, y2 + h + b * 2, '#ffd54a');
+    if (n) chips.push({parts:[[n === 1 ? '1 upgrade ready' : n + ' upgrades ready', '#2a1a08']], fill:'#f2a93b'});
+    if (flyWorth()) chips.push({parts:[['Ready to fly the nest', '#2a1a08']], fill:'#ffd54a'});
+    // Chips run left to right and wrap, so a narrow window still fits them.
+    let x = pad, y = pad;
+    for (const ch of chips) {
+        let w = fs * 1.1;
+        for (const p of ch.parts) w += c.measureText(p[0]).width;
+        if (x > pad && x + w > view.cw - pad) { x = pad; y += h + b * 2; }
+        hudBox(x, y, w, h, ch.fill, '#3a2d20', b);
+        let tx = x + fs * 0.55;
+        for (const [s, col] of ch.parts) { c.fillStyle = col; c.fillText(s, tx, y + h / 2 + 1); tx += c.measureText(s).width; }
+        x += w + b * 2;
+    }
 }
 const ROLE_NAME = {forage:'forager', dig:'digger', nurse:'nurse'};
 function antDoing(a) {
@@ -1746,7 +1915,7 @@ function drawFollowCard() {
     const l1 = `${a.name} the ${ROLE_NAME[a.role]}`, l2 = `${antDoing(a)}, ${a.trips} trip${a.trips === 1 ? '' : 's'} so far`;
     const w1 = c.measureText(l1).width;
     c.font = `${small}px Silkscreen, monospace`;
-    const w = Math.max(w1, c.measureText(l2).width) + fs * 1.2, h = fs * 1.4 + small * 1.5 + fs * 0.5, y = view.ch - pad - h;
+    const w = Math.max(w1, c.measureText(l2).width) + fs * 1.2, h = fs * 1.4 + small * 1.5 + fs * 0.5, y = view.ch - pad - h - (pip.mode ? 0 : Math.round(lay.insetB * view.dpr));
     hudBox(pad, y, w, h, 'rgba(14,10,6,0.88)', '#3a2d20', b);
     c.fillStyle = '#cbb9a3'; c.fillText(l2, pad + fs * 0.6, y + fs * 0.35 + fs * 1.4 + small * 0.6);
     c.font = `${fs}px Silkscreen, monospace`;
@@ -1973,7 +2142,7 @@ function stepCritter(dt, t, sky) {
         const dir = Math.random() < 0.5 ? 1 : -1;
         critter = {kind, dir, golden:Math.random() < 1 / 12, t0:t, ph:Math.random() * TAU, x:dir > 0 ? -4 : W + 4, y:0, by:0};
         if (kind === 'ladybug') critter.y = surfY(critter.x) - 1.3;
-        else if (kind === 'butterfly' || kind === 'bat') critter.y = critter.by = 9 + Math.random() * 16;
+        else if (kind === 'butterfly' || kind === 'bat') critter.y = critter.by = GROUND * 0.55 + Math.random() * GROUND * 0.25;
         else { critter.x = 40 + Math.random() * (W - 80); critter.y = critter.by = GROUND - 6 - Math.random() * 16; }
         return;
     }
@@ -2288,11 +2457,15 @@ function drawFlightPix() {
 function drawFlightText(t) {
     const c = ctx;
     if (!flight) { if (fadeIn > t) { c.fillStyle = `rgba(10,7,4,${fadeIn - t})`; c.fillRect(0, 0, view.cw, view.ch); } return; }
-    const el = t - flight.t0, fs = Math.max(16, Math.round(view.ch / 9 / 8) * 8), s2 = Math.max(8, Math.round(fs / 16) * 8);
+    const el = t - flight.t0, title = 'Flown the nest!', fit = Math.min(view.cw, W * view.s) * 0.86;
+    // As big as fits across the farm, in steps of 8 so the pixel font stays crisp.
+    let fs = Math.max(16, Math.round(view.ch / 9 / 8) * 8);
+    c.font = `${fs}px Silkscreen, monospace`;
+    while (fs > 16 && c.measureText(title).width > fit) { fs -= 8; c.font = `${fs}px Silkscreen, monospace`; }
+    const s2 = Math.max(8, Math.round(fs / 16) * 8);
     c.globalAlpha = Math.max(0, Math.min(1, el * 1.5, 5.5 - el));
     c.textAlign = 'center'; c.textBaseline = 'middle';
-    c.font = `${fs}px Silkscreen, monospace`;
-    pixText('Flown the nest!', Math.round(view.cw / 2), Math.round(view.ch * 0.42), '#fff3d6', Math.max(1, Math.round(fs / 8)));
+    pixText(title, Math.round(view.cw / 2), Math.round(view.ch * 0.42), '#fff3d6', Math.max(1, Math.round(fs / 8)));
     c.font = `${s2}px Silkscreen, monospace`;
     pixText(`+${flight.gain} queen${flight.gain === 1 ? '' : 's'}`, Math.round(view.cw / 2), Math.round(view.ch * 0.42 + fs), '#ffd27f', Math.max(1, Math.round(s2 / 8)));
     c.globalAlpha = 1; c.textAlign = 'start';
@@ -2368,7 +2541,7 @@ function stepSeason(dt, t, sky) {
     if ((s === 'newyear' || s === 'july4') && sky.night > 0.5 && wxv.rain < 0.3 && t > nextBurst) {
         nextBurst = t + 1.2 + Math.random() * 2.4;
         const n = 26, col = FIREWORK_COLS[Math.floor(Math.random() * FIREWORK_COLS.length)], sp = 12 + Math.random() * 7;
-        bursts.push({x:40 + Math.random() * (W - 80), y:6 + Math.random() * (GROUND - 22), t0:t, col, ps:Array.from({length:n}, (_, k) => [Math.cos(k / n * TAU) * sp * (0.8 + Math.random() * 0.4), Math.sin(k / n * TAU) * sp * (0.8 + Math.random() * 0.4)])});
+        bursts.push({x:40 + Math.random() * (W - 80), y:18 + Math.random() * (GROUND - 34), t0:t, col, ps:Array.from({length:n}, (_, k) => [Math.cos(k / n * TAU) * sp * (0.8 + Math.random() * 0.4), Math.sin(k / n * TAU) * sp * (0.8 + Math.random() * 0.4)])});
     }
     bursts = bursts.filter(b => t - b.t0 < 1.6);
     if (s === 'valentine' && t > nextHeart) {
@@ -2391,7 +2564,7 @@ function pumpkinSprite() {
         c.fillStyle = '#6f8f35'; c.beginPath(); c.ellipse(1.2, -5.3, 1.1, 0.45, -0.4, 0, TAU); c.fill();
     }), half:0}));
 }
-const PUMPKINS = () => [W * 0.62, FX - 26];
+const PUMPKINS = () => [FX - 44, FX - 24];
 function drawSeasonGround(t, sky) {
     const s = seasonNow();
     if (s === 'autumn' || s === 'halloween') {
@@ -2498,7 +2671,7 @@ function render(t) {
     drawSeasonLights(t, sky);
     // Scale the pixel buffer up to the screen without smoothing.
     c.setTransform(1, 0, 0, 1, 0, 0);
-    if (view.ox > 0.5 || view.oy > 0.5) { c.fillStyle = '#0d0a07'; c.fillRect(0, 0, view.cw, view.ch); }
+    if (view.ox > 0.5 || view.oy > 0.5) { c.fillStyle = '#15100b'; c.fillRect(0, 0, view.cw, view.ch); }
     c.imageSmoothingEnabled = false;
     c.setTransform(view.s / P, 0, 0, view.s / P, view.ox, view.oy);
     c.drawImage(pix, 0, 0);
@@ -2573,7 +2746,7 @@ async function togglePip() {
     if (pip.mode === 'doc') { pip.win.close(); return; }
     if (pip.mode === 'video') { try { await document.exitPictureInPicture(); } catch (e) { closeVideoPip(); } return; }
     if (canDocPip) {
-        try { attachPip(await window.documentPictureInPicture.requestWindow({width:480, height:270})); return; }
+        try { attachPip(await window.documentPictureInPicture.requestWindow({width:260, height:520})); return; }
         catch (e) { console.warn('Document picture in picture failed', e); }
     }
     if (canVidPip) return openVideoPip();
@@ -2583,7 +2756,7 @@ function attachPip(pw) {
     const d = pw.document;
     d.title = 'Ant farm';
     const style = d.createElement('style');
-    style.textContent = 'html,body{margin:0;height:100%;overflow:hidden;background:#0d0a07}canvas{display:block;width:100vw;height:100vh;cursor:pointer;touch-action:manipulation;user-select:none}';
+    style.textContent = 'html,body{margin:0;height:100%;overflow:hidden;background:#15100b}canvas{display:block;width:100vw;height:100vh;cursor:pointer;touch-action:manipulation;user-select:none}';
     d.head.append(style);
     for (const l of document.querySelectorAll('link[rel="stylesheet"]')) d.head.append(l.cloneNode());
     d.body.append(cv);
@@ -2668,7 +2841,7 @@ function affordable() {
     if (nx && st.food >= nx.cost) n++;
     return n;
 }
-const JOBS = [['forage', 'wForage', 'nForage', 'eForage'], ['dig', 'wDig', 'nDig', 'eDig'], ['nurse', 'wNurse', 'nNurse', 'eNurse']];
+const JOB_KEYS = ['forage', 'dig', 'nurse'], JOB_NAMES = {forage:'Forage', dig:'Dig', nurse:'Nurse'};
 function buildUI() {
     const ups = $('ups');
     ups.innerHTML = '';
@@ -2685,13 +2858,12 @@ function buildUI() {
     };
     mk('tier', 'fa-apple-whole');
     for (const u of UPGRADES) mk(u.id, u.icon);
-    for (const [k, w] of JOBS) $(w).value = st.w[k];
     $('autoBuy').checked = !!st.auto;
     $('ach').innerHTML = ACH.map(a => `<button data-id="${a.id}" aria-label="${a.name}"><i class="fa-solid ${a.icon}"></i></button>`).join('');
     $('perks').innerHTML = PERKS.map(p => `<li data-q="${p.q}"><i class="fa-solid fa-lock"></i><span><b>${p.name}</b> (${p.q} queen${p.q > 1 ? 's' : ''}): ${p.desc}</span></li>`).join('');
     updateUI();
 }
-let flyArmed = 0, resetArmed = 0, achSel = null;
+let flyArmed = 0, resetArmed = 0, achSel = null, statTips = {};
 const FLY_LABEL = '<i class="fa-solid fa-feather-pointed"></i> Fly the nest';
 // Worth flying when it would at least double the queens (or bring the first).
 const flyWorth = () => canFly() && queenGain() >= Math.max(1, st.queens);
@@ -2719,6 +2891,10 @@ function updateNestBar() {
     $('flyTitle').textContent = title;
     $('flySub').textContent = sub;
     $('flyProg').style.width = (Math.max(0, Math.min(1, prog)) * 100).toFixed(1) + '%';
+    // The Fly button in the phone's dock carries the same progress as a ring.
+    for (const c of document.querySelectorAll('.fly-ring')) c.setAttribute('stroke-dasharray', `${(Math.max(0, Math.min(1, prog)) * 125.7).toFixed(1)} 126`);
+    for (const b of [$('dockFly'), $('farmFly')]) { b.classList.toggle('ready', worth); b.classList.toggle('locked', locked); }
+    $('farmFly').title = title;
     const fb = $('flyBtn');
     fb.hidden = locked;
     fb.disabled = !canFly() || !!flight;
@@ -2735,8 +2911,8 @@ const GUIDE = [
     {icon:'fa-person-digging', title:'Dig a second chamber', why:"Ants need room. Diggers tunnel out new chambers, and the colony only grows as fast as they dig.", have:() => nest.chambers, need:2, focus:'jobCard'},
     {icon:'fa-seedling', title:'Find sunflower seeds', why:"Better food is worth more on every trip. It's the first item in the upgrades list.", have:() => st.tier >= 1 ? 1 : 0, need:1, focus:'upCard'},
     {icon:'fa-star', title:'Catch a visiting bug', why:"Every few minutes a ladybug or butterfly wanders past the farm. Tap it for a boost.", have:() => st.stats.critters, need:1, focus:'farm'},
-    {icon:'fa-sliders', title:'Change the job split', why:"Rain makes digging faster and foraging slower. Check the weather card and move ants to match.", have:() => st.stats.split ? 1 : 0, need:1, focus:'jobCard'},
-    {icon:'fa-crown', title:'Grow to 120 ants', why:"At 120 ants your queens can fly the nest. The bar under the stats shows how close you are.", have:() => Math.floor(st.ants), need:120, focus:'nestBar'},
+    {icon:'fa-sliders', title:'Change the job split', why:"Rain makes digging faster and foraging slower. Check the weather and drag the job bar to match.", have:() => st.stats.split ? 1 : 0, need:1, focus:'jobCard'},
+    {icon:'fa-crown', title:'Grow to 120 ants', why:"At 120 ants your queens can fly the nest. The ring on the Fly button shows how close you are.", have:() => Math.floor(st.ants), need:120, focus:'nestBar'},
     {icon:'fa-feather-pointed', title:'Fly the nest', why:"Queens leave to start a fresh farm. You lose this farm, but every queen makes all your ants 10% better, forever.", have:() => st.flights, need:1, focus:'nestBar'},
 ];
 const guideOn = () => st.guide >= 0 && st.guide < GUIDE.length;
@@ -2756,13 +2932,23 @@ let guideFocus = null;
 function updateGuide() {
     const on = guideOn(), g = on ? GUIDE[st.guide] : null, focus = g ? g.focus : null;
     $('goalCard').hidden = !on;
+    if (!on && lay.open === 'goal') openOv(null);
     if (focus !== guideFocus) {
         if (guideFocus) $(guideFocus).classList.remove('pulse');
         if (focus) $(focus).classList.add('pulse');
         guideFocus = focus;
     }
+    // When the card the guide points at is tucked away, the button that opens it pulses instead.
+    const ovl = lay.mode === 'overlay', OPENS = {upCard:'up', jobCard:'jobs', nestBar:'fly'};
+    $('tabs').children[0].classList.toggle('pulse', !ovl && (focus === 'upCard' || focus === 'jobCard') && tab !== 'farm');
+    $('farmFly').classList.toggle('pulse', !ovl && focus === 'nestBar' && lay.open !== 'fly');
+    for (const b of $('dock').children) b.classList.toggle('pulse', ovl && OPENS[focus] === b.dataset.ov && lay.open !== b.dataset.ov);
+    $('goalPill').hidden = !on;
     if (!g) return;
     const have = Math.min(g.have(), g.need);
+    $('goalPillIcon').className = `fa-solid ${g.icon}`;
+    $('goalPillTitle').textContent = g.title;
+    $('goalPillCount').textContent = g.need > 1 ? `${fmt(have)}/${fmt(g.need)}` : '';
     $('goalStep').textContent = `${st.guide + 1} of ${GUIDE.length}`;
     $('goalIcon').className = `fa-solid ${g.icon}`;
     $('goalTitle').textContent = g.title;
@@ -2791,26 +2977,35 @@ function jobTip(r) {
     if (full && st.w.nurse > 20) return [false, 'With no room for eggs, nurses have little to do until the diggers make space.'];
     return [false, 'Food buys upgrades and eggs, digging makes room for more ants, and nurses raise the brood faster.'];
 }
-// Moving one job slider shares the rest between the other two, keeping their
-// balance, so the split always adds up to 100%.
-function setJob(k, v) {
-    const others = ['forage', 'dig', 'nurse'].filter(o => o !== k), rest = 100 - v;
-    const sum = st.w[others[0]] + st.w[others[1]];
-    const a = sum > 0 ? Math.round(st.w[others[0]] / sum * rest / 5) * 5 : Math.round(rest / 10) * 5;
-    st.w[others[0]] = a; st.w[others[1]] = rest - a; st.w[k] = v;
+// The job split is one bar with two dividers: foragers up to the first,
+// diggers up to the second, nurses after it. It moves in steps of 5% and
+// always adds up to 100%.
+function setGrip(which, pct) {
+    const a = st.w.forage, b = st.w.forage + st.w.dig;
+    pct = Math.max(0, Math.min(100, Math.round(pct / 5) * 5));
+    const g1 = which === 0 ? Math.min(pct, b) : a, g2 = which === 1 ? Math.max(pct, a) : b;
+    if (g1 === a && g2 === b) return;
+    st.w = {forage:g1, dig:g2 - g1, nurse:100 - g2};
+    st.stats.split = 1; syncAt = 0; noteInput(); updateUI();
 }
 function updateUI() {
     const r = rates(), sh = share(), A = st.ants;
     const sn = seasonNow();
     const label = (st.farmName ? `<b>${esc(st.farmName)}</b>, farm ${st.colony + 1}` : `farm ${st.colony + 1}`) + `, ${theme.name.toLowerCase()}` + (sn ? `, ${SEASON_NAMES[sn]}` : '');
     if ($('colonyName').innerHTML !== label) $('colonyName').innerHTML = label;
-    $('sFood').textContent = fmt(st.food);
-    $('sRate').textContent = `+${fmt(r.food)}/s`;
+    $('sFood').textContent = $('hFood').textContent = fmt(st.food);
+    $('sRate').textContent = $('hRate').textContent = `+${fmt(r.food)}/s`;
+    $('hAnts').textContent = fmt(Math.floor(A));
+    $('hCap').textContent = `/ ${fmt(r.cap)}`;
+    $('hQueens').textContent = st.queens;
+    $('hBrood').textContent = fmt(Math.ceil(st.brood));
+    $('hNest').textContent = nest.chambers;
     $('sAnts').textContent = fmt(Math.floor(A));
     $('sCap').textContent = `room for ${fmt(r.cap)}`;
     $('sBrood').textContent = fmt(Math.ceil(st.brood));
     const full = A + st.brood >= r.cap - 0.5;
     $('sLay').textContent = full ? 'nest is full' : st.food < BAL.egg ? 'queen needs food' : `${fmt(r.lay * 60)} eggs/min`;
+    $('hBroodSub').textContent = full ? 'full' : st.food < BAL.egg ? 'hungry' : `${fmt(r.lay * 60)}/min`;
     $('sNest').textContent = nest.chambers;
     $('sNestSub').textContent = nest.full ? 'soil fully dug' : `${fmt(nest.dug)} cells dug`;
     $('sQueens').textContent = st.queens;
@@ -2819,17 +3014,21 @@ function updateUI() {
     const roomPerMin = r.dig / stepCost() * cells * BAL.capCell * mult('cap') * 60;
     const eff = {
         forage: `${fmt(r.food)} food/s`,
-        dig: nest.full ? 'nothing left to dig' : `room for ${fmt(roomPerMin)} more ants/min`,
-        nurse: `brood grows ${r.nf.toFixed(1)}x faster`,
+        dig: nest.full ? 'nothing left to dig' : `room for ${fmt(roomPerMin)} a minute`,
+        nurse: `brood ${r.nf.toFixed(1)}x faster`,
     };
-    for (const [k, w, n, e] of JOBS) {
-        const count = Math.floor(A * (k === 'forage' ? sh.f : k === 'dig' ? sh.d : sh.n));
-        $(n).textContent = st.w[k] + '%';
-        $(e).textContent = `${fmt(count)} ant${count === 1 ? '' : 's'}, ${eff[k]}`;
-        if (document.activeElement !== $(w)) $(w).value = st.w[k];
+    for (const k of JOB_KEYS) {
+        const count = Math.floor(A * (k === 'forage' ? sh.f : k === 'dig' ? sh.d : sh.n)), pct = st.w[k], seg = $('seg-' + k);
+        // Wide parts of the bar say what they are; narrow ones just the share.
+        const label = pct >= 25 ? `${JOB_NAMES[k]} <b>${pct}%</b>` : pct >= 10 ? `<b>${pct}%</b>` : '';
+        seg.style.width = pct + '%';
+        if (seg.dataset.l !== label) { seg.dataset.l = label; seg.innerHTML = label; }
+        $('e-' + k).textContent = `${fmt(count)} ant${count === 1 ? '' : 's'}, ${eff[k]}`;
     }
-    const bars = $('split').children;
-    bars[0].style.width = st.w.forage + '%'; bars[1].style.width = st.w.dig + '%'; bars[2].style.width = st.w.nurse + '%';
+    const g1 = st.w.forage, g2 = st.w.forage + st.w.dig;
+    $('grip1').style.left = g1 + '%'; $('grip2').style.left = g2 + '%';
+    $('grip1').setAttribute('aria-valuenow', g1); $('grip1').setAttribute('aria-valuetext', `${st.w.forage}% foraging, ${st.w.dig}% digging`);
+    $('grip2').setAttribute('aria-valuenow', g2); $('grip2').setAttribute('aria-valuetext', `${st.w.dig}% digging, ${st.w.nurse}% nursing`);
     const [warn, tip] = jobTip(r), tipEl = $('jobTip');
     tipEl.classList.toggle('warn', warn);
     if (tipEl.dataset.t !== tip) { tipEl.dataset.t = tip; tipEl.innerHTML = `<i class="fa-solid fa-lightbulb"></i>${tip}`; }
@@ -2864,8 +3063,23 @@ function updateUI() {
     }
     $('lifetime').textContent = `${fmt(st.total)} food all time` + (st.flights ? `, ${st.flights} flight${st.flights > 1 ? 's' : ''}` : '');
     const wx = WX[wxNow], nx = nextWeather(Date.now());
-    $('wxIcon').className = `fa-solid ${wx.icon}`;
-    $('sWx').textContent = wx.name;
+    $('wxIcon').className = $('hWxIcon').className = `fa-solid ${wx.icon}`;
+    $('sWx').textContent = $('hWx').textContent = wx.name;
+    const q = st.queens;
+    statTips = {
+        food: `Food: ${fmt(st.food)} stored, ${fmt(r.food)} more every second`,
+        ants: `${fmt(Math.floor(A))} ants, with room for ${fmt(r.cap)}` + (full ? '. The nest is full, so diggers are the way to grow.' : ''),
+        queens: q ? `${q} queen${q === 1 ? '' : 's'}: every ant works ${Math.round(q * BAL.queenBoost * 100)}% better` : 'No queens yet. Fly the nest at 120 ants to get your first.',
+        brood: `${fmt(Math.ceil(st.brood))} eggs and young growing: ` + $('sLay').textContent,
+        nest: `${nest.chambers} chamber${nest.chambers === 1 ? '' : 's'}, ` + (nest.full ? 'and the soil is fully dug' : `${fmt(nest.dug)} cells dug`),
+        wx: `${wx.name}: ${wxEffect(wx)}` + (nx ? `. ${WX[nx.wx].name} in ${fmtTime(nx.in / 1000)}` : ''),
+    };
+    for (const b of $('hud').querySelectorAll('[data-stat]')) if (b.title !== statTips[b.dataset.stat]) b.title = statTips[b.dataset.stat];
+    // Upgrades you can afford, counted on the Farm tab when the list is out of sight.
+    const ready = affordable(), badge = $('farmBadge');
+    badge.hidden = !ready || tab === 'farm';
+    badge.textContent = $('dockBadge').textContent = ready;
+    $('dockBadge').hidden = !ready || lay.open === 'up';
     $('sWxSub').textContent = wxEffect(wx);
     $('sWxNext').textContent = nx ? `${WX[nx.wx].name.toLowerCase()} in ${fmtTime(nx.in / 1000)}` : '';
     const bs = activeBuffs(), bEl = $('buffs');
@@ -2905,8 +3119,9 @@ function updatePanel() {
     const now = performance.now();
     if (now < panelAt) return;
     panelAt = now + 1000;
-    if (tab === 'ants') renderRoster();
-    else if (tab === 'stats') renderStats();
+    const which = lay.mode === 'overlay' ? lay.open : tab;
+    if (which === 'ants') renderRoster();
+    else if (which === 'stats') renderStats();
 }
 
 /* ---------- the ants tab ---------- */
@@ -3108,11 +3323,20 @@ function load() {
     }
     theme = THEMES[st.colony % THEMES.length];
     genSoil(st.seed);
-    unpackNest(d.nest);
+    if (d.nest.w === WORLD) unpackNest(d.nest);
+    else regrowNest(d.nest);
     afterNest();
     AW = []; crumbs = []; floaters = []; dust = [];
     antSeq = 0; pendingRoster = d.roster || [];
     return d;
+}
+// Saves from before the farm was tall: dig a fresh nest in the new shape as
+// far as the old one had got, so the colony keeps its room.
+function regrowNest(old) {
+    rng = mulberry32(st.seed);
+    foundNest();
+    for (let g = 0; g < 2e5 && !nest.full && (nest.steps < (old.s || 0) || old.f); g++) digStep();
+    rng = Math.random;
 }
 function offlineReport(sec, from) {
     const capH = st.queens >= 10 ? 24 : 8, used = Math.min(sec, capH * 3600);
@@ -3149,6 +3373,108 @@ function takeOver() {
     }, 150);
 }
 
+/* ---------- layout ---------- */
+// Wide screens put the tall farm beside the panel. A phone held upright (or
+// any tall, narrow window) gives the farm the whole screen: the panel's cards
+// move into overlays opened from a dock along the bottom, so the controls
+// live inside the game.
+const mqPhone = matchMedia('(orientation: portrait) and (max-width: 900px)');
+const insetProbe = document.createElement('div');
+insetProbe.style.cssText = 'position:fixed;left:0;top:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)';
+document.body.append(insetProbe);
+const lay = {mode:'', open:null, insetB:0};
+const OV = {goal:'goalPop', jobs:'ovJobs', up:'ovUp', fly:'ovFly', ants:'ovAnts', stats:'ovStats', more:'ovMore'};
+// Which overlay each card moves to on a phone. A marker keeps its place in
+// the panel for when the screen turns or widens.
+const OV_CARDS = [['goalCard', 'goalPop'], ['jobCard', 'ovJobs'], ['upCard', 'ovUp'], ['tab-ants', 'ovAnts'], ['tab-stats', 'ovStats']];
+const homes = {};
+for (const [id] of OV_CARDS) { const m = document.createComment(id); $(id).before(m); homes[id] = m; }
+function layout() {
+    const phone = mqPhone.matches, compact = phone || innerHeight <= 520, body = document.body, root = body.style;
+    body.classList.toggle('ovl', phone);
+    body.classList.toggle('compact', compact);
+    // Without the header, its buttons move into the menu on the farm.
+    if (compact && $('colonyName').parentNode !== $('menu')) $('menu').prepend($('colonyName'), $('barActions'));
+    if (!compact && $('colonyName').parentNode !== $('brand')) { $('brand').append($('colonyName')); $('bar').append($('barActions')); closeMenu(); }
+    const mode = phone ? 'overlay' : 'side';
+    if (mode !== lay.mode && lay.open) openOv(null);
+    if (phone && lay.mode !== 'overlay') for (const [id, to] of OV_CARDS) $(to).append($(id));
+    if (!phone && lay.mode === 'overlay') for (const [id] of OV_CARDS) homes[id].after($(id));
+    lay.mode = mode;
+    const vw = innerWidth, vh = innerHeight;
+    $('zoomCtl').hidden = false;
+    if (phone) {
+        const top = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0, fh = Math.round(Math.min(vh - top, vw * 2));
+        root.setProperty('--fh', fh + 'px');
+        // The followed ant's card stays clear of the dock.
+        lay.insetB = Math.max(0, Math.round(top + fh - $('dock').getBoundingClientRect().top + 8));
+        return;
+    }
+    lay.insetB = 0;
+    const pad = vw < 700 ? 10 : 16, barH = compact ? 0 : $('bar').offsetHeight, ph = vh - barH - pad * 2;
+    // The farm takes the full height; the panel gets the width that's left, within reason.
+    let fh = ph, fw = Math.round(fh / 2), pw = Math.min(420, vw - pad * 3 - fw);
+    if (pw < 290) { pw = 290; fw = Math.max(150, vw - pad * 3 - pw); fh = fw * 2; }
+    root.setProperty('--pad', pad + 'px'); root.setProperty('--gap', pad + 'px');
+    root.setProperty('--fw', fw + 'px'); root.setProperty('--fh', fh + 'px');
+    root.setProperty('--pw', pw + 'px'); root.setProperty('--ph', ph + 'px');
+    placeOv();
+}
+// Opens one overlay (or none); opening the one that's open closes it.
+function openOv(name) {
+    if (name && lay.open === name) name = null;
+    lay.open = name;
+    for (const [k, id] of Object.entries(OV)) $(id).hidden = k !== name;
+    for (const b of $('dock').children) b.classList.toggle('on', b.dataset.ov === name);
+    if (name === 'goal') $('goalPop').style.bottom = Math.round(innerHeight - $('goalPill').getBoundingClientRect().top + 6) + 'px';
+    placeOv();
+    if (name) $(OV[name]).scrollTop = 0;
+    panelAt = 0;
+    if (booted) updateUI();
+}
+// On a wide screen the Fly card opens just above the ring on the farm, and
+// the More pane covers the panel. On a phone the stylesheet places them.
+function placeOv() {
+    const fly = $('ovFly').style, more = $('ovMore').style;
+    fly.left = fly.bottom = more.left = more.top = more.width = more.height = '';
+    if (lay.mode !== 'side') return;
+    if (lay.open === 'fly') {
+        const r = $('farmFly').getBoundingClientRect(), w = $('ovFly').offsetWidth;
+        fly.left = Math.round(Math.max(8, Math.min(innerWidth - w - 8, r.right - w))) + 'px';
+        fly.bottom = Math.round(innerHeight - r.top + 8) + 'px';
+    }
+    if (lay.open === 'more') {
+        const r = $('panel').getBoundingClientRect();
+        more.left = Math.round(r.left) + 'px'; more.top = Math.round(r.top) + 'px';
+        more.width = Math.round(r.width) + 'px'; more.height = Math.round(r.height) + 'px';
+    }
+}
+// Show the farm itself: on a phone that means closing whatever is open.
+function showFarm() { if (lay.mode === 'overlay') openOv(null); }
+// Jobs and upgrades stay open while you play; the rest close when you go back to the farm.
+const ovKeepsFarm = () => !lay.open || lay.open === 'up' || lay.open === 'jobs';
+$('dock').addEventListener('click', e => { const b = e.target.closest('[data-ov]'); if (b) { noteInput(); openOv(b.dataset.ov); } });
+for (const id of Object.values(OV)) $(id).querySelector('.ov-x').addEventListener('click', () => openOv(null));
+$('goalPill').addEventListener('click', () => openOv('goal'));
+$('farmFly').addEventListener('click', () => { noteInput(); openOv('fly'); });
+function closeMenu() { $('menu').hidden = true; $('menuBtn').setAttribute('aria-expanded', 'false'); }
+$('menuBtn').addEventListener('click', () => { const m = $('menu'); m.hidden = !m.hidden; $('menuBtn').setAttribute('aria-expanded', String(!m.hidden)); });
+document.addEventListener('pointerdown', e => {
+    if (!$('menu').hidden && !e.target.closest('#menu, #menuBtn')) closeMenu();
+    // On a wide screen the Fly card and the More pane close with a click anywhere else.
+    if (lay.mode === 'side' && lay.open && !e.target.closest('#ovFly, #farmFly, #ovMore, #helpBtn, #moveBtn')) openOv(null);
+});
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!$('menu').hidden) closeMenu();
+    else if (lay.open) openOv(null);
+});
+// Each number on the farm explains itself: hover on a computer, tap on a phone.
+$('hud').addEventListener('click', e => { const b = e.target.closest('[data-stat]'); if (b && statTips[b.dataset.stat]) toast(statTips[b.dataset.stat]); });
+addEventListener('resize', layout);
+mqPhone.addEventListener('change', layout);
+layout();
+
 /* ---------- events ---------- */
 // Canvas input: a tap drops a crumb, catches a bug or picks an ant to follow;
 // a drag pans once zoomed in; two fingers pinch to zoom.
@@ -3160,6 +3486,7 @@ function toCanvas(clientX, clientY) {
 }
 cv.addEventListener('pointerdown', e => {
     noteInput();
+    if (!ovKeepsFarm()) { openOv(null); return; }
     if (audio.on) audioStart();
     if (dormant || !booted) return;
     try { cv.setPointerCapture(e.pointerId); } catch (err) {}
@@ -3218,9 +3545,31 @@ cv.addEventListener('wheel', e => {
 $('zIn').addEventListener('click', () => { noteInput(); zoomTo(cam.tz * 1.6); });
 $('zOut').addEventListener('click', () => { noteInput(); if (cam.tz / 1.6 <= 1.01) stopFollow(); zoomTo(cam.tz / 1.6); });
 $('zFit').addEventListener('click', () => { noteInput(); stopFollow(); zoomTo(1); });
-for (const [k, w] of JOBS) $(w).addEventListener('input', e => { noteInput(); setJob(k, +e.target.value); st.stats.split = 1; syncAt = 0; updateUI(); });
+let jobDrag = null;
+const barPct = x => { const r = $('jobBar').getBoundingClientRect(); return (x - r.left) / r.width * 100; };
+$('jobBar').addEventListener('pointerdown', e => {
+    // The nearer divider follows the pointer; when they meet, the one on the side you drag.
+    const pct = barPct(e.clientX), g1 = st.w.forage, g2 = st.w.forage + st.w.dig;
+    const which = g1 === g2 ? (pct > g1 ? 1 : 0) : Math.abs(pct - g1) <= Math.abs(pct - g2) ? 0 : 1;
+    jobDrag = {id:e.pointerId, which};
+    try { $('jobBar').setPointerCapture(e.pointerId); } catch (err) {}
+    setGrip(which, pct);
+});
+$('jobBar').addEventListener('pointermove', e => { if (jobDrag && e.pointerId === jobDrag.id) setGrip(jobDrag.which, barPct(e.clientX)); });
+for (const t of ['pointerup', 'pointercancel']) $('jobBar').addEventListener(t, e => { if (jobDrag && e.pointerId === jobDrag.id) jobDrag = null; });
+['grip1', 'grip2'].forEach((id, i) => $(id).addEventListener('keydown', e => {
+    const d = e.key === 'ArrowLeft' || e.key === 'ArrowDown' ? -5 : e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 5 : 0;
+    if (!d) return;
+    e.preventDefault();
+    setGrip(i, (i ? st.w.forage + st.w.dig : st.w.forage) + d);
+}));
 $('goalSkip').addEventListener('click', () => { st.guide = -1; updateUI(); });
-$('tabs').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) setTab(b.dataset.tab); });
+$('tabs').addEventListener('click', e => {
+    const b = e.target.closest('[data-tab]');
+    if (!b) return;
+    if (b.dataset.tab !== tab) $('panelBody').scrollTop = 0;
+    setTab(b.dataset.tab);
+});
 $('rosterSort').addEventListener('change', e => { rosterSort = e.target.value; panelAt = 0; renderRoster(); });
 $('rosterRole').addEventListener('click', e => { const b = e.target.closest('[data-r]'); if (b) { rosterRole = b.dataset.r; panelAt = 0; renderRoster(); } });
 $('roster').addEventListener('click', e => {
@@ -3237,7 +3586,7 @@ $('roster').addEventListener('click', e => {
     else if (fav) { const a = AW.find(x => x.id === +fav.dataset.fav); if (a) a.fav = !a.fav; }
     else if (fol) {
         const a = AW.find(x => x.id === +fol.dataset.follow);
-        if (a) { follow(a); if (cam.tz < 4) cam.tz = 4; camUI(); $('farm').scrollIntoView({behavior:'smooth', block:'center'}); }
+        if (a) { follow(a); if (cam.tz < 4) cam.tz = 4; camUI(); showFarm(); }
     }
     else if (ren) { renaming = +ren.dataset.rename; panelAt = 0; renderRoster(); const i = $('renameInput'); if (i) { i.focus(); i.select(); } return; }
     else if (sv) { saveRename(sv.dataset.save === 'queen' ? 'queen' : +sv.dataset.save); return; }
@@ -3259,7 +3608,7 @@ $('queenRow').addEventListener('keydown', e => {
 function setFarmName(v) { st.farmName = v.trim().replace(/\s+/g, ' ').slice(0, 32); updateUI(); }
 $('farmName').addEventListener('change', e => setFarmName(e.target.value));
 $('farmName').addEventListener('keydown', e => { if (e.key === 'Enter') { setFarmName(e.target.value); e.target.blur(); } });
-$('colonyName').addEventListener('click', () => { setTab('stats'); const i = $('farmName'); i.scrollIntoView({behavior:'smooth', block:'center'}); i.focus(); i.select(); });
+$('colonyName').addEventListener('click', () => { closeMenu(); if (lay.mode === 'overlay') { if (lay.open !== 'stats') openOv('stats'); } else setTab('stats'); const i = $('farmName'); i.scrollIntoView({block:'center'}); i.focus(); i.select(); });
 $('showStyles').addEventListener('change', e => { st.styles = e.target.checked; panelAt = 0; renderRoster(); });
 $('roster').addEventListener('keydown', e => {
     if (e.target.id === 'renameInput') { if (e.key === 'Enter') saveRename(renaming); else if (e.key === 'Escape') { renaming = null; panelAt = 0; renderRoster(); } return; }
@@ -3271,7 +3620,15 @@ $('dlCode').addEventListener('click', () => downloadCode().catch(() => toast('Co
 $('loadCode').addEventListener('click', () => loadCode($('codeIn').value));
 $('codeIn').addEventListener('input', () => { $('codeErr').textContent = ''; loadArmed = 0; $('loadCode').innerHTML = '<i class="fa-solid fa-file-import"></i> Load this farm'; });
 $('codeFile').addEventListener('change', async e => { const f = e.target.files[0]; if (!f) return; $('codeIn').value = (await f.text()).trim(); e.target.value = ''; loadArmed = 0; loadCode($('codeIn').value); });
-$('moveLink').addEventListener('click', () => { setTab('stats'); $('moveCard').scrollIntoView({behavior:'smooth', block:'start'}); });
+// How it works, moving the farm and resetting share one pane, opened from
+// the header (or the phone's menu) at the right card.
+function showMore(card) {
+    closeMenu();
+    if (lay.open !== 'more') openOv('more');
+    $(card).scrollIntoView({block:'start'});
+}
+$('helpBtn').addEventListener('click', () => showMore('helpCard'));
+$('moveBtn').addEventListener('click', () => showMore('moveCard'));
 $('buyMode').addEventListener('click', e => {
     const b = e.target.closest('button');
     if (!b) return;
@@ -3281,6 +3638,7 @@ $('buyMode').addEventListener('click', e => {
 $('ach').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { achSel = b.dataset.id; updateUI(); } });
 $('ach').addEventListener('mouseover', e => { const b = e.target.closest('button'); if (b && achSel !== b.dataset.id) { achSel = b.dataset.id; updateUI(); } });
 $('soundBtn').addEventListener('click', () => setSound(!audio.on));
+$('installBtn').addEventListener('click', closeMenu);
 let installEvt = null;
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; $('installBtn').hidden = false; });
 $('installBtn').addEventListener('click', async () => {
@@ -3294,7 +3652,7 @@ onAch = a => {
     chime(true);
 };
 $('autoBuy').addEventListener('change', e => { st.auto = e.target.checked; });
-$('pipBtn').addEventListener('click', togglePip);
+$('pipBtn').addEventListener('click', () => { closeMenu(); togglePip(); });
 $('backBtn').addEventListener('click', () => { if (pip.win) pip.win.close(); });
 $('flyBtn').addEventListener('click', () => {
     if (!canFly()) return;
@@ -3308,7 +3666,8 @@ $('resetBtn').addEventListener('click', () => {
     st = freshState(); newColony(); hideSheet(); buildUI(); save();
     toast('Fresh farm, fresh start');
 });
-new ResizeObserver(() => { if (!pip.mode) resize(); }).observe(cv);
+// Redraw straight after a resize, so a resize never shows a blank frame.
+new ResizeObserver(() => { if (pip.mode) return; resize(); if (booted && !dormant) render(performance.now() / 1000); }).observe(cv);
 document.addEventListener('visibilitychange', () => { if (document.hidden) save(); else lastFrame = performance.now(); audioTick(); });
 document.addEventListener('keydown', noteInput);
 window.addEventListener('pagehide', save);
