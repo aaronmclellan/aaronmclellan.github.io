@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Eternal Fire (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017814@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T080000Z
+DTEND:20261016T110000Z
+SUMMARY:Eternal Fire 1-2 Betclic
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017818@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261017T080000Z
+DTEND:20261017T110000Z
+SUMMARY:Eternal Fire 0-2 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018199@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:MIBR vs Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

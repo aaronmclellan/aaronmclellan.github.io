@@ -1,0 +1,159 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Sangal (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014240@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T150000Z
+DTEND:20261007T163000Z
+SUMMARY:Sangal vs Famalicao
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014244@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T161500Z
+DTEND:20261007T174500Z
+SUMMARY:Sangal vs Lazer Cats
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014246@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T173000Z
+DTEND:20261007T190000Z
+SUMMARY:Sangal vs Rebels Gaming
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014248@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T184500Z
+DTEND:20261007T201500Z
+SUMMARY:Sangal vs sAw
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014253@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T200000Z
+DTEND:20261007T213000Z
+SUMMARY:Sangal vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014255@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261008T100000Z
+DTEND:20261008T130000Z
+SUMMARY:OG 0-2 Sangal
+DESCRIPTION:Roman Imperium Cup IX (Play-Ins)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014258@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:FaZe Clan 2-1 Sangal
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015283@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261009T100000Z
+DTEND:20261009T130000Z
+SUMMARY:EAC 0-2 Sangal
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014264@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261009T173000Z
+DTEND:20261009T203000Z
+SUMMARY:Sangal 2-1 G2 Ares
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015362@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261010T100000Z
+DTEND:20261010T130000Z
+SUMMARY:Sangal vs PURE
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014268@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261010T144500Z
+DTEND:20261010T174500Z
+SUMMARY:Sangal 1-2 Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014768@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261012T100000Z
+DTEND:20261012T130000Z
+SUMMARY:Inner Circle 2-0 Sangal
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014771@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261012T132000Z
+DTEND:20261012T162000Z
+SUMMARY:Betclic 0-2 Sangal
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014772@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261012T160000Z
+DTEND:20261012T190000Z
+SUMMARY:Sangal 2-0 Inner Circle
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014791@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T170000Z
+DTEND:20261016T200000Z
+SUMMARY:Sangal 0-2 100 Thieves
+DESCRIPTION:Stake Pulse Beat III (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+END:VCALENDAR

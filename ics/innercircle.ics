@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Inner Circle (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014768@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261012T100000Z
+DTEND:20261012T130000Z
+SUMMARY:Inner Circle 2-0 Sangal
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014770@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261012T132000Z
+DTEND:20261012T162000Z
+SUMMARY:Inner Circle 0-2 Ninjas in Pyjamas
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014772@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261012T160000Z
+DTEND:20261012T190000Z
+SUMMARY:Sangal 2-0 Inner Circle
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018197@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261027T133000Z
+DTEND:20261027T163000Z
+SUMMARY:Inner Circle vs Team Nemesis
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

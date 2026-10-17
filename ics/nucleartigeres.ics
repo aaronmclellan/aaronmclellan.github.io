@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nuclear TigeRES (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013223@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Nuclear Tigeres vs Color
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013227@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Nuclear Tigeres 0-2 PRIVATE
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017815@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T114500Z
+DTEND:20261016T144500Z
+SUMMARY:Nemesis 2-1 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017818@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261017T080000Z
+DTEND:20261017T110000Z
+SUMMARY:Eternal Fire 0-2 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+END:VCALENDAR

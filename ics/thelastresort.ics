@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Last Resort (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3006906@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T130000Z
+DTEND:20261007T160000Z
+SUMMARY:The Last Resort 2-0 Privateer Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013270@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T170000Z
+DTEND:20261007T200000Z
+SUMMARY:The Last Resort 1-2 Saint Sinners
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013281@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261008T130000Z
+DTEND:20261008T160000Z
+SUMMARY:The Last Resort 1-2 Privateer Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #8 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #8 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003970@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261014T140000Z
+DTEND:20261014T170000Z
+SUMMARY:G2 Ares 2-1 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003974@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261015T140000Z
+DTEND:20261015T170000Z
+SUMMARY:The Last Resort 0-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003983@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261017T170000Z
+DTEND:20261017T200000Z
+SUMMARY:Walczaki 0-2 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+END:VCALENDAR

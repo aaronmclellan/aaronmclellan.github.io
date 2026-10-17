@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:9z (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3006806@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261014T092500Z
+DTEND:20261014T122500Z
+SUMMARY:9z Team 2-0 AURORA
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006811@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261015T113000Z
+DTEND:20261015T143000Z
+SUMMARY:9z Team 1-2 Team Falcons
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006814@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T140000Z
+DTEND:20261016T170000Z
+SUMMARY:AURORA 2-0 9z Team
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+END:VCALENDAR

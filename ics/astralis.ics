@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Astralis (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3008536@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261004T120000Z
+DTEND:20261004T150000Z
+SUMMARY:Luminosity Gaming 1-2 Astralis
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3008964@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261004T160000Z
+DTEND:20261004T210000Z
+SUMMARY:Nemiga vs Astralis
+DESCRIPTION:Stake Ranked Episode 4 (Playoffs)\nBest of 5\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014778@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261014T100000Z
+DTEND:20261014T130000Z
+SUMMARY:Astralis 2-0 Sashi
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014780@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261014T130000Z
+DTEND:20261014T160000Z
+SUMMARY:HOTU 1-2 Astralis
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014790@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T140000Z
+DTEND:20261016T170000Z
+SUMMARY:Astralis 1-2 MIBR
+DESCRIPTION:Stake Pulse Beat III (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018198@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261027T160000Z
+DTEND:20261027T190000Z
+SUMMARY:Astralis vs Fnatic
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

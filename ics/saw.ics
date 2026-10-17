@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:SAW (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013869@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261004T100000Z
+DTEND:20261004T130000Z
+SUMMARY:INFINITE vs sAw
+DESCRIPTION:FOX Legacy Season 1 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013870@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261004T140000Z
+DTEND:20261004T170000Z
+SUMMARY:sAw vs NT
+DESCRIPTION:FOX Legacy Season 1 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:FOX Legacy Season 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014239@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T150000Z
+DTEND:20261007T163000Z
+SUMMARY:sAw vs Navi Junior
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014242@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T161500Z
+DTEND:20261007T174500Z
+SUMMARY:sAw vs Famalicao
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014245@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T173000Z
+DTEND:20261007T190000Z
+SUMMARY:sAw vs Lazer Cats
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014248@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T184500Z
+DTEND:20261007T201500Z
+SUMMARY:Sangal vs sAw
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014251@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T200000Z
+DTEND:20261007T213000Z
+SUMMARY:sAw vs Rebels Gaming
+DESCRIPTION:Roman Imperium Cup IX (Group Stage)\nBest of 1\nhttps://www.ron
+ .computer/cs.html
+LOCATION:Roman Imperium Cup IX
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016606@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261019T104500Z
+DTEND:20261019T121500Z
+SUMMARY:sAw vs Bayankhongor
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+END:VCALENDAR

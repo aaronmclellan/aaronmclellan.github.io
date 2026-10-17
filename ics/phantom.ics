@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Phantom (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013218@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261007T150000Z
+DTEND:20261007T180000Z
+SUMMARY:Fnatic 2-1 Phantom Esports
+DESCRIPTION:1win Private Club #2 - Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:1win Private Club #2 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012211@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T080000Z
+DTEND:20261016T093000Z
+SUMMARY:Team Voca 0-1 Phantom Esports
+DESCRIPTION:Elisa Breakout Series 2 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Elisa Breakout Series 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012214@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T124500Z
+DTEND:20261016T141500Z
+SUMMARY:Phantom Esports 1-0 ROUNDS
+DESCRIPTION:Elisa Breakout Series 2 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Elisa Breakout Series 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012216@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T155500Z
+DTEND:20261016T172500Z
+SUMMARY:Phantom Esports 1-0 HAVU
+DESCRIPTION:Elisa Breakout Series 2 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Elisa Breakout Series 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012218@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261017T123000Z
+DTEND:20261017T153000Z
+SUMMARY:Phantom Esports 2-0 ENCE
+DESCRIPTION:Elisa Breakout Series 2 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Elisa Breakout Series 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3012219@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261017T160000Z
+DTEND:20261017T190000Z
+SUMMARY:HAVU 0-2 Phantom Esports
+DESCRIPTION:Elisa Breakout Series 2 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Elisa Breakout Series 2
+END:VEVENT
+END:VCALENDAR

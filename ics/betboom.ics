@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BETBOOM (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3002939@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261004T171000Z
+DTEND:20261004T201000Z
+SUMMARY:BetBoom 2-0 M80
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002947@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261005T172200Z
+DTEND:20261005T202200Z
+SUMMARY:Aurora Gaming 2-1 BetBoom
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3002952@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261006T143000Z
+DTEND:20261006T173000Z
+SUMMARY:9z Globant 2-0 BetBoom
+DESCRIPTION:ESL Pro League Season 24 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006809@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261014T185000Z
+DTEND:20261014T215000Z
+SUMMARY:FURIA 2-0 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006812@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261015T151000Z
+DTEND:20261015T181000Z
+SUMMARY:Parivision 1-2 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006815@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261016T170000Z
+DTEND:20261016T200000Z
+SUMMARY:BetBoom 2-1 Legacy
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006817@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261017T170500Z
+DTEND:20261017T200500Z
+SUMMARY:Team Falcons 1-2 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006819@aaronmclellan.github.io
+DTSTAMP:20261017T212802Z
+DTSTART:20261018T150000Z
+DTEND:20261018T200000Z
+SUMMARY:FURIA vs BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 5\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+END:VCALENDAR
