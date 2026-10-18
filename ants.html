@@ -232,6 +232,8 @@ body.compact .menu-btn { display: inline-flex !important; }
 .pill.alert.raid { background: rgba(150, 38, 28, 0.88); border-color: rgba(255, 140, 120, 0.5); }
 .pill.alert.raid.ready { background: rgba(40, 92, 44, 0.88); border-color: rgba(150, 230, 140, 0.45); }
 .pill.alert.raid i, .pill.alert.raid small { color: #ffe3d8; }
+.pill .tug { display: inline-block; width: 3rem; height: 0.4rem; border-radius: 999px; background: #e0503a; overflow: hidden; flex: none; }
+.pill .tug span { display: block; height: 100%; background: #6fd46a; transition: width 0.25s linear; }
 .pill.alert.event { background: rgba(38, 70, 120, 0.9); border-color: rgba(150, 190, 255, 0.45); }
 .pill.alert.event i { color: #bcd6ff; }
 .pill.alert.room i { color: var(--accent); }
@@ -241,6 +243,8 @@ body.compact .menu-btn { display: inline-flex !important; }
     background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.75rem 0.8rem 0.8rem; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
 }
 .choice[hidden] { display: none; }
+.choice.low { top: auto; bottom: 0.6rem; }
+body.ovl .choice.low { bottom: calc(var(--dockh) + 1rem + var(--sab)); }
 .choice .ov-x { position: absolute; top: 0.55rem; right: 0.55rem; }
 .choice h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; padding-right: 2.4rem; }
 .choice h3 i { color: var(--accent); }
@@ -664,7 +668,7 @@ label.btn { cursor: pointer; }
                 <li><b>Nurses</b> help the queen lay and raise the brood faster. Every egg costs a little food.</li>
                 <li><b>Weather</b> changes every few minutes and follows the seasons. Rain softens the soil for digging but keeps foragers home. Check the forecast and shift jobs to match.</li>
                 <li><b>Upgrades</b> unlock one at a time as the colony grows, starting with Picnic crumbs. Once unlocked, they stay unlocked on every farm.</li>
-                <li><b>Guards</b> fight off raiders. Each raid is announced a minute and a half ahead, so move ants to Guard on the job bar. Battle drills and barracks make every guard count for more, and rain keeps raiders away. Lose a fight and the raiders take food and brood, a few ants may fall, and the colony is shaken up for a while.</li>
+                <li><b>Guards</b> fight off raiders. Each raid is announced a minute and a half ahead, so move ants to Guard on the job bar. The fight plays out at the entrance with a bar showing who's winning, green for your guards and red for the raider, and guards you send mid-fight still count. Battle drills and barracks make every guard count for more, and rain keeps raiders away. Lose a fight and the raiders take food and brood, a few ants may fall, and the colony is shaken up for a while.</li>
                 <li><b>Chambers</b>: tap one on the farm to choose what it is: a nursery, pantry, barracks, fungus garden or rest room.</li>
                 <li><b>Events</b> pop up now and then with a choice to make. Leave one for three minutes and the cautious choice is made for you.</li>
                 <li><b>Bugs</b> wander by now and then: ladybugs, butterflies and, at night, fireflies. Tap one for a boost. Golden ones are rare and strong.</li>
@@ -737,7 +741,7 @@ const PERKS = [
     {q:15, name:'Seed stash', desc:'new farms start with sunflower seeds'},
 ];
 const BAL = {autoQueens:6, autoShare:0.1, forage:0.3, dig:0.02, lay:0.25, dev:30, egg:2, capBase:8, capCell:1/35, costDiv:40, costExp:2, maxDug:13000, queenBoost:0.1, queenDiv:1e6, flightAnts:120, achBoost:0.02, crumb:0.35,
-    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05, away:0.25};
+    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05, away:0.25, fight:30, fightCap:4};
 const ROLE_SEQ = ['nursery', 'food', 'rest'];
 // What a chamber can be. The queen's chamber is fixed; the rest start as one
 // of the first three and you choose from there.
@@ -840,17 +844,19 @@ function checkUnlocks() {
 // and a half ahead so you can move ants onto guard duty. Rain, storms and snow
 // keep raiders away. Raids are sized to the colony, so the share of guards is
 // what counts; Battle drills, barracks and some events make each guard count
-// for more.
+// for more. The fight then plays out at the entrance over up to BAL.fight
+// seconds, and guards sent mid-fight still count.
 const RAIDERS = {
     spider:{name:'wolf spider', p:1, loot:1, after:0},
     wasp:{name:'wasp', p:0.8, loot:0.8, after:0, brood:true},
     rival:{name:'band of rival ants', p:1.3, loot:1.6, after:5},
     centipede:{name:'centipede', p:1.7, loot:2.5, after:10},
 };
-let onRaidWarn = () => {}, onRaid = () => {};
+let onRaidWarn = () => {}, onRaid = () => {}, onFight = () => {};
 // Richer colonies draw bigger raiders: each better food makes them 15% stronger.
 const raidPower = r => st.ants * BAL.raidPow * RAIDERS[r.k].p * r.roll * (1 + 0.15 * st.tier);
-function stepRaids() {
+const fightOdds = R => rates().guard / Math.max(1e-9, raidPower(R));
+function stepRaids(dt) {
     const now = simNow, most = BAL.raidGap[1] * 1000 / pace;
     if (!st.raidAt) st.raidAt = now + (BAL.raidStart + rng() * 120) * 1000;
     if (st.raidAt - now > most) st.raidAt = now + most;
@@ -863,18 +869,35 @@ function stepRaids() {
         st.mods.raid = 1;
         onRaidWarn(st.raid);
     }
-    if (st.raid && now >= st.raid.at) resolveRaid();
+    const R = st.raid;
+    if (!R || now < R.at) return;
+    if (!R.fight) {
+        const wx = weatherAt(now);
+        if (wx === 'rain' || wx === 'storm' || wx === 'snow') { resolveRaid(true); return; }
+        R.fight = {r:1, g:1}; R.q = fightOdds(R);
+        onFight(R);
+        return;
+    }
+    // Both sides wear down. The guards' line lasts BAL.fight seconds and the
+    // raider lasts BAL.fight / q, with q (guard strength over the raider's)
+    // read fresh each moment, so sending more guards can turn a fight.
+    const f = R.fight, q = R.q = fightOdds(R), vr = Math.min(q, BAL.fightCap) / BAL.fight, vg = 1 / BAL.fight;
+    const tr = f.r / Math.max(1e-9, vr), tg = f.g / vg, step = Math.min(dt, tr, tg);
+    f.r -= vr * step; f.g -= vg * step;
+    if (tr <= dt || tg <= dt) { if (tr <= tg) f.r = 0; else f.g = 0; resolveRaid(false); }
 }
-function resolveRaid() {
-    const R = st.raid, kind = RAIDERS[R.k];
+// Who's ahead: the raider would fall before the guards' line breaks.
+const fightWinning = R => R.fight.r / Math.max(1e-9, Math.min(R.q || 0, BAL.fightCap)) < R.fight.g;
+function resolveRaid(rain) {
+    const R = st.raid, kind = RAIDERS[R.k], f = R.fight || {r:1, g:1};
     st.raid = null;
     st.raidAt = simNow + (BAL.raidGap[0] + rng() * (BAL.raidGap[1] - BAL.raidGap[0])) * 1000 / pace;
     const out = {k:R.k, win:false, rain:false, q:0, food:0, brood:0, ants:0, guardsLost:0, loot:0};
-    const wx = weatherAt(simNow);
-    if (wx === 'rain' || wx === 'storm' || wx === 'snow') { out.rain = true; onRaid(out); return out; }
-    const r = rates(), q = r.guard / Math.max(1e-9, raidPower(R)), guards = st.ants * share().g, first = !(st.stats.raidsWon + st.stats.raidsLost);
-    out.q = q;
-    if (q >= 1) {
+    if (rain) { out.rain = true; onRaid(out); return out; }
+    const r = rates(), guards = st.ants * share().g, first = !(st.stats.raidsWon + st.stats.raidsLost);
+    if (f.r <= 0) {
+        // The more of the guards' line still standing, the more lopsided the win.
+        const q = out.q = 1 / Math.max(0.01, 1 - f.g);
         out.win = true;
         out.loot = r.food * BAL.raidLoot * kind.loot * pace;
         st.food += out.loot; st.earned += out.loot; st.total += out.loot;
@@ -882,8 +905,9 @@ function resolveRaid() {
         out.ants = out.guardsLost = guards * 0.06 * Math.max(0, Math.min(1, (1.5 - q) / 0.5));
         st.stats.raidsWon++;
     } else {
-        // The weaker the guard, the more the raiders take, but never everything.
-        const s = (1 - q) * (first ? 0.3 : 1);
+        // The more of the raider left standing, the more it takes, but never everything.
+        out.q = 1 - f.r;
+        const s = f.r * (first ? 0.3 : 1);
         out.food = st.food * 0.3 * s;
         out.brood = st.brood * (kind.brood ? 0.8 : 0.4) * s;
         out.guardsLost = guards * 0.3 * s;
@@ -1033,7 +1057,8 @@ function digFront(n) {
 
 /* ---------- nest: a tree of tunnel and chamber nodes ---------- */
 function addNode(x, y, p, k, extra) {
-    const n = {i:nest.nodes.length, x:r2(x), y:r2(y), p, k, d: p < 0 ? 0 : nest.nodes[p].d + 1};
+    const n = {i:nest.nodes.length, x:r2(x), y:r2(y), p, k, d: p < 0 ? 0 : nest.nodes[p].d + 1, kids:0};
+    if (p >= 0) nest.nodes[p].kids++;
     if (extra) Object.assign(n, extra);
     nest.nodes.push(n);
     return n;
@@ -1072,6 +1097,23 @@ function stepOk(px, py, a, self) {
     if (nx < MARGIN + TR + 1 || nx > W - MARGIN - TR - 1 || ny < GROUND + 4 || ny > H - MARGIN - TR - 1) return false;
     return regionClear(px + c * 4, py + s * 4, 6, 6, self) && regionClear(px + c * 10.5, py + s * 10.5, 5, 5, self);
 }
+// How far ahead a heading stays clear, from the 10.5 stepOk already checked
+// out to 30.
+function clearAhead(px, py, a, self) {
+    const c = Math.cos(a), s = Math.sin(a);
+    let d = 10.5;
+    for (const dd of [17, 23.5, 30]) { if (!regionClear(px + c * dd, py + s * dd, 5, 5, self)) break; d = dd; }
+    return d;
+}
+// Nothing but soil on the straight line between two points.
+function lineClear(x0, y0, x1, y1) {
+    const n = Math.ceil(Math.hypot(x1 - x0, y1 - y0) * 2);
+    for (let k = 0; k <= n; k++) {
+        const x = Math.floor(x0 + (x1 - x0) * k / n), y = Math.floor(y0 + (y1 - y0) * k / n);
+        if (x < MARGIN || x >= W - MARGIN || y < GROUND + 3 || y >= H - MARGIN || solid[y * W + x] === 2) return false;
+    }
+    return true;
+}
 const newTgt = () => 8 + Math.floor(rng() * 14);
 function prefFor(a) {
     if (Math.sin(a) < 0.25) return Math.cos(a) >= 0 ? 0.35 : Math.PI - 0.35;
@@ -1082,7 +1124,8 @@ function dropHead(h) { const k = nest.heads.indexOf(h); if (k >= 0) nest.heads.s
 
 function tryChamber(h, force, size) {
     const n = nest.nodes[h.n];
-    const rx = size ? size[0] : 7 + rng() * 7, ry = size ? size[1] : 3.8 + rng() * 2;
+    // Wide enough that even the smallest reads as a room, not a bulge in a tunnel.
+    const rx = size ? size[0] : 10 + rng() * 5, ry = size ? size[1] : 4.8 + rng() * 1.8;
     const c = Math.cos(h.a), s = Math.sin(h.a);
     const off = (Math.abs(c) * rx + Math.abs(s) * ry) * 0.75 + 0.5;
     const cx = r2(n.x + c * off), cy = r2(n.y + s * off);
@@ -1090,8 +1133,60 @@ function tryChamber(h, force, size) {
         if (cx - rx < MARGIN + 3 || cx + rx > W - MARGIN - 3 || cy - ry < GROUND + 6 || cy + ry > H - MARGIN - 3) return false;
         if (!regionClear(cx, cy, rx + 4.5, ry + 4.5, selfPts(n.i))) return false;
     }
-    const m = addNode(cx, cy + ry * 0.6 - 1.1, n.i, 1, {cx, cy, rx:r2(rx), ry:r2(ry), ex:n.x, ey:n.y, prog:0, work:Math.round(rx * ry / 4), role:''});
+    const m = addNode(cx, cy + ry * 0.6 - 1.1, n.i, 1, {cx, cy, rx:r2(rx), ry:r2(ry), ex:n.x, ey:n.y, prog:0, work:Math.round(rx * ry / 4.7), role:''});
     h.n = m.i; h.ch = true;
+    return true;
+}
+// A chamber at the end of a tunnel, trying smaller sizes and a little to
+// either side before giving up.
+function tryChamberNear(h) {
+    const a0 = h.a;
+    for (const size of [null, [11, 5.2], [9.5, 4.6]]) for (const t of [0, 0.6, -0.6, 1.2, -1.2]) {
+        h.a = a0 + t;
+        if (tryChamber(h, false, size)) return true;
+    }
+    h.a = a0;
+    return false;
+}
+// A blocked tunnel turns toward the nearest tunnel or chamber ahead of it
+// (not its own last few steps) and digs through to it, which makes a loop
+// the ants can use.
+function breakThrough(h, wide) {
+    const N = nest.nodes, n = N[h.n], own = new Set(), far = wide ? 30 : 16, turn = wide ? 2.5 : 1.75;
+    for (let m = n, k = 0; m && k < 12; k++) { own.add(m.i); m = m.p >= 0 ? N[m.p] : null; }
+    let best = null, bd = Infinity;
+    for (const m of N) {
+        if (own.has(m.i) || (m.k && m.prog < 1) || m.p === n.i) continue;
+        const d = Math.hypot(m.x - n.x, m.y - n.y);
+        if (d >= bd || d > (m.k ? m.rx + far - 7 : far)) continue;
+        if (Math.abs(angDiff(Math.atan2(m.y - n.y, m.x - n.x), h.a)) > turn || !lineClear(n.x, n.y, m.x, m.y)) continue;
+        best = m; bd = d;
+    }
+    if (!best) return false;
+    h.to = best.i;
+    return true;
+}
+function linkTo(n, j) {
+    const m = nest.nodes[j], steps = Math.max(1, Math.ceil(Math.hypot(m.x - n.x, m.y - n.y) / 1.5));
+    for (let k = 1; k <= steps; k++) carveCircle(n.x + (m.x - n.x) * k / steps, n.y + (m.y - n.y) * k / steps, TR);
+    n.link = j; nest.links++;
+}
+// A tunnel that can't go on ends in something: a chamber if one fits. If not,
+// a long run breaks through into the tunnel it ran into, so it isn't wasted,
+// and a short stub gets a rounded nook so it looks finished. Returns true
+// when it dug anything.
+function endTunnel(h, wrap) {
+    const N = nest.nodes;
+    // A branch that never got going (still on the tunnel it started from) just stops.
+    if (N[h.n].kids) { dropHead(h); return false; }
+    if (!wrap && tryChamberNear(h)) return false;
+    // A long run looks further, and round to the side, for somewhere to join.
+    let run = 0;
+    for (let m = N[h.n]; run < 15 && m.p >= 0 && !N[m.p].k && N[m.p].kids === 1; m = N[m.p]) run++;
+    if (run >= 5 && (breakThrough(h) || (run >= 15 && breakThrough(h, true)))) return false;
+    dropHead(h);
+    const n = nest.nodes[h.n];
+    n.nook = 1; carveCircle(n.x, n.y, TR + 1.4);
     return true;
 }
 function tryEdgeHead(c, o) {
@@ -1154,8 +1249,10 @@ function spawnHead() {
 }
 function atTarget(h) {
     h.len = 0; h.tgt = newTgt();
+    // Usually a chamber, and always for the first few so a new farm gets its
+    // rooms early.
     const r = rng();
-    if (r < 0.6 && tryChamber(h)) return;
+    if (nest.chambers < 3 ? tryChamberNear(h) : r < 0.6 && tryChamber(h)) return;
     if (r < 0.85 && nest.heads.length < maxHeads()) {
         const a = h.a + (rng() < 0.5 ? -1 : 1) * (0.9 + rng() * 0.5), n = nest.nodes[h.n];
         if (stepOk(n.x, n.y, a, selfPts(n.i))) nest.heads.push({n:h.n, a, len:0, tgt:newTgt(), pref:prefFor(a)});
@@ -1165,13 +1262,15 @@ function atTarget(h) {
 // One unit of digging work. Returns false when nothing got dug.
 function digStep() {
     if (nest.full) return false;
-    // A finished farm keeps plenty of soil between its tunnels.
-    if (nest.dug >= BAL.maxDug) { nest.full = true; nest.heads = []; return false; }
+    // A finished farm keeps plenty of soil between its tunnels. Once it has
+    // dug enough, nothing new starts, but chambers on the go are finished and
+    // open tunnels are given a proper end.
+    const wrap = nest.dug >= BAL.maxDug;
     if (!nest.heads.length) {
-        for (let k = 0; k < 5 && !spawnHead(); k++);
+        if (!wrap) for (let k = 0; k < 5 && !spawnHead(); k++);
         if (!nest.heads.length) { nest.full = true; return false; }
     }
-    if (nest.heads.length < maxHeads() && rng() < 0.04) spawnHead();
+    if (!wrap && nest.heads.length < maxHeads() && rng() < 0.04) spawnHead();
     const h = nest.heads[Math.floor(rng() * nest.heads.length)];
     const n = nest.nodes[h.n];
     if (h.ch) {
@@ -1182,27 +1281,48 @@ function digStep() {
         nest.steps++;
         return true;
     }
+    // Digging through to another tunnel, one step at a time.
+    if (h.to !== undefined) {
+        const m = nest.nodes[h.to], d = Math.hypot(m.x - n.x, m.y - n.y);
+        if (d <= STEP * 1.5) { linkTo(n, h.to); dropHead(h); }
+        else {
+            const s = addNode(n.x + (m.x - n.x) / d * STEP, n.y + (m.y - n.y) / d * STEP, n.i, 0);
+            carveCircle(s.x, s.y, TR);
+            h.n = s.i; h.a = Math.atan2(m.y - n.y, m.x - n.x);
+        }
+        nest.steps++;
+        return true;
+    }
+    if (wrap) return endTunnel(h, true) ? (nest.steps++, true) : false;
     let pref = h.pref;
     if (n.x < MARGIN + 30) pref = 0.3; else if (n.x > W - MARGIN - 30) pref = Math.PI - 0.3;
     if (n.y > H - 30) pref = Math.cos(h.a) >= 0 ? 0.05 : Math.PI - 0.05;
     h.a += (rng() - 0.5) * 0.5 + angDiff(pref, h.a) * 0.12;
     if (Math.sin(h.a) < -0.35) h.a += angDiff(pref, h.a) * 0.5;
+    // Look well ahead and favour open ground, so a tunnel turns before it
+    // boxes itself in rather than running into something.
     const flip = rng() < 0.5 ? 1 : -1, self = selfPts(n.i);
+    let best = null, bs = -Infinity, far = 0;
     for (const t of [0, 0.45, -0.45, 0.9, -0.9, 1.4, -1.4]) {
         const a = h.a + t * flip;
         if (!stepOk(n.x, n.y, a, self)) continue;
-        const m = addNode(n.x + Math.cos(a) * STEP, n.y + Math.sin(a) * STEP, n.i, 0);
-        carveCircle(m.x, m.y, TR);
-        h.n = m.i; h.a = a; h.len++;
-        if (h.len >= h.tgt) atTarget(h);
-        nest.steps++;
-        return true;
+        const d = clearAhead(n.x, n.y, a, self), sc = d - Math.abs(t) * 7;
+        far = Math.max(far, d);
+        if (sc > bs) { bs = sc; best = a; }
+        if (t === 0 && d >= 30) break;
     }
-    if (!tryChamber(h)) dropHead(h);
-    return false;
+    // Hemmed in on every side: end with a chamber while there's still room.
+    if (best !== null && far <= 10.5 && h.len >= 4 && tryChamberNear(h)) return false;
+    if (best === null) return endTunnel(h) ? (nest.steps++, true) : false;
+    const m = addNode(n.x + Math.cos(best) * STEP, n.y + Math.sin(best) * STEP, n.i, 0);
+    carveCircle(m.x, m.y, TR);
+    h.n = m.i; h.a = best; h.len++;
+    if (h.len >= h.tgt) atTarget(h);
+    nest.steps++;
+    return true;
 }
 function foundNest() {
-    Object.assign(nest, {nodes:[], heads:[], dug:0, steps:0, full:false, chambers:0, rc:null});
+    Object.assign(nest, {nodes:[], heads:[], dug:0, steps:0, full:false, chambers:0, links:0, rc:null});
     let n = addNode(nest.EX, GROUND + 1.2, -1, 0);
     carveCircle(n.x, n.y, TR);
     const len = 9 + Math.floor(rng() * 4);
@@ -1218,24 +1338,36 @@ function foundNest() {
 }
 function packNest() {
     return {
-        n: nest.nodes.map(n => n.k ? [n.x, n.y, n.p, 1, n.cx, n.cy, n.rx, n.ry, n.ex, n.ey, n.prog, n.work, n.role] : [n.x, n.y, n.p, n.edge ? 2 : 0]),
-        h: nest.heads.map(h => [h.n, r2(h.a), h.len, h.tgt, r2(h.pref), h.ch ? 1 : 0]),
+        // Tunnel nodes: 2 marks one starting from a chamber wall, 4 a nook, and
+        // a fifth number the node a tunnel broke through into.
+        n: nest.nodes.map(n => n.k ? [n.x, n.y, n.p, 1, n.cx, n.cy, n.rx, n.ry, n.ex, n.ey, n.prog, n.work, n.role]
+            : [n.x, n.y, n.p, (n.edge ? 2 : 0) | (n.nook ? 4 : 0)].concat(n.link !== undefined ? [n.link] : [])),
+        h: nest.heads.map(h => [h.n, r2(h.a), h.len, h.tgt, r2(h.pref), h.ch ? 1 : 0].concat(h.to !== undefined ? [h.to] : [])),
         s: nest.steps, f: nest.full ? 1 : 0, w: WORLD,
     };
 }
 function unpackNest(d) {
-    Object.assign(nest, {nodes:[], heads:[], dug:0, steps:d.s || 0, full:!!d.f, chambers:0});
+    Object.assign(nest, {nodes:[], heads:[], dug:0, steps:d.s || 0, full:!!d.f, chambers:0, links:0});
+    const links = [];
     for (const a of d.n) {
         if (a[3] === 1) {
             const n = addNode(a[0], a[1], a[2], 1, {cx:a[4], cy:a[5], rx:a[6], ry:a[7], ex:a[8], ey:a[9], prog:a[10], work:a[11], role:a[12]});
             carveChamber(n);
             if (n.prog >= 1) nest.chambers++;
         } else {
-            const n = addNode(a[0], a[1], a[2], 0, a[3] === 2 ? {edge:1} : null);
-            carveCircle(n.x, n.y, TR);
+            const n = addNode(a[0], a[1], a[2], 0, a[3] & 2 ? {edge:1} : null);
+            if (a[3] & 4) n.nook = 1;
+            carveCircle(n.x, n.y, n.nook ? TR + 1.4 : TR);
+            if (a[4] !== undefined) links.push([n, a[4]]);
         }
     }
-    nest.heads = d.h.map(h => ({n:h[0], a:h[1], len:h[2], tgt:h[3], pref:h[4], ch:!!h[5]}));
+    for (const [n, j] of links) if (nest.nodes[j]) linkTo(n, j);
+    nest.heads = d.h.map(h => Object.assign({n:h[0], a:h[1], len:h[2], tgt:h[3], pref:h[4], ch:!!h[5]}, h[6] !== undefined ? {to:h[6]} : null));
+    // Farms saved before chambers were always finished: pick up any left half dug.
+    for (const n of nest.nodes) if (n.k && n.prog < 1 && !nest.heads.some(h => h.n === n.i)) {
+        nest.heads.push({n:n.i, a:0, len:0, tgt:8, pref:Math.PI / 2, ch:true});
+        nest.full = false;
+    }
     countRooms();
 }
 
@@ -1293,7 +1425,7 @@ function econ(dt) {
         const d = st.delayed.shift();
         st.food += d.food; st.earned += d.food; st.total += d.food;
     }
-    stepRaids();
+    stepRaids(dt);
     checkUnlocks();
 }
 // An upgrade that unlocked mid-farm starts with a mark-up that fades with each
@@ -1465,6 +1597,17 @@ function autoFrame() {
     const z = Math.max(1, Math.min(3, vh / (bottom - top), vw / (right - left))), w = vw / z, h = vh / z;
     return {z, x:Math.max(w / 2, Math.min(W - w / 2, (left + right) / 2)), y:Math.max(h / 2, Math.min(H - h / 2, Math.min(top + h / 2, (top + bottom) / 2 + Math.max(0, h - (bottom - top)) / 2)))};
 }
+// During a fight the camera, when it's left to itself, moves in on the
+// entrance so the scrap and its bar sit just under the numbers over the sky,
+// and stays a few seconds after to see how it ended.
+let fightHold = 0;
+const fightCam = () => raider && (raider.phase === 'fight' || performance.now() < fightHold);
+function fightFrame() {
+    const r = raider, cx = fightMid(r), a = autoFrame(), bs = baseScale();
+    const hud = pip.mode === 'video' ? 0 : $('hud').offsetHeight * view.dpr, top = surfY(cx) - RAID_BAR[r.k] - 4;
+    const z = Math.min(4, Math.max(a.z, 3, hud / (bs * Math.max(1, top)) + 0.15)), w = view.cw / bs / z, h = view.ch / bs / z;
+    return {z, x:Math.max(w / 2, Math.min(W - w / 2, cx)), y:Math.max(h / 2, Math.min(H - h / 2, top - hud / (bs * z) + h / 2))};
+}
 // Zoom so the farm point under (px, py) in canvas pixels stays put.
 function zoomTo(z, px, py, instant) {
     cam.auto = false;
@@ -1481,7 +1624,7 @@ function stepCam(dt) {
     if (f) {
         if (!AW.includes(f)) stopFollow();
         else { cam.tx = f.x; cam.ty = f.y; if ((cam.followT += dt) >= 60) st.stats.follow = 1; }
-    } else if (cam.auto) { const a = autoFrame(); cam.tz = a.z; cam.tx = a.x; cam.ty = a.y; }
+    } else if (cam.auto) { const a = fightCam() ? fightFrame() : autoFrame(); cam.tz = a.z; cam.tx = a.x; cam.ty = a.y; }
     const k = Math.min(1, dt * 6);
     cam.z += (cam.tz - cam.z) * k; cam.x += (cam.tx - cam.x) * k; cam.y += (cam.ty - cam.y) * k;
     if (Math.abs(cam.tz - cam.z) < 0.002) cam.z = cam.tz;
@@ -2060,6 +2203,10 @@ function drawChambersPix(t) {
     const fc = foodChambers.length ? foodChambers : [queenNode];
     let bits = Math.round(Math.log10(1 + st.food) * 7);
     fc.forEach((i, k) => { bits -= drawPilePix(N[i], Math.ceil(bits / (fc.length - k))); });
+    // A few bits stashed at the end of some tunnels.
+    deadEnds();
+    const sb = Math.min(4, Math.ceil(Math.log10(1 + st.food) / 2));
+    for (const i of stashList) { const n = N[i]; drawPilePix({cx:n.x, cy:n.y + TR - 1, rx:2.6, ry:1}, sb); }
     drawRoomsPix();
     const q = N[queenNode];
     if (q && q.k) {
@@ -2101,8 +2248,12 @@ function drawCarryPix(a, x, y) {
 }
 function drawAntsPix(t) {
     for (const a of AW) {
-        const {d, flip} = antDir(a.a), moving = a.wait <= 0 && a.q.length > 0, frame = moving ? Math.floor(a.ph / 2.5) % 2 : 0, r = d * Math.PI / 4;
-        let x = a.x, y = a.y;
+        const fighting = a.fight && a.wait > 0 && raider && raider.phase === 'fight';
+        const {d, flip} = antDir(a.a), moving = a.wait <= 0 && a.q.length > 0, frame = moving ? Math.floor(a.ph / 2.5) % 2 : fighting ? Math.floor(t * 10 + a.ph) % 2 : 0, r = d * Math.PI / 4;
+        let x = a.x, y = a.y - (a.hop || 0);
+        // Guards jab at the raider, and cheer with little hops after a win.
+        if (fighting) x += a.fs * Math.max(0, Math.sin(t * 15 + a.ph * 3)) * 1.1;
+        if (a.cheer > t) y -= Math.abs(Math.sin(t * 9 + a.ph)) * 1.6;
         const n = a.at >= 0 ? nest.nodes[a.at] : null;
         // In a tunnel the ant walks on the wall its legs face, not down the middle.
         if (n && a.at !== 0 && !(n.k && n.prog >= 1 && (!a.q.length || a.q[0].n === a.at))) { x += (flip ? Math.sin(r) : -Math.sin(r)) * 0.8; y += Math.cos(r) * 0.8; }
@@ -2546,7 +2697,46 @@ function indexChambers() {
     if (queenNode < 0) queenNode = nest.nodes.findIndex(n => n.k) ;
     if (queenNode < 0) queenNode = 0;
 }
+// Ants take the shortest way through the nest, loops included. With no loops
+// the nest is a tree and there's only one way; with them, the next step
+// toward each place ants head for is worked out once (Dijkstra from there)
+// and kept until the nest changes.
+let navVer = '', navAdj = null;
+const navTo = new Map();
 function nodePath(from, to) {
+    if (!nest.links) return treePath(from, to);
+    const N = nest.nodes, ver = N.length + ':' + nest.links;
+    if (ver !== navVer) { navVer = ver; navTo.clear(); navAdj = null; }
+    let nx = navTo.get(to);
+    if (!nx) {
+        if (!navAdj) {
+            navAdj = N.map(() => []);
+            const join = (i, j) => { const w = Math.hypot(N[i].x - N[j].x, N[i].y - N[j].y); navAdj[i].push(j, w); navAdj[j].push(i, w); };
+            for (const n of N) { if (n.p >= 0) join(n.i, n.p); if (n.link !== undefined && N[n.link]) join(n.i, n.link); }
+        }
+        nx = navFrom(to);
+        if (navTo.size >= 48) navTo.delete(navTo.keys().next().value);
+        navTo.set(to, nx);
+    }
+    const out = [];
+    for (let i = from, g = 0; i !== to; g++) { i = nx[i]; if (i < 0 || g > 5000) return treePath(from, to); out.push(i); }
+    return out;
+}
+// For every node, the next node on the shortest way to src.
+function navFrom(src) {
+    const n = navAdj.length, dist = new Float64Array(n).fill(Infinity), nx = new Int32Array(n).fill(-1), heap = [];
+    const push = (d, i) => { heap.push([d, i]); let k = heap.length - 1; while (k > 0) { const p = (k - 1) >> 1; if (heap[p][0] <= heap[k][0]) break; [heap[p], heap[k]] = [heap[k], heap[p]]; k = p; } };
+    const pop = () => { const top = heap[0], last = heap.pop(); if (heap.length) { heap[0] = last; let k = 0; for (;;) { const l = 2 * k + 1, r = l + 1; let m = k; if (l < heap.length && heap[l][0] < heap[m][0]) m = l; if (r < heap.length && heap[r][0] < heap[m][0]) m = r; if (m === k) break; [heap[m], heap[k]] = [heap[k], heap[m]]; k = m; } } return top; };
+    dist[src] = 0; push(0, src);
+    while (heap.length) {
+        const [d, i] = pop();
+        if (d > dist[i]) continue;
+        const e = navAdj[i];
+        for (let k = 0; k < e.length; k += 2) { const j = e[k], nd = d + e[k + 1]; if (nd < dist[j]) { dist[j] = nd; nx[j] = i; push(nd, j); } }
+    }
+    return nx;
+}
+function treePath(from, to) {
     const N = nest.nodes, up = [], down = [];
     let a = from, b = to;
     while (N[a].d > N[b].d) { a = N[a].p; up.push(a); }
@@ -2582,6 +2772,25 @@ function goNest(a, target) {
         return;
     }
     for (const i of nodePath(from, target)) a.q.push(pt(i));
+}
+// Tunnel ends that lead nowhere (nooks, and dead ends in older farms). Idle
+// ants wander into them, and foragers stash some food in a few.
+let endsVer = '', endsList = [], stashList = [];
+function deadEnds() {
+    const ver = nest.nodes.length + ':' + nest.links + ':' + nest.heads.length;
+    if (ver !== endsVer) {
+        endsVer = ver;
+        const busy = new Set(nest.heads.map(h => h.n));
+        endsList = nest.nodes.filter(n => !n.k && !n.kids && n.link === undefined && n.i > 0 && !busy.has(n.i)).map(n => n.i);
+        stashList = endsList.filter(i => hash2(i, 7) < 0.4).slice(0, 6);
+    }
+    return endsList;
+}
+function poke(a) {
+    const e = deadEnds();
+    if (!e.length) return false;
+    goNest(a, pick(e)); a.task = 'poke';
+    return true;
 }
 function restIn(a, room) {
     goNest(a, room);
@@ -2631,6 +2840,10 @@ function think(a) {
         if (a.role && a.role !== a.next) { a.prev = a.role; antLog(a, 'j', `${ROLE_NAME[a.role]} to ${ROLE_NAME[a.next]}`); }
         a.role = a.next; a.next = null; a.task = ''; a.carry = null; a.ck = null; a.dig = false; a.rest = 0;
     }
+    // Guards cut their rest short when raiders are about.
+    if (a.rest > 0 && a.role === 'guard' && (st.raid || raider)) a.rest = 0;
+    // Having a look round at the end of a tunnel.
+    if (a.task === 'poke') { a.task = ''; a.wait = 1.5 + Math.random() * 3; return; }
     if (a.rest > 0) {
         a.rest--;
         const n = nest.nodes[a.at];
@@ -2641,8 +2854,10 @@ function think(a) {
     case 'forage': {
         if (a.task === 'toFood') {
             a.task = 'home'; a.wait = 0.4 + Math.random() * 0.5;
-            a.carry = a.crumb ? '#e7c58f' : FOODS[st.tier].color; a.ck = a.crumb ? 'crumb' : 'food';
+            a.carry = a.crumb ? '#e7c58f' : a.side || FOODS[st.tier].color; a.ck = a.crumb ? 'crumb' : 'food'; a.side = null;
             if (a.crumb) { a.crumb.gone = true; a.crumb = null; if (!a.crumbs++) antLog(a, 'c'); }
+            deadEnds();
+            if (stashList.length && Math.random() < 0.15) { goNest(a, pick(stashList)); return; }
             const fc = foodChambers.length ? pick(foodChambers) : queenNode;
             goNest(a, fc); a.q.push(floorPt(nest.nodes[fc]));
             return;
@@ -2655,9 +2870,12 @@ function think(a) {
         const cr = crumbs.find(c => !c.claimed && !c.gone);
         // Bad weather keeps most foragers home, resting in the nest.
         const wf = WX[wxNow].forage;
-        if (!cr && wf < 1 && Math.random() > wf + 0.2) { restIn(a, rests.length ? pick(rests) : foodChambers.length ? pick(foodChambers) : queenNode); return; }
+        if (!cr && wf < 1 && Math.random() > wf + 0.2) { if (Math.random() < 0.3 && poke(a)) return; restIn(a, rests.length ? pick(rests) : foodChambers.length ? pick(foodChambers) : queenNode); return; }
         if (cr) { cr.claimed = true; a.crumb = cr; }
         a.task = 'toFood';
+        const side = cr ? null : sideTrip();
+        a.side = side && side.col;
+        if (side) { goSurface(a, clampX(side.x + (Math.random() - 0.5) * 4)); return; }
         // Most head for the food pile, the rest scour the grass for scraps.
         const m = moundCache, x = cr ? cr.x : Math.random() < 0.65 ? FX + (Math.random() - 0.5) * 9 : Math.max(MARGIN + 4, Math.min(W - MARGIN - 4, nest.EX + (Math.random() - 0.5) * 90));
         goSurface(a, Math.abs(x - m.x) < m.L ? m.x + m.L + 2 : x);
@@ -2673,25 +2891,50 @@ function think(a) {
             return;
         }
         if (a.task === 'haul') { a.carry = null; a.ck = null; a.dirt++; if (++a.trips === 1) antLog(a, 't'); a.task = ''; a.wait = 0.2; return; }
-        if (!nest.heads.length) { a.task = ''; restIn(a, rests.length ? pick(rests) : queenNode); return; }
+        // Nothing to dig: wander the tunnels, or rest.
+        if (!nest.heads.length) { a.task = ''; if (Math.random() < 0.6 && poke(a)) return; restIn(a, rests.length ? pick(rests) : queenNode); return; }
         a.task = 'toDig'; goNest(a, pick(nest.heads).n);
         return;
     }
     case 'guard': {
+        a.fight = false;
+        // In a fight every guard on hand piles in around the raider, most in
+        // front of it, a few round the back.
+        if (raider && raider.phase === 'fight') {
+            const R = raider, tx = raidStand(R);
+            if (a.slotFor !== R) {
+                const front = Math.random() < 0.75;
+                a.slotFor = R;
+                a.slot = Math.max(MARGIN + 2, Math.min(W - MARGIN - 2, tx + (front ? R.dir : -R.dir) * (RAID_REACH[R.k] + (front ? 0 : RAID_BACK[R.k]) + Math.random() * 4)));
+            }
+            if (a.at < 0 && Math.abs(a.x - a.slot) < 0.8) {
+                a.fight = true; a.fs = R.x > a.x ? 1 : -1;
+                a.a = R.k === 'wasp' ? (a.fs > 0 ? -0.7 : Math.PI + 0.7) : (a.fs > 0 ? 0 : Math.PI);
+                a.wait = 0.4 + Math.random() * 0.6;
+                return;
+            }
+            goSurface(a, a.slot);
+            return;
+        }
         // When raiders are coming, guards line up outside the entrance. The rest
         // of the time they rest in the barracks and walk up the entrance tunnel.
-        if (st.raid || (raider && raider.phase === 'fight')) {
+        if (st.raid) {
             if (a.at < 0 && Math.abs(a.x - nest.EX) < 10) { a.wait = 0.4 + Math.random() * 0.8; return; }
             goSurface(a, nest.EX + (Math.random() - 0.5) * 14);
             return;
         }
+        // Some stand watch over a caterpillar they agreed to guard.
+        const cat = visitors.caterpillar;
+        if (cat && !cat.leaving && buffOn('Guarding a caterpillar') && Math.random() < 0.6) { goSurface(a, clampX(cat.x + (Math.random() - 0.5) * 12)); a.wait = 1 + Math.random() * 2; return; }
         if (a.at < 0) { goNest(a, barracks.length ? pick(barracks) : queenNode); return; }
+        if (Math.random() < 0.25 && poke(a)) return;
         if (Math.random() < 0.3) { goNest(a, Math.min(4, nest.nodes.length - 1)); a.wait = 1 + Math.random() * 2; return; }
         restIn(a, barracks.length ? pick(barracks) : rests.length ? pick(rests) : queenNode);
         return;
     }
     case 'nurse': {
-        const nur = nurseries.length ? pick(nurseries) : queenNode;
+        // In a flood they carry the brood up to the highest chamber instead.
+        const nur = buffOn('Moving the brood') ? highRoom() : nurseries.length ? pick(nurseries) : queenNode;
         if (a.task === 'toQueen') { a.task = 'egg'; a.wait = 0.8 + Math.random() * 1.5; return; }
         if (a.task === 'egg') { a.carry = '#f7f2e4'; a.ck = pick(['egg', 'egg', 'larva', 'pupa']); a.task = 'toNur'; goNest(a, nur); a.q.push(floorPt(nest.nodes[nur])); return; }
         if (a.task === 'toNur') { a.carry = null; a.ck = null; a.brood++; if (++a.trips === 1) antLog(a, 't'); a.task = ''; a.rest = 1 + Math.floor(Math.random() * 2); a.wait = 0.6; return; }
@@ -2712,6 +2955,13 @@ function deposit(a) {
     if (v >= 0.5 && floaters.length <= 10) floaters.push({x:a.x, y:a.y - 3, txt:'+' + fmt(v), t:now, col:'#ffd27f'});
 }
 function updAnt(a, dt) {
+    if (a.kb) {
+        const kb = a.kb, k = kb.k = Math.min(1, kb.k + dt / 0.55);
+        a.x = Math.max(MARGIN + 2, Math.min(W - MARGIN - 2, kb.x0 + kb.dx * k));
+        a.y = surfY(a.x) - kb.off; a.hop = Math.sin(Math.PI * k) * kb.h; a.a = kb.a0 + kb.spin * k;
+        if (k >= 1) { a.a = kb.a0; a.kb = null; a.hop = 0; a.wait = 0.6 + Math.random() * 0.6; }
+        return;
+    }
     if (a.wait > 0) { a.wait -= dt; return; }
     if (!a.q.length) {
         think(a);
@@ -2804,7 +3054,7 @@ function newColony() {
     genSoil(st.seed);
     foundNest();
     afterNest();
-    AW = []; crumbs = []; floaters = []; dust = [];
+    AW = []; crumbs = []; floaters = []; dust = []; bodies = []; visitors = {}; guest = null; spores = []; evFx = null; waterKey = '';
     antSeq = 0; pendingRoster = [];
     syncAnts(false);
 }
@@ -2939,31 +3189,52 @@ function drawSeasonLights(t, sky) {
 
 /* ---------- raiders ---------- */
 // A raider walks in from the edge of the farm while its warning counts down,
-// fights at the entrance when it arrives, then flees or makes off with food.
+// fights the guards at the entrance when it arrives, then flees or makes off
+// with food. A bar over the fight shows who's winning.
 const RAID_ICON = {spider:'fa-spider', wasp:'fa-mosquito', rival:'fa-people-group', centipede:'fa-worm'};
 const RAID_SHORT = {spider:'Spider', wasp:'Wasp', rival:'Rival ants', centipede:'Centipede'};
 const RAID_TXT = {spider:'a spider', wasp:'a wasp', rival:'rival ants', centipede:'a centipede'};
-const RAID_FEET = {spider:1.3, wasp:0, rival:1.55, centipede:1.15};
-let raider = null, catching = false, awayRaids = null;
+// Raiders are drawn well bigger than an ant (a wolf spider is about twice as
+// long), with how high each stands, how far from its middle guards can reach
+// it (in front and behind), and how high the fight bar floats.
+const RAID_SIZE = {spider:3, wasp:2.3, rival:1.15, centipede:2.1}, RAID_FEET = {spider:3.4, wasp:0, rival:1.8, centipede:2.1};
+const RAID_REACH = {spider:7, wasp:3, rival:3.5, centipede:11}, RAID_BACK = {spider:0, wasp:0, rival:7.5, centipede:0}, RAID_BAR = {spider:14, wasp:23, rival:10, centipede:10};
+// Where a raider stops to fight, and the middle of the fight.
+const raidStand = r => nest.EX - r.dir * (RAID_REACH[r.k] + 4), fightMid = r => (raidStand(r) + nest.EX) / 2;
+let raider = null, catching = false, awayRaids = null, bodies = [], fightWas = null;
 function spawnRaider(R) {
-    const left = Math.random() < 0.5;
-    raider = {k:R.k, phase:'come', x0:left ? -8 : W + 8, t0:R.at - BAL.raidWarn * 1000, at:R.at, dir:left ? 1 : -1, x:left ? -8 : W + 8, y:GROUND, ph:Math.random() * 6, ft:0, win:false};
+    const left = Math.random() < 0.5, dir = left ? 1 : -1;
+    raider = {k:R.k, phase:R.fight ? 'fight' : 'come', x0:left ? -8 : W + 8, t0:R.at - BAL.raidWarn * 1000, at:R.at, dir, x:R.fight ? nest.EX - dir * (RAID_REACH[R.k] + 4) : left ? -8 : W + 8, y:GROUND, ph:Math.random() * 6, hit:0};
+}
+// The raider swats a guard: it tumbles back through the air and lands dazed.
+function knockBack(r) {
+    const near = AW.filter(a => a.fight && !a.kb && a.at < 0 && Math.abs(a.x - r.x) < RAID_REACH[r.k] + RAID_BACK[r.k] + 8);
+    if (!near.length) return;
+    const a = pick(near), s = a.x >= r.x ? 1 : -1;
+    a.kb = {k:0, x0:a.x, off:surfY(a.x) - a.y, dx:s * (4 + Math.random() * 5), h:3 + Math.random() * 3, a0:a.a, spin:(Math.random() < 0.5 ? -1 : 1) * TAU};
+    a.q = []; a.wait = 0; a.fight = false;
+    for (let i = 0; i < 4 && dust.length < 60; i++) dust.push({x:a.x, y:a.y - 1, vx:(Math.random() - 0.5) * 20, vy:-6 - Math.random() * 8, life:0.4, col:'#ffffff'});
 }
 function stepRaider(dt, t) {
     const r = raider;
     if (!r) return;
-    const tx = nest.EX - r.dir * 7;
+    const tx = raidStand(r);
     if (r.phase === 'come') r.x = r.x0 + (tx - r.x0) * Math.max(0, Math.min(1, (Date.now() - r.t0) / Math.max(1, r.at - r.t0)));
     else if (r.phase === 'fight') {
-        r.x = tx + Math.sin(t * 17) * 0.7;
-        // Dust and sparks fly while they scrap.
+        if (!st.raid || !st.raid.fight) r.phase = 'flee';
+        // It lunges at the guards in front of it, flinches when they bite, and
+        // throws the odd guard back, more often when it's winning.
+        r.x = tx + Math.sin(t * 17) * 0.4 + r.dir * Math.max(0, Math.sin(t * 3.2 + r.ph)) * 1.4;
         if (dust.length < 60 && Math.random() < dt * 30) dust.push({x:tx + r.dir * (2 + Math.random() * 3), y:surfY(tx) - 1 - Math.random() * 3, vx:(Math.random() - 0.5) * 16, vy:-4 - Math.random() * 8, life:0.5, col:Math.random() < 0.4 ? '#fff3c4' : css(theme.soil[0])});
-        if (t - r.ft > 3) { r.phase = r.win ? 'flee' : 'loot'; r.ft = t; }
+        const q = st.raid && st.raid.q || 0;
+        if (Math.random() < dt * 1.4 * Math.min(q, 4)) r.hit = t;
+        if (Math.random() < dt * (0.5 + 1.1 / Math.max(0.4, q))) knockBack(r);
     } else {
         r.x -= r.dir * (r.phase === 'flee' ? 38 : 16) * dt;
         if (r.x < -14 || r.x > W + 14) raider = null;
     }
-    if (raider) r.y = r.k === 'wasp' ? surfY(r.x) - 10 + Math.sin(t * 5 + r.ph) * 1.6 : surfY(r.x) - RAID_FEET[r.k];
+    // A wasp hovers, and in a fight dives at the guards with each lunge.
+    if (raider) r.y = r.k === 'wasp' ? surfY(r.x) - 14 + Math.sin(t * 5 + r.ph) * 1.6 + (r.phase === 'fight' ? Math.max(0, Math.sin(t * 3.2 + r.ph)) * 7 : 0) : surfY(r.x) - RAID_FEET[r.k];
 }
 function spiderModel(frame) {
     const s = frame ? 0.3 : -0.3, m = [];
@@ -3012,15 +3283,39 @@ function raiderSprite(k, frame, flip, scale) {
 function drawRaiderPix(t) {
     const r = raider;
     if (!r) return;
-    const sc = Math.round(critterScale() * 2) / 2, scale = P * (r.k === 'rival' ? 1 : 1.15) * sc, flip = r.dir < 0;
+    const sc = Math.max(1, Math.round(critterScale() * 1.2) / 2), scale = P * RAID_SIZE[r.k] * sc, flip = r.dir < 0;
     const frame = r.phase === 'fight' ? Math.floor(t * 12) % 2 : Math.floor(t * (r.k === 'wasp' ? 14 : 5)) % 2;
     // Rival ants come as a band of three.
-    const xs = r.k === 'rival' ? [0, -3.2, -6.2] : [0];
+    const xs = r.k === 'rival' ? [0, -3.7, -7.1] : [0];
     for (const dx of xs) {
-        const x = r.x + dx * r.dir, y = r.k === 'rival' ? surfY(x) - RAID_FEET.rival : r.y;
-        blit(raiderSprite(r.k, (frame + (dx ? 1 : 0)) % 2, flip, scale), x * P, y * P);
+        const x = r.x + dx * r.dir, y = r.k === 'rival' ? surfY(x) - RAID_FEET.rival : r.y, sp = raiderSprite(r.k, (frame + (dx ? 1 : 0)) % 2, flip, scale);
+        // A white flash when a guard lands a bite.
+        if (r.phase === 'fight' && t - r.hit < 0.09) pc.drawImage(outlineOf(sp, '#ffffff'), Math.round(x * P) - sp.half - 1, Math.round(y * P) - sp.half - 1);
+        blit(sp, x * P, y * P);
     }
-    if (r.phase === 'loot') drawCarryPix({ck:'crumb', carry:'#e7c58f'}, r.x + r.dir * 2.5, r.y - 1.2);
+    if (r.phase === 'loot') drawCarryPix({ck:'crumb', carry:'#e7c58f'}, r.x + r.dir * RAID_REACH[r.k] * 0.7, r.y - 1.2);
+}
+// Over the fight, guards in green push from the entrance side against the
+// raider in red from its side.
+function drawFightBarPix() {
+    const R = st.raid, r = raider;
+    if (!r || r.phase !== 'fight' || !R || !R.fight) return;
+    const f = R.fight, g = f.g / Math.max(1e-6, f.g + f.r), cx = fightMid(r);
+    const bw = Math.round(24 * P), x0 = Math.round(cx * P - bw / 2), y0 = Math.round((surfY(cx) - RAID_BAR[r.k]) * P), gw = Math.round(bw * g);
+    box(x0 - 1, y0 - 1, bw + 2, 5, 'rgba(20,12,8,0.85)');
+    const gx = r.dir > 0 ? x0 + bw - gw : x0, rx = r.dir > 0 ? x0 : x0 + gw;
+    box(rx, y0, bw - gw, 3, '#e0503a'); box(gx, y0, gw, 3, '#6fd46a');
+    box(x0, y0, bw, 1, 'rgba(255,255,255,0.28)');
+}
+// Ants that fell lie belly up for a few seconds, then fade.
+function drawBodiesPix(t) {
+    bodies = bodies.filter(b => t - b.t0 < 6);
+    for (const b of bodies) {
+        const sp = antSprite(b.kind, 0, 0, Math.cos(b.a) < 0, b.sty);
+        pc.globalAlpha = Math.min(1, (6 - (t - b.t0)) / 2);
+        pc.save(); pc.translate(Math.round(b.x * P), Math.round(b.y * P)); pc.scale(1, -1); pc.drawImage(sp.cv, -sp.half, -sp.half); pc.restore();
+    }
+    pc.globalAlpha = 1;
 }
 // Which ants fall in a raid: guards first, then whoever the raiders caught.
 function raidCasualties(o) {
@@ -3033,6 +3328,7 @@ function raidCasualties(o) {
     const name = RAIDERS[o.k].name;
     for (const a of fell) {
         st.fallen.unshift({n:a.name, b:a.born, d:Date.now(), k:name, t:a.trips, s:a.sty || 0, r:a.next || a.role});
+        bodies.push({x:a.x, y:a.at < 0 ? surfY(a.x) - 1.2 : a.y, a:a.a, sty:a.sty, kind:a.role === 'guard' ? 'soldier' : 'ant', t0:performance.now() / 1000});
         if (cam.follow === a) stopFollow();
     }
     st.fallen.length = Math.min(st.fallen.length, 40);
@@ -3052,13 +3348,25 @@ onRaidWarn = R => {
     try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate([30, 60, 30]); } catch (e) {}
     updateUI();
 };
+onFight = R => {
+    if (catching) return;
+    if (!raider) spawnRaider(R);
+    raider.phase = 'fight';
+    const name = RAIDERS[R.k].name;
+    toast(R.q >= 1 ? `The ${name} reached the entrance. Your guards are fighting it off!` : `The ${name} reached the entrance! Send more guards to turn the fight.`);
+    try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate(40); } catch (e) {}
+    updateUI();
+};
 onRaid = o => {
     if (catching) {
         if (awayRaids) { const a = awayRaids; if (o.rain) a.rain++; else if (o.win) a.won++; else a.lost++; a.ants += o.ants; a.food += o.food; a.loot += o.loot; }
         return;
     }
     const R = RAIDERS[o.k];
-    if (raider) { raider.phase = o.rain ? 'flee' : 'fight'; raider.ft = performance.now() / 1000; raider.win = o.win; }
+    if (raider) raider.phase = o.rain || o.win ? 'flee' : 'loot';
+    if (!o.rain) fightHold = performance.now() + 4000;
+    // The guards that held the line cheer.
+    if (o.win) { const t = performance.now() / 1000; for (const a of AW) if (a.fight) a.cheer = t + 1.8; }
     if (o.rain) { toast(`The rain sent the ${R.name} packing.`); updateUI(); return; }
     const fell = raidCasualties(o);
     if (o.win) toast(`Your guards saw off the ${R.name}! +${fmt(o.loot)} food` + (fell ? `, but ${fell} fell in the fight.` : '.'));
@@ -3080,9 +3388,18 @@ function showChoice(cfg) {
     choiceCfg = cfg;
     $('choiceBody').innerHTML = `<h3><i class="fa-solid ${cfg.icon}"></i>${esc(cfg.title)}</h3><p>${esc(cfg.text)}</p><div class="choice-opts">`
         + cfg.opts.map((o, k) => `<button data-k="${k}"${o.now ? ' class="now"' : ''}><i class="fa-solid ${o.icon}"></i><b>${esc(o.label)}${o.now ? ' (now)' : ''}</b><small>${esc(typeof o.sub === 'function' ? o.sub() : o.sub)}</small></button>`).join('') + '</div>';
-    // Just under the numbers, however many rows of boosts and alerts they have.
-    $('choice').style.top = ($('hud').offsetHeight + 4) + 'px';
     $('choice').hidden = false;
+    placeChoice();
+}
+// Just under the numbers, however many rows of boosts and alerts they have,
+// unless that would cover the chamber it's asking about: then at the bottom.
+function placeChoice() {
+    const el = $('choice'), cfg = choiceCfg, n = cfg && cfg.room !== undefined ? nest.nodes[cfg.room] : null;
+    el.classList.remove('low'); el.style.top = ($('hud').offsetHeight + 4) + 'px';
+    if (!n) return;
+    const y0 = (view.oy + (n.cy - n.ry - 2) * view.s) / view.dpr, y1 = (view.oy + (n.cy + n.ry * 0.6 + 2) * view.s) / view.dpr;
+    const b = el.getBoundingClientRect(), top = cv.getBoundingClientRect().top;
+    if (y1 > b.top - top && y0 < b.bottom - top) { el.classList.add('low'); el.style.top = ''; }
 }
 function hideChoice() {
     const c = choiceCfg;
@@ -3113,8 +3430,8 @@ function roomAt(wx, wy) {
 function pickRoom(i, fresh) {
     const n = nest.nodes[i];
     if (!n) return;
-    showChoice({icon:'fa-house', title:fresh ? 'New chamber dug' : `Chamber ${roomNumber(n)}`,
-        text:fresh ? `It starts as a ${ROOMS[n.role].name.toLowerCase()}. What should it be? You can change it any time by tapping it.` : 'What should this chamber be?',
+    showChoice({icon:'fa-house', title:fresh ? 'New chamber dug' : `Chamber ${roomNumber(n)}`, room:i,
+        text:fresh ? `It's glowing on the farm, and starts as a ${ROOMS[n.role].name.toLowerCase()}. What should it be? You can change it any time by tapping it.` : 'What should this chamber be?',
         opts:ROOM_KEYS.map(k => ({icon:ROOMS[k].icon, label:ROOMS[k].name, sub:ROOMS[k].desc, now:n.role === k, act:() => setRoomUI(i, k)})),
         onClose:() => { if (roomAsk === i) roomAsk = null; updateUI(); }});
 }
@@ -3142,6 +3459,22 @@ function renderRooms(r) {
     if ($('rooms').innerHTML !== h) $('rooms').innerHTML = h;
 }
 // Fungus gardens sprout pale mushrooms; barracks fly a little flag.
+// The chamber a card or the "choose its job" pill is asking about pulses
+// with a gold outline, thick enough to spot with the whole farm in view.
+function drawRoomFocusPix(t) {
+    const i = choiceCfg && choiceCfg.room !== undefined ? choiceCfg.room : roomAsk, n = i === null ? null : nest.nodes[i];
+    if (!n || !n.k) return;
+    const th = Math.max(1, Math.ceil(2.5 / (view.s / view.dpr / P))), fl = n.cy + n.ry * 0.6 + 1.2, rx = n.rx + 1.5, ry = n.ry + 1.5;
+    pc.globalAlpha = 0.6 + 0.4 * Math.sin(t * 5);
+    const steps = Math.ceil((rx + ry) * P * 4);
+    for (let k = 0; k < steps; k++) {
+        const a = k / steps * TAU, x = n.cx + Math.cos(a) * rx, y = n.cy + Math.sin(a) * ry;
+        if (y <= fl) box(x * P - th / 2, y * P - th / 2, th, th, '#ffd54a');
+    }
+    const half = rx * Math.sqrt(Math.max(0, 1 - Math.pow((fl - n.cy) / ry, 2)));
+    box((n.cx - half) * P, fl * P - th / 2, Math.round(half * 2 * P), th, '#ffd54a');
+    pc.globalAlpha = 1;
+}
 function drawRoomsPix() {
     const N = nest.nodes;
     for (const i of gardens) {
@@ -3235,26 +3568,239 @@ function resolveEvent(k, timedOut) {
     if (!e) return;
     st.lastEvent = e.id;
     if (choiceCfg && choiceCfg.title === e.title) hideChoice();
+    evFx = {id:e.id, k, t0:performance.now() / 1000};
     const msg = e.opts[k] ? e.opts[k].act() : '';
     st.stats.events++;
     toast(timedOut ? `${e.title}: you let it pass. ${msg}` : msg);
     updateUI();
 }
 
+/* ---------- events on the farm ---------- */
+// Every event shows on the farm: whatever is asking waits there until you
+// answer (tap it to decide), then the choice plays out. The beetle and an
+// adopted queen stay for the rest of the farm; the rest come and go with
+// their boosts.
+const buffOn = name => st.buffs.some(b => b.name === name && b.until > Date.now());
+const buffLeft = name => { const b = st.buffs.find(b => b.name === name && b.until > Date.now()); return b ? (b.until - Date.now()) / 1000 : 0; };
+const clampX = x => Math.max(MARGIN + 6, Math.min(W - MARGIN - 6, x));
+let evFx = null, visitors = {}, guest = null, spores = [], waterCv = null, waterKey = '';
+// Where each event's visitor waits.
+function evSpot(id) {
+    const m = moundCache || mound();
+    switch (id) {
+    case 'beetle': return clampX(nest.EX + 8);
+    case 'queen': return clampX(nest.EX - 6);
+    case 'scouts': return clampX(nest.EX + 18);
+    // Past the aphids if there's grass there, else past the dirt pile, never
+    // on the sugar at the far edge.
+    case 'caterpillar': return FX + 24 <= W - MARGIN - 8 ? FX + 24 : m.x - m.L - 8 >= MARGIN + 26 ? m.x - m.L - 8 : clampX(nest.EX + 27);
+    case 'aphids': return clampX(FX + 11);
+    case 'sugar': return MARGIN + 9;
+    default: return nest.EX;
+    }
+}
+// What was chosen for an event that just ended, while it plays out.
+const chose = (id, t) => evFx && evFx.id === id && t - evFx.t0 < 120 ? evFx.k : -1;
+function beetleModel(frame) {
+    const s = frame ? -0.3 : 0.3;
+    return [
+        {t:'l', pts:[[-0.6, 0.2], [-1.2 + s, 1.25]], w:0.4, r:'k'}, {t:'l', pts:[[0.3, 0.25], [0.3 - s, 1.25]], w:0.4, r:'k'}, {t:'l', pts:[[1.1, 0.2], [1.7 + s, 1.25]], w:0.4, r:'k'},
+        // A rove beetle's long, banded abdomen, cocked up at the tail.
+        {t:'e', x:-1.25, y:-0.2, rx:0.75, ry:0.62, rot:0, r:'b', hl:true}, {t:'e', x:-2.25, y:-0.35, rx:0.68, ry:0.58, rot:-0.3, r:'c', hl:true},
+        {t:'e', x:-3.0, y:-0.95, rx:0.6, ry:0.52, rot:-0.9, r:'b', hl:true}, {t:'e', x:-3.35, y:-1.75, rx:0.5, ry:0.42, rot:-1.3, r:'c', hl:true},
+        {t:'l', pts:[[-3.45, -2.1], [-3.2, -2.75]], w:0.3, r:'k'},
+        {t:'e', x:-0.1, y:-0.3, rx:1.05, ry:0.7, rot:0, r:'e', hl:true},
+        {t:'e', x:1.15, y:-0.25, rx:0.6, ry:0.55, rot:0, r:'k', hl:true},
+        {t:'e', x:2.05, y:-0.2, rx:0.62, ry:0.52, rot:0, r:'k', hl:true},
+        {t:'l', pts:[[2.5, 0.0], [3.05, 0.25]], w:0.28, r:'k'}, {t:'l', pts:[[2.3, -0.6], [2.9, -1.3], [3.5, -1.2]], w:0.22, r:'k'},
+    ];
+}
+function caterpillarModel(frame) {
+    const m = [];
+    for (let i = 0; i < 7; i++) {
+        const x = -3.6 + i * 0.95, hump = frame ? Math.sin(Math.PI * i / 6) * 0.9 : 0;
+        if (i < 6) m.push({t:'l', pts:[[x, 0.4 - hump * 0.3], [x, 1.0]], w:0.35, r:'k'});
+        m.push({t:'e', x, y:-hump, rx:0.75, ry:0.7, rot:0, r:i % 2 ? 'g' : 'h', hl:true});
+    }
+    return m.concat([{t:'e', x:3.1, y:-0.1, rx:0.65, ry:0.6, rot:0, r:'y', hl:true}, {t:'e', x:3.4, y:-0.3, rx:0.13, ry:0.13, rot:0, r:'k'}]);
+}
+const VISIT_PAL = {
+    beetle:{k:[34, 26, 22], K:[92, 80, 70], b:[66, 48, 36], B:[118, 94, 72], c:[50, 36, 28], C:[100, 78, 60], e:[128, 72, 34], E:[186, 124, 70]},
+    caterpillar:{k:[40, 50, 30], g:[118, 188, 70], G:[170, 226, 112], h:[96, 168, 58], H:[148, 210, 94], y:[214, 172, 62], Y:[242, 212, 112]},
+};
+function visitSprite(kind, frame, flip) {
+    const scale = P * (kind === 'beetle' ? 1.45 : 1.3);
+    return sprite(`visit|${kind}|${frame}|${flip ? 1 : 0}`, () => rasterize(kind === 'beetle' ? beetleModel(frame) : caterpillarModel(frame), scale, 0, flip, VISIT_PAL[kind]));
+}
+const VISIT_FEET = {beetle:1.8, caterpillar:1.3, queen:2, scouts:1.55};
+// In from the nearest edge to its spot; off again when it goes.
+function arrive(id, spot) {
+    return visitors[id] = {id, x:spot < W / 2 ? -8 : W + 8, home:spot, tx:spot, spd:id === 'caterpillar' ? 6 : 14, leaving:false, dir:spot < W / 2 ? 1 : -1, ph:Math.random() * 6};
+}
+function leave(v, fast) {
+    if (v.leaving) return;
+    v.leaving = true; v.tx = v.x < W / 2 ? -16 : W + 16; v.spd = fast ? 36 : v.id === 'caterpillar' ? 7 : 12;
+    // Chased off: a few ants on the surface run after it, then get back to work.
+    if (fast) for (const a of AW.filter(a => a.at < 0 && !a.kb && !a.ck && !a.crumb && Math.abs(a.x - v.x) < 30).slice(0, 3)) {
+        a.q = []; a.wait = 0; a.task = ''; a.fight = false;
+        goSurface(a, clampX(v.x + (v.tx - v.x) * 0.4));
+    }
+}
+// The lost queen, once taken in, lives in a nursery (or beside the queen).
+const adoptRoom = () => nurseries.length ? nurseries[0] : queenNode;
+function stepVisitors(dt, t) {
+    const ev = st.event ? st.event.id : null, fight = raider && raider.phase === 'fight';
+    if (evFx && t - evFx.t0 > 120) evFx = null;
+    const want = {beetle:ev === 'beetle' || !!st.beetle, queen:ev === 'queen', scouts:ev === 'scouts', caterpillar:ev === 'caterpillar' || buffOn('Guarding a caterpillar')};
+    for (const id in want) {
+        let v = visitors[id];
+        if (want[id] && (!v || v.leaving)) v = arrive(id, evSpot(id));
+        if (!want[id] && v && !v.leaving) {
+            // Taken in: she heads down into the nest as a guest ant.
+            if (id === 'queen' && chose('queen', t) === 0) {
+                guest = {x:v.x, y:surfY(v.x) - 1.55, a:0, at:-1, q:[], wait:0.5, ph:0, spd:7, lane:0, dist:0, role:'guest', next:null, task:'', rest:0};
+                goNest(guest, adoptRoom()); guest.q.push(floorPt(nest.nodes[adoptRoom()], 0.3));
+                delete visitors.queen; continue;
+            }
+            leave(v, (id === 'beetle' && chose('beetle', t) === 1) || (id === 'scouts' && chose('scouts', t) === 0));
+        }
+        if (!v) continue;
+        // The beetle pitches in when raiders come; otherwise it potters about.
+        if (id === 'beetle' && st.beetle && !v.leaving) {
+            if (fight) v.tx = clampX(raidStand(raider) + raider.dir * (RAID_REACH[raider.k] + 1.5));
+            else if (Math.abs(v.x - v.tx) < 0.3 && Math.random() < dt * 0.35) v.tx = clampX(v.home + (Math.random() - 0.5) * 9);
+        } else if (!v.leaving && Math.abs(v.x - v.tx) < 0.3 && Math.random() < dt * 0.3) v.tx = clampX(v.home + (Math.random() - 0.5) * (id === 'caterpillar' ? 5 : 3));
+        const d = v.tx - v.x, step = v.spd * dt;
+        v.moving = Math.abs(d) > 0.2;
+        if (v.moving) { v.dir = Math.sign(d); v.x += Math.abs(d) <= step ? d : Math.sign(d) * step; }
+        else if (id !== 'caterpillar') v.dir = Math.sign(nest.EX - v.x) || v.dir;
+        if (v.leaving && (v.x < -12 || v.x > W + 12)) delete visitors[id];
+    }
+    if (guest) { updAnt(guest, dt); if (!guest.q.length && guest.wait <= 0) guest = null; }
+    // Spores drift in at the entrance and down the shaft; cleaned out, they float back up.
+    const sp = chose('spores', t), el = evFx ? t - evFx.t0 : 99;
+    if ((ev === 'spores' || (sp === 0 && el < 5)) && spores.length < 28 && Math.random() < dt * 9)
+        spores.push({x:nest.EX + (Math.random() - 0.5) * 9, y:GROUND - 3 - Math.random() * 9, vy:2 + Math.random() * 2.5, life:7, ph:Math.random() * 6});
+    if (sp > 0 && el < 5 && spores.length < 28 && Math.random() < dt * 9)
+        spores.push({x:nest.EX + (Math.random() - 0.5) * 4, y:GROUND + 12, vy:-5 - Math.random() * 3, life:3.5, ph:Math.random() * 6});
+    for (const p of spores) { p.x += Math.sin(t * 2 + p.ph) * dt * 2.5; p.y += p.vy * dt; p.life -= dt; }
+    spores = spores.filter(p => p.life > 0);
+}
+// Side trips for foragers: sugar from the spill, honeydew from the aphids.
+function sideTrip() {
+    if (buffOn('Out on a long trip') && Math.random() < 0.45) return {x:evSpot('sugar'), col:'#ffffff'};
+    if (buffOn('Aphid farming') && Math.random() < 0.3) return {x:evSpot('aphids'), col:'#f2c14e'};
+    return null;
+}
+// How full the flooded tunnels are, 0 to 1: rising while it asks, held while
+// the nurses move the brood, then draining.
+function floodLevel(t) {
+    if (st.event && st.event.id === 'flood') return Math.min(1, (Date.now() - (st.event.until - 180e3)) / 15000);
+    const left = buffLeft('Moving the brood');
+    if (left > 0) return Math.min(1, left / 30);
+    if (chose('flood', t) === 1) { const el = t - evFx.t0; return el < 60 ? 1 : Math.max(0, 1 - (el - 60) / 30); }
+    return 0;
+}
+// The shallowest finished chamber, where nurses carry the brood in a flood.
+function highRoom() {
+    let best = null;
+    for (const n of nest.nodes) if (n.k && n.prog >= 1 && (!best || n.cy < best.cy)) best = n;
+    return best ? best.i : queenNode;
+}
+function drawFloodPix(t) {
+    const f = floodLevel(t), b = nestBox;
+    if (f <= 0 || !b) return;
+    const depth = Math.max(6, Math.min(30, (b.y1 - GROUND) * 0.25)), top = Math.round(b.y1 + 1 - depth * f), x0 = Math.max(0, b.x0 - 2), x1 = Math.min(W - 1, b.x1 + 2), y1 = Math.min(H - 1, b.y1 + 2);
+    const key = `${top}|${nest.dug}`;
+    if (key !== waterKey) {
+        waterKey = key;
+        waterCv = newCanvas((x1 - x0 + 1) * P, Math.max(1, (y1 - top + 1) * P));
+        const c = waterCv.getContext('2d');
+        for (let y = top; y <= y1; y++) for (let x = x0; x <= x1; x++) {
+            if (solid[y * W + x] !== 0) continue;
+            const surf = y === top || solid[(y - 1) * W + x] !== 0;
+            c.fillStyle = surf ? 'rgba(150,200,255,0.75)' : 'rgba(60,128,210,0.55)';
+            c.fillRect((x - x0) * P, (y - top) * P, P, surf ? 1 : P);
+            if (surf) { c.fillStyle = 'rgba(60,128,210,0.55)'; c.fillRect((x - x0) * P, (y - top) * P + 1, P, P - 1); }
+        }
+    }
+    pc.globalAlpha = 0.85 + 0.15 * Math.sin(t * 2);
+    pc.drawImage(waterCv, x0 * P, top * P);
+    pc.globalAlpha = 1;
+}
+function drawVisitorsPix(t) {
+    const ev = st.event ? st.event.id : null, fight = raider && raider.phase === 'fight';
+    for (const id in visitors) {
+        const v = visitors[id], flip = v.dir < 0, fr = v.moving ? Math.floor(t * (id === 'caterpillar' ? 2.5 : 8) + v.ph) % 2 : 0;
+        let x = v.x;
+        const y = surfY(x) - VISIT_FEET[id];
+        if (id === 'beetle' && fight && !v.moving) x += v.dir * Math.max(0, Math.sin(t * 13 + v.ph)) * 1.2;
+        if (id === 'scouts') {
+            // Two scouts, nosing about.
+            for (const [dx, k] of [[0, 0], [-3.6, 1]]) { const sx = x + dx * v.dir + (v.moving ? 0 : Math.sin(t * 3 + k * 2) * 0.5); blit(raiderSprite('rival', (fr + k) % 2, flip, P), sx * P, (surfY(sx) - 1.55) * P); }
+        } else if (id === 'queen') blit(antSprite('queen', 0, fr, flip), x * P, y * P);
+        else blit(visitSprite(id, fr, flip), x * P, y * P);
+    }
+    if (guest) { const {d, flip} = antDir(guest.a); blit(antSprite('queen', d, Math.floor(guest.ph / 2.5) % 2, flip), guest.x * P, (guest.y - 0.45) * P); }
+    // The adopted queen, at home in a nursery once she's arrived.
+    const ar = st.mods.adopted && !guest ? nest.nodes[adoptRoom()] : null;
+    if (ar && ar.k) {
+        const main = ar.i === queenNode, face = main ? (Math.sin(t * 0.05 + 1) > 0 ? 1 : 0) : Math.sin(t * 0.07) > 0 ? 1 : 0;
+        blit(antSprite('queen', 0, Math.floor(t * 0.8 + 1) % 2, face === 1), (ar.cx + (main ? (face ? 2.6 : -2.6) : 0)) * P, (ar.cy + ar.ry * 0.6 - 2.05) * P);
+    }
+    // Aphids on a grass stem by the food.
+    const ap = chose('aphids', t), apEl = evFx ? t - evFx.t0 : 99;
+    if (ev === 'aphids' || buffOn('Aphid farming') || (ap === 1 && apEl < 5)) {
+        const x = evSpot('aphids'), g = surfY(x), sx = Math.round(x * P), n = ap === 1 && !buffOn('Aphid farming') && ev !== 'aphids' ? Math.ceil(5 * (1 - apEl / 5)) : 5;
+        for (let k = 0; k < 20; k++) box(sx + Math.round(Math.sin(k * 0.25) * 1.5), Math.round(g * P) - k, 1, 1, '#4f8f3a');
+        box(sx + 1, Math.round(g * P) - 14, 4, 2, '#6fb04a'); box(sx - 4, Math.round(g * P) - 9, 4, 2, '#6fb04a');
+        for (let k = 0; k < n; k++) { const ay = Math.round(g * P) - 4 - k * 3, ax = sx + (k % 2 ? 1 : -3) + Math.round(Math.sin(k * 0.75) * 1.5); box(ax, ay, 3, 2, '#7fd04a'); box(ax + (k % 2 ? 2 : 0), ay, 1, 1, '#1d2a12'); box(ax + 1, ay, 1, 1, '#c8f7a0'); }
+    }
+    // Spilled sugar glinting at the far edge, carried off a cube at a time.
+    const sg = chose('sugar', t), sgEl = evFx ? t - evFx.t0 : 99, trip = buffLeft('Out on a long trip');
+    if (ev === 'sugar' || trip > 0 || (sg === 1 && sgEl < 4)) {
+        const x = evSpot('sugar'), g = Math.round(surfY(x) * P), n = trip > 0 ? Math.ceil(6 * trip / 180) : 6;
+        pc.globalAlpha = sg === 1 && ev !== 'sugar' && trip <= 0 ? Math.max(0, 1 - sgEl / 4) : 1;
+        for (let k = 0; k < n; k++) { const cx = Math.round(x * P) - 6 + (k % 3) * 4 + (k >= 3 ? 2 : 0), cy = g - 3 - (k >= 3 ? 3 : 0); box(cx, cy, 3, 3, '#ffffff'); box(cx, cy + 2, 3, 1, '#d8dce4'); }
+        if (Math.sin(t * 3) > 0.92) { const gx = Math.round(x * P) - 3 + Math.round(Math.sin(t * 7) * 4); box(gx, g - 9, 1, 3, '#ffffff'); box(gx - 1, g - 8, 3, 1, '#ffffff'); }
+        pc.globalAlpha = 1;
+    }
+    for (const p of spores) { pc.globalAlpha = Math.min(1, p.life / 1.5) * 0.85; box(p.x * P, p.y * P, 1, 1, '#f3ead2'); }
+    pc.globalAlpha = 1;
+    // Spores that took root with no room to grow in sprout in a nook instead.
+    const fz = st.mods.fungus || 0;
+    if (fz) {
+        deadEnds();
+        const spots = endsList.filter(i => !stashList.includes(i)).slice(0, fz);
+        for (const i of spots) { const n = nest.nodes[i], fl = Math.round((n.y + TR - 0.4) * P); for (let k = 0; k < 3; k++) { const mx = Math.round((n.x + (k - 1) * 1.4) * P), h = 2 + (k % 2); box(mx, fl - h, 1, h, '#e9e2cc'); box(mx - 1, fl - h - 1, 3, 1, k % 2 ? '#cfe9d8' : '#f2e3c2'); } }
+    }
+}
+// Tapping whatever an event put on the farm opens its card.
+function eventHit(wx, wy, reach) {
+    const id = st.event.id, v = visitors[id];
+    if (id === 'flood') { const b = nestBox; return !!b && wx > b.x0 && wx < b.x1 && wy > b.y1 - 30 && wy < b.y1 + 4; }
+    const x = v ? v.x : id === 'spores' ? nest.EX : evSpot(id), y = id === 'spores' ? GROUND - 3 : surfY(x) - 3;
+    return Math.hypot(wx - x, wy - y) < Math.max(reach, 8);
+}
+
 // Raids, events and new chambers wait under the numbers until dealt with.
 let alertKey = '';
 function renderAlerts() {
-    const R = st.raid, r = R ? rates() : null, ok = R && r.guard >= raidPower(R);
-    const key = [R ? R.k + (ok ? 1 : 0) : '', st.event ? st.event.id : '', roomAsk !== null ? roomAsk : ''].join('|');
+    const R = st.raid, r = R ? rates() : null, f = R && R.fight, ok = R && (f ? fightWinning(R) : r.guard >= raidPower(R));
+    // Sending guards that turn a losing fight gets a cheer.
+    if (f) { if (fightWas === false && ok) toast('Your guards are turning the fight around!'); fightWas = ok; } else fightWas = null;
+    const key = [R ? R.k + (f ? 'f' : '') + (ok ? 1 : 0) : '', st.event ? st.event.id : '', roomAsk !== null ? roomAsk : ''].join('|');
     if (key !== alertKey) {
         alertKey = key;
         let h = '';
-        if (R) h += `<button class="pill alert raid${ok ? ' ready' : ''}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>${RAID_SHORT[R.k]} in <span id="raidClock"></span></b><small>${ok ? 'guards ready' : 'need more guards'}</small></button>`;
+        if (R && f) h += `<button class="pill alert raid fight${ok ? ' ready' : ''}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>Fighting ${RAID_TXT[R.k]}</b><span class="tug"><span id="raidTug"></span></span><small>${ok ? 'guards winning' : 'send more guards!'}</small></button>`;
+        else if (R) h += `<button class="pill alert raid${ok ? ' ready' : ''}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>${RAID_SHORT[R.k]} in <span id="raidClock"></span></b><small>${ok ? 'guards ready' : 'need more guards'}</small></button>`;
         if (st.event) h += `<button class="pill alert event" data-alert="event"><i class="fa-solid fa-circle-exclamation"></i><b>${esc(EV[st.event.id] ? EV[st.event.id].title : '')}</b></button>`;
         if (roomAsk !== null) h += `<button class="pill alert room" data-alert="room"><i class="fa-solid fa-house"></i><b>New chamber: choose its job</b></button>`;
         $('alerts').innerHTML = h;
     }
-    if (R) $('raidClock').textContent = clock(Math.max(0, (R.at - Date.now()) / 1000));
+    if (f) $('raidTug').style.width = (f.g / Math.max(1e-6, f.g + f.r) * 100).toFixed(1) + '%';
+    else if (R) $('raidClock').textContent = clock(Math.max(0, (R.at - Date.now()) / 1000));
 }
 // Jump to the job bar: the Jobs card on a phone, the Farm tab elsewhere.
 function showJobs() {
@@ -3318,9 +3864,14 @@ function render(t) {
     pc.drawImage(soilCv, 0, 0, PW, PH);
     drawGroundWeatherPix(sky, t);
     drawChambersPix(t);
+    drawBodiesPix(t);
     drawAntsPix(t);
+    drawFloodPix(t);
+    drawVisitorsPix(t);
+    drawRoomFocusPix(t);
     drawCritterPix(t);
     drawRaiderPix(t);
+    drawFightBarPix();
     for (const d of dust) { pc.globalAlpha = Math.min(1, d.life * 2); box(d.x * P, d.y * P, 1, 1, d.col); }
     pc.globalAlpha = 1;
     drawFlightPix();
@@ -3367,6 +3918,7 @@ function tickAll() {
     stepCritter(dt, t, sky);
     stepRaider(dt, t);
     stepVisual(dt, t);
+    stepVisitors(dt, t);
     stepCam(dt);
     render(t);
     if (now > uiAt) { if (!document.hidden) updateUI(); audioTick(); uiAt = now + 250; }
@@ -3738,12 +4290,12 @@ function updateUI() {
     tipEl.classList.toggle('warn', warn);
     if (tipEl.dataset.t !== tip) { tipEl.dataset.t = tip; tipEl.innerHTML = `<i class="fa-solid fa-lightbulb"></i>${tip}`; }
     for (const b of $('buyMode').children) b.classList.toggle('on', String(st.buy) === b.dataset.n);
-    // Upgrades show once unlocked, listed in the order they were unlocked;
-    // a new one glows for a few seconds.
+    // Upgrades show once unlocked: the next food first, then the rest in the
+    // order they were unlocked. A new one glows for a few seconds.
     const ups = $('ups'), upOrder = st.unlocked.join();
     if (ups.dataset.order !== upOrder) {
         ups.dataset.order = upOrder;
-        const rank = id => { const i = st.unlocked.indexOf(id); return i < 0 ? 99 : i; };
+        const rank = id => { const i = st.unlocked.indexOf(id); return id === 'tier' ? -1 : i < 0 ? 99 : i; };
         ups.append(...[...ups.children].sort((a, b) => rank(a.dataset.id) - rank(b.dataset.id)));
     }
     const nowMs = performance.now();
@@ -4071,7 +4623,7 @@ function load() {
     if (d.nest.w === WORLD) unpackNest(d.nest);
     else regrowNest(d.nest);
     afterNest();
-    AW = []; crumbs = []; floaters = []; dust = [];
+    AW = []; crumbs = []; floaters = []; dust = []; bodies = []; visitors = {}; guest = null; spores = []; evFx = null; waterKey = '';
     antSeq = 0; pendingRoster = d.roster || [];
     return d;
 }
@@ -4289,6 +4841,7 @@ function tap(clientX, clientY) {
     const p = toCanvas(clientX, clientY), wx = (p.x - view.ox) / view.s, wy = (p.y - view.oy) / view.s;
     const reach = 26 * p.k / view.s;  // about a fingertip, in farm units
     if (critter && Math.hypot(critter.x - wx, critter.y - wy) < Math.max(reach, 4.5 * critterScale())) { catchCritter(); return; }
+    if (st.event && eventHit(wx, wy, reach)) { openEvent(); return; }
     // A tap in a chamber, not right on an ant, asks what the chamber should be.
     const room = roomAt(wx, wy);
     if (room && !AW.some(a => Math.hypot(a.x - wx, a.y - wy) < 1.6)) {
