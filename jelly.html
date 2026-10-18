@@ -2091,7 +2091,7 @@ const SAVE_KEY = 'jelly.v1';
 // From level 8 levels start a slot short; when one runs out of room, that slot can be bought back once.
 const PRICE = {hammer: 80, magnet: 50, slot: 100};
 const UNLOCK = {hammer: 4, magnet: 7};
-const DEF = {lvl: 1, coins: 50, boost: {hammer: 0, magnet: 0}, streak: 0, best: 0, wins: 0, tries: 0, album: {}, tips: {}, sound: true, haptics: true, fast: false, run: null};
+const DEF = {lvl: 1, coins: 50, boost: {hammer: 0, magnet: 0}, streak: 0, best: 0, wins: 0, tries: 0, album: {}, tips: {}, sound: true, silentPlay: true, haptics: true, fast: false, run: null};
 const params = new URLSearchParams(location.search);
 const testLevel = +params.get('level') || 0;   // ?level=N plays that level without touching progress
 let save = loadSave();
@@ -2161,15 +2161,23 @@ const prepare = n => getLevel(n, () => {});
 
 /* ---------- sound ---------- */
 let AC = null, master = null, lastPop = 0;
+// iPhones mute web page sound while the phone is on silent, unless the page asks for
+// "playback" (as a video would). That keeps the game audible on silent, but it also
+// pauses music from other apps, so it's a switch in Settings (on by default).
+function audioSessionType() {
+    try { if (navigator.audioSession) navigator.audioSession.type = save.silentPlay ? 'playback' : 'ambient'; } catch (e) { /* older Safari */ }
+}
 function audio() {
     if (!save.sound) return null;
     if (!AC) {
+        audioSessionType();
         try {
             AC = new (window.AudioContext || window.webkitAudioContext)();
             master = AC.createGain(); master.gain.value = 0.55; master.connect(AC.destination);
         } catch (e) { return null; }
     }
-    if (AC.state === 'suspended') AC.resume();
+    // Safari leaves it 'interrupted' after the app was in the background, not just 'suspended'
+    if (AC.state !== 'running') AC.resume().catch(() => {});
     return AC;
 }
 function tone(f0, f1, dur, type = 'sine', vol = 0.25, delay = 0) {
@@ -3063,7 +3071,9 @@ function pauseMenu() {
 function settingsMenu(back) {
     const draw = () => modal(`<h2>Settings</h2>
         <div class="setting">Sound <button class="toggle ${save.sound ? 'on' : ''}" data-act="sound" aria-label="Sound"></button></div>
-        <div class="setting">Vibration <button class="toggle ${save.haptics ? 'on' : ''}" data-act="haptics" aria-label="Vibration"></button></div>
+        ${navigator.audioSession ? `<div class="setting"><span>Sound in silent mode<br><small style="color:#a99bd0">Pauses music from other apps</small></span> <button class="toggle ${save.silentPlay ? 'on' : ''}" data-act="silent" aria-label="Sound in silent mode"></button></div>` : ''}
+        ${navigator.vibrate || !isIOS ? `<div class="setting">Vibration <button class="toggle ${save.haptics ? 'on' : ''}" data-act="haptics" aria-label="Vibration"></button></div>`
+            : `<div class="setting"><span>Vibration<br><small style="color:#a99bd0">iPhones don't let web games vibrate</small></span></div>`}
         <div class="setting">Fast track <button class="toggle ${save.fast ? 'on' : ''}" data-act="fast" aria-label="Fast track"></button></div>
         <div class="setting">Best streak <b>${save.best}</b></div>
         <div class="setting">Levels won <b>${save.wins}</b></div>
@@ -3077,6 +3087,7 @@ function settingsMenu(back) {
         sound: () => { setSound(!save.sound); draw(); },
         fast: () => { save.fast = !save.fast; persist(); hud(); draw(); },
         haptics: () => { save.haptics = !save.haptics; persist(); buzz(20); draw(); },
+        silent: () => { save.silentPlay = !save.silentPlay; persist(); audioSessionType(); if (save.sound) SND.coin(); draw(); },
         how: () => howTo(() => settingsMenu(back)),
         move: () => moveMenu(draw),
         back: () => back ? back() : (closeModal(), homeUI()),
@@ -3440,11 +3451,13 @@ function fitPhone() {
 fitPhone();
 // Shown small in Settings, so a screenshot says which version is running and what the
 // phone reports about its screen.
-const BUILD = '2026-10-18b';
+const BUILD = '2026-10-18c';
+const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 function screenInfo() {
     const top = Math.round(parseFloat(getComputedStyle(insetProbe).paddingTop) || 0);
     const app = navigator.standalone === true ? 'home screen app' : 'browser';
-    return `Version ${BUILD} · ${app} · screen ${screen.width}x${screen.height}, view ${innerWidth}x${innerHeight}, top ${top}, lift ${getComputedStyle(document.documentElement).getPropertyValue('--drop').trim() || '0px'}`;
+    const ios = (navigator.userAgent.match(/OS (\d+)_(\d+)/) || []).slice(1).join('.');
+    return `Version ${BUILD}${ios ? ' · iOS ' + ios : ''} · ${app} · sound ${save.sound ? 'on' : 'off'} · screen ${screen.width}x${screen.height}, view ${innerWidth}x${innerHeight}, top ${top}, lift ${getComputedStyle(document.documentElement).getPropertyValue('--drop').trim() || '0px'}`;
 }
 function onResize() { fitPhone(); if (screenName === 'play') layout(); }
 addEventListener('resize', onResize);
