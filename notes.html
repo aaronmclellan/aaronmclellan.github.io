@@ -283,7 +283,7 @@ a{color:var(--accent);}
 :is(#editor,.note-view) div[data-todo][data-indent="2"]:has(+ div[data-todo][data-indent="3"])::after,
 :is(#editor,.note-view) div[data-todo][data-indent="3"]:has(+ div[data-todo][data-indent="4"])::after,
 :is(#editor,.note-view) div[data-todo][data-indent="4"]:has(+ div[data-todo][data-indent="5"])::after{
-  content:'';position:absolute;left:-15px;top:.62em;width:6px;height:6px;
+  content:'';position:absolute;left:-28px;top:.62em;width:6px;height:6px;
   border-right:2px solid var(--text3);border-bottom:2px solid var(--text3);transform:rotate(45deg);cursor:pointer;
   text-decoration:none;
 }
@@ -299,6 +299,18 @@ a{color:var(--accent);}
 :is(#editor,.note-view) time[data-when="soon"]{color:var(--warn);}
 :is(#editor,.note-view) div[data-todo="true"] time[datetime]{opacity:.6;}
 #editor [data-flash]{animation:flash 1.6s ease;}
+#editor [data-dragging]{opacity:.35;}
+/* Drag handles: a column of six dots left of each checklist item, drawn outside the note text */
+#ed-scroll{position:relative;}
+#grips{position:absolute;top:0;left:0;width:0;height:0;}
+.grip{position:absolute;width:14px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--text3);opacity:0;cursor:grab;touch-action:none;border-radius:5px;transition:opacity .12s;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+.grip svg{width:10px;height:16px;pointer-events:none;}
+.grip.hot,.grip:hover{opacity:1;color:var(--text2);}
+.grip:hover{background:var(--btnH);color:var(--text);}
+@media (hover:none){.grip{opacity:.7;}}
+#editor.has-kids{padding-left:36px;}
+#drop-line{position:fixed;height:3px;margin-top:-1px;background:var(--accent);border-radius:2px;pointer-events:none;z-index:150;display:none;}
+body.dragging-todo,body.dragging-todo *{cursor:grabbing!important;-webkit-user-select:none!important;user-select:none!important;}
 @keyframes flash{0%,40%{background:var(--accentA);}100%{background:transparent;}}
 ::highlight(search){background:rgba(255,196,77,.4);color:inherit;}
 mark{background:rgba(255,196,77,.5);color:var(--text);border-radius:2px;padding:0 1px;}
@@ -520,6 +532,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
   #back-btn{display:flex;}
   #title-input{font-size:1.15rem;}
   #editor{padding:16px 16px 24px 22px;font-size:16px;}
+  #editor.has-kids{padding-left:34px;}
   #ed-scroll{padding-bottom:40vh;}
   #backlinks{margin:0 12px;}
   #editor.is-empty::before{left:22px;top:16px;}
@@ -646,6 +659,8 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="fb" data-act="fmt" data-cmd="outdent" data-tip="Move left (Shift+Tab)" aria-label="Move left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="7 8 3 12 7 16"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="due" data-tip="Due date (or type @fri)" aria-label="Due date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><path d="M9 15l2 2 4-4"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="indent" data-tip="Move right (Tab)" aria-label="Move right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="3 8 7 12 3 16"/></svg></button>
+    <button class="fb" data-act="fmt" data-cmd="moveUp" data-tip="Move item up" aria-label="Move item up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg></button>
+    <button class="fb" data-act="fmt" data-cmd="moveDown" data-tip="Move item down" aria-label="Move item down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="4" x2="12" y2="19"/><polyline points="6 13 12 19 18 13"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertUnorderedList" data-tip="Bullet list" aria-label="Bullet list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4.5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertOrderedList" data-tip="Numbered list" aria-label="Numbered list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="20" y2="12"/><line x1="10" y1="18" x2="20" y2="18"/><text x="3" y="8" font-size="7" fill="currentColor" stroke="none" font-weight="700">1</text><text x="3" y="14" font-size="7" fill="currentColor" stroke="none" font-weight="700">2</text><text x="3" y="20" font-size="7" fill="currentColor" stroke="none" font-weight="700">3</text></svg></button>
     <div class="fs"></div>
@@ -664,6 +679,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
   <div id="done-bar" hidden><span id="done-msg"></span><button class="linkbtn" data-act="showDone">Show them</button></div>
   <div id="ed-scroll">
     <div id="editor" contenteditable="true" data-placeholder="Start writing... (try - , # , [] or > at the start of a line, or / for more)" spellcheck="true"></div>
+    <div id="grips" aria-hidden="true"></div>
     <div id="backlinks" hidden><div class="bl-head">Linked from</div><div id="bl-list"></div></div>
   </div>
   <div id="status-bar"><span id="wc">0 words</span><span id="edited"></span><button class="sync-btn" data-act="syncClick"><span class="dot" data-sync-dot></span><span data-sync-label>This device only</span></button></div>
@@ -990,8 +1006,8 @@ async function loadState() {
 let saveTimer = null, saveFailed = false;
 function persist() { clearTimeout(saveTimer); saveTimer = setTimeout(persistNow, 250); }
 async function persistNow() {
-  clearTimeout(saveTimer); saveTimer = null;
   flushEditor();
+  clearTimeout(saveTimer); saveTimer = null;
   const ok = await store.set('data', D);
   if (!ok && !saveFailed) toast("Couldn't save on this device. Storage may be full.");
   saveFailed = !ok;
@@ -1728,6 +1744,7 @@ function closeEditor() {
   edId = null; P.activeId = null; savePrefs();
   cleanupEmpty(n);
   $('editor').innerHTML = '';
+  renderGripsSoon();
   $('editor-panel').classList.add('none');
   if (isMobile()) { $('list-panel').classList.remove('hidden'); $('editor-panel').classList.add('hidden'); }
   renderSidebar(); renderList();
@@ -1936,9 +1953,10 @@ function flushEditor() {
   if (!n) return;
   n.content = stripScreenOnly(ed.innerHTML);
   edLoaded.content = n.content;
+  persist();   // the timer that would have saved it was just cancelled
 }
 // Attributes that only describe how things look right now (folded, overdue, a deleted link target): never saved.
-const stripScreenOnly = html => html.replace(/<(div|a|time)\b[^>]*>/g, tag => tag.replace(/ (hidden=""|data-broken=""|data-flash=""|data-when="[a-z]*")/g, ''));
+const stripScreenOnly = html => html.replace(/<(div|a|time)\b[^>]*>/g, tag => tag.replace(/ (hidden=""|data-broken=""|data-flash=""|data-dragging=""|data-when="[a-z]*")/g, ''));
 // Note links show the target's current title; due dates get their overdue / today colours.
 function refreshInline(root = ed) {
   for (const a of root.querySelectorAll('a[data-note]')) {
@@ -2155,6 +2173,8 @@ function applyFolds() {
     } else hideBelow = -1;
     if (el.hidden !== hide) el.hidden = hide;
   }
+  ed.classList.toggle('has-kids', [...ed.querySelectorAll('[data-todo]')].some(hasKids));
+  renderGripsSoon();
   // Don't leave the caret inside something that just got folded away.
   const s = getSelection(), b = s.rangeCount && ed.contains(s.anchorNode) ? blockOf(s.anchorNode) : null;
   if (b && b.hidden) {
@@ -2176,7 +2196,7 @@ function updateDoneBar() {
 function toggleHideDone(id) {
   const n = byId(id); if (!n) return;
   n.hideDone = !n.hideDone; touch(n); changed();
-  if (id === edId) { ed.classList.toggle('hide-done', n.hideDone); updateDoneBar(); }
+  if (id === edId) { ed.classList.toggle('hide-done', n.hideDone); updateDoneBar(); renderGripsSoon(); }
   toast(n.hideDone ? 'Checked items hidden in this note' : 'Checked items shown');
 }
 // Change a note's checklist HTML, in the editor if it's open or straight in the saved copy if not.
@@ -2216,11 +2236,149 @@ function todoAt(target, x, y) {
 }
 // The arrow to the left of an item that has sub-items.
 function foldAt(target, x, y) {
-  const near = el => { const r = el.getBoundingClientRect(); return x < r.left && x >= r.left - 26 && y >= r.top && y - r.top <= 30; };
+  const near = el => { const r = el.getBoundingClientRect(); return x < r.left - 17 && x >= r.left - 36 && y >= r.top && y - r.top <= 30; };   // left of the drag handle
   let t = target && target.closest ? target.closest('[data-todo]') : null;
   if (!t || !ed.contains(t)) t = [...ed.querySelectorAll('[data-todo]')].find(el => !el.hidden && near(el));
   return t && near(t) && hasKids(t) ? t : null;
 }
+/* Reordering. Each checklist item gets a six-dot handle to its left; drag it to move the item
+   (its sub-items come along). The handles sit in a layer next to the note, so nothing extra is saved. */
+const groupOf = t => { const g = [t]; for (let n = t.nextElementSibling; isTodo(n) && levelOf(n) > levelOf(t); n = n.nextElementSibling) g.push(n); return g; };
+const dropLine = document.createElement('div');
+dropLine.id = 'drop-line'; document.body.appendChild(dropLine);
+let drag = null, gripRAF = 0;
+const GRIP_SVG = '<svg viewBox="0 0 10 16" fill="currentColor"><circle cx="2.5" cy="2.5" r="1.5"/><circle cx="7.5" cy="2.5" r="1.5"/><circle cx="2.5" cy="8" r="1.5"/><circle cx="7.5" cy="8" r="1.5"/><circle cx="2.5" cy="13.5" r="1.5"/><circle cx="7.5" cy="13.5" r="1.5"/></svg>';
+const renderGripsSoon = () => { if (!gripRAF) gripRAF = requestAnimationFrame(() => { gripRAF = 0; renderGrips(); }); };
+// One handle per visible checklist item, lined up with its first line (they move with the scroll).
+function renderGrips() {
+  if (drag) return;   // keep the handle being dragged in place
+  const box = $('grips');
+  if (!edId || ed.contentEditable !== 'true') { box.innerHTML = ''; return; }
+  const sc = $('ed-scroll'), sr = sc.getBoundingClientRect();
+  let h = '';
+  ed.querySelectorAll('[data-todo]').forEach((el, i) => {
+    if (!el.getClientRects().length) return;   // folded away or hidden
+    const r = el.getBoundingClientRect();
+    h += `<div class="grip" data-i="${i}" style="top:${Math.round(r.top - sr.top + sc.scrollTop)}px;left:${Math.round(r.left - sr.left - 17)}px" title="Drag to move">${GRIP_SVG}</div>`;
+  });
+  box.innerHTML = h;
+}
+function startDrag() {
+  drag.active = true;
+  hideMenu(); closeSlash();
+  for (const el of drag.group) el.setAttribute('data-dragging', '');
+  document.body.classList.add('dragging-todo');
+  const scroll = () => {
+    if (!drag || !drag.active) return;
+    const box = $('ed-scroll').getBoundingClientRect(), edge = 48;
+    const v = drag.py < box.top + edge ? -1 : drag.py > box.bottom - edge ? 1 : 0;
+    if (v) { $('ed-scroll').scrollTop += v * 10; moveDrag(drag.px, drag.py); }
+    requestAnimationFrame(scroll);
+  };
+  requestAnimationFrame(scroll);
+}
+// Work out where the items would land, and how deep, from the pointer position.
+function moveDrag(x, y) {
+  drag.px = x; drag.py = y;
+  const items = [...ed.querySelectorAll('[data-todo]')].filter(el => !drag.group.includes(el) && el.getClientRects().length);
+  let before = null, after = null;
+  for (const el of items) { const r = el.getBoundingClientRect(); if (y < r.top + r.height / 2) { before = el; break; } after = el; }
+  // Something other than checklist items between the two means two separate lists: join the nearer one.
+  const sameList = after && before && (() => { for (let n = after.nextElementSibling; n; n = n.nextElementSibling) { if (n === before) return true; if (!isTodo(n)) return false; } return false; })();
+  if (after && before && !sameList) { if (y - after.getBoundingClientRect().bottom < before.getBoundingClientRect().top - y) before = null; else after = null; }
+  if (!before && !after) { drag.target = null; dropLine.style.display = 'none'; return; }
+  // Keep the item's own level (or take the level of the item it lands above), and drag sideways to
+  // change it. It can't go more than one deeper than the item above, or leave the one below stranded.
+  const minLv = before && after ? Math.max(0, levelOf(before) - 1) : 0;
+  const maxLv = after ? Math.min(MAX_INDENT, levelOf(after) + 1) : 0;
+  const base = before && after ? levelOf(before) : levelOf(drag.group[0]);
+  const lv = Math.max(minLv, Math.min(maxLv, base + Math.round((x - drag.x) / 28)));
+  drag.target = { before, after, lv };
+  const ref = before || after, box = ref.getBoundingClientRect(), edBox = ed.getBoundingClientRect();
+  const left = box.left + (lv - levelOf(ref)) * 28;
+  dropLine.style.display = 'block';
+  dropLine.style.top = (before ? box.top - 2 : box.bottom + 1) + 'px';
+  dropLine.style.left = left + 'px';
+  dropLine.style.width = Math.max(40, edBox.right - 24 - left) + 'px';
+}
+function finishDrag(cancel) {
+  const d = drag; drag = null;
+  for (const el of d.group) el.removeAttribute('data-dragging');
+  document.body.classList.remove('dragging-todo');
+  dropLine.style.display = 'none';
+  if (cancel || !d.target) return;
+  const { before, after, lv } = d.target, parent = d.group[0].parentNode;
+  let anchor = before || (() => { const g = groupOf(after); return g[g.length - 1].nextSibling; })();
+  if (d.group.includes(anchor)) anchor = d.group[d.group.length - 1].nextSibling;
+  const delta = lv - levelOf(d.group[0]);
+  if (anchor === d.group[d.group.length - 1].nextSibling && !delta) return;   // dropped where it was
+  for (const el of d.group) { parent.insertBefore(el, anchor); setLevel(el, Math.max(0, Math.min(MAX_INDENT, levelOf(el) + delta))); }
+  // Items that followed may now sit too deep for their new neighbour.
+  for (let n = d.group[d.group.length - 1].nextElementSibling; isTodo(n); n = n.nextElementSibling) {
+    const above = n.previousElementSibling;
+    if (levelOf(n) > levelOf(above) + 1) setLevel(n, levelOf(above) + 1); else break;
+  }
+  onEditorChange();
+}
+// Move up / Move down (toolbar, Ctrl+Cmd+Up/Down on a Mac, Alt+Shift+Up/Down elsewhere): past the
+// neighbouring item at the same level, staying inside the parent.
+function moveTodo(dir, fromToolbar) {
+  if (fromToolbar) restoreSel();
+  const s = getSelection(), t = s.rangeCount && blockOf(s.anchorNode);
+  if (!isTodo(t)) { toast('Put the cursor on a checklist item first'); return; }
+  const caret = (() => { const r = document.createRange(); r.selectNodeContents(t); r.setEnd(s.anchorNode, s.anchorOffset); return r.toString().length; })();
+  const group = groupOf(t), lv = levelOf(t), parent = t.parentNode;
+  let anchor;
+  if (dir < 0) {
+    let prev = t.previousElementSibling;
+    while (isTodo(prev) && levelOf(prev) > lv) prev = prev.previousElementSibling;
+    if (!isTodo(prev) || levelOf(prev) < lv) return;
+    anchor = prev;
+  } else {
+    const next = group[group.length - 1].nextElementSibling;
+    if (!isTodo(next) || levelOf(next) < lv) return;
+    const g = groupOf(next); anchor = g[g.length - 1].nextSibling;
+  }
+  for (const el of group) parent.insertBefore(el, anchor);
+  // Put the caret back where it was in the item.
+  const w = document.createTreeWalker(t, NodeFilter.SHOW_TEXT); let node, left = caret;
+  while ((node = w.nextNode())) { if (left <= node.length) { placeCaret(node, left); break; } left -= node.length; }
+  if (!node) { const r = document.createRange(); r.selectNodeContents(t); r.collapse(false); s.removeAllRanges(); s.addRange(r); }
+  t.scrollIntoView({ block: 'nearest' });
+  onEditorChange();
+}
+// Mouse and finger alike: the handle doesn't scroll the page (touch-action: none), so a drag starts right away.
+$('grips').addEventListener('pointerdown', e => {
+  const g = e.target.closest('.grip'), item = g && ed.querySelectorAll('[data-todo]')[+g.dataset.i];
+  if (!item || (e.pointerType === 'mouse' && e.button !== 0)) return;
+  e.preventDefault();   // keep the caret where it is
+  try { g.setPointerCapture(e.pointerId); } catch (err) {}   // keeps the moves coming to the handle even off it
+  drag = { group: groupOf(item), x: e.clientX, y: e.clientY, active: false, id: e.pointerId };
+});
+$('grips').addEventListener('pointermove', e => {
+  if (!drag || e.pointerId !== drag.id) return;
+  if (!drag.active && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 4) return;
+  if (!drag.active) { startDrag(); if (navigator.vibrate && e.pointerType === 'touch') navigator.vibrate(8); }
+  moveDrag(e.clientX, e.clientY);
+});
+function endGripDrag(e, cancel) {
+  if (!drag || e.pointerId !== drag.id) return;
+  if (drag.active) finishDrag(cancel); else drag = null;
+  renderGripsSoon();
+}
+$('grips').addEventListener('pointerup', e => endGripDrag(e, false));
+$('grips').addEventListener('pointercancel', e => endGripDrag(e, true));
+$('grips').addEventListener('contextmenu', e => e.preventDefault());
+// On a computer the handle shows while you point at its item.
+$('ed-scroll').addEventListener('mousemove', e => {
+  if (drag) return;
+  const t = e.target.closest && e.target.closest('[data-todo]');
+  const i = t && ed.contains(t) ? [...ed.querySelectorAll('[data-todo]')].indexOf(t) : -1;
+  $('grips').querySelectorAll('.grip').forEach(g => g.classList.toggle('hot', +g.dataset.i === i));
+});
+$('ed-scroll').addEventListener('mouseleave', () => $('grips').querySelectorAll('.hot').forEach(g => g.classList.remove('hot')));
+window.addEventListener('resize', renderGripsSoon);
+ed.addEventListener('load', renderGripsSoon, true);   // images change line positions as they load
 ed.addEventListener('mousedown', e => { if (todoAt(e.target, e.clientX, e.clientY) || foldAt(e.target, e.clientX, e.clientY)) e.preventDefault(); });
 let touchStart = null;
 ed.addEventListener('touchstart', e => { const p = e.touches[0]; touchStart = { x: p.clientX, y: p.clientY, t: now(), target: e.target }; }, { passive: true });
@@ -2263,6 +2421,9 @@ ed.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const k = slash.items.length; slash.i = (slash.i + (e.key === 'ArrowDown' ? 1 : -1) + k) % k; renderSlash(); return; }
     if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); pickSlash(slash.i); return; }
     if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closeSlash(); return; }
+  }
+  if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && ((e.metaKey && e.ctrlKey) || (e.altKey && e.shiftKey)) && isTodo(blockOf(getSelection().anchorNode))) {
+    e.preventDefault(); moveTodo(e.key === 'ArrowUp' ? -1 : 1); return;
   }
   if (e.key === 'Tab') {
     const s = getSelection(), node = s.anchorNode && (s.anchorNode.nodeType === 3 ? s.anchorNode.parentElement : s.anchorNode);
@@ -2742,6 +2903,7 @@ async function insertImageFile(file) {
 const FMT = {
   todo: toggleTodo,
   indent: () => indentCmd(1), outdent: () => indentCmd(-1),
+  moveUp: () => moveTodo(-1, true), moveDown: () => moveTodo(1, true),
   due: () => { restoreSel(); const b = blockOf(getSelection().anchorNode); const tm = isTodo(b) && b.querySelector('time[datetime]'); pickDue(isTodo(b) ? b : null, tm ? tm.getAttribute('datetime') : ''); },
   h1: () => toggleBlock('H1'), h2: () => toggleBlock('H2'), h3: () => toggleBlock('H3'),
   quote: () => toggleBlock('BLOCKQUOTE'),
@@ -3298,6 +3460,7 @@ function renderSettings() {
     <kbd>/</kbd><span>Search; in a note, the insert menu</span><kbd>[[</kbd><span>Link to another note</span><kbd>@fri</kbd><span>Due date on a checklist item (@today, @tmrw, @10/20, @3d)</span><kbd>${MOD} S</kbd><span>Sync now</span>
     <kbd>${MOD} K</kbd><span>Add a link (in a note)</span><kbd>${MOD} Shift L</kbd><span>Checklist</span>
     <kbd>Tab / Shift Tab</kbd><span>Nest a checklist item under the one above, or move it back out</span>
+    <kbd>${isMac ? 'Ctrl ⌘ ↑ / ↓' : 'Alt Shift ↑ / ↓'}</kbd><span>Move a checklist item up or down (or drag its dotted handle)</span>
     <kbd>- &nbsp;1. &nbsp;[] &nbsp;# &nbsp;&gt;</kbd><span>Bullets, numbers, checklist, heading, quote</span>
     <kbd>---</kbd><span>Divider</span><kbd>${MOD}-click</kbd><span>Open a link</span></div></section>`;
   const lockAfter = [[0, 'As soon as I leave the app'], [1, 'After 1 minute away'], [5, 'After 5 minutes away'], [15, 'After 15 minutes away'], [60, 'After 1 hour away']];

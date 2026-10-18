@@ -386,7 +386,20 @@ body.dragging .window-content iframe{pointer-events:none}
 /* ========== SCREENSAVER ========== */
 #screensaver{position:fixed;inset:0;z-index:99998;background:#000;display:none;cursor:none}
 #screensaver.active{display:block}
-.ss-logo{position:absolute;width:80px;height:80px;border-radius:50%;object-fit:cover;transition:none}
+.ss-canvas{display:block;width:100%;height:100%}
+.dp-wrap{display:flex;flex-direction:column;height:100%;background:#fff}
+.dp-tabs{display:flex;gap:2px;padding:6px 8px 0;background:#f4f3ee;border-bottom:1px solid #aca899;flex-shrink:0}
+.dp-tab{font-family:var(--font);font-size:11px;padding:3px 10px;border:1px solid #aca899;border-bottom:none;border-radius:3px 3px 0 0;background:#e8e6da;color:#000;cursor:pointer;margin-bottom:-1px}
+.dp-tab.active{background:#fff;padding-bottom:4px}
+.dp-page{flex:1;min-height:0}
+.ss-monitor{width:188px;margin:4px auto 22px;padding:10px 10px 14px;background:linear-gradient(#dcd9cc,#b9b5a5);border:1px solid #8a8678;border-radius:8px 8px 4px 4px;position:relative}
+.ss-monitor::after{content:"";position:absolute;left:50%;bottom:-11px;width:64px;height:10px;transform:translateX(-50%);background:#a9a596;border:1px solid #8a8678;border-top:none;border-radius:0 0 6px 6px}
+.ss-screen{height:118px;background:#000;border:2px inset #8a8678;overflow:hidden;background-size:cover}
+.ss-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:11px}
+.ss-row select{flex:1;min-width:0;font-family:var(--font);font-size:11px;padding:2px}
+.ss-row button{font-family:var(--font);font-size:11px;padding:3px 12px;cursor:pointer;background:#f4f3ee;border:1px solid #888;border-radius:3px;color:#000}
+.ss-row button:disabled,.ss-row input:disabled{opacity:0.45;cursor:default}
+.ss-wait{width:52px;font-family:var(--font);font-size:11px;padding:2px}
 
 /* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar{width:14px}
@@ -503,7 +516,7 @@ body.dragging .window-content iframe{pointer-events:none}
 
 <!-- SCREENSAVER -->
 <div id="screensaver">
-    <img src="ron-avatar.jpg" class="ss-logo" id="ss-logo" alt="">
+    <canvas class="ss-canvas" id="ss-canvas"></canvas>
 </div>
 
 <script>
@@ -563,6 +576,7 @@ const desktopApps = [
     { id:'notepad',title:'Notepad',icon:'fa-solid fa-file-lines',color:'#4a90d9',open:'notepad'},
     { id:'cmd',title:'Command\nPrompt',icon:'fa-solid fa-terminal',color:'#00cc44',open:'cmd'},
     { id:'mediaplayer',title:'Media Player',icon:'fa-solid fa-music',color:'#9b59b6',open:'mediaplayer'},
+    { id:'displayprops',title:'Display\nProperties',icon:'fa-solid fa-palette',color:'#9b59b6',open:'displayprops'},
 ];
 // Old pages that still live in the repo. "Restore" opens them.
 const trash = [
@@ -634,6 +648,7 @@ const clippyMsgs = [
     "Check out Minesweeper if you need a break.",
     "Open the Start menu to find all the apps.",
     "Try the Command Prompt - type 'help' to get started!",
+    "Pick a screensaver and how long it waits in Display Properties.",
     "Right-click an icon to see what it is before you open it.",
     "Hold Alt and press ` (or Tab on a Mac) to switch windows.",
     "The address bar follows the window you're in, so you can share a link straight to it.",
@@ -1439,14 +1454,43 @@ function openSysProps() {
 /* ==============================================
    DISPLAY PROPERTIES (WALLPAPER PICKER)
    ============================================== */
-function openDisplayProps() {
+function openDisplayProps(tab) {
     const theme = getTheme();
     const wps = wallpapers[theme] || [];
     const saved = parseInt(localStorage.getItem('wallpaper_' + theme) || '0');
     const wpHTML = wps.map((wp, i) => `<div class="wallpaper-opt${i===saved?' active':''}" style="background:${wp.bg}" onclick="setWallpaper('${theme}',${i});document.querySelectorAll('.wallpaper-opt').forEach(w=>w.classList.remove('active'));this.classList.add('active')" data-idx="${i}"><span>${wp.name}</span></div>`).join('');
+    const order = ['starfield', 'pipes', 'mystify', 'ron', 'projects'];
+    const saverOpts = ['none', ...order.filter(k => savers[k]), ...Object.keys(savers).filter(k => !order.includes(k))].map(k => `<option value="${k}">${k === 'none' ? '(None)' : savers[k].label}</option>`).join('');
     createAppWindow({id:'displayprops', title:'Display Properties', icon:'fa-solid fa-palette', color:'#9b59b6',
-        w:360, h:340,
-        content:`<div class="props-wrap"><div class="props-section"><h3>Wallpaper</h3><p style="font-size:11px;opacity:0.6;margin-bottom:8px">Choose a background for your desktop:</p><div class="wallpaper-grid">${wpHTML}</div></div><div class="props-section"><h3>Theme</h3><p style="font-size:11px;opacity:0.6;margin-bottom:4px">Current: ${{'95':'Windows 95','98':'Windows 98','xp':'Windows XP','vista':'Windows Vista'}[theme]}</p><p style="font-size:11px;opacity:0.6">Change theme from the taskbar dropdown.</p></div></div>`
+        w:360, h:390,
+        content:`<div class="dp-wrap"><div class="dp-tabs"><button class="dp-tab active" data-tab="desktop">Desktop</button><button class="dp-tab" data-tab="saver">Screen Saver</button></div><div class="dp-page props-wrap" data-page="desktop"><div class="props-section"><h3>Wallpaper</h3><p style="font-size:11px;opacity:0.6;margin-bottom:8px">Choose a background for your desktop:</p><div class="wallpaper-grid">${wpHTML}</div></div><div class="props-section"><h3>Theme</h3><p style="font-size:11px;opacity:0.6;margin-bottom:4px">Current: ${{'95':'Windows 95','98':'Windows 98','xp':'Windows XP','vista':'Windows Vista'}[theme]}</p><p style="font-size:11px;opacity:0.6">Change theme from the taskbar dropdown.</p></div></div><div class="dp-page props-wrap" data-page="saver" hidden><div class="ss-monitor"><div class="ss-screen"></div></div><h3>Screen saver</h3><div class="ss-row"><select class="ss-pick">${saverOpts}</select><button class="ss-preview">Preview</button></div><div class="ss-row"><label>Wait: <input class="ss-wait" type="number" min="1" max="60"> minutes</label></div></div></div>`,
+        onMount(el) {
+            const pick = el.querySelector('.ss-pick'), wait = el.querySelector('.ss-wait'), screen = el.querySelector('.ss-screen');
+            const previewBtn = el.querySelector('.ss-preview'), page = el.querySelector('[data-page="saver"]');
+            const cfg = ssConfig();
+            pick.value = cfg.name; wait.value = cfg.wait;
+            let stopPreview = null;
+            // The little monitor runs the chosen saver, or shows the desktop for (None).
+            const showPreview = () => {
+                if (stopPreview) stopPreview();
+                stopPreview = null;
+                const none = pick.value === 'none';
+                wait.disabled = none; previewBtn.disabled = none;
+                screen.style.background = none ? document.getElementById('desktop').style.background : '#000';
+                screen.innerHTML = '<canvas class="ss-canvas"></canvas>';
+                if (!none && !page.hidden) stopPreview = runSaver(screen.firstChild, pick.value);
+            };
+            const save = () => saveSsConfig({name:pick.value, wait:clamp(parseInt(wait.value) || 5, 1, 60)});
+            pick.addEventListener('change', () => { save(); showPreview(); });
+            wait.addEventListener('change', () => { wait.value = clamp(parseInt(wait.value) || 5, 1, 60); save(); });
+            previewBtn.addEventListener('click', () => startScreensaver(pick.value));
+            el.querySelectorAll('.dp-tab').forEach(t => t.addEventListener('click', () => {
+                el.querySelectorAll('.dp-tab').forEach(x => x.classList.toggle('active', x === t));
+                el.querySelectorAll('.dp-page').forEach(p => { p.hidden = p.dataset.page !== t.dataset.tab; });
+                showPreview();
+            }));
+            if (tab === 'saver') el.querySelector('[data-tab="saver"]').click();
+        }
     });
 }
 
@@ -1931,36 +1975,297 @@ function initClippy() {
 /* ==============================================
    SCREENSAVER
    ============================================== */
-let ssAnim = null, ssX = 50, ssY = 50, ssDx = 2, ssDy = 1.5, ssHue = 0;
-function startScreensaver() {
-    if (S.screensaverActive) return;
-    S.screensaverActive = true;
-    const ss = document.getElementById('screensaver');
-    const logo = document.getElementById('ss-logo');
-    ss.classList.add('active');
-    ssX = Math.random() * (window.innerWidth - 80);
-    ssY = Math.random() * (window.innerHeight - 80);
-    function animate() {
-        ssX += ssDx; ssY += ssDy;
-        if (ssX <= 0 || ssX >= window.innerWidth - 80) { ssDx = -ssDx; ssHue = (ssHue + 60) % 360; }
-        if (ssY <= 0 || ssY >= window.innerHeight - 80) { ssDy = -ssDy; ssHue = (ssHue + 60) % 360; }
-        logo.style.left = ssX + 'px';
-        logo.style.top = ssY + 'px';
-        logo.style.filter = `drop-shadow(0 0 10px hsl(${ssHue},80%,60%)) hue-rotate(${ssHue}deg)`;
-        ssAnim = requestAnimationFrame(animate);
+// Each saver draws into a canvas of any size, so the same code runs full
+// screen and in the little monitor in Display Properties. Speeds are per
+// second and scale with the canvas.
+const ssAvatar = new Image();
+ssAvatar.src = 'ron-avatar.jpg';
+const rnd = (a, b) => a + Math.random() * (b - a);
+const savers = {
+    ron: {
+        label:'ron',
+        init(w, h) {
+            const size = Math.max(18, Math.min(w, h) * 0.11);
+            return {size, x:rnd(0, w - size), y:rnd(0, h - size), vx:w * 0.12, vy:w * 0.09, hue:0};
+        },
+        draw(ctx, s, w, h, dt) {
+            s.x += s.vx * dt; s.y += s.vy * dt;
+            if (s.x <= 0 || s.x >= w - s.size) { s.vx = s.x <= 0 ? Math.abs(s.vx) : -Math.abs(s.vx); s.hue = (s.hue + 60) % 360; }
+            if (s.y <= 0 || s.y >= h - s.size) { s.vy = s.y <= 0 ? Math.abs(s.vy) : -Math.abs(s.vy); s.hue = (s.hue + 60) % 360; }
+            s.x = clamp(s.x, 0, w - s.size); s.y = clamp(s.y, 0, h - s.size);
+            ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+            const r = s.size / 2, cx = s.x + r, cy = s.y + r, glow = `hsl(${s.hue},80%,60%)`;
+            ctx.save();
+            ctx.shadowColor = glow; ctx.shadowBlur = r * 0.5; ctx.fillStyle = glow;
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+            if (!ssAvatar.naturalWidth) return;
+            ctx.save();
+            ctx.beginPath(); ctx.arc(cx, cy, r * 0.94, 0, Math.PI * 2); ctx.clip();
+            ctx.filter = `hue-rotate(${s.hue}deg)`;
+            const side = Math.min(ssAvatar.naturalWidth, ssAvatar.naturalHeight);
+            ctx.drawImage(ssAvatar, (ssAvatar.naturalWidth - side) / 2, (ssAvatar.naturalHeight - side) / 2, side, side, s.x, s.y, s.size, s.size);
+            ctx.restore();
+        },
+    },
+    projects: {
+        label:'Flying Projects',
+        init(w, h) {
+            return {items:Array.from({length:16}, () => ({...ssFlyer(), z:rnd(0.1, 1)}))};
+        },
+        draw(ctx, s, w, h, dt) {
+            ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            s.items.sort((a, b) => b.z - a.z).forEach(it => {
+                it.z -= 0.16 * dt;
+                const x = w / 2 + it.x / it.z * w / 2, y = h / 2 + it.y / it.z * w / 2;
+                if (it.z <= 0.06 || x < -w * 0.2 || x > w * 1.2 || y < -h * 0.2 || y > h * 1.2) { Object.assign(it, ssFlyer()); return; }
+                ctx.globalAlpha = Math.min(1, (1 - it.z) * 3);
+                ctx.font = `${it.g.weight} ${Math.max(4, w * 0.018 / it.z)}px ${it.g.font}`;
+                ctx.fillStyle = it.color;
+                ctx.fillText(it.g.char, x, y);
+            });
+            ctx.globalAlpha = 1;
+        },
+    },
+    starfield: {
+        label:'Starfield',
+        init(w, h) {
+            return {stars:Array.from({length:Math.round(clamp(w * h / 2500, 60, 400))}, () => ({x:rnd(-1, 1), y:rnd(-1, 1), z:rnd(0.05, 1)}))};
+        },
+        draw(ctx, s, w, h, dt) {
+            ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+            const cx = w / 2, cy = h / 2;
+            s.stars.forEach(st => {
+                const pz = st.z;
+                st.z -= 0.35 * dt;
+                const x = cx + st.x / st.z * cx, y = cy + st.y / st.z * cx;
+                if (st.z <= 0.02 || x < 0 || x > w || y < 0 || y > h) { Object.assign(st, {x:rnd(-1, 1), y:rnd(-1, 1), z:1}); return; }
+                const b = Math.round(255 * Math.min(1, (1 - st.z) * 1.4));
+                ctx.strokeStyle = `rgb(${b},${b},${b})`;
+                ctx.lineWidth = Math.max(0.6, (1 - st.z) * w / 450);
+                ctx.beginPath(); ctx.moveTo(cx + st.x / pz * cx, cy + st.y / pz * cx); ctx.lineTo(x, y); ctx.stroke();
+            });
+        },
+    },
+    mystify: {
+        label:'Mystify',
+        init(w, h) {
+            const poly = () => ({hue:rnd(0, 360), acc:0, trail:[], pts:Array.from({length:4}, () => ({x:rnd(0, w), y:rnd(0, h), vx:rnd(-0.3, 0.3) * w, vy:rnd(-0.3, 0.3) * h}))});
+            return {polys:[poly(), poly()]};
+        },
+        draw(ctx, s, w, h, dt) {
+            ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+            ctx.lineWidth = Math.max(1, w / 700);
+            s.polys.forEach(p => {
+                p.pts.forEach(q => {
+                    q.x += q.vx * dt; q.y += q.vy * dt;
+                    if (q.x < 0 || q.x > w) { q.vx = -q.vx; q.x = clamp(q.x, 0, w); }
+                    if (q.y < 0 || q.y > h) { q.vy = -q.vy; q.y = clamp(q.y, 0, h); }
+                });
+                p.hue = (p.hue + 25 * dt) % 360;
+                p.acc += dt;
+                if (p.acc > 0.06) { p.acc = 0; p.trail.unshift(p.pts.map(q => [q.x, q.y])); if (p.trail.length > 7) p.trail.pop(); }
+                p.trail.forEach((pts, i) => {
+                    ctx.strokeStyle = `hsla(${p.hue},90%,60%,${1 - i / 7})`;
+                    ctx.beginPath();
+                    pts.forEach(([x, y], j) => j ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+                    ctx.closePath(); ctx.stroke();
+                });
+            });
+        },
+    },
+    pipes: {
+        label:'3D Pipes',
+        init(w, h) {
+            // A box of grid cells in front of the camera, shaped like the screen.
+            const GY = 9, GX = Math.max(6, Math.round(GY * w / h)), GZ = 9, D = 11;
+            return {w, h, GX, GY, GZ, D, f:w * (D + GZ * 0.3) / GX, items:[], occ:new Set(), pipes:[], made:0, segs:0, clock:0, fade:0, dirty:true};
+        },
+        draw(ctx, s, w, h, dt) {
+            if (s.fade) {
+                // The screen is full: fade to black, then start over.
+                s.fade += dt;
+                ctx.fillStyle = `rgba(0,0,0,${Math.min(1, dt * 3)})`; ctx.fillRect(0, 0, w, h);
+                if (s.fade > 1.6) Object.assign(s, savers.pipes.init(w, h));
+                return;
+            }
+            s.clock += dt;
+            while (s.clock > 1 / 8) {
+                s.clock -= 1 / 8;
+                // Up to two pipes grow at once, eighteen per screen.
+                if (s.made < 18 && (!s.pipes.length || (s.pipes.length < 2 && Math.random() < 0.04)) && !pipeStart(s) && !s.pipes.length) s.made = 18;
+                pipeStep(s);
+                if (s.segs > s.GX * s.GY * s.GZ * 0.35 || (s.made >= 18 && !s.pipes.length)) { s.fade = 1e-6; break; }
+            }
+            if (s.dirty) { pipeDraw(ctx, s); s.dirty = false; }
+        },
+    },
+};
+// 3D Pipes: pipes grow cell by cell through a grid in front of the camera.
+// Every segment and ball joint is kept with its depth, and the scene is
+// repainted far to near whenever a pipe grows, so nearer pipes cover farther ones.
+const PIPE_COLORS = [[220,40,40],[40,180,60],[50,90,230],[230,200,40],[40,200,210],[200,60,200],[225,225,225],[240,130,30]];
+const PIPE_DIRS = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+const PIPE_R = 0.17, PIPE_BALL_R = 0.27;
+const pipeKey = p => p.join(',');
+function pipeFree(s, p) {
+    return p[0] >= 0 && p[1] >= 0 && p[2] >= 0 && p[0] < s.GX && p[1] < s.GY && p[2] < s.GZ && !s.occ.has(pipeKey(p));
+}
+// Grid cell to screen, with k = pixels per grid unit at that depth.
+function pipeProject(s, p) {
+    const x = p[0] - (s.GX - 1) / 2, y = p[1] - (s.GY - 1) / 2, z = p[2] + s.D;
+    return {x:s.w / 2 + x * s.f / z, y:s.h / 2 + y * s.f / z, z, k:s.f / z};
+}
+function pipeAdd(s, item) {
+    let lo = 0, hi = s.items.length;
+    while (lo < hi) { const m = (lo + hi) >> 1; if (s.items[m].z > item.z) lo = m + 1; else hi = m; }
+    s.items.splice(lo, 0, item);
+    s.dirty = true;
+}
+function pipeBall(s, p, color) {
+    const q = pipeProject(s, p);
+    pipeAdd(s, {ball:true, x:q.x, y:q.y, r:PIPE_BALL_R * q.k, z:q.z - 0.01, color});
+}
+function pipeShades([r, g, b]) {
+    const shade = k => `rgb(${[r, g, b].map(c => Math.round(c * k)).join(',')})`;
+    return {hi:`rgb(${[r, g, b].map(c => Math.round(c + (255 - c) * 0.65)).join(',')})`, lit:shade(0.9), base:shade(0.65), dark:shade(0.3), deep:shade(0.12)};
+}
+function pipeStart(s) {
+    for (let tries = 0; tries < 60; tries++) {
+        const p = [Math.floor(Math.random() * s.GX), Math.floor(Math.random() * s.GY), Math.floor(Math.random() * s.GZ)];
+        if (!pipeFree(s, p)) continue;
+        const color = pipeShades(PIPE_COLORS[Math.floor(Math.random() * PIPE_COLORS.length)]);
+        s.occ.add(pipeKey(p));
+        s.pipes.push({p, dir:null, color});
+        s.made++;
+        pipeBall(s, p, color);
+        return true;
     }
-    animate();
+    return false;
+}
+// Each step every pipe grows one cell, usually straight on, sometimes turning,
+// with a ball joint at each bend. A pipe with nowhere to go ends in a ball.
+function pipeStep(s) {
+    s.pipes = s.pipes.filter(pipe => {
+        const next = d => [pipe.p[0] + d[0], pipe.p[1] + d[1], pipe.p[2] + d[2]];
+        let dir = pipe.dir;
+        if (!dir || Math.random() < 0.25 || !pipeFree(s, next(dir))) {
+            const opts = PIPE_DIRS.filter(d => pipeFree(s, next(d)));
+            if (!opts.length) { pipeBall(s, pipe.p, pipe.color); return false; }
+            const turn = opts[Math.floor(Math.random() * opts.length)];
+            if (dir && turn !== dir) pipeBall(s, pipe.p, pipe.color);
+            dir = turn;
+        }
+        const to = next(dir), a = pipeProject(s, pipe.p), b = pipeProject(s, to);
+        pipeAdd(s, {a, b, z:(a.z + b.z) / 2, color:pipe.color});
+        s.occ.add(pipeKey(to));
+        pipe.p = to; pipe.dir = dir; s.segs++;
+        return true;
+    });
+}
+function pipeDraw(ctx, s) {
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, s.w, s.h);
+    const L = [-0.55, -0.83]; // light from the upper left
+    for (const it of s.items) {
+        const c = it.color;
+        ctx.beginPath();
+        if (it.ball) {
+            const g = ctx.createRadialGradient(it.x - it.r * 0.35, it.y - it.r * 0.4, it.r * 0.05, it.x, it.y, it.r);
+            g.addColorStop(0, c.hi); g.addColorStop(0.35, c.lit); g.addColorStop(0.8, c.dark); g.addColorStop(1, c.deep);
+            ctx.fillStyle = g;
+            ctx.arc(it.x, it.y, it.r, 0, Math.PI * 2);
+        } else {
+            // A cylinder: the band between its two end circles, shaded across
+            // its width so the lit side faces the light.
+            const {a, b} = it, ra = PIPE_R * a.k, rb = PIPE_R * b.k;
+            const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy);
+            let nx = L[0], ny = L[1];
+            if (len > 0.5) {
+                nx = -dy / len; ny = dx / len;
+                if (nx * L[0] + ny * L[1] < 0) { nx = -nx; ny = -ny; }
+                ctx.moveTo(a.x + nx * ra, a.y + ny * ra); ctx.lineTo(b.x + nx * rb, b.y + ny * rb);
+                ctx.lineTo(b.x - nx * rb, b.y - ny * rb); ctx.lineTo(a.x - nx * ra, a.y - ny * ra); ctx.closePath();
+            }
+            ctx.moveTo(a.x + ra, a.y); ctx.arc(a.x, a.y, ra, 0, Math.PI * 2);
+            ctx.moveTo(b.x + rb, b.y); ctx.arc(b.x, b.y, rb, 0, Math.PI * 2);
+            const rm = (ra + rb) / 2, mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+            const g = ctx.createLinearGradient(mx + nx * rm, my + ny * rm, mx - nx * rm, my - ny * rm);
+            g.addColorStop(0, c.lit); g.addColorStop(0.2, c.hi); g.addColorStop(0.45, c.base); g.addColorStop(0.85, c.dark); g.addColorStop(1, c.deep);
+            ctx.fillStyle = g;
+        }
+        ctx.fill();
+    }
+}
+// A project icon headed toward the viewer, drawn with its Font Awesome glyph.
+function ssFlyer() {
+    const site = sites[Math.floor(Math.random() * sites.length)];
+    return {x:rnd(-0.6, 0.6), y:rnd(-0.4, 0.4), z:1, color:site.color, g:faGlyph(site.icon)};
+}
+const glyphCache = {};
+function faGlyph(cls) {
+    if (glyphCache[cls]) return glyphCache[cls];
+    const i = document.createElement('i');
+    i.className = cls; i.style.cssText = 'position:absolute;visibility:hidden';
+    document.body.appendChild(i);
+    const st = getComputedStyle(i), before = getComputedStyle(i, '::before');
+    const g = {char:before.content.replace(/^["']|["']$/g, ''), font:st.fontFamily, weight:st.fontWeight};
+    i.remove();
+    return glyphCache[cls] = g;
+}
+// Runs a saver in a canvas until the returned stop function is called or the
+// canvas leaves the page.
+function runSaver(canvas, name) {
+    const saver = savers[name], ctx = canvas.getContext('2d');
+    let state = null, rect = null, last = performance.now(), raf = 0, stopped = false;
+    const frame = now => {
+        if (stopped || !canvas.isConnected) return;
+        raf = requestAnimationFrame(frame);
+        const dt = Math.min(0.1, (now - last) / 1000);
+        last = now;
+        const r = canvas.getBoundingClientRect();
+        if (!r.width || !r.height) return; // minimized
+        if (!rect || Math.abs(r.width - rect.width) > 1 || Math.abs(r.height - rect.height) > 1) {
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = Math.round(r.width * dpr); canvas.height = Math.round(r.height * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            rect = r; state = saver.init(r.width, r.height);
+        }
+        saver.draw(ctx, state, rect.width, rect.height, dt);
+    };
+    raf = requestAnimationFrame(frame);
+    return () => { stopped = true; cancelAnimationFrame(raf); };
+}
+function ssConfig() {
+    let c = {};
+    try { c = JSON.parse(localStorage.getItem('screensaver')) || {}; } catch(e) {}
+    return {name:(savers[c.name] || c.name === 'none') ? c.name : 'starfield', wait:clamp(parseInt(c.wait) || 5, 1, 60)};
+}
+function saveSsConfig(c) {
+    try { localStorage.setItem('screensaver', JSON.stringify(c)); } catch(e) {}
+}
+let ssStop = null;
+// preview: a saver name from the Preview button, which ignores the mouse for
+// a moment so the click that started it doesn't end it.
+function startScreensaver(preview) {
+    const name = preview || ssConfig().name;
+    if (S.screensaverActive || !savers[name]) return;
+    S.screensaverActive = true;
+    S.ssGraceUntil = preview ? Date.now() + 1200 : 0;
+    document.getElementById('screensaver').classList.add('active');
+    ssStop = runSaver(document.getElementById('ss-canvas'), name);
 }
 function stopScreensaver() {
     if (!S.screensaverActive) return;
     S.screensaverActive = false;
     document.getElementById('screensaver').classList.remove('active');
-    if (ssAnim) cancelAnimationFrame(ssAnim);
+    if (ssStop) ssStop();
+    ssStop = null;
 }
 // Any input, on the desktop or inside an app window, counts as activity.
 function noteActivity() {
     S.lastActivity = Date.now();
-    if (S.screensaverActive) stopScreensaver();
+    if (S.screensaverActive && Date.now() > (S.ssGraceUntil || 0)) stopScreensaver();
 }
 
 /* ==============================================
@@ -2104,9 +2409,12 @@ else window.addEventListener('resize', onDesktopResize);
     // Clippy
     initClippy();
 
-    // Screensaver after a minute without input anywhere
+    // Screensaver after the wait set in Display Properties (Starfield after 5 minutes by default)
     S.lastActivity = Date.now();
-    setInterval(() => { if (!S.screensaverActive && Date.now() - S.lastActivity > 60000) startScreensaver(); }, 5000);
+    setInterval(() => {
+        const cfg = ssConfig();
+        if (!S.screensaverActive && cfg.name !== 'none' && Date.now() - S.lastActivity > cfg.wait * 60000) startScreensaver();
+    }, 5000);
 
     // Tray alerts
     setTimeout(runTrayChecks, 2500);
