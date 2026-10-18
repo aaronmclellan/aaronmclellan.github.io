@@ -122,6 +122,11 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 }
 #stage { position: relative; flex: 1; min-height: 0; }
 #cv { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+/* Taps on the board land on this invisible label. On iPhones a real tap on a switch's
+   label is the only thing that can still make the phone tick, so taps that do something
+   let it flip the hidden switch, and the rest are stopped before it flips. */
+#tapLayer { position: absolute; inset: 0; z-index: 2; touch-action: none; -webkit-tap-highlight-color: transparent; }
+#tapSwitch { position: absolute; left: 0; top: 0; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
 .boosts { flex: none; display: flex; justify-content: center; gap: 1.1rem; padding: 0.3rem 0.5rem calc(var(--sab) + 1.35rem); }
 /* The bars line up with the game's column instead of the screen's edges. */
 #play .hud, #play .boosts { width: 100%; max-width: var(--colw, 100%); align-self: center; }
@@ -249,7 +254,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
         <button class="ibtn sound-btn" aria-label="Sound"><i class="fa-solid fa-volume-high"></i></button>
         <div class="pill"><i class="fa-solid fa-coins"></i><span id="hudCoins">0</span></div>
     </header>
-    <div id="stage"><canvas id="cv"></canvas><div id="tip" hidden></div></div>
+    <div id="stage"><canvas id="cv"></canvas><label id="tapLayer" aria-hidden="true"><input type="checkbox" switch id="tapSwitch" tabindex="-1"></label><div id="tip" hidden></div></div>
     <footer class="boosts" id="boosts">
         <button class="boost" data-b="hammer" aria-label="Hammer"><i class="fa-solid fa-hammer"></i><span class="badge"></span><span class="lbl">Hammer</span></button>
         <button class="boost" data-b="magnet" aria-label="Magnet"><i class="fa-solid fa-magnet"></i><span class="badge"></span><span class="lbl">Magnet</span></button>
@@ -3073,7 +3078,7 @@ function settingsMenu(back) {
         <div class="setting">Sound <button class="toggle ${save.sound ? 'on' : ''}" data-act="sound" aria-label="Sound"></button></div>
         ${navigator.audioSession ? `<div class="setting"><span>Sound in silent mode<br><small style="color:#a99bd0">Pauses music from other apps</small></span> <button class="toggle ${save.silentPlay ? 'on' : ''}" data-act="silent" aria-label="Sound in silent mode"></button></div>` : ''}
         ${navigator.vibrate || !isIOS ? `<div class="setting">Vibration <button class="toggle ${save.haptics ? 'on' : ''}" data-act="haptics" aria-label="Vibration"></button></div>`
-            : `<div class="setting"><span>Vibration<br><small style="color:#a99bd0">iPhones don't let web games vibrate</small></span></div>`}
+            : `<div class="setting"><span>Vibration<br><small style="color:#a99bd0">A tick when you send a jelly. iPhones don't allow more in web games</small></span> <button class="toggle ${save.haptics ? 'on' : ''}" data-act="haptics" aria-label="Vibration"></button></div>`}
         <div class="setting">Fast track <button class="toggle ${save.fast ? 'on' : ''}" data-act="fast" aria-label="Fast track"></button></div>
         <div class="setting">Best streak <b>${save.best}</b></div>
         <div class="setting">Levels won <b>${save.wins}</b></div>
@@ -3321,43 +3326,56 @@ function hitCell(x, y) {
 }
 const near = (p, x, y, r) => Math.hypot(p.x - x, p.y + p.r * 0.1 - y) <= r;
 
-cv.addEventListener('pointerdown', e => {
-    audio();
-    if (!G || !Lay || modalOpen || G.over) return;
+// Did the last tap on the board do something? Only then does it get the iPhone tick.
+let tapWorked = false;
+const tapLayer = $('tapLayer'), tapSwitch = $('tapSwitch');
+tapLayer.addEventListener('pointerdown', e => { audio(); tapWorked = boardTap(e) === true; });
+tapLayer.addEventListener('click', e => {
+    if (e.target === tapSwitch) return;   // the label passing its click on to the switch
+    // Android buzzes through navigator.vibrate instead, so the switch only flips on iPhones
+    if (!tapWorked || !save.haptics || navigator.vibrate) e.preventDefault();
+    tapWorked = false;
+});
+
+function boardTap(e) {
+    if (!G || !Lay || modalOpen || G.over) return false;
     const rect = cv.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
     if (aim === 'hammer') {
         const i = hitCell(x, y);
-        if (i >= 0 && G.hp[i] - G.want[i] > 0 && pay('hammer')) smash(G, i);
+        const hit = i >= 0 && G.hp[i] - G.want[i] > 0 && pay('hammer') && smash(G, i) > 0;
         aim = null; hud(); persist();
-        return;
+        return hit;
     }
     if (aim === 'magnet') {
         for (let q = 0; q < G.qs.length; q++) for (let k = 1; k < Math.min(4, G.qs[q].length); k++) {
             const p = qPos(q, k);
-            if (near(p, x, y, p.r * 1.15) && pay('magnet')) { pull(G, G.qs[q][k]); aim = null; hud(); persist(); return; }
+            if (near(p, x, y, p.r * 1.15) && pay('magnet')) { pull(G, G.qs[q][k]); aim = null; hud(); persist(); return true; }
         }
         aim = null; hud();
-        return;
+        return false;
     }
     for (let s = 0; s < G.tray.length; s++) {
         const p = slotPos(s);
-        if (near(p, x, y, Lay.sr * 1.3)) { if (G.tray[s] >= 0) tryLaunch({slot: s}); return; }
+        if (near(p, x, y, Lay.sr * 1.3)) return G.tray[s] >= 0 && tryLaunch({slot: s});
     }
     for (let q = 0; q < G.qs.length; q++) {
         const p = qPos(q, 0);
-        if (Math.abs(x - p.x) < Math.max(p.r * 1.4, 26) && y > p.y - p.r * 1.4 && y < p.y + p.r * 1.6) { tryLaunch({q}); return; }
+        if (Math.abs(x - p.x) < Math.max(p.r * 1.4, 26) && y > p.y - p.r * 1.4 && y < p.y + p.r * 1.6) return tryLaunch({q});
     }
-});
+    return false;
+}
 
 function tryLaunch(from) {
     const r = launch(G, from);
-    if (r === 'ok') { if (G.n === 1 && G.moves === 1) tip('shoot'); persist(); return; }
-    if (r === 'full') { tip('cap', true); SND.nope(); }
+    if (r === 'ok') { if (G.n === 1 && G.moves === 1) tip('shoot'); persist(); return true; }
+    // the reminder that the track is full is for learning; later the pink pips say it
+    if (r === 'full') { if (G.n <= 5) tip('cap', true); SND.nope(); }
     if (r === 'frozen') {
         const j = G.jel[from.q != null ? G.qs[from.q][0] : G.tray[from.slot]];
         toast(`Frozen: it thaws after ${j.frz} more jell${j.frz === 1 ? 'y goes' : 'ies go'} out.`);
         SND.nope();
     }
+    return false;
 }
 
 for (const b of document.querySelectorAll('.boost')) {
@@ -3451,7 +3469,7 @@ function fitPhone() {
 fitPhone();
 // Shown small in Settings, so a screenshot says which version is running and what the
 // phone reports about its screen.
-const BUILD = '2026-10-18c';
+const BUILD = '2026-10-18e';
 const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 function screenInfo() {
     const top = Math.round(parseFloat(getComputedStyle(insetProbe).paddingTop) || 0);

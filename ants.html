@@ -117,6 +117,8 @@ body.ovl .panel { display: none; }
 body.ovl .stage { position: fixed; top: 0; left: 0; right: 0; padding-top: var(--sat); }
 body.ovl .farm { width: 100vw; border-radius: 0; box-shadow: none; }
 body:not(.ovl) .goal-pill { display: none; }
+/* .pill sets display, so a hidden goal pill (the guide is over) has to be hidden explicitly. */
+.goal-pill[hidden] { display: none !important; }
 body.ovl .goal-pill:not([hidden]) { display: inline-flex; position: fixed; z-index: 11; left: 0.5rem; max-width: calc(100vw - 4.5rem); bottom: calc(var(--dockh) + 1rem + var(--sab)); }
 .pill.goal-pill { background: rgba(242, 169, 59, 0.92); border-color: rgba(255, 220, 160, 0.5); color: #2a1a08; max-width: 100%; }
 .goal-pill i { color: #2a1a08; }
@@ -206,12 +208,24 @@ button.pill { pointer-events: auto; cursor: pointer; font: inherit; font-size: 0
 button.pill:hover { border-color: var(--accent); }
 .menu-btn { display: none !important; }
 body.compact .menu-btn { display: inline-flex !important; }
-.hud .buffs { margin: 0; }
+/* Raids, events, new chambers and boosts stack at the bottom left, so the
+   strip over the sky stays the six numbers and the surface (where raiders
+   fight) stays clear. On a phone they sit above the dock and the goal pill. */
+.hud-low { position: absolute; z-index: 2; left: 0.5rem; right: 4rem; bottom: 0.6rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; pointer-events: none; }
+body.ovl .hud-low { position: fixed; z-index: 3; right: 3.9rem; bottom: calc(var(--dockh) + 1rem + var(--sab) + var(--goalh, 0px)); }
+/* With a window open on a phone the alerts float just above it (placeAlerts),
+   or above the dock over a side pane, so a raid or a visitor is never hidden. */
+body.ovl .hud-low.over { z-index: 13; bottom: calc(var(--dockh) + 1rem + var(--sab)); }
+body.ovl .hud-low.over .buffs { display: none; }
+.hud-alerts .pill { animation: alertIn 0.45s ease-out; }
+@keyframes alertIn { 0% { transform: scale(0.6); opacity: 0; } 70% { transform: scale(1.06); opacity: 1; } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .hud-alerts .pill { animation: none; } }
+.hud-low .buffs { margin: 0; }
 /* The strip shrinks with the farm, not the screen. */
 .farm { container-type: inline-size; }
 @container (max-width: 300px) { .hud, .hud-line { gap: 0.25rem; } .hud { padding: 0.4rem; } #hRate, #hCap, #hBroodSub, #hWx { display: none; } .pill { padding: 0 0.45rem; } }
-.hud .buff { padding: 0.2rem 0.55rem; font-size: 0.72rem; }
-.hud .buff { background: rgba(20, 14, 8, 0.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.hud-low .buff { padding: 0.15rem 0.5rem; font-size: 0.7rem; gap: 0.3rem; }
+.hud-low .buff { background: rgba(20, 14, 8, 0.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 .menu {
     position: absolute; right: 0.5rem; top: 2.75rem; z-index: 6; width: min(15rem, calc(100% - 1rem));
     background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.5rem;
@@ -231,6 +245,7 @@ body.compact .menu-btn { display: inline-flex !important; }
 .pill.alert b { overflow: hidden; text-overflow: ellipsis; }
 .pill.alert.raid { background: rgba(150, 38, 28, 0.88); border-color: rgba(255, 140, 120, 0.5); }
 .pill.alert.raid.ready { background: rgba(40, 92, 44, 0.88); border-color: rgba(150, 230, 140, 0.45); }
+.pill.alert.raid.even { background: rgba(130, 88, 18, 0.9); border-color: rgba(255, 200, 110, 0.5); }
 .pill.alert.raid i, .pill.alert.raid small { color: #ffe3d8; }
 .pill .tug { display: inline-block; width: 3rem; height: 0.4rem; border-radius: 999px; background: #e0503a; overflow: hidden; flex: none; }
 .pill .tug span { display: block; height: 100%; background: #6fd46a; transition: width 0.25s linear; }
@@ -296,6 +311,7 @@ body.ovl .choice.low { bottom: calc(var(--dockh) + 1rem + var(--sab)); }
 .sheet-card ul { list-style: none; margin: 0.8rem 0 1rem; display: grid; gap: 0.35rem; }
 .sheet-card li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.88rem; padding: 0.35rem 0.6rem; border-radius: 8px; background: var(--card2); }
 .sheet-card li b { font-variant-numeric: tabular-nums; }
+.sheet-card .away-buys { margin: -0.55rem 0 1rem; padding: 0 0.6rem; font-size: 0.76rem; line-height: 1.35; }
 
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
 .stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 0.5rem 0.7rem; display: flex; flex-direction: column; min-width: 0; }
@@ -365,9 +381,10 @@ body.ovl .choice.low { bottom: calc(var(--dockh) + 1rem + var(--sab)); }
     cursor: pointer; margin-bottom: 0.4rem; transition: border-color 0.15s;
 }
 .up:last-child { margin-bottom: 0; }
-.up:hover:not(:disabled) { border-color: var(--accent); }
-.up:disabled { cursor: default; }
-.up:disabled .up-cost { color: var(--dim); }
+.up:hover:not(.off) { border-color: var(--accent); }
+.up.off { cursor: default; }
+.up.off .up-cost { color: var(--dim); }
+.up { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 .up-ic { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: rgba(0, 0, 0, 0.25); color: var(--accent); }
 .up-name { display: block; font-weight: 700; font-size: 0.86rem; }
 .up-name em { font-style: normal; color: var(--muted); font-weight: 500; font-size: 0.74rem; margin-left: 0.2rem; }
@@ -417,11 +434,25 @@ body.ovl .choice.low { bottom: calc(var(--dockh) + 1rem + var(--sab)); }
 .help li b { color: var(--text); }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0 0.2rem 0.5rem; }
 /* On a wide screen the More pane slides over the panel; layout() places it. */
-body:not(.ovl) #ovMore:not([hidden]) {
+body:not(.ovl) #ovMore:not([hidden]), body:not(.ovl) #ovNews:not([hidden]) {
     display: block; position: fixed; z-index: 30; right: auto; bottom: auto; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
     background: var(--bg2); border: 1px solid var(--border) !important; border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); padding: 0 0.5rem 0.5rem;
 }
 #ovMore .card { scroll-margin-top: 2.9rem; }
+/* Messages: a dot on the bell (and the menu) until you look. */
+#newsBtn, #menuBtn { position: relative; }
+.news-dot { position: absolute; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #ff5a4a; box-shadow: 0 0 0 2px var(--bg2); }
+.news-dot[hidden] { display: none; }
+.menu #newsBtn .news-dot { position: static; margin-left: auto; box-shadow: none; }
+.news h2 { display: flex; align-items: center; justify-content: space-between; }
+.news-list { list-style: none; display: grid; gap: 0.35rem; margin: 0.6rem 0 0; }
+.news-list li { display: grid; grid-template-columns: 32px 1fr; gap: 0.55rem; align-items: center; padding: 0.45rem 0.55rem; border-radius: 9px; background: var(--card2); font-size: 0.8rem; line-height: 1.35; border: 1px solid transparent; }
+.news-list li.new { border-color: rgba(242, 169, 59, 0.45); }
+.news-list .ic { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 7px; background: rgba(0, 0, 0, 0.25); color: var(--accent); }
+.news-list .ic img { width: 32px; height: 32px; image-rendering: pixelated; object-fit: contain; }
+.news-list small { display: block; color: var(--dim); font-size: 0.7rem; }
+.toast.pic { display: flex; align-items: center; gap: 0.6rem; text-align: left; width: min(22rem, calc(100vw - 2rem)); }
+.toast img { width: 52px; height: 40px; flex: none; image-rendering: pixelated; object-fit: contain; }
 .linkbtn { background: none; border: none; color: var(--dim); font-size: 0.75rem; cursor: pointer; padding: 0.2rem; }
 .linkbtn:hover { color: var(--text); }
 .linkbtn.danger:hover { color: var(--red); }
@@ -477,6 +508,18 @@ body:not(.ovl) #ovMore:not([hidden]) {
 .fallen .history { margin-top: 0.5rem; }
 .history li { display: flex; flex-direction: column; font-size: 0.8rem; padding: 0.5rem 0.6rem; background: var(--card2); border-radius: 8px; }
 .history li span { color: var(--muted); font-size: 0.76rem; }
+/* Past farms with a nest show a little picture of it and a Visit button. */
+.history li.has-nest { flex-direction: row; gap: 0.65rem; align-items: center; }
+.history li > div { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.history .nest-thumb { width: 40px; height: 80px; border-radius: 6px; image-rendering: pixelated; flex: none; border: 1px solid var(--border); }
+.history .btn { align-self: flex-start; margin-top: 0.4rem; padding: 0.25rem 0.75rem; font-size: 0.75rem; }
+/* While visiting an old farm: who it was, and the way back. */
+.visit-bar { position: absolute; z-index: 4; left: 50%; transform: translateX(-50%); top: 5.4rem; display: flex; align-items: center; gap: 0.55rem; padding: 0.35rem 0.4rem 0.35rem 0.75rem; border-radius: 999px; background: rgba(20, 14, 8, 0.88); border: 1px solid rgba(242, 169, 59, 0.5); font-size: 0.78rem; max-width: calc(100% - 1rem); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); }
+.visit-bar[hidden] { display: none; }
+.visit-bar i { color: var(--accent); }
+.visit-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.visit-bar .btn { padding: 0.3rem 0.7rem; font-size: 0.76rem; flex: none; }
+body.ovl .visit-bar { position: fixed; z-index: 9; }
 .code { width: 100%; min-height: 4.5rem; margin-top: 0.6rem; font-family: ui-monospace, Menlo, monospace; font-size: 0.72rem; resize: vertical; }
 .err { color: var(--red); font-size: 0.78rem; margin-top: 0.4rem; min-height: 1em; }
 label.btn { cursor: pointer; }
@@ -505,6 +548,7 @@ label.btn { cursor: pointer; }
     <div class="brand" id="brand"><i class="fa-solid fa-bug"></i> ant farm <button class="farm-name" id="colonyName" title="Name your farm"></button></div>
     <div class="bar-actions" id="barActions">
         <button class="btn" id="installBtn" hidden title="Install the ant farm as an app"><i class="fa-solid fa-download"></i> <span>Install</span></button>
+        <button class="btn icon" id="newsBtn" title="Messages" aria-label="Messages"><i class="fa-solid fa-bell"></i><span class="lbl">Messages</span><span class="news-dot" id="newsDot" hidden></span></button>
         <button class="btn icon" id="helpBtn" title="How it works" aria-label="How it works"><i class="fa-solid fa-circle-question"></i><span class="lbl">How it works</span></button>
         <button class="btn icon" id="moveBtn" title="Move or reset your farm" aria-label="Move or reset your farm"><i class="fa-solid fa-right-left"></i><span class="lbl">Move or reset your farm</span></button>
         <button class="btn icon" id="soundBtn" title="Weather sounds" aria-label="Weather sounds" aria-pressed="false"><i class="fa-solid fa-volume-xmark"></i><span class="lbl">Weather sounds</span></button>
@@ -521,16 +565,19 @@ label.btn { cursor: pointer; }
                     <button class="pill" data-stat="food"><i class="fa-solid fa-apple-whole"></i><b id="hFood">0</b><small id="hRate"></small></button>
                     <button class="pill" data-stat="ants"><i class="fa-solid fa-bug"></i><b id="hAnts">0</b><small id="hCap"></small></button>
                     <button class="pill" data-stat="queens"><i class="fa-solid fa-crown"></i><b id="hQueens">0</b></button>
-                    <button class="pill menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i class="fa-solid fa-bars"></i></button>
+                    <button class="pill menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i class="fa-solid fa-bars"></i><span class="news-dot" id="menuDot" hidden></span></button>
                 </div>
                 <div class="hud-line">
                     <button class="pill" data-stat="brood"><i class="fa-solid fa-egg"></i><b id="hBrood">0</b><small id="hBroodSub"></small></button>
                     <button class="pill" data-stat="nest"><i class="fa-solid fa-person-digging"></i><b id="hNest">0</b></button>
                     <button class="pill" data-stat="wx"><i class="fa-solid fa-sun" id="hWxIcon"></i><b id="hWx">Clear</b></button>
                 </div>
-                <div class="buffs" id="buffs" hidden></div>
-                <div class="hud-alerts" id="alerts"></div>
             </div>
+            <div class="hud-low" id="hudLow">
+                <div class="hud-alerts" id="alerts"></div>
+                <div class="buffs" id="buffs" hidden></div>
+            </div>
+            <div class="visit-bar" id="visitBar" hidden><i class="fa-solid fa-clock-rotate-left"></i><span id="visitName"></span><button class="btn primary" id="visitBack">Back to my farm</button></div>
             <div class="choice" id="choice" role="dialog" hidden><button class="ov-x" id="choiceX" aria-label="Decide later"><i class="fa-solid fa-xmark"></i></button><div id="choiceBody"></div></div>
             <div class="menu" id="menu" hidden></div>
             <div class="zoom" id="zoomCtl">
@@ -567,7 +614,7 @@ label.btn { cursor: pointer; }
                 </div>
 
                 <div class="card" id="upCard">
-                    <h2>Upgrades <span class="h2-tools"><label class="auto" id="autoWrap" hidden title="Spends spare food, a tenth of what's stored, on the cheapest upgrade. Finding new foods is up to you."><input type="checkbox" id="autoBuy"> auto-buy</label><span class="seg" id="buyMode" role="group" aria-label="How many to buy"><button data-n="1">x1</button><button data-n="10">x10</button><button data-n="max">Max</button></span></span></h2>
+                    <h2>Upgrades <span class="h2-tools"><label class="auto" id="autoWrap" hidden title="While you're away, spends up to half of what the colony gathers on upgrades, cheapest first. It leaves everything to you while you're watching, and finding new foods is always up to you."><input type="checkbox" id="autoBuy"> auto-buy</label><span class="seg" id="buyMode" role="group" aria-label="How many to buy"><button data-n="1">x1</button><button data-n="10">x10</button><button data-n="max">Max</button></span></span></h2>
                     <div id="ups"></div>
                     <p class="up-teaser" id="upTeaser" hidden><i class="fa-solid fa-lock"></i><span id="upTeaserText"></span></p>
                 </div>
@@ -657,6 +704,13 @@ label.btn { cursor: pointer; }
 </div>
 <div class="ov-box ov-pane" id="ovAnts" role="dialog" aria-label="Your ants" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
 <div class="ov-box ov-pane" id="ovStats" role="dialog" aria-label="Stats" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+<div class="ov-box ov-pane" id="ovNews" role="dialog" aria-label="Messages" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <section class="card news">
+        <h2>Messages <button class="linkbtn" id="newsClear">Clear</button></h2>
+        <p class="muted" id="newsEmpty">New styles, upgrades, raids, events and achievements show up here, so nothing gets missed.</p>
+        <ul class="news-list" id="newsList"></ul>
+    </section>
+</div>
 <div class="ov-box ov-pane" id="ovMore" role="dialog" aria-label="Help, moving and reset" hidden><div class="ov-head"><button class="ov-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
     <section class="tabpane" id="tab-more">
         <div class="card help" id="helpCard">
@@ -667,14 +721,16 @@ label.btn { cursor: pointer; }
                 <li><b>Diggers</b> tunnel out new chambers. More nest means room for more ants.</li>
                 <li><b>Nurses</b> help the queen lay and raise the brood faster. Every egg costs a little food.</li>
                 <li><b>Weather</b> changes every few minutes and follows the seasons. Rain softens the soil for digging but keeps foragers home. Check the forecast and shift jobs to match.</li>
-                <li><b>Upgrades</b> unlock one at a time as the colony grows, starting with Picnic crumbs. Once unlocked, they stay unlocked on every farm.</li>
-                <li><b>Guards</b> fight off raiders. Each raid is announced a minute and a half ahead, so move ants to Guard on the job bar. The fight plays out at the entrance with a bar showing who's winning, green for your guards and red for the raider, and guards you send mid-fight still count. Battle drills and barracks make every guard count for more, and rain keeps raiders away. Lose a fight and the raiders take food and brood, a few ants may fall, and the colony is shaken up for a while.</li>
+                <li><b>Upgrades</b> unlock one at a time as the colony grows, starting with Picnic crumbs. Once unlocked, they stay unlocked on every farm. Hover over one, or press and hold it, for the exact numbers.</li>
+                <li><b>Guards</b> fight off raiders. Each raid is announced a minute and a half ahead, so move ants to Guard on the job bar. Your scouts say whether a raid looks weaker, even or stronger than your guards, but it's only a guess. The fight plays out at the entrance with a bar showing who's winning, green for your guards and red for the raider, and guards you send mid-fight still count. Battle drills and barracks make every guard count for more, but raiders size themselves up against them and come back bolder after every raid you beat, so keep an eye on each one. Rain keeps raiders away. Lose a fight and the raiders take a good share of your food and brood, some ants fall, and the colony is shaken up for a while. They never wipe out the colony, and while you're away the guards just hold the entrance, so losses are lighter.</li>
                 <li><b>Chambers</b>: tap one on the farm to choose what it is: a nursery, pantry, barracks, fungus garden or rest room.</li>
                 <li><b>Events</b> pop up now and then with a choice to make. Leave one for three minutes and the cautious choice is made for you.</li>
                 <li><b>Bugs</b> wander by now and then: ladybugs, butterflies and, at night, fireflies. Tap one for a boost. Golden ones are rare and strong.</li>
+                <li><b>Creatures in the soil</b> crawl through now and then, leaving a trail of loose grains: grubs, pill bugs, mole crickets, springtails and the odd cicada nymph. Tap one before it burrows away. Very rarely there's a golden scarab, a young queen, or amber with something ancient inside: there are 5 pieces to find, and each makes everything 3% better for good.</li>
                 <li><b>The view</b> follows the nest and pulls back as the colony digs. Zoom with the buttons, a pinch or ctrl + scroll, and tap an ant to follow it around.</li>
                 <li>The farm keeps going while you're away, at a quarter of the speed, for up to 8 hours.</li>
-                <li><b>Fly the nest</b> once the colony has 120 ants: queens leave to start a fresh farm. This farm resets, but every queen makes all your ants 10% better for good, and waiting longer sends more queens.</li>
+                <li><b>Past farms</b> are listed in Stats, and the last dozen keep their nest: tap Visit to look around an old one while this farm keeps going.</li>
+                <li><b>Fly the nest</b>: queens leave to start a fresh farm. This farm resets, but every queen makes all your ants 10% better for good. Each flight needs more ants and a better food than the last one, all the way up to birthday cake, and the better the food you've found, the more queens fly. The Fly card says what this one needs.</li>
                 <li>On a phone, the buttons along the bottom open your jobs, upgrades, ants and stats, and the menu at the top right has the rest. Add it to your home screen to use it like an app.</li>
             </ul>
         </div>
@@ -725,32 +781,33 @@ const FOODS = [
     {name:'Birthday cake', color:'#f5b3cb', mult:700, cost:6e10},
 ];
 const UPGRADES = [
-    {id:'forage', name:'Strong mandibles', icon:'fa-hand-fist', desc:'+25% food from every forager', base:12, growth:1.6, eff:0.25},
-    {id:'dig', name:'Hard heads', icon:'fa-helmet-safety', desc:'+25% digging speed', base:20, growth:1.65, eff:0.25},
-    {id:'lay', name:"Queen's feast", icon:'fa-crown', desc:'+30% eggs from the queen', base:25, growth:1.65, eff:0.3},
-    {id:'nurse', name:'Warm nursery', icon:'fa-temperature-half', desc:'+25% brood growing speed', base:35, growth:1.65, eff:0.25},
-    {id:'cap', name:'Packed chambers', icon:'fa-layer-group', desc:'+15% room for ants', base:60, growth:1.8, eff:0.15},
-    {id:'click', name:'Picnic crumbs', icon:'fa-cookie-bite', desc:'+20% food from crumbs you drop', base:15, growth:2, eff:0.2},
-    {id:'guard', name:'Battle drills', icon:'fa-shield-halved', desc:'+25% fighting strength for guards', base:30, growth:1.65, eff:0.25},
+    {id:'forage', name:'Strong mandibles', icon:'fa-hand-fist', desc:'Foragers carry more food', more:'+25% food from every forager, each level', base:12, growth:1.6, eff:0.25},
+    {id:'dig', name:'Hard heads', icon:'fa-helmet-safety', desc:'Diggers dig faster', more:'+25% digging speed, each level', base:20, growth:1.65, eff:0.25},
+    {id:'lay', name:"Queen's feast", icon:'fa-crown', desc:'The queen lays more eggs', more:'+30% eggs from the queen, each level', base:25, growth:1.65, eff:0.3},
+    {id:'nurse', name:'Warm nursery', icon:'fa-temperature-half', desc:'Eggs grow into ants sooner', more:'+25% brood growing speed, each level', base:35, growth:1.65, eff:0.25},
+    {id:'cap', name:'Packed chambers', icon:'fa-layer-group', desc:'Fit more ants in the nest', more:'+15% room for ants, each level', base:60, growth:1.8, eff:0.15},
+    {id:'click', name:'Picnic crumbs', icon:'fa-cookie-bite', desc:'Your crumbs are worth more', more:'+20% food from crumbs you drop, each level', base:15, growth:2, eff:0.2},
+    {id:'guard', name:'Battle drills', icon:'fa-shield-halved', desc:'Guards fight harder', more:'+25% fighting strength for guards, each level', base:30, growth:1.65, eff:0.25},
 ];
 const PERKS = [
     {q:1, name:'Scouts', desc:'bugs visit twice as often'},
     {q:3, name:'Big founding', desc:'new farms start with 12 ants'},
-    {q:6, name:'Instinct', desc:'unlocks auto-buy, which spends spare food on cheap upgrades'},
+    {q:6, name:'Instinct', desc:'unlocks auto-buy, which upgrades the colony while you\'re away'},
     {q:10, name:'Long memory', desc:'offline progress lasts 24 hours instead of 8'},
     {q:15, name:'Seed stash', desc:'new farms start with sunflower seeds'},
 ];
-const BAL = {autoQueens:6, autoShare:0.1, forage:0.3, dig:0.02, lay:0.25, dev:30, egg:2, capBase:8, capCell:1/35, costDiv:40, costExp:2, maxDug:13000, queenBoost:0.1, queenDiv:1e6, flightAnts:120, achBoost:0.02, crumb:0.35,
-    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05, away:0.25, fight:30, fightCap:4};
+const BAL = {autoQueens:6, autoAway:0.5, forage:0.3, dig:0.02, lay:0.25, dev:30, egg:2, capBase:8, capCell:1/35, costDiv:40, costExp:2, maxDug:13000, queenBoost:0.1, queenDiv:3.4e6, flightAnts:120, flightGrow:1.35, flightAntsMax:1500, tierQueen:0.25, achBoost:0.02, amberBoost:0.03, crumb:0.35,
+    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05, away:0.25, fight:30, fightCap:4,
+    raidQual:0.65, threatUp:1.08, threatDown:0.9, threatMax:3, lossFloor:0.3};
 const ROLE_SEQ = ['nursery', 'food', 'rest'];
 // What a chamber can be. The queen's chamber is fixed; the rest start as one
 // of the first three and you choose from there.
 const ROOMS = {
-    nursery:{name:'Nursery', icon:'fa-egg', desc:'brood grows 20% faster and the queen lays 10% more'},
-    food:{name:'Pantry', icon:'fa-wheat-awn', desc:'foragers bring back 10% more'},
-    barracks:{name:'Barracks', icon:'fa-shield-halved', desc:'guards fight 25% harder'},
-    fungus:{name:'Fungus garden', icon:'fa-seedling', desc:'grows food by itself, rain or shine'},
-    rest:{name:'Rest room', icon:'fa-bed', desc:'every ant works 3% harder'},
+    nursery:{name:'Nursery', icon:'fa-egg', desc:'brood grows faster and the queen lays more', more:'brood grows 20% faster and the queen lays 10% more, each'},
+    food:{name:'Pantry', icon:'fa-wheat-awn', desc:'foragers bring back more', more:'foragers bring back 10% more, each'},
+    barracks:{name:'Barracks', icon:'fa-shield-halved', desc:'guards fight harder', more:'guards fight 25% harder, each'},
+    fungus:{name:'Fungus garden', icon:'fa-seedling', desc:'grows food by itself, rain or shine', more:'grows a little food by itself, rain or shine'},
+    rest:{name:'Rest room', icon:'fa-bed', desc:'every ant works a little harder', more:'every ant works 3% harder, each'},
 };
 const ROOM_KEYS = Object.keys(ROOMS);
 
@@ -854,7 +911,12 @@ const RAIDERS = {
 };
 let onRaidWarn = () => {}, onRaid = () => {}, onFight = () => {};
 // Richer colonies draw bigger raiders: each better food makes them 15% stronger.
-const raidPower = r => st.ants * BAL.raidPow * RAIDERS[r.k].p * r.roll * (1 + 0.15 * st.tier);
+// How good each guard is (Battle drills, barracks, a beetle), without
+// passing boosts. Raiders size themselves against most of it, so better
+// guards are an edge rather than a sure win, and grow bolder (st.threat)
+// with every raid the colony beats.
+const guardQual = () => mult('guard') * (1 + 0.25 * (nest.rc ? nest.rc.barracks : 0)) * (st.mods.guard || 1);
+const raidPower = r => st.ants * BAL.raidPow * RAIDERS[r.k].p * r.roll * (1 + 0.15 * st.tier) * (r.thr || 1) * (r.qp || 1);
 const fightOdds = R => rates().guard / Math.max(1e-9, raidPower(R));
 function stepRaids(dt) {
     const now = simNow, most = BAL.raidGap[1] * 1000 / pace;
@@ -865,7 +927,9 @@ function stepRaids(dt) {
         // The very first raid is a small spider, to learn on.
         const first = !(st.stats.raidsWon + st.stats.raidsLost), kinds = Object.keys(RAIDERS).filter(k => nest.chambers >= RAIDERS[k].after);
         const k = first ? 'spider' : kinds[Math.floor(rng() * kinds.length)];
-        st.raid = {k, at:now + BAL.raidWarn * 1000, roll:first ? 0.5 : (0.85 + rng() * 0.3) * (st.mods.raid || 1)};
+        // est is how far off the scouts' read of it is.
+        st.raid = {k, at:now + BAL.raidWarn * 1000, roll:first ? 0.5 : (0.7 + rng() * 0.6) * (st.mods.raid || 1),
+            thr:first ? 1 : st.threat || 1, qp:Math.pow(guardQual(), BAL.raidQual), est:first ? 1 : 0.85 + rng() * 0.3};
         st.mods.raid = 1;
         onRaidWarn(st.raid);
     }
@@ -901,25 +965,32 @@ function resolveRaid(rain) {
         out.win = true;
         out.loot = r.food * BAL.raidLoot * kind.loot * pace;
         st.food += out.loot; st.earned += out.loot; st.total += out.loot;
-        // A close fight still costs a guard or two.
-        out.ants = out.guardsLost = guards * 0.06 * Math.max(0, Math.min(1, (1.5 - q) / 0.5));
+        // A close fight still costs some guards.
+        out.ants = out.guardsLost = guards * 0.08 * Math.max(0, Math.min(1, (1.5 - q) / 0.5));
         st.stats.raidsWon++;
+        // Word gets round, and the next raiders come bolder. Not while nobody's
+        // watching, when the guards just hold the entrance.
+        if (pace >= 1) st.threat = Math.min(BAL.threatMax, (st.threat || 1) * BAL.threatUp);
     } else {
-        // The more of the raider left standing, the more it takes, but never everything.
+        // Any loss costs plenty, and more the more of the raider is left
+        // standing. Less while nobody's watching, and the first raid is gentle.
         out.q = 1 - f.r;
-        const s = f.r * (first ? 0.3 : 1);
-        out.food = st.food * 0.3 * s;
-        out.brood = st.brood * (kind.brood ? 0.8 : 0.4) * s;
-        out.guardsLost = guards * 0.3 * s;
-        out.ants = out.guardsLost + st.ants * 0.03 * s;
+        const s = (0.4 + 0.6 * f.r) * (first ? 0.3 : 1) * (pace < 1 ? 0.5 : 1);
+        out.food = st.food * 0.35 * s;
+        out.brood = st.brood * (kind.brood ? 0.9 : 0.5) * s;
+        out.guardsLost = guards * 0.35 * s;
+        out.ants = out.guardsLost + st.ants * 0.07 * s;
         st.food -= out.food; st.brood -= out.brood;
         // And the colony is shaken up for a while, working at half speed after a rout.
         out.shaken = 1 - 0.5 * s;
         st.buffs = st.buffs.filter(b => b.name !== 'Shaken up');
-        st.buffs.push({k:'all', m:Math.round(out.shaken * 100) / 100, until:simNow + 180e3 * s / pace, name:'Shaken up'});
+        st.buffs.push({k:'all', m:Math.round(out.shaken * 100) / 100, until:simNow + 300e3 * s / pace, name:'Shaken up'});
         st.stats.raidsLost++;
+        st.threat = Math.max(0.7, (st.threat || 1) * BAL.threatDown);
     }
-    out.ants = Math.min(out.ants, st.ants * 0.1, Math.max(0, st.ants - 4));
+    // Raiders never wipe the colony out: below about a third of its biggest,
+    // they take food and brood but no more ants.
+    out.ants = Math.min(out.ants, st.ants * 0.15, Math.max(0, st.ants - Math.max(10, st.peak * BAL.lossFloor)));
     st.ants -= out.ants;
     st.stats.fallen += out.ants;
     onRaid(out);
@@ -982,11 +1053,12 @@ function freshState(prev) {
         unlocked: prev ? (prev.unlocked || ALL_UNLOCKS).slice() : ['click'], costMul:{},
         lv:{forage:0, dig:0, lay:0, nurse:0, cap:0, click:0, guard:0}, tier: q >= 15 ? 1 : 0,
         w: prev ? {guard:0, ...prev.w} : {forage:60, dig:30, nurse:10, guard:0}, auto: prev ? prev.auto : false,
-        raid:null, raidAt:0, mods:{guard:1, lay:1, tax:0, fungus:0, raid:1}, delayed:[], fallen: prev ? prev.fallen || [] : [],
+        raid:null, raidAt:0, threat:1, mods:{guard:1, lay:1, tax:0, fungus:0, raid:1}, delayed:[], fallen: prev ? prev.fallen || [] : [],
         digBudget:0, t:Date.now(), flights: prev ? prev.flights : 0,
-        ach: prev ? prev.ach : [], buffs:[], buy: prev ? prev.buy : 1,
+        ach: prev ? prev.ach : [], buffs:[], buy: prev ? prev.buy : 1, inbox: prev ? prev.inbox || [] : [], inboxSeen: prev ? prev.inboxSeen || 0 : 0,
         stats: prev ? prev.stats : {crumbs:0, critters:0, firefly:0, golden:0, lightning:0, snow:0, wx:0, pip:0, follow:0, owl:0, split:0, eggs:0, playMs:0, season:0, raidsWon:0, raidsLost:0, fallen:0, events:0, rooms:0, beetle:0},
         wardrobe: prev ? (prev.wardrobe || []).slice() : [],
+        amber: prev ? (prev.amber || []).slice() : [],
         guide: prev ? prev.guide : 0, farmName: prev ? prev.farmName || '' : '', styles: prev ? prev.styles !== false : true, started:Date.now(), peak:0, laid:0, hist: prev ? prev.hist || [] : [],
     };
 }
@@ -1376,7 +1448,7 @@ function share() {
     const w = st.w, gd = w.guard || 0, s = w.forage + w.dig + w.nurse + gd;
     return s ? {f:w.forage / s, d:w.dig / s, n:w.nurse / s, g:gd / s} : {f:0.25, d:0.25, n:0.25, g:0.25};
 }
-const boost = () => (1 + BAL.queenBoost * st.queens) * (1 + BAL.achBoost * st.ach.length);
+const boost = () => (1 + BAL.queenBoost * st.queens) * (1 + BAL.achBoost * st.ach.length) * (1 + BAL.amberBoost * (st.amber ? st.amber.length : 0));
 // Upgrades add to a multiplier, so each level is worth a little less than the
 // last while costs keep climbing.
 const UP = {};
@@ -1469,16 +1541,22 @@ function cheapestBuy() {
     if (nx && isUnlocked('tier') && tierCost() < cost * 4) { best = 'tier'; cost = tierCost(); }
     return st.food >= cost ? best : null;
 }
-// What auto-buy picks: the cheapest upgrade, but only once it costs a tenth or
-// less of the food stored, so it never saves up for anything. Finding new
-// foods is always left to the player.
+// What auto-buy picks: the cheapest upgrade. Finding new foods is always
+// left to the player.
 function autoPick() {
     let best = null, cost = Infinity;
     for (const u of UPGRADES) if (u.id !== 'click' && isUnlocked(u.id) && upCost(u) < cost) { best = u.id; cost = upCost(u); }
-    return cost <= st.food * BAL.autoShare ? best : null;
+    return best;
 }
-const queenGain = () => Math.floor(Math.cbrt(st.earned / BAL.queenDiv));
-const canFly = () => st.ants >= BAL.flightAnts && queenGain() >= 1;
+// Each flight asks more of a farm: more ants than the last (up to a limit),
+// and a better food than the last flight needed, up to the best there is.
+const flightAnts = () => Math.min(BAL.flightAntsMax, Math.round(BAL.flightAnts * Math.pow(BAL.flightGrow, st.flights || 0) / 10) * 10);
+const flightFood = () => Math.min(FOODS.length - 1, (st.flights || 0) + 1);
+// Queens come from the food gathered on this farm, and the better the food
+// found, the more of them (+25% for each step up the foods).
+const queenMul = () => 1 + BAL.tierQueen * st.tier;
+const queenGain = () => Math.floor(Math.cbrt(st.earned / BAL.queenDiv) * queenMul());
+const canFly = () => st.ants >= flightAnts() && st.tier >= flightFood() && queenGain() >= 1;
 // A crumb is worth a third of a second of foraging, more with Picnic crumbs.
 const clickValue = () => (1 + rates().food * BAL.crumb) * mult('click');
 /* CORE END */
@@ -1977,9 +2055,9 @@ function checkStyles() {
         if (st.wardrobe.includes(k) || !STYLE_UNLOCKS[k].when()) continue;
         st.wardrobe.push(k);
         // Someone plain tries it on straight away.
-        const plain = AW.filter(a => !a.sty), a = plain.length ? pick(plain) : null;
-        if (a) a.sty = [k, Math.floor(Math.random() * STYLES[k].cols.length)];
-        toast(`New style: ${STYLES[k].name}!` + (a ? ` ${firstName(a)} is trying it on.` : '') + ' Some new ants will hatch wearing it.');
+        const plain = AW.filter(a => !a.sty), a = plain.length ? pick(plain) : null, sty = [k, Math.floor(Math.random() * STYLES[k].cols.length)];
+        if (a) a.sty = sty;
+        note(`New style unlocked: ${STYLES[k].name}!` + (a ? ` ${firstName(a)} is trying it on.` : '') + ' Some new ants will hatch wearing it.', 'style', sty);
         chime(true);
         panelAt = 0;
         return;
@@ -2618,7 +2696,7 @@ function catchCritter() {
     if (g) st.stats.golden = 1;
     const name = (g ? 'Golden ' + c.kind : c.kind[0].toUpperCase() + c.kind.slice(1));
     floaters.push({x:Math.max(30, Math.min(W - 30, c.x)), y:Math.max(12, c.y - 5), txt:msg, t:now, col:g ? '#ffd54a' : '#ffffff', big:true});
-    toast(`${name}! ${msg}`);
+    note(`${name}! ${msg}`, 'bug');
     chime(g);
     try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate(15); } catch (e) {}
     updateUI();
@@ -2641,6 +2719,188 @@ function drawCritterPix(t) {
     const frame = c.kind === 'ladybug' ? Math.floor(t * 6) % 2 : c.kind === 'butterfly' ? [0, 1, 2, 1][Math.floor(t * 12) % 4] : c.kind === 'bat' ? Math.floor(t * 10) % 2 : 0;
     blit(critterSprite(c.kind, frame, c.kind === 'ladybug' && c.dir < 0, scale, g), x, y);
     if (c.kind === 'firefly') box(x + Math.round(0.7 * scale), y, 2, 1, g ? '#fff2a0' : '#f4ffaa');
+}
+
+/* ---------- creatures in the soil ---------- */
+// Every few minutes something crawls through the soil in view, leaving a
+// trail of loose grains. Tap it before it burrows away. Most give a boost or
+// some food; a cicada nymph is a rare treat; and very rarely there's amber
+// (a piece to keep, +3% to everything for good), a young queen, or a golden
+// scarab.
+const BURROWERS = {
+    grub:{name:'Beetle grub', size:1.5, spd:2.5, w:30},
+    pill:{name:'Pill bug', size:1.4, spd:4, w:25},
+    mole:{name:'Mole cricket', size:1.55, spd:5, w:20},
+    spring:{name:'Springtail', size:1.45, spd:0, w:19},
+    cicada:{name:'Cicada nymph', size:1.6, spd:2, w:3.5},
+    amber:{name:'Amber', size:1.5, spd:0, w:1.2, rare:true},
+    queen:{name:'Young queen', size:1, spd:4, w:0.6, rare:true},
+    scarab:{name:'Golden scarab', size:1.5, spd:4, w:0.7, rare:true},
+};
+const AMBER = [
+    {id:'ant', what:'an ancient ant'}, {id:'mosquito', what:'a mosquito'}, {id:'spider', what:'a tiny spider'},
+    {id:'leaf', what:'a leaf'}, {id:'scorpion', what:'a tiny scorpion'},
+];
+let burrower = null, burrowAt = 0, grains = [];
+function grubModel(frame) {
+    const m = [], r = frame ? 1.65 : 1.5;
+    for (let i = 0; i < 7; i++) { const a = Math.PI * (0.2 + i * 0.22); m.push({t:'e', x:Math.cos(a) * r, y:Math.sin(a) * r, rx:0.75, ry:0.7, rot:0, r:i === 6 ? 'h' : 'w', hl:true}); }
+    return m.concat([{t:'l', pts:[[-1.1, 0.4], [-1.6, 1.0]], w:0.18, r:'k'}, {t:'l', pts:[[-0.5, 0.9], [-0.7, 1.6]], w:0.18, r:'k'}]);
+}
+function pillModel(frame) {
+    const s = frame ? 0.2 : -0.2, m = [];
+    for (let i = 0; i < 6; i++) m.push({t:'l', pts:[[-1.6 + i * 0.65, 0.2], [-1.7 + i * 0.65 + (i % 2 ? s : -s), 0.85]], w:0.18, r:'k'});
+    m.push({t:'h', x:0, y:0.45, rx:2.2, ry:1.55, r:'g', hl:true});
+    for (let x = -1.3; x <= 1.4; x += 0.55) m.push({t:'l', pts:[[x, -0.9], [x + 0.05, 0.35]], w:0.14, r:'d'});
+    return m.concat([{t:'e', x:2.25, y:0.2, rx:0.45, ry:0.38, rot:0, r:'d'}, {t:'l', pts:[[2.5, 0.0], [3.1, -0.5]], w:0.14, r:'d'}]);
+}
+function moleModel(frame) {
+    const s = frame ? 0.3 : -0.3;
+    return [
+        {t:'l', pts:[[-1.6, 0.3], [-2.4 + s, 1.0]], w:0.3, r:'k'}, {t:'l', pts:[[-0.6, 0.3], [-0.9 - s, 1.0]], w:0.3, r:'k'},
+        {t:'e', x:-1.4, y:0, rx:1.6, ry:0.75, rot:0, r:'b', hl:true},
+        {t:'e', x:0.5, y:-0.1, rx:0.95, ry:0.8, rot:0, r:'d', hl:true},
+        {t:'e', x:1.55, y:0, rx:0.55, ry:0.5, rot:0, r:'b', hl:true},
+        // Its big digging claws.
+        {t:'e', x:1.7, y:0.75 + (frame ? 0.15 : 0), rx:0.75, ry:0.35, rot:0.4, r:'k'}, {t:'e', x:1.2, y:0.8, rx:0.6, ry:0.3, rot:-0.3, r:'k'},
+        {t:'l', pts:[[1.9, -0.3], [2.8, -0.9]], w:0.14, r:'k'},
+    ];
+}
+function springModel(frame) {
+    return [
+        {t:'e', x:-0.3, y:0, rx:1.2, ry:0.6, rot:frame ? -0.3 : 0, r:'g', hl:true},
+        {t:'e', x:0.9, y:-0.15, rx:0.45, ry:0.4, rot:0, r:'d'},
+        {t:'l', pts:[[1.2, -0.4], [1.9, -1.0]], w:0.14, r:'d'},
+        {t:'l', pts:[[-1.2, 0.2], [-0.4, 0.7]], w:0.14, r:'d'},
+    ];
+}
+function cicadaModel(frame) {
+    const s = frame ? 0.25 : -0.25;
+    return [
+        {t:'l', pts:[[-0.8, 0.3], [-1.3 + s, 1.1]], w:0.26, r:'k'}, {t:'l', pts:[[0, 0.3], [-s, 1.1]], w:0.26, r:'k'},
+        // Front legs made for digging.
+        {t:'l', pts:[[1.0, 0.2], [1.8, 0.6], [2.2, 1.1]], w:0.38, r:'k'},
+        {t:'h', x:-0.4, y:0.4, rx:1.9, ry:1.6, r:'b', hl:true},
+        {t:'e', x:1.5, y:-0.1, rx:0.65, ry:0.6, rot:0, r:'b', hl:true},
+        {t:'e', x:1.75, y:-0.35, rx:0.2, ry:0.2, rot:0, r:'w'},
+    ];
+}
+function scarabModel(frame) {
+    const s = frame ? 0.3 : -0.3;
+    return [
+        {t:'l', pts:[[-0.9, 0.3], [-1.2 + s, 1.1]], w:0.38, r:'k'}, {t:'l', pts:[[0, 0.3], [-s, 1.1]], w:0.38, r:'k'}, {t:'l', pts:[[0.9, 0.3], [1.2 + s, 1.1]], w:0.38, r:'k'},
+        {t:'h', x:-0.2, y:0.45, rx:2.0, ry:1.8, r:'r', hl:true},
+        {t:'e', x:1.75, y:0.05, rx:0.6, ry:0.55, rot:0, r:'r', hl:true},
+        {t:'l', pts:[[2.0, -0.2], [2.5, -1.2]], w:0.32, r:'r'},
+    ];
+}
+const BURROW_MODEL = {grub:grubModel, pill:pillModel, mole:moleModel, spring:springModel, cicada:cicadaModel, scarab:scarabModel};
+const BURROW_PAL = {
+    grub:{w:[240, 232, 214], W:[255, 250, 240], h:[196, 120, 52], H:[226, 158, 90], k:[120, 90, 60]},
+    pill:{g:[118, 122, 128], G:[162, 168, 176], d:[70, 72, 78], k:[60, 60, 64]},
+    mole:{b:[112, 66, 32], B:[156, 102, 58], d:[78, 46, 22], D:[118, 76, 44], k:[46, 26, 12]},
+    spring:{g:[150, 176, 196], G:[196, 218, 232], d:[80, 96, 110]},
+    cicada:{b:[122, 80, 36], B:[170, 122, 70], k:[66, 40, 18], w:[245, 235, 210]},
+    scarab:{r:[245, 198, 58], R:[255, 232, 140], k:[120, 84, 14]},
+};
+function burrowSprite(kind, frame, flip, scale) {
+    return sprite(`burrow|${kind}|${frame}|${flip ? 1 : 0}|${scale}`, () => rasterize(BURROW_MODEL[kind](frame), scale, 0, flip, BURROW_PAL[kind]));
+}
+function pickBurrower() {
+    const left = AMBER.filter(a => !(st.amber || []).includes(a.id));
+    const kinds = Object.keys(BURROWERS).filter(k => k !== 'amber' || left.length);
+    let r = Math.random() * kinds.reduce((t, k) => t + BURROWERS[k].w, 0);
+    for (const k of kinds) { r -= BURROWERS[k].w; if (r <= 0) return k; }
+    return 'grub';
+}
+function stepBurrower(dt, t) {
+    for (const g of grains) g.life -= dt;
+    grains = grains.filter(g => g.life > 0);
+    if (!burrowAt) burrowAt = t + 60 + Math.random() * 60;
+    const b = burrower;
+    if (!b) {
+        if (t < burrowAt || flight || visit) return;
+        burrowAt = t + (180 + Math.random() * 120) * (st.queens >= 1 ? 0.5 : 1);
+        // Somewhere in the soil that's on screen, clear of the numbers and the dock.
+        const vx0 = Math.max(MARGIN + 8, -view.ox / view.s + 6), vx1 = Math.min(W - MARGIN - 8, (view.cw - view.ox) / view.s - 6);
+        const vy0 = Math.max(GROUND + 10, -view.oy / view.s + 30), vy1 = Math.min(H - MARGIN - 8, (view.ch - view.oy) / view.s - 40);
+        if (vx1 - vx0 < 10 || vy1 - vy0 < 10) return;
+        for (let k = 0; k < 30; k++) {
+            const x = vx0 + Math.random() * (vx1 - vx0), y = vy0 + Math.random() * (vy1 - vy0);
+            if (solid[Math.floor(y) * W + Math.floor(x)] !== 1) continue;
+            const kind = pickBurrower();
+            burrower = {kind, x, y, a:Math.random() < 0.5 ? (Math.random() - 0.5) * 0.6 : Math.PI + (Math.random() - 0.5) * 0.6, t0:t, ph:Math.random() * TAU, life:kind === 'amber' ? 25 : 20, hop:0, gt:0};
+            if (kind === 'amber') burrower.piece = pick(AMBER.filter(a => !(st.amber || []).includes(a.id))).id;
+            return;
+        }
+        return;
+    }
+    const age = t - b.t0, spec = BURROWERS[b.kind];
+    if (age > b.life) { burrower = null; return; }
+    // A slow wander, turning back from the frame and the surface.
+    b.a += Math.sin(age * 0.7 + b.ph) * dt * 0.6;
+    if (b.x < MARGIN + 8) b.a = 0; else if (b.x > W - MARGIN - 8) b.a = Math.PI;
+    if (b.y < GROUND + 8) b.a = Math.abs(b.a); else if (b.y > H - MARGIN - 8) b.a = -Math.abs(b.a);
+    let v = spec.spd;
+    if (b.kind === 'spring') { b.hop -= dt; if (b.hop <= 0) { b.hop = 0.9 + Math.random() * 0.8; b.jx = Math.cos(b.a) * 4; b.jy = (Math.random() - 0.5) * 3; b.jt = 0.25; } if (b.jt > 0) { b.jt -= dt; b.x += b.jx * dt * 4; b.y += b.jy * dt * 4; } }
+    else { b.x += Math.cos(b.a) * v * dt; b.y += Math.sin(b.a) * v * 0.5 * dt; }
+    b.gt -= dt;
+    if (v > 0 && b.gt <= 0 && grains.length < 60) { b.gt = 0.15; grains.push({x:b.x - Math.cos(b.a) * 2 + (Math.random() - 0.5), y:b.y + (Math.random() - 0.5) * 1.5, life:3}); }
+}
+function catchBurrower() {
+    const b = burrower, r = rates(), now = performance.now() / 1000, spec = BURROWERS[b.kind];
+    burrower = null;
+    let msg, gold = !!spec.rare;
+    const buff = (k, m, secs) => { st.buffs = st.buffs.filter(x => x.k !== k && x.until > Date.now()); st.buffs.push({k, m, until:Date.now() + secs * 1000, gold}); return `${BUFF_NAMES[k]} x${m} for ${secs}s`; };
+    const food = v => { v = Math.max(30, v); st.food += v; st.earned += v; st.total += v; return `+${fmt(v)} food`; };
+    if (b.kind === 'grub') msg = buff('forage', 2, 60);
+    else if (b.kind === 'pill') msg = buff('dig', 2, 60);
+    else if (b.kind === 'mole') msg = buff('dig', 3, 30);
+    else if (b.kind === 'spring') msg = food(r.food * 90);
+    else if (b.kind === 'cicada') msg = food(r.food * 300);
+    else if (b.kind === 'scarab') msg = buff('all', 5, 60);
+    else if (b.kind === 'queen') { st.queens += 1; msg = 'She joins the colony: +1 queen'; }
+    else if (b.kind === 'amber') {
+        const piece = AMBER.find(a => a.id === b.piece) || AMBER[0];
+        if (!st.amber) st.amber = [];
+        if (!st.amber.includes(piece.id)) st.amber.push(piece.id);
+        msg = `Amber with ${piece.what} sealed inside! Everything is 3% better for good (${st.amber.length} of ${AMBER.length})`;
+    }
+    st.stats.critters++;
+    if (b.kind === 'scarab') st.stats.golden = 1;
+    for (let i = 0; i < 10 && dust.length < 60; i++) dust.push({x:b.x, y:b.y, vx:(Math.random() - 0.5) * 18, vy:-3 - Math.random() * 8, life:0.6, col:Math.random() < 0.5 ? css(theme.soil[0]) : (gold ? '#ffd54a' : '#fff3c4')});
+    floaters.push({x:Math.max(30, Math.min(W - 30, b.x)), y:b.y - 5, txt:b.kind === 'amber' ? 'Amber!' : b.kind === 'queen' ? '+1 queen' : msg, t:now, col:gold ? '#ffd54a' : '#ffffff', big:true});
+    note(b.kind === 'amber' ? msg + '.' : `${spec.name}! ${msg}.`, 'bug');
+    chime(gold);
+    try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate(gold ? [20, 40, 20] : 15); } catch (e) {}
+    updateUI();
+}
+function drawBurrowerPix(t) {
+    for (const g of grains) { pc.globalAlpha = Math.min(1, g.life / 1.5) * 0.8; box(g.x * P, g.y * P, 1, 1, css(theme.soil[0].map(v => Math.min(255, v * 1.35)))); }
+    pc.globalAlpha = 1;
+    const b = burrower;
+    if (!b) return;
+    const spec = BURROWERS[b.kind], age = t - b.t0, sc = Math.round(critterScale() * 2) / 2, scale = P * spec.size * sc, x = Math.round(b.x * P), y = Math.round(b.y * P);
+    // Fades in as it surfaces through the soil, and out as it burrows away.
+    pc.globalAlpha = Math.max(0, Math.min(1, age / 0.8, (b.life - age) / 1.5));
+    const pulse = 0.5 + 0.5 * Math.sin(t * 4), R = Math.round(4.2 * scale);
+    pc.fillStyle = spec.rare ? `rgba(255,214,74,${0.35 + pulse * 0.3})` : `rgba(255,255,255,${0.16 + pulse * 0.14})`; pc.beginPath();
+    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) { const d = Math.hypot(dx, dy); if (d <= R && d > R - 2.5 && ((dx + dy) & 1) === 0) pc.rect(x + dx, y + dy, 1, 1); }
+    pc.fill();
+    const flip = Math.cos(b.a) < 0, frame = Math.floor(t * 5 + b.ph) % 2;
+    if (b.kind === 'amber') {
+        // A lump of amber with something dark inside, catching the light.
+        const rx = Math.round(2.6 * scale / P * 1.4), ry = Math.round(2 * scale / P * 1.4);
+        for (let dy = -ry; dy <= ry; dy++) for (let dx = -rx; dx <= rx; dx++) if ((dx * dx) / (rx * rx) + (dy * dy) / (ry * ry) <= 1) box(x + dx, y + dy, 1, 1, dx < -rx * 0.3 && dy < -ry * 0.3 ? '#ffd27a' : '#e0901e');
+        box(x - 1, y - 1, 3, 2, '#5a3008'); box(x - 2, y + 1, 1, 1, '#5a3008'); box(x + 2, y + 1, 1, 1, '#5a3008');
+        if (Math.sin(t * 3 + b.ph) > 0.8) { box(x - rx + 2, y - ry + 1, 2, 1, '#ffffff'); }
+    } else {
+        // A dark outline keeps it readable on pale soil.
+        const sp = b.kind === 'queen' ? antSprite('alate', 0, frame, flip) : burrowSprite(b.kind, b.kind === 'spring' ? (b.jt > 0 ? 1 : 0) : frame, flip, scale);
+        pc.drawImage(outlineOf(sp, spec.rare ? '#fff1b0' : '#2a1a0c'), x - sp.half - 1, y - sp.half - 1);
+        blit(sp, x, y);
+    }
+    pc.globalAlpha = 1;
 }
 
 /* ---------- ants you can see ---------- */
@@ -3032,19 +3292,25 @@ function drawFlightText(t) {
 }
 function startFlight() {
     if (flight || !canFly()) return;
+    closeVisit();
     flight = {t0:performance.now() / 1000, gain:queenGain(), alates:[], spawned:0, done:false};
     for (const a of AW) { a.q = []; a.wait = 99; }
 }
 function finishFlight() {
     const gain = flight.gain, prev = st, top = AW.reduce((b, a) => !b || a.trips > b.trips ? a : b, null);
     // Remember the farm the queens left behind.
-    const hist = (prev.hist || []).concat([{n:prev.colony + 1, nm:prev.farmName || '', th:theme.name, s:prev.started, e:Date.now(), a:Math.floor(Math.max(prev.peak, prev.ants)), q:gain, ch:nest.chambers, top:top ? [top.name, top.trips] : null}]).slice(-30);
+    // Its nest, seed, queen, best food and busiest ants come along so the farm
+    // can be visited later. Only the last dozen keep their nest.
+    const pk = packNest(), busiest = AW.slice().sort((a, b) => b.trips - a.trips).slice(0, 8).map(a => [a.name, a.sty || 0, a.trips, a.role]);
+    const hist = (prev.hist || []).concat([{n:prev.colony + 1, nm:prev.farmName || '', th:theme.name, s:prev.started, e:Date.now(), a:Math.floor(Math.max(prev.peak, prev.ants)), q:gain, ch:nest.chambers, top:top ? [top.name, top.trips] : null,
+        sd:prev.seed, tier:prev.tier, qn:queenName(), ne:{n:pk.n, s:pk.s, f:pk.f, w:pk.w}, ga:busiest}]).slice(-30);
+    hist.forEach((h, i) => { if (i < hist.length - 12) delete h.ne; });
     st = freshState({...prev, queens:prev.queens + gain, flights:prev.flights + 1, hist});
     newColony();
     flight = null;
     fadeIn = performance.now() / 1000 + 1;
     save();
-    toast(`${gain === 1 ? 'A new queen' : gain + ' new queens'} founded a farm of ${theme.name.toLowerCase()}`);
+    note(`${gain === 1 ? 'A new queen' : gain + ' new queens'} founded a farm of ${theme.name.toLowerCase()}`, 'queen');
     buildUI();
 }
 function newColony() {
@@ -3054,7 +3320,7 @@ function newColony() {
     genSoil(st.seed);
     foundNest();
     afterNest();
-    AW = []; crumbs = []; floaters = []; dust = []; bodies = []; visitors = {}; guest = null; spores = []; evFx = null; waterKey = '';
+    AW = []; crumbs = []; floaters = []; dust = []; bodies = []; visitors = {}; guest = null; spores = []; evFx = null; waterKey = ''; burrower = null; grains = [];
     antSeq = 0; pendingRoster = [];
     syncAnts(false);
 }
@@ -3342,8 +3608,9 @@ function raidCasualties(o) {
 onRaidWarn = R => {
     if (catching) return;
     spawnRaider(R);
-    const ok = rates().guard >= raidPower(R);
-    toast(`${RAIDERS[R.k].name[0].toUpperCase() + RAIDERS[R.k].name.slice(1)} heading for the nest! ${ok ? 'Your guards look ready.' : 'Move more ants to Guard.'}`);
+    const rd = raidRead(R);
+    const they = R.k === 'rival' ? 'They look' : 'It looks';
+    note(`${RAIDERS[R.k].name[0].toUpperCase() + RAIDERS[R.k].name.slice(1)} heading for the nest! ${[`${they} stronger than your guards. Move more ants to Guard.`, 'It looks like an even fight.', `${they} weaker than your guards.`][rd]}`, 'raid');
     chime(false);
     try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate([30, 60, 30]); } catch (e) {}
     updateUI();
@@ -3367,32 +3634,42 @@ onRaid = o => {
     if (!o.rain) fightHold = performance.now() + 4000;
     // The guards that held the line cheer.
     if (o.win) { const t = performance.now() / 1000; for (const a of AW) if (a.fight) a.cheer = t + 1.8; }
-    if (o.rain) { toast(`The rain sent the ${R.name} packing.`); updateUI(); return; }
+    if (o.rain) { note(`The rain sent the ${R.name} packing.`, 'raid'); updateUI(); return; }
     const fell = raidCasualties(o);
-    if (o.win) toast(`Your guards saw off the ${R.name}! +${fmt(o.loot)} food` + (fell ? `, but ${fell} fell in the fight.` : '.'));
-    else toast(`The ${R.name} broke in: ${fmt(o.food)} food stolen` + (fell ? ` and ${fell} ant${fell === 1 ? '' : 's'} lost` : '') + '. The colony is shaken up.');
+    if (o.win) note(`Your guards saw off the ${R.name}! +${fmt(o.loot)} food` + (fell ? `, but ${fell} fell in the fight.` : '.'), 'raid');
+    else note(`The ${R.name} broke in: ${fmt(o.food)} food stolen` + (fell ? ` and ${fell} ant${fell === 1 ? '' : 's'} lost` : '') + '. The colony is shaken up.', 'raid');
     chime(o.win);
     updateUI();
 };
 const clock = sec => `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, '0')}`;
-// Under the job bar: are the guards enough for what's coming (or a spider)?
+// The scouts' read of a raid against the guards as they stand: a guess (off
+// by up to 15% either way), not a promise. 2 they look weaker, 1 even, 0 stronger.
+function raidRead(R, r) {
+    const q = (r || rates()).guard / Math.max(1e-9, raidPower(R)) * (R.est || 1);
+    return q >= 1.3 ? 2 : q >= 0.95 ? 1 : 0;
+}
+const READ_TXT = ['they look stronger', 'looks even', 'they look weaker'];
+// Under the job bar: how the guards measure up to what's coming (or a typical spider).
 function guardNote(r) {
-    const R = st.raid || {k:'spider', roll:1}, enough = r.guard >= raidPower(R);
-    return `${enough ? 'enough' : 'too few'} for ${RAID_TXT[R.k]}`;
+    const R = st.raid || {k:'spider', roll:1, thr:st.threat || 1, qp:Math.pow(guardQual(), BAL.raidQual)}, rd = raidRead(R, r);
+    return rd === 2 ? `a match for ${RAID_TXT[R.k]}` : rd === 1 ? `about even with ${RAID_TXT[R.k]}` : `too few for ${RAID_TXT[R.k]}`;
 }
 
 /* ---------- choices: chambers and events ---------- */
 // One card over the farm asks for a decision. Closing it decides later.
 let choiceCfg = null;
+// One window at a time: a choice card closes whatever else is open.
 function showChoice(cfg) {
+    if (lay.open) openOv(null);
+    closeMenu();
     choiceCfg = cfg;
     $('choiceBody').innerHTML = `<h3><i class="fa-solid ${cfg.icon}"></i>${esc(cfg.title)}</h3><p>${esc(cfg.text)}</p><div class="choice-opts">`
         + cfg.opts.map((o, k) => `<button data-k="${k}"${o.now ? ' class="now"' : ''}><i class="fa-solid ${o.icon}"></i><b>${esc(o.label)}${o.now ? ' (now)' : ''}</b><small>${esc(typeof o.sub === 'function' ? o.sub() : o.sub)}</small></button>`).join('') + '</div>';
     $('choice').hidden = false;
     placeChoice();
 }
-// Just under the numbers, however many rows of boosts and alerts they have,
-// unless that would cover the chamber it's asking about: then at the bottom.
+// Just under the numbers over the sky, unless that would cover the chamber
+// it's asking about: then at the bottom.
 function placeChoice() {
     const el = $('choice'), cfg = choiceCfg, n = cfg && cfg.room !== undefined ? nest.nodes[cfg.room] : null;
     el.classList.remove('low'); el.style.top = ($('hud').offsetHeight + 4) + 'px';
@@ -3401,10 +3678,12 @@ function placeChoice() {
     const b = el.getBoundingClientRect(), top = cv.getBoundingClientRect().top;
     if (y1 > b.top - top && y0 < b.bottom - top) { el.classList.add('low'); el.style.top = ''; }
 }
-function hideChoice() {
+// Put away quietly when another window opens: a new chamber's prompt stays
+// waiting on its pill instead of being dismissed.
+function hideChoice(quiet) {
     const c = choiceCfg;
     choiceCfg = null; $('choice').hidden = true;
-    if (c && c.onClose) c.onClose();
+    if (c && c.onClose && !quiet) c.onClose();
 }
 $('choiceBody').addEventListener('click', e => {
     const b = e.target.closest('[data-k]');
@@ -3413,7 +3692,7 @@ $('choiceBody').addEventListener('click', e => {
     choiceCfg = null; $('choice').hidden = true;
     o.act();
 });
-$('choiceX').addEventListener('click', hideChoice);
+$('choiceX').addEventListener('click', () => hideChoice());
 
 // Chambers: a new one asks what it should be, and tapping one on the farm
 // changes it. The number counts finished chambers, the queen's being the first.
@@ -3442,23 +3721,160 @@ function setRoomUI(i, k) {
 }
 onChamber = c => {
     indexChambers();
-    if (booted && !catching && c.role !== 'queen') { roomAsk = c.i; if (!choiceCfg) pickRoom(c.i, true); }
+    // The card pops up by itself only when nothing else is open; otherwise
+    // the new chamber waits on its pill.
+    if (booted && !catching && c.role !== 'queen') { roomAsk = c.i; if (!choiceCfg && !lay.open) pickRoom(c.i, true); }
 };
 function renderRooms(r) {
     // Nothing to choose until the diggers finish a second chamber.
     $('roomCard').hidden = nest.chambers < 2;
     const rc = r.rc, n = k => rc[k] + (k === 'fungus' ? st.mods.fungus : 0);
-    const what = {
+    // Plain words on the card; the exact numbers on hover.
+    const exact = {
         nursery:k => `brood ${20 * k}% faster, ${10 * k}% more eggs`,
         food:k => `${10 * k}% more food per trip`,
         barracks:k => `guards ${25 * k}% stronger`,
-        fungus:k => k ? `${fmt(r.fungus)} food/s, rain or shine` : 'grows food by itself',
+        fungus:k => `${fmt(r.fungus)} food a second, rain or shine`,
         rest:k => `everyone ${3 * k}% faster`,
     };
-    const h = ROOM_KEYS.map(k => `<div class="room-row${n(k) ? '' : ' none'}"><i class="fa-solid ${ROOMS[k].icon}"></i><b>${ROOMS[k].name}</b><span>${n(k)}</span><small>${n(k) ? what[k](n(k)) : ROOMS[k].desc}</small></div>`).join('');
+    const h = ROOM_KEYS.map(k => `<div class="room-row${n(k) ? '' : ' none'}" title="${n(k) ? exact[k](n(k)) : ROOMS[k].more}"><i class="fa-solid ${ROOMS[k].icon}"></i><b>${ROOMS[k].name}</b><span>${n(k)}</span><small>${ROOMS[k].desc}</small></div>`).join('');
     if ($('rooms').innerHTML !== h) $('rooms').innerHTML = h;
 }
-// Fungus gardens sprout pale mushrooms; barracks fly a little flag.
+/* ---------- visiting old farms ---------- */
+// Past farms keep their nest (the last dozen): Stats can open one, read only,
+// with its busiest ants pottering about the tunnels, while this farm runs on.
+let visit = null;
+const thumbs = new Map();
+// The old farm is rebuilt off to one side: its soil from its seed, its nest
+// from the saved nodes, drawn with its own colours. Everything live is put
+// back before anything else runs.
+function bakeVisit(h) {
+    const keep = {solid, layer, grain, deco, theme, moundCache, onCarve, rng, nestBox, dirty, nest:{...nest}};
+    try {
+        theme = THEMES.find(x => x.name === h.th) || THEMES[0];
+        onCarve = () => {}; rng = Math.random;
+        genSoil(h.sd);
+        unpackNest({...h.ne, h:[]});
+        const sc = newCanvas(W, H), sx = sc.getContext('2d'), img = sx.createImageData(W, H), p32 = new Uint32Array(img.data.buffer);
+        for (let y = GROUND; y < H; y++) for (let x = 0; x < W; x++) p32[y * W + x] = cellColor(x, y);
+        sx.putImageData(img, 0, 0);
+        const out = newCanvas(PW, PH), o = out.getContext('2d'), m = moundCache = mound(), ex = nest.EX * P;
+        o.imageSmoothingEnabled = false;
+        o.drawImage(sc, 0, 0, PW, PH);
+        // Its dirt pile, grass and the best food it found.
+        const ml = Math.floor((m.x - m.L) * P), mr = Math.ceil((m.x + m.L) * P), base = theme.soil[0];
+        for (let x = 0; x < PW; x++) {
+            if ((x > ml && x < mr) || Math.abs(x - ex) < 6) continue;
+            o.fillStyle = theme.grass[0]; o.fillRect(x, PG - 1, 1, 1);
+            if (hash2(x, 11) < 0.35) { const hg = 1 + Math.floor(hash2(x, 12) * 4); o.fillStyle = theme.grass[Math.floor(hash2(x, 13) * theme.grass.length)]; o.fillRect(x, PG - 1 - hg, 1, hg); }
+        }
+        for (let x = ml; x <= mr; x++) {
+            const hh = moundH((x + 0.5) / P) * P;
+            if (hh < 0.5) continue;
+            const top = Math.round(PG - hh), f = x > m.x * P ? 0.86 : 1;
+            o.fillStyle = css(base.map(v => v * f)); o.fillRect(x, top, 1, PG - top + 1);
+            o.fillStyle = css(base.map(v => Math.min(255, v * f * 1.18))); o.fillRect(x, top, 1, 1);
+        }
+        const fx = Math.min(W - MARGIN - 20, nest.EX + 38);
+        o.drawImage(foodSprite(h.tier || 0, 0).cv, Math.round(fx * P) - 20, Math.round((GROUND + 0.4) * P) - 30);
+        const nodes = nest.nodes.map(n => n.k ? {k:1, p:n.p, d:n.d, x:n.x, y:n.y, cx:n.cx, cy:n.cy, rx:n.rx, ry:n.ry, done:n.prog >= 1} : {k:0, p:n.p, d:n.d, x:n.x, y:n.y});
+        const rooms = nodes.map((n, i) => n.k && n.done ? i : -1).filter(i => i >= 0);
+        const ga = h.ga && h.ga.length ? h.ga : [[h.top ? h.top[0] : 'An ant', 0, h.top ? h.top[1] : 0, 'forage']];
+        const ghosts = ga.map(([name, sty, trips, role]) => {
+            const at = rooms.length ? pick(rooms) : 0, p = vPt(nodes[at]);
+            return {name, sty:sty || null, trips, role, at, x:p.x, y:p.y, a:0, ph:Math.random() * 10, q:[], wait:Math.random() * 2};
+        });
+        return {h, cv:out, nodes, rooms, th:theme, ghosts, nestBox:{x0:nestBox ? nestBox.x0 : 0, x1:nestBox ? nestBox.x1 : W, y1:nestBox ? nestBox.y1 : H}};
+    } catch (e) { return null; }
+    finally {
+        ({solid, layer, grain, deco, theme, moundCache, onCarve, rng, nestBox, dirty} = keep);
+        Object.assign(nest, keep.nest);
+    }
+}
+const vPt = n => n.k ? {x:n.cx + (Math.random() * 2 - 1) * n.rx * 0.5, y:n.cy + n.ry * 0.6 - 1.55} : {x:n.x, y:n.y};
+function vPath(N, from, to) {
+    const up = [], down = [];
+    let a = from, b = to;
+    while (N[a].d > N[b].d) { a = N[a].p; up.push(a); }
+    while (N[b].d > N[a].d) { down.push(b); b = N[b].p; }
+    while (a !== b) { a = N[a].p; up.push(a); down.push(b); b = N[b].p; }
+    return up.concat(down.reverse());
+}
+function stepVisit(dt) {
+    if (!visit) return;
+    const N = visit.nodes;
+    for (const g of visit.ghosts) {
+        if (g.wait > 0) { g.wait -= dt; continue; }
+        if (!g.q.length) {
+            // Off to another chamber, or a wander down some tunnel.
+            const to = visit.rooms.length && Math.random() < 0.7 ? pick(visit.rooms) : Math.floor(Math.random() * N.length);
+            g.q = vPath(N, g.at, to).map(i => ({...vPt(N[i]), n:i}));
+            g.wait = 1 + Math.random() * 3;
+            continue;
+        }
+        const p = g.q[0], dx = p.x - g.x, dy = p.y - g.y, d = Math.hypot(dx, dy), step = 9 * dt;
+        if (d > 0.05) g.a += angDiff(Math.atan2(dy, dx), g.a) * Math.min(1, dt * 14);
+        if (d <= step) { g.x = p.x; g.y = p.y; g.at = p.n; g.q.shift(); } else { g.x += dx / d * step; g.y += dy / d * step; }
+        g.ph += step * 2.2;
+    }
+}
+// Its ants in its own colours.
+function ghostSprite(th, kind, d, frame, flip, sty) {
+    if (!showStyles()) sty = null;
+    return sprite(`ghost|${th.name}|${kind}|${d}|${frame}|${flip ? 1 : 0}|${sty ? sty.join('.') : ''}`, () => {
+        const was = theme;
+        theme = th;
+        try { return rasterize(antModel(frame, kind).concat(sty ? STYLES[sty[0]].shapes() : []), P, d * Math.PI / 4, flip, sty ? styledPal(sty, false) : antPal()); }
+        finally { theme = was; }
+    });
+}
+function drawVisitPix(t) {
+    pc.imageSmoothingEnabled = false;
+    pc.drawImage(visit.cv, 0, 0);
+    for (const g of visit.ghosts) {
+        const {d, flip} = antDir(g.a), moving = g.wait <= 0 && g.q.length > 0;
+        blit(ghostSprite(visit.th, g.role === 'guard' ? 'soldier' : 'ant', d, moving ? Math.floor(g.ph / 2.5) % 2 : 0, flip, g.sty), g.x * P, g.y * P);
+    }
+}
+function openVisit(h) {
+    if (!h || !h.ne || flight) return;
+    const v = bakeVisit(h);
+    if (!v) { toast("That farm's nest couldn't be rebuilt."); return; }
+    if (!visit) v.cam = {z:cam.z, x:cam.x, y:cam.y, tz:cam.tz, tx:cam.tx, ty:cam.ty, auto:cam.auto};
+    else v.cam = visit.cam;
+    visit = v;
+    openOv(null); hideChoice(true); closeMenu();
+    if (cam.follow) cam.follow = null;
+    cam.auto = false; cam.z = cam.tz = 1; cam.x = cam.tx = W / 2; cam.y = cam.ty = H / 2; applyCam(); camUI();
+    const food = FOODS[h.tier || 0].name.toLowerCase();
+    $('visitName').textContent = `${h.nm ? h.nm + ', farm ' : 'Farm '}${h.n}: ${h.th.toLowerCase()}, ${fmtTime((h.e - h.s) / 1000)}, reached ${food}`;
+    const bar = $('visitBar'), hb = $('hud').getBoundingClientRect();
+    bar.style.top = (lay.mode === 'overlay' ? hb.bottom + 6 : $('hud').offsetHeight + 6) + 'px';
+    bar.hidden = false;
+}
+function closeVisit() {
+    if (!visit) return;
+    Object.assign(cam, visit.cam); cam.follow = null;
+    visit = null;
+    $('visitBar').hidden = true;
+    applyCam(); camUI();
+}
+// A little picture of a past nest for the album: its tunnels and chambers.
+function nestThumb(h) {
+    const key = `${h.n}|${h.e}`;
+    let u = thumbs.get(key);
+    if (u) return u;
+    const th = THEMES.find(x => x.name === h.th) || THEMES[0], c = newCanvas(40, 80), x = c.getContext('2d'), k = 40 / W;
+    x.fillStyle = '#9cc6e8'; x.fillRect(0, 0, 40, GROUND * k);
+    x.fillStyle = css(th.soil[1]); x.fillRect(0, GROUND * k, 40, 80);
+    x.fillStyle = css(th.tunnel);
+    for (const a of h.ne.n) {
+        if (a[3] === 1) { x.beginPath(); x.ellipse(a[4] * k, a[5] * k, a[6] * k, a[7] * k * 0.8, 0, 0, TAU); x.fill(); }
+        else x.fillRect(a[0] * k - 0.6, a[1] * k - 0.6, 1.2, 1.2);
+    }
+    thumbs.set(key, u = c.toDataURL());
+    return u;
+}
 // The chamber a card or the "choose its job" pill is asking about pulses
 // with a gold outline, thick enough to spot with the whole farm in view.
 function drawRoomFocusPix(t) {
@@ -3475,6 +3891,7 @@ function drawRoomFocusPix(t) {
     box((n.cx - half) * P, fl * P - th / 2, Math.round(half * 2 * P), th, '#ffd54a');
     pc.globalAlpha = 1;
 }
+// Fungus gardens sprout pale mushrooms; barracks fly a little flag.
 function drawRoomsPix() {
     const N = nest.nodes;
     for (const i of gardens) {
@@ -3541,18 +3958,60 @@ const EVENTS = [
         when:() => !st.raid, dflt:1, opts:[
             {icon:'fa-hand-fist', label:'Chase them off', sub:'Foraging x0.8 for 2 minutes, and the next raid is 30% weaker', act:() => { addBuff('forage', 0.8, 120, 'Chasing scouts'); st.mods.raid = 0.7; return 'The scouts run home with a bloody nose.'; }},
             {icon:'fa-eye-slash', label:'Ignore them', sub:'The next raid is 25% stronger', act:() => { st.mods.raid = 1.25; return "The scouts saw everything. The next raid will be bigger."; }}]},
+    {id:'bird', icon:'fa-dove', title:'A hungry bird', text:'A bird is hopping about by the entrance, looking for a snack.',
+        when:() => isDay() && !st.raid, dflt:1, opts:[
+            {icon:'fa-house', label:'Hide inside', sub:'Foraging almost stops for a minute', act:() => { addBuff('forage', 0.1, 60, 'Hiding from a bird'); return 'Everyone ducks inside until the bird gives up.'; }},
+            {icon:'fa-person-walking', label:'Keep working', sub:'Nothing slows down, but the bird snaps up about 3% of your ants', act:() => { const n = loseAnts(0.03); return n >= 1 ? `The bird snaps up ${fmt(Math.round(n))} ant${Math.round(n) === 1 ? '' : 's'} and flies off.` : 'The bird flies off hungry.'; }}]},
+    {id:'worm', icon:'fa-worm', title:'An earthworm', text:'An earthworm is tunnelling through the soil right next to the nest.',
+        when:() => !nest.full, dflt:1, opts:[
+            {icon:'fa-person-digging', label:'Follow its tunnel', sub:'Digging x2 for 4 minutes', act:() => { addBuff('dig', 2, 240, 'Following a worm'); return 'The diggers follow the worm through the loose soil.'; }},
+            {icon:'fa-hand', label:'Leave it be', sub:'Nothing changes', act:() => 'The worm wriggles off.'}]},
+    {id:'antlion', icon:'fa-hurricane', title:'An antlion pit', text:'An antlion dug a sandy pit right on the path to the food, and ants keep sliding in.',
+        when:() => !st.raid, dflt:1, opts:[
+            {icon:'fa-person-digging', label:'Fill it in', sub:'Diggers stop for 2 minutes to fill it', act:() => { addBuff('dig', 0.1, 120, 'Filling a pit'); return 'The diggers fill the pit in.'; }},
+            {icon:'fa-route', label:'Walk around it', sub:'Foraging x0.8 for 6 minutes', act:() => { addBuff('forage', 0.8, 360, 'Walking around a pit'); return 'The foragers take the long way round.'; }}]},
+    {id:'berry', icon:'fa-apple-whole', title:'A fallen berry', text:'A ripe berry dropped onto the grass, almost too big to move.',
+        when:() => isDay(), dflt:1, opts:[
+            {icon:'fa-people-carry-box', label:'Haul it home', sub:() => `Foraging x0.6 for 3 minutes, then about ${fmt(rates().food * 300)} food`, act:() => { later(180, rates().food * 300); addBuff('forage', 0.6, 180, 'Hauling a berry'); return 'The foragers start rolling the berry home.'; }},
+            {icon:'fa-utensils', label:'Feast where it lies', sub:'Everything x1.2 for 5 minutes', act:() => { addBuff('all', 1.2, 300, 'Berry feast'); return 'The whole colony tucks in.'; }}]},
+    {id:'web', icon:'fa-spider', title:'A web across the entrance', text:'A spider strung its web right across the entrance overnight.',
+        when:() => !st.raid, dflt:1, opts:[
+            {icon:'fa-scissors', label:'Cut through it', sub:'Digging stops for a minute while the diggers cut', act:() => { addBuff('dig', 0.1, 60, 'Cutting a web'); return 'The diggers chew through the web.'; }},
+            {icon:'fa-wind', label:'Squeeze past', sub:'Foraging x0.7 for 5 minutes', act:() => { addBuff('forage', 0.7, 300, 'Squeezing past a web'); return 'The foragers squeeze past until the wind takes it.'; }}]},
+    {id:'termites', icon:'fa-handshake', title:'Termites next door', text:'A termite colony moved in next door. Their soldiers offer to stand guard, for a price.',
+        dflt:1, opts:[
+            {icon:'fa-shield-halved', label:'Pay them', sub:'Give 15% of your food, and guards fight x1.5 for 10 minutes', act:() => { st.food *= 0.85; addBuff('guard', 1.5, 600, 'Termite guards'); return 'Termite soldiers line up at the entrance.'; }},
+            {icon:'fa-xmark', label:'No thanks', sub:'Nothing changes', act:() => 'The termites keep to themselves.'}]},
+    {id:'dew', icon:'fa-droplet', title:'Morning dew', text:'Every blade of grass is covered in dew.',
+        when:() => isDay() && wxNow !== 'snow' && wxNow !== 'storm', dflt:1, opts:[
+            {icon:'fa-crown', label:'Bring it to the queen', sub:'Egg laying x1.5 for 6 minutes', act:() => { addBuff('lay', 1.5, 360, 'Dew for the queen'); return 'The queen drinks her fill and lays faster.'; }},
+            {icon:'fa-glass-water', label:'Drink up', sub:() => `About ${fmt(rates().food * 120)} food right away`, act:() => { const v = rates().food * 120; st.food += v; st.earned += v; st.total += v; return `+${fmt(v)} food`; }}]},
+    {id:'stray', icon:'fa-person-walking-arrow-right', title:'A lost ant', text:'An ant from another colony wandered up to your entrance, lost.',
+        when:() => !st.raid, dflt:1, opts:[
+            {icon:'fa-house-user', label:'Take her in', sub:'A few more ants (about 3%)', act:() => { const n = Math.max(1, st.ants * 0.03); st.ants += n; return `She settles in, and ${fmt(Math.round(n))} of her nestmates follow.`; }},
+            {icon:'fa-signs-post', label:'Show her home', sub:'Her colony is grateful: the next raid is 30% weaker', act:() => { st.mods.raid = 0.7; return 'Her colony will remember it.'; }}]},
 ];
+// Ants lost to something other than a raid, never below the raid floor.
+function loseAnts(frac) {
+    const n = Math.max(0, Math.min(Math.max(1, st.ants * frac), st.ants - Math.max(10, st.peak * BAL.lossFloor)));
+    st.ants -= n; st.stats.fallen += n;
+    if (n >= 1) floaters.push({x:nest.EX + 10, y:GROUND - 7, txt:`-${Math.round(n)} ant${Math.round(n) === 1 ? '' : 's'}`, t:performance.now() / 1000, col:'#ff9a8a'});
+    return n;
+}
 const EV = Object.fromEntries(EVENTS.map(e => [e.id, e]));
 function stepEvents() {
     const now = Date.now();
     if (!st.eventAt) st.eventAt = now + (240 + Math.random() * 120) * 1000;
     if (st.event && (!EV[st.event.id] || now > st.event.until)) { resolveEvent(EV[st.event.id] ? EV[st.event.id].dflt : -1, true); return; }
     if (st.event || now < st.eventAt || flight || document.hidden || nest.chambers < 2) return;
-    const ok = EVENTS.filter(e => e.id !== st.lastEvent && (!e.when || e.when()));
+    // Never one of the last few again if anything else can happen.
+    const recent = st.recentEvents || (st.lastEvent ? [st.lastEvent] : []), can = EVENTS.filter(e => !e.when || e.when());
+    let ok = can.filter(e => !recent.includes(e.id));
+    if (!ok.length) ok = can.filter(e => e.id !== recent[recent.length - 1]);
     if (!ok.length) { st.eventAt = now + 60e3; return; }
     const e = pick(ok);
     st.event = {id:e.id, until:now + 180e3};
-    toast(`${e.title}. Tap it to decide.`);
+    note(`${e.title}. Tap it to decide.`, 'event');
     chime(false);
     updateUI();
 }
@@ -3567,11 +4026,12 @@ function resolveEvent(k, timedOut) {
     st.eventAt = Date.now() + (420 + Math.random() * 300) * 1000;
     if (!e) return;
     st.lastEvent = e.id;
+    st.recentEvents = (st.recentEvents || []).filter(id => id !== e.id).concat(e.id).slice(-5);
     if (choiceCfg && choiceCfg.title === e.title) hideChoice();
     evFx = {id:e.id, k, t0:performance.now() / 1000};
     const msg = e.opts[k] ? e.opts[k].act() : '';
     st.stats.events++;
-    toast(timedOut ? `${e.title}: you let it pass. ${msg}` : msg);
+    note(timedOut ? `${e.title}: you let it pass. ${msg}` : `${e.title}: ${msg}`, 'event');
     updateUI();
 }
 
@@ -3596,6 +4056,11 @@ function evSpot(id) {
     case 'caterpillar': return FX + 24 <= W - MARGIN - 8 ? FX + 24 : m.x - m.L - 8 >= MARGIN + 26 ? m.x - m.L - 8 : clampX(nest.EX + 27);
     case 'aphids': return clampX(FX + 11);
     case 'sugar': return MARGIN + 9;
+    case 'bird': return clampX(nest.EX + 14);
+    case 'stray': return clampX(nest.EX - 8);
+    case 'termites': return W - MARGIN - 10;
+    case 'berry': return clampX(nest.EX - 22);
+    case 'antlion': return clampX(nest.EX + 26);
     default: return nest.EX;
     }
 }
@@ -3624,15 +4089,46 @@ function caterpillarModel(frame) {
     }
     return m.concat([{t:'e', x:3.1, y:-0.1, rx:0.65, ry:0.6, rot:0, r:'y', hl:true}, {t:'e', x:3.4, y:-0.3, rx:0.13, ry:0.13, rot:0, r:'k'}]);
 }
+function birdModel(frame) {
+    // frame 1: head down, pecking.
+    const hy = frame ? 0.6 : -1.2, hx = frame ? 2.4 : 2.1;
+    return [
+        {t:'l', pts:[[-0.2, 1.0], [-0.4, 2.3]], w:0.22, r:'k'}, {t:'l', pts:[[0.5, 1.0], [0.6, 2.3]], w:0.22, r:'k'},
+        {t:'l', pts:[[-1.6, -0.2], [-3.6, -1.0]], w:0.9, r:'d'},
+        {t:'e', x:0, y:0, rx:2.0, ry:1.35, rot:-0.15, r:'b', hl:true},
+        {t:'e', x:0.5, y:0.6, rx:1.3, ry:0.75, rot:0, r:'w'},
+        {t:'e', x:-0.5, y:-0.2, rx:1.3, ry:0.8, rot:-0.2, r:'d', hl:true},
+        {t:'e', x:hx, y:hy, rx:0.95, ry:0.85, rot:0, r:'b', hl:true},
+        {t:'tri', pts:[[hx + 0.75, hy - 0.2], [hx + 1.75, hy + 0.15], [hx + 0.75, hy + 0.35]], r:'y'},
+        {t:'e', x:hx + 0.35, y:hy - 0.25, rx:0.16, ry:0.16, rot:0, r:'k'},
+    ];
+}
+function termiteModel(frame) {
+    const s = frame ? 0.3 : -0.3;
+    return [
+        {t:'l', pts:[[-0.6, 0.2], [-1.1 + s, 1.0]], w:0.32, r:'k'}, {t:'l', pts:[[0.2, 0.2], [0.2 - s, 1.0]], w:0.32, r:'k'}, {t:'l', pts:[[0.9, 0.2], [1.3 + s, 1.0]], w:0.32, r:'k'},
+        {t:'e', x:-1.4, y:-0.1, rx:1.45, ry:0.65, rot:0, r:'c', hl:true},
+        {t:'e', x:0.4, y:-0.1, rx:0.7, ry:0.5, rot:0, r:'c', hl:true},
+        {t:'e', x:1.7, y:-0.2, rx:0.75, ry:0.6, rot:0, r:'h', hl:true},
+        {t:'l', pts:[[2.3, 0.0], [3.1, -0.1], [3.3, 0.25]], w:0.26, r:'k'},
+        {t:'l', pts:[[2.0, -0.6], [2.6, -1.2]], w:0.18, r:'k'},
+    ];
+}
 const VISIT_PAL = {
+    bird:{k:[30, 26, 24], b:[140, 102, 68], B:[182, 144, 104], d:[96, 68, 46], D:[130, 96, 66], w:[226, 214, 192], y:[234, 186, 60]},
+    termites:{k:[70, 48, 30], c:[236, 222, 190], C:[250, 242, 222], h:[176, 98, 40], H:[214, 140, 70]},
     beetle:{k:[34, 26, 22], K:[92, 80, 70], b:[66, 48, 36], B:[118, 94, 72], c:[50, 36, 28], C:[100, 78, 60], e:[128, 72, 34], E:[186, 124, 70]},
     caterpillar:{k:[40, 50, 30], g:[118, 188, 70], G:[170, 226, 112], h:[96, 168, 58], H:[148, 210, 94], y:[214, 172, 62], Y:[242, 212, 112]},
 };
+const VISIT_MODEL = {beetle:beetleModel, caterpillar:caterpillarModel, bird:birdModel, termites:termiteModel};
 function visitSprite(kind, frame, flip) {
-    const scale = P * (kind === 'beetle' ? 1.45 : 1.3);
-    return sprite(`visit|${kind}|${frame}|${flip ? 1 : 0}`, () => rasterize(kind === 'beetle' ? beetleModel(frame) : caterpillarModel(frame), scale, 0, flip, VISIT_PAL[kind]));
+    const scale = P * ({beetle:1.45, bird:1.5, termites:1.05}[kind] || 1.3);
+    return sprite(`visit|${kind}|${frame}|${flip ? 1 : 0}`, () => rasterize(VISIT_MODEL[kind](frame), scale, 0, flip, VISIT_PAL[kind]));
 }
-const VISIT_FEET = {beetle:1.8, caterpillar:1.3, queen:2, scouts:1.55};
+// A pale ant from someone else's colony.
+const strayPal = () => { const p = antPal(), b = [214, 168, 96], k = [120, 82, 40]; return {...p, b, B:mixc(b, [255, 255, 255], 0.3), k, K:mixc(k, b, 0.45), m:mixc(b, k, 0.4), M:mixc(b, [255, 255, 255], 0.12)}; };
+const straySprite = (d, frame, flip) => sprite(`stray|${theme.name}|${d}|${frame}|${flip ? 1 : 0}`, () => rasterize(antModel(frame, 'ant'), P, d * Math.PI / 4, flip, strayPal()));
+const VISIT_FEET = {beetle:1.8, caterpillar:1.3, queen:2, scouts:1.55, bird:3.4, stray:1.55, termites:1.05};
 // In from the nearest edge to its spot; off again when it goes.
 function arrive(id, spot) {
     return visitors[id] = {id, x:spot < W / 2 ? -8 : W + 8, home:spot, tx:spot, spd:id === 'caterpillar' ? 6 : 14, leaving:false, dir:spot < W / 2 ? 1 : -1, ph:Math.random() * 6};
@@ -3651,17 +4147,21 @@ const adoptRoom = () => nurseries.length ? nurseries[0] : queenNode;
 function stepVisitors(dt, t) {
     const ev = st.event ? st.event.id : null, fight = raider && raider.phase === 'fight';
     if (evFx && t - evFx.t0 > 120) evFx = null;
-    const want = {beetle:ev === 'beetle' || !!st.beetle, queen:ev === 'queen', scouts:ev === 'scouts', caterpillar:ev === 'caterpillar' || buffOn('Guarding a caterpillar')};
+    const want = {beetle:ev === 'beetle' || !!st.beetle, queen:ev === 'queen', scouts:ev === 'scouts', caterpillar:ev === 'caterpillar' || buffOn('Guarding a caterpillar'),
+        bird:ev === 'bird', stray:ev === 'stray', termites:ev === 'termites' || buffOn('Termite guards')};
     for (const id in want) {
         let v = visitors[id];
-        if (want[id] && (!v || v.leaving)) v = arrive(id, evSpot(id));
+        if (want[id] && (!v || v.leaving)) { v = arrive(id, evSpot(id)); if (id === 'bird') { v.x = v.tx; v.fly = 1; } }
         if (!want[id] && v && !v.leaving) {
             // Taken in: she heads down into the nest as a guest ant.
-            if (id === 'queen' && chose('queen', t) === 0) {
-                guest = {x:v.x, y:surfY(v.x) - 1.55, a:0, at:-1, q:[], wait:0.5, ph:0, spd:7, lane:0, dist:0, role:'guest', next:null, task:'', rest:0};
-                goNest(guest, adoptRoom()); guest.q.push(floorPt(nest.nodes[adoptRoom()], 0.3));
-                delete visitors.queen; continue;
+            if ((id === 'queen' && chose('queen', t) === 0) || (id === 'stray' && chose('stray', t) === 0)) {
+                guest = {kind:id, x:v.x, y:surfY(v.x) - 1.55, a:0, at:-1, q:[], wait:0.5, ph:0, spd:id === 'queen' ? 7 : 12, lane:0, dist:0, role:'guest', next:null, task:'', rest:0};
+                const room = id === 'queen' ? adoptRoom() : pick(nurseries.length ? nurseries : [queenNode]);
+                goNest(guest, room); guest.q.push(floorPt(nest.nodes[room], 0.3));
+                delete visitors[id]; continue;
             }
+            // The bird flies off; everyone else walks.
+            if (id === 'bird') { v.leaving = true; continue; }
             leave(v, (id === 'beetle' && chose('beetle', t) === 1) || (id === 'scouts' && chose('scouts', t) === 0));
         }
         if (!v) continue;
@@ -3670,6 +4170,14 @@ function stepVisitors(dt, t) {
             if (fight) v.tx = clampX(raidStand(raider) + raider.dir * (RAID_REACH[raider.k] + 1.5));
             else if (Math.abs(v.x - v.tx) < 0.3 && Math.random() < dt * 0.35) v.tx = clampX(v.home + (Math.random() - 0.5) * 9);
         } else if (!v.leaving && Math.abs(v.x - v.tx) < 0.3 && Math.random() < dt * 0.3) v.tx = clampX(v.home + (Math.random() - 0.5) * (id === 'caterpillar' ? 5 : 3));
+        // The bird drops in from the sky, hops and pecks, then flies away.
+        if (id === 'bird') {
+            v.fly = Math.max(0, Math.min(1.6, (v.fly || 0) + dt * (v.leaving ? 0.9 : -0.8)));
+            if (v.leaving) v.x += dt * 30;
+            v.moving = v.fly > 0;
+            if (v.leaving && v.fly >= 1.6) delete visitors[id];
+            continue;
+        }
         const d = v.tx - v.x, step = v.spd * dt;
         v.moving = Math.abs(d) > 0.2;
         if (v.moving) { v.dir = Math.sign(d); v.x += Math.abs(d) <= step ? d : Math.sign(d) * step; }
@@ -3690,6 +4198,7 @@ function stepVisitors(dt, t) {
 function sideTrip() {
     if (buffOn('Out on a long trip') && Math.random() < 0.45) return {x:evSpot('sugar'), col:'#ffffff'};
     if (buffOn('Aphid farming') && Math.random() < 0.3) return {x:evSpot('aphids'), col:'#f2c14e'};
+    if (buffOn('Hauling a berry') && Math.random() < 0.45) return {x:evSpot('berry'), col:'#c8283c'};
     return null;
 }
 // How full the flooded tunnels are, 0 to 1: rising while it asks, held while
@@ -3739,9 +4248,17 @@ function drawVisitorsPix(t) {
             // Two scouts, nosing about.
             for (const [dx, k] of [[0, 0], [-3.6, 1]]) { const sx = x + dx * v.dir + (v.moving ? 0 : Math.sin(t * 3 + k * 2) * 0.5); blit(raiderSprite('rival', (fr + k) % 2, flip, P), sx * P, (surfY(sx) - 1.55) * P); }
         } else if (id === 'queen') blit(antSprite('queen', 0, fr, flip), x * P, y * P);
+        else if (id === 'stray') blit(straySprite(0, fr, flip), x * P, y * P);
+        else if (id === 'termites') {
+            // Termite soldiers: two of them, and a third while they stand guard.
+            for (const dx of buffOn('Termite guards') ? [0, -4, -8] : [0, -4]) { const sx = x + dx * v.dir; blit(visitSprite('termites', (fr + (dx ? 1 : 0)) % 2, flip, 0), sx * P, (surfY(sx) - VISIT_FEET.termites) * P); }
+        } else if (id === 'bird') {
+            const hop = v.fly > 0 ? 0 : Math.max(0, Math.sin(t * 5 + v.ph)) * 1.2, peck = v.fly === 0 && Math.sin(t * 2.3 + v.ph) > 0.6 ? 1 : 0;
+            blit(visitSprite('bird', peck, Math.sin(t * 0.4 + v.ph) < 0, 0), (x - v.fly * 12) * P, (y - hop - v.fly * 40) * P);
+        }
         else blit(visitSprite(id, fr, flip), x * P, y * P);
     }
-    if (guest) { const {d, flip} = antDir(guest.a); blit(antSprite('queen', d, Math.floor(guest.ph / 2.5) % 2, flip), guest.x * P, (guest.y - 0.45) * P); }
+    if (guest) { const {d, flip} = antDir(guest.a), gf = Math.floor(guest.ph / 2.5) % 2; blit(guest.kind === 'stray' ? straySprite(d, gf, flip) : antSprite('queen', d, gf, flip), guest.x * P, (guest.y - (guest.kind === 'stray' ? 0 : 0.45)) * P); }
     // The adopted queen, at home in a nursery once she's arrived.
     const ar = st.mods.adopted && !guest ? nest.nodes[adoptRoom()] : null;
     if (ar && ar.k) {
@@ -3765,6 +4282,43 @@ function drawVisitorsPix(t) {
         if (Math.sin(t * 3) > 0.92) { const gx = Math.round(x * P) - 3 + Math.round(Math.sin(t * 7) * 4); box(gx, g - 9, 1, 3, '#ffffff'); box(gx - 1, g - 8, 3, 1, '#ffffff'); }
         pc.globalAlpha = 1;
     }
+    // A ripe berry on the grass, shrinking as it's hauled home or eaten.
+    const bh = buffLeft('Hauling a berry'), bf = buffLeft('Berry feast');
+    if (ev === 'berry' || bh > 0 || bf > 0) {
+        const x = evSpot('berry'), r = 3.2 * (bh > 0 ? 0.35 + 0.65 * bh / 180 : bf > 0 ? 0.35 + 0.65 * bf / 300 : 1), g = surfY(x);
+        for (let yy = -r; yy <= r; yy += 0.5) for (let xx = -r; xx <= r; xx += 0.5) if (xx * xx + yy * yy <= r * r) box((x + xx) * P, (g - r + yy) * P, 1, 1, xx < -r * 0.3 && yy < -r * 0.3 ? '#ff7a8a' : '#c8283c');
+        box((x + 0.2) * P, (g - 2 * r - 0.8) * P, 1, 3, '#4f8a32'); box((x + 0.6) * P, (g - 2 * r - 0.6) * P, 3, 1, '#6fae45');
+    }
+    // An antlion's sandy pit by the food path, filled in bit by bit.
+    const pf = buffLeft('Filling a pit');
+    if (ev === 'antlion' || buffOn('Walking around a pit') || pf > 0) {
+        const x = evSpot('antlion'), g = Math.round(surfY(x) * P), w = Math.round(7 * P * (pf > 0 ? pf / 120 : 1)), cx = Math.round(x * P);
+        for (let k = 0; k < w; k++) { const d = Math.round(k * 0.6); box(cx - w + k, g + d, (w - k) * 2, 1, k % 2 ? '#c9a46a' : '#b48e58'); }
+        box(cx - w - 1, g - 1, w * 2 + 2, 1, '#e2c28a');
+        if (w > 4) { box(cx - 2, g + Math.round(w * 0.6) - 1, 1, 2, '#3a2a18'); box(cx + 1, g + Math.round(w * 0.6) - 1, 1, 2, '#3a2a18'); }
+    }
+    // A web across the entrance, until it's cut or the wind takes it.
+    if (ev === 'web' || buffOn('Squeezing past a web') || buffOn('Cutting a web')) {
+        const cx = nest.EX * P, cy = (GROUND + 1) * P, R = 5.5 * P;
+        pc.globalAlpha = buffOn('Cutting a web') ? 0.35 : 0.7;
+        for (let k = 0; k < 8; k++) { const a = k / 8 * TAU; for (let r = 2; r < R; r += 1) box(cx + Math.cos(a) * r, cy + Math.sin(a) * r * 0.85, 1, 1, '#eef2f6'); }
+        for (const rr of [0.35, 0.6, 0.85]) for (let a = 0; a < TAU; a += 0.12) box(cx + Math.cos(a) * R * rr, cy + Math.sin(a) * R * rr * 0.85, 1, 1, '#dfe6ee');
+        pc.globalAlpha = 1;
+    }
+    // Dew twinkling on the grass.
+    if (ev === 'dew' || buffOn('Dew for the queen')) {
+        for (let k = 0; k < 46; k++) {
+            const x = MARGIN + 4 + hash2(k, 3) * (W - 2 * MARGIN - 8), px = Math.round(x * P), py = Math.round((surfY(x) - 1 - hash2(k, 5) * 2.5) * P), glint = Math.sin(t * 2 + k * 1.7);
+            box(px, py, 2, 2, '#9fd8f5'); box(px, py, 1, 1, '#ffffff');
+            if (glint > 0.85) { box(px - 1, py, 4, 1, '#ffffff'); box(px + 0.5, py - 1, 1, 3, '#ffffff'); }
+        }
+    }
+    // An earthworm nosing through the soil beside the nest.
+    if (ev === 'worm' || buffOn('Following a worm')) {
+        const b = nestBox, wx0 = wormX(), wy = GROUND + 24 + (b ? Math.min(40, (b.y1 - GROUND) * 0.3) : 0);
+        const head = wx0 + Math.sin(t * 0.25) * 8;
+        for (let k = 0; k < 16; k++) { const xx = head - k * 0.7 * Math.sign(Math.cos(t * 0.25) || 1), yy = wy + Math.sin(t * 1.5 + k * 0.6) * 1.2; box(xx * P, yy * P, 2, 2, k === 0 ? '#e58f9e' : k % 3 ? '#d97a8a' : '#c46474'); }
+    }
     for (const p of spores) { pc.globalAlpha = Math.min(1, p.life / 1.5) * 0.85; box(p.x * P, p.y * P, 1, 1, '#f3ead2'); }
     pc.globalAlpha = 1;
     // Spores that took root with no room to grow in sprout in a nook instead.
@@ -3775,32 +4329,51 @@ function drawVisitorsPix(t) {
         for (const i of spots) { const n = nest.nodes[i], fl = Math.round((n.y + TR - 0.4) * P); for (let k = 0; k < 3; k++) { const mx = Math.round((n.x + (k - 1) * 1.4) * P), h = 2 + (k % 2); box(mx, fl - h, 1, h, '#e9e2cc'); box(mx - 1, fl - h - 1, 3, 1, k % 2 ? '#cfe9d8' : '#f2e3c2'); } }
     }
 }
+// The worm tunnels just beside the nest, inside the frame.
+function wormX() {
+    const b = nestBox, x = b ? (b.x1 + 18 < W - MARGIN ? b.x1 + 8 : b.x0 - 8) : nest.EX + 20;
+    return Math.max(MARGIN + 12, Math.min(W - MARGIN - 12, x));
+}
 // Tapping whatever an event put on the farm opens its card.
 function eventHit(wx, wy, reach) {
     const id = st.event.id, v = visitors[id];
     if (id === 'flood') { const b = nestBox; return !!b && wx > b.x0 && wx < b.x1 && wy > b.y1 - 30 && wy < b.y1 + 4; }
-    const x = v ? v.x : id === 'spores' ? nest.EX : evSpot(id), y = id === 'spores' ? GROUND - 3 : surfY(x) - 3;
+    if (id === 'worm') return wy > GROUND + 10 && Math.abs(wx - wormX()) < 14;
+    const x = v ? v.x : id === 'spores' || id === 'web' || id === 'dew' ? nest.EX : evSpot(id), y = id === 'spores' || id === 'web' ? GROUND - 2 : surfY(x) - 3;
     return Math.hypot(wx - x, wy - y) < Math.max(reach, 8);
 }
 
 // Raids, events and new chambers wait under the numbers until dealt with.
 let alertKey = '';
 function renderAlerts() {
-    const R = st.raid, r = R ? rates() : null, f = R && R.fight, ok = R && (f ? fightWinning(R) : r.guard >= raidPower(R));
+    const R = st.raid, r = R ? rates() : null, f = R && R.fight, rd = R && !f ? raidRead(R, r) : 0, ok = R && (f ? fightWinning(R) : rd === 2);
     // Sending guards that turn a losing fight gets a cheer.
     if (f) { if (fightWas === false && ok) toast('Your guards are turning the fight around!'); fightWas = ok; } else fightWas = null;
-    const key = [R ? R.k + (f ? 'f' : '') + (ok ? 1 : 0) : '', st.event ? st.event.id : '', roomAsk !== null ? roomAsk : ''].join('|');
+    const key = [R ? R.k + (f ? 'f' : rd) + (ok ? 1 : 0) : '', st.event ? st.event.id : '', roomAsk !== null ? roomAsk : ''].join('|');
     if (key !== alertKey) {
         alertKey = key;
         let h = '';
         if (R && f) h += `<button class="pill alert raid fight${ok ? ' ready' : ''}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>Fighting ${RAID_TXT[R.k]}</b><span class="tug"><span id="raidTug"></span></span><small>${ok ? 'guards winning' : 'send more guards!'}</small></button>`;
-        else if (R) h += `<button class="pill alert raid${ok ? ' ready' : ''}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>${RAID_SHORT[R.k]} in <span id="raidClock"></span></b><small>${ok ? 'guards ready' : 'need more guards'}</small></button>`;
+        else if (R) h += `<button class="pill alert raid${['', ' even', ' ready'][rd]}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>${RAID_SHORT[R.k]} in <span id="raidClock"></span></b><small>${READ_TXT[rd]}</small></button>`;
         if (st.event) h += `<button class="pill alert event" data-alert="event"><i class="fa-solid fa-circle-exclamation"></i><b>${esc(EV[st.event.id] ? EV[st.event.id].title : '')}</b></button>`;
         if (roomAsk !== null) h += `<button class="pill alert room" data-alert="room"><i class="fa-solid fa-house"></i><b>New chamber: choose its job</b></button>`;
         $('alerts').innerHTML = h;
     }
     if (f) $('raidTug').style.width = (f.g / Math.max(1e-6, f.g + f.r) * 100).toFixed(1) + '%';
     else if (R) $('raidClock').textContent = clock(Math.max(0, (R.at - Date.now()) / 1000));
+    placeAlerts();
+}
+// On a phone, with a window open, the alerts sit just above its top edge when
+// there's farm showing above it, else above the dock.
+function placeAlerts() {
+    const low = $('hudLow'), open = lay.mode === 'overlay' && lay.open ? $(OV[lay.open]) : null;
+    let b = '';
+    if (open) {
+        const top = open.getBoundingClientRect().top;
+        if (top > $('hud').getBoundingClientRect().bottom + 40) b = Math.round(innerHeight - top + 6) + 'px';
+    }
+    low.classList.toggle('over', !!open);
+    if (low.style.bottom !== b) low.style.bottom = b;
 }
 // Jump to the job bar: the Jobs card on a phone, the Farm tab elsewhere.
 function showJobs() {
@@ -3820,8 +4393,31 @@ $('alerts').addEventListener('click', e => {
 
 /* ---------- main loop ---------- */
 let lastTick = Date.now(), lastFrame = performance.now(), uiAt = 0, syncAt = 0, autoAt = 0, dormant = false, booted = false;
-function autoBuy() {
-    if (st.auto && st.queens >= BAL.autoQueens && !flight) for (let k = 0, id; k < 25 && (id = autoPick()); k++) buy(id);
+// Auto-buy works only while nobody's watching: it banks half of what the
+// colony gathers and spends it on the cheapest upgrades, and says what it
+// bought when you're back.
+let autoBank = 0, autoLog = {};
+function autoAway(gathered) {
+    if (!st.auto || st.queens < BAL.autoQueens || flight) return;
+    autoBank += Math.max(0, gathered) * BAL.autoAway;
+    for (let k = 0, id; k < 50 && (id = autoPick()); k++) {
+        const c = upCost(UP[id]);
+        if (c > autoBank || c > st.food || !buy(id)) break;
+        autoBank -= c; autoLog[id] = (autoLog[id] || 0) + 1;
+    }
+}
+// What auto-buy bought while you were away, as "Strong mandibles x5, ...".
+function autoBought() {
+    const ids = Object.keys(autoLog).sort((a, b) => autoLog[b] - autoLog[a]), n = ids.reduce((t, id) => t + autoLog[id], 0);
+    const out = n ? {n, list:ids.map(id => `${UP[id].name} x${autoLog[id]}`).join(', ')} : null;
+    autoLog = {}; autoBank = 0;
+    return out;
+}
+// One stretch of time, with auto-buy shopping if nobody's watching.
+function econAway(dt) {
+    const e0 = st.earned;
+    econ(dt);
+    if (pace < 1) autoAway(st.earned - e0);
 }
 // Someone can see the farm: the tab is showing, or it's popped out.
 const watching = () => !document.hidden || !!pip.mode;
@@ -3833,8 +4429,10 @@ function advance() {
     watched = watching();
     if (dt <= 0 || flight) return;
     pace = was ? 1 : BAL.away;
-    try { if (dt > 3) catchUp(dt, from); else { simNow = now; econ(dt); } }
+    try { if (dt > 3) catchUp(dt, from); else { simNow = now; econAway(dt); } }
     finally { pace = 1; }
+    // Back from a hidden tab: say what auto-buy picked up.
+    if (!was && watched) { const ab = autoBought(); if (ab) note(`While you were away, auto-buy bought ${ab.n} upgrade${ab.n === 1 ? '' : 's'}: ${ab.list}.`, 'away'); }
 }
 // Time that passed with the farm closed.
 function catchUpAway(sec, from) {
@@ -3845,7 +4443,7 @@ function catchUpAway(sec, from) {
 function catchUp(sec, from) {
     const n = Math.min(4000, Math.ceil(sec)), h = sec / n;
     catching = true;
-    try { for (let k = 0; k < n; k++) { simNow = from + (k + 1) * h * 1000; econ(h); } }
+    try { for (let k = 0; k < n; k++) { simNow = from + (k + 1) * h * 1000; econAway(h); } }
     finally { catching = false; }
     simNow = Date.now();
     if (st.raid && !raider) spawnRaider(st.raid);
@@ -3853,27 +4451,31 @@ function catchUp(sec, from) {
 function render(t) {
     const c = ctx, sky = skyNow(performance.now());
     drawSkyPix(sky, t);
-    drawGroundPix(t);
-    drawSeasonGround(t, sky);
+    if (!visit) { drawGroundPix(t); drawSeasonGround(t, sky); }
     if (sky.night > 0) box(0, 0, PW, PG, `rgba(6,10,30,${sky.night * 0.42})`);
     drawNightPix(sky, t);
     drawFirefliesPix(t, sky);
     drawSeasonSky(t, sky);
     flushSoil();
-    pc.imageSmoothingEnabled = false;
-    pc.drawImage(soilCv, 0, 0, PW, PH);
-    drawGroundWeatherPix(sky, t);
-    drawChambersPix(t);
-    drawBodiesPix(t);
-    drawAntsPix(t);
-    drawFloodPix(t);
-    drawVisitorsPix(t);
-    drawRoomFocusPix(t);
-    drawCritterPix(t);
-    drawRaiderPix(t);
-    drawFightBarPix();
-    for (const d of dust) { pc.globalAlpha = Math.min(1, d.life * 2); box(d.x * P, d.y * P, 1, 1, d.col); }
-    pc.globalAlpha = 1;
+    // Visiting an old farm: its nest and ants instead of this one's.
+    if (visit) drawVisitPix(t);
+    else {
+        pc.imageSmoothingEnabled = false;
+        pc.drawImage(soilCv, 0, 0, PW, PH);
+        drawGroundWeatherPix(sky, t);
+        drawChambersPix(t);
+        drawBurrowerPix(t);
+        drawBodiesPix(t);
+        drawAntsPix(t);
+        drawFloodPix(t);
+        drawVisitorsPix(t);
+        drawRoomFocusPix(t);
+        drawCritterPix(t);
+        drawRaiderPix(t);
+        drawFightBarPix();
+        for (const d of dust) { pc.globalAlpha = Math.min(1, d.life * 2); box(d.x * P, d.y * P, 1, 1, d.col); }
+        pc.globalAlpha = 1;
+    }
     drawFlightPix();
     drawSeasonFront(t);
     drawPrecipPix(t);
@@ -3889,7 +4491,7 @@ function render(t) {
     c.setTransform(view.s / P, 0, 0, view.s / P, view.ox, view.oy);
     c.drawImage(pix, 0, 0);
     c.setTransform(1, 0, 0, 1, 0, 0);
-    drawFloaters(t);
+    if (!visit) drawFloaters(t);
     drawFlightText(t);
     if (pip.mode) drawHud();
     drawFollowCard();
@@ -3910,15 +4512,17 @@ function tickAll() {
     lastFrame = now;
     if (dormant || !booted) return;
     advance();
-    if (now > autoAt) { autoBuy(); checkAch(); checkGuide(); stepEvents(); checkStyles(); autoAt = now + 1000; }
+    if (now > autoAt) { checkAch(); checkGuide(); stepEvents(); checkStyles(); autoAt = now + 1000; }
     if (now > syncAt) { syncAnts(false); syncAt = now + 500; }
     const t = now / 1000, sky = skyNow(now);
     stepWeather(dt, t, sky);
     stepSeason(dt, t, sky);
     stepCritter(dt, t, sky);
+    stepBurrower(dt, t);
     stepRaider(dt, t);
     stepVisual(dt, t);
     stepVisitors(dt, t);
+    stepVisit(dt);
     stepCam(dt);
     render(t);
     if (now > uiAt) { if (!document.hidden) updateUI(); audioTick(); uiAt = now + 250; }
@@ -3944,7 +4548,7 @@ setInterval(() => {
     audioTick();
     if (dormant || !booted) return;
     advance();
-    autoBuy(); checkAch(); checkGuide();
+    checkAch(); checkGuide();
     st.buffs = activeBuffs();
     if (new Date().getHours() < 4) st.stats.owl = 1;
     if (!document.hidden || pip.mode) st.stats.playMs += 1000;
@@ -4064,10 +4668,35 @@ function fmtTime(s) {
     return d ? `${d}d ${h}h` : h ? `${h}h ${m}m` : m ? `${m}m` : `${Math.floor(s)}s`;
 }
 let toastTimer = 0;
-function toast(msg) {
+// A new style shows an ant wearing it.
+function toast(msg, sty) {
     const t = $('toast');
-    t.textContent = msg; t.classList.add('show');
+    if (sty) { t.innerHTML = `<img src="${stylePic(sty)}" alt="">`; t.append(msg); } else t.textContent = msg;
+    t.classList.toggle('pic', !!sty);
+    t.classList.add('show');
     clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+// Messages worth reading again (new styles, upgrades, raids, events, bugs,
+// achievements) are kept, newest first, in their own pane off the bell.
+const NOTE_ICONS = {style:'fa-hat-cowboy', up:'fa-arrow-up', raid:'fa-shield-halved', event:'fa-circle-exclamation', ach:'fa-trophy', bug:'fa-bug', food:'fa-apple-whole', queen:'fa-crown', goal:'fa-flag', away:'fa-moon'};
+function note(msg, k, sty) { toast(msg, sty); logNote(msg, k, sty); }
+function logNote(msg, k, sty) {
+    if (!st.inbox) st.inbox = [];
+    st.inbox.push(sty ? {t:Date.now(), k, m:msg, s:sty} : {t:Date.now(), k, m:msg});
+    if (st.inbox.length > 80) st.inbox.splice(0, st.inbox.length - 80);
+    newsDots();
+    if (lay.open === 'news') renderNews();
+}
+function newsDots() {
+    const unread = (st.inbox || []).some(n => n.t > (st.inboxSeen || 0));
+    $('newsDot').hidden = $('menuDot').hidden = !unread;
+}
+const ago = t => { const s = (Date.now() - t) / 1000; return s < 60 ? 'just now' : s < 3600 ? `${Math.floor(s / 60)}m ago` : s < 86400 ? `${Math.floor(s / 3600)}h ago` : `${Math.floor(s / 86400)}d ago`; };
+function renderNews() {
+    const list = (st.inbox || []).slice().reverse(), seen = st.inboxSeen || 0;
+    $('newsEmpty').hidden = list.length > 0;
+    $('newsClear').hidden = !list.length;
+    $('newsList').innerHTML = list.map(n => `<li${n.t > seen ? ' class="new"' : ''}><span class="ic">${n.s ? `<img src="${stylePic(n.s)}" alt="">` : `<i class="fa-solid ${NOTE_ICONS[n.k] || 'fa-circle-info'}"></i>`}</span><span>${esc(n.m)}<small>${ago(n.t)}</small></span></li>`).join('');
 }
 function affordable() {
     let n = UPGRADES.filter(u => isUnlocked(u.id) && st.food >= upCost(u)).length;
@@ -4080,9 +4709,9 @@ const newUps = {};
 onUnlock = id => {
     if (!booted || catching) return;
     newUps[id] = performance.now() + 5000;
-    if (id === 'guard') toast('Raiders! Drag some ants to Guard on the job bar. Battle drills makes them stronger.');
-    else if (id === 'tier') toast(`New upgrade: find better food. ${FOODS[st.tier + 1] ? FOODS[st.tier + 1].name : 'It'} is worth more on every trip.`);
-    else toast(`New upgrade: ${UP[id].name}. ${UP[id].desc[0].toUpperCase() + UP[id].desc.slice(1)}.`);
+    if (id === 'guard') note('Raiders! Drag some ants to Guard on the job bar. Battle drills makes them stronger.', 'up');
+    else if (id === 'tier') note(`New upgrade: find better food. ${FOODS[st.tier + 1] ? FOODS[st.tier + 1].name : 'It'} is worth more on every trip.`, 'up');
+    else note(`New upgrade: ${UP[id].name}. ${UP[id].desc[0].toUpperCase() + UP[id].desc.slice(1)}.`, 'up');
     chime(true);
     updateUI();
 };
@@ -4097,9 +4726,19 @@ function buildUI() {
         const b = document.createElement('button');
         b.className = 'up' + (id === 'tier' ? ' tier' : ''); b.dataset.id = id;
         b.innerHTML = `<span class="up-ic"><i class="fa-solid ${icon}"></i></span><span><span class="up-name"></span><span class="up-desc"></span></span><span class="up-cost"></span>`;
+        // Press and hold on a touch screen shows the exact numbers instead of buying.
+        let hold = 0;
+        b.addEventListener('pointerdown', e => {
+            if (e.pointerType === 'mouse') return;
+            clearTimeout(hold); b.dataset.held = '';
+            hold = setTimeout(() => { b.dataset.held = '1'; toast(b.title); }, 450);
+        });
+        for (const ev of ['pointerup', 'pointercancel', 'pointerleave']) b.addEventListener(ev, () => clearTimeout(hold));
+        b.addEventListener('contextmenu', e => e.preventDefault());
         b.addEventListener('click', () => {
+            if (b.dataset.held) { b.dataset.held = ''; return; }
             if (!buy(id, id === 'tier' ? 1 : buyCount(UP[id]))) return;
-            if (id === 'tier') toast(`Your foragers found ${FOODS[st.tier].name.toLowerCase()}`);
+            if (id === 'tier') note(`Your foragers found ${FOODS[st.tier].name.toLowerCase()}`, 'food');
             updateUI();
         });
         ups.append(b);
@@ -4107,6 +4746,7 @@ function buildUI() {
     mk('tier', 'fa-apple-whole');
     for (const u of UPGRADES) mk(u.id, u.icon);
     $('autoBuy').checked = !!st.auto;
+    newsDots();
     $('ach').innerHTML = ACH.map(a => `<button data-id="${a.id}" aria-label="${a.name}"><i class="fa-solid ${a.icon}"></i></button>`).join('');
     $('perks').innerHTML = PERKS.map(p => `<li data-q="${p.q}"><i class="fa-solid fa-lock"></i><span><b>${p.name}</b> (${p.q} queen${p.q > 1 ? 's' : ''}): ${p.desc}</span></li>`).join('');
     updateUI();
@@ -4118,21 +4758,29 @@ const flyWorth = () => canFly() && queenGain() >= Math.max(1, st.queens);
 // The bar under the stats: what flying the nest would bring and how close the
 // next queen is. It lights up when a flight would double the queens.
 function updateNestBar() {
-    const gain = queenGain(), A = st.ants, locked = A < BAL.flightAnts, worth = flyWorth(), bar = $('nestBar');
-    const q = n => `${n} queen${n === 1 ? '' : 's'}`;
+    const gain = queenGain(), A = st.ants, needA = flightAnts(), needF = flightFood(), antsShort = A < needA, foodShort = st.tier < needF;
+    const locked = antsShort || foodShort, worth = flyWorth(), bar = $('nestBar');
+    const q = n => `${n} queen${n === 1 ? '' : 's'}`, food = i => FOODS[i].name.toLowerCase();
     let title = 'Fly the nest', sub, prog;
     if (locked) {
-        sub = `Unlocks at ${BAL.flightAnts} ants (${fmt(Math.floor(A))} now). Queens leave to start a fresh farm, and every queen makes all your ants 10% better for good.`;
-        prog = A / BAL.flightAnts;
+        // Each flight asks for more ants and a better food than the last one.
+        const need = [];
+        if (foodShort) need.push(`Find ${food(needF)}`);
+        if (antsShort) need.push(`${foodShort ? 'grow' : 'Grow'} to ${fmt(needA)} ants (${fmt(Math.floor(A))} now)`);
+        sub = `${need.join(' and ')} to fly the nest. Every flight needs more ants and better food than the last, and every queen makes all your ants 10% better for good.`;
+        prog = Math.min(1, A / needA) * 0.5 + Math.min(1, st.tier / needF) * 0.5;
     } else {
-        const lo = Math.pow(gain, 3) * BAL.queenDiv, hi = Math.pow(gain + 1, 3) * BAL.queenDiv;
+        const m = queenMul(), lo = Math.pow(gain / m, 3) * BAL.queenDiv, hi = Math.pow((gain + 1) / m, 3) * BAL.queenDiv;
         prog = (st.earned - lo) / (hi - lo);
         const pct = Math.floor(Math.min(1, prog) * 100) + '%';
+        // Better food sends more queens: say how many the next food would bring.
+        const nx = FOODS[st.tier + 1], better = nx ? Math.floor(Math.cbrt(st.earned / BAL.queenDiv) * (m + BAL.tierQueen)) : 0;
+        const tip = nx && better > gain ? ` Find ${food(st.tier + 1)} first and it's +${q(better)}.` : '';
         if (gain < 1) sub = `Your first queen comes at ${fmt(hi)} food gathered on this farm (${pct}).`;
         else {
             title = `Fly the nest: +${q(gain)}`;
-            sub = worth ? `Flying now ${st.queens ? 'would at least double your queens' : 'brings your first queen'}. Next queen at ${fmt(hi)} food (${pct}).`
-                : `Next queen at ${fmt(hi)} food gathered (${pct}). Waiting longer sends more queens.`;
+            sub = (worth ? `Flying now ${st.queens ? 'would at least double your queens' : 'brings your first queen'}. Next queen at ${fmt(hi)} food (${pct}).`
+                : `Next queen at ${fmt(hi)} food gathered (${pct}). Waiting longer sends more queens.`) + tip;
         }
     }
     bar.classList.toggle('locked', locked); bar.classList.toggle('ready', worth);
@@ -4163,7 +4811,7 @@ const GUIDE = [
     {icon:'fa-sliders', title:'Change the job split', why:"Rain makes digging faster and foraging slower. Check the weather and drag the job bar to match.", have:() => st.stats.split ? 1 : 0, need:1, focus:'jobCard'},
     {icon:'fa-shield-halved', title:'Fight off a raid', why:"Raiders come for the food every few minutes. When one is on its way, drag some ants to Guard on the job bar.", have:() => st.stats.raidsWon, need:1, focus:'jobCard'},
     {icon:'fa-crown', title:'Grow to 120 ants', why:"At 120 ants your queens can fly the nest. The ring on the Fly button shows how close you are.", have:() => Math.floor(st.ants), need:120, focus:'nestBar'},
-    {icon:'fa-feather-pointed', title:'Fly the nest', why:"Queens leave to start a fresh farm. You lose this farm, but every queen makes all your ants 10% better, forever.", have:() => st.flights, need:1, focus:'nestBar'},
+    {icon:'fa-feather-pointed', title:'Fly the nest', why:"Queens leave to start a fresh farm. You lose this farm, but every queen makes all your ants 10% better, forever. Each flight after this one needs a bigger colony and better food.", have:() => st.flights, need:1, focus:'nestBar'},
 ];
 const guideOn = () => st.guide >= 0 && st.guide < GUIDE.length;
 const guideReward = () => Math.max(25, rates().food * 30);
@@ -4174,7 +4822,7 @@ function checkGuide() {
         const v = guideReward();
         st.food += v; st.earned += v; st.total += v;
         st.guide++;
-        toast(guideOn() ? `Goal done: ${g.title.toLowerCase()}. +${fmt(v)} food` : `Guide finished. +${fmt(v)} food, and the farm is all yours.`);
+        note(guideOn() ? `Goal done: ${g.title.toLowerCase()}. +${fmt(v)} food` : `Guide finished. +${fmt(v)} food, and the farm is all yours.`, 'goal');
         chime(false);
     }
 }
@@ -4196,6 +4844,8 @@ function updateGuide() {
     $('farmFly').classList.toggle('pulse', !ovl && focus === 'nestBar' && lay.open !== 'fly');
     for (const b of $('dock').children) b.classList.toggle('pulse', ovl && OPENS[focus] === b.dataset.ov && lay.open !== b.dataset.ov);
     $('goalPill').hidden = !on;
+    const gh = on ? $('goalPill').offsetHeight + 6 + 'px' : '0px';
+    if (document.body.style.getPropertyValue('--goalh') !== gh) document.body.style.setProperty('--goalh', gh);
     if (!g) return;
     const have = Math.min(g.have(), g.need);
     $('goalPillIcon').className = `fa-solid ${g.icon}`;
@@ -4303,21 +4953,23 @@ function updateUI() {
         const id = b.dataset.id;
         b.hidden = !isUnlocked(id);
         b.classList.toggle('new', (newUps[id] || 0) > nowMs);
-        let name, desc, cost, max = false;
+        let name, desc, more, cost, max = false;
         if (id === 'tier') {
             const nx = FOODS[st.tier + 1];
-            if (nx) { name = `Find ${nx.name.toLowerCase()}`; desc = `Food worth ${nx.mult}x crumbs (now ${FOODS[st.tier].mult}x)`; cost = tierCost(); }
-            else { name = FOODS[st.tier].name; desc = 'The best food there is'; max = true; }
+            if (nx) { name = `Find ${nx.name.toLowerCase()}`; desc = 'Every trip brings home more food'; more = `Food worth ${nx.mult}x crumbs (now ${FOODS[st.tier].mult}x)`; cost = tierCost(); }
+            else { name = FOODS[st.tier].name; desc = more = 'The best food there is'; max = true; }
         } else {
             const u = UP[id], n = Math.max(1, buyCount(u));
             name = `${u.name} <em>Lv ${st.lv[id]}</em>` + (n > 1 ? `<span class="plus">+${n}</span>` : '');
-            desc = u.desc; cost = bulkCost(u, n);
+            desc = u.desc; more = u.more; cost = bulkCost(u, n);
         }
+        if (b.title !== more) b.title = more;
         const nm = b.querySelector('.up-name');
         if (nm.innerHTML !== name) nm.innerHTML = name;
         b.querySelector('.up-desc').textContent = desc;
         b.querySelector('.up-cost').textContent = max ? 'Max' : fmt(cost);
-        b.disabled = max || st.food < cost;
+        const off = max || st.food < cost;
+        b.classList.toggle('off', off); b.setAttribute('aria-disabled', off);
         b.style.setProperty('--p', max ? '0%' : Math.min(100, st.food / cost * 100).toFixed(1) + '%');
     }
     const next = UNLOCKS.find(u => !isUnlocked(u.id));
@@ -4355,7 +5007,8 @@ function updateUI() {
     $('sWxNext').textContent = nx ? `${WX[nx.wx].name.toLowerCase()} in ${fmtTime(nx.in / 1000)}` : '';
     const bs = activeBuffs(), bEl = $('buffs');
     bEl.hidden = !bs.length;
-    const bh = bs.map(b => `<span class="buff${b.gold ? ' gold' : ''}${b.m < 1 ? ' bad' : ''}"><i class="fa-solid ${BUFF_ICONS[b.k]}"></i>${b.name || BUFF_NAMES[b.k]} x${b.m}, ${Math.ceil((b.until - Date.now()) / 1000)}s</span>`).join('');
+    const left = b => { const s = Math.ceil((b.until - Date.now()) / 1000); return s >= 60 ? clock(s) : s + 's'; };
+    const bh = bs.map(b => `<span class="buff${b.gold ? ' gold' : ''}${b.m < 1 ? ' bad' : ''}" title="${b.name || BUFF_NAMES[b.k]} x${b.m}"><i class="fa-solid ${BUFF_ICONS[b.k]}"></i>${b.name || `${BUFF_NAMES[b.k]} x${b.m}`} ${left(b)}</span>`).join('');
     renderAlerts();
     camUI();
     if (bEl.innerHTML !== bh) bEl.innerHTML = bh;
@@ -4400,6 +5053,21 @@ function updatePanel() {
 /* ---------- the ants tab ---------- */
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'})[c]);
 let rosterOpen = null, rosterSort = 'old', rosterRole = 'all', renaming = null;
+// An ant wearing a style, cropped tight so the hat or hair is easy to see.
+const stylePics = new Map();
+function stylePic(sty) {
+    const key = `${theme.name}|${sty.join('.')}`;
+    let u = stylePics.get(key);
+    if (u) return u;
+    const s = antSprite('ant', 0, 0, false, sty), w = s.cv.width, h = s.cv.height, d = s.cv.getContext('2d').getImageData(0, 0, w, h).data;
+    let x0 = w, y0 = h, x1 = -1, y1 = -1;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (d[(y * w + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+    if (x1 < 0) return spriteUrl(s);
+    const c = newCanvas(x1 - x0 + 3, y1 - y0 + 3);
+    c.getContext('2d').drawImage(s.cv, x0 - 1, y0 - 1, x1 - x0 + 3, y1 - y0 + 3, 0, 0, x1 - x0 + 3, y1 - y0 + 3);
+    stylePics.set(key, u = c.toDataURL());
+    return u;
+}
 function spriteUrl(s) {
     const c = newCanvas(s.cv.width, s.cv.height);
     c.getContext('2d').drawImage(s.cv, 0, 0);
@@ -4520,12 +5188,16 @@ function renderStats() {
         ['Ants lost to raiders', fmt(Math.round(S.fallen))],
         ['Choices made', fmt(S.events + S.rooms)],
         ['Achievements', `${st.ach.length} of ${ACH.length}`],
+        ['Amber found', `${(st.amber || []).length} of ${AMBER.length}, +${3 * (st.amber || []).length}% for good`],
         oldest && ['Oldest ant', `${esc(oldest.name)}, ${fmtTime((now - oldest.born) / 1000)}`],
     ]);
-    $('history').innerHTML = st.hist.length ? st.hist.slice().reverse().map(h =>
-        `<li><b>${h.nm ? esc(h.nm) + ', farm ' : 'Farm '}${h.n}, ${esc(h.th.toLowerCase())}</b><span>${fmtTime((h.e - h.s) / 1000)}, ${fmt(h.a)} ants, ${h.ch} chambers, +${h.q} queen${h.q === 1 ? '' : 's'}</span>`
-        + (h.top ? `<span>Busiest ant: ${esc(h.top[0])}, ${fmt(h.top[1])} trips</span>` : '') + `</li>`).join('')
-        : '<li class="muted">Farms you fly the nest from will be remembered here.</li>';
+    const hh = st.hist.length ? st.hist.slice().reverse().map(h =>
+        `<li${h.ne ? ' class="has-nest"' : ''}>${h.ne ? `<img class="nest-thumb" src="${nestThumb(h)}" alt="">` : ''}<div><b>${h.nm ? esc(h.nm) + ', farm ' : 'Farm '}${h.n}, ${esc(h.th.toLowerCase())}</b><span>${fmtTime((h.e - h.s) / 1000)}, ${fmt(h.a)} ants, ${h.ch} chambers, +${h.q} queen${h.q === 1 ? '' : 's'}${h.tier !== undefined ? `, reached ${FOODS[h.tier].name.toLowerCase()}` : ''}</span>`
+        + (h.qn ? `<span>Queen ${esc(h.qn)}</span>` : '')
+        + (h.top ? `<span>Busiest ant: ${esc(h.top[0])}, ${fmt(h.top[1])} trips</span>` : '')
+        + (h.ne ? `<button class="btn" data-visit="${h.n}"><i class="fa-solid fa-clock-rotate-left"></i> ${visit && visit.h.n === h.n ? 'Visiting' : 'Visit'}</button>` : '') + `</div></li>`).join('')
+        : '<li class="muted">Farms you fly the nest from will be remembered here, and you can visit their nests.</li>';
+    if ($('history').innerHTML !== hh) $('history').innerHTML = hh;
 }
 
 /* ---------- moving a farm between devices ---------- */
@@ -4623,7 +5295,7 @@ function load() {
     if (d.nest.w === WORLD) unpackNest(d.nest);
     else regrowNest(d.nest);
     afterNest();
-    AW = []; crumbs = []; floaters = []; dust = []; bodies = []; visitors = {}; guest = null; spores = []; evFx = null; waterKey = '';
+    AW = []; crumbs = []; floaters = []; dust = []; bodies = []; visitors = {}; guest = null; spores = []; evFx = null; waterKey = ''; burrower = null; grains = [];
     antSeq = 0; pendingRoster = d.roster || [];
     return d;
 }
@@ -4647,7 +5319,10 @@ function offlineReport(sec, from) {
     if (ar.won) rows.push(['Raids fought off', `${ar.won}, +${fmt(ar.loot)} food`]);
     if (ar.lost) rows.push(['Raids lost', `${ar.lost}, ${fmt(ar.food)} food stolen`]);
     if (ar.ants >= 1) rows.push(['Ants lost to raiders', fmt(Math.round(ar.ants))]);
-    showSheet(`<h3>While you were away</h3><p>${fmtTime(sec)}${sec > used ? `, the colony worked for the first ${capH} hours` : ''}. Ants slow down with nobody watching, so that was about ${fmtTime(used * BAL.away)} of work.</p><ul>${rows.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join('')}</ul><button class="btn primary" id="sheetOk">Nice</button>`);
+    const ab = autoBought();
+    if (ab) rows.push(['Auto-buy', `${ab.n} upgrade${ab.n === 1 ? '' : 's'}`]);
+    logNote(`Back after ${fmtTime(sec)}: ` + rows.map(([k, v]) => `${k.toLowerCase()} ${v}`).join(', ') + (ab ? ` (${ab.list})` : '') + '.', 'away');
+    showSheet(`<h3>While you were away</h3><p>${fmtTime(sec)}${sec > used ? `, the colony worked for the first ${capH} hours` : ''}. Ants slow down with nobody watching, so that was about ${fmtTime(used * BAL.away)} of work.</p><ul>${rows.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join('')}</ul>${ab ? `<p class="away-buys">${esc(ab.list)}</p>` : ''}<button class="btn primary" id="sheetOk">Nice</button>`);
     $('sheetOk').addEventListener('click', hideSheet);
 }
 
@@ -4686,7 +5361,7 @@ const insetProbe = document.createElement('div');
 insetProbe.style.cssText = 'position:fixed;left:0;top:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)';
 document.body.append(insetProbe);
 const lay = {mode:'', open:null, insetB:0, gap:0};
-const OV = {goal:'goalPop', jobs:'ovJobs', up:'ovUp', fly:'ovFly', ants:'ovAnts', stats:'ovStats', more:'ovMore'};
+const OV = {goal:'goalPop', jobs:'ovJobs', up:'ovUp', fly:'ovFly', ants:'ovAnts', stats:'ovStats', more:'ovMore', news:'ovNews'};
 // Which overlay each card moves to on a phone. A marker keeps its place in
 // the panel for when the screen turns or widens.
 const OV_CARDS = [['goalCard', 'goalPop'], ['jobCard', 'ovJobs'], ['roomCard', 'ovJobs'], ['upCard', 'ovUp'], ['tab-ants', 'ovAnts'], ['tab-stats', 'ovStats']];
@@ -4737,11 +5412,16 @@ function layout() {
 // Opens one overlay (or none); opening the one that's open closes it.
 function openOv(name) {
     if (name && lay.open === name) name = null;
+    if (name && choiceCfg) hideChoice(true);
+    if (name && name !== 'stats' && visit) closeVisit();
     lay.open = name;
     for (const [k, id] of Object.entries(OV)) $(id).hidden = k !== name;
     for (const b of $('dock').children) b.classList.toggle('on', b.dataset.ov === name);
     if (name === 'goal') $('goalPop').style.bottom = Math.round(innerHeight - $('goalPill').getBoundingClientRect().top + 6) + 'px';
+    // Opening the messages marks them read (after showing which are new).
+    if (name === 'news') { renderNews(); st.inboxSeen = Date.now(); newsDots(); }
     placeOv();
+    placeAlerts();
     if (name) $(OV[name]).scrollTop = 0;
     panelAt = 0;
     if (booted) updateUI();
@@ -4749,7 +5429,7 @@ function openOv(name) {
 // On a wide screen the Fly card opens just above the ring on the farm, and
 // the More pane covers the panel. On a phone the stylesheet places them.
 function placeOv() {
-    const fly = $('ovFly').style, more = $('ovMore').style;
+    const fly = $('ovFly').style, more = $(lay.open === 'news' ? 'ovNews' : 'ovMore').style;
     fly.left = fly.bottom = more.left = more.top = more.width = more.height = '';
     if (lay.mode !== 'side') return;
     if (lay.open === 'fly') {
@@ -4757,7 +5437,7 @@ function placeOv() {
         fly.left = Math.round(Math.max(8, Math.min(innerWidth - w - 8, r.right - w))) + 'px';
         fly.bottom = Math.round(innerHeight - r.top + 8) + 'px';
     }
-    if (lay.open === 'more') {
+    if (lay.open === 'more' || lay.open === 'news') {
         const r = $('panel').getBoundingClientRect();
         more.left = Math.round(r.left) + 'px'; more.top = Math.round(r.top) + 'px';
         more.width = Math.round(r.width) + 'px'; more.height = Math.round(r.height) + 'px';
@@ -4776,7 +5456,7 @@ $('menuBtn').addEventListener('click', () => { const m = $('menu'); m.hidden = !
 document.addEventListener('pointerdown', e => {
     if (!$('menu').hidden && !e.target.closest('#menu, #menuBtn')) closeMenu();
     // On a wide screen the Fly card and the More pane close with a click anywhere else.
-    if (lay.mode === 'side' && lay.open && !e.target.closest('#ovFly, #farmFly, #ovMore, #helpBtn, #moveBtn')) openOv(null);
+    if (lay.mode === 'side' && lay.open && !e.target.closest('#ovFly, #farmFly, #ovMore, #ovNews, #newsBtn, #helpBtn, #moveBtn')) openOv(null);
 });
 // Safari's own pinch would zoom the whole page; the farm handles pinches itself.
 document.addEventListener('gesturestart', e => e.preventDefault());
@@ -4784,7 +5464,10 @@ document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
     if (!$('menu').hidden) closeMenu();
     else if (lay.open) openOv(null);
+    else if (visit) closeVisit();
 });
+$('visitBack').addEventListener('click', closeVisit);
+$('history').addEventListener('click', e => { const b = e.target.closest('[data-visit]'); if (b) openVisit(st.hist.find(h => h.n === +b.dataset.visit)); });
 // Each number on the farm explains itself: hover on a computer, tap on a phone.
 $('hud').addEventListener('click', e => { const b = e.target.closest('[data-stat]'); if (b && statTips[b.dataset.stat]) toast(statTips[b.dataset.stat]); });
 addEventListener('resize', layout);
@@ -4840,7 +5523,15 @@ function tap(clientX, clientY) {
     if (flight) return;
     const p = toCanvas(clientX, clientY), wx = (p.x - view.ox) / view.s, wy = (p.y - view.oy) / view.s;
     const reach = 26 * p.k / view.s;  // about a fingertip, in farm units
+    // On a visit, tapping one of its ants says who it was.
+    if (visit) {
+        let best = null, bd = Math.max(reach, 6);
+        for (const g of visit.ghosts) { const d = Math.hypot(g.x - wx, g.y - wy); if (d < bd) { bd = d; best = g; } }
+        if (best) toast(`${best.name}, a ${ROLE_NAME[best.role] || 'worker'} on farm ${visit.h.n}: ${fmt(best.trips)} trip${best.trips === 1 ? '' : 's'}.`);
+        return;
+    }
     if (critter && Math.hypot(critter.x - wx, critter.y - wy) < Math.max(reach, 4.5 * critterScale())) { catchCritter(); return; }
+    if (burrower && Math.hypot(burrower.x - wx, burrower.y - wy) < Math.max(reach, 4.5 * critterScale())) { catchBurrower(); return; }
     if (st.event && eventHit(wx, wy, reach)) { openEvent(); return; }
     // A tap in a chamber, not right on an ant, asks what the chamber should be.
     const room = roomAt(wx, wy);
@@ -4960,6 +5651,8 @@ function showMore(card) {
     $(card).scrollIntoView({block:'start'});
 }
 $('helpBtn').addEventListener('click', () => showMore('helpCard'));
+$('newsBtn').addEventListener('click', () => { closeMenu(); openOv('news'); });
+$('newsClear').addEventListener('click', () => { st.inbox = []; renderNews(); newsDots(); });
 let lifeTaps = [];
 $('lifetime').addEventListener('click', () => {
     const now = Date.now();
@@ -4989,7 +5682,7 @@ $('installBtn').addEventListener('click', async () => {
     installEvt = null; $('installBtn').hidden = true;
 });
 onAch = a => {
-    toast(`Achievement: ${a.name}. Everything is 2% better.`);
+    note(`Achievement: ${a.name}. Everything is 2% better.`, 'ach');
     chime(true);
 };
 $('autoBuy').addEventListener('change', e => { st.auto = e.target.checked; });

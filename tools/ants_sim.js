@@ -12,7 +12,7 @@ const seed = +(process.argv[2] || 1);
 const api = new Function(core + '\n' + (process.argv[3] || '') + `
 return {
     init(seed, prev) { rng = mulberry32(seed); st = freshState(prev); st.seed = seed; genSoil(seed); foundNest(); },
-    st: () => st, nest, econ, buy, cheapestBuy, rates, queenGain, canFly, checkAch,
+    st: () => st, nest, econ, buy, cheapestBuy, rates, queenGain, canFly, checkAch, raidPower, fightWinning, FOODS,
     onRaid(fn) { onRaid = fn; },
     // Weather follows the clock, so the sim keeps its own.
     setNow(ms) { simNow = ms; },
@@ -22,9 +22,17 @@ const mins = t => (t / 60).toFixed(1).padStart(6) + 'm';
 const greedy = () => {
     const s = api.st();
     // A new farm only has Picnic crumbs: buy it once to open the rest, as a
-    // player would, and put ants on guard once raiders turn up.
+    // player would. Once raiders turn up it keeps 10% on guard, raises that
+    // when a raid is announced until the scouts say the raiders look weaker,
+    // and sends more if a fight goes badly, like a player paying attention.
     if (s.unlocked.length === 1) api.buy('click');
-    if (s.unlocked.includes('guard') && !s.w.guard) s.w = {forage:50, dig:30, nurse:10, guard:10};
+    if (s.unlocked.includes('guard')) {
+        const R = s.raid, set = g => { s.w = {forage:60 - g, dig:30, nurse:10, guard:g}; };
+        let g = 10;
+        if (R && !R.fight) for (g = 5; g < 50; g += 5) { set(g); if (api.rates().guard / api.raidPower(R) * (R.est || 1) >= 1.3) break; }
+        else if (R) g = Math.min(50, s.w.guard + (api.fightWinning(R) ? 0 : 5));
+        set(g);
+    }
     for (let k = 0, id; k < 20 && (id = api.cheapestBuy()); k++) api.buy(id);
 };
 // Raids: the bot keeps the default share of guards and counts how fights go.
@@ -56,8 +64,8 @@ for (let t = 1, start = 0; t <= 24 * 3600; t++) {
     tick(t);
     const st = api.st(), gain = api.queenGain();
     if (api.canFly() && gain >= Math.max(1, st.queens) && t - start > 600) {
-        console.log(`${mins(t)}  farm ${st.colony + 1} flew after ${mins(t - start).trim()} with ${Math.floor(st.ants)} ants, ${st.queens + gain} queens now`);
-        api.init(seed + st.colony + 1, {...st, queens:st.queens + gain});
+        console.log(`${mins(t)}  farm ${st.colony + 1} flew after ${mins(t - start).trim()} with ${Math.floor(st.ants)} ants on ${api.FOODS[st.tier].name.toLowerCase()}, ${st.queens + gain} queens now`);
+        api.init(seed + st.colony + 1, {...st, queens:st.queens + gain, flights:st.flights + 1});
         start = t;
     }
 }
