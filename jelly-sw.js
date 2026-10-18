@@ -1,8 +1,10 @@
 // Offline support for Jelly Jam (jelly.html).
-// Everything is served from the cache straight away and refreshed in the background, so the game
-// opens instantly with no connection and picks up site updates on the next visit.
+// The page itself comes from the network first (skipping the browser's HTTP cache), so a new
+// version shows the first time the game is opened online; the saved copy is only for when the
+// network is down or too slow. Icons, fonts and the like come from the cache straight away and
+// are refreshed in the background.
 // Registered with scope "/jelly" so the rest of the site is left alone.
-const CACHE = 'jelly-jam-v1';
+const CACHE = 'jelly-jam-v2';
 const LOCAL_FILES = [
     'jelly.html',
     'jelly.webmanifest',
@@ -53,8 +55,28 @@ self.addEventListener('fetch', (event) => {
     const url = new URL(req.url);
     const sameOrigin = url.origin === self.location.origin;
     if (sameOrigin && !url.pathname.includes('/jelly')) return;   // not ours
+    if (sameOrigin && (req.mode === 'navigate' || url.pathname.endsWith('.html'))) {
+        event.respondWith(networkFirst(req));
+        return;
+    }
     event.respondWith(staleWhileRevalidate(event, req, sameOrigin));
 });
+
+async function networkFirst(req) {
+    const cache = await caches.open(CACHE);
+    const key = new URL(req.url).pathname;
+    try {
+        const res = await Promise.race([
+            fetch(req.url, {cache: 'no-cache', credentials: 'same-origin'}),
+            new Promise((_, reject) => setTimeout(() => reject(new Error('slow')), 4000)),
+        ]);
+        if (res.ok) {
+            cache.put(key, res.clone());
+            return res;
+        }
+    } catch (e) { /* offline or slow: use the saved copy */ }
+    return (await cache.match(key)) || fetch(req);
+}
 
 async function staleWhileRevalidate(event, req, sameOrigin) {
     const cache = await caches.open(CACHE);

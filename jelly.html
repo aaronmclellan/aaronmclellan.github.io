@@ -2160,6 +2160,7 @@ function settingsMenu(back) {
         <div class="setting">Fast track <button class="toggle ${save.fast ? 'on' : ''}" data-act="fast" aria-label="Fast track"></button></div>
         <div class="setting">Best streak <b>${save.best}</b></div>
         <div class="setting">Levels won <b>${save.wins}</b></div>
+        <p class="small" style="margin:.5rem 0 0;color:#a99bd0">${screenInfo()}</p>
         <div class="acts">
             <button class="btn white" data-act="how"><i class="fa-solid fa-circle-question"></i> How to play</button>
             <button class="btn white" data-act="move"><i class="fa-solid fa-mobile-screen-button"></i> Move to another device</button>
@@ -2524,6 +2525,14 @@ function fitPhone() {
     if (lost > 10 && Math.abs(lost - top) < 12) rs.setProperty('--sab', '0px'); else rs.removeProperty('--sab');
 }
 fitPhone();
+// Shown small in Settings, so a screenshot says which version is running and what the
+// phone reports about its screen.
+const BUILD = '2026-10-18';
+function screenInfo() {
+    const top = Math.round(parseFloat(getComputedStyle(insetProbe).paddingTop) || 0);
+    const app = navigator.standalone === true ? 'home screen app' : 'browser';
+    return `Version ${BUILD} · ${app} · screen ${screen.width}x${screen.height}, view ${innerWidth}x${innerHeight}, top ${top}, lift ${getComputedStyle(document.documentElement).getPropertyValue('--drop').trim() || '0px'}`;
+}
 function onResize() { fitPhone(); if (screenName === 'play') layout(); }
 addEventListener('resize', onResize);
 if (window.visualViewport) visualViewport.addEventListener('resize', onResize);

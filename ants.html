@@ -3523,7 +3523,7 @@ const GRIPS = ['grip1', 'grip2', 'grip3'];
 const jobEdges = () => { const w = st.w; return [w.forage, w.forage + w.dig, w.forage + w.dig + w.nurse]; };
 function buildUI() {
     const ups = $('ups');
-    ups.innerHTML = '';
+    ups.innerHTML = ''; delete ups.dataset.order;
     const mk = (id, icon) => {
         const b = document.createElement('button');
         b.className = 'up' + (id === 'tier' ? ' tier' : ''); b.dataset.id = id;
@@ -3721,9 +3721,16 @@ function updateUI() {
     tipEl.classList.toggle('warn', warn);
     if (tipEl.dataset.t !== tip) { tipEl.dataset.t = tip; tipEl.innerHTML = `<i class="fa-solid fa-lightbulb"></i>${tip}`; }
     for (const b of $('buyMode').children) b.classList.toggle('on', String(st.buy) === b.dataset.n);
-    // Upgrades show once unlocked; a new one glows for a few seconds.
+    // Upgrades show once unlocked, listed in the order they were unlocked;
+    // a new one glows for a few seconds.
+    const ups = $('ups'), upOrder = st.unlocked.join();
+    if (ups.dataset.order !== upOrder) {
+        ups.dataset.order = upOrder;
+        const rank = id => { const i = st.unlocked.indexOf(id); return i < 0 ? 99 : i; };
+        ups.append(...[...ups.children].sort((a, b) => rank(a.dataset.id) - rank(b.dataset.id)));
+    }
     const nowMs = performance.now();
-    for (const b of $('ups').children) {
+    for (const b of ups.children) {
         const id = b.dataset.id;
         b.hidden = !isUnlocked(id);
         b.classList.toggle('new', (newUps[id] || 0) > nowMs);

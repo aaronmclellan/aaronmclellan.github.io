@@ -7,7 +7,7 @@
   "scope": "./jelly",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#b49cff",
+  "background_color": "#ffb3d6",
   "theme_color": "#b49cff",
   "icons": [
     { "src": "jelly-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
