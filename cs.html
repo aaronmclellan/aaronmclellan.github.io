@@ -1023,6 +1023,88 @@ a.match-action-btn { text-decoration: none; }
     border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: -2px; margin-right: 0.3rem;
 }
 
+/* Tournament explorer */
+.tournament-card[data-tourn] { cursor: pointer; transition: border-color 0.15s; }
+.tournament-card[data-tourn]:hover, .tournament-card[data-tourn]:focus-visible { border-color: var(--accent); outline: none; }
+.tournament-open { margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600; color: var(--accent); }
+.tournament-open i { font-size: 0.65rem; margin-left: 0.2rem; }
+.tourn-modal { z-index: 1900; }
+.tourn-content { max-width: 760px; }
+.tourn-content .tournament-head { margin-bottom: 0.25rem; }
+.tourn-content .tournament-name-row:empty { display: none; }
+.tourn-content .tournament-name-row .tournament-status:first-child { margin-left: 0; }
+.tourn-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.9rem 0 0.25rem; }
+.tourn-tabs { margin-top: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem; }
+.tourn-tabs button { font-size: 0.8rem; padding: 0.35rem 0.75rem; }
+.tourn-controls { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin: 0.9rem 0 0.5rem; }
+.tourn-controls .view-toggle button { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
+.tourn-mine { font-size: 0.78rem; color: var(--text-secondary); display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; user-select: none; }
+.tourn-mine i { color: var(--accent); font-size: 0.7rem; }
+.tourn-stages { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.tourn-stages button {
+    background: none; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 999px;
+    padding: 0.2rem 0.65rem; font-family: inherit; font-size: 0.72rem; cursor: pointer;
+}
+.tourn-stages button.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); font-weight: 600; }
+.tr-day {
+    font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 0.9rem 0 0.35rem; border-bottom: 1px solid var(--border);
+}
+.tr-row {
+    display: grid; grid-template-columns: 2.9rem minmax(0, 1fr) auto auto 1.9rem; align-items: center; gap: 0.5rem;
+    padding: 0.45rem 0.25rem; border-bottom: 1px solid var(--border); font-size: 0.82rem; cursor: pointer;
+}
+.tr-row:hover { background: var(--bg-card-hover); }
+.tr-row.fav { background: var(--accent-dim); }
+.tr-row.tbd { cursor: default; opacity: 0.6; }
+.tr-row.tbd:hover { background: none; }
+.tr-time { color: var(--text-muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.tr-match { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 0.5rem; min-width: 0; }
+.tr-team { display: flex; align-items: center; gap: 0.4rem; min-width: 0; color: var(--text-secondary); }
+.tr-team.right { justify-content: flex-end; text-align: right; }
+.tr-team .team-badge-sm { margin: 0; width: 22px; height: 22px; }
+.tr-team.fav, .tr-team.won { color: var(--text-primary); font-weight: 700; }
+.tr-team.tbd { color: var(--text-muted); font-style: italic; }
+.tr-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.tr-score, .tr-vs, .tr-live { font-weight: 800; font-variant-numeric: tabular-nums; text-align: center; min-width: 2.4rem; }
+.tr-score { color: var(--text-muted); }
+.tr-score .w { color: var(--win); }
+.tr-vs { color: var(--text-muted); font-weight: 600; font-size: 0.72rem; }
+.tr-live { color: var(--loss); font-size: 0.72rem; }
+.tr-stage, .tr-bo { font-size: 0.65rem; color: var(--text-muted); white-space: nowrap; }
+.tr-bo { font-weight: 700; }
+.tr-actions { position: relative; display: inline-flex; justify-content: flex-end; }
+.tr-cal {
+    background: none; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 6px;
+    width: 1.9rem; height: 1.7rem; cursor: pointer; font-size: 0.75rem;
+}
+.tr-cal:hover { border-color: var(--accent); color: var(--accent); }
+.standings { width: 100%; border-collapse: collapse; font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+.standings th, .standings td { padding: 0.35rem 0.4rem; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+.standings th:nth-child(2), .standings td:nth-child(2) { text-align: left; width: 100%; }
+.standings th { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
+.standings td:first-child { color: var(--text-muted); width: 1.5rem; }
+.standings td .team-badge-sm { width: 20px; height: 20px; margin-right: 0.4rem; }
+.standings tr.fav td { background: var(--accent-dim); }
+.standings .pos { color: var(--win); }
+.standings .neg { color: var(--loss); }
+.tourn-teams { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.4rem; margin-top: 0.9rem; }
+.tourn-team {
+    display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.6rem;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+}
+.tourn-team.fav { border-color: var(--accent); background: var(--accent-dim); }
+.tourn-team .team-badge-sm { margin: 0; }
+.tourn-team-info { flex: 1; min-width: 0; }
+.tourn-team-name { font-weight: 700; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tourn-team-rec { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-left: 0.2rem; }
+.tourn-team-next { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tourn-star { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; padding: 0.2rem; }
+.tourn-star:hover, .tourn-team.fav .tourn-star { color: var(--accent); }
+.event-link { color: inherit; }
+.event-link:hover { color: var(--accent); text-decoration: underline; }
+.team-badge-sm.tbd-badge { color: var(--text-muted); font-size: 0.6rem; }
+
 /* Toast */
 .toast {
     position: fixed; left: 50%; bottom: 1.5rem; z-index: 10000;
@@ -1054,6 +1136,10 @@ a.match-action-btn { text-decoration: none; }
     .fav-nav-btn span { display: none; }
 }
 @media (max-width: 480px) {
+    .tr-row { grid-template-columns: 2.5rem minmax(0, 1fr) 1.9rem; gap: 0.35rem; }
+    .tr-stage, .tr-bo { display: none; }
+    .tr-team .team-badge-sm, .tr-name .vrs-rank { display: none; }
+    .tourn-teams { grid-template-columns: 1fr; }
     /* Fit a full 24-round map: smaller cells, color only */
     .rounds-row { gap: 1px; }
     .rounds-team { width: 2rem; }
@@ -1174,6 +1260,11 @@ a.match-action-btn { text-decoration: none; }
             <button class="notif-toggle-btn" onclick="window.shareSyncLink()"><i class="fa-solid fa-copy"></i> Copy link</button>
         </div>
     </div>
+</div>
+
+<!-- Tournament explorer (match details opens on top of it) -->
+<div class="match-details-modal tourn-modal" id="tournModal">
+    <div class="match-details-content tourn-content" id="tournContent"></div>
 </div>
 
 <!-- Match details modal -->
@@ -1411,13 +1502,20 @@ function syncLink() {
     if (pri.length) hash += '&top=' + enc(pri);
     return location.origin + location.pathname + '#' + hash;
 }
+let _pendingEvent = null; // from cs.html#event=<id>, opened once data loads
 function importFromHash() {
     const parts = {};
     location.hash.slice(1).split('&').forEach(p => {
         const i = p.indexOf('=');
         if (i > 0) parts[p.slice(0, i)] = p.slice(i + 1);
     });
-    if (!parts.teams) return;
+    if (parts.event) {
+        try { _pendingEvent = decodeURIComponent(parts.event); } catch {}
+    }
+    if (!parts.teams) {
+        if (parts.event) history.replaceState(null, '', location.pathname + location.search);
+        return;
+    }
     const list = v => (v || '').split(',').map(s => {
         try { return decodeURIComponent(s).trim(); } catch { return ''; }
     }).filter(Boolean);
@@ -1708,6 +1806,8 @@ function deriveTournaments(upcomingMatches, pastMatches) {
         if (!groupKey) return;
         if (!tournMap[groupKey]) {
             tournMap[groupKey] = {
+                uid: groupKey,
+                matches: [],
                 id: m.eventId || m.tournamentId || groupKey,
                 event: m.eventId ? state.events[m.eventId] : null,
                 name: m.tournament || 'Unknown Tournament',
@@ -1719,6 +1819,7 @@ function deriveTournaments(upcomingMatches, pastMatches) {
         }
         const t = tournMap[groupKey];
         t.matchCount++;
+        t.matches.push(m);
         if (m.tournamentId) t.stageIds.add(String(m.tournamentId));
         if (Date.parse(m.time) > now) t.upcomingMatchCount++;
         if (m.time < t.earliestMatch) t.earliestMatch = m.time;
@@ -1751,6 +1852,7 @@ function deriveTournaments(upcomingMatches, pastMatches) {
         }
         if (!best || bestScore < 0.4) return;
         Object.entries(orphan.teams).forEach(([k, tm]) => { if (!best.teams[k]) best.teams[k] = tm; });
+        best.matches.push(...orphan.matches);
         const st = best.stages[orphan.name] || (best.stages[orphan.name] = { name: orphan.name, earliest: orphan.earliestMatch, latest: orphan.latestMatch, count: 0 });
         if (orphan.earliestMatch < st.earliest) st.earliest = orphan.earliestMatch;
         if (orphan.latestMatch > st.latest) st.latest = orphan.latestMatch;
@@ -1781,7 +1883,7 @@ function deriveTournaments(upcomingMatches, pastMatches) {
             else if (startMs > now) status = 'upcoming';
             else status = 'past';
             return {
-                id: t.id, name: t.name,
+                uid: t.uid, id: t.id, name: t.name, matches: t.matches,
                 logo: ev.logo || '', prize: ev.prize || 0, venue: ev.venue || '',
                 startMs, endMs, datesFromEvent: !!(ev.start && ev.end),
                 matchCount: t.matchCount, upcomingMatchCount: t.upcomingMatchCount,
@@ -1840,6 +1942,11 @@ async function loadSnapshot(opts) {
     updateLastSynced();
     checkMatchNotifications();
     scheduleRefresh();
+    if (_pendingEvent && state.snapshot) {
+        const uid = 'e' + _pendingEvent;
+        _pendingEvent = null;
+        if (findTournament(uid)) window.openTournament(uid);
+    }
 }
 
 function liveTargets() {
@@ -2672,6 +2779,33 @@ function formatPrize(n) {
     return n >= 1e6 ? '$' + (n / 1e6).toFixed(n % 1e6 ? 2 : 0).replace(/\.?0+$/, '') + 'M'
         : n >= 1e3 ? '$' + Math.round(n / 1e3) + 'K' : '$' + n;
 }
+// Event dates are calendar days; match-derived ones are moments.
+function tournamentDates(t) {
+    const day = (ms) => t.datesFromEvent ? DateTime.fromMillis(ms, { zone: 'utc' }) : DateTime.fromMillis(ms).setZone(state.selectedTz);
+    const start = day(t.startMs), end = day(t.endMs);
+    return start.hasSame(end, 'day') ? end.toFormat('MMM d, yyyy')
+        : `${start.toFormat(start.hasSame(end, 'year') ? 'MMM d' : 'MMM d, yyyy')} &ndash; ${end.toFormat('MMM d, yyyy')}`;
+}
+function tournamentStatusHtml(t) {
+    if (t.status === 'live') return '<span class="tournament-status live"><span class="live-dot"></span> Live now</span>';
+    if (t.status !== 'upcoming') return '';
+    const daysUntil = Math.max(0, Math.ceil((t.startMs - Date.now()) / (24 * 3600 * 1000)));
+    if (daysUntil === 0) return '<span class="tournament-status soon">Starts today</span>';
+    if (daysUntil === 1) return '<span class="tournament-status soon">Starts tomorrow</span>';
+    return `<span class="tournament-status ${daysUntil <= 7 ? 'soon' : 'upcoming'}">In ${daysUntil} days</span>`;
+}
+function tournamentVenueHtml(t) {
+    return t.venue === 'lan' ? '<span class="tournament-status venue"><i class="fa-solid fa-building"></i> LAN</span>'
+        : t.venue === 'online' ? '<span class="tournament-status venue"><i class="fa-solid fa-wifi"></i> Online</span>' : '';
+}
+function tournamentStageLine(t) {
+    if (t.stages.length > 1) {
+        const current = t.stages.find(s => Date.parse(s.latest) >= Date.now()) || t.stages[t.stages.length - 1];
+        return `<div class="tournament-stages">Stages: ${t.stages.map(s => esc(s.name)).join(' → ')}${t.status !== 'past' ? ` &middot; <strong>Current: ${esc(current.name)}</strong>` : ''}</div>`;
+    }
+    if (t.stages.length === 1) return `<div class="tournament-stages">Stage: <strong>${esc(t.stages[0].name)}</strong></div>`;
+    return '';
+}
 function renderTournaments() {
     const panel = document.getElementById('panel-tournaments');
     const favKeys = favoriteKeys();
@@ -2686,7 +2820,6 @@ function renderTournaments() {
     }
 
     const filterMode = state.tournamentFilter || 'pro';
-    const now = Date.now();
     const live = state.tournaments.filter(t => t.status === 'live');
     const upcoming = state.tournaments.filter(t => t.status === 'upcoming');
     const past = state.tournaments.filter(t => t.status === 'past');
@@ -2719,35 +2852,13 @@ function renderTournaments() {
     }
 
     visible.forEach(t => {
-        // Event dates are calendar days; match-derived ones are moments.
-        const day = (ms) => t.datesFromEvent ? DateTime.fromMillis(ms, { zone: 'utc' }) : DateTime.fromMillis(ms).setZone(state.selectedTz);
-        const start = day(t.startMs), end = day(t.endMs);
-        const dates = start.hasSame(end, 'day') ? end.toFormat('MMM d, yyyy')
-            : `${start.toFormat(start.hasSame(end, 'year') ? 'MMM d' : 'MMM d, yyyy')} &ndash; ${end.toFormat('MMM d, yyyy')}`;
-
-        let statusHtml = '';
-        if (t.status === 'live') {
-            statusHtml = '<span class="tournament-status live"><span class="live-dot"></span> Live now</span>';
-        } else if (t.status === 'upcoming') {
-            const daysUntil = Math.max(0, Math.ceil((t.startMs - now) / (24 * 3600 * 1000)));
-            if (daysUntil === 0) statusHtml = '<span class="tournament-status soon">Starts today</span>';
-            else if (daysUntil === 1) statusHtml = '<span class="tournament-status soon">Starts tomorrow</span>';
-            else statusHtml = `<span class="tournament-status ${daysUntil <= 7 ? 'soon' : 'upcoming'}">In ${daysUntil} days</span>`;
-        }
-
-        let stageLine = '';
-        if (t.stages.length > 1) {
-            const current = t.stages.find(s => Date.parse(s.latest) >= now) || t.stages[t.stages.length - 1];
-            stageLine = `<div class="tournament-stages">Stages: ${t.stages.map(s => esc(s.name)).join(' → ')}${t.status !== 'past' ? ` &middot; <strong>Current: ${esc(current.name)}</strong>` : ''}</div>`;
-        } else if (t.stages.length === 1) {
-            stageLine = `<div class="tournament-stages">Stage: <strong>${esc(t.stages[0].name)}</strong></div>`;
-        }
-
+        const dates = tournamentDates(t);
+        const statusHtml = tournamentStatusHtml(t);
+        const stageLine = tournamentStageLine(t);
         const pc = proCount(t);
         const favBadge = involvesFav(t) ? '<i class="fa-solid fa-star tournament-fav-indicator" title="One of your teams is playing"></i>' : '';
         const proBadge = pc >= 2 ? `<span class="tournament-status pro" title="${pc} of Valve's top 50"><i class="fa-solid fa-medal"></i> ${pc} top-50</span>` : '';
-        const venueBadge = t.venue === 'lan' ? '<span class="tournament-status venue"><i class="fa-solid fa-building"></i> LAN</span>'
-            : t.venue === 'online' ? '<span class="tournament-status venue"><i class="fa-solid fa-wifi"></i> Online</span>' : '';
+        const venueBadge = tournamentVenueHtml(t);
 
         // Your teams first, then by Valve rank, then alphabetically.
         const chips = t.teams.slice().sort((a, b) => {
@@ -2760,7 +2871,7 @@ function renderTournaments() {
         const maxChips = 24;
         const overflow = chips.length - maxChips;
 
-        html += `<div class="tournament-card">
+        html += `<div class="tournament-card" data-tourn="${esc(t.uid)}" role="button" tabindex="0" title="See the schedule, standings and teams">
             <div class="tournament-head">
                 ${t.logo ? `<img class="tournament-logo" src="${esc(t.logo)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
                 <div style="min-width:0;flex:1">
@@ -2784,10 +2895,19 @@ function renderTournaments() {
                     ${chips.slice(0, maxChips).map(tm => `<div class="tournament-team-chip ${favKeys.has(tm.key) ? 'fav' : ''}" title="${esc(displayTeamName(tm))}${tm.rank ? ' (Valve #' + tm.rank + ')' : ''}">${tm.logoUrl ? `<img src="${esc(tm.logoUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}<span>${esc(displayTeamName(tm))}</span>${tm.rank ? `<span class="chip-rank">#${tm.rank}</span>` : ''}</div>`).join('')}
                     ${overflow > 0 ? `<div class="tournament-team-chip" style="opacity:0.6">+${overflow} more</div>` : ''}
                 </div>` : ''}
+            <div class="tournament-open">Schedule, standings and teams <i class="fa-solid fa-chevron-right"></i></div>
         </div>`;
     });
     panel.innerHTML = html;
 }
+document.getElementById('panel-tournaments').addEventListener('click', (e) => {
+    const card = e.target.closest('.tournament-card[data-tourn]');
+    if (card) window.openTournament(card.dataset.tourn);
+});
+document.getElementById('panel-tournaments').addEventListener('keydown', (e) => {
+    const card = e.target.closest('.tournament-card[data-tourn]');
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); window.openTournament(card.dataset.tourn); }
+});
 window.setTournamentFilter = function(mode) {
     state.tournamentFilter = mode;
     renderTournaments();
@@ -2977,6 +3097,7 @@ function renderAll() {
     updatePageTitle();
     updateLastSynced();
     refreshOpenDetails();
+    renderTournamentView();
 }
 
 // ── Today strip ──
@@ -3284,7 +3405,7 @@ function renderMatchDetails() {
     document.getElementById('matchDetailsContent').innerHTML = `
         <button class="match-details-close" onclick="window.closeMatchDetails()" aria-label="Close">&times;</button>
         <div class="match-details-title">${esc(displayTeamName(match.team1))} vs ${esc(displayTeamName(match.team2))}</div>
-        <div class="match-details-meta">${tournamentLabelHtml(match)}${match.format ? ' · ' + match.format : ''} · ${formatTime(match.time)}</div>
+        <div class="match-details-meta"><a href="#" class="event-link" onclick="event.preventDefault();window.openTournamentForMatch('${match.id}')" title="See this tournament's schedule">${tournamentLabelHtml(match)}</a>${match.format ? ' · ' + match.format : ''} · ${formatTime(match.time)}</div>
         ${scoreHtml}
         ${body}
         ${headToHeadHtml(match)}
@@ -3324,6 +3445,276 @@ function refreshOpenDetails() {
     renderMatchDetails();
     loadDetail(match).then(fresh => { if (fresh && _detailView && _detailView.id === match.id) renderMatchDetails(); });
 }
+
+// ── Tournament explorer ──
+// Opens from a Tournaments card or a match's event name. Schedule by day,
+// records per stage, and the teams, with calendar export for any of it.
+let _tournView = null; // { uid, tab, when, mine, stage }
+function findTournament(uid) {
+    return state.tournaments.find(t => t.uid === uid) || null;
+}
+function tournamentOfMatch(match) {
+    return state.tournaments.find(t => t.matches.includes(match)) || null;
+}
+// An event with matches left to play has its own feed (ics/event-<id>.ics).
+function tournamentFeedKey(t) {
+    return t.uid[0] === 'e' && t.matches.some(m => m.status !== 'finished') ? 'event-' + t.id : '';
+}
+
+window.openTournament = function(uid) {
+    const t = findTournament(uid);
+    if (!t) return;
+    const ahead = t.matches.some(m => m.status !== 'finished');
+    _tournView = { uid, tab: 'schedule', when: ahead ? 'upcoming' : 'results', mine: false, stage: -1 };
+    renderTournamentView();
+    document.getElementById('tournModal').classList.add('open');
+    document.getElementById('tournContent').scrollTop = 0;
+};
+window.openTournamentForMatch = function(matchId) {
+    const match = findMatchById(matchId);
+    const t = match && tournamentOfMatch(match);
+    if (!t) return;
+    window.closeMatchDetails();
+    if (!_tournView || _tournView.uid !== t.uid) window.openTournament(t.uid);
+};
+window.closeTournament = function() {
+    document.getElementById('tournModal').classList.remove('open');
+    _tournView = null;
+};
+window.setTournView = function(key, value) {
+    if (!_tournView) return;
+    _tournView[key] = value;
+    renderTournamentView();
+};
+window.toggleTournFav = function(name) {
+    toggleFavorite(name);
+    deriveViews();
+    renderAll();
+    scheduleRefresh();
+};
+window.shareTournament = async function(id) {
+    const url = location.origin + location.pathname + '#event=' + encodeURIComponent(id);
+    try { await navigator.clipboard.writeText(url); toast('Link copied. It opens this tournament.'); }
+    catch { toast(url); }
+};
+document.getElementById('tournModal').addEventListener('click', (e) => {
+    if (e.target.id === 'tournModal') window.closeTournament();
+});
+
+function tournamentScheduleMatches(t) {
+    const v = _tournView;
+    const stage = v.stage >= 0 && t.stages[v.stage] ? t.stages[v.stage].name : null;
+    return t.matches.filter(m =>
+        (v.when === 'upcoming' ? m.status !== 'finished' : v.when === 'results' ? m.status === 'finished' : true)
+        && (!v.mine || m.involvesFavorite)
+        && (!stage || m.stage === stage));
+}
+
+function tournamentRowHtml(m, favKeys, showStage) {
+    const tbd = isTbdMatch(m);
+    const sc = seriesScore(m);
+    const won1 = sc && (sc[0].won || sc[0].score > sc[1].score);
+    const won2 = sc && (sc[1].won || sc[1].score > sc[0].score);
+    let mid;
+    if (m.status === 'live') mid = `<span class="tr-live">LIVE${sc ? ` ${sc[0].score}-${sc[1].score}` : ''}</span>`;
+    else if (m.status === 'finished' && sc) mid = `<span class="tr-score"><span class="${won1 ? 'w' : ''}">${sc[0].score}</span>-<span class="${won2 ? 'w' : ''}">${sc[1].score}</span></span>`;
+    else if (m.status === 'starting') mid = '<span class="tr-vs" title="Due to start">soon</span>';
+    else mid = '<span class="tr-vs">vs</span>';
+    const team = (tm, won, right) => {
+        const p = isPlaceholderTeam(tm);
+        const badge = p ? '<div class="team-badge-sm tbd-badge"><i class="fa-solid fa-question"></i></div>' : teamBadgeHtml(tm, 'sm');
+        const name = `<span class="tr-name">${teamNameHtml(tm)}</span>`;
+        return `<span class="tr-team ${right ? 'right' : ''} ${favKeys.has(tm.key) ? 'fav' : ''} ${won ? 'won' : ''} ${p ? 'tbd' : ''}">${right ? name + badge : badge + name}</span>`;
+    };
+    const cal = m.status === 'upcoming' && !tbd ? `<span class="tr-actions" onclick="event.stopPropagation()">
+        <button class="tr-cal" onclick="event.stopPropagation();window.toggleCalMenu(event,'${m.id}')" title="Add to calendar" aria-label="Add to calendar"><i class="fa-solid fa-calendar-plus"></i></button>
+        <div class="cal-menu" id="cal-menu-${m.id}">
+            <button onclick="event.stopPropagation();window.addToGoogleCal('${m.id}')"><i class="fa-brands fa-google"></i> Google Calendar</button>
+            <button onclick="event.stopPropagation();window.addToIcs('${m.id}')"><i class="fa-solid fa-bell"></i> Download .ics</button>
+        </div>
+    </span>` : '<span class="tr-actions"></span>';
+    return `<div class="tr-row ${m.involvesFavorite ? 'fav' : ''} ${tbd ? 'tbd' : ''} ${m.status === 'live' ? 'live' : ''}" ${tbd ? '' : `onclick="window.openMatchDetails('${m.id}')"`}>
+        <span class="tr-time">${DateTime.fromISO(m.time).setZone(state.selectedTz).toFormat('HH:mm')}</span>
+        <span class="tr-match">${team(m.team1, won1, false)}${mid}${team(m.team2, won2, true)}</span>
+        <span class="tr-stage">${showStage && m.stage ? esc(m.stage) : ''}</span>
+        <span class="tr-bo">${m.format || ''}</span>
+        ${cal}
+    </div>`;
+}
+
+function tournamentScheduleHtml(t, favKeys) {
+    const v = _tournView;
+    const ahead = t.matches.filter(m => m.status !== 'finished').length;
+    const done = t.matches.length - ahead;
+    const mineCount = t.matches.filter(m => m.involvesFavorite).length;
+    const seg = (when, label) => `<button class="${v.when === when ? 'active' : ''}" onclick="window.setTournView('when','${when}')">${label}</button>`;
+    let html = `<div class="tourn-controls">
+        <div class="view-toggle">${seg('upcoming', `Upcoming (${ahead})`)}${seg('results', `Results (${done})`)}${seg('all', 'All')}</div>
+        ${mineCount ? `<label class="tourn-mine"><input type="checkbox" ${v.mine ? 'checked' : ''} onchange="window.setTournView('mine', this.checked)"> <i class="fa-solid fa-star"></i> My teams (${mineCount})</label>` : ''}
+    </div>`;
+    if (t.stages.length > 1) {
+        html += `<div class="tourn-stages">
+            <button class="${v.stage < 0 ? 'active' : ''}" onclick="window.setTournView('stage', -1)">All stages</button>
+            ${t.stages.map((st, i) => `<button class="${v.stage === i ? 'active' : ''}" onclick="window.setTournView('stage', ${i})">${esc(st.name)}</button>`).join('')}
+        </div>`;
+    }
+    const list = tournamentScheduleMatches(t).sort(v.when === 'results' ? byTimeDesc : byTimeAsc);
+    if (!list.length) {
+        const why = v.when === 'upcoming' ? 'No matches left to play' : v.when === 'results' ? 'No results yet' : 'No matches';
+        return html + `<div class="match-details-note">${why}${v.mine ? ' for your teams' : ''}${v.stage >= 0 ? ' in this stage' : ''}.</div>`;
+    }
+    const todayKey = DateTime.now().setZone(state.selectedTz).toFormat('yyyy-MM-dd');
+    const tomorrowKey = DateTime.now().setZone(state.selectedTz).plus({ days: 1 }).toFormat('yyyy-MM-dd');
+    const yesterdayKey = DateTime.now().setZone(state.selectedTz).minus({ days: 1 }).toFormat('yyyy-MM-dd');
+    let lastDay = '';
+    const showStage = t.stages.length > 1 && v.stage < 0;
+    list.forEach(m => {
+        const dt = DateTime.fromISO(m.time).setZone(state.selectedTz);
+        const key = dt.toFormat('yyyy-MM-dd');
+        if (key !== lastDay) {
+            const label = key === todayKey ? 'Today' : key === tomorrowKey ? 'Tomorrow' : key === yesterdayKey ? 'Yesterday' : dt.toFormat('EEEE, MMM d');
+            const count = list.filter(x => DateTime.fromISO(x.time).setZone(state.selectedTz).toFormat('yyyy-MM-dd') === key).length;
+            html += `<div class="tr-day">${label} <span class="day-count">· ${plural(count, 'match', 'matches')}</span></div>`;
+            lastDay = key;
+        }
+        html += tournamentRowHtml(m, favKeys, showStage);
+    });
+    return html;
+}
+
+// Series won and lost per team in each stage, from finished matches. Not an
+// official table: GRID doesn't say which group a team is in.
+function stageRecords(matches) {
+    const rows = new Map();
+    matches.forEach(m => {
+        if (m.status !== 'finished' || isPlaceholderTeam(m.team1) || isPlaceholderTeam(m.team2)) return;
+        const sc = seriesScore(m);
+        if (!sc) return;
+        const won1 = sc[0].won || sc[0].score > sc[1].score;
+        const won2 = sc[1].won || sc[1].score > sc[0].score;
+        if (!won1 && !won2) return;
+        [[m.team1, sc[0], sc[1], won1], [m.team2, sc[1], sc[0], won2]].forEach(([team, me, them, won]) => {
+            const r = rows.get(team.key) || { team, w: 0, l: 0, maps: 0 };
+            if (won) r.w++; else r.l++;
+            r.maps += me.score - them.score;
+            rows.set(team.key, r);
+        });
+    });
+    return [...rows.values()].sort((a, b) => b.w - a.w || a.l - b.l || b.maps - a.maps || (a.team.rank || 999) - (b.team.rank || 999));
+}
+
+function tournamentStandingsHtml(t, favKeys) {
+    const groups = t.stages.length ? t.stages.map(st => ({ name: st.name, matches: t.matches.filter(m => m.stage === st.name) })) : [{ name: '', matches: t.matches }];
+    const withResults = groups.map(g => ({ ...g, rows: stageRecords(g.matches) })).filter(g => g.rows.length).reverse(); // latest stage first
+    if (!withResults.length) return '<div class="match-details-note">Records show up here once matches are played.</div>';
+    return `<div class="match-details-note">Series won and lost in each stage. GRID doesn't say which group a team is in, so groups are combined.</div>` +
+        withResults.map(g => `<div class="detail-section">
+            ${g.name ? `<div class="detail-heading"><i class="fa-solid fa-ranking-star"></i> ${esc(g.name)}</div>` : ''}
+            <table class="standings">
+                <thead><tr><th>#</th><th>Team</th><th title="Series won-lost">W-L</th><th title="Maps won minus maps lost">Maps</th></tr></thead>
+                <tbody>${g.rows.map((r, i) => `<tr class="${favKeys.has(r.team.key) ? 'fav' : ''}">
+                    <td>${i + 1}</td>
+                    <td>${teamBadgeHtml(r.team, 'sm')}${teamNameHtml(r.team)}</td>
+                    <td><strong>${r.w}-${r.l}</strong></td>
+                    <td class="${r.maps > 0 ? 'pos' : r.maps < 0 ? 'neg' : ''}">${r.maps > 0 ? '+' : ''}${r.maps}</td>
+                </tr>`).join('')}</tbody>
+            </table>
+        </div>`).join('');
+}
+
+function tournamentTeamsHtml(t, favKeys) {
+    if (!t.teams.length) return '<div class="match-details-note">Teams show up here once the bracket is seeded.</div>';
+    const teams = t.teams.slice().sort((a, b) => {
+        const af = favKeys.has(a.key) ? 0 : 1, bf = favKeys.has(b.key) ? 0 : 1;
+        return af - bf || (a.rank || 9999) - (b.rank || 9999) || displayTeamName(a).localeCompare(displayTeamName(b));
+    });
+    return `<div class="tourn-teams">${teams.map(tm => {
+        const mine = t.matches.filter(m => m.team1.key === tm.key || m.team2.key === tm.key);
+        const results = mine.map(m => resultFor(m, tm.key)).filter(Boolean);
+        const w = results.filter(r => r.result === 'W').length;
+        const next = mine.filter(m => m.status !== 'finished').sort(byTimeAsc)[0];
+        let nextLine = '';
+        if (next) {
+            const opp = next.team1.key === tm.key ? next.team2 : next.team1;
+            nextLine = next.isLive ? `<span class="tr-live">LIVE</span> vs ${esc(displayTeamName(opp))}`
+                : `Next: vs ${esc(displayTeamName(opp))}, ${DateTime.fromISO(next.time).setZone(state.selectedTz).toFormat('EEE HH:mm')}`;
+        } else if (results.length && t.status !== 'past') {
+            nextLine = 'No more matches scheduled';
+        }
+        const fav = favKeys.has(tm.key);
+        return `<div class="tourn-team ${fav ? 'fav' : ''}">
+            ${teamBadgeHtml(tm, 'sm')}
+            <div class="tourn-team-info">
+                <div class="tourn-team-name">${teamNameHtml(tm)}${results.length ? ` <span class="tourn-team-rec">${w}-${results.length - w}</span>` : ''}</div>
+                ${nextLine ? `<div class="tourn-team-next">${nextLine}</div>` : ''}
+            </div>
+            <button class="tourn-star" data-name="${esc(canonicalName(tm.name))}" onclick="window.toggleTournFav(this.dataset.name)" title="${fav ? 'Remove from your teams' : 'Add to your teams'}" aria-label="${fav ? 'Remove from your teams' : 'Add to your teams'}"><i class="fa-${fav ? 'solid' : 'regular'} fa-star"></i></button>
+        </div>`;
+    }).join('')}</div>`;
+}
+
+function renderTournamentView() {
+    if (!_tournView) return;
+    const el = document.getElementById('tournContent');
+    const close = '<button class="match-details-close" onclick="window.closeTournament()" aria-label="Close">&times;</button>';
+    const t = findTournament(_tournView.uid);
+    if (!t) {
+        el.innerHTML = close + '<div class="match-details-note">This tournament is no longer in the data window.</div>';
+        return;
+    }
+    const v = _tournView;
+    const favKeys = favoriteKeys();
+    const feedKey = tournamentFeedKey(t);
+    // Downloads follow the filters you've set, and skip unseeded slots (a
+    // file can't update them; the subscription can).
+    const exportable = tournamentScheduleMatches(t).filter(m => m.status === 'upcoming' && !isPlaceholderTeam(m.team1) && !isPlaceholderTeam(m.team2));
+    const tabBtn = (tab, label) => `<button class="${v.tab === tab ? 'active' : ''}" onclick="window.setTournView('tab','${tab}')">${label}</button>`;
+    let body;
+    if (v.tab === 'standings') body = tournamentStandingsHtml(t, favKeys);
+    else if (v.tab === 'teams') body = tournamentTeamsHtml(t, favKeys);
+    else body = tournamentScheduleHtml(t, favKeys);
+
+    el.innerHTML = `${close}
+        <div class="tournament-head">
+            ${t.logo ? `<img class="tournament-logo" src="${esc(t.logo)}" alt="" onerror="this.remove()">` : ''}
+            <div style="min-width:0;flex:1">
+                <div class="match-details-title">${esc(t.name)}</div>
+                <div class="tournament-name-row">${tournamentStatusHtml(t)}${tournamentVenueHtml(t)}</div>
+                <div class="tournament-meta">
+                    <i class="fa-solid fa-calendar"></i> ${tournamentDates(t)}
+                    ${t.prize ? ` &middot; <i class="fa-solid fa-sack-dollar"></i> ${formatPrize(t.prize)} prize pool` : ''}
+                    &middot; ${plural(t.teams.length, 'team')}
+                </div>
+                ${tournamentStageLine(t)}
+            </div>
+        </div>
+        <div class="tourn-actions">
+            ${feedKey ? `<span class="tr-actions">
+                <button class="match-action-btn" onclick="event.stopPropagation();window.toggleFeedMenu(event,'${feedKey}')" title="Your calendar keeps this tournament's schedule current, including bracket slots as teams advance"><i class="fa-solid fa-calendar-check"></i> Subscribe in calendar</button>
+                <div class="cal-menu" id="feed-menu-${feedKey}">
+                    <button onclick="event.stopPropagation();window.subscribeFeed('${feedKey}','apple')"><i class="fa-brands fa-apple"></i> Apple / Outlook calendar</button>
+                    <button onclick="event.stopPropagation();window.subscribeFeed('${feedKey}','google')"><i class="fa-brands fa-google"></i> Google Calendar</button>
+                    <button onclick="event.stopPropagation();window.subscribeFeed('${feedKey}','copy')"><i class="fa-solid fa-link"></i> Copy feed link</button>
+                </div>
+            </span>` : ''}
+            ${exportable.length ? `<button class="match-action-btn" onclick="window.downloadTournamentIcs()" title="A one-time file with ${plural(exportable.length, 'match', 'matches')}${v.mine ? ' involving your teams' : ''}"><i class="fa-solid fa-download"></i> Download ${plural(exportable.length, 'match', 'matches')} (.ics)</button>` : ''}
+            ${t.uid[0] === 'e' ? `<button class="match-action-btn" onclick="window.shareTournament('${t.id}')"><i class="fa-solid fa-link"></i> Copy link</button>` : ''}
+        </div>
+        <div class="scoreboard-tabs tourn-tabs">
+            ${tabBtn('schedule', `<i class="fa-solid fa-calendar-days"></i> Schedule`)}
+            ${tabBtn('standings', `<i class="fa-solid fa-ranking-star"></i> Standings`)}
+            ${tabBtn('teams', `<i class="fa-solid fa-users"></i> Teams (${t.teams.length})`)}
+        </div>
+        ${body}`;
+}
+window.downloadTournamentIcs = function() {
+    const t = _tournView && findTournament(_tournView.uid);
+    if (!t) return;
+    const list = tournamentScheduleMatches(t)
+        .filter(m => m.status === 'upcoming' && !isPlaceholderTeam(m.team1) && !isPlaceholderTeam(m.team2))
+        .sort(byTimeAsc);
+    if (list.length) downloadIcsFile(t.name + '.ics', list, t.name);
+};
 
 // ── Live tab tips ──
 const LIVE_TIPS = [
@@ -3373,6 +3764,7 @@ function updatePageTitle() {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (document.getElementById('matchDetailsModal').classList.contains('open')) { window.closeMatchDetails(); return; }
+        if (document.getElementById('tournModal').classList.contains('open')) { window.closeTournament(); return; }
         if (document.getElementById('settingsOverlay').classList.contains('open')) { closeSettings(); return; }
         if (document.getElementById('favModal').classList.contains('open')) { closeFavorites(); return; }
         closeMenus();
@@ -3430,15 +3822,14 @@ function buildMatchCalendarData(match) {
     const hours = { 1: 1.5, 3: 3, 5: 5 }[match.bo] || 2;
     const end = new Date(start.getTime() + hours * 3600 * 1000);
     const tournament = match.tournament || 'CS2 Match';
-    const lines = [tournament + (match.format ? ', ' + match.format : '')];
+    const lines = [tournament + (match.stage ? ', ' + match.stage : '') + (match.format ? ', ' + match.format : '')];
     (match.streams || []).slice(0, 3).forEach(s => lines.push(s.url));
     lines.push('https://www.ron.computer/cs.html');
     return { title, start, end, tournament, description: lines.join('\n') };
 }
-function downloadIcs(match) {
+function icsEventLines(match) {
     const d = buildMatchCalendarData(match);
-    const ics = [
-        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CS2 Pro Tracker//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    return [
         'BEGIN:VEVENT',
         `UID:cs2-${match.id}@aaronmclellan.github.io`,
         'DTSTAMP:' + icsFormatDate(new Date().toISOString()),
@@ -3448,14 +3839,25 @@ function downloadIcs(match) {
         'DESCRIPTION:' + icsEscape(d.description),
         'LOCATION:' + icsEscape(d.tournament),
         'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEscape(d.title + ' starting soon'), 'TRIGGER:-PT10M', 'END:VALARM',
-        'END:VEVENT', 'END:VCALENDAR',
+        'END:VEVENT',
+    ];
+}
+function downloadIcsFile(filename, matches, calName) {
+    const ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CS2 Pro Tracker//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+        ...(calName ? ['X-WR-CALNAME:' + icsEscape(calName)] : []),
+        ...matches.flatMap(icsEventLines),
+        'END:VCALENDAR',
     ].join('\r\n');
     const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${d.title.replace(/[^a-z0-9]+/gi, '_')}.ics`;
+    a.download = filename.replace(/[^a-z0-9.]+/gi, '_');
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function downloadIcs(match) {
+    downloadIcsFile(buildMatchCalendarData(match).title + '.ics', [match]);
 }
 function openGoogleCalendar(match) {
     const d = buildMatchCalendarData(match);

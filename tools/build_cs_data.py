@@ -622,9 +622,21 @@ def ics_time(dt):
     return dt.astimezone(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 
 
+# GRID fills unseeded bracket slots with names like "TBD-1", "CS2-OPEN-A" or
+# "Winner of ...". Same pattern as PLACEHOLDER_TEAM_RE in cs.html.
+PLACEHOLDER_RE = re.compile(r'^(tbd|cs2[-:_\s]|winner\s+of|loser\s+of|qualifier|seed\s*\d|to\s+be\s+determined|placeholder)', re.I)
+
+
+def team_label(t):
+    name = (t.get('name') or '').strip()
+    return 'TBD' if not name or PLACEHOLDER_RE.match(name) else name
+
+
 def series_title(s):
+    """'A vs B', or 'A 2-1 B' once finished. The desktop's tray alerts rely
+    on the ' vs ' to tell upcoming matches from results."""
     a, b = (s['teams'] + [{}, {}])[:2]
-    na, nb = a.get('name') or 'TBD', b.get('name') or 'TBD'
+    na, nb = team_label(a), team_label(b)
     st = s.get('state') or {}
     if st.get('finished'):
         scores = {t.get('id'): t.get('score') for t in st.get('teams') or []}
@@ -634,7 +646,15 @@ def series_title(s):
     return '%s vs %s' % (na, nb)
 
 
-def write_ics(path, cal_name, series, events, now):
+def stage_of(s, events):
+    """'Playoffs' for a series in a stage of a bigger event, else ''."""
+    t = s['tournament']
+    event = events.get(t.get('event')) or {}
+    short = t.get('short') or ''
+    return short if short and short not in (event.get('short'), event.get('name')) else ''
+
+
+def write_ics(path, cal_name, series, events, now, with_stage=False):
     lines = [
         'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CS2 Pro Tracker//EN', 'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH', 'X-WR-CALNAME:' + ics_text(cal_name),
@@ -655,7 +675,7 @@ def write_ics(path, cal_name, series, events, now):
             'DTSTAMP:' + ics_time(now),
             'DTSTART:' + ics_time(start),
             'DTEND:' + ics_time(start + timedelta(hours=hours)),
-            'SUMMARY:' + ics_text(series_title(s)),
+            'SUMMARY:' + ics_text(series_title(s) + (' (%s)' % stage_of(s, events) if with_stage and stage_of(s, events) else '')),
             'DESCRIPTION:' + ics_text('\n'.join(d for d in desc if d)),
             'LOCATION:' + ics_text(event),
             'END:VEVENT',
@@ -692,7 +712,21 @@ def write_calendars(out, rankings, series, events, now):
         if matches:
             write_ics(cal_dir / (team['key'] + '.ics'), team['name'] + ' (CS2)', matches, events, now)
             written += 1
-    log('calendar feeds: %d teams' % written)
+    # One feed per event that still has matches to play, so subscribers see
+    # bracket slots fill in as teams advance.
+    by_event = {}
+    for s in series:
+        if parse_time(s['time']) >= now - ICS_PAST and s['tournament'].get('event'):
+            by_event.setdefault(s['tournament']['event'], []).append(s)
+    running = 0
+    for event_id, matches in by_event.items():
+        if not any(not (m.get('state') or {}).get('finished') and parse_time(m['time']) > now - LIVE_WINDOW
+                   for m in matches):
+            continue
+        name = (events.get(event_id) or {}).get('name') or 'CS2 event'
+        write_ics(cal_dir / ('event-%s.ics' % event_id), name + ' (CS2)', matches, events, now, with_stage=True)
+        running += 1
+    log('calendar feeds: %d teams, %d events' % (written, running))
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
