@@ -669,7 +669,7 @@ label.btn { cursor: pointer; }
                 <li><b>Events</b> pop up now and then with a choice to make. Leave one for three minutes and the cautious choice is made for you.</li>
                 <li><b>Bugs</b> wander by now and then: ladybugs, butterflies and, at night, fireflies. Tap one for a boost. Golden ones are rare and strong.</li>
                 <li><b>The view</b> follows the nest and pulls back as the colony digs. Zoom with the buttons, a pinch or ctrl + scroll, and tap an ant to follow it around.</li>
-                <li>The farm keeps going while you're away, for up to 8 hours.</li>
+                <li>The farm keeps going while you're away, at a quarter of the speed, for up to 8 hours.</li>
                 <li><b>Fly the nest</b> once the colony has 120 ants: queens leave to start a fresh farm. This farm resets, but every queen makes all your ants 10% better for good, and waiting longer sends more queens.</li>
                 <li>On a phone, the buttons along the bottom open your jobs, upgrades, ants and stats, and the menu at the top right has the rest. Add it to your home screen to use it like an app.</li>
             </ul>
@@ -737,7 +737,7 @@ const PERKS = [
     {q:15, name:'Seed stash', desc:'new farms start with sunflower seeds'},
 ];
 const BAL = {autoQueens:6, autoShare:0.1, forage:0.3, dig:0.02, lay:0.25, dev:30, egg:2, capBase:8, capCell:1/35, costDiv:40, costExp:2, maxDug:13000, queenBoost:0.1, queenDiv:1e6, flightAnts:120, achBoost:0.02, crumb:0.35,
-    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05};
+    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05, away:0.25};
 const ROLE_SEQ = ['nursery', 'food', 'rest'];
 // What a chamber can be. The queen's chamber is fixed; the rest start as one
 // of the first three and you choose from there.
@@ -764,6 +764,10 @@ const WX = {
 };
 const WX_KEYS = Object.keys(WX), WX_SPELL = 12 * 60e3, WX_FRONT = 2 * 3600e3;
 let simNow = Date.now(), forcedWx = null;
+// How fast the colony works: 1 while someone can see the farm, BAL.away when
+// nobody can, so time away still counts without racing through the game.
+// Raids and their after-effects stretch out to match.
+let pace = 1;
 function hashf(n) {
     n |= 0;
     n = Math.imul(n ^ n >>> 16, 0x7feb352d);
@@ -847,8 +851,9 @@ let onRaidWarn = () => {}, onRaid = () => {};
 // Richer colonies draw bigger raiders: each better food makes them 15% stronger.
 const raidPower = r => st.ants * BAL.raidPow * RAIDERS[r.k].p * r.roll * (1 + 0.15 * st.tier);
 function stepRaids() {
-    const now = simNow;
+    const now = simNow, most = BAL.raidGap[1] * 1000 / pace;
     if (!st.raidAt) st.raidAt = now + (BAL.raidStart + rng() * 120) * 1000;
+    if (st.raidAt - now > most) st.raidAt = now + most;
     if (!st.raid && now >= st.raidAt) {
         if (nest.chambers < 2 || st.ants < 12) { st.raidAt = now + 60e3; return; }
         // The very first raid is a small spider, to learn on.
@@ -863,7 +868,7 @@ function stepRaids() {
 function resolveRaid() {
     const R = st.raid, kind = RAIDERS[R.k];
     st.raid = null;
-    st.raidAt = simNow + (BAL.raidGap[0] + rng() * (BAL.raidGap[1] - BAL.raidGap[0])) * 1000;
+    st.raidAt = simNow + (BAL.raidGap[0] + rng() * (BAL.raidGap[1] - BAL.raidGap[0])) * 1000 / pace;
     const out = {k:R.k, win:false, rain:false, q:0, food:0, brood:0, ants:0, guardsLost:0, loot:0};
     const wx = weatherAt(simNow);
     if (wx === 'rain' || wx === 'storm' || wx === 'snow') { out.rain = true; onRaid(out); return out; }
@@ -871,7 +876,7 @@ function resolveRaid() {
     out.q = q;
     if (q >= 1) {
         out.win = true;
-        out.loot = r.food * BAL.raidLoot * kind.loot;
+        out.loot = r.food * BAL.raidLoot * kind.loot * pace;
         st.food += out.loot; st.earned += out.loot; st.total += out.loot;
         // A close fight still costs a guard or two.
         out.ants = out.guardsLost = guards * 0.06 * Math.max(0, Math.min(1, (1.5 - q) / 0.5));
@@ -887,7 +892,7 @@ function resolveRaid() {
         // And the colony is shaken up for a while, working at half speed after a rout.
         out.shaken = 1 - 0.5 * s;
         st.buffs = st.buffs.filter(b => b.name !== 'Shaken up');
-        st.buffs.push({k:'all', m:Math.round(out.shaken * 100) / 100, until:simNow + 180e3 * s, name:'Shaken up'});
+        st.buffs.push({k:'all', m:Math.round(out.shaken * 100) / 100, until:simNow + 180e3 * s / pace, name:'Shaken up'});
         st.stats.raidsLost++;
     }
     out.ants = Math.min(out.ants, st.ants * 0.1, Math.max(0, st.ants - 4));
@@ -1265,11 +1270,11 @@ function rates() {
 // longer the haul up to the surface.
 const stepCost = () => 1 + Math.pow(nest.steps / BAL.costDiv, BAL.costExp);
 function econ(dt) {
-    const r = rates();
-    const inc = r.food * dt;
+    const r = rates(), g = dt * pace;
+    const inc = r.food * g;
     st.food += inc; st.earned += inc; st.total += inc;
     if (!nest.full) {
-        st.digBudget += r.dig * dt;
+        st.digBudget += r.dig * g;
         for (let guard = 400; guard > 0 && !nest.full; guard--) {
             const c = stepCost();
             if (st.digBudget < c) break;
@@ -1278,9 +1283,9 @@ function econ(dt) {
         if (nest.full) st.digBudget = 0;
     }
     const room = Math.max(0, capOf() - st.ants - st.brood);
-    const eggs = Math.min(r.lay * dt, room, st.food / BAL.egg);
+    const eggs = Math.min(r.lay * g, room, st.food / BAL.egg);
     if (eggs > 0) { st.food -= eggs * BAL.egg; st.brood += eggs; st.laid += eggs; st.stats.eggs += eggs; }
-    const hatch = st.brood * (1 - Math.exp(-dt / r.dev));
+    const hatch = st.brood * (1 - Math.exp(-g / r.dev));
     st.brood -= hatch; st.ants += hatch;
     if (st.ants > st.peak) st.peak = st.ants;
     // Food that comes home later, from choices made in events.
@@ -3272,11 +3277,23 @@ let lastTick = Date.now(), lastFrame = performance.now(), uiAt = 0, syncAt = 0, 
 function autoBuy() {
     if (st.auto && st.queens >= BAL.autoQueens && !flight) for (let k = 0, id; k < 25 && (id = autoPick()); k++) buy(id);
 }
+// Someone can see the farm: the tab is showing, or it's popped out.
+const watching = () => !document.hidden || !!pip.mode;
+let watched = true;
 function advance() {
     const now = Date.now(), from = lastTick, dt = (now - from) / 1000;
     lastTick = now;
+    const was = watched;
+    watched = watching();
     if (dt <= 0 || flight) return;
-    if (dt > 3) catchUp(dt, from); else { simNow = now; econ(dt); }
+    pace = was ? 1 : BAL.away;
+    try { if (dt > 3) catchUp(dt, from); else { simNow = now; econ(dt); } }
+    finally { pace = 1; }
+}
+// Time that passed with the farm closed.
+function catchUpAway(sec, from) {
+    pace = BAL.away;
+    try { catchUp(sec, from); } finally { pace = 1; }
 }
 // Replays time in chunks, with the weather and boosts of each moment.
 function catchUp(sec, from) {
@@ -3998,7 +4015,7 @@ async function loadCode(code) {
     if (bc) bc.postMessage({hello:me});
     if (cam.follow) stopFollow();
     const d = load();
-    catchUp(Math.max(0, (Date.now() - d.st.t) / 1000), d.st.t);
+    catchUpAway(Math.max(0, (Date.now() - d.st.t) / 1000), d.st.t);
     lastTick = Date.now();
     syncAnts(true); buildUI(); save();
     $('codeIn').value = '';
@@ -4070,7 +4087,7 @@ function offlineReport(sec, from) {
     const capH = st.queens >= 10 ? 24 : 8, used = Math.min(sec, capH * 3600);
     const b = {earned:st.earned, ants:st.ants, ch:nest.chambers};
     awayRaids = {won:0, lost:0, rain:0, ants:0, food:0, loot:0};
-    catchUp(used, from);
+    catchUpAway(used, from);
     const ar = awayRaids;
     awayRaids = null;
     const rows = [['Food gathered', '+' + fmt(st.earned - b.earned)], ['New ants', '+' + fmt(Math.max(0, Math.floor(st.ants) - Math.floor(b.ants)))]];
@@ -4078,7 +4095,7 @@ function offlineReport(sec, from) {
     if (ar.won) rows.push(['Raids fought off', `${ar.won}, +${fmt(ar.loot)} food`]);
     if (ar.lost) rows.push(['Raids lost', `${ar.lost}, ${fmt(ar.food)} food stolen`]);
     if (ar.ants >= 1) rows.push(['Ants lost to raiders', fmt(Math.round(ar.ants))]);
-    showSheet(`<h3>While you were away</h3><p>${fmtTime(sec)}${sec > used ? `, the colony worked for the first ${capH} hours` : ''}</p><ul>${rows.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join('')}</ul><button class="btn primary" id="sheetOk">Nice</button>`);
+    showSheet(`<h3>While you were away</h3><p>${fmtTime(sec)}${sec > used ? `, the colony worked for the first ${capH} hours` : ''}. Ants slow down with nobody watching, so that was about ${fmtTime(used * BAL.away)} of work.</p><ul>${rows.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join('')}</ul><button class="btn primary" id="sheetOk">Nice</button>`);
     $('sheetOk').addEventListener('click', hideSheet);
 }
 
@@ -4100,8 +4117,8 @@ function takeOver() {
     setTimeout(() => {
         hideSheet();
         const d = load();
-        if (d) catchUp(Math.max(0, (Date.now() - d.st.t) / 1000), d.st.t);
-        lastTick = Date.now();
+        if (d) catchUpAway(Math.max(0, (Date.now() - d.st.t) / 1000), d.st.t);
+        lastTick = Date.now(); watched = true;
         dormant = false;
         syncAnts(true); buildUI();
     }, 150);
@@ -4440,7 +4457,11 @@ $('resetBtn').addEventListener('click', () => {
 });
 // Redraw straight after a resize, so a resize never shows a blank frame.
 new ResizeObserver(() => { if (pip.mode) return; resize(); if (booted && !dormant) render(performance.now() / 1000); }).observe(cv);
-document.addEventListener('visibilitychange', () => { if (document.hidden) save(); else lastFrame = performance.now(); audioTick(); });
+document.addEventListener('visibilitychange', () => {
+    if (!dormant && booted) advance();
+    if (document.hidden) save(); else lastFrame = performance.now();
+    audioTick();
+});
 document.addEventListener('keydown', noteInput);
 window.addEventListener('pagehide', save);
 if (IN_FRAME && 'documentPictureInPicture' in window) $('hint').innerHTML += ' <a href="ants.html" target="_blank" rel="noopener">Open it in its own tab</a> for a mini window you can click.';
@@ -4455,7 +4476,7 @@ function boot() {
     if (d) {
         const away = (Date.now() - d.st.t) / 1000;
         if (away > 60) offlineReport(away, d.st.t);
-        else catchUp(Math.max(0, away), d.st.t);
+        else catchUpAway(Math.max(0, away), d.st.t);
     }
     lastTick = Date.now();
     wxNow = weatherAt(Date.now());
