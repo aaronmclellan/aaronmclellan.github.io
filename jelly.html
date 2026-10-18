@@ -32,11 +32,12 @@
     --green-d: #2fa653;
     --sat: env(safe-area-inset-top);
     --sab: env(safe-area-inset-bottom);
+    --drop: 0px;   /* extra room under the status bar in the iPhone home screen app */
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
 /* Taps are game moves: they never zoom the page or select text. */
-html { touch-action: manipulation; -webkit-text-size-adjust: 100%; background: #b9a2ff; }
+html { touch-action: manipulation; -webkit-text-size-adjust: 100%; background: #ffb3d6; }
 body {
     font-family: 'Fredoka', ui-rounded, system-ui, sans-serif;
     color: var(--ink); font-size: 16px; line-height: 1.35;
@@ -90,7 +91,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .pill .fa-images { color: var(--purple); }
 
 /* Home */
-#home { align-items: center; padding: calc(var(--sat) + 0.75rem) 1rem calc(var(--sab) + 1rem); }
+#home { align-items: center; padding: calc(var(--sat) + var(--drop) + 0.75rem) 1rem calc(var(--sab) + 1rem); }
 .home-top { width: 100%; max-width: 30rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
 .home-mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; width: 100%; max-width: 30rem; text-align: center; }
 #mascot { width: 9rem; height: 9rem; }
@@ -107,7 +108,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 /* Play */
 .hud {
     flex: none; display: flex; align-items: center; gap: 0.45rem;
-    padding: calc(var(--sat) + 0.5rem) 0.6rem 0.35rem;
+    padding: calc(var(--sat) + var(--drop) + 0.5rem) 0.6rem 0.35rem;
 }
 .hud .lvl { flex: 1; text-align: center; font-weight: 700; font-size: 1.15rem; color: #fff; text-shadow: 0 2px 0 rgba(90, 40, 140, 0.35); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hud .lvl small { display: block; font-size: 0.72rem; font-weight: 500; opacity: 0.9; margin-top: -0.1rem; }
@@ -151,7 +152,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 @keyframes pop-in { from { transform: translateX(-50%) scale(0.85); opacity: 0; } to { transform: translateX(-50%) scale(1); opacity: 1; } }
 
 /* Album */
-#album { padding: calc(var(--sat) + 0.6rem) 0.75rem 0; }
+#album { padding: calc(var(--sat) + var(--drop) + 0.6rem) 0.75rem 0; }
 .album-head { display: flex; align-items: center; gap: 0.6rem; max-width: 40rem; width: 100%; margin: 0 auto 0.6rem; }
 .album-head h2 { flex: 1; color: #fff; font-size: 1.5rem; text-shadow: 0 2px 0 rgba(90, 40, 140, 0.35); }
 .album-grid {
@@ -209,7 +210,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .msg-err { color: #e0465a; font-weight: 500; }
 
 #toast {
-    position: fixed; z-index: 60; left: 50%; top: calc(var(--sat) + 3.6rem); transform: translateX(-50%);
+    position: fixed; z-index: 60; left: 50%; top: calc(var(--sat) + var(--drop) + 3.6rem); transform: translateX(-50%);
     background: rgba(59, 42, 99, 0.92); color: #fff; padding: 0.5rem 1rem; border-radius: 999px; font-weight: 500;
     font-size: 0.95rem; max-width: calc(100vw - 2rem); text-align: center; pointer-events: none; animation: pop-in 0.2s ease-out;
 }
@@ -2508,7 +2509,22 @@ function drawMascot() {
     drawJelly(mctx, s * 0.5, s * 0.55 + bob, s * 0.26, [1, 2, 3, 4, 6, 8, 9, 10, 7, 5][mascotColor % 10], {board: true, sq: Math.sin(t * 6) * 0.04, ly: -1, blink: (t % 3.3) < 0.12});
 }
 
-function onResize() { if (screenName === 'play') layout(); }
+// iPhone home screen app quirks (the ant farm has the same fix, checked on a real phone):
+// the status bar blurs whatever sits just under it, so the top bars move down a little;
+// and the app's viewport comes up short by about the status bar's height, leaving a
+// strip at the bottom that can't be drawn on, so nothing needs room for the home bar.
+const insetProbe = document.createElement('div');
+insetProbe.style.cssText = 'position:fixed;left:0;top:0;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top)';
+document.body.append(insetProbe);
+function fitPhone() {
+    const rs = document.documentElement.style, top = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0;
+    const app = navigator.standalone === true;
+    rs.setProperty('--drop', app && top ? '20px' : '0px');
+    const lost = app ? Math.round(screen.height - innerHeight) : 0;
+    if (lost > 10 && Math.abs(lost - top) < 12) rs.setProperty('--sab', '0px'); else rs.removeProperty('--sab');
+}
+fitPhone();
+function onResize() { fitPhone(); if (screenName === 'play') layout(); }
 addEventListener('resize', onResize);
 if (window.visualViewport) visualViewport.addEventListener('resize', onResize);
 document.addEventListener('visibilitychange', () => { if (document.hidden) persist(); last = performance.now(); });
