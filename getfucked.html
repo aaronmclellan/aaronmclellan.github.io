@@ -17,13 +17,51 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);transition:b
 /* ========== DARK THEME (default) ========== */
 [data-theme="dark"]{
     --font:'Inter',-apple-system,system-ui,sans-serif;
-    --bg:#0a0a0a;--bg2:#141414;--bg3:#1e1e1e;
-    --text:#e0e0e0;--text2:#888;--accent:#ff3333;--accent2:#ff6666;
-    --border:#2a2a2a;--card:#161616;--card-hover:#1c1c1c;
-    --btn-bg:#ff3333;--btn-text:#fff;--btn-hover:#ff5555;
+    --bg:#17181c;--bg2:#1f2025;--bg3:#28292f;
+    --text:#e2e3e7;--text2:#8b8e98;--accent:#7dbfae;--accent2:#7aa5cf;
+    --border:#2f3037;--card:#1f2025;--card-hover:#25262c;
+    --btn-bg:linear-gradient(135deg,#7dbfae,#7aa5cf);--btn-text:#15161a;--btn-hover:#8ec9b9;
+    --on-accent:#15161a;
     --glow:none;--shake:none;--font-style:normal;--pixel:normal;
-    --radius:12px;--shadow:0 4px 20px rgba(0,0,0,0.5);
+    --radius:14px;--shadow:0 8px 30px rgba(0,0,0,0.4);
 }
+[data-theme="dark"] body{background:
+    radial-gradient(ellipse 60% 50% at 20% 0%,rgba(125,191,174,0.06),transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 5%,rgba(122,165,207,0.06),transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 0%,#1f2126 0%,#17181c 70%)}
+[data-theme="dark"] .main-btn{box-shadow:0 6px 24px rgba(122,165,207,0.18)}
+[data-theme="dark"] .counter-bar-fill{background:linear-gradient(90deg,#7dbfae,#7aa5cf)}
+[data-theme="dark"] .celebrate-banner{box-shadow:var(--shadow),0 0 60px rgba(125,191,174,0.22)}
+
+/* ========== FALL THEME ========== */
+[data-theme="fall"]{
+    --font:'Inter',-apple-system,system-ui,sans-serif;
+    --bg:#2a1d1b;--bg2:#3a2624;--bg3:#4a302d;
+    --text:#f1e4d8;--text2:#bfa193;--accent:#e3998a;--accent2:#d6b062;
+    --border:#5a3b36;--card:#3a2624;--card-hover:#44302d;
+    --btn-bg:linear-gradient(135deg,#b5675e,#a8322e);--btn-text:#fff4ea;--btn-hover:#c0716a;
+    --on-accent:#2a1d1b;--blue:#919FB6;
+    --glow:none;--shake:none;--font-style:normal;--pixel:normal;
+    --radius:14px;--shadow:0 8px 30px rgba(20,8,6,0.45);
+}
+/* painterly wash: rose and red up top, olive and ochre underneath */
+[data-theme="fall"] body{background:
+    radial-gradient(ellipse 60% 50% at 25% 8%,rgba(181,103,94,0.38),transparent 70%),
+    radial-gradient(ellipse 50% 45% at 82% 12%,rgba(168,50,46,0.30),transparent 70%),
+    radial-gradient(ellipse 60% 40% at 15% 96%,rgba(110,122,74,0.34),transparent 70%),
+    radial-gradient(ellipse 50% 40% at 88% 92%,rgba(214,176,98,0.22),transparent 70%),
+    #2a1d1b}
+[data-theme="fall"] h1{font-family:Georgia,'Times New Roman',serif;letter-spacing:0}
+[data-theme="fall"] .gif-frame{border:1px solid #845A4A}
+[data-theme="fall"] .main-btn{box-shadow:0 6px 24px rgba(168,50,46,0.35)}
+[data-theme="fall"] .counter-bar-fill{background:linear-gradient(90deg,#b5675e,#d6b062,#7b8b5c)}
+[data-theme="fall"] .action-btn:hover,[data-theme="fall"] .tool-btn:hover{border-color:var(--blue);color:var(--blue)}
+[data-theme="fall"] .autoplay-bar{background:var(--blue)}
+[data-theme="fall"] .leaves{display:block}
+.leaves{display:none;position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;top:0;border-radius:0 100% 0 100%;opacity:0.35;animation:leafFall linear infinite}
+@keyframes leafFall{0%{transform:translate(0,-10vh) rotate(0deg)}25%{transform:translate(30px,20vh) rotate(90deg)}50%{transform:translate(-20px,50vh) rotate(180deg)}75%{transform:translate(25px,80vh) rotate(270deg)}100%{transform:translate(0,110vh) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.leaves{display:none!important}}
 
 /* ========== NEON THEME ========== */
 [data-theme="neon"]{
@@ -130,16 +168,18 @@ h1 span{color:var(--accent)}
 .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:16px;width:100%;max-width:600px}
 .tool-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--font);display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap}
 .tool-btn:hover{border-color:var(--accent);color:var(--accent)}
-.tool-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tool-btn.active{background:var(--accent);color:var(--on-accent,#fff);border-color:var(--accent)}
 .tool-btn i{font-size:12px}
 .theme-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 8px;border-radius:8px;font-size:12px;font-family:var(--font);cursor:pointer;outline:none}
 
 /* ========== GIF DISPLAY ========== */
-.gif-area{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:600px;min-height:0}
-.gif-frame{background:var(--bg2);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:100%;max-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;transition:box-shadow 0.3s}
-.gif-frame img{max-width:100%;max-height:50vh;display:block;object-fit:contain}
+.gif-area{--stage-h:min(50vh,max(160px,calc(100vh - 420px)));flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:600px;min-height:0}
+/* fixed-height stage so the button below never moves when the gif size changes */
+.gif-stage{width:100%;height:var(--stage-h);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.gif-frame{background:var(--bg2);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);max-width:100%;max-height:var(--stage-h);display:flex;align-items:center;justify-content:center;position:relative;transition:box-shadow 0.3s}
+.gif-frame img{max-width:100%;max-height:var(--stage-h);display:block;object-fit:contain}
 .gif-frame .loading{padding:80px;color:var(--text2);font-size:14px}
-.gif-desc{margin-top:12px;font-size:14px;color:var(--text2);text-align:center;min-height:20px;font-style:var(--font-style)}
+.gif-desc{margin-top:12px;width:100%;font-size:14px;line-height:1.4;height:2.8em;flex-shrink:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;color:var(--text2);text-align:center;font-style:var(--font-style)}
 
 /* ========== ACTION BUTTONS ========== */
 .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center}
@@ -147,7 +187,7 @@ h1 span{color:var(--accent)}
 .action-btn:hover{border-color:var(--accent);color:var(--accent);transform:scale(1.1)}
 .action-btn.fav-active{color:#ffd700;border-color:#ffd700}
 .action-btn .tooltip-text{display:none}
-.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:bold;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent,#fff);padding:8px 20px;border-radius:20px;font-size:13px;font-weight:bold;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
 .copied-toast.show{opacity:1}
 
 /* ========== MAIN BUTTON ========== */
@@ -182,7 +222,7 @@ h1 span{color:var(--accent)}
 /* ========== SIDEBAR TOGGLE (MOBILE) ========== */
 .sidebar-toggle{position:fixed;top:12px;right:12px;z-index:100;background:var(--bg2);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s}
 .sidebar-toggle:hover{border-color:var(--accent);color:var(--accent)}
-.sidebar-toggle .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.sidebar-toggle .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:var(--on-accent,#fff);font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
 
 /* ========== AUTOPLAY INDICATOR ========== */
 .autoplay-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--accent);transition:width linear;border-radius:2px}
@@ -193,7 +233,7 @@ h1 span{color:var(--accent)}
     .sidebar{position:fixed;right:0;top:0;bottom:0;width:300px;z-index:150;box-shadow:-4px 0 20px rgba(0,0,0,0.3)}
     .sidebar.closed{transform:translateX(100%)}
     .hints{display:none}
-.gif-frame img{max-height:40vh}
+.gif-area{--stage-h:min(40vh,max(160px,calc(100vh - 380px)))}
 }
 @media(max-width:480px){
     .sidebar{width:100%}
@@ -206,6 +246,16 @@ h1 span{color:var(--accent)}
 <body>
 
 <div class="copied-toast" id="toast"></div>
+<div class="leaves" aria-hidden="true">
+    <span class="leaf" style="left:6%;width:14px;height:14px;background:#c97f72;animation-duration:19s;animation-delay:-3s"></span>
+    <span class="leaf" style="left:17%;width:10px;height:10px;background:#d6b062;animation-duration:23s;animation-delay:-11s"></span>
+    <span class="leaf" style="left:29%;width:16px;height:16px;background:#a8322e;animation-duration:17s;animation-delay:-7s"></span>
+    <span class="leaf" style="left:44%;width:11px;height:11px;background:#919FB6;animation-duration:25s;animation-delay:-18s"></span>
+    <span class="leaf" style="left:58%;width:13px;height:13px;background:#7b8b5c;animation-duration:20s;animation-delay:-1s"></span>
+    <span class="leaf" style="left:71%;width:17px;height:17px;background:#c97f72;animation-duration:22s;animation-delay:-14s"></span>
+    <span class="leaf" style="left:83%;width:12px;height:12px;background:#d6b062;animation-duration:18s;animation-delay:-9s"></span>
+    <span class="leaf" style="left:94%;width:10px;height:10px;background:#919FB6;animation-duration:24s;animation-delay:-5s"></span>
+</div>
 <div class="page-credit">Made by <a href="https://ron.computer">Aaron</a></div>
 
 <div class="app">
@@ -220,6 +270,7 @@ h1 span{color:var(--accent)}
             <button class="tool-btn" onclick="toggleSidebar()" title="Favorites & History"><i class="fa-solid fa-star"></i> <span id="fav-count">0</span></button>
             <select class="theme-select" onchange="setTheme(this.value)" id="theme-select">
                 <option value="dark">Dark</option>
+                <option value="fall">Fall</option>
                 <option value="neon">Neon</option>
                 <option value="retro">Retro</option>
                 <option value="clean">Clean</option>
@@ -228,13 +279,15 @@ h1 span{color:var(--accent)}
         </div>
 
         <div class="gif-area">
-            <div class="gif-frame" id="gif-frame">
-                <div class="loading">hit the button to get started</div>
-                <div class="autoplay-bar" id="autoplay-bar"></div>
+            <div class="gif-stage">
+                <div class="gif-frame" id="gif-frame">
+                    <div class="loading">hit the button to get started</div>
+                    <div class="autoplay-bar" id="autoplay-bar"></div>
+                </div>
             </div>
             <div class="gif-desc" id="gif-desc"></div>
 
-            <div class="actions" id="actions" style="display:none">
+            <div class="actions" id="actions" style="visibility:hidden">
                 <button class="action-btn" id="fav-btn" onclick="toggleFav()" title="Favorite (F)"><i class="fa-solid fa-star"></i></button>
                 <button class="action-btn" onclick="copyLink()" title="Copy Link (C)"><i class="fa-solid fa-link"></i></button>
                 <button class="action-btn" onclick="downloadGif()" title="Download"><i class="fa-solid fa-download"></i></button>
@@ -243,7 +296,7 @@ h1 span{color:var(--accent)}
 
             <button class="main-btn" id="main-btn" onclick="getRandomGif()">get fucked</button>
 
-            <div class="counter" id="counter" style="display:none">
+            <div class="counter" id="counter" style="visibility:hidden">
                 <div class="counter-text"><span id="seen-count">0</span> of <span id="total-count">0</span> gifs seen</div>
                 <div class="counter-bar"><div class="counter-bar-fill" id="counter-fill" style="width:0%"></div></div>
             </div>
@@ -405,7 +458,6 @@ const GIFS = [
 {id:137,url:'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHA5djVjZ2ppdWdubzE1eHcwa2dkbGw5eXp6czVmdXk3NmNwaWFnMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XdaoWhLb3llR5ylIjB/giphy.gif',desc:'marcus flip - the bear'},
 {id:138,url:'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzJwZDM3ZzJodmhqNTE0OW9kZmljdzIycnlkMm16ZHhibGx5bDM1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/twJ0q5r1f3kdj80FgR/giphy.gif',desc:'fuck off'},
 {id:139,url:'https://media1.tenor.com/m/_3TvhC-8qlgAAAAC/middle-finger-middle-finger-gif.gif',desc:'morning multiflip'},
-{id:140,url:'https://media1.tenor.com/m/BPzVqf7mPhAAAAAC/baby-girl-middle-finger.gif',desc:'good morning!!'},
 {id:141,url:'https://media1.tenor.com/m/Vhs2ze6MlVUAAAAC/nope.gif',desc:'50'},
 {id:142,url:'https://media1.tenor.com/m/o2rcrUoHjTEAAAAC/middle-finger-fuck-you.gif',desc:'liar liar trumpet flip'},
 {id:143,url:'https://media1.tenor.com/m/dEw1wKXUkJIAAAAC/mikonay.gif',desc:'kid airplane flip'},
@@ -413,6 +465,23 @@ const GIFS = [
 {id:145,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-13.gif',desc:'lmaoooooo'},
 {id:146,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-23.gif',desc:'galactic flip'},
 {id:147,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-50.gif',desc:'sky flip'},
+{id:148,url:'https://media.giphy.com/media/RVW5PilbP2tLG/giphy.gif',desc:'ross cranks out a double bird'},
+{id:151,url:'https://media.giphy.com/media/8bQdMxDSJ8oiQ/giphy.gif',desc:'rachel central perk flip'},
+{id:161,url:'https://media.giphy.com/media/l3fzN22Q72pTddXCo/giphy.gif',desc:'frank gallagher fuck you'},
+{id:162,url:'https://media.giphy.com/media/cKhRk6HFycY1pQMKpV/giphy.gif',desc:'randy fuuuuck you guys'},
+{id:168,url:'https://media.giphy.com/media/wJrKwn3OdL5z4hQ9YP/giphy.gif',desc:'tierra whack nail flip'},
+{id:169,url:'https://media.giphy.com/media/GDCAFspPmVBGBVOmjc/giphy.gif',desc:'neon outline flip'},
+{id:172,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-6.gif',desc:'big red hand flip'},
+{id:173,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-7.gif',desc:'hospital bed flip'},
+{id:183,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-33.gif',desc:'black and white double bird'},
+{id:184,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-35.gif',desc:'avril double flip'},
+{id:185,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-37.gif',desc:'drive by flip'},
+{id:187,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-39.gif',desc:'simon cowell chin flip'},
+{id:188,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-40.gif',desc:'office flip with a smile'},
+{id:189,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-42.gif',desc:'timberlake double flip'},
+{id:191,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-45.gif',desc:'walk away double flip'},
+{id:192,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-46.gif',desc:'giggle flip'},
+{id:193,url:'https://gifsec.com/wp-content/uploads/2022/09/middle-finger-gif-48.gif',desc:'cursor flip'},
 ];
 
 /* ==============================================
@@ -426,6 +495,8 @@ let favs = [];
 let autoplay = false;
 let autoplayTimer = null;
 let sidebarTab = 'favs';
+let upNext = null;
+let preloadImg = null;
 
 /* ==============================================
    INIT
@@ -433,7 +504,8 @@ let sidebarTab = 'favs';
 function init() {
     // Restore state
     try { favs = JSON.parse(localStorage.getItem('gf_favs')) || []; } catch(e) { favs = []; }
-    try { const s = JSON.parse(localStorage.getItem('gf_seen')); if (s) seen = new Set(s); } catch(e) {}
+    // drop ids for gifs that have since been removed so the seen count stays honest
+    try { const s = JSON.parse(localStorage.getItem('gf_seen')); if (s) seen = new Set(s.filter(id => GIFS.some(g => g.id === id))); } catch(e) {}
     try { history = JSON.parse(localStorage.getItem('gf_history')) || []; historyIndex = history.length - 1; } catch(e) { history = []; }
     const savedTheme = localStorage.getItem('gf_theme') || 'dark';
     setTheme(savedTheme);
@@ -445,8 +517,17 @@ function init() {
     if (hash && hash.startsWith('#gif=')) {
         const gifId = parseInt(hash.slice(5));
         const gif = GIFS.find(g => g.id === gifId);
-        if (gif) { showGif(gif); return; }
+        if (gif) {
+            // a reload of the gif already on screen shouldn't add it to history again
+            if (history[historyIndex] && history[historyIndex].id === gif.id) displayGif(gif);
+            else showGif(gif);
+            return;
+        }
     }
+
+    // Coming back: pick up on the last gif seen, skipping any that have since been removed
+    while (historyIndex >= 0 && !GIFS.some(g => g.id === history[historyIndex].id)) historyIndex--;
+    if (historyIndex >= 0) displayGif(GIFS.find(g => g.id === history[historyIndex].id));
 }
 
 /* ==============================================
@@ -473,12 +554,21 @@ function getRandomGif() {
         showToast('seen them all! reshuffling...');
         unseen = GIFS;
     }
-    const gif = unseen[Math.floor(Math.random() * unseen.length)];
+    // use the gif that was preloaded in the background so it shows instantly
+    const gif = upNext && unseen.includes(upNext) ? upNext : unseen[Math.floor(Math.random() * unseen.length)];
     showGif(gif);
 }
 
+// Pick the next random gif now and download it in the background
+function preloadNext() {
+    const unseen = GIFS.filter(g => !seen.has(g.id) && g.id !== current.id);
+    upNext = unseen.length ? unseen[Math.floor(Math.random() * unseen.length)] : null;
+    if (!upNext) return;
+    preloadImg = new Image();
+    preloadImg.src = upNext.url;
+}
+
 function showGif(gif) {
-    current = gif;
     seen.add(gif.id);
     localStorage.setItem('gf_seen', JSON.stringify([...seen]));
 
@@ -491,18 +581,31 @@ function showGif(gif) {
     historyIndex = history.length - 1;
     localStorage.setItem('gf_history', JSON.stringify(history));
 
-    // Update UI
-    const frame = document.getElementById('gif-frame');
-    frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
-    document.getElementById('gif-desc').textContent = gif.desc;
-    document.getElementById('actions').style.display = 'flex';
-    document.getElementById('counter').style.display = 'block';
-    updateFavBtn();
+    displayGif(gif);
     updateCounter();
     if (sidebarTab === 'history') renderSidebar();
 
     // Autoplay bar
     if (autoplay) startAutoplayBar();
+}
+
+// Put a gif on screen without touching history or the seen count
+function displayGif(gif) {
+    current = gif;
+    const frame = document.getElementById('gif-frame');
+    frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.onerror=null;this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
+    // small gifs scale up to a comfortable size instead of sitting tiny in the middle
+    const img = frame.querySelector('img');
+    img.onload = () => {
+        const stage = frame.parentElement;
+        const h = Math.min(260, stage.clientHeight, stage.clientWidth * img.naturalHeight / img.naturalWidth);
+        if (h > img.naturalHeight) img.style.height = h + 'px';
+    };
+    document.getElementById('gif-desc').textContent = gif.desc;
+    document.getElementById('actions').style.visibility = 'visible';
+    document.getElementById('counter').style.visibility = 'visible';
+    updateFavBtn();
+    preloadNext();
 
     // Update URL hash for sharing
     window.history.replaceState(null, '', '#gif=' + gif.id);
@@ -512,12 +615,7 @@ function prevGif() {
     if (historyIndex > 0) {
         historyIndex--;
         const gif = history[historyIndex];
-        current = gif;
-        const frame = document.getElementById('gif-frame');
-        frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
-        document.getElementById('gif-desc').textContent = gif.desc;
-        updateFavBtn();
-        window.history.replaceState(null, '', '#gif=' + gif.id);
+        displayGif(gif);
     }
 }
 
@@ -525,12 +623,7 @@ function nextGif() {
     if (historyIndex < history.length - 1) {
         historyIndex++;
         const gif = history[historyIndex];
-        current = gif;
-        const frame = document.getElementById('gif-frame');
-        frame.innerHTML = `<img src="${gif.url}" alt="${gif.desc}" onerror="this.src='gifs/${gif.id}.gif'"><div class="autoplay-bar" id="autoplay-bar"></div>`;
-        document.getElementById('gif-desc').textContent = gif.desc;
-        updateFavBtn();
-        window.history.replaceState(null, '', '#gif=' + gif.id);
+        displayGif(gif);
     } else {
         getRandomGif();
     }
@@ -583,7 +676,7 @@ function updateCounter() {
     document.getElementById('counter-fill').style.width = pct + '%';
     if (seen.size === GIFS.length && !window._celebrated) {
         window._celebrated = true;
-        document.getElementById('subtitle').textContent = "you've seen every single one. you absolute legend.";
+        document.getElementById('subtitle').textContent = "you've seen every single one.";
         celebrate();
     }
 }
@@ -618,7 +711,7 @@ function celebrate() {
     const clicks = localStorage.getItem('gf_clicks') || '?';
     banner.innerHTML = `
         <h2>🖕 you did it 🖕</h2>
-        <p>you've seen all ${GIFS.length} gifs in ${clicks} clicks.<br>you absolute fucking legend.</p>
+        <p>you've seen all ${GIFS.length} gifs in ${clicks} clicks.</p>
         <button onclick="this.parentElement.remove()">hell yeah</button>
     `;
     document.body.appendChild(banner);
@@ -714,7 +807,7 @@ function renderSidebar() {
         const topEntries = Object.entries(viewCounts).sort((a,b)=>b[1]-a[1]).slice(0,3);
         const topHtml = topEntries.map(([id,count]) => {
             const g = GIFS.find(x=>x.id===parseInt(id));
-            return g ? `<div class="sidebar-item" onclick="showGif(GIFS.find(x=>x.id===${g.id}))"><img src="${g.url}" alt="" onerror="this.src='gifs/${g.id}.gif'"><div class="item-info"><div class="item-desc">${g.desc}</div><div class="item-id">${count} view${count>1?'s':''}</div></div></div>` : '';
+            return g ? `<div class="sidebar-item" onclick="showGif(GIFS.find(x=>x.id===${g.id}))"><img src="${g.url}" alt="" onerror="this.onerror=null;this.src='gifs/${g.id}.gif'"><div class="item-info"><div class="item-desc">${g.desc}</div><div class="item-id">${count} view${count>1?'s':''}</div></div></div>` : '';
         }).join('');
         c.innerHTML = `<div class="stats-panel">
             <div class="stat-row"><span class="stat-label">total clicks</span><span class="stat-value">${clicks}</span></div>
@@ -737,7 +830,7 @@ function renderSidebar() {
     let html = items.map(g => {
         const esc = g.desc.replace(/'/g,"\\'");
         const gifRef = `GIFS.find(x=>x.id===${g.id})||{id:${g.id},url:'${g.url}',desc:'${esc}'}`;
-        return `<div class="sidebar-item" onclick="showGif(${gifRef})"><img src="${g.url}" alt="" onerror="this.src='gifs/${g.id}.gif'"><div class="item-info"><div class="item-desc">${g.desc}</div><div class="item-id">#${g.id}</div></div><div class="item-actions"><button class="item-action" onclick="event.stopPropagation();navigator.clipboard.writeText(location.origin+location.pathname+'#gif=${g.id}').then(()=>showToast('link copied'))" title="Copy Link"><i class="fa-solid fa-link"></i></button><button class="item-action" onclick="event.stopPropagation();(()=>{const a=document.createElement('a');a.href='${g.url}';a.download='${esc.replace(/[^a-z0-9]/gi,'_')}.gif';a.target='_blank';a.click()})()" title="Download"><i class="fa-solid fa-download"></i></button>${sidebarTab==='favs'?`<button class="item-action" onclick="event.stopPropagation();removeFav(${g.id})" title="Remove"><i class="fa-solid fa-xmark"></i></button>`:''}</div></div>`;
+        return `<div class="sidebar-item" onclick="showGif(${gifRef})"><img src="${g.url}" alt="" onerror="this.onerror=null;this.src='gifs/${g.id}.gif'"><div class="item-info"><div class="item-desc">${g.desc}</div><div class="item-id">#${g.id}</div></div><div class="item-actions"><button class="item-action" onclick="event.stopPropagation();navigator.clipboard.writeText(location.origin+location.pathname+'#gif=${g.id}').then(()=>showToast('link copied'))" title="Copy Link"><i class="fa-solid fa-link"></i></button><button class="item-action" onclick="event.stopPropagation();(()=>{const a=document.createElement('a');a.href='${g.url}';a.download='${esc.replace(/[^a-z0-9]/gi,'_')}.gif';a.target='_blank';a.click()})()" title="Download"><i class="fa-solid fa-download"></i></button>${sidebarTab==='favs'?`<button class="item-action" onclick="event.stopPropagation();removeFav(${g.id})" title="Remove"><i class="fa-solid fa-xmark"></i></button>`:''}</div></div>`;
     }).join('');
     if (sidebarTab === 'history' && history.length > 0) {
         html += `<div class="sidebar-footer"><button onclick="clearHistory()"><i class="fa-solid fa-trash-can"></i> clear history</button></div>`;

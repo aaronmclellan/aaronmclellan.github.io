@@ -210,6 +210,7 @@ body.compact .menu-btn { display: inline-flex !important; }
 /* The strip shrinks with the farm, not the screen. */
 .farm { container-type: inline-size; }
 @container (max-width: 300px) { .hud, .hud-line { gap: 0.25rem; } .hud { padding: 0.4rem; } #hRate, #hCap, #hBroodSub, #hWx { display: none; } .pill { padding: 0 0.45rem; } }
+.hud .buff { padding: 0.2rem 0.55rem; font-size: 0.72rem; }
 .hud .buff { background: rgba(20, 14, 8, 0.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 .menu {
     position: absolute; right: 0.5rem; top: 2.75rem; z-index: 6; width: min(15rem, calc(100% - 1rem));
@@ -223,6 +224,42 @@ body.compact .menu-btn { display: inline-flex !important; }
 .menu .btn span, .menu .lbl { display: inline; }
 .tab-badge { min-width: 1.15rem; height: 1.15rem; padding: 0 0.3rem; border-radius: 999px; background: var(--accent); color: #2a1a08; font-size: 0.68rem; font-weight: 800; display: inline-grid; place-items: center; }
 .tab-badge[hidden] { display: none; }
+/* Raids, events and new chambers ask for attention under the numbers. */
+.hud-alerts { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.hud-alerts:empty { display: none; }
+.pill.alert { max-width: 100%; }
+.pill.alert b { overflow: hidden; text-overflow: ellipsis; }
+.pill.alert.raid { background: rgba(150, 38, 28, 0.88); border-color: rgba(255, 140, 120, 0.5); }
+.pill.alert.raid.ready { background: rgba(40, 92, 44, 0.88); border-color: rgba(150, 230, 140, 0.45); }
+.pill.alert.raid i, .pill.alert.raid small { color: #ffe3d8; }
+.pill.alert.event { background: rgba(38, 70, 120, 0.9); border-color: rgba(150, 190, 255, 0.45); }
+.pill.alert.event i { color: #bcd6ff; }
+.pill.alert.room i { color: var(--accent); }
+/* A choice to make, over the farm: a new chamber or an event. */
+.choice {
+    position: absolute; z-index: 5; top: 6.2rem; left: 50%; transform: translateX(-50%); width: min(24rem, calc(100% - 1rem)); max-height: calc(100% - 7rem); overflow-y: auto;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 0.75rem 0.8rem 0.8rem; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+.choice[hidden] { display: none; }
+.choice .ov-x { position: absolute; top: 0.55rem; right: 0.55rem; }
+.choice h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; padding-right: 2.4rem; }
+.choice h3 i { color: var(--accent); }
+.choice p { color: var(--muted); font-size: 0.82rem; margin: 0.3rem 0 0.6rem; }
+.choice-opts { display: grid; gap: 0.4rem; }
+.choice-opts button {
+    display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.1rem 0.5rem; align-items: center; text-align: left; cursor: pointer;
+    padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid var(--border); background: var(--card2);
+}
+.choice-opts button:hover { border-color: var(--accent); }
+.choice-opts button.now { border-color: rgba(242, 169, 59, 0.6); background: var(--accent-dim); }
+.choice-opts i { color: var(--accent); grid-row: span 2; text-align: center; }
+.choice-opts b { font-size: 0.86rem; }
+.choice-opts small { color: var(--muted); font-size: 0.74rem; line-height: 1.3; }
+.room-row { display: grid; grid-template-columns: 1.3rem 1fr auto; gap: 0.05rem 0.5rem; align-items: center; padding: 0.3rem 0; font-size: 0.85rem; }
+.room-row i { color: var(--accent); grid-row: span 2; text-align: center; }
+.room-row span { font-weight: 800; font-variant-numeric: tabular-nums; }
+.room-row small { grid-column: 2 / 4; color: var(--muted); font-size: 0.74rem; }
+.room-row.none { opacity: 0.5; }
 .zoom { position: absolute; right: 0.6rem; bottom: 4rem; display: flex; flex-direction: column; gap: 0.3rem; }
 .zoom button {
     width: 2rem; height: 2rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.14);
@@ -268,6 +305,8 @@ body.compact .menu-btn { display: inline-flex !important; }
 .buff { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.6rem; border-radius: 999px; background: var(--accent-dim); border: 1px solid rgba(242, 169, 59, 0.4); font-size: 0.78rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .buff i { color: var(--accent); }
 .buff.gold { background: rgba(255, 213, 74, 0.18); border-color: #ffd54a; }
+.buff.bad { background: rgba(160, 50, 40, 0.3); border-color: rgba(224, 101, 76, 0.6); }
+.buff.bad i { color: var(--red); }
 
 .panel { display: flex; flex-direction: column; gap: 0.75rem; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 0.9rem; }
@@ -285,13 +324,15 @@ body.compact .menu-btn { display: inline-flex !important; }
 .grip::before { content: ''; width: 4px; height: 68%; border-radius: 2px; background: #1d160f; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.55); }
 .grip:focus-visible { outline: none; }
 .grip:focus-visible::before { background: var(--text); }
-.jobs-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; margin-top: 0.55rem; font-size: 0.72rem; color: var(--muted); line-height: 1.3; font-variant-numeric: tabular-nums; }
+.jobs-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; margin-top: 0.55rem; font-size: 0.72rem; color: var(--muted); line-height: 1.3; font-variant-numeric: tabular-nums; }
 .jobs-legend b { display: flex; align-items: center; gap: 0.35rem; color: var(--text); font-size: 0.8rem; margin-bottom: 0.1rem; }
 .jobs-legend b i { width: 0.6rem; height: 0.6rem; border-radius: 2px; }
 .card h2 .muted { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 0.74rem; }
 .s-forage { background: var(--accent); }
 .s-dig { background: #b9784a; }
 .s-nurse { background: #e9dcc4; }
+.s-guard { background: #c0473a; }
+.jobbar .seg.s-guard { color: #fff1e8; }
 .tip { margin-top: 0.5rem; padding: 0.45rem 0.6rem; border-radius: 8px; background: var(--card2); color: var(--muted); font-size: 0.75rem; line-height: 1.35; }
 .tip.warn { color: var(--text); background: var(--accent-dim); }
 .tip i { color: var(--accent); margin-right: 0.3rem; }
@@ -331,6 +372,10 @@ body.compact .menu-btn { display: inline-flex !important; }
 .up-cost { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); font-size: 0.86rem; white-space: nowrap; }
 .up.tier { border-color: rgba(242, 169, 59, 0.45); }
 .up.tier .up-ic { background: var(--accent-dim); }
+.up[hidden], .jobbar .seg[hidden], .grip[hidden], .jobs-legend > [hidden] { display: none; }
+.up.new { border-color: var(--accent); animation: pulse 1.6s ease-in-out 3; }
+.up-teaser { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.4rem; padding: 0.55rem 0.7rem; border-radius: 10px; border: 1px dashed var(--border); color: var(--dim); font-size: 0.8rem; }
+.up-teaser[hidden] { display: none; }
 
 .nest { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.85rem; transition: border-color 0.3s, background 0.3s; }
 .nest-main { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
@@ -406,6 +451,12 @@ body:not(.ovl) #ovMore:not([hidden]) {
 .rename-row { margin: 0.2rem 0 0.6rem; }
 .queen-row { grid-template-columns: 40px minmax(0, 1fr) auto; }
 .queen-row .rename-row { margin: 0; }
+.wardrobe { margin: 0 0 0.7rem; font-size: 0.78rem; }
+.ward-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr)); gap: 0.35rem; margin-top: 0.35rem; }
+.ward { aspect-ratio: 1; padding: 0; border-radius: 8px; border: 1px solid var(--border); background: var(--card2); display: grid; place-items: center; cursor: pointer; }
+.ward img { width: 100%; height: 100%; image-rendering: pixelated; object-fit: contain; }
+.ward.locked { color: var(--dim); font-size: 0.8rem; border-style: dashed; }
+.ward:hover { border-color: var(--accent); }
 .style-row { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem; font-size: 0.8rem; }
 .style-row span { color: var(--muted); margin-right: auto; }
 .style-row b { min-width: 6.5rem; text-align: center; }
@@ -417,6 +468,9 @@ body:not(.ovl) #ovMore:not([hidden]) {
 .roster-note { margin: 0.5rem 0; font-size: 0.75rem; }
 .roster .empty { padding: 1rem 0; text-align: center; }
 .history { list-style: none; display: grid; gap: 0.5rem; }
+.fallen { margin-top: 0.75rem; }
+.fallen summary { cursor: pointer; font-size: 0.8rem; color: var(--muted); }
+.fallen .history { margin-top: 0.5rem; }
 .history li { display: flex; flex-direction: column; font-size: 0.8rem; padding: 0.5rem 0.6rem; background: var(--card2); border-radius: 8px; }
 .history li span { color: var(--muted); font-size: 0.76rem; }
 .code { width: 100%; min-height: 4.5rem; margin-top: 0.6rem; font-family: ui-monospace, Menlo, monospace; font-size: 0.72rem; resize: vertical; }
@@ -471,12 +525,14 @@ label.btn { cursor: pointer; }
                     <button class="pill" data-stat="wx"><i class="fa-solid fa-sun" id="hWxIcon"></i><b id="hWx">Clear</b></button>
                 </div>
                 <div class="buffs" id="buffs" hidden></div>
+                <div class="hud-alerts" id="alerts"></div>
             </div>
+            <div class="choice" id="choice" role="dialog" hidden><button class="ov-x" id="choiceX" aria-label="Decide later"><i class="fa-solid fa-xmark"></i></button><div id="choiceBody"></div></div>
             <div class="menu" id="menu" hidden></div>
             <div class="zoom" id="zoomCtl">
                 <button id="zIn" title="Zoom in" aria-label="Zoom in"><i class="fa-solid fa-plus"></i></button>
                 <button id="zOut" title="Zoom out" aria-label="Zoom out"><i class="fa-solid fa-minus"></i></button>
-                <button id="zFit" title="Show the whole farm" aria-label="Show the whole farm"><i class="fa-solid fa-expand"></i></button>
+                <button id="zFit" title="Back to the colony" aria-label="Back to the colony"><i class="fa-solid fa-expand"></i></button>
             </div>
             <button class="farm-fly dock-fly" id="farmFly" data-ov="fly" title="Fly the nest" aria-label="Fly the nest"><span class="ring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="track" cx="22" cy="22" r="20"/><circle class="prog fly-ring" cx="22" cy="22" r="20" stroke-dasharray="0 126"/></svg><i class="fa-solid fa-feather-pointed"></i></span></button>
             <div class="away" id="away" hidden>
@@ -509,21 +565,29 @@ label.btn { cursor: pointer; }
                 <div class="card" id="upCard">
                     <h2>Upgrades <span class="h2-tools"><label class="auto" id="autoWrap" hidden title="Spends spare food, a tenth of what's stored, on the cheapest upgrade. Finding new foods is up to you."><input type="checkbox" id="autoBuy"> auto-buy</label><span class="seg" id="buyMode" role="group" aria-label="How many to buy"><button data-n="1">x1</button><button data-n="10">x10</button><button data-n="max">Max</button></span></span></h2>
                     <div id="ups"></div>
+                    <p class="up-teaser" id="upTeaser" hidden><i class="fa-solid fa-lock"></i><span id="upTeaserText"></span></p>
                 </div>
 
                 <div class="card" id="jobCard">
                     <h2>Jobs <span class="muted">drag to share out the work</span></h2>
                     <div class="jobbar" id="jobBar">
-                        <div class="seg s-forage" id="seg-forage"></div><div class="seg s-dig" id="seg-dig"></div><div class="seg s-nurse" id="seg-nurse"></div>
+                        <div class="seg s-forage" id="seg-forage"></div><div class="seg s-dig" id="seg-dig"></div><div class="seg s-nurse" id="seg-nurse"></div><div class="seg s-guard" id="seg-guard"></div>
                         <button class="grip" id="grip1" role="slider" aria-label="Foragers and diggers" aria-valuemin="0" aria-valuemax="100"></button>
                         <button class="grip" id="grip2" role="slider" aria-label="Diggers and nurses" aria-valuemin="0" aria-valuemax="100"></button>
+                        <button class="grip" id="grip3" role="slider" aria-label="Nurses and guards" aria-valuemin="0" aria-valuemax="100"></button>
                     </div>
                     <div class="jobs-legend">
                         <div><b><i class="s-forage"></i>Forage</b><span id="e-forage"></span></div>
                         <div><b><i class="s-dig"></i>Dig</b><span id="e-dig"></span></div>
                         <div><b><i class="s-nurse"></i>Nurse</b><span id="e-nurse"></span></div>
+                        <div id="lg-guard"><b><i class="s-guard"></i>Guard</b><span id="e-guard"></span></div>
                     </div>
                     <p class="tip" id="jobTip"></p>
+                </div>
+
+                <div class="card" id="roomCard">
+                    <h2>Chambers <span class="muted">tap one on the farm to change it</span></h2>
+                    <div id="rooms"></div>
                 </div>
 
             </section>
@@ -532,13 +596,15 @@ label.btn { cursor: pointer; }
                 <div class="card">
                     <h2>Your ants <span class="muted" id="rosterCount"></span></h2>
                     <div class="queen-row" id="queenRow"></div>
+                    <div class="wardrobe"><span class="muted" id="wardCount"></span><div class="ward-list" id="wardrobe"></div></div>
                     <div class="roster-tools">
                         <select id="rosterSort" aria-label="Sort ants"><option value="old">Oldest first</option><option value="new">Newest first</option><option value="trips">Most trips</option><option value="name">By name</option></select>
                         <label class="auto"><input type="checkbox" id="showStyles" checked> styles</label>
-                        <span class="seg" id="rosterRole" role="group" aria-label="Show"><button data-r="all">All</button><button data-r="forage">Foragers</button><button data-r="dig">Diggers</button><button data-r="nurse">Nurses</button><button data-r="fav" aria-label="Starred"><i class="fa-solid fa-star"></i></button></span>
+                        <span class="seg" id="rosterRole" role="group" aria-label="Show"><button data-r="all">All</button><button data-r="forage">Foragers</button><button data-r="dig">Diggers</button><button data-r="nurse">Nurses</button><button data-r="guard">Guards</button><button data-r="fav" aria-label="Starred"><i class="fa-solid fa-star"></i></button></span>
                     </div>
                     <p class="muted roster-note">Every ant you can see on the farm has a name and a story. Tap one to read it.</p>
                     <div class="roster" id="roster"></div>
+                    <details class="fallen" id="fallenBox" hidden><summary>Fallen ants <span class="muted" id="fallenCount"></span></summary><ul class="history" id="fallen"></ul></details>
                 </div>
             </section>
 
@@ -597,8 +663,12 @@ label.btn { cursor: pointer; }
                 <li><b>Diggers</b> tunnel out new chambers. More nest means room for more ants.</li>
                 <li><b>Nurses</b> help the queen lay and raise the brood faster. Every egg costs a little food.</li>
                 <li><b>Weather</b> changes every few minutes and follows the seasons. Rain softens the soil for digging but keeps foragers home. Check the forecast and shift jobs to match.</li>
+                <li><b>Upgrades</b> unlock one at a time as the colony grows, starting with Picnic crumbs. Once unlocked, they stay unlocked on every farm.</li>
+                <li><b>Guards</b> fight off raiders. Each raid is announced a minute and a half ahead, so move ants to Guard on the job bar. Battle drills and barracks make every guard count for more, and rain keeps raiders away. Lose a fight and the raiders take food and brood, a few ants may fall, and the colony is shaken up for a while.</li>
+                <li><b>Chambers</b>: tap one on the farm to choose what it is: a nursery, pantry, barracks, fungus garden or rest room.</li>
+                <li><b>Events</b> pop up now and then with a choice to make. Leave one for three minutes and the cautious choice is made for you.</li>
                 <li><b>Bugs</b> wander by now and then: ladybugs, butterflies and, at night, fireflies. Tap one for a boost. Golden ones are rare and strong.</li>
-                <li><b>Zoom</b> with the buttons, a pinch or ctrl + scroll, and tap an ant to follow it around.</li>
+                <li><b>The view</b> follows the nest and pulls back as the colony digs. Zoom with the buttons, a pinch or ctrl + scroll, and tap an ant to follow it around.</li>
                 <li>The farm keeps going while you're away, for up to 8 hours.</li>
                 <li><b>Fly the nest</b> once the colony has 120 ants: queens leave to start a fresh farm. This farm resets, but every queen makes all your ants 10% better for good, and waiting longer sends more queens.</li>
                 <li>On a phone, the buttons along the bottom open your jobs, upgrades, ants and stats, and the menu at the top right has the rest. Add it to your home screen to use it like an app.</li>
@@ -657,6 +727,7 @@ const UPGRADES = [
     {id:'nurse', name:'Warm nursery', icon:'fa-temperature-half', desc:'+25% brood growing speed', base:35, growth:1.65, eff:0.25},
     {id:'cap', name:'Packed chambers', icon:'fa-layer-group', desc:'+15% room for ants', base:60, growth:1.8, eff:0.15},
     {id:'click', name:'Picnic crumbs', icon:'fa-cookie-bite', desc:'+20% food from crumbs you drop', base:15, growth:2, eff:0.2},
+    {id:'guard', name:'Battle drills', icon:'fa-shield-halved', desc:'+25% fighting strength for guards', base:30, growth:1.65, eff:0.25},
 ];
 const PERKS = [
     {q:1, name:'Scouts', desc:'bugs visit twice as often'},
@@ -665,8 +736,19 @@ const PERKS = [
     {q:10, name:'Long memory', desc:'offline progress lasts 24 hours instead of 8'},
     {q:15, name:'Seed stash', desc:'new farms start with sunflower seeds'},
 ];
-const BAL = {autoQueens:6, autoShare:0.1, forage:0.3, dig:0.02, lay:0.25, dev:30, egg:2, capBase:8, capCell:1/35, costDiv:40, costExp:2, maxDug:13000, queenBoost:0.1, queenDiv:1e6, flightAnts:120, achBoost:0.02, crumb:0.35};
+const BAL = {autoQueens:6, autoShare:0.1, forage:0.3, dig:0.02, lay:0.25, dev:30, egg:2, capBase:8, capCell:1/35, costDiv:40, costExp:2, maxDug:13000, queenBoost:0.1, queenDiv:1e6, flightAnts:120, achBoost:0.02, crumb:0.35,
+    unlockPrice:30, markFade:0.65, guard:1, raidPow:0.12, raidStart:420, raidGap:[300, 540], raidWarn:90, raidLoot:45, fungus:0.05};
 const ROLE_SEQ = ['nursery', 'food', 'rest'];
+// What a chamber can be. The queen's chamber is fixed; the rest start as one
+// of the first three and you choose from there.
+const ROOMS = {
+    nursery:{name:'Nursery', icon:'fa-egg', desc:'brood grows 20% faster and the queen lays 10% more'},
+    food:{name:'Pantry', icon:'fa-wheat-awn', desc:'foragers bring back 10% more'},
+    barracks:{name:'Barracks', icon:'fa-shield-halved', desc:'guards fight 25% harder'},
+    fungus:{name:'Fungus garden', icon:'fa-seedling', desc:'grows food by itself, rain or shine'},
+    rest:{name:'Rest room', icon:'fa-bed', desc:'every ant works 3% harder'},
+};
+const ROOM_KEYS = Object.keys(ROOMS);
 
 /* ---------- weather ---------- */
 // Weather comes from the clock rather than chance, so every open copy of the
@@ -715,6 +797,106 @@ function nextWeather(ms) {
     return null;
 }
 
+/* ---------- unlocks ---------- */
+// A new farmer starts with only Picnic crumbs. Each other upgrade unlocks the
+// first time it would help, and the Guard job comes with the first raiders.
+// Unlocks are kept from farm to farm.
+const UNLOCKS = [
+    {id:'click', hint:'', when:() => true},
+    {id:'forage', hint:'Something new at 300 food gathered', when:() => st.lv.click >= 4 || st.total >= 300},
+    {id:'lay', hint:'Something new at 18 ants', when:() => st.ants >= 18},
+    {id:'tier', hint:'Something new at 2,500 food gathered', when:() => st.total >= 2500 && st.ants >= 20},
+    {id:'dig', hint:'Something new when the nest fills up', when:() => st.ants >= 22 && st.ants + st.brood >= capOf() - 0.5},
+    {id:'cap', hint:'Something new at 30 ants', when:() => nest.chambers >= 2 && st.ants >= 30},
+    {id:'nurse', hint:'Something new at 60 ants', when:() => st.ants >= 60},
+    {id:'guard', hint:'Something new when raiders come', when:() => !!st.raid || st.stats.raidsWon + st.stats.raidsLost > 0},
+];
+const ALL_UNLOCKS = UNLOCKS.map(u => u.id);
+let onUnlock = () => {};
+const isUnlocked = id => st.unlocked.includes(id);
+// A new upgrade's first level costs about 30 seconds of income at the moment
+// it unlocks, so it's a purchase to save for rather than a few levels at
+// once; Strong mandibles also costs more than the next Picnic crumbs. The
+// mark-up fades level by level (never so fast that the next level gets
+// cheaper) and lasts for this farm only.
+function priceAtUnlock(id) {
+    if (id === 'click' || (id === 'tier' && !FOODS[st.tier + 1])) return;
+    const base = id === 'tier' ? FOODS[st.tier + 1].cost : UP[id].base * Math.pow(UP[id].growth, st.lv[id]);
+    st.costMul[id] = 1;
+    let want = rates().food * BAL.unlockPrice;
+    if (id === 'forage') want = Math.max(want, upCost(UP.click) * 1.05);
+    st.costMul[id] = Math.max(1, Math.min(300, want / base) / Math.pow(BAL.markFade, id === 'tier' ? st.tier : st.lv[id]));
+}
+function checkUnlocks() {
+    for (const u of UNLOCKS) if (!st.unlocked.includes(u.id) && u.when()) { st.unlocked.push(u.id); priceAtUnlock(u.id); onUnlock(u.id); }
+}
+
+/* ---------- raids ---------- */
+// Every few minutes something comes for the colony's food, announced a minute
+// and a half ahead so you can move ants onto guard duty. Rain, storms and snow
+// keep raiders away. Raids are sized to the colony, so the share of guards is
+// what counts; Battle drills, barracks and some events make each guard count
+// for more.
+const RAIDERS = {
+    spider:{name:'wolf spider', p:1, loot:1, after:0},
+    wasp:{name:'wasp', p:0.8, loot:0.8, after:0, brood:true},
+    rival:{name:'band of rival ants', p:1.3, loot:1.6, after:5},
+    centipede:{name:'centipede', p:1.7, loot:2.5, after:10},
+};
+let onRaidWarn = () => {}, onRaid = () => {};
+// Richer colonies draw bigger raiders: each better food makes them 15% stronger.
+const raidPower = r => st.ants * BAL.raidPow * RAIDERS[r.k].p * r.roll * (1 + 0.15 * st.tier);
+function stepRaids() {
+    const now = simNow;
+    if (!st.raidAt) st.raidAt = now + (BAL.raidStart + rng() * 120) * 1000;
+    if (!st.raid && now >= st.raidAt) {
+        if (nest.chambers < 2 || st.ants < 12) { st.raidAt = now + 60e3; return; }
+        // The very first raid is a small spider, to learn on.
+        const first = !(st.stats.raidsWon + st.stats.raidsLost), kinds = Object.keys(RAIDERS).filter(k => nest.chambers >= RAIDERS[k].after);
+        const k = first ? 'spider' : kinds[Math.floor(rng() * kinds.length)];
+        st.raid = {k, at:now + BAL.raidWarn * 1000, roll:first ? 0.5 : (0.85 + rng() * 0.3) * (st.mods.raid || 1)};
+        st.mods.raid = 1;
+        onRaidWarn(st.raid);
+    }
+    if (st.raid && now >= st.raid.at) resolveRaid();
+}
+function resolveRaid() {
+    const R = st.raid, kind = RAIDERS[R.k];
+    st.raid = null;
+    st.raidAt = simNow + (BAL.raidGap[0] + rng() * (BAL.raidGap[1] - BAL.raidGap[0])) * 1000;
+    const out = {k:R.k, win:false, rain:false, q:0, food:0, brood:0, ants:0, guardsLost:0, loot:0};
+    const wx = weatherAt(simNow);
+    if (wx === 'rain' || wx === 'storm' || wx === 'snow') { out.rain = true; onRaid(out); return out; }
+    const r = rates(), q = r.guard / Math.max(1e-9, raidPower(R)), guards = st.ants * share().g, first = !(st.stats.raidsWon + st.stats.raidsLost);
+    out.q = q;
+    if (q >= 1) {
+        out.win = true;
+        out.loot = r.food * BAL.raidLoot * kind.loot;
+        st.food += out.loot; st.earned += out.loot; st.total += out.loot;
+        // A close fight still costs a guard or two.
+        out.ants = out.guardsLost = guards * 0.06 * Math.max(0, Math.min(1, (1.5 - q) / 0.5));
+        st.stats.raidsWon++;
+    } else {
+        // The weaker the guard, the more the raiders take, but never everything.
+        const s = (1 - q) * (first ? 0.3 : 1);
+        out.food = st.food * 0.3 * s;
+        out.brood = st.brood * (kind.brood ? 0.8 : 0.4) * s;
+        out.guardsLost = guards * 0.3 * s;
+        out.ants = out.guardsLost + st.ants * 0.03 * s;
+        st.food -= out.food; st.brood -= out.brood;
+        // And the colony is shaken up for a while, working at half speed after a rout.
+        out.shaken = 1 - 0.5 * s;
+        st.buffs = st.buffs.filter(b => b.name !== 'Shaken up');
+        st.buffs.push({k:'all', m:Math.round(out.shaken * 100) / 100, until:simNow + 180e3 * s, name:'Shaken up'});
+        st.stats.raidsLost++;
+    }
+    out.ants = Math.min(out.ants, st.ants * 0.1, Math.max(0, st.ants - 4));
+    st.ants -= out.ants;
+    st.stats.fallen += out.ants;
+    onRaid(out);
+    return out;
+}
+
 /* ---------- boosts from bugs, and achievements ---------- */
 function buffMult(k) {
     let m = 1;
@@ -748,6 +930,9 @@ const ACH = [
     {id:'watch', name:'Ant watcher', desc:'Follow one ant for a whole minute', icon:'fa-binoculars', test:() => st.stats.follow > 0},
     {id:'season', name:'In season', desc:'Catch a seasonal event on the farm', icon:'fa-calendar-days', test:() => st.stats.season > 0},
     {id:'owl', name:'Night owl', desc:'Check on the farm between midnight and 4am', icon:'fa-moon', test:() => st.stats.owl > 0},
+    {id:'defend', name:'Hold the line', desc:'Fight off 10 raids', icon:'fa-shield-halved', test:() => st.stats.raidsWon >= 10},
+    {id:'lodger', name:'Good neighbours', desc:'Let a beetle move in', icon:'fa-house-user', test:() => st.stats.beetle > 0},
+    {id:'rooms', name:'A room for everything', desc:'Have every kind of chamber at once', icon:'fa-house', test:() => !!nest.rc && ROOM_KEYS.every(k => nest.rc[k] > 0)},
 ];
 let onAch = () => {};
 function checkAch() {
@@ -755,7 +940,7 @@ function checkAch() {
 }
 
 let st = null;
-const nest = {nodes:[], heads:[], dug:0, steps:0, full:false, EX:0, chambers:0};
+const nest = {nodes:[], heads:[], dug:0, steps:0, full:false, EX:0, chambers:0, rc:null};
 let solid, layer, grain, deco;
 let onCarve = () => {}, onChamber = () => {};
 let rng = Math.random;
@@ -764,12 +949,15 @@ function freshState(prev) {
     const q = prev ? prev.queens : 0;
     return {
         v:1, seed:(Math.random() * 4294967296) >>> 0, colony: prev ? prev.colony + 1 : 0,
-        food:20, ants: q >= 3 ? 12 : 4, brood:0, earned:0, total: prev ? prev.total : 0, queens:q,
-        lv:{forage:0, dig:0, lay:0, nurse:0, cap:0, click:0}, tier: q >= 15 ? 1 : 0,
-        w: prev ? {...prev.w} : {forage:60, dig:30, nurse:10}, auto: prev ? prev.auto : false,
+        food: prev ? 20 : 5, ants: q >= 3 ? 12 : 4, brood:0, earned:0, total: prev ? prev.total : 0, queens:q,
+        unlocked: prev ? (prev.unlocked || ALL_UNLOCKS).slice() : ['click'], costMul:{},
+        lv:{forage:0, dig:0, lay:0, nurse:0, cap:0, click:0, guard:0}, tier: q >= 15 ? 1 : 0,
+        w: prev ? {guard:0, ...prev.w} : {forage:60, dig:30, nurse:10, guard:0}, auto: prev ? prev.auto : false,
+        raid:null, raidAt:0, mods:{guard:1, lay:1, tax:0, fungus:0, raid:1}, delayed:[], fallen: prev ? prev.fallen || [] : [],
         digBudget:0, t:Date.now(), flights: prev ? prev.flights : 0,
         ach: prev ? prev.ach : [], buffs:[], buy: prev ? prev.buy : 1,
-        stats: prev ? prev.stats : {crumbs:0, critters:0, firefly:0, golden:0, lightning:0, snow:0, wx:0, pip:0, follow:0, owl:0, split:0, eggs:0, playMs:0, season:0},
+        stats: prev ? prev.stats : {crumbs:0, critters:0, firefly:0, golden:0, lightning:0, snow:0, wx:0, pip:0, follow:0, owl:0, split:0, eggs:0, playMs:0, season:0, raidsWon:0, raidsLost:0, fallen:0, events:0, rooms:0, beetle:0},
+        wardrobe: prev ? (prev.wardrobe || []).slice() : [],
         guide: prev ? prev.guide : 0, farmName: prev ? prev.farmName || '' : '', styles: prev ? prev.styles !== false : true, started:Date.now(), peak:0, laid:0, hist: prev ? prev.hist || [] : [],
     };
 }
@@ -916,9 +1104,22 @@ function edgeSpots(c) {
         {x:c.cx + (rng() - 0.5) * c.rx * 0.8, y:c.cy + c.ry * 0.6 - 0.5, a:Math.PI / 2},
     ].sort(() => rng() - 0.5);
 }
+// How many finished chambers of each kind there are, for rates().
+function countRooms() {
+    const rc = {nursery:0, food:0, barracks:0, fungus:0, rest:0};
+    for (const n of nest.nodes) if (n.k && n.prog >= 1 && rc[n.role] !== undefined) rc[n.role]++;
+    nest.rc = rc;
+}
+function setRoom(i, role) {
+    const n = nest.nodes[i];
+    if (!n || !n.k || n.role === 'queen' || !ROOMS[role]) return false;
+    n.role = role; countRooms();
+    return true;
+}
 function finishChamber(c) {
     c.role = nest.chambers === 0 ? 'queen' : ROLE_SEQ[(nest.chambers - 1) % ROLE_SEQ.length];
     nest.chambers++;
+    countRooms();
     let made = 0;
     for (const o of edgeSpots(c)) {
         if (nest.heads.length >= maxHeads() || made >= 2) break;
@@ -996,7 +1197,7 @@ function digStep() {
     return false;
 }
 function foundNest() {
-    Object.assign(nest, {nodes:[], heads:[], dug:0, steps:0, full:false, chambers:0});
+    Object.assign(nest, {nodes:[], heads:[], dug:0, steps:0, full:false, chambers:0, rc:null});
     let n = addNode(nest.EX, GROUND + 1.2, -1, 0);
     carveCircle(n.x, n.y, TR);
     const len = 9 + Math.floor(rng() * 4);
@@ -1030,12 +1231,13 @@ function unpackNest(d) {
         }
     }
     nest.heads = d.h.map(h => ({n:h[0], a:h[1], len:h[2], tgt:h[3], pref:h[4], ch:!!h[5]}));
+    countRooms();
 }
 
 /* ---------- economy ---------- */
 function share() {
-    const w = st.w, s = w.forage + w.dig + w.nurse;
-    return s ? {f:w.forage / s, d:w.dig / s, n:w.nurse / s} : {f:1 / 3, d:1 / 3, n:1 / 3};
+    const w = st.w, gd = w.guard || 0, s = w.forage + w.dig + w.nurse + gd;
+    return s ? {f:w.forage / s, d:w.dig / s, n:w.nurse / s, g:gd / s} : {f:0.25, d:0.25, n:0.25, g:0.25};
 }
 const boost = () => (1 + BAL.queenBoost * st.queens) * (1 + BAL.achBoost * st.ach.length);
 // Upgrades add to a multiplier, so each level is worth a little less than the
@@ -1044,15 +1246,19 @@ const UP = {};
 for (const u of UPGRADES) UP[u.id] = u;
 const mult = id => 1 + UP[id].eff * st.lv[id];
 const capOf = () => Math.floor((BAL.capBase + nest.dug * BAL.capCell) * mult('cap'));
+const NO_ROOMS = {nursery:0, food:0, barracks:0, fungus:0, rest:0};
 function rates() {
-    const sh = share(), A = st.ants, g = boost(), wx = WX[weatherAt(simNow)];
-    const nf = 1 + 0.06 * Math.pow(A * sh.n, 0.85);
+    const sh = share(), A = st.ants, rc = nest.rc || NO_ROOMS, m = st.mods, wx = WX[weatherAt(simNow)];
+    const g = boost() * (1 + 0.03 * rc.rest), nf = 1 + 0.06 * Math.pow(A * sh.n, 0.85), each = BAL.forage * mult('forage') * FOODS[st.tier].mult * g;
+    // Fungus gardens feed the colony like a few extra foragers who never mind the weather.
+    const forage = A * sh.f * each * wx.forage * buffMult('forage') * (1 + 0.1 * rc.food), fungus = A * BAL.fungus * (rc.fungus + m.fungus) * each;
     return {
-        food: A * sh.f * BAL.forage * mult('forage') * FOODS[st.tier].mult * g * wx.forage * buffMult('forage'),
+        food: (forage + fungus) * (1 - m.tax), fungus: fungus * (1 - m.tax),
         dig: A * sh.d * BAL.dig * mult('dig') * g * wx.dig * buffMult('dig'),
-        lay: BAL.lay * mult('lay') * nf * g * buffMult('lay'),
-        dev: BAL.dev / (nf * mult('nurse') * wx.brood),
-        cap: capOf(), nf, wx,
+        lay: BAL.lay * mult('lay') * nf * g * buffMult('lay') * (1 + 0.1 * rc.nursery) * m.lay,
+        dev: BAL.dev / (nf * mult('nurse') * wx.brood * (1 + 0.2 * rc.nursery)),
+        guard: A * sh.g * BAL.guard * mult('guard') * (1 + 0.25 * rc.barracks) * buffMult('guard') * m.guard,
+        cap: capOf(), nf, wx, rc,
     };
 }
 // Each bit of tunnel costs more than the last: the deeper the nest, the
@@ -1077,21 +1283,39 @@ function econ(dt) {
     const hatch = st.brood * (1 - Math.exp(-dt / r.dev));
     st.brood -= hatch; st.ants += hatch;
     if (st.ants > st.peak) st.peak = st.ants;
+    // Food that comes home later, from choices made in events.
+    if (st.delayed.length && st.delayed[0].at <= simNow) {
+        const d = st.delayed.shift();
+        st.food += d.food; st.earned += d.food; st.total += d.food;
+    }
+    stepRaids();
+    checkUnlocks();
 }
-const upCost = u => u.base * Math.pow(u.growth, st.lv[u.id]);
-// Cost of the next n levels, and how many levels the food on hand covers.
-const bulkCost = (u, n) => n <= 1 ? upCost(u) : upCost(u) * (Math.pow(u.growth, n) - 1) / (u.growth - 1);
+// An upgrade that unlocked mid-farm starts with a mark-up that fades with each
+// level bought, so prices climb smoothly into the usual curve.
+const markUp = (id, lv) => 1 + ((st.costMul[id] || 1) - 1) * Math.pow(BAL.markFade, lv);
+const levelCost = (u, lv) => u.base * Math.pow(u.growth, lv) * markUp(u.id, lv);
+const upCost = u => levelCost(u, st.lv[u.id]);
+// The next food's price, with the same fading mark-up.
+const tierCost = () => FOODS[st.tier + 1].cost * markUp('tier', st.tier);
+// Cost of the next n levels (summed level by level, since the mark-up
+// fades), and how many levels the food on hand covers.
+function bulkCost(u, n) {
+    let c = 0;
+    for (let i = 0; i < Math.max(1, n || 1); i++) c += levelCost(u, st.lv[u.id] + i);
+    return c;
+}
 function maxAfford(u) {
-    if (st.food < upCost(u)) return 0;
-    let n = Math.floor(Math.log(st.food * (u.growth - 1) / upCost(u) + 1) / Math.log(u.growth));
-    while (n > 1 && bulkCost(u, n) > st.food) n--;
-    return Math.max(1, n);
+    let n = 0, c = levelCost(u, st.lv[u.id]);
+    while (n < 1000 && c <= st.food) { n++; c += levelCost(u, st.lv[u.id] + n); }
+    return n;
 }
 function buy(id, n) {
+    if (!isUnlocked(id)) return false;
     if (id === 'tier') {
         const nx = FOODS[st.tier + 1];
-        if (!nx || st.food < nx.cost) return false;
-        st.food -= nx.cost; st.tier++;
+        if (!nx || st.food < tierCost()) return false;
+        st.food -= tierCost(); st.tier++;
         return true;
     }
     const u = UP[id], c = bulkCost(u, n || 1);
@@ -1103,9 +1327,9 @@ function buy(id, n) {
 // only matter to someone clicking).
 function cheapestBuy() {
     let best = null, cost = Infinity;
-    for (const u of UPGRADES) if (u.id !== 'click' && upCost(u) < cost) { best = u.id; cost = upCost(u); }
+    for (const u of UPGRADES) if (u.id !== 'click' && isUnlocked(u.id) && upCost(u) < cost) { best = u.id; cost = upCost(u); }
     const nx = FOODS[st.tier + 1];
-    if (nx && nx.cost < cost * 4) { best = 'tier'; cost = nx.cost; }
+    if (nx && isUnlocked('tier') && tierCost() < cost * 4) { best = 'tier'; cost = tierCost(); }
     return st.food >= cost ? best : null;
 }
 // What auto-buy picks: the cheapest upgrade, but only once it costs a tenth or
@@ -1113,7 +1337,7 @@ function cheapestBuy() {
 // foods is always left to the player.
 function autoPick() {
     let best = null, cost = Infinity;
-    for (const u of UPGRADES) if (u.id !== 'click' && upCost(u) < cost) { best = u.id; cost = upCost(u); }
+    for (const u of UPGRADES) if (u.id !== 'click' && isUnlocked(u.id) && upCost(u) < cost) { best = u.id; cost = upCost(u); }
     return cost <= st.food * BAL.autoShare ? best : null;
 }
 const queenGain = () => Math.floor(Math.cbrt(st.earned / BAL.queenDiv));
@@ -1127,7 +1351,9 @@ const $ = id => document.getElementById(id);
 const IN_FRAME = (() => { try { return window.top !== window; } catch (e) { return true; } })();
 const SAVE_KEY = 'antfarm.v1';
 const MAXV = 120;
-const FX = W - MARGIN - 36;
+// Where the food lies on the surface: a short walk from the entrance, so the
+// foragers' trips stay in view. Set for each farm in afterNest().
+let FX = W - MARGIN - 36;
 
 const THEMES = [
     {name:'Garden loam', soil:[[128,90,58],[112,78,50],[97,67,43],[82,57,37]], tunnel:[44,30,19], rock:[132,126,120], ant:'#c3532c', antDark:'#6e2610', grass:['#4f8a32','#5f9c3a','#6fae45']},
@@ -1145,19 +1371,20 @@ const ctx = cv.getContext('2d');
 let view = {s:1, ox:0, oy:0, cw:1, ch:1, dpr:1};
 // The camera: zoom 1 shows the whole farm, up to 6x zooms in on a spot or
 // follows one ant around.
-const cam = {z:1, x:W / 2, y:H / 2, tz:1, tx:W / 2, ty:H / 2, follow:null, followT:0};
+const cam = {z:1, x:W / 2, y:H / 2, tz:1, tx:W / 2, ty:H / 2, follow:null, followT:0, auto:true};
 const soilCv = document.createElement('canvas');
 soilCv.width = W; soilCv.height = H;
 const sctx = soilCv.getContext('2d');
 const soilImg = sctx.createImageData(W, H);
 const px32 = new Uint32Array(soilImg.data.buffer);
-let dirty = null;
+let dirty = null, nestBox = null;
 onCarve = (x0, y0, x1, y1) => {
+    // How far the nest reaches, for the camera.
+    nestBox = nestBox ? {x0:Math.min(nestBox.x0, x0), x1:Math.max(nestBox.x1, x1), y1:Math.max(nestBox.y1, y1)} : {x0, x1, y1};
     x0 = Math.max(0, x0 - 2); y0 = Math.max(0, y0 - 2); x1 = Math.min(W - 1, x1 + 2); y1 = Math.min(H - 1, y1 + 2);
     if (!dirty) dirty = {x0, y0, x1, y1};
     else { dirty.x0 = Math.min(dirty.x0, x0); dirty.y0 = Math.min(dirty.y0, y0); dirty.x1 = Math.max(dirty.x1, x1); dirty.y1 = Math.max(dirty.y1, y1); }
 };
-onChamber = () => indexChambers();
 
 const byte = v => v < 0 ? 0 : v > 255 ? 255 : v | 0;
 const pack = (c, f) => (255 << 24 | byte(c[2] * f) << 16 | byte(c[1] * f) << 8 | byte(c[0] * f)) >>> 0;
@@ -1221,8 +1448,21 @@ function applyCam() {
     cam.y = hh * 2 >= H ? H / 2 : Math.max(hh, Math.min(H - hh, cam.y));
     view.s = s; view.ox = view.cw / 2 - cam.x * s; view.oy = view.ch / 2 - cam.y * s;
 }
+// Left to itself the camera frames what the colony has dug, with the food
+// and some soil below, and pulls back as the nest grows until the whole farm
+// shows. Zooming or panning by hand takes over until "back to the colony".
+function autoFrame() {
+    // From a little way up the sky to some soil below the deepest tunnel, and
+    // from the nest's left edge to just past the food.
+    const b = nestBox, top = GROUND - 40, bottom = Math.min(H, Math.max(b ? b.y1 : GROUND, GROUND + 40) + 44);
+    const left = Math.max(0, Math.min(b ? b.x0 : nest.EX, nest.EX) - 10), right = Math.min(W, Math.max(b ? b.x1 : nest.EX, FX + 14) + 8);
+    const vw = view.cw / baseScale(), vh = view.ch / baseScale();
+    const z = Math.max(1, Math.min(3, vh / (bottom - top), vw / (right - left))), w = vw / z, h = vh / z;
+    return {z, x:Math.max(w / 2, Math.min(W - w / 2, (left + right) / 2)), y:Math.max(h / 2, Math.min(H - h / 2, Math.min(top + h / 2, (top + bottom) / 2 + Math.max(0, h - (bottom - top)) / 2)))};
+}
 // Zoom so the farm point under (px, py) in canvas pixels stays put.
 function zoomTo(z, px, py, instant) {
+    cam.auto = false;
     z = Math.max(1, Math.min(6, z));
     if (px === undefined) { px = view.cw / 2; py = view.ch / 2; }
     const wx = (px - view.ox) / view.s, wy = (py - view.oy) / view.s, s = baseScale() * z;
@@ -1236,7 +1476,7 @@ function stepCam(dt) {
     if (f) {
         if (!AW.includes(f)) stopFollow();
         else { cam.tx = f.x; cam.ty = f.y; if ((cam.followT += dt) >= 60) st.stats.follow = 1; }
-    }
+    } else if (cam.auto) { const a = autoFrame(); cam.tz = a.z; cam.tx = a.x; cam.ty = a.y; }
     const k = Math.min(1, dt * 6);
     cam.z += (cam.tz - cam.z) * k; cam.x += (cam.tx - cam.x) * k; cam.y += (cam.ty - cam.y) * k;
     if (Math.abs(cam.tz - cam.z) < 0.002) cam.z = cam.tz;
@@ -1248,11 +1488,13 @@ function follow(a) {
     if (cam.tz < 3.5) cam.tz = 3.5;
     camUI();
 }
-function stopFollow() { cam.follow = null; camUI(); }
+function stopFollow() { cam.follow = null; cam.auto = true; camUI(); }
 function camUI() {
-    $('zOut').disabled = $('zFit').disabled = cam.tz <= 1.01 && !cam.follow;
+    const home = cam.auto && !cam.follow;
+    $('zOut').disabled = cam.tz <= 1.01;
+    $('zFit').disabled = home;
     $('zIn').disabled = cam.tz >= 5.99;
-    $('zoomCtl').classList.toggle('idle', cam.tz <= 1.01 && !cam.follow);
+    $('zoomCtl').classList.toggle('idle', home);
 }
 
 /* ---------- scenery ---------- */
@@ -1474,9 +1716,11 @@ function antModel(frame, kind) {
         {t:'e', x:g[0], y:g[1], rx:g[2], ry:g[3], rot:-0.22, r:'k', hl:true},
         {t:'e', x:-0.72, y:0.05, rx:0.34, ry:0.3, rot:0, r:'k'},
         {t:'e', x:0.15, y:-0.05, rx:0.85, ry:0.55, rot:-0.1, r:'b', hl:true},
-        {t:'e', x:1.75, y:-0.3, rx:0.72, ry:0.68, rot:0, r:'m', hl:true},
+        kind === 'soldier' ? {t:'e', x:1.85, y:-0.3, rx:0.95, ry:0.86, rot:0, r:'m', hl:true} : {t:'e', x:1.75, y:-0.3, rx:0.72, ry:0.68, rot:0, r:'m', hl:true},
         {t:'e', x:2.45, y:0.1, rx:0.36, ry:0.22, rot:0.2, r:'k'},
     );
+    // Guards are soldiers: a bigger head and long mandibles.
+    if (kind === 'soldier') m.push({t:'l', pts:[[2.45, -0.15], [3.25, 0.15], [3.05, 0.45]], w:0.32, r:'k'});
     return m;
 }
 function ladybugModel(frame) {
@@ -1556,10 +1800,42 @@ const CROWN = [
 ];
 const STYLE_KEYS = Object.keys(STYLES);
 // About a third of ants hatch plain; the rest get a random look and colour.
+// Styles are a wardrobe you fill over time. Each unlocks from something the
+// colony does; from then on some new ants hatch wearing it, and any ant can
+// be given it from their card. Unlocked styles stay unlocked on every farm.
+const WET_WX = (1 << WX_KEYS.indexOf('rain')) | (1 << WX_KEYS.indexOf('storm')) | (1 << WX_KEYS.indexOf('snow'));
+const STYLE_UNLOCKS = {
+    cap:{hint:'at 50 ants', when:() => st.ants >= 50},
+    headphones:{hint:'when you catch a visiting bug', when:() => st.stats.critters > 0},
+    bandana:{hint:'when your guards fight off a raid', when:() => st.stats.raidsWon > 0},
+    beanie:{hint:'when it rains or snows', when:() => (st.stats.wx & WET_WX) !== 0},
+    flower:{hint:'with your first fungus garden', when:() => !!nest.rc && nest.rc.fungus > 0},
+    bow:{hint:'when you star 3 ants', when:() => AW.filter(a => a.fav).length >= 3},
+    mohawk:{hint:'after 5 raids fought off', when:() => st.stats.raidsWon >= 5},
+    shades:{hint:'when you catch a golden bug', when:() => st.stats.golden > 0},
+    afro:{hint:'at 250 ants', when:() => st.ants >= 250},
+    tophat:{hint:'when your queens first fly the nest', when:() => st.flights > 0},
+    partyhat:{hint:'when you find the birthday cake', when:() => st.tier >= 7},
+};
+const WARDROBE_ORDER = Object.keys(STYLE_UNLOCKS);
 function randomStyle() {
-    if (Math.random() < 0.35) return null;
-    const k = STYLE_KEYS[Math.floor(Math.random() * STYLE_KEYS.length)];
+    const w = st.wardrobe;
+    if (!w.length || Math.random() < 0.35) return null;
+    const k = w[Math.floor(Math.random() * w.length)];
     return [k, Math.floor(Math.random() * STYLES[k].cols.length)];
+}
+function checkStyles() {
+    for (const k of WARDROBE_ORDER) {
+        if (st.wardrobe.includes(k) || !STYLE_UNLOCKS[k].when()) continue;
+        st.wardrobe.push(k);
+        // Someone plain tries it on straight away.
+        const plain = AW.filter(a => !a.sty), a = plain.length ? pick(plain) : null;
+        if (a) a.sty = [k, Math.floor(Math.random() * STYLES[k].cols.length)];
+        toast(`New style: ${STYLES[k].name}!` + (a ? ` ${firstName(a)} is trying it on.` : '') + ' Some new ants will hatch wearing it.');
+        chime(true);
+        panelAt = 0;
+        return;
+    }
 }
 const styleName = sty => sty ? STYLES[sty[0]].name : 'None';
 const showStyles = () => st.styles !== false;
@@ -1779,6 +2055,7 @@ function drawChambersPix(t) {
     const fc = foodChambers.length ? foodChambers : [queenNode];
     let bits = Math.round(Math.log10(1 + st.food) * 7);
     fc.forEach((i, k) => { bits -= drawPilePix(N[i], Math.ceil(bits / (fc.length - k))); });
+    drawRoomsPix();
     const q = N[queenNode];
     if (q && q.k) {
         const face = Math.sin(t * 0.05 + 1) > 0 ? 0 : 1;
@@ -1825,7 +2102,7 @@ function drawAntsPix(t) {
         // In a tunnel the ant walks on the wall its legs face, not down the middle.
         if (n && a.at !== 0 && !(n.k && n.prog >= 1 && (!a.q.length || a.q[0].n === a.at))) { x += (flip ? Math.sin(r) : -Math.sin(r)) * 0.8; y += Math.cos(r) * 0.8; }
         if (a.dig && a.wait > 0) x += Math.sin(t * 26 + a.ph) > 0 ? 0.5 : 0;
-        const sp = antSprite('ant', d, frame, flip, a.sty), ring = cam.follow === a ? '#ffffff' : a.fav ? '#ffd54a' : null;
+        const sp = antSprite(a.role === 'guard' ? 'soldier' : 'ant', d, frame, flip, a.sty), ring = cam.follow === a ? '#ffffff' : a.fav ? '#ffd54a' : null;
         if (ring) pc.drawImage(outlineOf(sp, ring), Math.round(x * P) - sp.half - 1, Math.round(y * P) - sp.half - 1);
         blit(sp, x * P, y * P);
         if (a.ck) {
@@ -1881,7 +2158,8 @@ function drawHud() {
         {parts:[[fmt(Math.floor(st.ants)) + '/' + fmt(r.cap) + ' ants', '#f3e9dc']], fill:dark},
         {parts:[[WX[wxNow].name, '#cfe0f5']], fill:dark},
     ];
-    for (const bf of activeBuffs()) chips.push({parts:[[`${BUFF_NAMES[bf.k]} x${bf.m}`, bf.gold ? '#ffd54a' : '#f4c47c']], fill:dark});
+    if (st.raid) chips.push({parts:[[`${RAID_SHORT[st.raid.k]} in ${clock(Math.max(0, (st.raid.at - Date.now()) / 1000))}`, '#ffe3d8']], fill:'rgba(150,38,28,0.9)'});
+    for (const bf of activeBuffs()) chips.push({parts:[[`${bf.name || BUFF_NAMES[bf.k]} x${bf.m}`, bf.gold ? '#ffd54a' : bf.m < 1 ? '#ff9a8a' : '#f4c47c']], fill:dark});
     const n = affordable();
     if (n) chips.push({parts:[[n === 1 ? '1 upgrade ready' : n + ' upgrades ready', '#2a1a08']], fill:'#f2a93b'});
     if (flyWorth()) chips.push({parts:[['Ready to fly the nest', '#2a1a08']], fill:'#ffd54a'});
@@ -1897,7 +2175,7 @@ function drawHud() {
         x += w + b * 2;
     }
 }
-const ROLE_NAME = {forage:'forager', dig:'digger', nurse:'nurse'};
+const ROLE_NAME = {forage:'forager', dig:'digger', nurse:'nurse', guard:'guard'};
 function antDoing(a) {
     if (a.ck === 'crumb') return 'carrying one of your crumbs';
     if (a.ck === 'food') return `carrying ${FOODS[st.tier].name.toLowerCase()}`;
@@ -1907,6 +2185,7 @@ function antDoing(a) {
     if (a.rest > 0) return 'taking a break';
     if (a.role === 'forage') return a.at < 0 ? 'out looking for food' : 'heading out';
     if (a.role === 'dig') return 'off to the dig';
+    if (a.role === 'guard') return st.raid ? 'waiting for the raiders' : a.at < 0 ? 'heading back in' : 'keeping watch';
     return 'checking on the queen';
 }
 // The card for a followed ant is drawn on the canvas so it also shows in
@@ -2130,8 +2409,8 @@ function setSound(on) {
 // food or faster foraging, butterflies speed up digging or egg laying, and
 // fireflies (at night) boost everything. One in twelve is golden and doubled.
 let critter = null, critterAt = 0;
-const BUFF_NAMES = {forage:'Foraging', dig:'Digging', lay:'Egg laying', all:'Everything'};
-const BUFF_ICONS = {forage:'fa-apple-whole', dig:'fa-person-digging', lay:'fa-egg', all:'fa-bolt'};
+const BUFF_NAMES = {forage:'Foraging', dig:'Digging', lay:'Egg laying', all:'Everything', guard:'Guarding'};
+const BUFF_ICONS = {forage:'fa-apple-whole', dig:'fa-person-digging', lay:'fa-egg', all:'fa-bolt', guard:'fa-shield-halved'};
 const activeBuffs = () => st.buffs.filter(b => b.until > Date.now());
 function stepCritter(dt, t, sky) {
     if (!critterAt) critterAt = t + 40 + Math.random() * 40;
@@ -2148,7 +2427,10 @@ function stepCritter(dt, t, sky) {
         critter = {kind, dir, golden:Math.random() < 1 / 12, t0:t, ph:Math.random() * TAU, x:dir > 0 ? -4 : W + 4, y:0, by:0};
         if (kind === 'ladybug') critter.y = surfY(critter.x) - 1.3;
         else if (kind === 'butterfly' || kind === 'bat') critter.y = critter.by = GROUND * 0.55 + Math.random() * GROUND * 0.25;
-        else { critter.x = 40 + Math.random() * (W - 80); critter.y = critter.by = GROUND - 6 - Math.random() * 16; }
+        else {
+            const v0 = Math.max(20, -view.ox / view.s + 12), v1 = Math.min(W - 20, (view.cw - view.ox) / view.s - 12);
+            critter.x = v0 + Math.random() * Math.max(1, v1 - v0); critter.y = critter.by = GROUND - 6 - Math.random() * 16;
+        }
         return;
     }
     const c = critter, age = t - c.t0;
@@ -2229,6 +2511,8 @@ const LOG_TEXT = {
     n:() => 'Saw snow for the first time',
     c:() => 'Fetched one of your crumbs',
     w:() => 'Got followed around by you',
+    b:arg => `Helped fight off ${arg[0] === 'b' ? 'a ' + arg : arg.startsWith('a') ? 'an ' + arg : 'a ' + arg}`,
+    x:arg => `Survived a raid by ${arg.startsWith('band') ? 'a ' + arg : arg.startsWith('a') ? 'an ' + arg : 'a ' + arg}`,
 };
 // Newly hatched ants are pale "callows"; the rest earn their rank with time.
 function antRank(a) {
@@ -2242,16 +2526,17 @@ function applyAnt(a, p) {
     a.sty = p.length > 16 ? (p[16] && STYLES[p[16][0]] ? p[16] : null) : randomStyle();
 }
 let pendingRoster = [];
-let foodChambers = [], nurseries = [], rests = [], queenNode = 0, visForagers = 1, nurseCount = 0;
+let foodChambers = [], nurseries = [], rests = [], barracks = [], gardens = [], queenNode = 0, visForagers = 1, nurseCount = 0;
 const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 function indexChambers() {
-    foodChambers = []; nurseries = []; rests = []; queenNode = -1;
+    foodChambers = []; nurseries = []; rests = []; barracks = []; gardens = []; queenNode = -1;
     for (const n of nest.nodes) {
         if (!n.k || n.prog < 1) continue;
         if (n.role === 'queen') queenNode = n.i;
         else if (n.role === 'food') foodChambers.push(n.i);
         else if (n.role === 'nursery') nurseries.push(n.i);
-        else rests.push(n.i);
+        else if (n.role === 'barracks') barracks.push(n.i);
+        else { rests.push(n.i); if (n.role === 'fungus') gardens.push(n.i); }
     }
     if (queenNode < 0) queenNode = nest.nodes.findIndex(n => n.k) ;
     if (queenNode < 0) queenNode = 0;
@@ -2319,15 +2604,16 @@ function syncAnts(scatter) {
     }
     if (AW.length > want) AW.length = want;
     const sh = share(), n = AW.length;
-    const tgt = {forage:Math.round(n * sh.f), dig:Math.round(n * sh.d)};
-    tgt.nurse = Math.max(0, n - tgt.forage - tgt.dig);
+    const tgt = {forage:Math.round(n * sh.f), dig:Math.round(n * sh.d), guard:Math.round(n * sh.g)};
+    tgt.nurse = Math.max(0, n - tgt.forage - tgt.dig - tgt.guard);
+    if (tgt.forage + tgt.dig + tgt.guard > n) tgt.guard = Math.max(0, n - tgt.forage - tgt.dig);
     if (tgt.forage + tgt.dig > n) tgt.dig = n - tgt.forage;
-    const cnt = {forage:0, dig:0, nurse:0};
+    const cnt = {forage:0, dig:0, nurse:0, guard:0};
     for (const a of AW) { const r = a.next || a.role; if (r) cnt[r]++; }
     for (const a of AW) {
         const r = a.next || a.role;
         if (r && cnt[r] <= tgt[r]) continue;
-        const to = ['forage', 'dig', 'nurse'].find(k => cnt[k] < tgt[k]);
+        const to = JOB_KEYS.find(k => cnt[k] < tgt[k]);
         if (!to) break;
         if (r) cnt[r]--;
         cnt[to]++;
@@ -2368,7 +2654,7 @@ function think(a) {
         if (cr) { cr.claimed = true; a.crumb = cr; }
         a.task = 'toFood';
         // Most head for the food pile, the rest scour the grass for scraps.
-        const m = moundCache, x = cr ? cr.x : Math.random() < 0.65 ? FX + (Math.random() - 0.5) * 9 : MARGIN + 4 + Math.random() * (W - 2 * MARGIN - 8);
+        const m = moundCache, x = cr ? cr.x : Math.random() < 0.65 ? FX + (Math.random() - 0.5) * 9 : Math.max(MARGIN + 4, Math.min(W - MARGIN - 4, nest.EX + (Math.random() - 0.5) * 90));
         goSurface(a, Math.abs(x - m.x) < m.L ? m.x + m.L + 2 : x);
         return;
     }
@@ -2384,6 +2670,19 @@ function think(a) {
         if (a.task === 'haul') { a.carry = null; a.ck = null; a.dirt++; if (++a.trips === 1) antLog(a, 't'); a.task = ''; a.wait = 0.2; return; }
         if (!nest.heads.length) { a.task = ''; restIn(a, rests.length ? pick(rests) : queenNode); return; }
         a.task = 'toDig'; goNest(a, pick(nest.heads).n);
+        return;
+    }
+    case 'guard': {
+        // When raiders are coming, guards line up outside the entrance. The rest
+        // of the time they rest in the barracks and walk up the entrance tunnel.
+        if (st.raid || (raider && raider.phase === 'fight')) {
+            if (a.at < 0 && Math.abs(a.x - nest.EX) < 10) { a.wait = 0.4 + Math.random() * 0.8; return; }
+            goSurface(a, nest.EX + (Math.random() - 0.5) * 14);
+            return;
+        }
+        if (a.at < 0) { goNest(a, barracks.length ? pick(barracks) : queenNode); return; }
+        if (Math.random() < 0.3) { goNest(a, Math.min(4, nest.nodes.length - 1)); a.wait = 1 + Math.random() * 2; return; }
+        restIn(a, barracks.length ? pick(barracks) : rests.length ? pick(rests) : queenNode);
         return;
     }
     case 'nurse': {
@@ -2494,6 +2793,7 @@ function finishFlight() {
     buildUI();
 }
 function newColony() {
+    nestBox = null;
     theme = THEMES[st.colony % THEMES.length];
     rng = Math.random;
     genSoil(st.seed);
@@ -2505,6 +2805,7 @@ function newColony() {
 }
 function afterNest() {
     theme = THEMES[st.colony % THEMES.length];
+    FX = Math.min(W - MARGIN - 20, nest.EX + 38);
     buildScenery(); indexChambers();
     sprites.clear(); skyBake.key = ''; bakeGrass();
     dirty = null; paintSoil(0, 0, W - 1, H - 1);
@@ -2569,7 +2870,7 @@ function pumpkinSprite() {
         c.fillStyle = '#6f8f35'; c.beginPath(); c.ellipse(1.2, -5.3, 1.1, 0.45, -0.4, 0, TAU); c.fill();
     }), half:0}));
 }
-const PUMPKINS = () => [FX - 44, FX - 24];
+const PUMPKINS = () => [FX + 16, FX + 30];
 function drawSeasonGround(t, sky) {
     const s = seasonNow();
     if (s === 'autumn' || s === 'halloween') {
@@ -2631,6 +2932,341 @@ function drawSeasonLights(t, sky) {
     }
 }
 
+/* ---------- raiders ---------- */
+// A raider walks in from the edge of the farm while its warning counts down,
+// fights at the entrance when it arrives, then flees or makes off with food.
+const RAID_ICON = {spider:'fa-spider', wasp:'fa-mosquito', rival:'fa-people-group', centipede:'fa-worm'};
+const RAID_SHORT = {spider:'Spider', wasp:'Wasp', rival:'Rival ants', centipede:'Centipede'};
+const RAID_TXT = {spider:'a spider', wasp:'a wasp', rival:'rival ants', centipede:'a centipede'};
+const RAID_FEET = {spider:1.3, wasp:0, rival:1.55, centipede:1.15};
+let raider = null, catching = false, awayRaids = null;
+function spawnRaider(R) {
+    const left = Math.random() < 0.5;
+    raider = {k:R.k, phase:'come', x0:left ? -8 : W + 8, t0:R.at - BAL.raidWarn * 1000, at:R.at, dir:left ? 1 : -1, x:left ? -8 : W + 8, y:GROUND, ph:Math.random() * 6, ft:0, win:false};
+}
+function stepRaider(dt, t) {
+    const r = raider;
+    if (!r) return;
+    const tx = nest.EX - r.dir * 7;
+    if (r.phase === 'come') r.x = r.x0 + (tx - r.x0) * Math.max(0, Math.min(1, (Date.now() - r.t0) / Math.max(1, r.at - r.t0)));
+    else if (r.phase === 'fight') {
+        r.x = tx + Math.sin(t * 17) * 0.7;
+        // Dust and sparks fly while they scrap.
+        if (dust.length < 60 && Math.random() < dt * 30) dust.push({x:tx + r.dir * (2 + Math.random() * 3), y:surfY(tx) - 1 - Math.random() * 3, vx:(Math.random() - 0.5) * 16, vy:-4 - Math.random() * 8, life:0.5, col:Math.random() < 0.4 ? '#fff3c4' : css(theme.soil[0])});
+        if (t - r.ft > 3) { r.phase = r.win ? 'flee' : 'loot'; r.ft = t; }
+    } else {
+        r.x -= r.dir * (r.phase === 'flee' ? 38 : 16) * dt;
+        if (r.x < -14 || r.x > W + 14) raider = null;
+    }
+    if (raider) r.y = r.k === 'wasp' ? surfY(r.x) - 10 + Math.sin(t * 5 + r.ph) * 1.6 : surfY(r.x) - RAID_FEET[r.k];
+}
+function spiderModel(frame) {
+    const s = frame ? 0.3 : -0.3, m = [];
+    for (let k = 0; k < 4; k++) {
+        const x0 = 0.55 - k * 0.4, dx = (k - 1.5) * 1.15 + (k % 2 ? s : -s);
+        m.push({t:'l', pts:[[x0, -0.2], [x0 + dx * 0.55, -1.35], [x0 + dx, 1.3]], w:0.44, r:'k'});
+    }
+    return m.concat([
+        {t:'e', x:-1.35, y:-0.35, rx:1.55, ry:1.15, rot:-0.15, r:'b', hl:true},
+        {t:'e', x:-1.4, y:-0.7, rx:0.55, ry:0.28, rot:0, r:'m'},
+        {t:'e', x:0.75, y:-0.2, rx:0.95, ry:0.72, rot:0, r:'k', hl:true},
+        {t:'e', x:1.45, y:-0.4, rx:0.17, ry:0.17, rot:0, r:'w'},
+    ]);
+}
+function waspModel(frame) {
+    return [
+        {t:'l', pts:[[0.1, 0.2], [-0.3, 1.1]], w:0.22, r:'k'}, {t:'l', pts:[[0.5, 0.2], [0.6, 1.1]], w:0.22, r:'k'},
+        {t:'e', x:-1.35, y:0.15, rx:1.35, ry:0.75, rot:0.25, r:'y', hl:true},
+        {t:'l', pts:[[-1.75, -0.55], [-1.5, 0.85]], w:0.34, r:'k'}, {t:'l', pts:[[-1.0, -0.6], [-0.75, 0.85]], w:0.34, r:'k'},
+        {t:'l', pts:[[-2.55, 0.55], [-3.0, 0.8]], w:0.2, r:'k'},
+        {t:'e', x:0.25, y:-0.05, rx:0.62, ry:0.5, rot:0, r:'k'},
+        {t:'e', x:1.05, y:-0.1, rx:0.48, ry:0.45, rot:0, r:'y'},
+        {t:'l', pts:[[1.3, -0.45], [1.75, -1.25]], w:0.18, r:'k'},
+        frame ? {t:'e', x:-0.3, y:-1.15, rx:1.35, ry:0.45, rot:-0.35, r:'w', hl:true} : {t:'e', x:-0.55, y:-0.55, rx:1.45, ry:0.35, rot:0.12, r:'w', hl:true},
+    ];
+}
+function centipedeModel(frame) {
+    const s = frame ? 0.3 : -0.3, m = [];
+    for (let i = 0; i < 9; i++) { const x = -4.4 + i * 0.95; m.push({t:'l', pts:[[x, 0.15], [x + (i % 2 ? s : -s), 1.15]], w:0.26, r:'l'}); }
+    for (let i = 0; i < 9; i++) m.push({t:'e', x:-4.4 + i * 0.95, y:-0.1, rx:0.62, ry:0.5, rot:0, r:i % 2 ? 'b' : 'k', hl:true});
+    m.push({t:'e', x:4.25, y:-0.15, rx:0.6, ry:0.5, rot:0, r:'k', hl:true}, {t:'l', pts:[[4.6, -0.45], [5.2, -1.25]], w:0.2, r:'l'});
+    return m;
+}
+const RAID_PAL = {
+    spider:{k:[58, 42, 30], b:[132, 96, 62], B:[178, 138, 94], K:[96, 72, 52], m:[214, 184, 132], w:[255, 255, 255]},
+    wasp:{y:[236, 190, 40], Y:[255, 222, 96], k:[28, 22, 18], w:[214, 228, 242], W:[244, 249, 255]},
+    centipede:{k:[112, 40, 24], K:[150, 64, 36], b:[176, 74, 38], B:[214, 118, 66], l:[86, 30, 18]},
+    rival:{b:[58, 50, 60], B:[92, 82, 96], k:[22, 18, 26], K:[44, 38, 50], m:[46, 40, 50], M:[70, 62, 76], l:[12, 10, 14], w:[214, 226, 242], W:[244, 248, 255]},
+};
+function raiderSprite(k, frame, flip, scale) {
+    return sprite(`raider|${k}|${frame}|${flip ? 1 : 0}|${scale}`, () => {
+        const model = k === 'spider' ? spiderModel(frame) : k === 'wasp' ? waspModel(frame) : k === 'centipede' ? centipedeModel(frame) : antModel(frame, 'soldier');
+        return rasterize(model, scale, 0, flip, RAID_PAL[k]);
+    });
+}
+function drawRaiderPix(t) {
+    const r = raider;
+    if (!r) return;
+    const sc = Math.round(critterScale() * 2) / 2, scale = P * (r.k === 'rival' ? 1 : 1.15) * sc, flip = r.dir < 0;
+    const frame = r.phase === 'fight' ? Math.floor(t * 12) % 2 : Math.floor(t * (r.k === 'wasp' ? 14 : 5)) % 2;
+    // Rival ants come as a band of three.
+    const xs = r.k === 'rival' ? [0, -3.2, -6.2] : [0];
+    for (const dx of xs) {
+        const x = r.x + dx * r.dir, y = r.k === 'rival' ? surfY(x) - RAID_FEET.rival : r.y;
+        blit(raiderSprite(r.k, (frame + (dx ? 1 : 0)) % 2, flip, scale), x * P, y * P);
+    }
+    if (r.phase === 'loot') drawCarryPix({ck:'crumb', carry:'#e7c58f'}, r.x + r.dir * 2.5, r.y - 1.2);
+}
+// Which ants fall in a raid: guards first, then whoever the raiders caught.
+function raidCasualties(o) {
+    const total = st.ants + o.ants, ratio = AW.length / Math.max(1, total);
+    let n = Math.round(o.ants * ratio), ng = Math.round(o.guardsLost * ratio);
+    if (o.ants >= 0.5 && n < 1 && AW.length > 4) n = 1;
+    const isGuard = a => (a.next || a.role) === 'guard', shuffle = arr => arr.sort(() => Math.random() - 0.5);
+    const fell = shuffle(AW.filter(isGuard)).slice(0, Math.min(n, Math.max(ng, 0)));
+    fell.push(...shuffle(AW.filter(a => !fell.includes(a))).slice(0, n - fell.length));
+    const name = RAIDERS[o.k].name;
+    for (const a of fell) {
+        st.fallen.unshift({n:a.name, b:a.born, d:Date.now(), k:name, t:a.trips, s:a.sty || 0, r:a.next || a.role});
+        if (cam.follow === a) stopFollow();
+    }
+    st.fallen.length = Math.min(st.fallen.length, 40);
+    if (fell.length) {
+        AW = AW.filter(a => !fell.includes(a));
+        floaters.push({x:nest.EX, y:GROUND - 7, txt:`-${fell.length} ant${fell.length === 1 ? '' : 's'}`, t:performance.now() / 1000, col:'#ff9a8a'});
+    }
+    for (const a of AW) if (isGuard(a)) antLog(a, o.win ? 'b' : 'x', name);
+    return fell.length;
+}
+onRaidWarn = R => {
+    if (catching) return;
+    spawnRaider(R);
+    const ok = rates().guard >= raidPower(R);
+    toast(`${RAIDERS[R.k].name[0].toUpperCase() + RAIDERS[R.k].name.slice(1)} heading for the nest! ${ok ? 'Your guards look ready.' : 'Move more ants to Guard.'}`);
+    chime(false);
+    try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate([30, 60, 30]); } catch (e) {}
+    updateUI();
+};
+onRaid = o => {
+    if (catching) {
+        if (awayRaids) { const a = awayRaids; if (o.rain) a.rain++; else if (o.win) a.won++; else a.lost++; a.ants += o.ants; a.food += o.food; a.loot += o.loot; }
+        return;
+    }
+    const R = RAIDERS[o.k];
+    if (raider) { raider.phase = o.rain ? 'flee' : 'fight'; raider.ft = performance.now() / 1000; raider.win = o.win; }
+    if (o.rain) { toast(`The rain sent the ${R.name} packing.`); updateUI(); return; }
+    const fell = raidCasualties(o);
+    if (o.win) toast(`Your guards saw off the ${R.name}! +${fmt(o.loot)} food` + (fell ? `, but ${fell} fell in the fight.` : '.'));
+    else toast(`The ${R.name} broke in: ${fmt(o.food)} food stolen` + (fell ? ` and ${fell} ant${fell === 1 ? '' : 's'} lost` : '') + '. The colony is shaken up.');
+    chime(o.win);
+    updateUI();
+};
+const clock = sec => `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, '0')}`;
+// Under the job bar: are the guards enough for what's coming (or a spider)?
+function guardNote(r) {
+    const R = st.raid || {k:'spider', roll:1}, enough = r.guard >= raidPower(R);
+    return `${enough ? 'enough' : 'too few'} for ${RAID_TXT[R.k]}`;
+}
+
+/* ---------- choices: chambers and events ---------- */
+// One card over the farm asks for a decision. Closing it decides later.
+let choiceCfg = null;
+function showChoice(cfg) {
+    choiceCfg = cfg;
+    $('choiceBody').innerHTML = `<h3><i class="fa-solid ${cfg.icon}"></i>${esc(cfg.title)}</h3><p>${esc(cfg.text)}</p><div class="choice-opts">`
+        + cfg.opts.map((o, k) => `<button data-k="${k}"${o.now ? ' class="now"' : ''}><i class="fa-solid ${o.icon}"></i><b>${esc(o.label)}${o.now ? ' (now)' : ''}</b><small>${esc(typeof o.sub === 'function' ? o.sub() : o.sub)}</small></button>`).join('') + '</div>';
+    // Just under the numbers, however many rows of boosts and alerts they have.
+    $('choice').style.top = ($('hud').offsetHeight + 4) + 'px';
+    $('choice').hidden = false;
+}
+function hideChoice() {
+    const c = choiceCfg;
+    choiceCfg = null; $('choice').hidden = true;
+    if (c && c.onClose) c.onClose();
+}
+$('choiceBody').addEventListener('click', e => {
+    const b = e.target.closest('[data-k]');
+    if (!b || !choiceCfg) return;
+    const o = choiceCfg.opts[+b.dataset.k];
+    choiceCfg = null; $('choice').hidden = true;
+    o.act();
+});
+$('choiceX').addEventListener('click', hideChoice);
+
+// Chambers: a new one asks what it should be, and tapping one on the farm
+// changes it. The number counts finished chambers, the queen's being the first.
+let roomAsk = null;
+const roomNumber = n => 1 + nest.nodes.filter(m => m.k && m.prog >= 1 && m.i < n.i).length;
+function roomAt(wx, wy) {
+    for (const n of nest.nodes) {
+        if (!n.k || n.prog < 1) continue;
+        const dx = (wx - n.cx) / (n.rx + 1), dy = (wy - n.cy) / (n.ry + 1);
+        if (dx * dx + dy * dy <= 1 && wy <= n.cy + n.ry * 0.6 + 1.5) return n;
+    }
+    return null;
+}
+function pickRoom(i, fresh) {
+    const n = nest.nodes[i];
+    if (!n) return;
+    showChoice({icon:'fa-house', title:fresh ? 'New chamber dug' : `Chamber ${roomNumber(n)}`,
+        text:fresh ? `It starts as a ${ROOMS[n.role].name.toLowerCase()}. What should it be? You can change it any time by tapping it.` : 'What should this chamber be?',
+        opts:ROOM_KEYS.map(k => ({icon:ROOMS[k].icon, label:ROOMS[k].name, sub:ROOMS[k].desc, now:n.role === k, act:() => setRoomUI(i, k)})),
+        onClose:() => { if (roomAsk === i) roomAsk = null; updateUI(); }});
+}
+function setRoomUI(i, k) {
+    roomAsk = null;
+    if (setRoom(i, k)) { st.stats.rooms++; indexChambers(); toast(`Chamber ${roomNumber(nest.nodes[i])} is now a ${ROOMS[k].name.toLowerCase()}`); }
+    updateUI();
+}
+onChamber = c => {
+    indexChambers();
+    if (booted && !catching && c.role !== 'queen') { roomAsk = c.i; if (!choiceCfg) pickRoom(c.i, true); }
+};
+function renderRooms(r) {
+    // Nothing to choose until the diggers finish a second chamber.
+    $('roomCard').hidden = nest.chambers < 2;
+    const rc = r.rc, n = k => rc[k] + (k === 'fungus' ? st.mods.fungus : 0);
+    const what = {
+        nursery:k => `brood ${20 * k}% faster, ${10 * k}% more eggs`,
+        food:k => `${10 * k}% more food per trip`,
+        barracks:k => `guards ${25 * k}% stronger`,
+        fungus:k => k ? `${fmt(r.fungus)} food/s, rain or shine` : 'grows food by itself',
+        rest:k => `everyone ${3 * k}% faster`,
+    };
+    const h = ROOM_KEYS.map(k => `<div class="room-row${n(k) ? '' : ' none'}"><i class="fa-solid ${ROOMS[k].icon}"></i><b>${ROOMS[k].name}</b><span>${n(k)}</span><small>${n(k) ? what[k](n(k)) : ROOMS[k].desc}</small></div>`).join('');
+    if ($('rooms').innerHTML !== h) $('rooms').innerHTML = h;
+}
+// Fungus gardens sprout pale mushrooms; barracks fly a little flag.
+function drawRoomsPix() {
+    const N = nest.nodes;
+    for (const i of gardens) {
+        const n = N[i], fl = Math.round((n.cy + n.ry * 0.6) * P);
+        for (let k = 0; k < 7; k++) {
+            const x = Math.round(n.cx * P + (hash2(n.i, k) - 0.5) * n.rx * 1.6 * P), h = 2 + Math.floor(hash2(k, n.i) * 3);
+            box(x, fl - h, 1, h, '#e9e2cc');
+            box(x - 1, fl - h - 1, 3, 1, k % 2 ? '#cfe9d8' : '#f2e3c2');
+            if (k % 3 === 0) box(x, fl - h - 2, 1, 1, '#f7f1dc');
+        }
+    }
+    for (const i of barracks) {
+        const n = N[i], fl = Math.round((n.cy + n.ry * 0.6) * P), px = Math.round((n.cx + n.rx * 0.55) * P);
+        box(px, fl - 11, 1, 11, '#5a3b22');
+        box(px + 1, fl - 11, 5, 3, '#c0473a'); box(px + 1, fl - 11, 5, 1, '#e0675a');
+        // Twigs stacked against the wall like spears.
+        const tx = Math.round((n.cx - n.rx * 0.6) * P);
+        for (let k = 0; k < 3; k++) for (let j = 0; j < 7; j++) box(tx + k * 3 + Math.floor(j / 3), fl - 1 - j, 1, 1, '#7a5432');
+    }
+}
+
+// Events: now and then something happens that needs a decision. Ignore one
+// for three minutes and the cautious choice is made for you.
+function addBuff(k, m, secs, name) {
+    st.buffs = st.buffs.filter(b => b.name !== name && b.until > Date.now());
+    st.buffs.push({k, m, until:Date.now() + secs * 1000, name});
+}
+function later(secs, food) { st.delayed.push({at:Date.now() + secs * 1000, food}); st.delayed.sort((a, b) => a.at - b.at); }
+const isDay = () => skyNow(performance.now()).night < 0.5;
+const EVENTS = [
+    {id:'beetle', icon:'fa-bug', title:'A beetle wants to move in', text:'A rove beetle is asking to live by the entrance. It would help guard the nest, but it eats its share.',
+        when:() => !st.beetle, dflt:1, opts:[
+            {icon:'fa-house-user', label:'Let it stay', sub:'Guards fight 30% harder on this farm, but the beetle eats 4% of the food', act:() => { st.mods.guard *= 1.3; st.mods.tax += 0.04; st.beetle = 1; st.stats.beetle = 1; return 'The beetle settles in by the entrance.'; }},
+            {icon:'fa-hand', label:'Chase it off', sub:'Nothing changes', act:() => 'The beetle wanders off.'}]},
+    {id:'aphids', icon:'fa-leaf', title:'Aphids on a grass stem', text:'Foragers found a stem full of aphids, and aphids make sweet honeydew.',
+        when:() => wxNow !== 'snow', dflt:1, opts:[
+            {icon:'fa-seedling', label:'Farm them', sub:'Foraging x1.5 for 10 minutes', act:() => { addBuff('forage', 1.5, 600, 'Aphid farming'); return 'Your ants start herding aphids.'; }},
+            {icon:'fa-utensils', label:'Eat them now', sub:() => `About ${fmt(rates().food * 90)} food right away`, act:() => { const v = rates().food * 90; st.food += v; st.earned += v; st.total += v; return `+${fmt(v)} food`; }}]},
+    {id:'flood', icon:'fa-water', title:'Water in the tunnels', text:'Rain is seeping into the lowest tunnels, right where the brood sleeps.',
+        when:() => wxNow === 'rain' || wxNow === 'storm', dflt:1, opts:[
+            {icon:'fa-person-carry-box', label:'Move the brood up', sub:'Egg laying x0.5 for 4 minutes while nurses carry them', act:() => { addBuff('lay', 0.5, 240, 'Moving the brood'); return 'Nurses carry the brood to higher ground.'; }},
+            {icon:'fa-droplet', label:'Leave it', sub:'Lose about 40% of the brood', act:() => { st.brood *= 0.6; return 'Some of the brood was lost to the water.'; }}]},
+    {id:'sugar', icon:'fa-cube', title:'A sugar spill', text:'A scout found spilled sugar a long way from the nest.',
+        when:() => isDay() && (wxNow === 'clear' || wxNow === 'cloudy'), dflt:1, opts:[
+            {icon:'fa-people-carry-box', label:'Send a big party', sub:() => `Foraging x0.6 for 3 minutes, then about ${fmt(rates().food * 240)} food comes home`, act:() => { later(180, rates().food * 240); addBuff('forage', 0.6, 180, 'Out on a long trip'); return 'A big party sets off for the sugar.'; }},
+            {icon:'fa-house', label:'Stay close to home', sub:'Nothing changes', act:() => 'Your ants stay close to home.'}]},
+    {id:'queen', icon:'fa-crown', title:'A lost queen', text:'A queen from a fallen colony wanders up to your entrance, looking for a home.',
+        when:() => !st.mods.adopted, dflt:1, opts:[
+            {icon:'fa-hand-holding-heart', label:'Take her in', sub:'Eggs +25% on this farm, but her court eats 3% of the food', act:() => { st.mods.lay *= 1.25; st.mods.tax += 0.03; st.mods.adopted = 1; return 'The lost queen joins the nursery.'; }},
+            {icon:'fa-door-closed', label:'Turn her away', sub:'Nothing changes', act:() => 'The queen moves on.'}]},
+    {id:'caterpillar', icon:'fa-worm', title:"A caterpillar's offer", text:'A caterpillar offers honeydew if your ants will guard it from wasps for a while.',
+        when:() => isDay() && !st.raid, dflt:1, opts:[
+            {icon:'fa-shield-halved', label:'Guard it', sub:() => `Guards are 30% weaker for 5 minutes, then about ${fmt(rates().food * 150)} food`, act:() => { later(300, rates().food * 150); addBuff('guard', 0.7, 300, 'Guarding a caterpillar'); return 'Some guards go to watch over the caterpillar.'; }},
+            {icon:'fa-xmark', label:'No thanks', sub:'Nothing changes', act:() => 'The caterpillar crawls off.'}]},
+    {id:'spores', icon:'fa-seedling', title:'Mushroom spores', text:'Spores drifted into the nest. Given a room, they would grow into a garden.',
+        dflt:1, opts:[
+            {icon:'fa-seedling', label:'Grow them', sub:() => rests.length ? 'A rest room becomes a fungus garden' : 'Counts as one more fungus garden', act:() => {
+                const room = rests.find(i => nest.nodes[i].role === 'rest');
+                if (room !== undefined) { setRoom(room, 'fungus'); indexChambers(); return `Chamber ${roomNumber(nest.nodes[room])} is now a fungus garden.`; }
+                st.mods.fungus++; return 'The spores take root in a corner of the nest.';
+            }},
+            {icon:'fa-broom', label:'Clean them out', sub:'Nothing changes', act:() => 'The nurses sweep the spores out.'}]},
+    {id:'scouts', icon:'fa-binoculars', title:'Rival scouts', text:'Scouts from a rival colony are sniffing around the entrance.',
+        when:() => !st.raid, dflt:1, opts:[
+            {icon:'fa-hand-fist', label:'Chase them off', sub:'Foraging x0.8 for 2 minutes, and the next raid is 30% weaker', act:() => { addBuff('forage', 0.8, 120, 'Chasing scouts'); st.mods.raid = 0.7; return 'The scouts run home with a bloody nose.'; }},
+            {icon:'fa-eye-slash', label:'Ignore them', sub:'The next raid is 25% stronger', act:() => { st.mods.raid = 1.25; return "The scouts saw everything. The next raid will be bigger."; }}]},
+];
+const EV = Object.fromEntries(EVENTS.map(e => [e.id, e]));
+function stepEvents() {
+    const now = Date.now();
+    if (!st.eventAt) st.eventAt = now + (240 + Math.random() * 120) * 1000;
+    if (st.event && (!EV[st.event.id] || now > st.event.until)) { resolveEvent(EV[st.event.id] ? EV[st.event.id].dflt : -1, true); return; }
+    if (st.event || now < st.eventAt || flight || document.hidden || nest.chambers < 2) return;
+    const ok = EVENTS.filter(e => e.id !== st.lastEvent && (!e.when || e.when()));
+    if (!ok.length) { st.eventAt = now + 60e3; return; }
+    const e = pick(ok);
+    st.event = {id:e.id, until:now + 180e3};
+    toast(`${e.title}. Tap it to decide.`);
+    chime(false);
+    updateUI();
+}
+function openEvent() {
+    const e = st.event && EV[st.event.id];
+    if (!e) return;
+    showChoice({icon:e.icon, title:e.title, text:e.text, opts:e.opts.map((o, k) => ({...o, act:() => resolveEvent(k)}))});
+}
+function resolveEvent(k, timedOut) {
+    const e = st.event && EV[st.event.id];
+    st.event = null;
+    st.eventAt = Date.now() + (420 + Math.random() * 300) * 1000;
+    if (!e) return;
+    st.lastEvent = e.id;
+    if (choiceCfg && choiceCfg.title === e.title) hideChoice();
+    const msg = e.opts[k] ? e.opts[k].act() : '';
+    st.stats.events++;
+    toast(timedOut ? `${e.title}: you let it pass. ${msg}` : msg);
+    updateUI();
+}
+
+// Raids, events and new chambers wait under the numbers until dealt with.
+let alertKey = '';
+function renderAlerts() {
+    const R = st.raid, r = R ? rates() : null, ok = R && r.guard >= raidPower(R);
+    const key = [R ? R.k + (ok ? 1 : 0) : '', st.event ? st.event.id : '', roomAsk !== null ? roomAsk : ''].join('|');
+    if (key !== alertKey) {
+        alertKey = key;
+        let h = '';
+        if (R) h += `<button class="pill alert raid${ok ? ' ready' : ''}" data-alert="raid"><i class="fa-solid ${RAID_ICON[R.k]}"></i><b>${RAID_SHORT[R.k]} in <span id="raidClock"></span></b><small>${ok ? 'guards ready' : 'need more guards'}</small></button>`;
+        if (st.event) h += `<button class="pill alert event" data-alert="event"><i class="fa-solid fa-circle-exclamation"></i><b>${esc(EV[st.event.id] ? EV[st.event.id].title : '')}</b></button>`;
+        if (roomAsk !== null) h += `<button class="pill alert room" data-alert="room"><i class="fa-solid fa-house"></i><b>New chamber: choose its job</b></button>`;
+        $('alerts').innerHTML = h;
+    }
+    if (R) $('raidClock').textContent = clock(Math.max(0, (R.at - Date.now()) / 1000));
+}
+// Jump to the job bar: the Jobs card on a phone, the Farm tab elsewhere.
+function showJobs() {
+    if (lay.mode === 'overlay') { if (lay.open !== 'jobs') openOv('jobs'); return; }
+    setTab('farm');
+    $('jobCard').scrollIntoView({behavior:'smooth', block:'center'});
+    $('jobCard').classList.add('pulse');
+    setTimeout(() => { if (guideFocus !== 'jobCard') $('jobCard').classList.remove('pulse'); }, 2400);
+}
+$('alerts').addEventListener('click', e => {
+    const b = e.target.closest('[data-alert]');
+    if (!b) return;
+    if (b.dataset.alert === 'raid') showJobs();
+    else if (b.dataset.alert === 'event') openEvent();
+    else if (b.dataset.alert === 'room' && roomAsk !== null) pickRoom(roomAsk, true);
+});
+
 /* ---------- main loop ---------- */
 let lastTick = Date.now(), lastFrame = performance.now(), uiAt = 0, syncAt = 0, autoAt = 0, dormant = false, booted = false;
 function autoBuy() {
@@ -2645,8 +3281,11 @@ function advance() {
 // Replays time in chunks, with the weather and boosts of each moment.
 function catchUp(sec, from) {
     const n = Math.min(4000, Math.ceil(sec)), h = sec / n;
-    for (let k = 0; k < n; k++) { simNow = from + (k + 1) * h * 1000; econ(h); }
+    catching = true;
+    try { for (let k = 0; k < n; k++) { simNow = from + (k + 1) * h * 1000; econ(h); } }
+    finally { catching = false; }
     simNow = Date.now();
+    if (st.raid && !raider) spawnRaider(st.raid);
 }
 function render(t) {
     const c = ctx, sky = skyNow(performance.now());
@@ -2664,6 +3303,7 @@ function render(t) {
     drawChambersPix(t);
     drawAntsPix(t);
     drawCritterPix(t);
+    drawRaiderPix(t);
     for (const d of dust) { pc.globalAlpha = Math.min(1, d.life * 2); box(d.x * P, d.y * P, 1, 1, d.col); }
     pc.globalAlpha = 1;
     drawFlightPix();
@@ -2702,12 +3342,13 @@ function tickAll() {
     lastFrame = now;
     if (dormant || !booted) return;
     advance();
-    if (now > autoAt) { autoBuy(); checkAch(); checkGuide(); autoAt = now + 1000; }
+    if (now > autoAt) { autoBuy(); checkAch(); checkGuide(); stepEvents(); checkStyles(); autoAt = now + 1000; }
     if (now > syncAt) { syncAnts(false); syncAt = now + 500; }
     const t = now / 1000, sky = skyNow(now);
     stepWeather(dt, t, sky);
     stepSeason(dt, t, sky);
     stepCritter(dt, t, sky);
+    stepRaider(dt, t);
     stepVisual(dt, t);
     stepCam(dt);
     render(t);
@@ -2860,12 +3501,26 @@ function toast(msg) {
     clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
 }
 function affordable() {
-    let n = UPGRADES.filter(u => st.food >= upCost(u)).length;
+    let n = UPGRADES.filter(u => isUnlocked(u.id) && st.food >= upCost(u)).length;
     const nx = FOODS[st.tier + 1];
-    if (nx && st.food >= nx.cost) n++;
+    if (nx && isUnlocked('tier') && st.food >= tierCost()) n++;
     return n;
 }
-const JOB_KEYS = ['forage', 'dig', 'nurse'], JOB_NAMES = {forage:'Forage', dig:'Dig', nurse:'Nurse'};
+// A new upgrade gets a toast, a chime and a few seconds of glow.
+const newUps = {};
+onUnlock = id => {
+    if (!booted || catching) return;
+    newUps[id] = performance.now() + 5000;
+    if (id === 'guard') toast('Raiders! Drag some ants to Guard on the job bar. Battle drills makes them stronger.');
+    else if (id === 'tier') toast(`New upgrade: find better food. ${FOODS[st.tier + 1] ? FOODS[st.tier + 1].name : 'It'} is worth more on every trip.`);
+    else toast(`New upgrade: ${UP[id].name}. ${UP[id].desc[0].toUpperCase() + UP[id].desc.slice(1)}.`);
+    chime(true);
+    updateUI();
+};
+const JOB_KEYS = ['forage', 'dig', 'nurse', 'guard'], JOB_NAMES = {forage:'Forage', dig:'Dig', nurse:'Nurse', guard:'Guard'};
+const GRIPS = ['grip1', 'grip2', 'grip3'];
+// Where the dividers sit: after foragers, after diggers, after nurses.
+const jobEdges = () => { const w = st.w; return [w.forage, w.forage + w.dig, w.forage + w.dig + w.nurse]; };
 function buildUI() {
     const ups = $('ups');
     ups.innerHTML = '';
@@ -2931,11 +3586,13 @@ function updateNestBar() {
 const GUIDE = [
     {icon:'fa-hand-pointer', title:'Drop 5 crumbs', why:"Click or tap anywhere on the farm. Each crumb is a bit of food, and the foragers come and fetch it.", have:() => st.stats.crumbs, need:5, focus:'farm'},
     {icon:'fa-bug', title:'Raise 10 ants', why:"The queen lays eggs while there's food and room. Every egg costs a little food.", have:() => Math.floor(st.ants), need:10, focus:null},
-    {icon:'fa-arrow-up', title:'Buy an upgrade', why:"Upgrades cost food. Strong mandibles makes every forager bring back more.", have:() => Object.values(st.lv).some(v => v > 0) || st.tier > 0 ? 1 : 0, need:1, focus:'upCard'},
+    {icon:'fa-arrow-up', title:'Buy an upgrade', why:"Upgrades cost food. Picnic crumbs makes every crumb you drop worth more, and new upgrades unlock as the colony grows.", have:() => Object.values(st.lv).some(v => v > 0) || st.tier > 0 ? 1 : 0, need:1, focus:'upCard'},
     {icon:'fa-person-digging', title:'Dig a second chamber', why:"Ants need room. Diggers tunnel out new chambers, and the colony only grows as fast as they dig.", have:() => nest.chambers, need:2, focus:'jobCard'},
     {icon:'fa-seedling', title:'Find sunflower seeds', why:"Better food is worth more on every trip. It's the first item in the upgrades list.", have:() => st.tier >= 1 ? 1 : 0, need:1, focus:'upCard'},
     {icon:'fa-star', title:'Catch a visiting bug', why:"Every few minutes a ladybug or butterfly wanders past the farm. Tap it for a boost.", have:() => st.stats.critters, need:1, focus:'farm'},
+    {icon:'fa-house', title:'Choose a chamber job', why:"Tap a chamber on the farm to choose what it's for: nurseries grow brood, pantries boost food, barracks toughen guards.", have:() => st.stats.rooms, need:1, focus:'farm'},
     {icon:'fa-sliders', title:'Change the job split', why:"Rain makes digging faster and foraging slower. Check the weather and drag the job bar to match.", have:() => st.stats.split ? 1 : 0, need:1, focus:'jobCard'},
+    {icon:'fa-shield-halved', title:'Fight off a raid', why:"Raiders come for the food every few minutes. When one is on its way, drag some ants to Guard on the job bar.", have:() => st.stats.raidsWon, need:1, focus:'jobCard'},
     {icon:'fa-crown', title:'Grow to 120 ants', why:"At 120 ants your queens can fly the nest. The ring on the Fly button shows how close you are.", have:() => Math.floor(st.ants), need:120, focus:'nestBar'},
     {icon:'fa-feather-pointed', title:'Fly the nest', why:"Queens leave to start a fresh farm. You lose this farm, but every queen makes all your ants 10% better, forever.", have:() => st.flights, need:1, focus:'nestBar'},
 ];
@@ -3003,15 +3660,14 @@ function jobTip(r) {
     if (full && st.w.nurse > 20) return [false, 'With no room for eggs, nurses have little to do until the diggers make space.'];
     return [false, 'Food buys upgrades and eggs, digging makes room for more ants, and nurses raise the brood faster.'];
 }
-// The job split is one bar with two dividers: foragers up to the first,
-// diggers up to the second, nurses after it. It moves in steps of 5% and
-// always adds up to 100%.
+// The job split is one bar with three dividers: foragers, diggers, nurses and
+// guards, left to right. It moves in steps of 5% and always adds up to 100%.
 function setGrip(which, pct) {
-    const a = st.w.forage, b = st.w.forage + st.w.dig;
+    const e = jobEdges(), was = e.join();
     pct = Math.max(0, Math.min(100, Math.round(pct / 5) * 5));
-    const g1 = which === 0 ? Math.min(pct, b) : a, g2 = which === 1 ? Math.max(pct, a) : b;
-    if (g1 === a && g2 === b) return;
-    st.w = {forage:g1, dig:g2 - g1, nurse:100 - g2};
+    e[which] = Math.max(which ? e[which - 1] : 0, Math.min(which < 2 ? e[which + 1] : 100, pct));
+    if (e.join() === was) return;
+    st.w = {forage:e[0], dig:e[1] - e[0], nurse:e[2] - e[1], guard:100 - e[2]};
     st.stats.split = 1; syncAt = 0; noteInput(); updateUI();
 }
 function updateUI() {
@@ -3042,29 +3698,39 @@ function updateUI() {
         forage: `${fmt(r.food)} food/s`,
         dig: nest.full ? 'nothing left to dig' : `room for ${fmt(roomPerMin)} a minute`,
         nurse: `brood ${r.nf.toFixed(1)}x faster`,
+        guard: guardNote(r),
     };
     for (const k of JOB_KEYS) {
-        const count = Math.floor(A * (k === 'forage' ? sh.f : k === 'dig' ? sh.d : sh.n)), pct = st.w[k], seg = $('seg-' + k);
+        const count = Math.floor(A * sh[k[0]]), pct = st.w[k] || 0, seg = $('seg-' + k);
         // Wide parts of the bar say what they are; narrow ones just the share.
         const label = pct >= 25 ? `${JOB_NAMES[k]} <b>${pct}%</b>` : pct >= 10 ? `<b>${pct}%</b>` : '';
         seg.style.width = pct + '%';
         if (seg.dataset.l !== label) { seg.dataset.l = label; seg.innerHTML = label; }
         $('e-' + k).textContent = `${fmt(count)} ant${count === 1 ? '' : 's'}, ${eff[k]}`;
     }
-    const g1 = st.w.forage, g2 = st.w.forage + st.w.dig;
-    $('grip1').style.left = g1 + '%'; $('grip2').style.left = g2 + '%';
-    $('grip1').setAttribute('aria-valuenow', g1); $('grip1').setAttribute('aria-valuetext', `${st.w.forage}% foraging, ${st.w.dig}% digging`);
-    $('grip2').setAttribute('aria-valuenow', g2); $('grip2').setAttribute('aria-valuetext', `${st.w.dig}% digging, ${st.w.nurse}% nursing`);
+    const guardOn = isUnlocked('guard');
+    $('seg-guard').hidden = $('grip3').hidden = $('lg-guard').hidden = !guardOn;
+    const edges = jobEdges(), pairs = [['forage', 'dig'], ['dig', 'nurse'], ['nurse', 'guard']], verb = {forage:'foraging', dig:'digging', nurse:'nursing', guard:'on guard'};
+    GRIPS.forEach((id, i) => {
+        const g = $(id), [a, b] = pairs[i];
+        g.style.left = edges[i] + '%'; g.setAttribute('aria-valuenow', edges[i]);
+        g.setAttribute('aria-valuetext', `${st.w[a] || 0}% ${verb[a]}, ${st.w[b] || 0}% ${verb[b]}`);
+    });
+    renderRooms(r);
     const [warn, tip] = jobTip(r), tipEl = $('jobTip');
     tipEl.classList.toggle('warn', warn);
     if (tipEl.dataset.t !== tip) { tipEl.dataset.t = tip; tipEl.innerHTML = `<i class="fa-solid fa-lightbulb"></i>${tip}`; }
     for (const b of $('buyMode').children) b.classList.toggle('on', String(st.buy) === b.dataset.n);
+    // Upgrades show once unlocked; a new one glows for a few seconds.
+    const nowMs = performance.now();
     for (const b of $('ups').children) {
         const id = b.dataset.id;
+        b.hidden = !isUnlocked(id);
+        b.classList.toggle('new', (newUps[id] || 0) > nowMs);
         let name, desc, cost, max = false;
         if (id === 'tier') {
             const nx = FOODS[st.tier + 1];
-            if (nx) { name = `Find ${nx.name.toLowerCase()}`; desc = `Food worth ${nx.mult}x crumbs (now ${FOODS[st.tier].mult}x)`; cost = nx.cost; }
+            if (nx) { name = `Find ${nx.name.toLowerCase()}`; desc = `Food worth ${nx.mult}x crumbs (now ${FOODS[st.tier].mult}x)`; cost = tierCost(); }
             else { name = FOODS[st.tier].name; desc = 'The best food there is'; max = true; }
         } else {
             const u = UP[id], n = Math.max(1, buyCount(u));
@@ -3078,6 +3744,9 @@ function updateUI() {
         b.disabled = max || st.food < cost;
         b.style.setProperty('--p', max ? '0%' : Math.min(100, st.food / cost * 100).toFixed(1) + '%');
     }
+    const next = UNLOCKS.find(u => !isUnlocked(u.id));
+    $('upTeaser').hidden = !next;
+    if (next) $('upTeaserText').textContent = next.hint;
     $('autoWrap').hidden = st.queens < BAL.autoQueens;
     updateNestBar();
     updateGuide();
@@ -3110,7 +3779,9 @@ function updateUI() {
     $('sWxNext').textContent = nx ? `${WX[nx.wx].name.toLowerCase()} in ${fmtTime(nx.in / 1000)}` : '';
     const bs = activeBuffs(), bEl = $('buffs');
     bEl.hidden = !bs.length;
-    const bh = bs.map(b => `<span class="buff${b.gold ? ' gold' : ''}"><i class="fa-solid ${BUFF_ICONS[b.k]}"></i>${BUFF_NAMES[b.k]} x${b.m}, ${Math.ceil((b.until - Date.now()) / 1000)}s</span>`).join('');
+    const bh = bs.map(b => `<span class="buff${b.gold ? ' gold' : ''}${b.m < 1 ? ' bad' : ''}"><i class="fa-solid ${BUFF_ICONS[b.k]}"></i>${b.name || BUFF_NAMES[b.k]} x${b.m}, ${Math.ceil((b.until - Date.now()) / 1000)}s</span>`).join('');
+    renderAlerts();
+    camUI();
     if (bEl.innerHTML !== bh) bEl.innerHTML = bh;
     const got = st.ach.length;
     $('achCount').textContent = `${got} of ${ACH.length}, +${Math.round(got * BAL.achBoost * 100)}%`;
@@ -3172,7 +3843,20 @@ function antPic(kind, sty) {
 function renderRoster() {
     if (renaming && document.activeElement && document.activeElement.classList.contains('rename')) return;
     $('rosterCount').textContent = `${AW.length} named, ${fmt(Math.floor(st.ants))} in the colony`;
+    // Ants lost to raiders, most recent first.
+    $('fallenBox').hidden = !st.fallen.length;
+    $('fallenCount').textContent = st.fallen.length;
+    const fh = st.fallen.map(f => `<li><b>${esc(f.n)}</b><span>${esc(ROLE_NAME[f.r] || 'worker')}, fell to a ${esc(f.k)} ${fmtAgo(f.d)}, ${fmt(f.t)} trip${f.t === 1 ? '' : 's'}</span></li>`).join('');
+    if ($('fallen').innerHTML !== fh) $('fallen').innerHTML = fh;
     $('showStyles').checked = showStyles();
+    const wk = st.wardrobe.join() + theme.name + showStyles();
+    if ($('wardrobe').dataset.k !== wk) {
+        $('wardrobe').dataset.k = wk;
+        $('wardCount').textContent = `Wardrobe: ${st.wardrobe.length} of ${WARDROBE_ORDER.length} styles`;
+        $('wardrobe').innerHTML = WARDROBE_ORDER.map(k => st.wardrobe.includes(k)
+            ? `<button class="ward" data-ward="${k}" title="${STYLES[k].name}" aria-label="${STYLES[k].name}"><img src="${antPic('ant', [k, 0])}" alt=""></button>`
+            : `<button class="ward locked" data-ward="${k}" title="Unlocks ${STYLE_UNLOCKS[k].hint}" aria-label="A locked style"><i class="fa-solid fa-lock"></i></button>`).join('');
+    }
     $('queenRow').innerHTML = renaming === 'queen'
         ? `<img class="ant-pic queen" src="${antPic('queen')}" alt=""><div class="rename-row"><input class="rename" id="renameInput" maxlength="28" value="${esc(queenName())}" aria-label="New name for the queen"><button class="btn" data-save="queen">Save</button></div>`
         : `<img class="ant-pic queen" src="${antPic('queen')}" alt=""><div class="ant-main"><b>Queen ${esc(queenName())}</b><small>Ruling farm ${st.colony + 1} for ${fmtTime((Date.now() - st.started) / 1000)}, ${fmt(Math.floor(st.laid))} eggs laid</small></div><button class="fav" data-rename-queen aria-label="Rename the queen"><i class="fa-solid fa-pen"></i></button>`;
@@ -3187,7 +3871,7 @@ function renderRoster() {
     list = list.slice().sort(by);
     const html = list.map(a => {
         const role = ROLE_NAME[a.next || a.role] || 'worker', open = rosterOpen === a.id, bd = badges.get(a.id) || [];
-        return `<div class="ant-row${open ? ' open' : ''}" data-id="${a.id}" tabindex="0" role="button" aria-expanded="${open}"><img class="ant-pic" src="${antPic('ant', a.sty)}" alt="">`
+        return `<div class="ant-row${open ? ' open' : ''}" data-id="${a.id}" tabindex="0" role="button" aria-expanded="${open}"><img class="ant-pic" src="${antPic((a.next || a.role) === 'guard' ? 'soldier' : 'ant', a.sty)}" alt="">`
             + `<div class="ant-main"><b>${esc(a.name)}</b>${bd.map(x => `<span class="badge">${x}</span>`).join('')}<small>${role}, ${antRank(a).toLowerCase()}, with you ${fmtTime((Date.now() - a.born) / 1000)}</small></div>`
             + `<span class="ant-trips">${fmt(a.trips)}<small>trips</small></span>`
             + `<button class="fav${a.fav ? ' on' : ''}" data-fav="${a.id}" aria-label="${a.fav ? 'Unstar' : 'Star'} ${esc(a.name)}" aria-pressed="${a.fav}"><i class="fa-${a.fav ? 'solid' : 'regular'} fa-star"></i></button></div>`
@@ -3255,6 +3939,10 @@ function renderStats() {
         ['Crumbs dropped', fmt(S.crumbs)],
         ['Bugs caught', fmt(S.critters) + (S.golden ? `, ${S.golden} golden` : '')],
         ['Lightning strikes seen', fmt(S.lightning)],
+        ['Raids fought off', fmt(S.raidsWon)],
+        ['Raids lost', fmt(S.raidsLost)],
+        ['Ants lost to raiders', fmt(Math.round(S.fallen))],
+        ['Choices made', fmt(S.events + S.rooms)],
         ['Achievements', `${st.ach.length} of ${ACH.length}`],
         oldest && ['Oldest ant', `${esc(oldest.name)}, ${fmtTime((now - oldest.born) / 1000)}`],
     ]);
@@ -3341,13 +4029,20 @@ function load() {
     const base = freshState();
     st = {...base, ...d.st, lv:{...base.lv, ...d.st.lv}, w:{...base.w, ...d.st.w}, stats:{...base.stats, ...d.st.stats}, ach:d.st.ach || [], buffs:d.st.buffs || []};
     if (d.st.guide === undefined) st.guide = st.flights > 0 ? GUIDE.length : 0;
+    st.mods = {...base.mods, ...d.st.mods};
+    if (!Array.isArray(d.st.unlocked)) st.unlocked = st.flights || st.tier || Object.values(st.lv).some(v => v > 0) ? ALL_UNLOCKS.slice() : ['click'];
+    // Farms from before the wardrobe keep every style their ants already wear.
+    if (!Array.isArray(d.st.wardrobe)) st.wardrobe = WARDROBE_ORDER.slice();
+    // Saves from before guards had three jobs.
+    if (!d.st.w || d.st.w.guard === undefined) st.w.guard = 0;
     // Older saves kept job weights from 0 to 10; turn them into percentages.
-    const ws = st.w.forage + st.w.dig + st.w.nurse;
+    const ws = st.w.forage + st.w.dig + st.w.nurse + st.w.guard;
     if (ws !== 100) {
         const f = ws ? Math.round(st.w.forage / ws * 20) * 5 : 60, d2 = ws ? Math.round(st.w.dig / ws * 20) * 5 : 30;
-        st.w = {forage:f, dig:Math.min(d2, 100 - f), nurse:100 - f - Math.min(d2, 100 - f)};
+        st.w = {forage:f, dig:Math.min(d2, 100 - f), nurse:100 - f - Math.min(d2, 100 - f), guard:0};
     }
     theme = THEMES[st.colony % THEMES.length];
+    nestBox = null;
     genSoil(st.seed);
     if (d.nest.w === WORLD) unpackNest(d.nest);
     else regrowNest(d.nest);
@@ -3367,9 +4062,15 @@ function regrowNest(old) {
 function offlineReport(sec, from) {
     const capH = st.queens >= 10 ? 24 : 8, used = Math.min(sec, capH * 3600);
     const b = {earned:st.earned, ants:st.ants, ch:nest.chambers};
+    awayRaids = {won:0, lost:0, rain:0, ants:0, food:0, loot:0};
     catchUp(used, from);
+    const ar = awayRaids;
+    awayRaids = null;
     const rows = [['Food gathered', '+' + fmt(st.earned - b.earned)], ['New ants', '+' + fmt(Math.max(0, Math.floor(st.ants) - Math.floor(b.ants)))]];
     if (nest.chambers > b.ch) rows.push(['New chambers', '+' + (nest.chambers - b.ch)]);
+    if (ar.won) rows.push(['Raids fought off', `${ar.won}, +${fmt(ar.loot)} food`]);
+    if (ar.lost) rows.push(['Raids lost', `${ar.lost}, ${fmt(ar.food)} food stolen`]);
+    if (ar.ants >= 1) rows.push(['Ants lost to raiders', fmt(Math.round(ar.ants))]);
     showSheet(`<h3>While you were away</h3><p>${fmtTime(sec)}${sec > used ? `, the colony worked for the first ${capH} hours` : ''}</p><ul>${rows.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join('')}</ul><button class="btn primary" id="sheetOk">Nice</button>`);
     $('sheetOk').addEventListener('click', hideSheet);
 }
@@ -3412,7 +4113,7 @@ const lay = {mode:'', open:null, insetB:0, gap:0};
 const OV = {goal:'goalPop', jobs:'ovJobs', up:'ovUp', fly:'ovFly', ants:'ovAnts', stats:'ovStats', more:'ovMore'};
 // Which overlay each card moves to on a phone. A marker keeps its place in
 // the panel for when the screen turns or widens.
-const OV_CARDS = [['goalCard', 'goalPop'], ['jobCard', 'ovJobs'], ['upCard', 'ovUp'], ['tab-ants', 'ovAnts'], ['tab-stats', 'ovStats']];
+const OV_CARDS = [['goalCard', 'goalPop'], ['jobCard', 'ovJobs'], ['roomCard', 'ovJobs'], ['upCard', 'ovUp'], ['tab-ants', 'ovAnts'], ['tab-stats', 'ovStats']];
 const homes = {};
 for (const [id] of OV_CARDS) { const m = document.createComment(id); $(id).before(m); homes[id] = m; }
 function layout() {
@@ -3543,7 +4244,7 @@ cv.addEventListener('pointermove', e => {
         return;
     }
     const dx = e.clientX - gesture.x0, dy = e.clientY - gesture.y0;
-    if (gesture.mode === 'tap' && Math.hypot(dx, dy) > 8 && cam.z > 1.01) { gesture.mode = 'pan'; stopFollow(); }
+    if (gesture.mode === 'tap' && Math.hypot(dx, dy) > 8 && cam.z > 1.01) { gesture.mode = 'pan'; stopFollow(); cam.auto = false; camUI(); }
     if (gesture.mode === 'pan') {
         const k = toCanvas(0, 0).k;
         cam.x = cam.tx = gesture.cx - dx * k / view.s; cam.y = cam.ty = gesture.cy - dy * k / view.s;
@@ -3564,8 +4265,15 @@ function tap(clientX, clientY) {
     const p = toCanvas(clientX, clientY), wx = (p.x - view.ox) / view.s, wy = (p.y - view.oy) / view.s;
     const reach = 26 * p.k / view.s;  // about a fingertip, in farm units
     if (critter && Math.hypot(critter.x - wx, critter.y - wy) < Math.max(reach, 4.5 * critterScale())) { catchCritter(); return; }
+    // A tap in a chamber, not right on an ant, asks what the chamber should be.
+    const room = roomAt(wx, wy);
+    if (room && !AW.some(a => Math.hypot(a.x - wx, a.y - wy) < 1.6)) {
+        if (room.role === 'queen') toast(`Queen ${queenName()}'s chamber. It stays hers.`);
+        else pickRoom(room.i, false);
+        return;
+    }
     // Ants are picked when zoomed in, or with a tap underground.
-    if (cam.z > 1.8 || wy > GROUND + 2 || cam.follow) {
+    if ((cam.z > 1.8 && !cam.auto) || wy > GROUND + 2 || cam.follow) {
         let best = null, bd = Math.min(reach, cam.z > 1.8 ? 8 : 6);
         for (const a of AW) { const d = Math.hypot(a.x - wx, a.y - wy); if (d < bd) { bd = d; best = a; } }
         if (best) { follow(best); return; }
@@ -3583,24 +4291,26 @@ cv.addEventListener('wheel', e => {
 }, {passive:false});
 $('zIn').addEventListener('click', () => { noteInput(); zoomTo(cam.tz * 1.6); });
 $('zOut').addEventListener('click', () => { noteInput(); if (cam.tz / 1.6 <= 1.01) stopFollow(); zoomTo(cam.tz / 1.6); });
-$('zFit').addEventListener('click', () => { noteInput(); stopFollow(); zoomTo(1); });
+$('zFit').addEventListener('click', () => { noteInput(); stopFollow(); });
 let jobDrag = null;
 const barPct = x => { const r = $('jobBar').getBoundingClientRect(); return (x - r.left) / r.width * 100; };
 $('jobBar').addEventListener('pointerdown', e => {
-    // The nearer divider follows the pointer; when they meet, the one on the side you drag.
-    const pct = barPct(e.clientX), g1 = st.w.forage, g2 = st.w.forage + st.w.dig;
-    const which = g1 === g2 ? (pct > g1 ? 1 : 0) : Math.abs(pct - g1) <= Math.abs(pct - g2) ? 0 : 1;
+    // The nearest divider follows the pointer. Where dividers sit together, the
+    // last one moves right and the first one moves left.
+    const pct = barPct(e.clientX), edges = jobEdges().slice(0, isUnlocked('guard') ? 3 : 2);
+    let which = 0;
+    edges.forEach((g, i) => { if (Math.abs(pct - g) < Math.abs(pct - edges[which]) || (g === edges[which] && pct > g)) which = i; });
     jobDrag = {id:e.pointerId, which};
     try { $('jobBar').setPointerCapture(e.pointerId); } catch (err) {}
     setGrip(which, pct);
 });
 $('jobBar').addEventListener('pointermove', e => { if (jobDrag && e.pointerId === jobDrag.id) setGrip(jobDrag.which, barPct(e.clientX)); });
 for (const t of ['pointerup', 'pointercancel']) $('jobBar').addEventListener(t, e => { if (jobDrag && e.pointerId === jobDrag.id) jobDrag = null; });
-['grip1', 'grip2'].forEach((id, i) => $(id).addEventListener('keydown', e => {
+GRIPS.forEach((id, i) => $(id).addEventListener('keydown', e => {
     const d = e.key === 'ArrowLeft' || e.key === 'ArrowDown' ? -5 : e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 5 : 0;
     if (!d) return;
     e.preventDefault();
-    setGrip(i, (i ? st.w.forage + st.w.dig : st.w.forage) + d);
+    setGrip(i, jobEdges()[i] + d);
 }));
 $('goalSkip').addEventListener('click', () => { st.guide = -1; updateUI(); });
 $('tabs').addEventListener('click', e => {
@@ -3617,7 +4327,7 @@ $('roster').addEventListener('click', e => {
         const a = AW.find(x => x.id === +sty.dataset.style);
         if (a) {
             // Step through every style and colour, then back to none.
-            const all = [null].concat(...STYLE_KEYS.map(k => STYLES[k].cols.map((_, i) => [k, i])));
+            const all = [null].concat(...STYLE_KEYS.filter(k => st.wardrobe.includes(k) || (a.sty && a.sty[0] === k)).map(k => STYLES[k].cols.map((_, i) => [k, i])));
             const i = all.findIndex(v => (v && v.join('.')) === (a.sty && a.sty.join('.')));
             a.sty = all[(i + +sty.dataset.step + all.length) % all.length];
         }
@@ -3632,6 +4342,12 @@ $('roster').addEventListener('click', e => {
     else if (e.target.closest('.ant-detail')) return;
     else { const row = e.target.closest('.ant-row'); if (!row) return; const id = +row.dataset.id; rosterOpen = rosterOpen === id ? null : id; renaming = null; }
     panelAt = 0; renderRoster();
+});
+$('wardrobe').addEventListener('click', e => {
+    const b = e.target.closest('[data-ward]');
+    if (!b) return;
+    const k = b.dataset.ward;
+    toast(st.wardrobe.includes(k) ? `${STYLES[k].name}: give it to any ant from their card below.` : `A new style unlocks ${STYLE_UNLOCKS[k].hint}.`);
 });
 $('queenRow').addEventListener('click', e => {
     if (e.target.closest('[data-rename-queen]')) { renaming = 'queen'; panelAt = 0; renderRoster(); const i = $('renameInput'); if (i) { i.focus(); i.select(); } }

@@ -1,0 +1,17 @@
+{
+  "id": "jelly.html",
+  "name": "Jelly Jam",
+  "short_name": "Jelly Jam",
+  "description": "A jelly puzzle game with no ads.",
+  "start_url": "jelly.html",
+  "scope": "./jelly",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#b49cff",
+  "theme_color": "#b49cff",
+  "icons": [
+    { "src": "jelly-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "jelly-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "jelly-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

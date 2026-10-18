@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<title>Jelly Jam</title>
+<meta name="description" content="A jelly puzzle game with no ads. Send jellies around the track to bust the cubes of a pixel picture.">
+<link rel="icon" type="image/svg+xml" href="jelly-favicon.svg">
+<link rel="apple-touch-icon" href="jelly-icon-180.png">
+<link rel="manifest" href="jelly.webmanifest">
+<meta name="theme-color" content="#a78bff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Jelly Jam">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #3b2a63;
+    --ink2: #6b5a92;
+    --card: #fff;
+    --pink: #ff5f9e;
+    --pink-d: #d93f7d;
+    --purple: #8a6bff;
+    --purple-d: #6a4be0;
+    --gold: #ffc23a;
+    --gold-d: #e09a12;
+    --green: #4fcf73;
+    --green-d: #2fa653;
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+/* Taps are game moves: they never zoom the page or select text. */
+html { touch-action: manipulation; -webkit-text-size-adjust: 100%; background: #b9a2ff; }
+body {
+    font-family: 'Fredoka', ui-rounded, system-ui, sans-serif;
+    color: var(--ink); font-size: 16px; line-height: 1.35;
+    background: linear-gradient(170deg, #b49cff 0%, #d7a8ff 45%, #ffb3d6 100%);
+    -webkit-font-smoothing: antialiased;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+[hidden] { display: none !important; }
+
+.screen { position: fixed; inset: 0; display: flex; flex-direction: column; }
+
+/* Chunky candy buttons */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 600; font-size: 1.1rem;
+    background: var(--pink); color: #fff; box-shadow: 0 5px 0 var(--pink-d), 0 8px 18px rgba(80, 30, 120, 0.25);
+    transition: transform 0.08s, box-shadow 0.08s;
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--pink-d), 0 4px 10px rgba(80, 30, 120, 0.2); }
+.btn.purple { background: var(--purple); box-shadow: 0 5px 0 var(--purple-d), 0 8px 18px rgba(80, 30, 120, 0.25); }
+.btn.purple:active { box-shadow: 0 2px 0 var(--purple-d); }
+.btn.green { background: var(--green); box-shadow: 0 5px 0 var(--green-d), 0 8px 18px rgba(30, 90, 50, 0.22); }
+.btn.green:active { box-shadow: 0 2px 0 var(--green-d); }
+.btn.white { background: #fff; color: var(--ink); box-shadow: 0 5px 0 #d9cff5, 0 8px 18px rgba(80, 30, 120, 0.18); }
+.btn.white:active { box-shadow: 0 2px 0 #d9cff5; }
+.btn[disabled] { opacity: 0.5; pointer-events: none; }
+.btn.big { font-size: 1.5rem; padding: 0.9rem 2.6rem; }
+.btn small { font-weight: 500; opacity: 0.85; font-size: 0.85em; }
+
+.ibtn {
+    width: 2.6rem; height: 2.6rem; border-radius: 50%; flex: none;
+    display: grid; place-items: center; font-size: 1.05rem;
+    background: rgba(255, 255, 255, 0.92); color: var(--purple-d);
+    box-shadow: 0 3px 0 rgba(106, 75, 224, 0.35);
+}
+.ibtn:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(106, 75, 224, 0.35); }
+.ibtn.on { background: var(--purple); color: #fff; }
+.ibtn.muted { color: #a99bd0; }
+.home-btns { display: flex; gap: 0.5rem; }
+
+.pill {
+    display: inline-flex; align-items: center; gap: 0.4rem; height: 2.2rem; padding: 0 0.85rem 0 0.6rem;
+    border-radius: 999px; background: rgba(255, 255, 255, 0.92); font-weight: 600;
+    box-shadow: 0 3px 0 rgba(106, 75, 224, 0.3); white-space: nowrap;
+}
+.pill i { font-size: 1rem; }
+.pill .fa-coins { color: var(--gold-d); }
+.pill .fa-fire { color: #ff7a2e; }
+.pill .fa-images { color: var(--purple); }
+
+/* Home */
+#home { align-items: center; padding: calc(var(--sat) + 0.75rem) 1rem calc(var(--sab) + 1rem); }
+.home-top { width: 100%; max-width: 30rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.home-mid { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; width: 100%; max-width: 30rem; text-align: center; }
+#mascot { width: 9rem; height: 9rem; }
+.logo { font-size: clamp(2.8rem, 13vw, 4.2rem); font-weight: 700; line-height: 1; color: #fff; letter-spacing: 0.01em;
+    text-shadow: 0 4px 0 var(--pink-d), 0 7px 0 rgba(90, 40, 140, 0.25); }
+.logo span { color: #ffe066; text-shadow: 0 4px 0 var(--gold-d), 0 7px 0 rgba(90, 40, 140, 0.25); }
+.tag { color: #fff; font-weight: 500; opacity: 0.95; margin-top: -0.3rem; }
+.chips { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+.chips .pill { cursor: pointer; }
+.hard-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; color: #fff; background: #ff4d5e; border-radius: 6px; padding: 0.05rem 0.4rem; vertical-align: middle; letter-spacing: 0.04em; }
+#playBtn .hard-tag { background: #fff; color: #ff4d5e; margin-left: 0.25rem; }
+.home-bot { display: flex; gap: 0.75rem; }
+
+/* Play */
+.hud {
+    flex: none; display: flex; align-items: center; gap: 0.45rem;
+    padding: calc(var(--sat) + 0.5rem) 0.6rem 0.35rem;
+}
+.hud .lvl { flex: 1; text-align: center; font-weight: 700; font-size: 1.15rem; color: #fff; text-shadow: 0 2px 0 rgba(90, 40, 140, 0.35); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hud .lvl small { display: block; font-size: 0.72rem; font-weight: 500; opacity: 0.9; margin-top: -0.1rem; }
+/* Small phones: slimmer buttons so the level name and its HARD tag still fit. */
+@media (max-width: 400px) {
+    .hud { gap: 0.3rem; padding-left: 0.45rem; padding-right: 0.45rem; }
+    .hud .ibtn { width: 2.3rem; height: 2.3rem; font-size: 0.95rem; }
+    .hud .pill { padding: 0 0.6rem 0 0.45rem; gap: 0.3rem; }
+    .hud .lvl { font-size: 1.02rem; }
+    .hud .lvl .hard-tag { font-size: 0.65rem; padding: 0.05rem 0.3rem; }
+}
+#stage { position: relative; flex: 1; min-height: 0; }
+#cv { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.boosts { flex: none; display: flex; justify-content: center; gap: 1.1rem; padding: 0.3rem 0.5rem calc(var(--sab) + 1.35rem); }
+/* The bars line up with the game's column instead of the screen's edges. */
+#play .hud, #play .boosts { width: 100%; max-width: var(--colw, 100%); align-self: center; }
+.boost {
+    position: relative; width: 3.6rem; height: 3.6rem; border-radius: 50%;
+    background: #fff; color: var(--purple-d); font-size: 1.45rem; display: grid; place-items: center;
+    box-shadow: 0 4px 0 #cdbdf7, 0 6px 14px rgba(80, 30, 120, 0.2);
+}
+.boost:active { transform: translateY(2px); box-shadow: 0 2px 0 #cdbdf7; }
+.boost.aim { background: var(--gold); color: #fff; box-shadow: 0 4px 0 var(--gold-d), 0 0 0 4px rgba(255, 255, 255, 0.7); }
+.boost.locked { opacity: 0.55; }
+.boost .badge {
+    position: absolute; right: -0.35rem; top: -0.3rem; min-width: 1.5rem; height: 1.5rem; padding: 0 0.35rem;
+    border-radius: 999px; background: var(--pink); color: #fff; font-size: 0.82rem; font-weight: 700;
+    display: grid; place-items: center; box-shadow: 0 2px 0 var(--pink-d); white-space: nowrap;
+}
+.boost .badge.price { background: var(--gold); box-shadow: 0 2px 0 var(--gold-d); font-size: 0.72rem; }
+.boost .badge.lock { background: #9a8cc4; box-shadow: none; }
+.boost .lbl { position: absolute; bottom: -1.05rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; font-weight: 600; color: #fff; white-space: nowrap; text-shadow: 0 1px 0 rgba(90, 40, 140, 0.4); }
+
+#tip {
+    position: absolute; left: 50%; top: 0.3rem; transform: translateX(-50%); z-index: 5;
+    width: max-content; max-width: min(24rem, calc(100% - 1.5rem));
+    background: #fff; color: var(--ink); border-radius: 16px; padding: 0.55rem 0.9rem;
+    font-weight: 500; font-size: 0.95rem; text-align: center; box-shadow: 0 6px 18px rgba(80, 30, 120, 0.25);
+    pointer-events: none; animation: pop-in 0.25s ease-out;
+}
+@keyframes pop-in { from { transform: translateX(-50%) scale(0.85); opacity: 0; } to { transform: translateX(-50%) scale(1); opacity: 1; } }
+
+/* Album */
+#album { padding: calc(var(--sat) + 0.6rem) 0.75rem 0; }
+.album-head { display: flex; align-items: center; gap: 0.6rem; max-width: 40rem; width: 100%; margin: 0 auto 0.6rem; }
+.album-head h2 { flex: 1; color: #fff; font-size: 1.5rem; text-shadow: 0 2px 0 rgba(90, 40, 140, 0.35); }
+.album-grid {
+    flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; max-width: 40rem; width: 100%; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(6.4rem, 1fr)); gap: 0.6rem; align-content: start;
+    padding-bottom: calc(var(--sab) + 1rem);
+}
+.tile { background: rgba(255, 255, 255, 0.92); border-radius: 16px; padding: 0.5rem 0.4rem 0.4rem; text-align: center; box-shadow: 0 3px 0 rgba(106, 75, 224, 0.3); }
+.tile canvas { width: 4.6rem; height: 4.6rem; display: block; margin: 0 auto 0.25rem; background: #f0eaff; border-radius: 10px; }
+.tile .nm { font-size: 0.8rem; font-weight: 600; }
+.tile.locked { background: rgba(255, 255, 255, 0.45); color: var(--ink2); }
+.tile.locked .q { width: 4.6rem; height: 4.6rem; margin: 0 auto 0.25rem; display: grid; place-items: center; font-size: 2rem; font-weight: 700; color: rgba(106, 75, 224, 0.45); }
+
+/* Modal */
+.modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 1rem; background: rgba(60, 30, 110, 0.45); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.card {
+    width: min(23rem, 100%); max-height: calc(100dvh - 2rem); overflow-y: auto;
+    background: #fff; border-radius: 26px; padding: 1.4rem 1.3rem 1.3rem; text-align: center;
+    box-shadow: 0 8px 0 #d9cff5, 0 18px 40px rgba(60, 20, 110, 0.35); animation: card-in 0.28s cubic-bezier(.2, 1.4, .4, 1);
+}
+@keyframes card-in { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.card h2 { font-size: 1.7rem; line-height: 1.1; margin-bottom: 0.4rem; color: var(--purple-d); }
+.card h2.pink { color: var(--pink-d); }
+.card p { color: var(--ink2); margin-bottom: 0.6rem; }
+.card .acts { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+.card .row { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+.card .reward { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 1.4rem; font-weight: 700; color: var(--gold-d); margin: 0.2rem 0 0.2rem; }
+.card .picbox { display: grid; place-items: center; margin: 0.4rem auto 0.6rem; }
+.card .picbox canvas { width: 10rem; height: 10rem; background: #f0eaff; border-radius: 14px; }
+.card .icon-big { font-size: 3rem; color: var(--purple); margin-bottom: 0.5rem; }
+.card .icon-big.gold { color: var(--gold-d); }
+.card ul { text-align: left; color: var(--ink2); padding-left: 1.2rem; margin: 0.2rem 0 0.4rem; }
+.card li { margin-bottom: 0.45rem; }
+.card li b { color: var(--ink); }
+.setting { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.65rem 0.2rem; border-bottom: 1px solid #eee7ff; font-weight: 500; text-align: left; }
+.setting:last-of-type { border-bottom: 0; }
+.toggle { width: 3.2rem; height: 1.85rem; border-radius: 999px; background: #d9d1ee; position: relative; flex: none; transition: background 0.15s; }
+.toggle::after { content: ''; position: absolute; left: 0.2rem; top: 0.2rem; width: 1.45rem; height: 1.45rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: left 0.15s; }
+.toggle.on { background: var(--green); }
+.toggle.on::after { left: 1.55rem; }
+.link { color: var(--purple-d); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; padding: 0.3rem; }
+.link.red { color: #e0465a; }
+.small { font-size: 0.85rem; }
+.move-box { background: #f5f0ff; border-radius: 18px; padding: 0.9rem 0.8rem; margin: 0.7rem 0 0.2rem; }
+.move-box .lbl { font-size: 0.8rem; font-weight: 600; color: var(--ink2); text-transform: uppercase; letter-spacing: 0.06em; }
+.move-code { font-size: 1.45rem; font-weight: 700; letter-spacing: 0.06em; color: var(--purple-d); margin: 0.15rem 0 0.5rem; user-select: all; -webkit-user-select: all; }
+.move-box canvas { width: 9.5rem; height: 9.5rem; display: block; margin: 0.7rem auto 0.3rem; border-radius: 10px; background: #fff; }
+.code-in {
+    width: 100%; font: inherit; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.06em; text-align: center; text-transform: uppercase;
+    padding: 0.7rem; border-radius: 14px; border: 2px solid #d9cff5; color: var(--ink); background: #fff;
+    user-select: text; -webkit-user-select: text;
+}
+.code-in:focus { outline: none; border-color: var(--purple); }
+.scan-vid { width: 100%; max-height: 16rem; object-fit: cover; border-radius: 14px; background: #000; margin-top: 0.7rem; }
+.msg-err { color: #e0465a; font-weight: 500; }
+
+#toast {
+    position: fixed; z-index: 60; left: 50%; top: calc(var(--sat) + 3.6rem); transform: translateX(-50%);
+    background: rgba(59, 42, 99, 0.92); color: #fff; padding: 0.5rem 1rem; border-radius: 999px; font-weight: 500;
+    font-size: 0.95rem; max-width: calc(100vw - 2rem); text-align: center; pointer-events: none; animation: pop-in 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+
+<div id="home" class="screen">
+    <div class="home-top">
+        <div class="pill"><i class="fa-solid fa-coins"></i><span id="homeCoins">0</span></div>
+        <div class="home-btns">
+            <button class="ibtn sound-btn" aria-label="Sound"><i class="fa-solid fa-volume-high"></i></button>
+            <button class="ibtn" id="homeSettings" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+        </div>
+    </div>
+    <div class="home-mid">
+        <canvas id="mascot"></canvas>
+        <h1 class="logo">Jelly <span>Jam</span></h1>
+        <p class="tag">Bust the picture. No ads, ever.</p>
+        <button class="btn big" id="playBtn">Level 1</button>
+        <div class="chips">
+            <button class="pill" id="streakChip" title="Win streak"><i class="fa-solid fa-fire"></i><span id="streakTxt">0</span></button>
+            <button class="pill" id="albumChip"><i class="fa-solid fa-images"></i><span id="albumTxt">0</span></button>
+        </div>
+    </div>
+    <div class="home-bot">
+        <button class="btn white" id="howBtn"><i class="fa-solid fa-circle-question"></i> How to play</button>
+    </div>
+</div>
+
+<div id="play" class="screen" hidden>
+    <header class="hud">
+        <button class="ibtn" id="pauseBtn" aria-label="Menu"><i class="fa-solid fa-pause"></i></button>
+        <button class="ibtn" id="fastBtn" aria-label="Fast track" title="Fast track"><i class="fa-solid fa-forward"></i></button>
+        <div class="lvl" id="lvlName">Level 1</div>
+        <button class="ibtn sound-btn" aria-label="Sound"><i class="fa-solid fa-volume-high"></i></button>
+        <div class="pill"><i class="fa-solid fa-coins"></i><span id="hudCoins">0</span></div>
+    </header>
+    <div id="stage"><canvas id="cv"></canvas><div id="tip" hidden></div></div>
+    <footer class="boosts" id="boosts">
+        <button class="boost" data-b="hammer" aria-label="Hammer"><i class="fa-solid fa-hammer"></i><span class="badge"></span><span class="lbl">Hammer</span></button>
+        <button class="boost" data-b="magnet" aria-label="Magnet"><i class="fa-solid fa-magnet"></i><span class="badge"></span><span class="lbl">Magnet</span></button>
+    </footer>
+</div>
+
+<div id="album" class="screen" hidden>
+    <div class="album-head">
+        <button class="ibtn" id="albumBack" aria-label="Back"><i class="fa-solid fa-arrow-left"></i></button>
+        <h2>Album</h2>
+        <div class="pill"><i class="fa-solid fa-images"></i><span id="albumCount">0</span></div>
+    </div>
+    <div class="album-grid" id="albumGrid"></div>
+</div>
+
+<div id="modal" class="modal" hidden><div class="card" id="card"></div></div>
+<div id="toast" hidden></div>
+
+<script>
+'use strict';
+/* CORE START: rules, pictures and the level maker. No DOM in here, so tools/jelly_sim.js can run it in node. */
+
+// Cube and jelly colors. A color's id is its index in KEYS plus one (0 means empty).
+const PAL = {
+    R: '#ff4d5e', O: '#ff9a2e', Y: '#ffd43b', G: '#86dc4a', E: '#1fa45c', B: '#45c4ff', N: '#3d6df2',
+    P: '#a65cf5', K: '#ff9fcd', M: '#e2408d', W: '#ffffff', D: '#3a3150', T: '#a5622f', S: '#ffc99e', A: '#a9afc3',
+};
+const CNAME = {
+    R: 'Red', O: 'Orange', Y: 'Yellow', G: 'Lime', E: 'Green', B: 'Sky blue', N: 'Blue',
+    P: 'Purple', K: 'Pink', M: 'Berry', W: 'White', D: 'Black', T: 'Brown', S: 'Peach', A: 'Grey',
+};
+const KEYS = Object.keys(PAL);
+const RAIL_GAP = 1;      // the track runs this many cells outside the board
+const SPACING = 2.2;     // cells between jellies rolling onto the track
+const HOP = 0.3;         // seconds to hop onto the track or into a slot
+const SHOT_SPEED = 40;   // cells per second
+const CAP = 5;           // jellies on the track at once
+const SLOTS = 5;         // waiting slots
+const MAX_SLOTS = 5;      // never more than this, even when buying one
+
+function mulberry32(a) {
+    return () => {
+        a |= 0; a = a + 0x6D2B79F5 | 0;
+        let t = Math.imul(a ^ a >>> 15, 1 | a);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+}
+
+// Pictures drawn by a function of each cell's centre.
+function art(w, h, f) {
+    const rows = [];
+    for (let y = 0; y < h; y++) {
+        let r = '';
+        for (let x = 0; x < w; x++) r += f(x + 0.5, y + 0.5, x, y) || '.';
+        rows.push(r);
+    }
+    return rows;
+}
+const ang = (dx, dy) => (Math.atan2(dy, dx) + Math.PI) / (2 * Math.PI);
+
+// The pictures, in level order. Letters are PAL colors, '.' is empty.
+const PICS = [
+    {id: 'heart', name: 'Heart', art: [
+        '.RRR.RRR.',
+        'RKKRRRRRR',
+        'RKRRRRRRR',
+        'RRRRRRRRR',
+        '.RRRRRRR.',
+        '..RRRRR..',
+        '...RRR...',
+        '....R....']},
+    {id: 'sun', name: 'Sunny', art: [
+        '.....O.....',
+        '.O...O...O.',
+        '..O.YYY.O..',
+        '...YYYYY...',
+        '..YDYYYDY..',
+        'OOYYYYYYYOO',
+        '..YDYYYDY..',
+        '...YDDDY...',
+        '..O.YYY.O..',
+        '.O...O...O.',
+        '.....O.....']},
+    {id: 'strawberry', name: 'Strawberry', art: [
+        '....GG....',
+        '.GGGGGGGG.',
+        'RRGGRRGGRR',
+        'RRRRRRRRRR',
+        'RYRRRYRRYR',
+        'RRRYRRRYRR',
+        '.RYRRYRRR.',
+        '.RRRRRRYR.',
+        '..RYRRRR..',
+        '...RRYR...',
+        '....RR....']},
+    {id: 'ghost', name: 'Ghost', art: [
+        '...WWWW...',
+        '..WWWWWW..',
+        '.WWWWWWWW.',
+        '.WDDWWDDW.',
+        'WWDDWWDDWW',
+        'WWWWWWWWWW',
+        'WKWWWWWWKW',
+        'WWWWDDWWWW',
+        'WWWWWWWWWW',
+        'WWWWWWWWWW',
+        'W.WW..WW.W']},
+    {id: 'star', name: 'Star', art: [
+        '.....Y.....',
+        '....YYY....',
+        '....YYY....',
+        'YYYYYYYYYOO',
+        '.YYYDYDYYO.',
+        '..YYYYYYO..',
+        '..YYYYYYO..',
+        '.YYYYYYYOO.',
+        '.YYO...YOO.',
+        'YYO.....OOO']},
+    {id: 'mushroom', name: 'Mushroom', art: [
+        '...RRRR...',
+        '..RRWWRRR.',
+        '.RRWWWWRRR',
+        '.RRRWWRRWR',
+        'RRRRRRRWWR',
+        'RWWRRRRRRR',
+        '..SSSSSS..',
+        '..SDSSDS..',
+        '..SSSSSS..',
+        '...SSSS...']},
+    {id: 'apple', name: 'Apple', art: [
+        '....T.GG..',
+        '....TGG...',
+        '.RRRTRRRR.',
+        'RRWRRRRRRR',
+        'RWRRRRRRRR',
+        'RWRRRRRRRR',
+        'RRRRRRRRRR',
+        'RRRRRRRRRR',
+        '.RRRRRRRR.',
+        '..RR..RR..']},
+    {id: 'fish', name: 'Goldfish', art: [
+        '...OOOO.....',
+        '.OOOOOOOO.YY',
+        'OWDOOYOOOOYY',
+        'OOOOOYOOOYYY',
+        'OOOOOYOOOYYY',
+        '.OOOOYOOOOYY',
+        '..OOOOOOO.YY',
+        '....OOO.....']},
+    {id: 'pig', name: 'Piggy', art: [
+        'KK........KK',
+        'KMK......KMK',
+        'KMKKKKKKKKMK',
+        'KKKKKKKKKKKK',
+        'KKDKKKKKKDKK',
+        'KKKKMMMMKKKK',
+        'KKKMDMMDMKKK',
+        'KKKKMMMMKKKK',
+        '.KKKKKKKKKK.',
+        '..KKKKKKKK..']},
+    {id: 'ladybug', name: 'Ladybug', art: [
+        '...D...D...',
+        '....D.D....',
+        '...DDDDD...',
+        '..DWDDDWD..',
+        '.RRRRDRRRR.',
+        'RRDDRDRDDRR',
+        'RRDDRDRDDRR',
+        'RRRRRDRRRRR',
+        'RDDRRDRRDDR',
+        '.RDRRDRRDR.',
+        '..RRRDRRR..']},
+    {id: 'icecream', hard: true, name: 'Ice cream', art: [
+        '....RR...',
+        '....RR...',
+        '..KKKKK..',
+        '.KKWKKKK.',
+        'KKWKKKKKK',
+        'KKKKKKKKK',
+        'YYYYYYYYY',
+        '.YTYYYTY.',
+        '.YYYTYYY.',
+        '..YTYTY..',
+        '..YYTYY..',
+        '...YTY...',
+        '....Y....']},
+    {id: 'cat', name: 'Kitty', art: [
+        'OO........OO',
+        'OKO......OKO',
+        'OKKOOOOOOKKO',
+        'OOOOOOOOOOOO',
+        'OODDOOOODDOO',
+        'OODDOOOODDOO',
+        'OOOOOKKOOOOO',
+        'OOOWWWWWWOOO',
+        'OOWWDWWDWWOO',
+        '.OOWWWWWWOO.',
+        '..OOOOOOOO..']},
+    {id: 'target', name: 'Bullseye', art: art(13, 13, (x, y) => {
+        const d = Math.hypot(x - 6.5, y - 6.5);
+        return d < 1.5 ? 'Y' : d < 2.9 ? 'R' : d < 4.2 ? 'W' : d < 5.5 ? 'R' : d < 6.6 ? 'W' : '';
+    })},
+    {id: 'penguin', name: 'Penguin', art: [
+        '...DDDDD...',
+        '..DDDDDDD..',
+        '.DDWWDWWDD.',
+        '.DWDWWWDWD.',
+        '.DWWWOWWWD.',
+        '.DWWOOOWWD.',
+        'DDWWWWWWWDD',
+        'DDWWWWWWWDD',
+        'D.DWWWWWD.D',
+        '..DWWWWWD..',
+        '..DWWWWWD..',
+        '...DDDDD...',
+        '..OOO.OOO..']},
+    {id: 'house', hard: true, name: 'Cottage', art: [
+        '.....RR.....',
+        '....RRRR....',
+        '...RRRRRR...',
+        '..RRRRRRRR..',
+        '.RRRRRRRRRR.',
+        'RRRRRRRRRRRR',
+        '.YYYYYYYYYY.',
+        '.YBBYYYYBBY.',
+        '.YBBYTTYBBY.',
+        '.YYYYTTYYYY.',
+        '.YYYYTTYYYY.',
+        'GGGGGGGGGGGG']},
+    {id: 'bunny', name: 'Bunny', art: [
+        '..WW...WW..',
+        '..WKW.WKW..',
+        '..WKW.WKW..',
+        '..WKW.WKW..',
+        '..WWWWWWW..',
+        '.WWWWWWWWW.',
+        'WWDWWWWWDWW',
+        'WWWWWKWWWWW',
+        'WKWWDWDWWKW',
+        '.WWWWWWWWW.',
+        '..WWWWWWW..']},
+    {id: 'watermelon', name: 'Watermelon', art: art(14, 8, (x, y, xi, yi) => {
+        const d = Math.hypot((x - 7) / 7, y / 7.6);
+        if (d > 1) return '';
+        if (d > 0.86) return 'E';
+        if (d > 0.74) return 'G';
+        return yi >= 1 && yi <= 4 && (xi * 3 + yi * 5) % 7 === 0 ? 'D' : 'R';
+    })},
+    {id: 'duck', name: 'Ducky', art: [
+        '...YYYY.....',
+        '..YYYYYY....',
+        '..YDYYYY....',
+        'OOOYYYYY....',
+        '.OOYYYY.....',
+        '...YYYY....Y',
+        '..YYYYYYYYYY',
+        '.YYYYOOYYYYY',
+        '.YYYYYOOYYY.',
+        '..YYYYYYYY..',
+        'BBBBBBBBBBBB']},
+    {id: 'cupcake', hard: true, name: 'Cupcake', art: [
+        '.....R.....',
+        '....RR.....',
+        '...KKKKK...',
+        '..KKKWKKK..',
+        '.KKWKKKKKK.',
+        'KKKKKKKKWKK',
+        'KKKKKKKKKKK',
+        '.TSTSTSTST.',
+        '.TSTSTSTST.',
+        '..TSTSTST..',
+        '..TSTSTST..',
+        '...TSTST...']},
+    {id: 'panda', name: 'Panda', art: [
+        'DD........DD',
+        'DDDWWWWWWDDD',
+        '.DWWWWWWWWD.',
+        '.WWWWWWWWWW.',
+        'WWDDWWWWDDWW',
+        'WDWDWWWWDWDW',
+        'WWDDWWWWDDWW',
+        'WWWWWDDWWWWW',
+        'WKWWWWWWWWKW',
+        '.WWWDWWDWWW.',
+        '..WWWDDWWW..']},
+    {id: 'tree', name: 'Apple tree', art: [
+        '....GGG....',
+        '..GGGGGGG..',
+        '.GGGEGGGGG.',
+        'GGGGGGGEGGG',
+        'GGEGGGGGGGG',
+        'GGGGGRGGGEG',
+        '.GGEGGGGGG.',
+        '..GGGGGRG..',
+        '....TTT....',
+        '....TTT....',
+        '....TTT....',
+        '...TTTTT...',
+        'EEEEEEEEEEE']},
+    {id: 'donut', hard: true, name: 'Donut', art: art(12, 12, (x, y, xi, yi) => {
+        const d = Math.hypot(x - 6, y - 6);
+        if (d > 5.9 || d < 1.7) return '';
+        if (d > 5.0 || d < 2.5) return 'S';
+        const h = (xi * 7 + yi * 13) % 9;
+        return h === 0 ? 'W' : h === 4 ? 'Y' : h === 7 ? 'B' : 'K';
+    })},
+    {id: 'frog', hard: true, name: 'Froggy', art: [
+        '.GGG....GGG.',
+        'GWWWG..GWWWG',
+        'GWDWGGGGWDWG',
+        'GWWWGGGGWWWG',
+        'GGGGGGGGGGGG',
+        'GKGGGGGGGGKG',
+        'GRGGGGGGGGRG',
+        'GGRRRRRRRRGG',
+        '.GGGGGGGGGG.',
+        '..EE....EE..']},
+    {id: 'rocket', name: 'Rocket', art: [
+        '....R....',
+        '...RRR...',
+        '...WWW...',
+        '..WWWWW..',
+        '..WBBBW..',
+        '..WBBBW..',
+        '..WWWWW..',
+        '..WWWWW..',
+        '.RWWWWWR.',
+        'RRWWWWWRR',
+        'RR.RRR.RR',
+        '...OYO...',
+        '...OYO...',
+        '....O....']},
+    {id: 'beachball', name: 'Beach ball', art: art(14, 14, (x, y) => {
+        const dx = x - 7, dy = y - 7, d = Math.hypot(dx, dy);
+        if (d > 6.9) return '';
+        if (d < 1.3) return 'W';
+        return 'RWBWYW'[Math.floor(ang(dx, dy) * 6 + 0.25) % 6];
+    })},
+    {id: 'octopus', name: 'Octopus', art: [
+        '....PPPP....',
+        '..PPPPPPPP..',
+        '.PPPPPPPPPP.',
+        '.PKPPPPPPKP.',
+        'PPWWPPPPWWPP',
+        'PPWDPPPPWDPP',
+        'PPPPPPPPPPPP',
+        'PKPPPDDPPPKP',
+        '.PPPPPPPPPP.',
+        'P.PP.PP.PP.P',
+        'P.P..PP..P.P',
+        '.P..P..P..P.']},
+    {id: 'crown', name: 'Crown', art: [
+        'Y....YY....Y',
+        'YY..YYYY..YY',
+        'YYY.YYYY.YYY',
+        'YYYYYRRYYYYY',
+        'YYBYYRRYYBYY',
+        'YYYYYYYYYYYY',
+        'OOOOOOOOOOOO',
+        'OBOOROOROOBO',
+        'OOOOOOOOOOOO']},
+    {id: 'butterfly', name: 'Butterfly', art: [
+        '.....D.D.....',
+        '.PPP..D..PPP.',
+        'PPKPP.D.PPKPP',
+        'PKKKPPDPPKKKP',
+        'PKBKPPDPPKBKP',
+        'PPKKPPDPPKKPP',
+        '.PPPPPDPPPPP.',
+        '..PPKPDPKPP..',
+        '.PPKKPDPKKPP.',
+        '.PKBKP.PKBKP.',
+        '..PPP...PPP..']},
+    {id: 'cactus', name: 'Cactus', art: [
+        '....KK....',
+        '...EGGE...',
+        '...EGGE...',
+        'EE.EGGE...',
+        'EG.EGGE.EE',
+        'EG.EGGE.GE',
+        'EGEEGGE.GE',
+        '.EGGGGEEGE',
+        '...EGGGGE.',
+        '...EGGE...',
+        '.OOOOOOOO.',
+        '..OOOOOO..',
+        '..OOOOOO..',
+        '...OOOO...']},
+    {id: 'rainbow', hard: true, name: 'Rainbow', art: art(14, 8, (x, y) => {
+        if (Math.hypot(x - 1.9, y - 7) < 1.75 || Math.hypot(x - 12.1, y - 7) < 1.75 || Math.hypot(x - 3.4, y - 7.6) < 1.2 || Math.hypot(x - 10.6, y - 7.6) < 1.2) return 'W';
+        const d = Math.hypot(x - 7, y - 8.2);
+        if (d > 7.9) return '';
+        return ['R', 'O', 'Y', 'G', 'B', 'P'][Math.floor((7.9 - d) / 1.05)] || '';
+    })},
+    {id: 'owl', hard: true, name: 'Owl', art: [
+        'T.........T',
+        'TTT.....TTT',
+        'TTTTTTTTTTT',
+        'TWWWTTTWWWT',
+        'WWDDWTWDDWW',
+        'WWDDWOWDDWW',
+        'TWWWTOTWWWT',
+        'TTSSSSSSSTT',
+        'TSSTSSSTSST',
+        'TTSSSSSSSTT',
+        '.TTSSSSSTT.',
+        '..OO...OO..']},
+    {id: 'pizza', name: 'Pizza', art: [
+        'OOOOOOOOOOOO',
+        'TTTTTTTTTTTT',
+        '.YYRRYYYYRY.',
+        '.YRRRYYYRRY.',
+        '..YRYYYYYY..',
+        '..YYYYRRYY..',
+        '...YYRRRY...',
+        '...YYYRYY...',
+        '....YYYY....',
+        '....YRYY....',
+        '.....YY.....',
+        '.....Y......']},
+    {id: 'bee', name: 'Bumblebee', art: [
+        '....WW.WW...',
+        '...WWWWWWW..',
+        '....WWWWW...',
+        '..YYDDYYDY..',
+        '.YYYDDYYDYY.',
+        'YDYYDDYYDYYD',
+        'YYYYDDYYDYY.',
+        '.YYYDDYYDY..',
+        '..YYDDYYD...']},
+    {id: 'snail', name: 'Snail', art: [
+        '...OOOO......',
+        '..OYYYYO.....',
+        '.OYOOOYYO.D.D',
+        '.OYOYYOYO..D.',
+        '.OYOOYOYO.GG.',
+        '.OYYYYOYO.GG.',
+        '.OOOOOYO.GGG.',
+        'GGGGGGGGGGGG.',
+        '.GGGGGGGGGG..']},
+    {id: 'whale', name: 'Whale', art: [
+        '..B.B.........',
+        '...B..........',
+        '..NNNNNN......',
+        '.NNNNNNNNN...N',
+        'NNNNNNNNNNN.NN',
+        'NNDNNNNNNNNNN.',
+        'NNNNNNNNNNNN..',
+        'BBBBBNNNNNN...',
+        '.BBBBBBBNN....',
+        '...BBBB.......']},
+    {id: 'lollipop', name: 'Lollipop', art: art(12, 17, (x, y) => {
+        if (y < 12) {
+            const dx = x - 6, dy = y - 6, d = Math.hypot(dx, dy);
+            if (d > 5.9) return '';
+            return Math.floor(ang(dx, dy) * 2 + d / 1.5) % 2 ? 'K' : 'P';
+        }
+        return x > 5 && x < 7 ? 'W' : '';
+    })},
+    {id: 'bigheart', name: 'Big heart', art: (() => {
+        const inside = (x, y) => {
+            const X = (x - 7.5) / 6.5 * 1.14, Y = 1.25 - (y - 0.5) / 12 * 2.25;
+            return (X * X + Y * Y - 1) ** 3 - X * X * Y ** 3 <= 0;
+        };
+        return art(15, 13, (x, y) => {
+            if (!inside(x, y)) return '';
+            if (!inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1)) return 'M';
+            if (Math.hypot(x - 4.2, y - 3.2) < 1.1) return 'W';
+            if (Math.hypot(x - 4.6, y - 3.8) < 2.4) return 'K';
+            return 'R';
+        });
+    })()},
+    {id: 'saturn', name: 'Ringed planet', art: art(16, 12, (x, y, xi, yi) => {
+        const dx = x - 8, dy = y - 6, pd = Math.hypot(dx, dy);
+        const c = Math.cos(0.32), s = Math.sin(0.32);
+        const rx = dx * c + dy * s, ry = -dx * s + dy * c;
+        const e = (rx / 7.7) ** 2 + (ry / 2.1) ** 2;
+        if (e < 1 && e > 0.42 && (ry > 0 || pd > 4.4)) return 'Y';
+        if (pd < 4.4) return (yi + Math.round(dx * 0.3)) % 3 === 0 ? 'K' : 'P';
+        return '';
+    })},
+    {id: 'earth', name: 'Planet Earth', art: art(16, 16, (x, y, xi, yi) => {
+        const d = Math.hypot(x - 8, y - 8);
+        if (d > 7.8) return '';
+        const n = Math.sin(x * 0.9) + Math.sin(y * 0.7 + x * 0.3) + Math.sin((x + y) * 0.45 + 1.3);
+        if (n > 1.3 && yi % 5 === 1) return 'W';
+        return n > 0.5 ? 'G' : 'B';
+    })},
+];
+
+function picGrid(pic, mirror, scale = 1) {
+    const rows = pic.art, h = rows.length, w = Math.max(...rows.map(r => r.length));
+    const cells = new Array(w * h).fill(0);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const ch = rows[y][mirror ? w - 1 - x : x] || '.';
+        const k = KEYS.indexOf(ch);
+        if (k >= 0) cells[y * w + x] = k + 1;
+    }
+    return scale === 2 ? scale2x(w, h, cells) : {w, h, cells};
+}
+
+// Scale2x (EPX): doubles a picture and rounds off its stair steps, so big boards
+// look drawn rather than blown up.
+function scale2x(w, h, src) {
+    const at = (x, y) => x < 0 || y < 0 || x >= w || y >= h ? 0 : src[y * w + x];
+    const W2 = w * 2, out = new Array(W2 * h * 2).fill(0);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const P = at(x, y), A = at(x, y - 1), B = at(x + 1, y), C = at(x - 1, y), D = at(x, y + 1);
+        const o = y * 2 * W2 + x * 2;
+        out[o] = C === A && C !== D && A !== B ? A : P;
+        out[o + 1] = A === B && A !== C && B !== D ? B : P;
+        out[o + W2] = D === C && D !== B && C !== A ? C : P;
+        out[o + W2 + 1] = B === D && B !== A && D !== C ? D : P;
+    }
+    return {w: W2, h: h * 2, cells: out};
+}
+
+// Backgrounds fill the empty cells around a picture, so its colors sit in layers and
+// only what's on the outside can be reached, as in a real pixel picture. Each pattern
+// says which of two background colors a cell gets.
+const BG_PATTERNS = [
+    () => 0,                                                        // plain
+    (x, y, w, h) => y < h * 0.62 ? 0 : 1,                           // sky and ground
+    (x, y) => Math.floor(y / 3) % 2,                                // stripes
+    (x, y) => (x % 6 === 2 && y % 6 === 2) || (x % 6 === 5 && y % 6 === 5) ? 1 : 0,   // dots
+    (x, y) => (Math.floor(x / 4) + Math.floor(y / 4)) % 2,          // checks
+];
+const BG_COLORS = 'BKYGWPONEA';
+function withBackground(grid, k) {
+    const used = new Set(grid.cells), pick = [];
+    for (let i = 0; i < BG_COLORS.length && pick.length < 2; i++) {
+        const c = KEYS.indexOf(BG_COLORS[(i + k * 3) % BG_COLORS.length]) + 1;
+        if (!used.has(c)) pick.push(c);
+    }
+    const f = BG_PATTERNS[k % BG_PATTERNS.length], {w, h} = grid;
+    return {w, h, cells: grid.cells.map((c, i) => c || pick[f(i % w, Math.floor(i / w), w, h)])};
+}
+
+// Lane events around the track. The track starts at the bottom left corner and runs
+// right along the bottom, up the right side, left along the top and down the left side.
+// Each event is where a jelly passes a row or column and looks in at it; `cells` lists
+// that lane's cells from the outside in.
+const laneCache = {};
+function lanes(w, h) {
+    const key = w + 'x' + h;
+    if (laneCache[key]) return laneCache[key];
+    const g = RAIL_GAP, ev = [];
+    const colCells = (x, up) => Array.from({length: h}, (_, k) => (up ? h - 1 - k : k) * w + x);
+    const rowCells = (y, left) => Array.from({length: w}, (_, k) => y * w + (left ? w - 1 - k : k));
+    for (let x = 0; x < w; x++) ev.push({s: g + x + 0.5, side: 0, cells: colCells(x, true)});
+    const b = w + 2 * g;
+    for (let y = h - 1; y >= 0; y--) ev.push({s: b + g + (h - 1 - y) + 0.5, side: 1, cells: rowCells(y, true)});
+    const r = b + h + 2 * g;
+    for (let x = w - 1; x >= 0; x--) ev.push({s: r + g + (w - 1 - x) + 0.5, side: 2, cells: colCells(x, false)});
+    const t = r + w + 2 * g;
+    for (let y = 0; y < h; y++) ev.push({s: t + g + y + 0.5, side: 3, cells: rowCells(y, false)});
+    return laneCache[key] = {ev, P: 2 * (w + 2 * g) + 2 * (h + 2 * g)};
+}
+
+// One lap of a jelly with `ammo` shots on the board `hp` (changed in place). Returns shots fired.
+function lapHits(ev, col, hp, c, ammo) {
+    let n = 0;
+    for (const e of ev) {
+        if (n >= ammo) break;
+        for (const i of e.cells) {
+            if (hp[i] <= 0) continue;
+            if (col[i] === c) { hp[i]--; n++; }
+            break;
+        }
+    }
+    return n;
+}
+
+function levelInfo(n) {
+    const k = (n - 1) % PICS.length, round = Math.floor((n - 1) / PICS.length);
+    const d = n + round * 20;   // later rounds through the album keep getting harder
+    // Hard levels are the busier pictures (and every fourth level after the first round).
+    const hard = !!PICS[k].hard || (round > 0 && n % 4 === 0);
+    const scale = n <= 3 ? 1 : 2;
+    const colors = new Set(PICS[k].art.join('').replace(/\./g, '')).size;
+    // How often a good player should win: one who minds the slots but slips about one
+    // move in seven (the `good` bot). The level maker reshuffles until it lands in range.
+    // The first three levels just teach the game.
+    const band = n <= 3 ? null
+        : d <= 6 ? [0.75, 0.95]
+        : hard ? (d <= 20 ? [0.35, 0.6] : d <= 40 ? [0.25, 0.5] : [0.2, 0.4])
+        : d <= 15 ? [0.6, 0.85] : d <= 40 ? [0.5, 0.75] : [0.4, 0.65];
+    return {
+        pic: PICS[k], mirror: round % 2 === 1, hard, scale, band,
+        // five slots while learning, then four (the fifth can be bought once when out of room)
+        slots: n <= 7 && !hard ? SLOTS : SLOTS - 1,
+        cols: n <= 2 ? 2 : d <= 6 && !hard ? 3 : 4,
+        chunk: scale === 1 ? (d <= 2 ? 20 : 15) : 30,
+        hidden: d < 11 ? 0 : Math.min(0.5, 0.15 + (d - 11) * 0.008 + (hard ? 0.12 : 0)),
+        ice: d < 16 ? 0 : Math.min(0.2, 0.05 + (d - 16) * 0.004 + (hard ? 0.04 : 0)),
+    };
+}
+
+// Split a color's shots into jellies of tidy sizes around `mean`.
+function splitAmmo(T, mean, rng) {
+    const out = [];
+    let left = T;
+    while (left > 0) {
+        let a = Math.max(5, Math.round(mean * (0.5 + rng()) / 5) * 5);
+        if (left - a < 4) a = left;
+        out.push(a);
+        left -= a;
+    }
+    return out;
+}
+
+function weighted(arr, f, rng) {
+    const ws = arr.map(f), sum = ws.reduce((a, b) => a + b, 0);
+    let r = rng() * sum;
+    for (let k = 0; k < arr.length; k++) if ((r -= ws[k]) <= 0) return arr[k];
+    return arr[arr.length - 1];
+}
+
+// Play the level one jelly at a time, always picking a jelly that has something to
+// shoot, and record the launch order. Dealing that order into the lines keeps it
+// playable, so every level can be won.
+// With `dig` above 0, some jellies that are needed get buried behind one that can't do
+// much yet (marked `glue`, dealt right behind it in the same line). Reaching the good
+// one means parking the other in a slot until its color opens up, which is what makes
+// the slots fill and the order matter.
+// `deep` (0 to 1) prefers burying jellies whose color can't be reached at all yet, and
+// lets the plan run the slots closer to full.
+function planOrder(w, h, col, hp0, parts, maxTray, rng, dig = 0, deep = 0) {
+    const {ev} = lanes(w, h);
+    const hp = hp0.slice();
+    let cubes = hp.filter(v => v > 0).length;
+    const pool = parts.slice(), tray = [], seq = [];
+    const colors = [...new Set(parts.map(p => p.c))];
+    for (let guard = 0; cubes > 0; guard++) {
+        if (guard > 800) return null;
+        const exp = {};
+        for (const c of colors) exp[c] = lapHits(ev, col, hp.slice(), c, 1e9);
+        const fitT = tray.filter(t => exp[t.c] >= t.a), fitP = pool.filter(p => exp[p.c] >= p.a);
+        let pick;
+        if (fitT.length && (!fitP.length || rng() < 0.75)) pick = fitT[0];
+        else if (fitP.length) pick = weighted(fitP, p => p.a, rng);
+        else {
+            const anyT = tray.filter(t => exp[t.c] > 0);
+            if (anyT.length) pick = anyT.reduce((a, b) => exp[b.c] > exp[a.c] ? b : a);
+            else {
+                const anyP = pool.filter(p => exp[p.c] > 0);
+                if (!anyP.length) return null;
+                pick = weighted(anyP, p => exp[p.c], rng);
+            }
+        }
+        let glue = false;
+        // the jellies in front: ones that will come back with most of their shots (with
+        // a high dig, sometimes two of them, so reaching the good one takes two slots)
+        const room = deep > 0.5 ? maxTray : maxTray - 1;
+        for (let k = 0; k < 2 && pool.includes(pick) && tray.length < room && rng() < (k ? dig * 0.5 : dig); k++) {
+            const lazy = pool.filter(p => p !== pick && exp[p.c] < p.a * 0.5);
+            if (!lazy.length) break;
+            // ones that can shoot a little come off the bench sooner, so plans fit more
+            // often; a deep level prefers the ones that will sit there a while
+            const b = weighted(lazy, p => exp[p.c] > 0 ? 3 - 2.5 * deep : 0.5 + 2.5 * deep, rng);
+            const nb = lapHits(ev, col, hp, b.c, b.a);
+            pool.splice(pool.indexOf(b), 1);
+            seq.push(glue ? {c: b.c, a: b.a, glue} : {c: b.c, a: b.a});
+            if (b.a > nb) tray.push({c: b.c, a: b.a - nb});
+            glue = true;
+            for (const c of colors) exp[c] = lapHits(ev, col, hp.slice(), c, 1e9);
+        }
+        const n = lapHits(ev, col, hp, pick.c, pick.a);
+        cubes = hp.filter(v => v > 0).length;
+        if (pool.includes(pick)) {
+            pool.splice(pool.indexOf(pick), 1);
+            seq.push(glue ? {c: pick.c, a: pick.a, glue} : {c: pick.c, a: pick.a});
+            if (pick.a > n) tray.push({c: pick.c, a: pick.a - n});
+        } else if ((pick.a -= n) <= 0) tray.splice(tray.indexOf(pick), 1);
+        if (tray.length > maxTray) return null;
+    }
+    return seq;
+}
+
+const clamp01 = (v, lo = 0) => Math.max(lo, Math.min(1, v));
+
+// Deal the launch order into K lines. Each line keeps the order, so the plan still works.
+// With spread below 1, jellies mostly go to the line for their part of the plan, so the
+// fronts of the other lines hold colors that can't be reached yet.
+function deal(seq, K, spread, rng) {
+    const n = seq.length, qs = Array.from({length: K}, () => []);
+    let last = 0;
+    for (let id = 0; id < n; id++) {
+        if (seq[id].glue) { qs[last].push(id); continue; }   // right behind the jelly burying it
+        if (rng() >= spread) last = Math.min(K - 1, Math.floor(id / n * K));
+        else {
+            const min = Math.min(...qs.map(q => q.length));
+            last = weighted(qs.map((_, k) => k), k => 1 / (1 + (qs[k].length - min) * 3), rng);
+        }
+        qs[last].push(id);
+    }
+    return qs;
+}
+
+// The board with its ice, and how many cubes and shots each color has.
+function boardFor(info, cells, rng) {
+    const col = cells.slice(), hp = col.map(c => c ? 1 : 0);
+    const filled = hp.map((v, i) => v ? i : -1).filter(i => i >= 0);
+    for (let k = Math.round(filled.length * info.ice); k > 0; k--) hp[filled.splice(Math.floor(rng() * filled.length), 1)[0]] = 2;
+    const hits = {}, left = {};
+    col.forEach((c, i) => { if (c) { hits[c] = (hits[c] || 0) + hp[i]; left[c] = (left[c] || 0) + 1; } });
+    return {col, hp, hits, left};
+}
+
+function finishLevel(n, info, w, h, B, seq, qs, rng) {
+    const jel = seq.map((p, id) => ({id, c: p.c, a: p.a, hid: false, at: 'q'}));
+    for (const q of qs) for (let k = 1; k < q.length; k++) if (rng() < info.hidden) jel[q[k]].hid = true;
+    return {n, w, h, pic: info.pic.id, hard: info.hard, slots: info.slots, col: B.col, hp: B.hp, left: B.left, jel, qs};
+}
+
+// One try at a level: shots split into jellies around `chunk`, a launch order that
+// fits the slots, dealt into lines with `spread`. Null when no order fit.
+function plannedLevel(n, info, {w, h, cells}, rng, chunk, spread, maxTray, dig = 0, deep = 0) {
+    const B = boardFor(info, cells, rng), parts = [];
+    for (const c of Object.keys(B.hits).sort((a, b) => a - b)) for (const a of splitAmmo(B.hits[c], chunk, rng)) parts.push({c: +c, a});
+    const seq = planOrder(w, h, B.col, B.hp, parts, maxTray, rng, dig, deep);
+    return seq && finishLevel(n, info, w, h, B, seq, deal(seq, info.cols, spread, rng), rng);
+}
+
+const TRIES = 14, RUNS = 16;
+// Make a few versions of the level (background, jelly sizes, buried jellies, how the
+// lines are dealt) and keep the one the good-player bot wins about as often as the
+// level's band says. Every version comes from a launch order that fits the slots, so
+// every level can be won.
+function makeLevel(n) {
+    const info = levelInfo(n), base = picGrid(info.pic, info.mirror, info.scale);
+    if (!info.band) {
+        for (let attempt = 0; attempt < 80; attempt++) {
+            const L = plannedLevel(n, info, base, mulberry32(n * 9973 + attempt * 7919 + 1), info.chunk, 1, attempt < 79 ? info.slots - 1 : 99);
+            if (L) return L;
+        }
+        throw new Error('no level ' + n);
+    }
+    const [lo, hi] = info.band;
+    let best = null, bestGap = Infinity, heat = 0;
+    for (let attempt = 0; attempt < TRIES * 3 && bestGap > 0; attempt++) {
+        if (attempt >= TRIES && best) break;
+        const rng = mulberry32(n * 9973 + attempt * 7919 + 1);
+        // hotter: more jellies buried, and lines that keep later ones up front
+        const pic = withBackground(base, n + attempt), h2 = Math.max(-1, Math.min(2.5, heat));
+        const L = plannedLevel(n, info, pic, rng, info.chunk * (0.8 + 0.4 * rng()), clamp01(0.75 - h2, 0.15), info.slots - 1, clamp01(0.2 + h2 * 0.35), clamp01((h2 - 1) / 1.5));
+        if (!L) continue;   // the order didn't fit the slots: same heat, new shuffle
+        let wins = 0;
+        for (let k = 0; k < RUNS; k++) if (botPlay(L, 'good', 2, mulberry32(n * 31 + k)).won) wins++;
+        const rate = wins / RUNS, gap = Math.max(lo - rate, rate - hi, 0);
+        if (gap < bestGap) { best = L; bestGap = gap; L.rate = rate; L.tries = attempt + 1; }
+        heat += rate > hi ? 0.3 : rate < lo ? -0.3 : 0;
+    }
+    return best;
+}
+
+function runFrom(L) {
+    const {P} = lanes(L.w, L.h);
+    return {
+        v: 2, n: L.n, pic: L.pic, hard: L.hard, w: L.w, h: L.h,
+        col: L.col.slice(), hp: L.hp.slice(), want: L.col.map(() => 0), left: {...L.left},
+        cubes: L.col.filter(Boolean).length,
+        jel: L.jel.map(j => ({...j})), qs: L.qs.map(q => q.slice()), tray: new Array(L.slots).fill(-1), pad: [],
+        cap: CAP, P, speed: P / (2.6 + P / 32),
+        shots: [], t: 0, over: null, stuck: -1, moves: 0, fx: [],
+    };
+}
+
+function newRun(n) { return runFrom(makeLevel(n)); }
+
+const riding = j => j.at === 'up' || j.at === 'pad' || j.at === 'ride';
+function riders(G) { let n = 0; for (const j of G.jel) if (riding(j)) n++; return n; }
+
+function roomAtStart(G) {
+    const gap = G.spacing || SPACING;
+    for (const j of G.jel) if (j.at === 'ride' && (j.s < gap || G.P - j.s < gap / 2)) return false;
+    return true;
+}
+
+function step(G, dt) {
+    if (G.over) return;
+    G.t += dt;
+    const {ev} = lanes(G.w, G.h);
+    for (const j of G.jel) {
+        if (j.at === 'up' && (j.t -= dt) <= 0) j.at = 'pad';
+        else if (j.at === 'home' && (j.t -= dt) <= 0) { j.at = 'tray'; G.fx.push({k: 'land', j: j.id}); }
+    }
+    autoFinish(G);
+    if (G.pad.length) {
+        const j = G.jel[G.pad[0]];
+        if (j.at === 'pad' && roomAtStart(G)) { G.pad.shift(); j.at = 'ride'; j.s = 0; j.ev = 0; }
+    }
+    for (const j of G.jel) {
+        if (j.at !== 'ride') continue;
+        j.s += G.speed * dt;
+        while (j.at === 'ride' && j.ev < ev.length && ev[j.ev].s <= j.s) shoot(G, j, ev[j.ev++]);
+        if (j.at === 'ride' && j.s >= G.P) {
+            if (G.auto) { j.s -= G.P; j.ev = 0; }   // finishing up: round again instead of waiting
+            else lapDone(G, j);
+        }
+        if (G.over) return;
+    }
+    for (let k = G.shots.length - 1; k >= 0; k--) {
+        const sh = G.shots[k];
+        if ((sh.t -= dt) <= 0) { G.shots.splice(k, 1); land(G, sh); }
+    }
+    if (!G.over && G.cubes <= 0 && !G.shots.length) { G.over = 'won'; G.fx.push({k: 'won'}); }
+}
+
+// Once the lines are empty and the player has every jelly left on the track, the win is
+// certain: every cube still showing has a jelly of its color going round to shoot it.
+// So instead of coming back to the slots they keep going round (and the screen speeds
+// it up). Not on the first five levels, where finishing by hand is how the game gets learned.
+const AUTO_FROM = 6;
+function autoFinish(G) {
+    if (G.auto) return true;
+    if (G.over || G.n < AUTO_FROM || G.qs.some(q => q.length)) return false;
+    let onTrack = 0;
+    for (const j of G.jel) {
+        if (j.at === 'gone') continue;
+        if (!riding(j)) return false;   // one is still waiting in a slot (or on its way there)
+        onTrack++;
+    }
+    if (!onTrack) return false;
+    G.auto = true;
+    G.fx.push({k: 'auto'});
+    return true;
+}
+
+function shoot(G, j, e) {
+    const cells = e.cells;
+    for (let k = 0; k < cells.length; k++) {
+        const i = cells[k];
+        if (G.hp[i] - G.want[i] <= 0) continue;
+        if (G.col[i] !== j.c) return;
+        G.want[i]++;
+        j.a--;
+        const T = (k + RAIL_GAP + 0.3) / SHOT_SPEED;
+        G.shots.push({j: j.id, i, t: T, T, c: j.c});
+        G.fx.push({k: 'shot', j: j.id, i, T});
+        if (j.a <= 0) { j.at = 'gone'; G.fx.push({k: 'pop', j: j.id}); }
+        return;
+    }
+}
+
+function lapDone(G, j) {
+    const k = G.tray.indexOf(-1);
+    if (k < 0) { j.at = 'stuck'; G.stuck = j.id; G.over = 'full'; G.fx.push({k: 'full', j: j.id}); return; }
+    G.tray[k] = j.id; j.at = 'home'; j.t = HOP; j.slot = k;
+    G.fx.push({k: 'back', j: j.id});
+}
+
+function land(G, sh) {
+    G.want[sh.i]--;
+    if (G.hp[sh.i] <= 0) return;
+    const gone = --G.hp[sh.i] === 0;
+    G.fx.push({k: 'hit', i: sh.i, c: G.col[sh.i], gone});
+    if (gone) cubeGone(G, sh.i);
+}
+
+function cubeGone(G, i) {
+    const c = G.col[i];
+    G.cubes--;
+    if (--G.left[c] <= 0) clearColor(G, c);
+}
+
+// When a color's cubes are all gone, its jellies are done too (this only matters after a hammer).
+function clearColor(G, c) {
+    G.fx.push({k: 'clear', c});
+    for (const j of G.jel) {
+        if (j.c !== c || j.at === 'gone') continue;
+        if (j.at === 'q') for (const q of G.qs) { const k = q.indexOf(j.id); if (k >= 0) q.splice(k, 1); }
+        const s = G.tray.indexOf(j.id); if (s >= 0) G.tray[s] = -1;
+        packTray(G);
+        const p = G.pad.indexOf(j.id); if (p >= 0) G.pad.splice(p, 1);
+        if (j.at === 'stuck') { G.stuck = -1; G.over = null; }
+        j.at = 'gone';
+        G.fx.push({k: 'pop', j: j.id, done: true});
+    }
+    reveal(G);
+}
+
+// Waiting jellies stay packed to the left, so the free slots are always the ones on
+// the right and a filled rightmost slot means the next return is out of room.
+function packTray(G) {
+    const ids = G.tray.filter(id => id >= 0);
+    G.tray = G.tray.map((_, k) => k < ids.length ? ids[k] : -1);
+    ids.forEach((id, k) => { G.jel[id].slot = k; });
+}
+
+function reveal(G) {
+    for (const q of G.qs) {
+        const j = G.jel[q[0]];
+        if (j && j.hid) { j.hid = false; G.fx.push({k: 'reveal', j: j.id}); }
+    }
+}
+
+// from: {q: line} or {slot: index}
+function launch(G, from) {
+    if (G.over) return 'over';
+    const id = from.q != null ? G.qs[from.q][0] : G.tray[from.slot];
+    if (id == null || id < 0) return 'none';
+    const j = G.jel[id];
+    if (from.slot != null && j.at !== 'tray') return 'busy';
+    if (riders(G) >= G.cap) return 'full';
+    if (from.q != null) G.qs[from.q].shift(); else { G.tray[from.slot] = -1; packTray(G); }
+    j.at = 'up'; j.t = HOP; j.from = from;
+    G.pad.push(id);
+    G.moves++;
+    G.fx.push({k: 'launch', j: id});
+    reveal(G);
+    return 'ok';
+}
+
+function addSlot(G) {
+    if (G.tray.length >= MAX_SLOTS) return false;
+    G.tray.push(-1);
+    if (G.over === 'full') { const j = G.jel[G.stuck]; G.over = null; G.stuck = -1; lapDone(G, j); }
+    return true;
+}
+
+// Hammer: smash a 3x3 patch.
+function smash(G, i0) {
+    if (G.over) return 0;
+    const x0 = i0 % G.w, y0 = Math.floor(i0 / G.w);
+    let n = 0;
+    for (let y = y0 - 1; y <= y0 + 1; y++) for (let x = x0 - 1; x <= x0 + 1; x++) {
+        if (x < 0 || y < 0 || x >= G.w || y >= G.h) continue;
+        const i = y * G.w + x;
+        if (G.hp[i] - G.want[i] <= 0) continue;
+        G.hp[i] = G.want[i];   // shots already on their way still land
+        n++;
+        if (!G.hp[i]) { G.fx.push({k: 'hit', i, c: G.col[i], gone: true}); cubeGone(G, i); }
+    }
+    if (n) G.fx.push({k: 'smash', i: i0});
+    return n;
+}
+
+// Magnet: pull a jelly to the front of its line.
+function pull(G, id) {
+    const q = G.qs.findIndex(a => a.includes(id));
+    if (q < 0 || G.qs[q][0] === id) return false;
+    G.qs[q].splice(G.qs[q].indexOf(id), 1);
+    G.qs[q].unshift(id);
+    G.jel[id].hid = false;
+    G.fx.push({k: 'pull', j: id});
+    return true;
+}
+
+// Shots a fresh jelly of color c would fire in one lap right now.
+function exposure(G, c) {
+    const hp = G.hp.map((v, i) => v - G.want[i]);
+    return lapHits(lanes(G.w, G.h).ev, G.col, hp, c, 1e9);
+}
+
+// Bots that play a level, used to check levels are fair and to aim their difficulty.
+function botOptions(G) {
+    const opts = [];
+    G.qs.forEach((q, k) => {
+        if (!q.length) return;
+        const next = q.length > 1 && !G.jel[q[1]].hid ? G.jel[q[1]] : null;
+        opts.push({from: {q: k}, j: G.jel[q[0]], next});
+    });
+    G.tray.forEach((id, s) => { if (id >= 0 && G.jel[id].at === 'tray') opts.push({from: {slot: s}, j: G.jel[id]}); });
+    for (const o of opts) o.e = exposure(G, o.j.c);
+    return opts;
+}
+const BOTS = {
+    // the jelly with the most to shoot, never mind the slots
+    best(opts) {
+        let pick = null;
+        for (const o of opts) if (o.e > 0 && (!pick || o.e > pick.e || (o.e === pick.e && o.from.slot != null))) pick = o;
+        return pick;
+    },
+    random: (opts, G, rng) => opts.length ? opts[Math.floor(rng() * opts.length)] : null,
+    casual: (opts, G, rng) => rng() < 0.7 ? BOTS.best(opts) : BOTS.random(opts, G, rng),
+    // a careful player who slips now and then: plays like smart, but about one move in
+    // seven sends any jelly that has something to shoot
+    good(opts, G, rng) {
+        if (rng() < 0.15) {
+            const useful = opts.filter(o => o.e > 0);
+            if (useful.length) return useful[Math.floor(rng() * useful.length)];
+        }
+        return BOTS.smart(opts, G);
+    },
+    // keeps a slot spare: jellies that empty in one lap first, then waiting ones, and only
+    // starts a new jelly that will need a slot (or digs one out) while two are free
+    smart(opts, G) {
+        let free = 0;
+        for (const v of G.tray) if (v < 0) free++;
+        for (const j of G.jel) if (riding(j) && j.a > exposure(G, j.c)) free--;
+        let pick = null, top = 0;
+        for (const o of opts) {
+            const a = o.j.a, inTray = o.from.slot != null;
+            let s = 0;
+            if (o.e >= a) s = 1000 + a;
+            else if (inTray) s = o.e > 0 ? 100 + o.e : 0;
+            else if (free >= 2) s = o.e > 0 ? 50 + o.e : o.next && exposure(G, o.next.c) >= o.next.a ? 10 : 0;
+            if (s > top) { top = s; pick = o; }
+        }
+        return pick;
+    },
+};
+function botPlay(L, policy, conc, rng) {
+    const G = runFrom(L), pick = BOTS[policy];
+    let idle = 0, mark = G.cubes;
+    // Bots think ten times a second: coarser than the screen, but plenty for a check.
+    for (let t = 0; t < 1500 && !G.over; t += 0.1) {
+        if (riders(G) < conc) {
+            const opts = botOptions(G), o = pick(opts, G, rng);
+            if (o) launch(G, o.from);
+            else if (!riders(G) && !G.shots.length && !G.jel.some(j => j.at === 'home')) {
+                // nothing worth sending, but something has to go round
+                const f = opts.filter(o => o.from.q != null).sort((a, b) => a.j.a - b.j.a)[0] || opts[0];
+                if (!f) break;
+                launch(G, f.from);
+                if (G.cubes === mark) { if (++idle > 12) break; } else { idle = 0; mark = G.cubes; }
+            }
+        }
+        step(G, 0.1);
+        G.fx.length = 0;
+    }
+    return {won: G.over === 'won', over: G.over, t: G.t, moves: G.moves};
+}
+/* CORE END */
+
+/* ---------- save ---------- */
+const SAVE_KEY = 'jelly.v1';
+// From level 8 levels start a slot short; when one runs out of room, that slot can be bought back once.
+const PRICE = {hammer: 80, magnet: 50, slot: 100};
+const UNLOCK = {hammer: 4, magnet: 7};
+const DEF = {lvl: 1, coins: 50, boost: {hammer: 0, magnet: 0}, streak: 0, best: 0, wins: 0, tries: 0, album: {}, tips: {}, sound: true, fast: false, run: null};
+const params = new URLSearchParams(location.search);
+const testLevel = +params.get('level') || 0;   // ?level=N plays that level without touching progress
+let save = loadSave();
+function loadSave() {
+    try {
+        const s = JSON.parse(localStorage.getItem(SAVE_KEY));
+        if (s && typeof s === 'object') return {...DEF, ...s, boost: {...DEF.boost, ...s.boost}, album: s.album || {}, tips: s.tips || {}};
+    } catch (e) { /* no storage or a bad save: start fresh */ }
+    return JSON.parse(JSON.stringify(DEF));
+}
+function persist() {
+    if (testLevel) return;
+    if (G && screenName === 'play' && !G.over) save.run = {...G, fx: undefined};
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); } catch (e) { /* storage full or blocked */ }
+}
+
+/* ---------- levels ---------- */
+// Making a level plays it with bots a few hundred times, so it runs in a worker when
+// the browser allows one, and the result is kept so retries start straight away.
+const LEVEL_KEY = 'jelly.levels', LEVEL_V = 9;
+let levelStore = loadLevels(), maker, loadingN = 0;
+const waiting = {};
+function loadLevels() {
+    try {
+        const s = JSON.parse(localStorage.getItem(LEVEL_KEY));
+        if (s && s.v === LEVEL_V && s.levels) return s;
+    } catch (e) { /* no storage: make them again */ }
+    return {v: LEVEL_V, levels: {}};
+}
+function keepLevel(L) {
+    levelStore.levels[L.n] = L;
+    // only the level being played and the next one are worth keeping
+    const keep = new Set([save.lvl, save.lvl + 1, testLevel, L.n]);
+    for (const k in levelStore.levels) if (!keep.has(+k)) delete levelStore.levels[k];
+    try { localStorage.setItem(LEVEL_KEY, JSON.stringify(levelStore)); } catch (e) { /* storage full or blocked */ }
+    return L;
+}
+function levelMaker() {
+    if (maker !== undefined) return maker;
+    try {
+        const text = [...document.scripts].find(el => el.textContent.includes('/* CORE START')).textContent;
+        const core = text.split('/* CORE START')[1].split('/* CORE END */')[0].replace(/^[^\n]*\n/, '');
+        const url = URL.createObjectURL(new Blob([core + '\nonmessage = e => postMessage(makeLevel(e.data));'], {type: 'text/javascript'}));
+        maker = new Worker(url);
+        maker.onmessage = e => done(keepLevel(e.data));
+        maker.onerror = e => {
+            e.preventDefault();
+            maker = false;
+            for (const n of Object.keys(waiting)) done(keepLevel(makeLevel(+n)));
+        };
+    } catch (e) { maker = false; }
+    return maker;
+}
+function done(L) {
+    const cbs = waiting[L.n] || [];
+    delete waiting[L.n];
+    cbs.forEach(f => f(L));
+}
+function getLevel(n, cb) {
+    if (levelStore.levels[n]) { cb(levelStore.levels[n]); return; }
+    if (waiting[n]) { waiting[n].push(cb); return; }
+    waiting[n] = [cb];
+    const w = levelMaker();
+    if (w) w.postMessage(n); else done(keepLevel(makeLevel(n)));
+}
+const prepare = n => getLevel(n, () => {});
+
+/* ---------- sound ---------- */
+let AC = null, master = null, lastPop = 0;
+function audio() {
+    if (!save.sound) return null;
+    if (!AC) {
+        try {
+            AC = new (window.AudioContext || window.webkitAudioContext)();
+            master = AC.createGain(); master.gain.value = 0.55; master.connect(AC.destination);
+        } catch (e) { return null; }
+    }
+    if (AC.state === 'suspended') AC.resume();
+    return AC;
+}
+function tone(f0, f1, dur, type = 'sine', vol = 0.25, delay = 0) {
+    const ac = audio(); if (!ac) return;
+    const t = ac.currentTime + delay, o = ac.createOscillator(), g = ac.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(f0, t);
+    o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.008);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g).connect(master);
+    o.start(t); o.stop(t + dur + 0.03);
+}
+const SCALE = [523, 587, 659, 784, 880, 1047, 1175, 1319, 1568, 1760, 2093, 2349, 2637, 3136, 3520];
+const SND = {
+    pop(c) { const now = performance.now(); if (now - lastPop < 28) return; lastPop = now; const f = SCALE[(c - 1) % SCALE.length] * (0.98 + Math.random() * 0.04); tone(f, f * 0.55, 0.09, 'triangle', 0.16); },
+    ice() { tone(2400, 1800, 0.06, 'square', 0.05); },
+    launch() { tone(240, 620, 0.15, 'sine', 0.22); },
+    land() { tone(380, 260, 0.08, 'sine', 0.14); },
+    burst() { tone(620, 1400, 0.1, 'sine', 0.16); tone(900, 1900, 0.08, 'sine', 0.1, 0.05); },
+    clear() { tone(784, 784, 0.1, 'triangle', 0.14); tone(1047, 1047, 0.14, 'triangle', 0.14, 0.08); },
+    win() { [523, 659, 784, 1047, 1319].forEach((f, k) => tone(f, f, 0.24, 'triangle', 0.22, k * 0.1)); },
+    lose() { [440, 370, 311, 262].forEach((f, k) => tone(f, f * 0.97, 0.22, 'triangle', 0.18, k * 0.13)); },
+    nope() { tone(200, 150, 0.12, 'square', 0.05); },
+    smash() { tone(140, 50, 0.3, 'sawtooth', 0.16); tone(900, 200, 0.18, 'triangle', 0.12); },
+    magnet() { tone(300, 900, 0.25, 'sine', 0.15); },
+    coin() { tone(1319, 1319, 0.07, 'square', 0.06); tone(1760, 1760, 0.12, 'square', 0.06, 0.07); },
+};
+function buzz(ms) {
+    // Phones that can vibrate (not iPhones); browsers refuse it before the first tap.
+    try { if (navigator.vibrate && (!navigator.userActivation || navigator.userActivation.hasBeenActive)) navigator.vibrate(ms); } catch (e) { /* not supported */ }
+}
+
+/* ---------- drawing helpers ---------- */
+const $ = id => document.getElementById(id);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const FONT = "Fredoka, ui-rounded, system-ui, sans-serif";
+function mix(hex, to, t) {
+    const a = parseInt(hex.slice(1), 16), b = parseInt(to.slice(1), 16);
+    const ch = s => Math.round(((a >> s) & 255) * (1 - t) + ((b >> s) & 255) * t);
+    return `rgb(${ch(16)},${ch(8)},${ch(0)})`;
+}
+const hexOf = c => c ? PAL[KEYS[c - 1]] : '#9087b3';
+const shade = {};
+for (let c = 0; c <= KEYS.length; c++) shade[c] = {base: hexOf(c), light: mix(hexOf(c), '#ffffff', 0.45), dark: mix(hexOf(c), '#000000', 0.25), line: mix(hexOf(c), '#2a1850', c && KEYS[c - 1] === 'W' ? 0.35 : 0.42)};
+function rr(g, x, y, w, h, r) {
+    g.beginPath();
+    g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r);
+    g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath();
+}
+
+const cubeCache = new Map();
+function cubeImg(c, px) {
+    px = Math.max(2, Math.round(px));
+    const key = c + '|' + px;
+    let cv = cubeCache.get(key);
+    if (cv) return cv;
+    cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), m = Math.max(0.5, px * 0.05), r = px * 0.22;
+    rr(g, m, m, px - 2 * m, px - 2 * m, r);
+    g.fillStyle = shade[c].base; g.fill();
+    g.save(); g.clip();
+    const gr = g.createLinearGradient(0, 0, 0, px);
+    gr.addColorStop(0, 'rgba(255,255,255,0.4)'); gr.addColorStop(0.42, 'rgba(255,255,255,0)');
+    gr.addColorStop(0.72, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(40,10,80,0.28)');
+    g.fillStyle = gr; g.fillRect(0, 0, px, px);
+    g.fillStyle = 'rgba(255,255,255,0.6)'; rr(g, px * 0.2, px * 0.15, px * 0.3, px * 0.14, px * 0.07); g.fill();
+    g.restore();
+    rr(g, m, m, px - 2 * m, px - 2 * m, r);
+    g.lineWidth = Math.max(1, px * 0.04); g.strokeStyle = 'rgba(40,10,80,0.25)'; g.stroke();
+    cubeCache.set(key, cv);
+    return cv;
+}
+function iceImg(px) {
+    px = Math.max(2, Math.round(px));
+    const key = 'ice|' + px;
+    let cv = cubeCache.get(key);
+    if (cv) return cv;
+    cv = document.createElement('canvas'); cv.width = cv.height = px;
+    const g = cv.getContext('2d'), m = Math.max(0.5, px * 0.03);
+    rr(g, m, m, px - 2 * m, px - 2 * m, px * 0.2);
+    g.fillStyle = 'rgba(205,240,255,0.62)'; g.fill();
+    g.lineWidth = Math.max(1, px * 0.07); g.strokeStyle = 'rgba(255,255,255,0.95)'; g.stroke();
+    g.strokeStyle = 'rgba(255,255,255,0.85)'; g.lineWidth = Math.max(1, px * 0.06); g.lineCap = 'round';
+    g.beginPath(); g.moveTo(px * 0.25, px * 0.55); g.lineTo(px * 0.55, px * 0.25); g.moveTo(px * 0.42, px * 0.75); g.lineTo(px * 0.75, px * 0.42); g.stroke();
+    cubeCache.set(key, cv);
+    return cv;
+}
+
+// A jelly: c is its color id (0 when it's still asleep), the body sits on y with its feet near y + 0.9r.
+function drawJelly(g, x, y, r, c, o = {}) {
+    const sh = shade[o.hid ? 0 : c];
+    g.save();
+    if (o.alpha != null) g.globalAlpha = o.alpha;
+    if (o.board) {
+        g.fillStyle = 'rgba(40,20,80,0.25)';
+        g.beginPath(); g.ellipse(x, y + r * 1.3, r * 0.95, r * 0.18, 0, 0, Math.PI * 2); g.fill();
+        g.fillStyle = '#ffd36b';
+        g.beginPath(); g.arc(x - r * 0.6, y + r * 1.13, r * 0.14, 0, Math.PI * 2); g.arc(x + r * 0.6, y + r * 1.13, r * 0.14, 0, Math.PI * 2); g.fill();
+        g.fillStyle = '#4a3a6b'; rr(g, x - r * 0.98, y + r * 0.84, r * 1.96, r * 0.22, r * 0.11); g.fill();
+    } else if (!o.noShadow) {
+        g.fillStyle = 'rgba(40,20,80,0.2)';
+        g.beginPath(); g.ellipse(x, y + r * 0.92, r * 0.85, r * 0.2, 0, 0, Math.PI * 2); g.fill();
+    }
+    const sq = o.sq || 0;
+    g.translate(x, y + r * 0.9); g.scale(1 + sq, 1 - sq); g.translate(0, -r * 0.9);
+    if (o.tilt) g.rotate(o.tilt);
+    g.beginPath();
+    g.moveTo(-r, r * 0.45);
+    g.bezierCurveTo(-r, -r * 0.55, -r * 0.55, -r, 0, -r);
+    g.bezierCurveTo(r * 0.55, -r, r, -r * 0.55, r, r * 0.45);
+    g.bezierCurveTo(r, r * 0.85, r * 0.7, r * 0.9, 0, r * 0.9);
+    g.bezierCurveTo(-r * 0.7, r * 0.9, -r, r * 0.85, -r, r * 0.45);
+    g.closePath();
+    const gr = g.createRadialGradient(-r * 0.35, -r * 0.45, r * 0.1, 0, 0, r * 1.3);
+    gr.addColorStop(0, sh.light); gr.addColorStop(0.5, sh.base); gr.addColorStop(1, sh.dark);
+    g.fillStyle = gr; g.fill();
+    g.lineWidth = Math.max(1, r * 0.08); g.strokeStyle = sh.line; g.stroke();
+    if (o.glow) { g.lineWidth = r * 0.16; g.strokeStyle = o.glow; g.stroke(); }
+    g.fillStyle = 'rgba(255,255,255,0.62)';
+    g.beginPath(); g.ellipse(-r * 0.43, -r * 0.56, r * 0.22, r * 0.12, -0.6, 0, Math.PI * 2); g.fill();
+    const ey = -r * 0.24, ex = r * 0.34;
+    if (o.hid || o.blink) {
+        g.strokeStyle = '#2b1f45'; g.lineWidth = Math.max(1, r * 0.09); g.lineCap = 'round';
+        for (const s of [-1, 1]) { g.beginPath(); g.arc(s * ex, ey - r * 0.04, r * 0.13, 0.15 * Math.PI, 0.85 * Math.PI); g.stroke(); }
+    } else {
+        const lx = (o.lx || 0) * r * 0.07, ly = (o.ly || 0) * r * 0.07;
+        for (const s of [-1, 1]) {
+            g.fillStyle = '#fff'; g.beginPath(); g.ellipse(s * ex, ey, r * 0.2, r * 0.25, 0, 0, Math.PI * 2); g.fill();
+            g.lineWidth = Math.max(0.75, r * 0.04); g.strokeStyle = 'rgba(40,20,70,0.25)'; g.stroke();
+            g.fillStyle = '#2b1f45'; g.beginPath(); g.arc(s * ex + lx, ey + ly + r * 0.03, r * 0.12, 0, Math.PI * 2); g.fill();
+            g.fillStyle = '#fff'; g.beginPath(); g.arc(s * ex + lx - r * 0.04, ey + ly - r * 0.02, r * 0.045, 0, Math.PI * 2); g.fill();
+        }
+    }
+    g.fillStyle = 'rgba(255,80,140,0.35)';
+    for (const s of [-1, 1]) { g.beginPath(); g.ellipse(s * r * 0.64, r * 0.06, r * 0.14, r * 0.09, 0, 0, Math.PI * 2); g.fill(); }
+    const label = o.hid ? '?' : o.n;
+    if (label != null) {
+        const t = String(label), fs = r * (t.length > 2 ? 0.6 : 0.78);
+        g.font = `700 ${fs}px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle';
+        g.lineJoin = 'round'; g.lineWidth = Math.max(2, r * 0.2); g.strokeStyle = 'rgba(43,20,70,0.6)';
+        g.strokeText(t, 0, r * 0.45); g.fillStyle = '#fff'; g.fillText(t, 0, r * 0.45);
+    }
+    g.restore();
+}
+
+// A picture drawn with cubes, for the album and the win card.
+function drawPic(cnv, pic, cssSize) {
+    const {w, h, cells} = picGrid(pic, false), d = Math.min(window.devicePixelRatio || 1, 2.5);
+    const cell = Math.floor(cssSize * d * 0.86 / Math.max(w, h));
+    cnv.width = cnv.height = Math.round(cssSize * d);
+    const g = cnv.getContext('2d'), ox = (cnv.width - w * cell) / 2, oy = (cnv.height - h * cell) / 2;
+    cells.forEach((c, i) => { if (c) g.drawImage(cubeImg(c, cell), ox + (i % w) * cell, oy + Math.floor(i / w) * cell); });
+}
+
+/* ---------- game view ---------- */
+const cv = $('cv'), ctx = cv.getContext('2d'), stage = $('stage');
+let G = null, Lay = null, W = 0, H = 0, dpr = 1;
+let screenName = 'home', modalOpen = false, aim = null;
+const D = new Map();          // jelly id -> where it's drawn
+let bits = [], texts = [], beams = [], rings = [];
+let winAt = 0, fullAt = 0, bannerAt = 0, shakeT = 0, clock = 0;
+
+function layout() {
+    const rect = stage.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    if (!G) return;
+    const K = G.qs.length, nSlots = G.tray.length, room = MAX_SLOTS + 1;
+    // Everything is one centered column, as on a phone: the picture, the slots under it,
+    // then the lines. On a big screen the column just grows. Only short, wide screens
+    // (a phone on its side, a small window) put the lines beside the picture, and then
+    // the two sit together in the middle.
+    const pad = 10, side = H < 520 && W > H * 1.4;
+    const L = {side};
+    let bw, bh, bx0, by0, rw = 0;
+    if (side) {
+        rw = clamp(H * 0.75, 240, 380);
+        bw = W - rw - pad * 3; bh = H - pad * 2; by0 = pad;
+        L.qr = clamp(Math.min(rw / (K * 2.7), H / 14), 15, 26);
+        L.sr = clamp(Math.min(rw / (room * 2.5), L.qr * 0.9), 12, 22);
+    } else {
+        L.colW = Math.min(W, Math.max(380, H * 0.8));
+        L.qr = clamp(Math.min((L.colW - pad * 2) / (K * 2.7), H * 0.038), 15, 34);
+        L.sr = clamp(Math.min((L.colW - pad * 2) / (room * 2.5), L.qr * 0.9), 12, 30);
+        bw = L.colW - pad * 2; bh = H - L.qr * 7.2 - L.sr * 2.7 - 34; bx0 = (W - L.colW) / 2 + pad; by0 = 4;
+    }
+    let c = 20, r = 14, Gp = 22, m = 0;
+    for (let it = 0; it < 5; it++) {
+        m = 2 * (Gp + r * 1.35 + 2);
+        c = Math.max(4, Math.min((bw - m) / G.w, (bh - m) / G.h, 40));
+        r = clamp(c * 0.82, 12.5, 22);
+        Gp = r * 1.25 + 4;
+    }
+    if (side) {
+        bw = Math.min(bw, G.w * c + m);
+        bx0 = (W - (bw + pad + rw)) / 2;
+        L.rx0 = bx0 + bw + pad; L.rw = rw;
+        L.colW = bw + pad + rw;
+    }
+    $('play').style.setProperty('--colw', Math.round(L.colW) + 'px');
+    Object.assign(L, {c, r, Gp});
+    G.spacing = Math.max(SPACING, (r * 2 + 3) / c);
+    const totH = G.h * c + 2 * Gp;
+    L.bx = bx0 + (bw - G.w * c) / 2;
+    L.by = side ? by0 + (bh - G.h * c) / 2 : by0 + Gp + r * 1.1 + Math.max(0, (bh - totH - r * 2.6) * 0.35);
+    L.X0 = L.bx - Gp; L.X1 = L.bx + G.w * c + Gp; L.Y0 = L.by - Gp; L.Y1 = L.by + G.h * c + Gp;
+    const segs = [G.w + 2 * RAIL_GAP, G.h + 2 * RAIL_GAP, G.w + 2 * RAIL_GAP, G.h + 2 * RAIL_GAP];
+    L.segs = segs;
+    // Slots and lines
+    const sgap = L.sr * 2.45;
+    if (side) {
+        const cx = L.rx0 + L.rw / 2;
+        const qh = L.qr * 7.2, block = L.sr * 2.7 + 22 + qh;
+        const top = Math.max(pad, (H - block) / 2);
+        L.sy = top + L.sr * 1.3;
+        L.sx0 = cx - (nSlots - 1) * sgap / 2;
+        L.qy = L.sy + L.sr * 1.4 + 22 + L.qr;
+        L.qx = Array.from({length: K}, (_, k) => cx + (k - (K - 1) / 2) * Math.min(L.rw / K, L.qr * 3));
+    } else {
+        L.sy = L.Y1 + r * 1.4 + 12 + L.sr * 1.2;
+        L.sx0 = W / 2 - (nSlots - 1) * sgap / 2;
+        L.qy = L.sy + L.sr * 1.35 + 14 + L.qr;
+        const colW = Math.min((L.colW - pad * 2) / K, L.qr * 3.4);
+        L.qx = Array.from({length: K}, (_, k) => W / 2 + (k - (K - 1) / 2) * colW);
+    }
+    L.sgap = sgap; L.nSlots = nSlots;
+    Lay = L;
+}
+
+function railXY(s) {
+    const L = Lay, g = RAIL_GAP;
+    if (s >= G.P) s = 0;
+    let k = 0;
+    while (k < 3 && s >= L.segs[k]) { s -= L.segs[k]; k++; }
+    const n = k % 2 ? G.h : G.w;
+    const px = s < g ? s / g * L.Gp : s < g + n ? L.Gp + (s - g) * L.c : L.Gp + n * L.c + (s - g - n) / g * L.Gp;
+    if (k === 0) return {x: L.X0 + px, y: L.Y1, k};
+    if (k === 1) return {x: L.X1, y: L.Y1 - px, k};
+    if (k === 2) return {x: L.X1 - px, y: L.Y0, k};
+    return {x: L.X0, y: L.Y0 + px, k};
+}
+const cellXY = i => ({x: Lay.bx + (i % G.w + 0.5) * Lay.c, y: Lay.by + (Math.floor(i / G.w) + 0.5) * Lay.c});
+function qPos(q, k) {
+    const L = Lay, x = L.qx[q];
+    if (k === 0) return {x, y: L.qy, r: L.qr};
+    return {x, y: L.qy + L.qr * 1.25 + k * L.qr * 1.3, r: L.qr * 0.74};
+}
+const slotPos = k => ({x: Lay.sx0 + k * Lay.sgap, y: Lay.sy, r: Lay.sr * 0.92});
+function padPos(k) { const p = railXY(0); return {x: p.x - k * Lay.r * 0.6, y: p.y + k * Lay.r * 0.9, r: Lay.r}; }
+
+// Where each jelly should be drawn right now.
+function targetOf(j) {
+    switch (j.at) {
+        case 'q': {
+            for (let q = 0; q < G.qs.length; q++) {
+                const k = G.qs[q].indexOf(j.id);
+                if (k >= 0) return k > 3 ? {...qPos(q, 3), hide: true} : qPos(q, k);
+            }
+            return null;
+        }
+        case 'tray': case 'home': return slotPos(j.slot);
+        case 'pad': case 'up': return padPos(Math.max(0, G.pad.indexOf(j.id)));
+        case 'ride': { const p = railXY(j.s); return {x: p.x, y: p.y - Lay.r * 0.15, r: Lay.r, k: p.k}; }
+        case 'stuck': { const p = railXY(0); return {x: p.x, y: p.y - Lay.r * 0.15, r: Lay.r}; }
+    }
+    return null;
+}
+
+function syncJellies(dt) {
+    for (const j of G.jel) {
+        if (j.at === 'gone') { D.delete(j.id); continue; }
+        const t = targetOf(j);
+        if (!t) continue;
+        let d = D.get(j.id);
+        if (!d) { d = {x: t.x, y: t.y, r: t.r, at: j.at, sq: 0, sx: t.x, sy: t.y, sr: t.r, blink: Math.random() * 4}; D.set(j.id, d); }
+        if (d.at !== j.at) {
+            if (j.at === 'up' || j.at === 'home') { d.sx = d.x; d.sy = d.y; d.sr = d.r; }
+            if (j.at === 'pad' || j.at === 'tray' || j.at === 'ride') d.sq = Math.max(d.sq, 0.18);
+            d.at = j.at;
+        }
+        if (j.at === 'up' || j.at === 'home') {
+            const p = clamp(1 - j.t / HOP, 0, 1), e = p * p * (3 - 2 * p);
+            const hgt = Math.max(30, Math.abs(t.y - d.sy) * 0.25);
+            d.x = lerp(d.sx, t.x, e); d.y = lerp(d.sy, t.y, e) - Math.sin(Math.PI * p) * hgt; d.r = lerp(d.sr, t.r, e);
+            d.sq = -0.12 * Math.sin(Math.PI * p);
+        } else if (j.at === 'ride') {
+            d.x = t.x; d.y = t.y; d.r = t.r; d.k = t.k;
+        } else {
+            const f = 1 - Math.exp(-dt * 16);
+            d.x += (t.x - d.x) * f; d.y += (t.y - d.y) * f; d.r += (t.r - d.r) * f;
+        }
+        d.hide = !!t.hide;
+        if (d.sq > 0) d.sq = Math.max(0, d.sq - dt * 0.9);
+        else if (d.sq < 0 && j.at !== 'up' && j.at !== 'home') d.sq = Math.min(0, d.sq + dt * 0.9);
+        d.blink -= dt;
+        if (d.blink < -0.12) d.blink = 2 + Math.random() * 4;
+    }
+}
+
+function burst(x, y, color, n, speed, size) {
+    for (let k = 0; k < n; k++) {
+        const a = Math.random() * Math.PI * 2, v = speed * (0.4 + Math.random() * 0.8);
+        bits.push({x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - speed * 0.3, life: 0.45 + Math.random() * 0.35, max: 0.8, color, size: size * (0.6 + Math.random() * 0.6)});
+    }
+}
+function floatText(x, y, text, color = '#fff', size = 20) { texts.push({x, y, text, color, size, life: 1.1}); }
+
+const lastHit = {t: 0, n: 0};
+function drainFx() {
+    for (const f of G.fx) {
+        const d = f.j != null ? D.get(f.j) : null;
+        switch (f.k) {
+            case 'shot': {
+                const p = cellXY(f.i), j = G.jel[f.j];
+                beams.push({x0: d ? d.x : p.x, y0: d ? d.y : p.y, x1: p.x, y1: p.y, t0: G.t, T: f.T, c: j.c});
+                if (d) d.sq = Math.max(d.sq, 0.1);
+                break;
+            }
+            case 'hit': {
+                const p = cellXY(f.i);
+                if (f.gone) {
+                    burst(p.x, p.y, shade[f.c].base, 4, Math.max(60, Lay.c * 5), clamp(Lay.c * 0.16, 1.5, 4));
+                    SND.pop(f.c);
+                    if (G.t - lastHit.t < 0.35) lastHit.n++; else lastHit.n = 1;
+                    lastHit.t = G.t;
+                } else { burst(p.x, p.y, '#dff6ff', 4, Math.max(50, Lay.c * 4), clamp(Lay.c * 0.14, 1.5, 3.5)); SND.ice(); }
+                break;
+            }
+            case 'pop':
+                if (d) { burst(d.x, d.y, shade[G.jel[f.j].c].base, 14, d.r * 7, d.r * 0.3); rings.push({x: d.x, y: d.y, r: d.r, life: 0.35, color: shade[G.jel[f.j].c].base}); }
+                SND.burst();
+                break;
+            case 'launch': SND.launch(); buzz(8); break;
+            case 'land': SND.land(); tip('slots'); break;
+            case 'reveal': if (d) rings.push({x: d.x, y: d.y, r: d.r, life: 0.4, color: '#fff'}); break;
+            case 'clear':
+                if (G.cubes > 0) {
+                    const L = Lay;
+                    floatText(L.bx + G.w * L.c / 2, L.by + G.h * L.c / 2, `${CNAME[KEYS[f.c - 1]]} done!`, shade[f.c].base, clamp(L.c * 1.3, 18, 30));
+                    SND.clear();
+                }
+                break;
+            case 'smash': {
+                const p = cellXY(f.i);
+                rings.push({x: p.x, y: p.y, r: Lay.c, life: 0.45, color: '#fff'});
+                shakeT = 0.25; SND.smash(); buzz(30);
+                break;
+            }
+            case 'pull': if (d) rings.push({x: d.x, y: d.y, r: d.r, life: 0.4, color: '#ffd43b'}); SND.magnet(); break;
+            case 'won': winAt = clock; SND.win(); buzz([20, 40, 20]); break;
+            case 'full': fullAt = clock; SND.lose(); buzz(60); break;
+            case 'auto': {
+                const L = Lay;
+                floatText(L.bx + G.w * L.c / 2, L.by + G.h * L.c / 2, 'Finishing up!', '#ffd43b', clamp(L.c * 1.4, 20, 32));
+                SND.clear();
+                break;
+            }
+        }
+    }
+    G.fx.length = 0;
+}
+
+function drawRail() {
+    const L = Lay, g = ctx, rad = L.Gp * 0.9, lw = L.r * 2.5;
+    const path = () => rr(g, L.X0, L.Y0, L.X1 - L.X0, L.Y1 - L.Y0, rad);
+    path(); g.lineWidth = lw + 6; g.strokeStyle = 'rgba(110,70,200,0.28)'; g.stroke();
+    path(); g.lineWidth = lw; g.strokeStyle = 'rgba(255,255,255,0.55)'; g.stroke();
+    // chevrons drifting the way the jellies go
+    g.save();
+    g.strokeStyle = 'rgba(138,107,255,0.35)'; g.lineWidth = Math.max(1.5, L.r * 0.16); g.lineCap = 'round'; g.lineJoin = 'round';
+    const step = 3, off = (clock * 1.2) % step, a = L.r * 0.3;
+    for (let s = off; s < G.P; s += step) {
+        const p = railXY(s), q = railXY(Math.min(G.P - 0.01, s + 0.1));
+        const dx = Math.sign(Math.round(q.x - p.x)), dy = Math.sign(Math.round(q.y - p.y));
+        if (!dx && !dy) continue;
+        g.beginPath();
+        g.moveTo(p.x - dx * a - dy * a, p.y - dy * a + dx * a);
+        g.lineTo(p.x, p.y);
+        g.lineTo(p.x - dx * a + dy * a, p.y - dy * a - dx * a);
+        g.stroke();
+    }
+    g.restore();
+    // start pad and how full the track is
+    const p0 = railXY(0);
+    g.fillStyle = '#fff'; g.beginPath(); g.arc(p0.x, p0.y, L.r * 1.25, 0, Math.PI * 2); g.fill();
+    g.lineWidth = 3; g.strokeStyle = 'rgba(138,107,255,0.6)'; g.stroke();
+    const ar = L.r * 0.45;
+    g.fillStyle = 'rgba(138,107,255,0.75)'; g.beginPath();
+    g.moveTo(p0.x - ar * 0.6, p0.y - ar); g.lineTo(p0.x + ar, p0.y); g.lineTo(p0.x - ar * 0.6, p0.y + ar); g.closePath(); g.fill();
+    const used = riders(G), pr = clamp(L.r * 0.28, 3, 5);
+    for (let k = 0; k < G.cap; k++) {
+        const x = p0.x + L.r * 1.7 + k * pr * 2.8, y = L.Y1 + L.r * 1.6 + 2;
+        g.beginPath(); g.arc(x, y, pr, 0, Math.PI * 2);
+        g.fillStyle = k < used ? (used >= G.cap ? '#ff5f9e' : '#8a6bff') : 'rgba(255,255,255,0.7)';
+        g.fill();
+    }
+}
+
+function drawBoard() {
+    const L = Lay, g = ctx, c = L.c;
+    rr(g, L.bx - 6, L.by - 6, G.w * c + 12, G.h * c + 12, Math.min(16, c * 0.6));
+    g.fillStyle = 'rgba(70,40,140,0.42)'; g.fill();
+    g.fillStyle = 'rgba(255,255,255,0.09)';
+    for (let i = 0; i < G.w * G.h; i++) {
+        if (G.hp[i] > 0 || !G.col[i]) continue;
+        const p = cellXY(i);
+        g.beginPath(); g.arc(p.x, p.y, c * 0.12, 0, Math.PI * 2); g.fill();
+    }
+    const px = c * dpr, rebuilding = G.over === 'won' && winAt;
+    const t = rebuilding ? clock - winAt : 0;
+    for (let i = 0; i < G.w * G.h; i++) {
+        const col = G.col[i];
+        if (!col) continue;
+        let s = 1;
+        if (rebuilding) {
+            const x = i % G.w, y = Math.floor(i / G.w);
+            const dd = Math.hypot(x - G.w / 2, y - G.h / 2) / Math.hypot(G.w / 2, G.h / 2);
+            const p = clamp((t - 0.25 - dd * 0.6) / 0.35, 0, 1);
+            if (p <= 0) continue;
+            s = 1 + Math.sin(p * Math.PI) * 0.25 * (1 - p) + (p < 1 ? (p - 1) * 0.6 : 0);
+        } else if (G.hp[i] <= 0) continue;
+        const x = L.bx + (i % G.w) * c, y = L.by + Math.floor(i / G.w) * c;
+        if (s === 1) g.drawImage(cubeImg(col, px), x, y, c, c);
+        else g.drawImage(cubeImg(col, px), x + c * (1 - s) / 2, y + c * (1 - s) / 2, c * s, c * s);
+        if (!rebuilding && G.hp[i] > 1) g.drawImage(iceImg(px), x, y, c, c);
+    }
+    if (aim === 'hammer') {
+        rr(g, L.bx - 6, L.by - 6, G.w * c + 12, G.h * c + 12, Math.min(16, c * 0.6));
+        g.lineWidth = 3; g.setLineDash([8, 6]); g.lineDashOffset = -clock * 30; g.strokeStyle = '#ffd43b'; g.stroke(); g.setLineDash([]);
+    }
+}
+
+function drawSlots() {
+    const L = Lay, g = ctx;
+    for (let k = 0; k < G.tray.length; k++) {
+        const p = slotPos(k);
+        g.beginPath(); g.arc(p.x, p.y + p.r * 0.1, L.sr * 1.08, 0, Math.PI * 2);
+        g.fillStyle = 'rgba(70,40,140,0.32)'; g.fill();
+        g.lineWidth = 2; g.strokeStyle = k >= G.slots0 ? 'rgba(255,212,59,0.95)' : 'rgba(255,255,255,0.55)'; g.stroke();
+    }
+    const full = G.tray.every(v => v >= 0);
+    if (full) {
+        const a = slotPos(0), b = slotPos(G.tray.length - 1);
+        rr(ctx, a.x - L.sr * 1.3, a.y - L.sr * 1.2, b.x - a.x + L.sr * 2.6, L.sr * 2.6, L.sr * 1.3);
+        ctx.lineWidth = 2.5; ctx.strokeStyle = `rgba(255,95,158,${0.55 + 0.35 * Math.sin(clock * 6)})`; ctx.stroke();
+    }
+}
+
+function drawQueues() {
+    const g = ctx;
+    for (let q = 0; q < G.qs.length; q++) {
+        const n = G.qs[q].length;
+        if (n > 4) {
+            const p = qPos(q, 3);
+            g.font = `600 ${clamp(Lay.qr * 0.55, 11, 15)}px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'top';
+            g.fillStyle = 'rgba(255,255,255,0.9)';
+            g.fillText(`+${n - 4} more`, p.x, p.y + p.r * 1.05);
+        }
+        if (!n) {
+            const p = qPos(q, 0);
+            g.beginPath(); g.arc(p.x, p.y + p.r * 0.1, p.r * 0.9, 0, Math.PI * 2);
+            g.setLineDash([4, 5]); g.lineWidth = 2; g.strokeStyle = 'rgba(255,255,255,0.4)'; g.stroke(); g.setLineDash([]);
+        }
+    }
+}
+
+function drawJellies() {
+    const order = [];
+    for (const j of G.jel) {
+        const d = D.get(j.id);
+        if (!d || d.hide || j.at === 'gone') continue;
+        let z = 0;
+        if (j.at === 'q') { for (const q of G.qs) { const k = q.indexOf(j.id); if (k >= 0) z = -k; } }
+        else if (j.at === 'up' || j.at === 'home') z = 10; else z = 5;
+        order.push([z, j, d]);
+    }
+    order.sort((a, b) => a[0] - b[0]);
+    const hintId = tutorTarget();
+    for (const [, j, d] of order) {
+        let lx = 0, ly = -1, tilt = 0, glow = null, alpha = 1;
+        if (j.at === 'ride') {
+            const dir = [[1, -0.3], [-0.3, -1], [-1, 0.3], [0.3, 1]][d.k || 0];
+            lx = dir[0]; ly = dir[1];
+            tilt = Math.sin(clock * 9 + j.id) * 0.05;
+        }
+        let front = false;
+        if (j.at === 'q') {
+            for (const q of G.qs) if (q[0] === j.id) front = true;
+            if (!front) alpha = 0.92;
+        }
+        let sq = d.sq;
+        if ((front || j.at === 'tray') && !G.over) sq += Math.sin(clock * 4 + j.id * 1.7) * 0.03;
+        if (j.at === 'stuck') tilt = Math.sin(clock * 20) * 0.12;
+        if (aim === 'magnet' && j.at === 'q' && !front) glow = 'rgba(255,212,59,0.9)';
+        if (j.id === hintId) {
+            const pr = d.r * (1.5 + 0.12 * Math.sin(clock * 6));
+            ctx.beginPath(); ctx.arc(d.x, d.y + d.r * 0.1, pr, 0, Math.PI * 2);
+            ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.stroke();
+        }
+        drawJelly(ctx, d.x, d.y, d.r, j.c, {n: j.a, hid: j.hid, board: j.at === 'ride' || j.at === 'stuck' || j.at === 'pad', sq, lx, ly, tilt, glow, alpha, blink: d.blink < 0});
+    }
+}
+
+function drawFx(dt) {
+    const g = ctx;
+    for (let k = beams.length - 1; k >= 0; k--) {
+        const b = beams[k], p = (G.t - b.t0) / b.T;
+        if (p >= 1 || p < 0) { beams.splice(k, 1); continue; }
+        const x = lerp(b.x0, b.x1, p), y = lerp(b.y0, b.y1, p), tx = lerp(b.x0, b.x1, Math.max(0, p - 0.35)), ty = lerp(b.y0, b.y1, Math.max(0, p - 0.35));
+        g.strokeStyle = shade[b.c].base; g.lineCap = 'round'; g.lineWidth = Lay.c * 0.32;
+        g.beginPath(); g.moveTo(tx, ty); g.lineTo(x, y); g.stroke();
+        g.fillStyle = '#fff'; g.beginPath(); g.arc(x, y, Lay.c * 0.17, 0, Math.PI * 2); g.fill();
+    }
+    for (let k = bits.length - 1; k >= 0; k--) {
+        const b = bits[k];
+        b.life -= dt; if (b.life <= 0) { bits.splice(k, 1); continue; }
+        b.vy += 900 * dt; b.x += b.vx * dt; b.y += b.vy * dt;
+        g.globalAlpha = clamp(b.life / 0.3, 0, 1); g.fillStyle = b.color;
+        g.beginPath(); g.arc(b.x, b.y, b.size, 0, Math.PI * 2); g.fill();
+    }
+    g.globalAlpha = 1;
+    for (let k = rings.length - 1; k >= 0; k--) {
+        const r = rings[k];
+        r.life -= dt; if (r.life <= 0) { rings.splice(k, 1); continue; }
+        const p = 1 - r.life / 0.4;
+        g.globalAlpha = clamp(r.life / 0.25, 0, 1); g.lineWidth = 3; g.strokeStyle = r.color;
+        g.beginPath(); g.arc(r.x, r.y, r.r * (1 + p * 1.4), 0, Math.PI * 2); g.stroke();
+    }
+    g.globalAlpha = 1;
+    for (let k = texts.length - 1; k >= 0; k--) {
+        const t = texts[k];
+        t.life -= dt; if (t.life <= 0) { texts.splice(k, 1); continue; }
+        const p = 1 - t.life / 1.1, s = p < 0.15 ? 0.6 + p / 0.15 * 0.4 : 1;
+        g.globalAlpha = clamp(t.life / 0.35, 0, 1);
+        g.font = `700 ${t.size * s}px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle';
+        g.lineJoin = 'round'; g.lineWidth = 6; g.strokeStyle = 'rgba(60,30,110,0.75)';
+        g.strokeText(t.text, t.x, t.y - p * 40); g.fillStyle = t.color; g.fillText(t.text, t.x, t.y - p * 40);
+    }
+    g.globalAlpha = 1;
+    if (bannerAt && clock - bannerAt < 1.6) {
+        const t = clock - bannerAt, a = t < 0.2 ? t / 0.2 : t > 1.2 ? (1.6 - t) / 0.4 : 1;
+        g.globalAlpha = clamp(a, 0, 1);
+        const L = Lay, y = L.by + G.h * L.c / 2, fs = clamp(W * 0.1, 26, 44);
+        g.font = `700 ${fs}px ${FONT}`; g.textAlign = 'center'; g.textBaseline = 'middle';
+        g.lineJoin = 'round'; g.lineWidth = 8; g.strokeStyle = 'rgba(60,30,110,0.8)';
+        const label = `Level ${G.n}`;
+        g.strokeText(label, W / 2, y); g.fillStyle = '#fff'; g.fillText(label, W / 2, y);
+        if (G.hard) {
+            g.font = `700 ${fs * 0.5}px ${FONT}`; g.lineWidth = 6;
+            g.strokeText('Hard level', W / 2, y + fs * 0.85); g.fillStyle = '#ff6b7a'; g.fillText('Hard level', W / 2, y + fs * 0.85);
+        }
+        g.globalAlpha = 1;
+    }
+}
+
+function render(dt) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    if (loadingN) {
+        ctx.font = `600 20px ${FONT}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff';
+        ctx.fillText('Mixing the jellies' + '.'.repeat(1 + Math.floor(clock * 3) % 3), W / 2, H / 2);
+    }
+    if (!G || !Lay) return;
+    if (shakeT > 0) { shakeT -= dt; const s = shakeT * 18; ctx.translate((Math.random() - 0.5) * s, (Math.random() - 0.5) * s); }
+    drawRail();
+    drawBoard();
+    drawSlots();
+    drawQueues();
+    drawJellies();
+    drawFx(dt);
+}
+
+/* ---------- tutorial ---------- */
+// The jelly the first level points at: the best front jelly to send.
+function tutorTarget() {
+    if (!G || G.n !== 1 || G.moves > 0 || G.over || testLevel) return -1;
+    let best = -1, bestE = 0;
+    for (const q of G.qs) {
+        const j = G.jel[q[0]];
+        if (!j) continue;
+        const e = exposure(G, j.c);
+        if (e > bestE) { bestE = e; best = j.id; }
+    }
+    return best;
+}
+const TIPS = {
+    tap: 'Tap a jelly to send it around the track.',
+    shoot: 'It shoots every cube of its color it can see as it skates by.',
+    slots: 'Jellies with shots left wait here. Tap one to send it again. Fill every slot and you’re out of room!',
+    cap: 'Only 5 jellies fit on the track at once.',
+};
+let tipTimer = 0;
+function tip(id, force) {
+    if (!force && save.tips[id]) return;
+    save.tips[id] = 1;
+    const el = $('tip');
+    el.textContent = TIPS[id] || id;
+    el.hidden = false;
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(() => { el.hidden = true; }, 5200);
+    persist();
+}
+
+/* ---------- screens ---------- */
+function show(name) {
+    screenName = name;
+    for (const id of ['home', 'play', 'album']) $(id).hidden = id !== name;
+    if (name === 'home') homeUI();
+    if (name === 'album') albumUI();
+    if (name === 'play') requestAnimationFrame(() => layout());
+}
+
+function homeUI() {
+    syncSound();
+    if (!testLevel) prepare(save.lvl);
+    $('homeCoins').textContent = save.coins;
+    $('streakTxt').textContent = save.streak;
+    $('albumTxt').textContent = `${Object.keys(save.album).length}/${PICS.length}`;
+    const n = save.lvl, info = levelInfo(n);
+    const resume = save.run && save.run.n === n && !save.run.over && save.run.moves > 0;
+    $('playBtn').innerHTML = `${resume ? 'Continue' : 'Level'} ${n}${info.hard ? ' <span class="hard-tag">HARD</span>' : ''}`;
+}
+
+function albumUI() {
+    const grid = $('albumGrid');
+    grid.innerHTML = '';
+    let count = 0;
+    PICS.forEach((p, k) => {
+        const tile = document.createElement('div');
+        const got = save.album[p.id];
+        tile.className = 'tile' + (got ? '' : ' locked');
+        if (got) {
+            count++;
+            const c = document.createElement('canvas');
+            tile.append(c);
+            drawPic(c, p, 74);
+            const nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = p.name; tile.append(nm);
+        } else {
+            tile.innerHTML = `<div class="q">?</div><div class="nm">Level ${k + 1}</div>`;
+        }
+        grid.append(tile);
+    });
+    $('albumCount').textContent = `${count}/${PICS.length}`;
+}
+
+function hud() {
+    syncSound();
+    if (!G) return;
+    $('lvlName').innerHTML = `Level ${G.n}${G.hard ? ' <span class="hard-tag">HARD</span>' : ''}`;
+    $('hudCoins').textContent = save.coins;
+    $('fastBtn').classList.toggle('on', !!save.fast);
+    for (const b of document.querySelectorAll('.boost')) {
+        const k = b.dataset.b, badge = b.querySelector('.badge'), locked = G.n < UNLOCK[k] && !testLevel;
+        b.classList.toggle('locked', locked);
+        b.classList.toggle('aim', aim === k);
+        if (locked) { badge.className = 'badge lock'; badge.innerHTML = '<i class="fa-solid fa-lock"></i>'; }
+        else if (save.boost[k] > 0) { badge.className = 'badge'; badge.textContent = save.boost[k]; }
+        else { badge.className = 'badge price'; badge.innerHTML = `<i class="fa-solid fa-coins"></i>${PRICE[k]}`; }
+    }
+}
+
+function startLevel(resume) {
+    const n = testLevel || save.lvl;
+    if (resume && save.run && save.run.n === n && save.run.v === 2 && !save.run.over) { begin(save.run, true); return; }
+    G = null; loadingN = n;
+    $('lvlName').textContent = `Level ${n}`;
+    show('play');
+    getLevel(n, L => { if (loadingN === n && screenName === 'play' && !G) begin(runFrom(L), false); });
+}
+
+function begin(run, resumed) {
+    G = run; G.fx = []; loadingN = 0;
+    packTray(G);
+    if (G.slots0 == null) G.slots0 = G.tray.length;
+    if (!resumed) {
+        save.run = null;
+    }
+    D.clear(); bits = []; texts = []; beams = []; rings = [];
+    aim = null; winAt = fullAt = 0; bannerAt = clock;
+    $('tip').hidden = true;
+    show('play');
+    layout();
+    hud();
+    persist();
+    setTimeout(intro, 50);
+}
+
+// New things get a short card the first time they show up.
+function intro() {
+    if (!G || testLevel) return;
+    const info = levelInfo(G.n), hasHidden = G.jel.some(j => j.hid), hasIce = G.hp.some(v => v > 1);
+    const cards = [];
+    if (G.n === UNLOCK.hammer && !save.tips.u_hammer) cards.push(['u_hammer', `<div class="icon-big gold"><i class="fa-solid fa-hammer"></i></div><h2>Hammer</h2><p>Tap the hammer, then tap the picture to smash a 3 by 3 patch of cubes. Here are two to start you off.</p>`, () => { save.boost.hammer += 2; }]);
+    if (G.n === UNLOCK.magnet && !save.tips.u_magnet) cards.push(['u_magnet', `<div class="icon-big gold"><i class="fa-solid fa-magnet"></i></div><h2>Magnet</h2><p>Tap the magnet, then tap any jelly in a line to pull it to the front. Here are two on the house.</p>`, () => { save.boost.magnet += 2; }]);
+    if (G.tray.length < SLOTS && !save.tips.u_four) cards.push(['u_four', `<div class="icon-big" style="color:#ff5f9e"><i class="fa-solid fa-circle-half-stroke"></i></div><h2 class="pink">Four slots</h2><p>From here on you get 4 waiting slots, so think before you bench a jelly. If you run out of room, you can buy a fifth once a level for ${PRICE.slot} coins.</p>`]);
+    if (info.hard && !save.tips.u_hard) cards.push(['u_hard', `<div class="icon-big" style="color:#ff4d5e"><i class="fa-solid fa-bolt"></i></div><h2 class="pink">Hard level</h2><p>Hard levels have busier pictures and more sleepy jellies. They pay double coins.</p>`]);
+    if (hasHidden && !save.tips.u_hidden) cards.push(['u_hidden', `<div class="icon-big"><i class="fa-solid fa-moon"></i></div><h2>Sleepy jellies</h2><p>Jellies marked <b>?</b> are napping. They wake up and show their color when they reach the front of the line.</p>`]);
+    if (hasIce && !save.tips.u_ice) cards.push(['u_ice', `<div class="icon-big" style="color:#45c4ff"><i class="fa-solid fa-snowflake"></i></div><h2>Ice cubes</h2><p>Frozen cubes take two hits: one to crack the ice and one to pop the cube.</p>`]);
+    const next = () => {
+        const c = cards.shift();
+        if (!c) { closeModal(); if (G.n === 1 && G.moves === 0) tip('tap'); return; }
+        save.tips[c[0]] = 1;
+        if (c[2]) c[2]();
+        persist(); hud();
+        modal(`${c[1]}<div class="acts"><button class="btn" data-act="ok">Got it</button></div>`, {ok: next});
+    };
+    next();
+}
+
+function finishWin() {
+    const n = G.n, first = !save.album[G.pic];
+    const base = G.hard ? 40 : 20, bonus = Math.min(save.streak, 3) * 5, coins = base + bonus;
+    if (!testLevel) {
+        save.coins += coins;
+        save.streak++; save.best = Math.max(save.best, save.streak);
+        save.wins++;
+        if (first) save.album[G.pic] = n;
+        save.lvl = n + 1; save.run = null; save.tries = 0;
+        persist();
+    }
+    hud();
+    const pic = PICS.find(p => p.id === G.pic);
+    modal(`<h2>${pic.name}!</h2>
+        <div class="picbox"><canvas id="winPic"></canvas></div>
+        ${first ? '<p>New picture in your album.</p>' : ''}
+        <div class="reward"><i class="fa-solid fa-coins"></i> +${coins}</div>
+        ${bonus ? `<p><i class="fa-solid fa-fire" style="color:#ff7a2e"></i> Streak bonus +${bonus}</p>` : ''}
+        <div class="acts"><button class="btn green big" data-act="next">Next level</button><button class="link" data-act="home">Home</button></div>`, {
+        next: () => { closeModal(); startLevel(false); },
+        home: () => { closeModal(); G = null; loadingN = 0; show('home'); },
+    });
+    drawPic($('winPic'), pic, 160);
+    SND.coin();
+    if (!testLevel) prepare(save.lvl);
+}
+
+function showFull() {
+    const room = G.tray.length === G.slots0 && G.tray.length < MAX_SLOTS, can = save.coins >= PRICE.slot;
+    const label = `Fifth slot <small><i class="fa-solid fa-coins"></i> ${PRICE.slot}</small>`;
+    modal(`<div class="icon-big" style="color:#ff5f9e"><i class="fa-solid fa-face-dizzy"></i></div>
+        <h2 class="pink">Out of room!</h2>
+        <p>Every slot is full and a jelly has nowhere to wait.${save.tries ? ` This was try ${save.tries + 1}.` : ''}</p>
+        <div class="acts">
+            ${room ? `<button class="btn green" data-act="slot" ${can ? '' : 'disabled'}>${label}</button>${can ? '' : `<p style="margin:-.3rem 0 0;font-size:.85rem">You have ${save.coins} coins.</p>`}` : G.tray.length > G.slots0 ? '<p style="margin:0;font-size:.85rem">You\u2019ve bought this level\u2019s fifth slot already.</p>' : ''}
+            <button class="btn purple" data-act="retry"><i class="fa-solid fa-rotate-right"></i> Try again</button>
+            <button class="link" data-act="home">Home</button>
+        </div>
+        ${save.streak ? `<p style="margin-top:.6rem;font-size:.85rem">Trying again ends your ${save.streak} win streak.</p>` : ''}`, {
+        slot: () => {
+            if (save.coins < PRICE.slot) return;
+            save.coins -= PRICE.slot;
+            closeModal(); addSlot(G); layout(); fullAt = 0; hud(); persist(); SND.coin();
+        },
+        retry: () => { closeModal(); fail(); startLevel(false); },
+        home: () => { closeModal(); fail(); G = null; show('home'); },
+    });
+}
+
+function fail() {
+    if (testLevel) return;
+    save.streak = 0; save.tries++; save.run = null;
+    persist();
+}
+
+function pay(k) {
+    if (save.boost[k] > 0) { save.boost[k]--; persist(); hud(); return true; }
+    if (save.coins >= PRICE[k]) { save.coins -= PRICE[k]; persist(); hud(); return true; }
+    toast(`Not enough coins: that costs ${PRICE[k]}.`);
+    SND.nope();
+    return false;
+}
+
+function pauseMenu() {
+    const moved = G && G.moves > 0;
+    modal(`<h2>Paused</h2><p>Level ${G.n}${save.tries ? ` · try ${save.tries + 1}` : ''}</p>
+        <div class="acts">
+            <button class="btn green" data-act="resume"><i class="fa-solid fa-play"></i> Keep playing</button>
+            <button class="btn purple" data-act="restart"><i class="fa-solid fa-rotate-right"></i> Restart level</button>
+            <button class="btn white" data-act="settings"><i class="fa-solid fa-gear"></i> Settings</button>
+            <button class="link" data-act="home">Save and go home</button>
+        </div>
+        ${moved && save.streak ? `<p style="margin-top:.6rem;font-size:.85rem">Restarting ends your ${save.streak} win streak.</p>` : ''}`, {
+        resume: closeModal,
+        restart: () => { closeModal(); if (moved) fail(); startLevel(false); },
+        settings: () => settingsMenu(pauseMenu),
+        home: () => { closeModal(); persist(); G = null; show('home'); },
+    });
+}
+
+function settingsMenu(back) {
+    const draw = () => modal(`<h2>Settings</h2>
+        <div class="setting">Sound <button class="toggle ${save.sound ? 'on' : ''}" data-act="sound" aria-label="Sound"></button></div>
+        <div class="setting">Fast track <button class="toggle ${save.fast ? 'on' : ''}" data-act="fast" aria-label="Fast track"></button></div>
+        <div class="setting">Best streak <b>${save.best}</b></div>
+        <div class="setting">Levels won <b>${save.wins}</b></div>
+        <div class="acts">
+            <button class="btn white" data-act="how"><i class="fa-solid fa-circle-question"></i> How to play</button>
+            <button class="btn white" data-act="move"><i class="fa-solid fa-mobile-screen-button"></i> Move to another device</button>
+            <button class="btn" data-act="back">Done</button>
+            <button class="link red" data-act="reset">Reset progress</button>
+        </div>`, {
+        sound: () => { setSound(!save.sound); draw(); },
+        fast: () => { save.fast = !save.fast; persist(); hud(); draw(); },
+        how: () => howTo(() => settingsMenu(back)),
+        move: () => moveMenu(draw),
+        back: () => back ? back() : (closeModal(), homeUI()),
+        reset: () => modal(`<h2 class="pink">Start over?</h2><p>This clears your levels, coins, boosters and album on this device.</p>
+            <div class="acts"><button class="btn" data-act="yes">Reset everything</button><button class="link" data-act="no">Keep my progress</button></div>`, {
+            yes: () => { const s = save.sound; save = JSON.parse(JSON.stringify(DEF)); save.sound = s; persist(); closeModal(); G = null; show('home'); },
+            no: draw,
+        }),
+    });
+    draw();
+}
+
+function howTo(back) {
+    modal(`<h2>How to play</h2>
+        <ul>
+            <li><b>Tap a jelly</b> at the front of a line. It hops on the track and skates around the picture.</li>
+            <li>As it skates, it shoots the first cube it sees in each row and column, <b>if that cube is its color</b>. Its number is how many shots it has left.</li>
+            <li>A jelly with shots left after a lap <b>waits in a slot</b>. Tap it to send it again.</li>
+            <li>If a jelly comes back and every slot is full, you're <b>out of room</b>.</li>
+            <li>Up to 5 jellies fit on the track at once. Bust every cube to finish the picture.</li>
+        </ul>
+        <p><i class="fa-solid fa-hammer"></i> smashes a 3 by 3 patch and <i class="fa-solid fa-magnet"></i> pulls any jelly to the front. From level 8 you get 4 slots; run out of room and you can buy a fifth once a level.</p>
+        <div class="acts"><button class="btn" data-act="ok">Let's play</button></div>`, {ok: back || closeModal});
+}
+
+function modal(html, acts) {
+    stopScan();
+    const card = $('card');
+    card.innerHTML = html;
+    $('modal').hidden = false;
+    modalOpen = true;
+    card.onclick = e => {
+        const b = e.target.closest('[data-act]');
+        if (b && acts[b.dataset.act]) { audio(); acts[b.dataset.act](b); }
+    };
+}
+function closeModal() { stopScan(); $('modal').hidden = true; modalOpen = false; }
+
+let toastTimer = 0;
+function toast(text) {
+    const el = $('toast');
+    el.textContent = text; el.hidden = false;
+    el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.hidden = true; }, 2200);
+}
+
+/* ---------- moving progress between devices ---------- */
+// Progress packs into a 15 character code, so no server is needed: level, coins,
+// boosters, streaks and two settings, plus a check against typos. The album and the
+// tips that have been seen follow from the level. A level partway through starts over.
+const B32 = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';   // no I, L, O or U to misread
+const MOVE_FIELDS = [['v', 2], ['lvl', 14], ['coins', 17], ['hammer', 6], ['magnet', 6], ['streak', 8], ['best', 9], ['sound', 1], ['fast', 1]];
+const moveSum = str => { let h = 7; for (const ch of str) h = (h * 31 + B32.indexOf(ch)) % 1021; return h; };
+function moveCode(sv) {
+    const vals = {v: 1, lvl: sv.lvl, coins: sv.coins, hammer: sv.boost.hammer, magnet: sv.boost.magnet, streak: sv.streak, best: sv.best, sound: +!!sv.sound, fast: +!!sv.fast};
+    let bits = '';
+    for (const [k, n] of MOVE_FIELDS) bits += clamp(Math.floor(vals[k] || 0), 0, 2 ** n - 1).toString(2).padStart(n, '0');
+    while (bits.length % 5) bits += '0';
+    let out = '';
+    for (let i = 0; i < bits.length; i += 5) out += B32[parseInt(bits.slice(i, i + 5), 2)];
+    const sum = moveSum(out);
+    return (out + B32[sum >> 5] + B32[sum & 31]).replace(/(.{5})(?=.)/g, '$1-');
+}
+function readMove(text) {
+    const str = String(text || '').split('#move=').pop().toUpperCase().replace(/O/g, '0').replace(/[IL]/g, '1').replace(/[^0-9A-Z]/g, '');
+    if (str.length !== 15) return null;
+    const body = str.slice(0, 13), sum = moveSum(body);
+    if (str[13] !== B32[sum >> 5] || str[14] !== B32[sum & 31]) return null;
+    let bits = '';
+    for (const ch of body) { const v = B32.indexOf(ch); if (v < 0) return null; bits += v.toString(2).padStart(5, '0'); }
+    const m = {};
+    let at = 0;
+    for (const [k, n] of MOVE_FIELDS) { m[k] = parseInt(bits.slice(at, at + n), 2); at += n; }
+    return m.v === 1 && m.lvl >= 1 ? m : null;
+}
+function applyMove(m) {
+    const tips = {...save.tips}, seen = (id, lvl) => { if (m.lvl > lvl) tips[id] = 1; };
+    ['tap', 'shoot', 'slots', 'cap'].forEach(id => seen(id, 3));
+    seen('u_hammer', UNLOCK.hammer); seen('u_magnet', UNLOCK.magnet);
+    for (let n = 1; n < Math.min(m.lvl, 80); n++) {
+        const info = levelInfo(n);
+        if (info.hard) tips.u_hard = 1;
+        if (info.hidden) tips.u_hidden = 1;
+        if (info.ice) tips.u_ice = 1;
+    }
+    const album = {};
+    PICS.forEach((p, k) => { if (k + 1 < m.lvl) album[p.id] = k + 1; });
+    save = {...JSON.parse(JSON.stringify(DEF)), lvl: m.lvl, coins: m.coins, boost: {hammer: m.hammer, magnet: m.magnet},
+        streak: m.streak, best: Math.max(m.best, m.streak), wins: m.lvl - 1, album, tips, sound: !!m.sound, fast: !!m.fast};
+    G = null; loadingN = 0;
+    persist();
+    closeModal();
+    show('home');
+    toast(`Welcome back: level ${m.lvl}!`);
+}
+const moveSummary = sv => `Level ${sv.lvl}, ${sv.coins} coins`;
+
+function moveMenu(back) {
+    const code = moveCode(save), link = location.href.split('#')[0].split('?')[0] + '#move=' + code;
+    modal(`<h2>Move your progress</h2>
+        <p>This device: <b>${moveSummary(save)}</b></p>
+        <div class="move-box">
+            <div class="lbl">Your code</div>
+            <div class="move-code">${code}</div>
+            <button class="btn white" data-act="copy"><i class="fa-regular fa-copy"></i> Copy</button>
+            <canvas id="moveQR" hidden></canvas>
+            <p class="small" style="margin:.5rem 0 0">On the other device, scan this with the camera, or open Jelly Jam there, go to Settings, Move to another device, and enter the code.</p>
+        </div>
+        <div class="acts">
+            <button class="btn purple" data-act="enter"><i class="fa-solid fa-download"></i> Bring progress here</button>
+            <button class="link" data-act="back">Done</button>
+        </div>
+        <p class="small">A level you're partway through starts over on the other device.</p>`, {
+        copy: b => {
+            const ok = () => { b.innerHTML = '<i class="fa-solid fa-check"></i> Copied'; };
+            try { navigator.clipboard.writeText(code).then(ok, () => toast('Couldn’t copy. Write the code down instead.')); } catch (e) { toast('Couldn’t copy. Write the code down instead.'); }
+        },
+        enter: () => enterMove(() => moveMenu(back)),
+        back: () => back ? back() : closeModal(),
+    });
+    drawQR($('moveQR'), link);
+}
+
+function enterMove(back) {
+    modal(`<h2>Bring progress here</h2>
+        <p>Enter the code from your other device, or scan its QR code.</p>
+        <input class="code-in" id="moveIn" placeholder="XXXXX-XXXXX-XXXXX" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" maxlength="24">
+        <p class="small msg-err" id="moveMsg" style="margin:.4rem 0 0;min-height:1.2em"></p>
+        <video class="scan-vid" id="scanVid" playsinline muted hidden></video>
+        <div class="acts">
+            <button class="btn green" data-act="load">Load</button>
+            <button class="btn white" data-act="scan"><i class="fa-solid fa-camera"></i> Scan a QR code</button>
+            <button class="link" data-act="back">Back</button>
+        </div>`, {
+        load: () => {
+            const m = readMove($('moveIn').value);
+            if (m) confirmMove(m, back); else $('moveMsg').textContent = 'That code doesn’t look right. Check it and try again.';
+        },
+        scan: () => startScan(text => { const m = readMove(text); if (m) { confirmMove(m, back); return true; } return false; }),
+        back,
+    });
+    $('moveIn').addEventListener('keydown', e => { if (e.key === 'Enter') $('card').querySelector('[data-act="load"]').click(); });
+}
+
+function confirmMove(m, back) {
+    const behind = m.lvl < save.lvl;
+    modal(`<div class="icon-big"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h2>Load this progress?</h2>
+        <p><b>${moveSummary(m)}</b>, ${m.hammer} hammer${m.hammer === 1 ? '' : 's'} and ${m.magnet} magnet${m.magnet === 1 ? '' : 's'}.</p>
+        <p>It replaces <b>${moveSummary(save)}</b> on this device.${behind ? ' <span class="msg-err">That’s behind where this device is.</span>' : ''}</p>
+        <div class="acts">
+            <button class="btn green" data-act="yes">Load it</button>
+            <button class="link" data-act="no">Cancel</button>
+        </div>`, {
+        yes: () => applyMove(m),
+        no: back || closeModal,
+    });
+}
+
+function loadScript(src, integrity) {
+    return new Promise((resolve, reject) => {
+        const el = document.createElement('script');
+        el.src = src; el.integrity = integrity; el.crossOrigin = 'anonymous';
+        el.onload = resolve; el.onerror = () => reject(new Error('Could not load ' + src));
+        document.head.appendChild(el);
+    });
+}
+const QR_LIB = ['https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js', 'sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1'];
+const SCAN_LIB = ['https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js', 'sha384-b5Ya4Bq3qCyz39m2ISh+4DxjAIljdeFwK/BsXLuj9gugaNwAcj/ia15fxNZL9Nlx'];
+async function drawQR(c, text) {
+    try {
+        if (!window.qrcode) await loadScript(...QR_LIB);
+        if (!c.isConnected) return;
+        const q = qrcode(0, 'M'); q.addData(text); q.make();
+        const n = q.getModuleCount(), size = 456, cell = Math.floor(size / (n + 6)), off = Math.floor((size - cell * n) / 2);
+        c.width = c.height = size;
+        const g = c.getContext('2d');
+        g.fillStyle = '#fff'; g.fillRect(0, 0, size, size);
+        g.fillStyle = '#3b2a63';
+        for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) g.fillRect(off + k * cell, off + r * cell, cell, cell);
+        c.hidden = false;
+    } catch (e) { /* offline: the code alone still works */ }
+}
+
+// Camera scanning: BarcodeDetector where there is one, jsQR otherwise. `found` returns
+// true when the text was a code it could use.
+let scanStream = null, scanTimer = 0;
+async function startScan(found) {
+    const video = $('scanVid'), msg = $('moveMsg');
+    msg.textContent = '';
+    try {
+        scanStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: {ideal: 'environment'}}, audio: false});
+    } catch (e) { msg.textContent = 'Couldn’t open the camera. Type the code instead.'; return; }
+    if (!video.isConnected) { stopScan(); return; }
+    video.hidden = false;
+    video.srcObject = scanStream;
+    try { await video.play(); } catch (e) { /* plays once it can */ }
+    let detector = null;
+    if ('BarcodeDetector' in window) { try { detector = new BarcodeDetector({formats: ['qr_code']}); } catch (e) { /* no QR support */ } }
+    if (!detector && !window.jsQR) { try { await loadScript(...SCAN_LIB); } catch (e) { msg.textContent = 'Couldn’t load the scanner. Type the code instead.'; stopScan(); return; } }
+    const cnv = document.createElement('canvas'), g = cnv.getContext('2d', {willReadFrequently: true});
+    const tick = async () => {
+        if (!scanStream) return;
+        let text = null;
+        if (video.readyState >= 2) {
+            if (detector) { const codes = await detector.detect(video).catch(() => []); text = codes[0] && codes[0].rawValue; }
+            else {
+                const k = Math.min(1, 640 / Math.max(video.videoWidth, video.videoHeight));
+                cnv.width = Math.round(video.videoWidth * k); cnv.height = Math.round(video.videoHeight * k);
+                g.drawImage(video, 0, 0, cnv.width, cnv.height);
+                const hit = jsQR(g.getImageData(0, 0, cnv.width, cnv.height).data, cnv.width, cnv.height, {inversionAttempts: 'dontInvert'});
+                text = hit && hit.data;
+            }
+        }
+        if (text && found(text)) return;
+        scanTimer = setTimeout(tick, 200);
+    };
+    tick();
+}
+function stopScan() {
+    clearTimeout(scanTimer);
+    if (scanStream) { scanStream.getTracks().forEach(t => t.stop()); scanStream = null; }
+}
+
+/* ---------- input ---------- */
+function hitCell(x, y) {
+    const L = Lay, cx = Math.floor((x - L.bx) / L.c), cy = Math.floor((y - L.by) / L.c);
+    if (cx < 0 || cy < 0 || cx >= G.w || cy >= G.h) return -1;
+    return cy * G.w + cx;
+}
+const near = (p, x, y, r) => Math.hypot(p.x - x, p.y + p.r * 0.1 - y) <= r;
+
+cv.addEventListener('pointerdown', e => {
+    audio();
+    if (!G || !Lay || modalOpen || G.over) return;
+    const rect = cv.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
+    if (aim === 'hammer') {
+        const i = hitCell(x, y);
+        if (i >= 0 && G.hp[i] - G.want[i] > 0 && pay('hammer')) smash(G, i);
+        aim = null; hud(); persist();
+        return;
+    }
+    if (aim === 'magnet') {
+        for (let q = 0; q < G.qs.length; q++) for (let k = 1; k < Math.min(4, G.qs[q].length); k++) {
+            const p = qPos(q, k);
+            if (near(p, x, y, p.r * 1.15) && pay('magnet')) { pull(G, G.qs[q][k]); aim = null; hud(); persist(); return; }
+        }
+        aim = null; hud();
+        return;
+    }
+    for (let s = 0; s < G.tray.length; s++) {
+        const p = slotPos(s);
+        if (near(p, x, y, Lay.sr * 1.3)) { if (G.tray[s] >= 0) tryLaunch({slot: s}); return; }
+    }
+    for (let q = 0; q < G.qs.length; q++) {
+        const p = qPos(q, 0);
+        if (Math.abs(x - p.x) < Math.max(p.r * 1.4, 26) && y > p.y - p.r * 1.4 && y < p.y + p.r * 1.6) { tryLaunch({q}); return; }
+    }
+});
+
+function tryLaunch(from) {
+    const r = launch(G, from);
+    if (r === 'ok') { if (G.n === 1 && G.moves === 1) tip('shoot'); persist(); return; }
+    if (r === 'full') { tip('cap', true); SND.nope(); }
+}
+
+for (const b of document.querySelectorAll('.boost')) {
+    b.addEventListener('click', () => {
+        audio();
+        if (!G || modalOpen || G.over) return;
+        const k = b.dataset.b;
+        if (G.n < UNLOCK[k] && !testLevel) { toast(`Unlocks at level ${UNLOCK[k]}.`); return; }
+        if (aim === k) { aim = null; hud(); return; }
+        if (save.boost[k] <= 0 && save.coins < PRICE[k]) { toast(`Not enough coins: that costs ${PRICE[k]}.`); SND.nope(); return; }
+        if (k === 'magnet' && !G.qs.some(q => q.length > 1)) { toast('No jellies waiting behind the fronts.'); return; }
+        aim = k; hud();
+        toast(k === 'hammer' ? 'Tap the picture to smash.' : 'Tap a jelly in a line to pull it forward.');
+    });
+}
+
+$('pauseBtn').onclick = () => { audio(); if (G && !G.over && !modalOpen) pauseMenu(); };
+function setSound(on) {
+    save.sound = on;
+    persist();
+    syncSound();
+    if (on) SND.coin();
+}
+function syncSound() {
+    for (const b of document.querySelectorAll('.sound-btn')) {
+        b.classList.toggle('muted', !save.sound);
+        b.setAttribute('aria-label', save.sound ? 'Sound on' : 'Sound off');
+        b.title = save.sound ? 'Sound on' : 'Sound off';
+        b.querySelector('i').className = save.sound ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+    }
+}
+for (const b of document.querySelectorAll('.sound-btn')) b.onclick = () => setSound(!save.sound);
+$('fastBtn').onclick = () => { save.fast = !save.fast; persist(); hud(); toast(save.fast ? 'Fast track on' : 'Fast track off'); };
+$('playBtn').onclick = () => { audio(); startLevel(true); };
+$('howBtn').onclick = () => { audio(); howTo(); };
+$('homeSettings').onclick = () => { audio(); settingsMenu(); };
+$('albumChip').onclick = () => show('album');
+$('streakChip').onclick = () => toast(save.streak ? `${save.streak} wins in a row: +${Math.min(save.streak, 3) * 5} bonus coins a win.` : 'Win levels in a row for bonus coins.');
+$('albumBack').onclick = () => show('home');
+document.addEventListener('gesturestart', e => e.preventDefault());
+
+/* ---------- loop ---------- */
+let last = performance.now();
+function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    clock += dt;
+    if (screenName === 'play' && !G) render(dt);
+    else if (screenName === 'play' && G) {
+        if (!modalOpen && !document.hidden) step(G, dt * (save.fast ? 1.8 : 1) * (G.auto ? 2.5 : 1));
+        syncJellies(dt);
+        drainFx();
+        render(dt);
+        if (G.over === 'won' && winAt && clock - winAt > 1.5 && !modalOpen) { winAt = 0; finishWin(); }
+        if (G.over === 'full' && fullAt && clock - fullAt > 0.7 && !modalOpen) { fullAt = 0; showFull(); }
+    } else if (screenName === 'home') drawMascot();
+    requestAnimationFrame(frame);
+}
+
+const mascot = $('mascot'), mctx = mascot.getContext('2d');
+let mascotColor = 10;
+function drawMascot() {
+    const d = Math.min(window.devicePixelRatio || 1, 2.5), s = mascot.clientWidth || 144;
+    if (mascot.width !== Math.round(s * d)) { mascot.width = mascot.height = Math.round(s * d); }
+    mctx.setTransform(d, 0, 0, d, 0, 0);
+    mctx.clearRect(0, 0, s, s);
+    const t = clock, bob = Math.sin(t * 3) * s * 0.03;
+    const cubes = ['R', 'Y', 'B', 'G'];
+    cubes.forEach((k, i) => {
+        const cs = s * 0.15, x = s * 0.5 + (i - 1.5) * cs * 1.1 - cs / 2, y = s * 0.08 + Math.sin(t * 2 + i) * 3;
+        mctx.drawImage(cubeImg(KEYS.indexOf(k) + 1, cs * d), x, y, cs, cs);
+    });
+    if (Math.floor(t / 2.4) !== Math.floor((t - 1 / 60) / 2.4)) mascotColor = 1 + Math.floor(Math.random() * 10);
+    drawJelly(mctx, s * 0.5, s * 0.55 + bob, s * 0.26, [1, 2, 3, 4, 6, 8, 9, 10, 7, 5][mascotColor % 10], {board: true, sq: Math.sin(t * 6) * 0.04, ly: -1, blink: (t % 3.3) < 0.12});
+}
+
+function onResize() { if (screenName === 'play') layout(); }
+addEventListener('resize', onResize);
+if (window.visualViewport) visualViewport.addEventListener('resize', onResize);
+document.addEventListener('visibilitychange', () => { if (document.hidden) persist(); last = performance.now(); });
+addEventListener('pagehide', persist);
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    navigator.serviceWorker.register('jelly-sw.js', {scope: './jelly'}).catch(() => {});
+}
+
+if (testLevel) startLevel(false); else show('home');
+// A move link (from the QR code) opens straight into the card that loads it.
+function checkMoveLink() {
+    if (!location.hash.startsWith('#move=')) return;
+    const m = readMove(location.hash);
+    history.replaceState(null, '', location.pathname + location.search);
+    if (m && !testLevel) confirmMove(m); else if (!m) toast('That move link didn’t work. Try typing the code instead.');
+}
+checkMoveLink();
+addEventListener('hashchange', checkMoveLink);
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
