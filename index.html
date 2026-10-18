@@ -542,7 +542,7 @@ const S = {
    ============================================== */
 const sites = [
     { id:'f1',title:'f1.wtf',icon:'fa-solid fa-flag-checkered',color:'#e10600',url:'./f1.html',image:'f1.jpg',external:false,desc:'get need to know info for the next f1 race and race season'},
-    { id:'fucked',title:'getfucked.org',icon:'fa-solid fa-hand-point-up',color:'#ff4444',url:'./getfucked.html',image:'fucked.jpg',external:false,desc:'all the middle finger gifs you could ever want'},
+    { id:'fucked',title:'getfucked.org',icon:'fa-solid fa-hand-point-up',color:'#ff4444',url:'https://getfucked.org/',image:'fucked.jpg',external:false,desc:'all the middle finger gifs you could ever want'},
     { id:'notes',title:'notes',icon:'fa-solid fa-note-sticky',color:'#f0c040',url:'./notes.html',image:'notes.png',external:false,desc:'notes and checklists that sync to your phone, encrypted end to end'},
     { id:'blackjack',title:'blackjack',icon:'fa-solid fa-diamond',color:'#2d7a30',url:'./blackjack.html',image:'blackjack.png',external:false,desc:'full featured blackjack game with multiple themes'},
     { id:'tenor',title:'tenor gif\ndownloader',icon:'fa-solid fa-film',color:'#5865f2',url:'./tenor.html',image:'tenor.png',external:false,desc:'download any tenor gif'},
@@ -978,8 +978,9 @@ function createAppWindow(opts) {
 /* ==============================================
    SITE WINDOWS
    ============================================== */
-// Pages run in same-origin iframes. Popups (stream links and such) escape the
-// sandbox so outside sites open normally in their own tab.
+// Pages run in iframes, same-origin except getfucked.org. Popups (stream links
+// and such) escape the sandbox so outside sites open normally in their own tab.
+// Clipboard access has to be granted for getfucked.org's copy link button.
 const FRAME_SANDBOX = 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads';
 function openPageWindow(o) {
     const mob = window.innerWidth <= 640;
@@ -987,7 +988,7 @@ function openPageWindow(o) {
     createAppWindow({id:o.id, title:o.title, icon:o.icon, color:o.color,
         w: mob ? dr.width-8 : Math.min(900,dr.width-40),
         h: mob ? dr.height-8 : dr.height-60,
-        content:`<iframe src="${o.url}" title="${esc(o.title)}" sandbox="${FRAME_SANDBOX}"></iframe>`,
+        content:`<iframe src="${o.url}" title="${esc(o.title)}" sandbox="${FRAME_SANDBOX}" allow="clipboard-write"></iframe>`,
         siteUrl:o.url});
 }
 function openSiteWindow(site) {
@@ -1019,7 +1020,7 @@ function openProps(id) {
     const name = s.title.replace(/\n/g,' ');
     createAppWindow({id:'props:' + id, title:name + ' Properties', icon:'fa-solid fa-circle-info', color:s.color,
         w:340, h:Math.min(440, document.getElementById('desktop').clientHeight - 8),
-        content:`<div class="props-wrap"><div class="props-head"><i class="${s.icon}" style="color:${s.color}"></i><b>${name}</b></div><div class="props-row"><span>Type:</span><span>Web app</span></div><div class="props-row"><span>Location:</span><span>www.ron.computer/${s.url.replace('./','')}</span></div><p class="props-desc">${s.desc}</p>${s.image ? `<img class="props-shot" src="${s.image}" alt="">` : ''}<div class="props-btns"><button onclick="openById('${id}')">Open</button><button onclick="copyLink('${id}')">Copy link</button></div></div>`
+        content:`<div class="props-wrap"><div class="props-head"><i class="${s.icon}" style="color:${s.color}"></i><b>${name}</b></div><div class="props-row"><span>Type:</span><span>Web app</span></div><div class="props-row"><span>Location:</span><span>${/^https?:/.test(s.url) ? s.url.replace(/^https?:\/\/|\/$/g,'') : 'www.ron.computer/' + s.url.replace('./','')}</span></div><p class="props-desc">${s.desc}</p>${s.image ? `<img class="props-shot" src="${s.image}" alt="">` : ''}<div class="props-btns"><button onclick="openById('${id}')">Open</button><button onclick="copyLink('${id}')">Copy link</button></div></div>`
     });
 }
 
