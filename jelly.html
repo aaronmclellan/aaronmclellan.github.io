@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag, same property as the ron.computer desktop. opened_in tells views
+     inside a desktop window apart from direct visits. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J61JMC33K6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-J61JMC33K6', {opened_in: window.top !== window ? 'desktop' : 'direct'});
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>Jelly Jam</title>
 <meta name="description" content="A jelly puzzle game with no ads. Send jellies around the track to bust the cubes of a pixel picture.">

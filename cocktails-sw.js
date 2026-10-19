@@ -53,6 +53,7 @@ self.addEventListener('fetch', (event) => {
     if (req.method !== 'GET') return;
     const url = new URL(req.url);
     const sameOrigin = url.origin === self.location.origin;
+    if (/(^|\.)(googletagmanager|google-analytics)\.com$/.test(url.hostname)) return;   // analytics stays online-only
     if (sameOrigin && !url.pathname.includes('/cocktail')) return;   // not ours
     event.respondWith(staleWhileRevalidate(event, req, sameOrigin));
 });

@@ -54,6 +54,7 @@ self.addEventListener('fetch', (event) => {
     if (req.method !== 'GET') return;
     const url = new URL(req.url);
     const sameOrigin = url.origin === self.location.origin;
+    if (/(^|\.)(googletagmanager|google-analytics)\.com$/.test(url.hostname)) return;   // analytics stays online-only
     if (sameOrigin && !url.pathname.includes('/jelly')) return;   // not ours
     if (sameOrigin && (req.mode === 'navigate' || url.pathname.endsWith('.html'))) {
         event.respondWith(networkFirst(req));
