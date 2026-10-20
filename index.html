@@ -408,6 +408,7 @@ body.dragging .window-content iframe{pointer-events:none}
 
 /* ========== MOBILE ========== */
 @media(max-width:640px){
+.snap-btn{display:none!important}
 .desktop-icon{width:80px}.icon-label{font-size:11px;max-width:75px}
 #start-menu{min-width:220px;max-width:85vw}
 .window{min-width:180px!important;max-width:calc(100vw - 8px)!important}
@@ -945,7 +946,7 @@ function createAppWindow(opts) {
     const openInTabBtn = opts.siteUrl
         ? `<button class="window-title-btn" onclick="window.open('${opts.siteUrl}','_blank')" title="Open in new tab" style="font-size:10px"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>`
         : '';
-    el.innerHTML = `<div class="window-title" data-wid="${id}"><span class="window-title-icon" style="color:${win.color}"><i class="${win.icon}"></i></span><span class="window-title-text">${opts.title}</span><div class="window-title-btns">${openInTabBtn}<button class="window-title-btn" onclick="minimizeWindow(${id})" title="Minimize">&#8211;</button><button class="window-title-btn" onclick="toggleMaximize(${id})" title="Maximize">&#9633;</button><button class="window-title-btn close-btn" onclick="closeWindow(${id})" title="Close">&#10005;</button></div></div><div class="window-content">${opts.content}</div><div class="window-resize" data-wid="${id}"></div>`;
+    el.innerHTML = `<div class="window-title" data-wid="${id}"><span class="window-title-icon" style="color:${win.color}"><i class="${win.icon}"></i></span><span class="window-title-text">${opts.title}</span><div class="window-title-btns">${openInTabBtn}<button class="window-title-btn snap-btn" onclick="snapButton(${id},'left')" title="Left half">${snapIcon('left')}</button><button class="window-title-btn snap-btn" onclick="snapButton(${id},'right')" title="Right half">${snapIcon('right')}</button><button class="window-title-btn" onclick="minimizeWindow(${id})" title="Minimize">&#8211;</button><button class="window-title-btn" onclick="toggleMaximize(${id})" title="Maximize">&#9633;</button><button class="window-title-btn close-btn" onclick="closeWindow(${id})" title="Close">&#10005;</button></div></div><div class="window-content">${opts.content}</div><div class="window-resize" data-wid="${id}"></div>`;
     // Drop the open animation once it has played, or it would replay every
     // time the window comes back from the taskbar.
     el.addEventListener('animationend', () => { el.style.animation = 'none'; }, {once:true});
@@ -958,7 +959,7 @@ function createAppWindow(opts) {
         focusWindow(id);
         const w = S.windows.find(w => w.id === id);
         if (w.maximized) return;
-        S.dragWindow = {id, startX:e.clientX, startY:e.clientY, origX:w.x, origY:w.y};
+        S.dragWindow = {id, startX:e.clientX, startY:e.clientY, origX:w.x, origY:w.y, fx:(e.clientX - w.x) / w.w};
         document.body.classList.add('dragging');
     });
     title.addEventListener('dblclick', e => { if (!e.target.closest('.window-title-btn')) toggleMaximize(id); });
@@ -966,6 +967,7 @@ function createAppWindow(opts) {
         e.stopPropagation(); focusWindow(id);
         const w = S.windows.find(w => w.id === id);
         if (w.maximized) return;
+        w.snap = null; w.prevRect = null; // a resized half becomes an ordinary window
         S.resizeWindow = {id, startX:e.clientX, startY:e.clientY, origW:w.w, origH:w.h};
         document.body.classList.add('dragging');
     });
@@ -1559,11 +1561,14 @@ function toggleMaximize(id) {
     const w = S.windows.find(w => w.id===id); if(!w) return;
     const el = document.getElementById('window-'+id); if(!el) return;
     if (w.maximized) {
-        w.maximized = false; w.x=w.prevRect.x; w.y=w.prevRect.y; w.w=w.prevRect.w; w.h=w.prevRect.h;
+        w.maximized = false;
+        if (w.prevRect) { Object.assign(w, w.prevRect); w.prevRect = null; }
         el.style.left=w.x+'px'; el.style.top=w.y+'px'; el.style.width=w.w+'px'; el.style.height=w.h+'px';
         el.style.borderRadius='var(--window-border-radius)';
     } else {
-        w.prevRect={x:w.x,y:w.y,w:w.w,h:w.h}; w.maximized=true;
+        // A snapped window keeps the size it had before the snap to come back to.
+        if (!w.snap) w.prevRect={x:w.x,y:w.y,w:w.w,h:w.h};
+        w.snap = null; w.maximized=true;
         const d=document.getElementById('desktop');
         w.x=0;w.y=0;w.w=d.clientWidth;w.h=d.clientHeight;
         el.style.left='0';el.style.top='0';el.style.width='100%';el.style.height='100%';el.style.borderRadius='0';
@@ -1601,8 +1606,8 @@ function applyRect(w) {
 function saveSession() {
     if (S.restoring) return;
     const open = S.windows.filter(w => !w.closed && canOpen(w.siteId)).sort((a, b) => zOf(a) - zOf(b)).map(w => {
-        const r = w.maximized && w.prevRect ? w.prevRect : w;
-        return {id:w.siteId, x:r.x, y:r.y, w:r.w, h:r.h, max:w.maximized, min:w.minimized};
+        const r = (w.maximized || w.snap) && w.prevRect ? w.prevRect : w;
+        return {id:w.siteId, x:r.x, y:r.y, w:r.w, h:r.h, max:w.maximized, snap:w.snap || null, min:w.minimized};
     });
     try { localStorage.setItem('openWindows', JSON.stringify(open)); } catch(e) {}
 }
@@ -1618,6 +1623,7 @@ function restoreSession() {
         if (!w) return;
         if (s.w <= d.clientWidth && s.h <= d.clientHeight) { Object.assign(w, {x:s.x, y:s.y, w:s.w, h:s.h}); clampWin(w); applyRect(w); }
         if (s.max) toggleMaximize(w.id);
+        else if (s.snap && window.innerWidth > 640) applySnap(w.id, s.snap);
         if (s.min) minimizeWindow(w.id, true);
     });
     S.restoring = false;
@@ -1702,19 +1708,36 @@ function checkSnap(x, y) {
     ind.style.display = 'none';
     return null;
 }
+// zone: 'left' or 'right' half of the desktop, or 'full' (maximized).
 function applySnap(id, zone) {
     const w = S.windows.find(w => w.id===id); if(!w) return;
     const el = document.getElementById('window-'+id); if(!el) return;
-    const d = document.getElementById('desktop');
-    if (!w.prevRect) w.prevRect = {x:w.x,y:w.y,w:w.w,h:w.h};
-    if (zone === 'left') { w.x=0;w.y=0;w.w=d.clientWidth/2;w.h=d.clientHeight; }
-    else if (zone === 'right') { w.x=d.clientWidth/2;w.y=0;w.w=d.clientWidth/2;w.h=d.clientHeight; }
-    else if (zone === 'full') { w.maximized=true;w.x=0;w.y=0;w.w=d.clientWidth;w.h=d.clientHeight; }
-    el.style.left=w.x+'px';el.style.top=w.y+'px';el.style.width=w.w+'px';el.style.height=w.h+'px';
-    if (zone==='full') el.style.borderRadius='0';
     document.getElementById('snap-indicator').style.display = 'none';
-    saveSession();
+    if (zone === 'full') { if (!w.maximized) toggleMaximize(id); return; }
+    if (!w.snap && !w.maximized) w.prevRect = {x:w.x,y:w.y,w:w.w,h:w.h};
+    w.maximized = false; w.snap = zone;
+    el.style.borderRadius = 'var(--window-border-radius)';
+    fitSnap(w);
+    focusWindow(id); saveSession();
 }
+// Size a snapped window to its half of the desktop, again after a resize.
+function fitSnap(w) {
+    const d = document.getElementById('desktop'), half = Math.round(d.clientWidth / 2);
+    Object.assign(w, w.snap === 'right' ? {x:half, w:d.clientWidth - half} : {x:0, w:half}, {y:0, h:d.clientHeight});
+    applyRect(w);
+}
+function unsnap(id) {
+    const w = S.windows.find(w => w.id===id); if(!w || !w.snap) return;
+    w.snap = null;
+    if (w.prevRect) { Object.assign(w, w.prevRect); w.prevRect = null; clampWin(w); applyRect(w); }
+    focusWindow(id); saveSession();
+}
+// The title bar's half buttons; the same button again puts the window back.
+function snapButton(id, zone) {
+    const w = S.windows.find(w => w.id===id); if(!w) return;
+    if (w.snap === zone) unsnap(id); else applySnap(id, zone);
+}
+const snapIcon = side => `<svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="currentColor"/><rect x="${side === 'left' ? 1 : 5}" y="1" width="4" height="8" fill="currentColor"/></svg>`;
 
 /* ==============================================
    TASKBAR
@@ -2281,6 +2304,13 @@ document.addEventListener('mousemove', e => {
     // Window drag + snap
     if (S.dragWindow) {
         const d = S.dragWindow, w = S.windows.find(w => w.id===d.id), el = document.getElementById('window-'+d.id);
+        if (w && el && w.snap && Math.hypot(e.clientX - d.startX, e.clientY - d.startY) > 4) {
+            // Pulling a snapped window off its half gives it back its own size,
+            // still under the cursor at the same spot along the title bar.
+            w.snap = null;
+            if (w.prevRect) { w.w = w.prevRect.w; w.h = w.prevRect.h; w.prevRect = null; el.style.width = w.w + 'px'; el.style.height = w.h + 'px'; }
+            d.origX = d.startX - d.fx * w.w;
+        }
         if (w && el) {
             w.x = d.origX+(e.clientX-d.startX); w.y = d.origY+(e.clientY-d.startY);
             clampWin(w);
@@ -2372,7 +2402,7 @@ function onDesktopResize() {
         const d = document.getElementById('desktop');
         if (d.clientWidth < 100 || d.clientHeight < 100) return;
         layoutIcons();
-        S.windows.filter(w => !w.closed && !w.maximized).forEach(w => { clampWin(w); applyRect(w); });
+        S.windows.filter(w => !w.closed && !w.maximized).forEach(w => { if (w.snap) fitSnap(w); else { clampWin(w); applyRect(w); } });
     }, 100);
 }
 if (window.ResizeObserver) new ResizeObserver(onDesktopResize).observe(document.getElementById('desktop'));
