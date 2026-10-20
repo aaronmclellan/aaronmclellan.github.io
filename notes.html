@@ -155,6 +155,12 @@ a{color:var(--accent);}
 .fl-item:hover{background:var(--btnH);color:var(--text);}
 .fl-item.active{background:var(--accentA);color:var(--accent);font-weight:600;}
 .fl-item.drop-on{outline:2px dashed var(--accent);outline-offset:-2px;}
+.fl-grip{position:absolute;left:0;top:50%;transform:translateY(-50%);width:12px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--text3);opacity:0;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+.fl-item .fl-grip svg{width:8px;height:14px;pointer-events:none;}
+.fl-item:hover .fl-grip{opacity:1;}
+.fl-grip:hover{color:var(--text);}
+@media (hover:none){.fl-grip{opacity:.6;}}
+.fl-item[data-dragging]{opacity:.4;}
 .fl-item svg{width:16px;height:16px;flex-shrink:0;}
 .fl-hash{width:16px;text-align:center;font-weight:700;flex-shrink:0;opacity:.7;}
 .fl-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -408,7 +414,7 @@ body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.loc
 .mbox p{font-size:.84rem;color:var(--text2);line-height:1.5;margin-bottom:12px;}
 .inp{width:100%;padding:9px 12px;border:1px solid var(--inpB);border-radius:var(--r);background:var(--inp);color:var(--text);font-size:.85rem;font-family:var(--font);outline:none;}
 .inp:focus{border-color:var(--accent);}
-.mbox .inp{margin-bottom:12px;}
+.mbox .inp{margin-bottom:12px;background:var(--bg);}   /* the page colour, so fields stand out from the window */
 .m-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:4px;}
 #ctx{position:fixed;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:4px;min-width:180px;display:none;animation:fadeIn .12s ease;}
 #ctx.show{display:block;}
@@ -919,8 +925,8 @@ const byId = id => D.notes.find(n => n.id === id);
 // Record an edit made on this device.
 const touch = n => { n.updated = now(); n.dev = P.device; };
 const active = () => P.activeId ? byId(P.activeId) : null;
-const liveFolders = () => D.folders.filter(f => !f.deleted).sort((a, b) =>
-  a.id === GENERAL ? -1 : b.id === GENERAL ? 1 : (a.created - b.created) || a.name.localeCompare(b.name));
+const folderKey = f => f.order != null ? f.order : f.id === GENERAL ? -1 : 1e15 + f.created;
+const liveFolders = () => D.folders.filter(f => !f.deleted).sort((a, b) => folderKey(a) - folderKey(b) || a.name.localeCompare(b.name));
 const folderOf = n => D.folders.some(f => f.id === n.folder && !f.deleted) ? n.folder : GENERAL;
 const folderName = id => (D.folders.find(f => f.id === id) || { name: 'General' }).name;
 const isTemplate = n => folderOf(n) === TEMPLATES;
@@ -944,11 +950,13 @@ function cleanNote(n) {
     daily: String(n.daily || ''),   // YYYY-MM-DD for a daily note
     hideDone: !!n.hideDone,         // checked items hidden in this note
     archived: +n.archived || 0,     // when it was archived (0 = not archived)
+    doneTo: String(n.doneTo || ''), // the note "Move checked items" sends this note's finished items to
   };
 }
 const publicNote = n => cleanNote(n);
 function cleanFolder(f) {
-  return { id: String(f.id), name: String(f.name || 'Folder'), created: +f.created || 0, updated: +f.updated || 0, deleted: +f.deleted || 0 };
+  return { id: String(f.id), name: String(f.name || 'Folder'), created: +f.created || 0, updated: +f.updated || 0, deleted: +f.deleted || 0,
+    order: typeof f.order === 'number' && isFinite(f.order) ? f.order : null };   // set once folders have been rearranged
 }
 // The first version stored folders as plain names. Ids derived from the name match on every device.
 function fromV1(p) {
@@ -1483,7 +1491,10 @@ function cleanHTML(html) {
         const lv = Math.min(MAX_INDENT, parseInt(node.getAttribute('data-indent'), 10) || 0);
         if (lv > 0) el.setAttribute('data-indent', lv);
         if (node.getAttribute('data-folded') === 'true') el.setAttribute('data-folded', 'true');
+        const done = node.getAttribute('data-done') || '';
+        if (/^\d{4}-\d{2}-\d{2}$/.test(done) && el.getAttribute('data-todo') === 'true') el.setAttribute('data-done', done);
       }
+      if (tag === 'H2' && /^\d{4}-\d{2}-\d{2}$/.test(node.getAttribute('data-week') || '')) el.setAttribute('data-week', node.getAttribute('data-week'));
       if (tag === 'OL' && +node.getAttribute('start') > 1) el.setAttribute('start', +node.getAttribute('start'));
       for (const a of ['colspan', 'rowspan']) if ((tag === 'TD' || tag === 'TH') && node.getAttribute(a)) el.setAttribute(a, +node.getAttribute(a) || 1);
       walk(node, el);
@@ -1588,15 +1599,16 @@ function renderSidebar() {
     counts[folderOf(n)] = (counts[folderOf(n)] || 0) + 1;
     if (!isTemplate(n)) for (const t of n.tags) tags[t] = (tags[t] || 0) + 1;
   }
+  if (folderDrag && folderDrag.active) return;   // don't rebuild the list out from under a drag
   const item = (view, icon, name, count, editable) =>
-    `<div class="fl-item${P.view === view ? ' active' : ''}" data-act="view" data-view="${esc(view)}"${view.startsWith('f:') ? ` data-drop="${esc(view)}"` : ''}>${icon}<span class="fl-name">${esc(name)}</span><span class="fl-count">${count}</span>${editable ? `<button class="fl-more" data-act="folderMenu" data-id="${esc(view)}" aria-label="Folder options">⋯</button>` : ''}</div>`;
+    `<div class="fl-item${P.view === view ? ' active' : ''}" data-act="view" data-view="${esc(view)}"${view.startsWith('f:') ? ` data-drop="${esc(view)}"` : ''}>${view.startsWith('f:') ? `<span class="fl-grip" data-act="noop" data-fid="${esc(view)}" title="Drag to reorder">${GRIP_SVG}</span>` : ''}${icon}<span class="fl-name">${esc(name)}</span><span class="fl-count">${count}</span>${editable ? `<button class="fl-more" data-act="folderMenu" data-id="${esc(view)}" aria-label="Folder options">⋯</button>` : ''}</div>`;
   let h = item('all', ICON.all, 'All Notes', notes.length);
   h += `<div class="fl-item" data-act="today">${ICON.today}<span class="fl-name">Today</span></div>`;
   const urgent = dueItems().filter(d => !d.done && d.due <= dayKey()).length;
   h += `<div class="fl-item${P.view === 'upcoming' ? ' active' : ''}" data-act="view" data-view="upcoming">${ICON.due}<span class="fl-name">Upcoming</span>${urgent ? `<span class="fl-count alert" title="Due today or overdue">${urgent}</span>` : ''}</div>`;
   if ('setAppBadge' in navigator) (urgent ? navigator.setAppBadge(urgent) : navigator.clearAppBadge()).catch(() => {});
   h += '<div class="fl-head">Folders</div>';
-  for (const f of liveFolders()) h += item(f.id, ICON.folder, f.name, counts[f.id] || 0, f.id !== GENERAL);
+  for (const f of liveFolders()) h += item(f.id, ICON.folder, f.name, counts[f.id] || 0, true);
   const tagList = Object.keys(tags).sort();
   if (tagList.length) {
     h += '<div class="fl-head">Tags</div>';
@@ -1831,6 +1843,89 @@ function archiveNote(id, on = true) {
 }
 function updateArchiveBar() { const n = byId(edId); $('archive-bar').hidden = !(n && n.archived && !n.trashed); }
 
+/* Moving checklist items to another note. Finished items go into a log: under a "Week of ..." heading
+   for the week they were ticked (newest week first), with a link back to the note they came from. */
+const doneTarget = n => { const t = n.doneTo && byId(n.doneTo); return t && !t.trashed && t.id !== n.id ? t : null; };
+function mondayOf(iso) {
+  const [y, m, d] = iso.split('-').map(Number), dt = new Date(y, m - 1, d, 12);
+  dt.setDate(dt.getDate() - (dt.getDay() + 6) % 7);
+  return dayKey(dt);
+}
+const weekLabel = iso => 'Week of ' + shortDate(iso);
+// Pull items (with their sub-items) out of one note and add them to another. indexes: which checklist
+// items to move, or all ticked ones when left out.
+function moveToNote(srcId, dstId, indexes) {
+  flushEditor();
+  const src = byId(srcId), dst = byId(dstId);
+  if (!src || !dst || src === dst) return;
+  const before = { src: src.content, dst: dst.content };
+  const sdoc = parser.parseFromString(cleanHTML(src.content), 'text/html'), todos = [...sdoc.body.querySelectorAll('[data-todo]')];
+  // Each moving item takes its sub-items along; a ticked item inside a moving one isn't moved twice.
+  const groups = [], taken = new Set();
+  todos.forEach((el, i) => {
+    if (taken.has(el) || (indexes ? !indexes.includes(i) : el.getAttribute('data-todo') !== 'true')) return;
+    const g = groupOf(el); g.forEach(x => taken.add(x)); groups.push(g);
+  });
+  if (!groups.length) { toast(indexes ? 'Nothing to move' : 'No checked items to move'); return; }
+  const ddoc = parser.parseFromString(cleanHTML(dst.content), 'text/html'), body = ddoc.body;
+  const log = groups.some(g => g[0].getAttribute('data-todo') === 'true');
+  const moving = groups.map(g => {
+    const top = g[0], base = levelOf(top), done = top.getAttribute('data-done') || dayKey();
+    // A sub-item moved without its parent keeps the parent's name in front, so it still makes sense.
+    const path = [];
+    for (let p = top.previousElementSibling, lv = base; p && lv > 0; p = p.previousElementSibling) {
+      if (isTodo(p) && levelOf(p) < lv) { const c = p.cloneNode(true); c.querySelectorAll('time,a[data-note]').forEach(x => x.remove()); path.unshift(c.textContent.trim()); lv = levelOf(p); }
+      if (!isTodo(p)) break;
+    }
+    const els = g.map(el => { const c = ddoc.importNode(el, true); setLevel(c, levelOf(el) - base); c.removeAttribute('data-folded'); return c; });
+    if (path.length) els[0].insertBefore(ddoc.createTextNode(path.join(' › ') + ' › '), els[0].firstChild);
+    if (top.getAttribute('data-todo') === 'true') {
+      els[0].setAttribute('data-done', done);
+      const link = ddoc.createElement('a');
+      link.setAttribute('data-note', src.id); link.setAttribute('contenteditable', 'false'); link.textContent = noteTitle(src);
+      const last = els[0].lastChild;
+      if (last && last.nodeName === 'BR') last.remove();
+      els[0].append(' ', link);
+    }
+    return { els, done, ticked: top.getAttribute('data-todo') === 'true' };
+  });
+  for (const g of groups) for (const el of g) el.remove();
+  if (log) {
+    moving.sort((a, b) => a.done.localeCompare(b.done));
+    for (const m of moving) {
+      if (!m.ticked) { body.append(...m.els); continue; }
+      const wk = mondayOf(m.done), heads = [...body.querySelectorAll('h2[data-week]')];
+      let head = heads.find(h => h.getAttribute('data-week') === wk);
+      if (!head) {
+        head = ddoc.createElement('h2'); head.setAttribute('data-week', wk); head.textContent = weekLabel(wk);
+        const newer = heads.filter(h => h.getAttribute('data-week') > wk), older = heads.find(h => h.getAttribute('data-week') < wk);
+        if (older) body.insertBefore(head, older);
+        else if (newer.length) body.append(head);
+        else body.insertBefore(head, body.firstChild);
+      }
+      // End of this week's section: the next week heading, or the end of the note.
+      let end = head.nextElementSibling;
+      while (end && !(end.tagName === 'H2' && end.hasAttribute('data-week'))) end = end.nextElementSibling;
+      for (const el of m.els) body.insertBefore(el, end);
+    }
+  } else body.append(...moving.flatMap(m => m.els));
+  snapshot(src.id, { t: src.updated, title: src.title, content: src.content });
+  snapshot(dst.id, { t: dst.updated, title: dst.title, content: dst.content });
+  src.content = sdoc.body.innerHTML; dst.content = body.innerHTML;
+  if (!indexes) src.doneTo = dst.id;
+  touch(src); touch(dst);
+  changed(); renderSidebar(); renderList();
+  if (edId === src.id || edId === dst.id) loadEditor(byId(edId), true);
+  const count = moving.reduce((s, m) => s + m.els.length, 0);
+  toast('Moved ' + count + ' item' + (count === 1 ? '' : 's') + ' to ' + noteTitle(dst), 'Undo', () => {
+    const a = byId(srcId), b = byId(dstId);
+    if (a) { a.content = before.src; touch(a); }
+    if (b) { b.content = before.dst; touch(b); }
+    changed(); renderSidebar(); renderList();
+    if (edId === srcId || edId === dstId) loadEditor(byId(edId), true);
+  });
+}
+
 /* Daily note and templates */
 const dayKey = (d = new Date()) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 const longDate = () => new Date().toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
@@ -1898,11 +1993,30 @@ function newMenuItems() {
 }
 
 /* Folders */
+// Put a folder at a new position. Only the moved folder changes (it gets an order between its new
+// neighbours), so rearranging on two devices at once rarely clashes.
+function moveFolder(id, to) {
+  const list = liveFolders(), f = list.find(x => x.id === id);
+  if (!f) return;
+  const first = list.some(x => x.order == null);
+  if (first) list.forEach((x, i) => { x.order = (i + 1) * 1024; x.updated = now(); });   // first rearrange: number them as they are
+  const rest = list.filter(x => x !== f);
+  to = Math.max(0, Math.min(rest.length, to));
+  if (to !== list.indexOf(f)) {
+    const prev = rest[to - 1], next = rest[to];
+    f.order = prev && next ? (prev.order + next.order) / 2 : prev ? prev.order + 1024 : next.order - 1024;
+    f.updated = now();
+    if (prev && next && next.order - prev.order < 1e-6) [...rest.slice(0, to), f, ...rest.slice(to)].forEach((x, i) => { x.order = (i + 1) * 1024; x.updated = now(); });
+  } else if (!first) return;
+  changed(); renderSidebar();
+  if (edId) renderMeta();
+}
 async function newFolder() {
   const name = await dialog({ title: 'New folder', input: '', placeholder: 'Folder name', ok: 'Create' });
   if (!name || !name.trim()) return;
   if (liveFolders().some(f => f.name.toLowerCase() === name.trim().toLowerCase())) { toast('There is already a folder with that name'); return; }
-  const f = cleanFolder({ id: 'f:' + gid(), name: name.trim(), created: now(), updated: now() });
+  const ordered = liveFolders().filter(x => x.order != null);
+  const f = cleanFolder({ id: 'f:' + gid(), name: name.trim(), created: now(), updated: now(), order: ordered.length ? Math.max(...ordered.map(x => x.order)) + 1024 : null });
   D.folders.push(f);
   changed(); setView(f.id);
 }
@@ -2162,12 +2276,16 @@ function toggleTodo() {
   for (const b of blocks) on ? (b.hasAttribute('data-todo') || b.setAttribute('data-todo', 'false')) : untodo(b);
   onEditorChange();
 }
+// Tick or untick an item and its sub-items, noting the day it was finished.
+function setChecked(t, on) {
+  for (const el of [t, ...(() => { const kids = []; for (let n = t.nextElementSibling; isTodo(n) && levelOf(n) > levelOf(t); n = n.nextElementSibling) kids.push(n); return kids; })()]) {
+    el.setAttribute('data-todo', on ? 'true' : 'false');
+    if (on) { if (!el.getAttribute('data-done')) el.setAttribute('data-done', dayKey()); } else el.removeAttribute('data-done');
+  }
+}
 function toggleCheck(t) {
   if (ed.contentEditable !== 'true') return;
-  const val = t.getAttribute('data-todo') === 'true' ? 'false' : 'true';
-  t.setAttribute('data-todo', val);
-  // Sub-items follow their parent.
-  for (let n = t.nextElementSibling; isTodo(n) && levelOf(n) > levelOf(t); n = n.nextElementSibling) n.setAttribute('data-todo', val);
+  setChecked(t, t.getAttribute('data-todo') !== 'true');
   onEditorChange();
 }
 const hasKids = t => { const n = t.nextElementSibling; return isTodo(n) && levelOf(n) > levelOf(t); };
@@ -2221,7 +2339,7 @@ function editNoteDom(id, fn) {
   n.content = doc.body.innerHTML; touch(n);
   changed(); renderList();
 }
-const uncheckAll = root => root.querySelectorAll('[data-todo="true"]').forEach(el => el.setAttribute('data-todo', 'false'));
+const uncheckAll = root => root.querySelectorAll('[data-todo="true"]').forEach(el => { el.setAttribute('data-todo', 'false'); el.removeAttribute('data-done'); });
 // Within each checklist, ticked items (with their sub-items) go below the unticked ones.
 function sortChecked(root) {
   const order = items => {
@@ -2270,7 +2388,7 @@ function renderGrips() {
   ed.querySelectorAll('[data-todo]').forEach((el, i) => {
     if (!el.getClientRects().length) return;   // folded away or hidden
     const r = el.getBoundingClientRect();
-    h += `<div class="grip" data-i="${i}" style="top:${Math.round(r.top - sr.top + sc.scrollTop)}px;left:${Math.round(r.left - sr.left - 17)}px" title="Drag to move">${GRIP_SVG}</div>`;
+    h += `<div class="grip" data-i="${i}" style="top:${Math.round(r.top - sr.top + sc.scrollTop)}px;left:${Math.round(r.left - sr.left - 17)}px" title="Drag to move, click for more">${GRIP_SVG}</div>`;
   });
   box.innerHTML = h;
 }
@@ -2374,8 +2492,13 @@ $('grips').addEventListener('pointermove', e => {
 });
 function endGripDrag(e, cancel) {
   if (!drag || e.pointerId !== drag.id) return;
+  const tapped = !drag.active && !cancel && drag.group[0];
   if (drag.active) finishDrag(cancel); else drag = null;
   renderGripsSoon();
+  if (tapped) {
+    const idx = [...ed.querySelectorAll('[data-todo]')].indexOf(tapped), grip = e.target.closest('.grip');
+    showMenu(grip || { x: e.clientX, y: e.clientY }, [{ label: 'Move to another note...', fn: () => pickNote('Move this item to...', edId, target => moveToNote(edId, target, [idx])) }]);
+  }
 }
 $('grips').addEventListener('pointerup', e => endGripDrag(e, false));
 $('grips').addEventListener('pointercancel', e => endGripDrag(e, true));
@@ -2512,7 +2635,7 @@ function fixNewTodo() {
       prev.remove();
       if (lv > 0) setLevel(b, lv - 1); else untodo(b);
     } else {
-      b.setAttribute('data-todo', 'false');
+      b.setAttribute('data-todo', 'false'); b.removeAttribute('data-done');
       if (isTodo(prev)) setLevel(b, levelOf(prev));
     }
   } else if (isTodo(prev) && prev.textContent.trim()) { b.setAttribute('data-todo', 'false'); setLevel(b, levelOf(prev)); }
@@ -2653,13 +2776,11 @@ function renderUpcoming() {
 }
 function tickDue(id, idx) {
   editNoteDom(id, root => {
-    const el = root.querySelectorAll('[data-todo]')[idx]; if (!el) return;
-    el.setAttribute('data-todo', 'true');
-    for (let n = el.nextElementSibling; isTodo(n) && levelOf(n) > levelOf(el); n = n.nextElementSibling) n.setAttribute('data-todo', 'true');
+    const el = root.querySelectorAll('[data-todo]')[idx]; if (el) setChecked(el, true);
   });
   renderSidebar(); renderList();
   toast('Done', 'Undo', () => {
-    editNoteDom(id, root => { const el = root.querySelectorAll('[data-todo]')[idx]; if (el) el.setAttribute('data-todo', 'false'); });
+    editNoteDom(id, root => { const el = root.querySelectorAll('[data-todo]')[idx]; if (el) setChecked(el, false); });
     renderSidebar(); renderList();
   });
 }
@@ -3052,6 +3173,42 @@ $('fab').addEventListener('pointerdown', () => { fabLong = false; clearTimeout(f
 for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) $('fab').addEventListener(ev, () => clearTimeout(fabTimer));
 $('fab').addEventListener('contextmenu', e => e.preventDefault());
 
+/* Rearrange folders: drag the handle on a folder row (mouse or finger) */
+let folderDrag = null;
+$('folder-list').addEventListener('pointerdown', e => {
+  const g = e.target.closest('.fl-grip');
+  if (!g || (e.pointerType === 'mouse' && e.button !== 0)) return;
+  e.preventDefault();
+  try { g.setPointerCapture(e.pointerId); } catch (err) {}
+  folderDrag = { id: g.dataset.fid, y: e.clientY, active: false, pid: e.pointerId, row: g.closest('.fl-item'), to: null };
+});
+$('folder-list').addEventListener('pointermove', e => {
+  const d = folderDrag;
+  if (!d || e.pointerId !== d.pid || (!d.active && Math.abs(e.clientY - d.y) < 4)) return;
+  const rows = [...$('folder-list').querySelectorAll('.fl-item[data-drop]')].filter(r => r !== d.row);
+  if (!rows.length) return;
+  if (!d.active) { d.active = true; d.row.setAttribute('data-dragging', ''); document.body.classList.add('dragging-todo'); }
+  let i = rows.findIndex(r => { const b = r.getBoundingClientRect(); return e.clientY < b.top + b.height / 2; });
+  if (i < 0) i = rows.length;
+  d.to = i;
+  const b = (rows[i] || rows[rows.length - 1]).getBoundingClientRect();
+  dropLine.style.display = 'block';
+  dropLine.style.top = (rows[i] ? b.top - 1 : b.bottom + 1) + 'px';
+  dropLine.style.left = b.left + 8 + 'px';
+  dropLine.style.width = b.width - 16 + 'px';
+});
+function endFolderDrag(e, cancel) {
+  const d = folderDrag;
+  if (!d || e.pointerId !== d.pid) return;
+  folderDrag = null;
+  dropLine.style.display = 'none';
+  document.body.classList.remove('dragging-todo');
+  if (d.active && !cancel && d.to != null) moveFolder(d.id, d.to);
+  if (d.active) renderSidebar();
+}
+$('folder-list').addEventListener('pointerup', e => endFolderDrag(e, false));
+$('folder-list').addEventListener('pointercancel', e => endFolderDrag(e, true));
+
 /* Drag notes onto folders (mouse only) */
 $('note-items').addEventListener('dragstart', e => {
   const c = e.target.closest && e.target.closest('.nc'); if (!c) return;
@@ -3107,6 +3264,8 @@ function noteMenuItems(id) {
     todos && { label: n.hideDone ? 'Show checked items' : 'Hide checked items', fn: () => toggleHideDone(id) },
     done && { label: 'Uncheck all', fn: () => { editNoteDom(id, uncheckAll); toast('All items unchecked'); } },
     done && { label: 'Move checked to bottom', fn: () => editNoteDom(id, sortChecked) },
+    done && doneTarget(n) && { label: 'Move checked items to ' + noteTitle(doneTarget(n)), fn: () => moveToNote(id, n.doneTo) },
+    done && { label: doneTarget(n) ? 'Move checked items to another note...' : 'Move checked items to...', fn: () => pickNote('Move checked items to...', id, target => moveToNote(id, target)) },
     '-',
     { label: 'Version history', fn: () => openHistory(id) },
     isTemplate(n) ? { label: 'New note from this template', fn: () => newFromTemplate(id) } : { label: 'Save as template', fn: () => saveAsTemplate(id) },
@@ -3119,7 +3278,28 @@ function noteMenuItems(id) {
   ];
 }
 
-const folderMenuItems = id => [{ label: 'Rename', fn: () => renameFolder(id) }, { label: 'Delete folder', danger: true, fn: () => deleteFolder(id) }];
+function folderMenuItems(id) {
+  const list = liveFolders(), i = list.findIndex(f => f.id === id), mine = id !== GENERAL;
+  return [
+    i > 0 && { label: 'Move up', fn: () => moveFolder(id, i - 1) },
+    i < list.length - 1 && { label: 'Move down', fn: () => moveFolder(id, i + 1) },
+    mine && list.length > 1 && '-',
+    mine && { label: 'Rename', fn: () => renameFolder(id) },
+    mine && { label: 'Delete folder', danger: true, fn: () => deleteFolder(id) },
+  ];
+}
+
+// Whichever window opened last goes on top: a question asked from Settings, the scanner, the link code...
+// (Kept under menus, the insert menu, toasts and the lock screen.)
+let modalTop = 100;
+const modalWatch = new MutationObserver(muts => {
+  for (const { target: m } of muts) {
+    if (m.classList.contains('show') && !m.dataset.open) { m.dataset.open = '1'; m.style.zIndex = modalTop = Math.min(modalTop + 1, 190); }
+    else if (!m.classList.contains('show') && m.dataset.open) { delete m.dataset.open; m.style.zIndex = ''; }
+  }
+  if (!document.querySelector('.modal.show')) modalTop = 100;
+});
+document.querySelectorAll('.modal').forEach(m => modalWatch.observe(m, { attributes: true, attributeFilter: ['class'] }));
 
 let dlgResolve = null;
 function dialog({ title, text = '', input = null, placeholder = '', ok = 'OK', cancel = 'Cancel', danger = false, type = 'text', inputmode = '' }) {
@@ -3158,23 +3338,29 @@ function toast(msg, action, fn) {
    ═══════════════════════════════════════════════════════ */
 let qs = { items: [], i: 0 };
 const subseq = (q, s) => { let i = 0; for (const c of s) if (c === q[i] && ++i === q.length) return true; return !q.length; };
-function openSwitcher() {
+let qsMode = null;   // { title, exclude, onPick } while picking a note for something
+function pickNote(title, exclude, onPick) {
+  openSwitcher({ title, exclude, onPick });
+}
+function openSwitcher(mode = null) {
   hideMenu(); closeSlash(); closeSidebar();
+  qsMode = mode;
+  $('qs-input').placeholder = mode ? mode.title + ' (type to search, or a new title)' : 'Go to a note, or type a title to create one';
   $('qs-input').value = '';
   qsUpdate();
   $('qs').classList.add('show');
   $('qs-input').focus();
 }
-const closeSwitcher = () => $('qs').classList.remove('show');
+const closeSwitcher = () => { $('qs').classList.remove('show'); qsMode = null; };
 function qsUpdate() {
   const raw = $('qs-input').value.trim(), q = raw.toLowerCase();
-  const live = D.notes.filter(n => !n.trashed);
+  const live = D.notes.filter(n => !n.trashed && !(qsMode && (n.id === qsMode.exclude || isTemplate(n))));
   const rank = new Map((P.recent || []).map((id, i) => [id, i]));
   let items;
   if (!q) {
-    const recent = (P.recent || []).map(byId).filter(n => n && !n.trashed);
+    const recent = (P.recent || []).map(byId).filter(n => n && live.includes(n));
     const rest = live.filter(n => !rank.has(n.id) && !isTemplate(n) && !n.archived).sort((a, b) => b.updated - a.updated);
-    items = [{ type: 'today' }, ...[...recent, ...rest].slice(0, 40).map(n => ({ type: 'note', n }))];
+    items = [...(qsMode ? [] : [{ type: 'today' }]), ...[...recent, ...rest].slice(0, 40).map(n => ({ type: 'note', n }))];
   } else {
     const scored = [];
     for (const n of live) {
@@ -3189,7 +3375,7 @@ function qsUpdate() {
     }
     scored.sort((a, b) => b.s - a.s || b.n.updated - a.n.updated);
     items = scored.slice(0, 40);
-    if ('today'.startsWith(q)) items.unshift({ type: 'today' });
+    if ('today'.startsWith(q) && !qsMode) items.unshift({ type: 'today' });
     if (!live.some(n => noteTitle(n).toLowerCase() === q)) items.push({ type: 'create', title: raw });
   }
   qs = { items, i: 0 };
@@ -3207,7 +3393,9 @@ function renderSwitcher() {
 }
 function qsPick(i) {
   const it = qs.items[i]; if (!it) return;
+  const mode = qsMode;
   closeSwitcher();
+  if (mode) { mode.onPick(it.type === 'create' ? createLinkedNote(it.title).id : it.n.id); return; }
   if (it.type === 'today') openToday();
   else if (it.type === 'create') newNote({ title: it.title });
   else { openNote(it.n.id); if (!isMobile()) focusEditor(true); }
@@ -3692,6 +3880,7 @@ const ACT = {
   },
   backup: downloadBackup,
   restoreBackup: () => $('backup-file').click(),
+  noop: () => {},
   filter: el => { const f = el.dataset.f, on = P.filters || []; P.filters = on.includes(f) ? on.filter(x => x !== f) : [...on, f]; savePrefs(); renderList(); },
   dueTick: el => tickDue(el.dataset.id, +el.dataset.idx),
   dueOpen: el => openDue(el.dataset.id, +el.dataset.idx),
@@ -3705,7 +3894,8 @@ const ACT = {
 };
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
-  if (!e.target.closest('#ctx') && !(fabLong && e.target.closest('#fab'))) hideMenu();
+  // (A tap on a checklist handle opens its menu on release, so the click that follows mustn't close it.)
+  if (!e.target.closest('#ctx') && !e.target.closest('#grips') && !(fabLong && e.target.closest('#fab'))) hideMenu();
   if (slash && !e.target.closest('#slash')) closeSlash();
   if (!el || !ACT[el.dataset.act]) return;
   if (el.tagName === 'A') e.preventDefault();
@@ -3715,7 +3905,7 @@ document.addEventListener('contextmenu', e => {
   const c = e.target.closest('.nc');
   if (c) { e.preventDefault(); showMenu({ x: e.clientX, y: e.clientY }, [{ label: 'Open', fn: () => openNote(c.dataset.id) }, '-', ...noteMenuItems(c.dataset.id)]); return; }
   const f = e.target.closest('.fl-item[data-drop]');
-  if (f && f.dataset.drop !== GENERAL) { e.preventDefault(); showMenu({ x: e.clientX, y: e.clientY }, folderMenuItems(f.dataset.drop)); }
+  if (f) { e.preventDefault(); showMenu({ x: e.clientX, y: e.clientY }, folderMenuItems(f.dataset.drop)); }
 });
 document.addEventListener('keydown', e => {
   if (locked) { if (e.key === 'Enter' && e.target.id === 'lock-pin') { e.preventDefault(); unlockPin(); } return; }
