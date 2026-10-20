@@ -287,6 +287,24 @@ a{color:var(--accent);}
   background-repeat:no-repeat;background-position:center;background-size:14px;
 }
 :is(#editor,.note-view) div[data-todo="true"]{color:var(--text3);text-decoration:line-through;}
+/* Marks: a tinted row and a coloured box */
+:is(#editor,.note-view) div[data-todo][data-mark]{border-radius:6px;background:var(--tint);box-shadow:-5px 0 0 var(--tint),5px 0 0 var(--tint);}
+:is(#editor,.note-view) div[data-todo][data-mark="red"]{--tint:rgba(239,68,68,.14);}
+:is(#editor,.note-view) div[data-todo][data-mark="orange"]{--tint:rgba(245,158,11,.16);}
+:is(#editor,.note-view) div[data-todo][data-mark="blue"]{--tint:rgba(59,130,246,.14);}
+:is(#editor,.note-view) div[data-todo][data-mark="green"]{--tint:rgba(34,197,94,.14);}
+:is(#editor,.note-view) div[data-todo][data-mark="red"]::before{border-color:#ef4444;}
+:is(#editor,.note-view) div[data-todo][data-mark="orange"]::before{border-color:#f59e0b;}
+:is(#editor,.note-view) div[data-todo][data-mark="blue"]::before{border-color:#3b82f6;}
+:is(#editor,.note-view) div[data-todo][data-mark="green"]::before{border-color:#22c55e;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="red"]::before{background-color:#ef4444;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="orange"]::before{background-color:#f59e0b;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="blue"]::before{background-color:#3b82f6;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="green"]::before{background-color:#22c55e;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark]{--tint:transparent;}
+/* Today: a heading at the top of the note, then its items, then a line */
+:is(#editor,.note-view) h2[data-today]::before{content:'\2600\FE0F  ';}
+:is(#editor,.note-view) hr[data-today]{margin:12px 0 18px;}
 :is(#editor,.note-view) div[data-todo][data-indent="1"]{margin-left:28px;}
 :is(#editor,.note-view) div[data-todo][data-indent="2"]{margin-left:56px;}
 :is(#editor,.note-view) div[data-todo][data-indent="3"]{margin-left:84px;}
@@ -623,6 +641,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
       <button class="chip" data-act="filter" data-f="due">Due dates</button>
       <button class="chip" data-act="filter" data-f="week">Edited this week</button>
       <button class="chip" data-act="filter" data-f="pinned">Pinned</button>
+      <button class="chip" data-act="filter" data-f="important">Important</button>
       <button class="chip" data-act="filter" data-f="images">Images</button>
     </div>
   </div>
@@ -1493,7 +1512,10 @@ function cleanHTML(html) {
         if (node.getAttribute('data-folded') === 'true') el.setAttribute('data-folded', 'true');
         const done = node.getAttribute('data-done') || '';
         if (/^\d{4}-\d{2}-\d{2}$/.test(done) && el.getAttribute('data-todo') === 'true') el.setAttribute('data-done', done);
+        if (MARKS[node.getAttribute('data-mark')]) el.setAttribute('data-mark', node.getAttribute('data-mark'));
+        if (node.hasAttribute('data-today')) el.setAttribute('data-today', '');
       }
+      if ((tag === 'H2' || tag === 'HR') && node.hasAttribute('data-today')) el.setAttribute('data-today', '');
       if (tag === 'H2' && /^\d{4}-\d{2}-\d{2}$/.test(node.getAttribute('data-week') || '')) el.setAttribute('data-week', node.getAttribute('data-week'));
       if (tag === 'OL' && +node.getAttribute('start') > 1) el.setAttribute('start', +node.getAttribute('start'));
       for (const a of ['colspan', 'rowspan']) if ((tag === 'TD' || tag === 'TH') && node.getAttribute(a)) el.setAttribute(a, +node.getAttribute(a) || 1);
@@ -1643,6 +1665,7 @@ const FILTERS = {
   week: n => n.updated > now() - 7 * 864e5,
   pinned: n => n.pinned,
   images: n => /<img\b/i.test(n.content),
+  important: n => /data-todo="false"[^>]*data-mark="red"/.test(n.content),
 };
 function visibleNotes() {
   const v = P.view, words = searchWords(), filters = (P.filters || []).filter(f => FILTERS[f]);
@@ -1843,6 +1866,82 @@ function archiveNote(id, on = true) {
 }
 function updateArchiveBar() { const n = byId(edId); $('archive-bar').hidden = !(n && n.archived && !n.trashed); }
 
+/* One task's menu (tap its handle): Today, marks, due date, move, delete. */
+const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', blue: '\u{1F535} Waiting on someone', green: '\u{1F7E2} Quick win' };
+function itemMenuItems(idx) {
+  const el = ed.querySelectorAll('[data-todo]')[idx];
+  if (!el || ed.contentEditable !== 'true') return [];
+  const mark = el.getAttribute('data-mark'), tm = el.querySelector('time[datetime]');
+  return [
+    el.hasAttribute('data-today') ? { label: '\u2600\uFE0F Remove from today', fn: () => setToday(el, false) } : { label: '\u2600\uFE0F Work on today', fn: () => setToday(el, true) },
+    '-',
+    ...Object.entries(MARKS).map(([k, label]) => ({ label: label + (mark === k ? '  \u2713' : ''), fn: () => setMark(el, mark === k ? null : k) })),
+    mark && { label: 'Clear mark', fn: () => setMark(el, null) },
+    '-',
+    { label: tm ? 'Change due date...' : 'Due date...', fn: () => pickDue(el, tm ? tm.getAttribute('datetime') : '') },
+    { label: 'Move to another note...', fn: () => pickNote('Move this item to...', edId, target => moveToNote(edId, target, [idx])) },
+    { label: 'Delete', danger: true, fn: () => deleteItems(edId, [idx]) },
+  ];
+}
+function setMark(el, mark) {
+  if (mark) el.setAttribute('data-mark', mark); else el.removeAttribute('data-mark');
+  onEditorChange();
+}
+// Today: a "Today" heading at the top of the note, the tasks you're working on, then a line.
+// An item is in Today when it carries data-today; heading and line go away when the last one leaves.
+function tidyToday(root) {
+  const doc = root.ownerDocument, items = [...root.querySelectorAll('[data-todo][data-today]')];
+  let head = root.querySelector('h2[data-today]'), end = root.querySelector('hr[data-today]');
+  if (!items.length) { if (head) head.remove(); if (end) end.remove(); return; }
+  if (!head) { head = doc.createElement('h2'); head.setAttribute('data-today', ''); head.textContent = 'Today'; items[0].before(head); }
+  if (!end) { end = doc.createElement('hr'); end.setAttribute('data-today', ''); items[items.length - 1].after(end); }
+}
+function setToday(el, on) {
+  const group = groupOf(el), base = levelOf(group[0]);
+  for (const x of group) { x.remove(); setLevel(x, levelOf(x) - base); if (on) x.setAttribute('data-today', ''); else x.removeAttribute('data-today'); }
+  let end = ed.querySelector('hr[data-today]');
+  if (on && !end) {
+    const head = document.createElement('h2'); head.setAttribute('data-today', ''); head.textContent = 'Today';
+    end = document.createElement('hr'); end.setAttribute('data-today', '');
+    ed.insertBefore(head, ed.firstChild); head.after(end);
+  }
+  // On: the end of the Today list. Off: the top of the main list, just below the line.
+  const anchor = end ? (on ? end : end.nextSibling) : ed.firstChild;
+  for (const x of group) ed.insertBefore(x, anchor);
+  tidyToday(ed);
+  onEditorChange();
+  if (on) toast('Moved to Today');
+}
+// After a drag: dropped into the Today list (below its heading or another Today item) or out of it.
+function placeInToday(group) {
+  const prev = group[0].previousElementSibling, inside = !!prev && prev.hasAttribute('data-today') && (prev.tagName === 'H2' || isTodo(prev));
+  for (const x of group) if (inside) x.setAttribute('data-today', ''); else x.removeAttribute('data-today');
+  tidyToday(ed);
+}
+// Delete checklist items (with their sub-items): the ones at these indexes, or every ticked one.
+function deleteItems(id, indexes) {
+  flushEditor();
+  const n = byId(id); if (!n) return;
+  const before = n.content, doc = parser.parseFromString(cleanHTML(n.content), 'text/html'), todos = [...doc.body.querySelectorAll('[data-todo]')];
+  const gone = new Set();
+  todos.forEach((el, i) => {
+    if (gone.has(el) || (indexes ? !indexes.includes(i) : el.getAttribute('data-todo') !== 'true')) return;
+    groupOf(el).forEach(x => gone.add(x));
+  });
+  if (!gone.size) return;
+  snapshot(n.id, { t: n.updated, title: n.title, content: n.content });
+  gone.forEach(x => x.remove());
+  tidyToday(doc.body);
+  n.content = doc.body.innerHTML; touch(n);
+  changed(); renderSidebar(); renderList();
+  if (edId === id) loadEditor(n, true);
+  toast('Deleted ' + gone.size + ' item' + (gone.size === 1 ? '' : 's'), 'Undo', () => {
+    const m = byId(id); if (!m) return;
+    m.content = before; touch(m); changed(); renderSidebar(); renderList();
+    if (edId === id) loadEditor(m, true);
+  });
+}
+
 /* Moving checklist items to another note. Finished items go into a log: under a "Week of ..." heading
    for the week they were ticked (newest week first), with a link back to the note they came from. */
 const doneTarget = n => { const t = n.doneTo && byId(n.doneTo); return t && !t.trashed && t.id !== n.id ? t : null; };
@@ -1877,7 +1976,7 @@ function moveToNote(srcId, dstId, indexes) {
       if (isTodo(p) && levelOf(p) < lv) { const c = p.cloneNode(true); c.querySelectorAll('time,a[data-note]').forEach(x => x.remove()); path.unshift(c.textContent.trim()); lv = levelOf(p); }
       if (!isTodo(p)) break;
     }
-    const els = g.map(el => { const c = ddoc.importNode(el, true); setLevel(c, levelOf(el) - base); c.removeAttribute('data-folded'); return c; });
+    const els = g.map(el => { const c = ddoc.importNode(el, true); setLevel(c, levelOf(el) - base); c.removeAttribute('data-folded'); c.removeAttribute('data-today'); return c; });
     if (path.length) els[0].insertBefore(ddoc.createTextNode(path.join(' › ') + ' › '), els[0].firstChild);
     if (top.getAttribute('data-todo') === 'true') {
       els[0].setAttribute('data-done', done);
@@ -1890,6 +1989,7 @@ function moveToNote(srcId, dstId, indexes) {
     return { els, done, ticked: top.getAttribute('data-todo') === 'true' };
   });
   for (const g of groups) for (const el of g) el.remove();
+  tidyToday(sdoc.body);
   if (log) {
     moving.sort((a, b) => a.done.localeCompare(b.done));
     for (const m of moving) {
@@ -2442,6 +2542,7 @@ function finishDrag(cancel) {
   const delta = lv - levelOf(d.group[0]);
   if (anchor === d.group[d.group.length - 1].nextSibling && !delta) return;   // dropped where it was
   for (const el of d.group) { parent.insertBefore(el, anchor); setLevel(el, Math.max(0, Math.min(MAX_INDENT, levelOf(el) + delta))); }
+  placeInToday(d.group);
   // Items that followed may now sit too deep for their new neighbour.
   for (let n = d.group[d.group.length - 1].nextElementSibling; isTodo(n); n = n.nextElementSibling) {
     const above = n.previousElementSibling;
@@ -2497,7 +2598,7 @@ function endGripDrag(e, cancel) {
   renderGripsSoon();
   if (tapped) {
     const idx = [...ed.querySelectorAll('[data-todo]')].indexOf(tapped), grip = e.target.closest('.grip');
-    showMenu(grip || { x: e.clientX, y: e.clientY }, [{ label: 'Move to another note...', fn: () => pickNote('Move this item to...', edId, target => moveToNote(edId, target, [idx])) }]);
+    showMenu(grip || { x: e.clientX, y: e.clientY }, itemMenuItems(idx));
   }
 }
 $('grips').addEventListener('pointerup', e => endGripDrag(e, false));
@@ -2636,6 +2737,8 @@ function fixNewTodo() {
       if (lv > 0) setLevel(b, lv - 1); else untodo(b);
     } else {
       b.setAttribute('data-todo', 'false'); b.removeAttribute('data-done');
+      if (!b.textContent.trim()) b.removeAttribute('data-mark');
+      if (isTodo(prev) && !prev.textContent.trim()) prev.removeAttribute('data-mark');
       if (isTodo(prev)) setLevel(b, levelOf(prev));
     }
   } else if (isTodo(prev) && prev.textContent.trim()) { b.setAttribute('data-todo', 'false'); setLevel(b, levelOf(prev)); }
@@ -3264,6 +3367,7 @@ function noteMenuItems(id) {
     todos && { label: n.hideDone ? 'Show checked items' : 'Hide checked items', fn: () => toggleHideDone(id) },
     done && { label: 'Uncheck all', fn: () => { editNoteDom(id, uncheckAll); toast('All items unchecked'); } },
     done && { label: 'Move checked to bottom', fn: () => editNoteDom(id, sortChecked) },
+    done && { label: 'Delete checked items', danger: true, fn: () => deleteItems(id) },
     done && doneTarget(n) && { label: 'Move checked items to ' + noteTitle(doneTarget(n)), fn: () => moveToNote(id, n.doneTo) },
     done && { label: doneTarget(n) ? 'Move checked items to another note...' : 'Move checked items to...', fn: () => pickNote('Move checked items to...', id, target => moveToNote(id, target)) },
     '-',
@@ -3660,6 +3764,7 @@ function renderSettings() {
     <kbd>${MOD} K</kbd><span>Add a link (in a note)</span><kbd>${MOD} Shift L</kbd><span>Checklist</span>
     <kbd>Tab / Shift Tab</kbd><span>Nest a checklist item under the one above, or move it back out</span>
     <kbd>${isMac ? 'Ctrl ⌘ ↑ / ↓' : 'Alt Shift ↑ / ↓'}</kbd><span>Move a checklist item up or down (or drag its dotted handle)</span>
+    <kbd>Click ⠿</kbd><span>A checklist item's menu: work on it today, mark it, due date, move or delete</span>
     <kbd>- &nbsp;1. &nbsp;[] &nbsp;# &nbsp;&gt;</kbd><span>Bullets, numbers, checklist, heading, quote</span>
     <kbd>---</kbd><span>Divider</span><kbd>${MOD}-click</kbd><span>Open a link</span></div></section>`;
   const lockAfter = [[0, 'As soon as I leave the app'], [1, 'After 1 minute away'], [5, 'After 5 minutes away'], [15, 'After 15 minutes away'], [60, 'After 1 hour away']];
