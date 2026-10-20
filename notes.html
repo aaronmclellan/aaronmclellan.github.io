@@ -254,13 +254,13 @@ a{color:var(--accent);}
 #tag-input::placeholder{color:var(--text3);}
 
 /* Format bar */
-#fmt-bar{padding:4px 10px;display:flex;align-items:center;gap:2px;flex-wrap:nowrap;overflow-x:auto;background:var(--bar);border-bottom:1px solid var(--barB);scrollbar-width:none;}
+#fmt-bar{padding:5px 10px;display:flex;align-items:center;gap:3px;flex-wrap:wrap;background:var(--bar);border-bottom:1px solid var(--barB);scrollbar-width:none;}
 #fmt-bar::-webkit-scrollbar{display:none;}
-.fb{width:32px;height:30px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-radius:var(--rs);color:var(--text2);cursor:pointer;font-size:.8rem;font-weight:600;transition:background .15s,color .15s;font-family:var(--font);flex-shrink:0;}
+.fb{width:36px;height:34px;display:flex;align-items:center;justify-content:center;background:none;border:none;border-radius:var(--rs);color:var(--text2);cursor:pointer;font-size:.92rem;font-weight:600;transition:background .15s,color .15s;font-family:var(--font);flex-shrink:0;}
 .fb:hover{background:var(--btnH);color:var(--text);}
 .fb.on{background:var(--accentA);color:var(--accent);}
-.fb svg{width:16px;height:16px;}
-.fs{width:1px;height:18px;background:var(--border);margin:0 4px;flex-shrink:0;}
+.fb svg{width:18px;height:18px;}
+.fs{width:1px;height:20px;background:var(--border);margin:0 5px;flex-shrink:0;}
 
 /* Content area */
 #ed-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:60px;}
@@ -586,6 +586,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
   #editor.is-empty::before{left:22px;top:16px;}
   #meta-bar{padding:6px 12px;}
   .fb{width:38px;height:36px;}
+  #fmt-bar{flex-wrap:nowrap;overflow-x:auto;}
   input,select,textarea,.inp,.search-bar input,#tag-input{font-size:16px!important;}
   .search-bar kbd{display:none;}
   .desk-only{display:none!important;}
@@ -715,17 +716,17 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="fb" data-act="fmt" data-cmd="insertUnorderedList" data-tip="Bullet list" aria-label="Bullet list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4.5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertOrderedList" data-tip="Numbered list" aria-label="Numbered list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="20" y2="12"/><line x1="10" y1="18" x2="20" y2="18"/><text x="3" y="8" font-size="7" fill="currentColor" stroke="none" font-weight="700">1</text><text x="3" y="14" font-size="7" fill="currentColor" stroke="none" font-weight="700">2</text><text x="3" y="20" font-size="7" fill="currentColor" stroke="none" font-weight="700">3</text></svg></button>
     <div class="fs"></div>
-    <button class="fb" data-act="fmt" data-cmd="h1" data-tip="Heading 1" aria-label="Heading 1" style="font-size:.85rem;font-weight:800">H1</button>
-    <button class="fb" data-act="fmt" data-cmd="h2" data-tip="Heading 2" aria-label="Heading 2" style="font-size:.75rem;font-weight:700">H2</button>
-    <button class="fb" data-act="fmt" data-cmd="h3" data-tip="Heading 3" aria-label="Heading 3" style="font-size:.7rem;font-weight:600">H3</button>
+    <button class="fb" data-act="fmt" data-cmd="h1" data-tip="Heading 1" aria-label="Heading 1" style="font-size:.95rem;font-weight:800">H1</button>
+    <button class="fb" data-act="fmt" data-cmd="h2" data-tip="Heading 2" aria-label="Heading 2" style="font-size:.85rem;font-weight:700">H2</button>
+    <button class="fb" data-act="fmt" data-cmd="h3" data-tip="Heading 3" aria-label="Heading 3" style="font-size:.78rem;font-weight:600">H3</button>
     <div class="fs"></div>
     <button class="fb" data-act="fmt" data-cmd="link" data-tip="Link" aria-label="Link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="image" data-tip="Image" aria-label="Insert image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="quote" data-tip="Quote" aria-label="Quote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6v12"/><path d="M9 7h11"/><path d="M9 12h11"/><path d="M9 17h7"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="code" data-tip="Code block" aria-label="Code block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="inlineCode" data-tip="Inline code" aria-label="Inline code" style="font-family:var(--mono);font-size:.72rem">`c`</button>
+    <button class="fb" data-act="fmt" data-cmd="inlineCode" data-tip="Inline code" aria-label="Inline code" style="font-family:var(--mono);font-size:.8rem">`c`</button>
     <button class="fb" data-act="fmt" data-cmd="hr" data-tip="Divider" aria-label="Divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="2" y1="12" x2="22" y2="12"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="clear" data-tip="Clear formatting" aria-label="Clear formatting" style="font-size:.7rem">Tx</button>
+    <button class="fb" data-act="fmt" data-cmd="clear" data-tip="Clear formatting" aria-label="Clear formatting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21l-4.3-4.3a2.4 2.4 0 010-3.4l9.6-9.6a2.4 2.4 0 013.4 0l5.6 5.6a2.4 2.4 0 010 3.4L13 21"/><path d="M22 21H7"/><path d="M5 11l9 9"/></svg></button>
   </div>
   <div id="done-bar" hidden><span id="done-msg"></span><button class="linkbtn" data-act="showDone">Show them</button></div>
   <div id="ed-scroll">
