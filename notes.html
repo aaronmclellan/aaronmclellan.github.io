@@ -251,7 +251,7 @@ a{color:var(--accent);}
 .sp-title.empty{color:var(--text3);}
 .sp-meta .sel{pointer-events:none;}
 .sp-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
-#sp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:60px;}
+#sp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:60px;position:relative;}
 #sp-body{flex:1 0 auto;padding:20px 24px 24px;line-height:1.7;font-size:.95rem;min-height:120px;position:relative;word-wrap:break-word;overflow-wrap:break-word;cursor:text;}
 #sp-body.has-kids{padding-left:36px;}
 #sp-body.hide-done div[data-todo="true"]{display:none;}
@@ -383,7 +383,7 @@ a{color:var(--accent);}
 #editor [data-dragging]{opacity:.35;}
 /* Drag handles: a column of six dots left of each checklist item, drawn outside the note text */
 #ed-scroll{position:relative;}
-#grips{position:absolute;top:0;left:0;width:0;height:0;}
+#grips,#sp-grips{position:absolute;top:0;left:0;width:0;height:0;}
 .grip{position:absolute;width:14px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--text3);opacity:0;cursor:grab;touch-action:none;border-radius:5px;transition:opacity .12s;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
 .grip svg{width:10px;height:16px;pointer-events:none;}
 .grip.hot,.grip:hover{opacity:1;color:var(--text2);}
@@ -798,7 +798,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <div class="sp-archive" id="sp-archive" hidden><span>This note is archived. It stays out of your lists until you bring it back.</span><button class="m-btn sec sm" data-act="sideUnarchive">Unarchive</button></div>
     <div class="sp-meta" id="sp-meta"></div>
     <div class="sp-done" id="sp-done" hidden><span id="sp-done-msg"></span><button class="linkbtn" data-act="sideShowDone">Show them</button></div>
-    <div id="sp-scroll"><div id="sp-body" class="note-view"></div></div>
+    <div id="sp-scroll"><div id="sp-body" class="note-view"></div><div id="sp-grips" aria-hidden="true"></div></div>
   </div>
   </div>
   <div id="status-bar"><span id="wc">0 words</span><span id="edited"></span><button class="sync-btn" data-act="syncClick"><span class="dot" data-sync-dot></span><span data-sync-label>This device only</span></button></div>
@@ -2018,6 +2018,43 @@ function renderSide() {
   if (hidden) $('sp-done-msg').textContent = hidden + ' checked item' + (hidden === 1 ? '' : 's') + ' hidden.';
   if (!same) $('sp-scroll').scrollTop = 0;
 }
+// Dragged items dropped into the other note: they leave this one and land where the line showed.
+function dropInOtherNote(group, target) {
+  const dst = byId(sideId()), src = byId(edId);
+  if (!dst || !src) return;
+  flushEditor();
+  const before = { src: src.content, dst: dst.content };
+  const doc = parser.parseFromString(cleanHTML(dst.content), 'text/html'), body = doc.body;
+  const shown = [...$('sp-body').querySelectorAll('[data-todo]')], todos = [...body.querySelectorAll('[data-todo]')];
+  const at = target.before && todos[shown.indexOf(target.before)], below = target.after && todos[shown.indexOf(target.after)];
+  const parent = at ? at.parentNode : below ? below.parentNode : body;
+  const anchor = at || (below ? (g => g[g.length - 1].nextSibling)(groupOf(below)) : null);
+  const base = levelOf(group[0]);
+  const els = group.map(el => { const c = doc.importNode(el, true); setLevel(c, Math.max(0, Math.min(MAX_INDENT, target.lv + levelOf(el) - base))); return c; });
+  for (const c of els) parent.insertBefore(c, anchor);
+  // In that note's Today list only if it landed there.
+  const prev = els[0].previousElementSibling, today = !!prev && prev.hasAttribute('data-today') && (prev.tagName === 'H2' || isTodo(prev));
+  for (const c of els) if (today) c.setAttribute('data-today', ''); else c.removeAttribute('data-today');
+  for (let n = els[els.length - 1].nextElementSibling; isTodo(n); n = n.nextElementSibling) {
+    const above = n.previousElementSibling;
+    if (levelOf(n) > levelOf(above) + 1) setLevel(n, levelOf(above) + 1); else break;
+  }
+  tidyToday(body);
+  snapshot(src.id, { t: src.updated, title: src.title, content: src.content });
+  snapshot(dst.id, { t: dst.updated, title: dst.title, content: dst.content });
+  dst.content = cleanHTML(body.innerHTML); touch(dst);
+  for (const el of group) el.remove();
+  tidyToday(ed);
+  onEditorChange(); flushEditor();
+  changed(); renderSplit(); renderList();
+  toast('Moved ' + group.length + ' item' + (group.length === 1 ? '' : 's') + ' to ' + noteTitle(dst), 'Undo', () => {
+    const s = byId(src.id), d = byId(dst.id); if (!s || !d) return;
+    s.content = before.src; d.content = before.dst; touch(s); touch(d);
+    changed(); renderList();
+    if (edId === s.id || edId === d.id) loadEditor(byId(edId), true);
+    renderSplit();
+  });
+}
 // Open a note next to the one you're in (it takes the other side if two are already open).
 function openBeside(id) {
   const n = byId(id);
@@ -2050,7 +2087,7 @@ function editSide(fn) {
   renderSplit();
 }
 $('side-pane').addEventListener('mousedown', e => {
-  if (e.button !== 0 || e.target.closest('button,a[href]')) return;
+  if (e.button !== 0 || e.target.closest('button,a[href],.grip')) return;
   e.preventDefault();
   const body = $('sp-body'), todos = () => [...body.querySelectorAll('[data-todo]')];
   // Ticking a box or folding a list works right there, without switching notes.
@@ -2692,16 +2729,19 @@ const renderGripsSoon = () => { if (!gripRAF) gripRAF = requestAnimationFrame(()
 // One handle per visible checklist item, lined up with its first line (they move with the scroll).
 function renderGrips() {
   if (drag) return;   // keep the handle being dragged in place
-  const box = $('grips');
-  if (!edId || ed.contentEditable !== 'true') { box.innerHTML = ''; return; }
-  const sc = $('ed-scroll'), sr = sc.getBoundingClientRect();
-  let h = '';
-  ed.querySelectorAll('[data-todo]').forEach((el, i) => {
-    if (!el.getClientRects().length) return;   // folded away or hidden
-    const r = el.getBoundingClientRect();
-    h += `<div class="grip" data-i="${i}" style="top:${Math.round(r.top - sr.top + sc.scrollTop)}px;left:${Math.round(r.left - sr.left - 17)}px" title="Drag to move, click for more">${GRIP_SVG}</div>`;
-  });
-  box.innerHTML = h;
+  const draw = (box, root, sc, on) => {
+    if (!on) { box.innerHTML = ''; return; }
+    const sr = sc.getBoundingClientRect();
+    let h = '';
+    root.querySelectorAll('[data-todo]').forEach((el, i) => {
+      if (!el.getClientRects().length) return;   // folded away or hidden
+      const r = el.getBoundingClientRect();
+      h += `<div class="grip" data-i="${i}" style="top:${Math.round(r.top - sr.top + sc.scrollTop)}px;left:${Math.round(r.left - sr.left - 17)}px" title="Drag to move, click for more">${GRIP_SVG}</div>`;
+    });
+    box.innerHTML = h;
+  };
+  draw($('grips'), ed, $('ed-scroll'), !!edId && ed.contentEditable === 'true');
+  draw($('sp-grips'), $('sp-body'), $('sp-scroll'), splitOn() && !!sideShown);   // the other note's, with two open
 }
 function startDrag() {
   drag.active = true;
@@ -2710,31 +2750,43 @@ function startDrag() {
   document.body.classList.add('dragging-todo');
   const scroll = () => {
     if (!drag || !drag.active) return;
-    const box = $('ed-scroll').getBoundingClientRect(), edge = 48;
+    const sc = overSide(drag.px, drag.py) ? $('sp-scroll') : $('ed-scroll'), box = sc.getBoundingClientRect(), edge = 48;
     const v = drag.py < box.top + edge ? -1 : drag.py > box.bottom - edge ? 1 : 0;
-    if (v) { $('ed-scroll').scrollTop += v * 10; moveDrag(drag.px, drag.py); }
+    if (v) { sc.scrollTop += v * 10; moveDrag(drag.px, drag.py); }
     requestAnimationFrame(scroll);
   };
   requestAnimationFrame(scroll);
 }
 // Work out where the items would land, and how deep, from the pointer position.
+const overSide = (x, y) => { if (!splitOn()) return false; const r = $('side-pane').getBoundingClientRect(); return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom; };
 function moveDrag(x, y) {
   drag.px = x; drag.py = y;
-  const items = [...ed.querySelectorAll('[data-todo]')].filter(el => !drag.group.includes(el) && el.getClientRects().length);
+  // With two notes open the items can go into the other one: same rules, that note's lines.
+  const side = overSide(x, y), root = side ? $('sp-body') : ed, rootBox = root.getBoundingClientRect();
+  const items = [...root.querySelectorAll('[data-todo]')].filter(el => !drag.group.includes(el) && el.getClientRects().length);
   let before = null, after = null;
   for (const el of items) { const r = el.getBoundingClientRect(); if (y < r.top + r.height / 2) { before = el; break; } after = el; }
   // Something other than checklist items between the two means two separate lists: join the nearer one.
   const sameList = after && before && (() => { for (let n = after.nextElementSibling; n; n = n.nextElementSibling) { if (n === before) return true; if (!isTodo(n)) return false; } return false; })();
   if (after && before && !sameList) { if (y - after.getBoundingClientRect().bottom < before.getBoundingClientRect().top - y) before = null; else after = null; }
+  if (!before && !after && side) {
+    // The other note has no checklist yet: they go at the end of it.
+    drag.target = { side, lv: 0 };
+    const last = root.lastElementChild, top = last ? last.getBoundingClientRect().bottom + 4 : rootBox.top + 20;
+    Object.assign(dropLine.style, { display: 'block', top: top + 'px', left: rootBox.left + 24 + 'px', width: Math.max(40, rootBox.width - 48) + 'px' });
+    return;
+  }
   if (!before && !after) { drag.target = null; dropLine.style.display = 'none'; return; }
   // Keep the item's own level (or take the level of the item it lands above), and drag sideways to
   // change it. It can't go more than one deeper than the item above, or leave the one below stranded.
   const minLv = before && after ? Math.max(0, levelOf(before) - 1) : 0;
   const maxLv = after ? Math.min(MAX_INDENT, levelOf(after) + 1) : 0;
-  const base = before && after ? levelOf(before) : levelOf(drag.group[0]);
-  const lv = Math.max(minLv, Math.min(maxLv, base + Math.round((x - drag.x) / 28)));
-  drag.target = { before, after, lv };
-  const ref = before || after, box = ref.getBoundingClientRect(), edBox = ed.getBoundingClientRect();
+  // In the other note the sideways position doesn't count (you've just come across the screen): it takes the
+  // level of the spot, and Tab can nest it after.
+  const base = before && after ? levelOf(before) : side ? (before ? levelOf(before) : 0) : levelOf(drag.group[0]);
+  const lv = Math.max(minLv, Math.min(maxLv, base + (side ? 0 : Math.round((x - drag.x) / 28))));
+  drag.target = { before, after, lv, side };
+  const ref = before || after, box = ref.getBoundingClientRect(), edBox = rootBox;
   const left = box.left + (lv - levelOf(ref)) * 28;
   dropLine.style.display = 'block';
   dropLine.style.top = (before ? box.top - 2 : box.bottom + 1) + 'px';
@@ -2747,6 +2799,7 @@ function finishDrag(cancel) {
   document.body.classList.remove('dragging-todo');
   dropLine.style.display = 'none';
   if (cancel || !d.target) return;
+  if (d.target.side) { dropInOtherNote(d.group, d.target); return; }
   const { before, after, lv } = d.target, parent = d.group[0].parentNode;
   let anchor = before || (() => { const g = groupOf(after); return g[g.length - 1].nextSibling; })();
   if (d.group.includes(anchor)) anchor = d.group[d.group.length - 1].nextSibling;
@@ -2796,7 +2849,7 @@ $('grips').addEventListener('pointerdown', e => {
   try { g.setPointerCapture(e.pointerId); } catch (err) {}   // keeps the moves coming to the handle even off it
   drag = { group: groupOf(item), x: e.clientX, y: e.clientY, active: false, id: e.pointerId };
 });
-$('grips').addEventListener('pointermove', e => {
+window.addEventListener('pointermove', e => {
   if (!drag || e.pointerId !== drag.id) return;
   if (!drag.active && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 4) return;
   if (!drag.active) { startDrag(); if (navigator.vibrate && e.pointerType === 'touch') navigator.vibrate(8); }
@@ -2808,21 +2861,39 @@ function endGripDrag(e, cancel) {
   if (drag.active) finishDrag(cancel); else drag = null;
   renderGripsSoon();
   if (tapped) {
-    const idx = [...ed.querySelectorAll('[data-todo]')].indexOf(tapped), grip = e.target.closest('.grip');
+    const idx = [...ed.querySelectorAll('[data-todo]')].indexOf(tapped), grip = e.target.closest && e.target.closest('.grip');
+    gripMenuAt = now();   // the click that follows this release mustn't close the menu
     showMenu(grip || { x: e.clientX, y: e.clientY }, itemMenuItems(idx));
   }
 }
-$('grips').addEventListener('pointerup', e => endGripDrag(e, false));
-$('grips').addEventListener('pointercancel', e => endGripDrag(e, true));
+let gripMenuAt = 0;
+window.addEventListener('pointerup', e => endGripDrag(e, false));
+window.addEventListener('pointercancel', e => endGripDrag(e, true));
 $('grips').addEventListener('contextmenu', e => e.preventDefault());
-// On a computer the handle shows while you point at its item.
-$('ed-scroll').addEventListener('mousemove', e => {
-  if (drag) return;
-  const t = e.target.closest && e.target.closest('[data-todo]');
-  const i = t && ed.contains(t) ? [...ed.querySelectorAll('[data-todo]')].indexOf(t) : -1;
-  $('grips').querySelectorAll('.grip').forEach(g => g.classList.toggle('hot', +g.dataset.i === i));
+$('sp-grips').addEventListener('contextmenu', e => e.preventDefault());
+// A handle in the other note: that note becomes the one you're in (nothing on screen moves) and the drag
+// carries on from there, so its items can come across too. A tap opens the item's menu, as usual.
+$('sp-grips').addEventListener('pointerdown', e => {
+  const g = e.target.closest('.grip');
+  if (!g || (e.pointerType === 'mouse' && e.button !== 0) || !sideId()) return;
+  e.preventDefault();
+  const i = +g.dataset.i, sideTop = $('sp-scroll').scrollTop, edTop = $('ed-scroll').scrollTop;
+  openNote(sideId());
+  $('ed-scroll').scrollTop = sideTop; $('sp-scroll').scrollTop = edTop;
+  const item = ed.querySelectorAll('[data-todo]')[i]; if (!item) return;
+  try { $('panes').setPointerCapture(e.pointerId); } catch (err) {}
+  drag = { group: groupOf(item), x: e.clientX, y: e.clientY, active: false, id: e.pointerId };
 });
-$('ed-scroll').addEventListener('mouseleave', () => $('grips').querySelectorAll('.hot').forEach(g => g.classList.remove('hot')));
+// On a computer the handle shows while you point at its item.
+for (const [sc, root, box] of [['ed-scroll', 'editor', 'grips'], ['sp-scroll', 'sp-body', 'sp-grips']]) {
+  $(sc).addEventListener('mousemove', e => {
+    if (drag) return;
+    const t = e.target.closest && e.target.closest('[data-todo]');
+    const i = t && $(root).contains(t) ? [...$(root).querySelectorAll('[data-todo]')].indexOf(t) : -1;
+    $(box).querySelectorAll('.grip').forEach(g => g.classList.toggle('hot', +g.dataset.i === i));
+  });
+  $(sc).addEventListener('mouseleave', () => $(box).querySelectorAll('.hot').forEach(g => g.classList.remove('hot')));
+}
 window.addEventListener('resize', renderGripsSoon);
 ed.addEventListener('load', renderGripsSoon, true);   // images change line positions as they load
 ed.addEventListener('mousedown', e => { if (todoAt(e.target, e.clientX, e.clientY) || foldAt(e.target, e.clientX, e.clientY)) e.preventDefault(); });
@@ -4300,7 +4371,7 @@ const ACT = {
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
   // (A tap on a checklist handle opens its menu on release, so the click that follows mustn't close it.)
-  if (!e.target.closest('#ctx') && !e.target.closest('#grips') && !(fabLong && e.target.closest('#fab'))) hideMenu();
+  if (!e.target.closest('#ctx') && !e.target.closest('#grips,#sp-grips') && now() - gripMenuAt > 500 && !(fabLong && e.target.closest('#fab'))) hideMenu();
   if (slash && !e.target.closest('#slash')) closeSlash();
   if (!$('keys-card').hidden && !e.target.closest('#keys-card')) toggleKeys(false);
   if (!el || !ACT[el.dataset.act]) return;
