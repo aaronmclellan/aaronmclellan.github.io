@@ -238,7 +238,23 @@ a{color:var(--accent);}
 #ed-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--text3);font-size:.9rem;text-align:center;padding:20px;}
 #ed-empty svg{width:48px;height:48px;opacity:.3;}
 #ed-empty kbd{font-family:var(--mono);font-size:.72rem;border:1px solid var(--border);border-radius:4px;padding:1px 5px;}
-#ed-top{padding:8px 12px 8px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+#ed-top,.sp-top{padding:8px 12px 8px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+/* Split view: two notes side by side. The one you're typing in is the editor; the other is a copy drawn the same way. */
+#panes{flex:1;display:flex;min-height:0;}
+.pane{flex:1 1 0;min-width:0;display:flex;flex-direction:column;}
+.pane.right{order:1;border-left:1px solid var(--border);}
+#editor-panel.split #ed-top{box-shadow:inset 0 2px 0 var(--accent);}
+.ib.nav-btn,#pane-x{display:none;}
+#editor-panel.split .pane:not(.right) .ib.nav-btn,#editor-panel.split #pane-x{display:flex;}
+#app.nav-hidden #sidebar,#app.nav-hidden #list-panel{width:0;min-width:0;overflow:hidden;border:none;}
+.sp-title{flex:1;min-width:0;font-size:1.2rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:text;}
+.sp-title.empty{color:var(--text3);}
+.sp-meta .sel{pointer-events:none;}
+.sp-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
+#sp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:60px;}
+#sp-body{flex:1 0 auto;padding:20px 24px 24px;line-height:1.7;font-size:.95rem;min-height:120px;position:relative;word-wrap:break-word;overflow-wrap:break-word;cursor:text;}
+#sp-body.has-kids{padding-left:36px;}
+#sp-body.hide-done div[data-todo="true"]{display:none;}
 #title-input{flex:1;background:none;border:none;color:var(--text);font-size:1.2rem;font-weight:700;font-family:var(--font);outline:none;min-width:0;}
 #title-input::placeholder{color:var(--text3);}
 .ed-actions{display:flex;align-items:center;gap:2px;}
@@ -247,7 +263,7 @@ a{color:var(--accent);}
 #trash-bar span{flex:1;min-width:140px;}
 
 /* Meta bar */
-#meta-bar{padding:6px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);font-size:.75rem;}
+#meta-bar,.sp-meta{padding:6px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);font-size:.75rem;}
 .meta-label{color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.5px;font-size:.68rem;}
 #meta-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
 #tag-input{background:none;border:none;color:var(--text);font-size:.72rem;font-family:var(--font);outline:none;width:90px;}
@@ -261,10 +277,26 @@ a{color:var(--accent);}
 .fb.on{background:var(--accentA);color:var(--accent);}
 .fb svg{width:18px;height:18px;}
 .fs{width:1px;height:20px;background:var(--border);margin:0 5px;flex-shrink:0;}
+/* Checklist tools (move left/right/up/down, due date) show only on a checklist line; Move left/right on list lines too.
+   On a computer they fade out but keep their place so the toolbar never changes size; a phone drops them and
+   brings them in at the front of its one scrolling row. */
+#todo-tools{display:flex;align-items:center;gap:3px;flex-shrink:0;}
+#todo-tools .fb{transition:opacity .15s,visibility .15s;}
+#todo-tools .fb.ctx-off,#todo-tools.off .fs{opacity:0;visibility:hidden;}
+#todo-tools .fs-m{display:none;}
+@media(max-width:768px){
+  #todo-tools{order:-1;}
+  #todo-tools .fs-d{display:none;}
+  #todo-tools .fs-m{display:block;}
+  #todo-tools .fb.ctx-off,#todo-tools.off{display:none;}
+}
 
 /* Content area */
 #ed-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding-bottom:60px;}
 #editor{flex:1 0 auto;padding:20px 24px 24px;outline:none;line-height:1.7;font-size:.95rem;min-height:120px;position:relative;word-wrap:break-word;overflow-wrap:break-word;}
+:is(#editor,.note-view){tab-size:2em;}
+:is(#editor,.note-view) pre{tab-size:4;}
+:is(#editor,.note-view) span[data-tab]{white-space:pre;}
 #editor.is-empty::before{content:attr(data-placeholder);position:absolute;left:24px;top:20px;color:var(--text3);pointer-events:none;}
 :is(#editor,.note-view) h1{font-size:1.6rem;margin:16px 0 8px;font-weight:700;line-height:1.3;}
 :is(#editor,.note-view) h2{font-size:1.3rem;margin:14px 0 6px;font-weight:600;line-height:1.35;}
@@ -302,16 +334,19 @@ a{color:var(--accent);}
 :is(#editor,.note-view) div[data-todo][data-mark="blue"]{--tint:rgba(59,130,246,.14);}
 :is(#editor,.note-view) div[data-todo][data-mark="green"]{--tint:rgba(34,197,94,.14);}
 :is(#editor,.note-view) div[data-todo][data-mark="purple"]{--tint:rgba(168,85,247,.15);}
+:is(#editor,.note-view) div[data-todo="false"][data-mark="gray"]{--tint:rgba(148,163,184,.12);color:var(--text2);}   /* low priority recedes a little */
 :is(#editor,.note-view) div[data-todo][data-mark="red"]::before{border-color:#ef4444;}
 :is(#editor,.note-view) div[data-todo][data-mark="orange"]::before{border-color:#f59e0b;}
 :is(#editor,.note-view) div[data-todo][data-mark="blue"]::before{border-color:#3b82f6;}
 :is(#editor,.note-view) div[data-todo][data-mark="green"]::before{border-color:#22c55e;}
 :is(#editor,.note-view) div[data-todo][data-mark="purple"]::before{border-color:#a855f7;}
+:is(#editor,.note-view) div[data-todo][data-mark="gray"]::before{border-color:#94a3b8;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="red"]::before{background-color:#ef4444;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="orange"]::before{background-color:#f59e0b;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="blue"]::before{background-color:#3b82f6;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="green"]::before{background-color:#22c55e;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="purple"]::before{background-color:#a855f7;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="gray"]::before{background-color:#94a3b8;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark]{--tint:transparent;}
 /* Today: a heading at the top of the note, then its items, then a line */
 :is(#editor,.note-view) h2[data-today]::before{content:'\2600\FE0F  ';}
@@ -366,8 +401,8 @@ mark{background:rgba(255,196,77,.5);color:var(--text);border-radius:2px;padding:
 .bl-item:hover{background:var(--btnH);}
 .bl-item b{font-size:.82rem;font-weight:600;}
 .bl-item span{font-size:.74rem;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
-#archive-bar{padding:8px 16px;display:flex;align-items:center;gap:10px;background:var(--accentA);border-bottom:1px solid var(--border);font-size:.8rem;color:var(--text2);}
-#archive-bar span{flex:1;}
+#archive-bar,.sp-archive{padding:8px 16px;display:flex;align-items:center;gap:10px;background:var(--accentA);border-bottom:1px solid var(--border);font-size:.8rem;color:var(--text2);}
+#archive-bar span,.sp-archive span{flex:1;}
 /* Search filters */
 .filters{display:none;gap:6px;flex-wrap:wrap;}
 .lh.searching .filters{display:flex;}
@@ -392,7 +427,7 @@ mark{background:rgba(255,196,77,.5);color:var(--text);border-radius:2px;padding:
 .lock-box h2{font-size:1.1rem;}
 .lock-box .inp{text-align:center;letter-spacing:4px;font-size:1.1rem;}
 body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.locked #toast{visibility:hidden!important;}
-#done-bar{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
+#done-bar,.sp-done{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
 
 /* Status bar */
 #status-bar{padding:4px 16px;display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);font-size:.68rem;color:var(--text3);padding-bottom:calc(4px + var(--sab));}
@@ -520,6 +555,14 @@ body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.loc
 .sync-card small{color:var(--text3);font-size:.72rem;}
 details{margin-top:12px;font-size:.78rem;color:var(--text2);}
 summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
+/* Cmd+/ shortcuts card: floats over the note without taking the cursor; the next key you press closes it */
+#keys-card{position:fixed;inset:0;margin:auto;height:fit-content;z-index:95;width:min(960px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow-y:auto;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:var(--rl);box-shadow:var(--shadow);padding:16px 20px 18px;animation:slideUp .2s ease;}
+.kc-head{display:flex;align-items:baseline;gap:10px;margin-bottom:12px;}
+.kc-head b{font-size:.95rem;flex:1;}
+.kc-head span{font-size:.72rem;color:var(--text3);}
+.kc-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px 26px;align-items:start;}
+.kc-cols h5,.set-sec h5{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin:0 0 8px;}
+.set-sec h5{margin-top:12px;}
 .kbd-list{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.76rem;color:var(--text2);}
 .kbd-list kbd{font-family:var(--mono);font-size:.7rem;border:1px solid var(--border);border-radius:4px;padding:1px 6px;color:var(--text);white-space:nowrap;justify-self:start;}
 .qr-wrap{display:flex;justify-content:center;margin:6px 0 14px;}
@@ -677,14 +720,18 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
     <p>No note selected</p>
     <button class="m-btn pri" data-act="newNote">New note</button>
-    <p class="hint desk-only">Alt+N new note &nbsp;·&nbsp; / search</p>
+    <p class="hint desk-only" id="empty-hint">Alt+N new note &nbsp;·&nbsp; / search</p>
   </div>
+  <div id="panes">
+  <div id="ed-pane" class="pane">
   <div id="ed-top">
+    <button class="ib nav-btn" data-act="toggleNav" data-tip="Hide notes list" aria-label="Show or hide the notes list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg></button>
     <button class="ib" id="back-btn" data-act="back" aria-label="Back to notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
     <input type="text" id="title-input" placeholder="Title" autocomplete="off" enterkeyhint="next" aria-label="Title">
     <div class="ed-actions">
       <button class="ib" id="pin-btn" data-act="togglePin" data-tip="Pin to top" aria-label="Pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 01-1.11 1.79l-1.78.9A2 2 0 005 15.24V16a1 1 0 001 1h12a1 1 0 001-1v-.76a2 2 0 00-1.11-1.79l-1.78-.9A2 2 0 0115 10.76V7a1 1 0 011-1 2 2 0 000-4H8a2 2 0 000 4 1 1 0 011 1z"/></svg></button>
       <button class="ib" data-act="noteMenu" data-tip="More" aria-label="More actions"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+      <button class="ib" id="pane-x" data-act="closePane" data-pane="ed" data-tip="Close this note" aria-label="Close this note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
     </div>
   </div>
   <div id="archive-bar" hidden><span>This note is archived. It stays out of your lists until you bring it back.</span><button class="m-btn sec sm" data-act="unarchive">Unarchive</button></div>
@@ -708,11 +755,6 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="fb" data-act="fmt" data-cmd="strikeThrough" data-tip="Strikethrough" aria-label="Strikethrough"><s>S</s></button>
     <div class="fs"></div>
     <button class="fb" data-act="fmt" data-cmd="todo" data-tip="Checklist" aria-label="Checklist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><path d="M5 7l1.5 1.5L9 5"/><line x1="14" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><line x1="14" y1="17" x2="21" y2="17"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="outdent" data-tip="Move left (Shift+Tab)" aria-label="Move left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="7 8 3 12 7 16"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="due" data-tip="Due date (or type @fri)" aria-label="Due date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><path d="M9 15l2 2 4-4"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="indent" data-tip="Move right (Tab)" aria-label="Move right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="3 8 7 12 3 16"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="moveUp" data-tip="Move item up" aria-label="Move item up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg></button>
-    <button class="fb" data-act="fmt" data-cmd="moveDown" data-tip="Move item down" aria-label="Move item down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="4" x2="12" y2="19"/><polyline points="6 13 12 19 18 13"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertUnorderedList" data-tip="Bullet list" aria-label="Bullet list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4.5" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="insertOrderedList" data-tip="Numbered list" aria-label="Numbered list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="20" y2="12"/><line x1="10" y1="18" x2="20" y2="18"/><text x="3" y="8" font-size="7" fill="currentColor" stroke="none" font-weight="700">1</text><text x="3" y="14" font-size="7" fill="currentColor" stroke="none" font-weight="700">2</text><text x="3" y="20" font-size="7" fill="currentColor" stroke="none" font-weight="700">3</text></svg></button>
     <div class="fs"></div>
@@ -727,6 +769,15 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="fb" data-act="fmt" data-cmd="inlineCode" data-tip="Inline code" aria-label="Inline code" style="font-family:var(--mono);font-size:.8rem">`c`</button>
     <button class="fb" data-act="fmt" data-cmd="hr" data-tip="Divider" aria-label="Divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="2" y1="12" x2="22" y2="12"/></svg></button>
     <button class="fb" data-act="fmt" data-cmd="clear" data-tip="Clear formatting" aria-label="Clear formatting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21l-4.3-4.3a2.4 2.4 0 010-3.4l9.6-9.6a2.4 2.4 0 013.4 0l5.6 5.6a2.4 2.4 0 010 3.4L13 21"/><path d="M22 21H7"/><path d="M5 11l9 9"/></svg></button>
+    <div class="fb-group off" id="todo-tools">
+      <div class="fs fs-d"></div>
+      <button class="fb ctx-off" data-act="fmt" data-list data-cmd="outdent" data-tip="Move left (Shift+Tab)" aria-label="Move left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="7 8 3 12 7 16"/></svg></button>
+      <button class="fb ctx-off" data-act="fmt" data-list data-cmd="indent" data-tip="Move right (Tab)" aria-label="Move right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="11" y1="6" x2="21" y2="6"/><line x1="11" y1="12" x2="21" y2="12"/><line x1="11" y1="18" x2="21" y2="18"/><polyline points="3 8 7 12 3 16"/></svg></button>
+      <button class="fb ctx-off" data-act="fmt" data-cmd="moveUp" data-tip="Move item up" aria-label="Move item up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg></button>
+      <button class="fb ctx-off" data-act="fmt" data-cmd="moveDown" data-tip="Move item down" aria-label="Move item down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="4" x2="12" y2="19"/><polyline points="6 13 12 19 18 13"/></svg></button>
+      <button class="fb ctx-off" data-act="fmt" data-cmd="due" data-tip="Due date (or type @fri)" aria-label="Due date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><path d="M9 15l2 2 4-4"/></svg></button>
+      <div class="fs fs-m"></div>
+    </div>
   </div>
   <div id="done-bar" hidden><span id="done-msg"></span><button class="linkbtn" data-act="showDone">Show them</button></div>
   <div id="ed-scroll">
@@ -734,8 +785,29 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <div id="grips" aria-hidden="true"></div>
     <div id="backlinks" hidden><div class="bl-head">Linked from</div><div id="bl-list"></div></div>
   </div>
+  </div>
+  <div id="side-pane" class="pane" hidden>
+    <div class="sp-top">
+      <button class="ib nav-btn" data-act="toggleNav" data-tip="Hide notes list" aria-label="Show or hide the notes list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg></button>
+      <div class="sp-title" id="sp-title"></div>
+      <div class="ed-actions">
+        <button class="ib" data-act="sideMenu" data-tip="More" aria-label="More actions"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        <button class="ib" data-act="closePane" data-pane="side" data-tip="Close this note" aria-label="Close this note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      </div>
+    </div>
+    <div class="sp-archive" id="sp-archive" hidden><span>This note is archived. It stays out of your lists until you bring it back.</span><button class="m-btn sec sm" data-act="sideUnarchive">Unarchive</button></div>
+    <div class="sp-meta" id="sp-meta"></div>
+    <div class="sp-done" id="sp-done" hidden><span id="sp-done-msg"></span><button class="linkbtn" data-act="sideShowDone">Show them</button></div>
+    <div id="sp-scroll"><div id="sp-body" class="note-view"></div></div>
+  </div>
+  </div>
   <div id="status-bar"><span id="wc">0 words</span><span id="edited"></span><button class="sync-btn" data-act="syncClick"><span class="dot" data-sync-dot></span><span data-sync-label>This device only</span></button></div>
 </main>
+</div>
+
+<div id="keys-card" role="dialog" aria-label="Keyboard shortcuts" hidden>
+  <div class="kc-head"><b>Keyboard shortcuts</b><span id="kc-close-hint"></span></div>
+  <div class="kc-cols" id="kc-body"></div>
 </div>
 
 <!-- DIALOG (stands in for prompt/confirm, which don't work inside the desktop's sandboxed windows) -->
@@ -1076,7 +1148,7 @@ function saveSync() {
   if (bc) bc.postMessage({ t: 'sync', from: TAB });
 }
 // Something changed that other devices should get.
-function changed() { persist(); scheduleSync(); }
+function changed() { persist(); scheduleSync(); renderSplitSoon(); }
 
 /* ═══════════════════════════════════════════════════════
    ENCRYPTION (AES-256-GCM, key from PBKDF2-SHA256)
@@ -1487,9 +1559,19 @@ const KEEP = { TIME: 1, B: 1, STRONG: 'B', I: 1, EM: 'I', U: 1, S: 1, STRIKE: 'S
 const DROP = /^(SCRIPT|STYLE|META|LINK|TITLE|HEAD|IFRAME|OBJECT|EMBED|SVG|MATH|TEMPLATE|NOSCRIPT|BUTTON|INPUT|SELECT|TEXTAREA|FORM|VIDEO|AUDIO|CANVAS)$/i;
 function cleanHTML(html) {
   const doc = parser.parseFromString(html || '', 'text/html');
+  let inPre = 0;
   const walk = (src, dst) => {
     for (const node of [...src.childNodes]) {
-      if (node.nodeType === 3) { dst.appendChild(doc.createTextNode(node.data)); continue; }
+      if (node.nodeType === 3) {
+        if (inPre || !node.data.includes('\t')) { dst.appendChild(doc.createTextNode(node.data)); continue; }
+        // Tabs in ordinary text sit in a span that keeps them from collapsing into a space.
+        for (const part of node.data.split(/(\t+)/)) {
+          if (!part) continue;
+          if (part[0] !== '\t') { dst.appendChild(doc.createTextNode(part)); continue; }
+          const s = doc.createElement('span'); s.setAttribute('data-tab', ''); s.textContent = part; dst.appendChild(s);
+        }
+        continue;
+      }
       if (node.nodeType !== 1 || DROP.test(node.tagName)) continue;
       const tag = node.tagName.toUpperCase(), style = node.getAttribute('style') || '';
       let as = KEEP[tag];
@@ -1535,7 +1617,9 @@ function cleanHTML(html) {
       if (tag === 'H2' && /^\d{4}-\d{2}-\d{2}$/.test(node.getAttribute('data-week') || '')) el.setAttribute('data-week', node.getAttribute('data-week'));
       if (tag === 'OL' && +node.getAttribute('start') > 1) el.setAttribute('start', +node.getAttribute('start'));
       for (const a of ['colspan', 'rowspan']) if ((tag === 'TD' || tag === 'TH') && node.getAttribute(a)) el.setAttribute(a, +node.getAttribute(a) || 1);
+      if (tag === 'PRE') inPre++;
       walk(node, el);
+      if (tag === 'PRE') inPre--;
       dst.appendChild(el);
     }
   };
@@ -1741,6 +1825,7 @@ function cardHTML(n) {
     + `<div class="nc-meta">${meta.join('')}</div></div>`;
 }
 function renderList() {
+  renderSplit();
   const el = $('note-items'), title = viewTitle(), q = $('search').value.trim();
   $('list-title').textContent = title; $('mob-title').textContent = title;
   updateFilterChips();
@@ -1787,6 +1872,8 @@ function openNote(id) {
   const n = byId(id);
   if (!n) return;
   flushEditor();   // even for the same note: reloading it must not drop the last few keystrokes
+  // Split view: a note from the list takes the place of the one you're in (or switches sides if it's the other one).
+  if (P.split && !P.split.includes(id)) { const i = P.split.indexOf(edId); if (i >= 0) P.split[i] = id; else P.split = null; }
   if (edId && edId !== id) cleanupEmpty(byId(edId));
   P.activeId = id;
   P.recent = [id, ...(P.recent || []).filter(x => x !== id)].slice(0, 30);
@@ -1802,6 +1889,11 @@ function openNote(id) {
 }
 function closeEditor() {
   flushEditor();
+  if (P.split) {
+    // Closing one of two notes leaves the other one open.
+    const other = byId(sideId()); P.split = null; savePrefs();
+    if (other && !other.trashed && !isMobile()) { openNote(other.id); return; }
+  }
   const n = byId(edId);
   edId = null; P.activeId = null; savePrefs();
   cleanupEmpty(n);
@@ -1882,8 +1974,107 @@ function archiveNote(id, on = true) {
 }
 function updateArchiveBar() { const n = byId(edId); $('archive-bar').hidden = !(n && n.archived && !n.trashed); }
 
+/* Split view (computer only): two notes side by side. There's still one editor. The note you're typing in is
+   live and the other is drawn as a copy; clicking into the copy swaps them, with the caret where you clicked.
+   P.split holds the two ids, left then right. */
+const splitOn = () => !!(P.split && edId && P.split.includes(edId) && !isMobile());
+const sideId = () => P.split ? P.split.find(id => id !== edId) || null : null;
+let sideShown = '', splitRAF = 0;
+const renderSplitSoon = () => { if (!splitRAF) splitRAF = requestAnimationFrame(() => { splitRAF = 0; renderSplit(); }); };
+function renderSplit() {
+  // A note that was deleted or trashed leaves the split.
+  if (P.split && edId && P.split.some(id => { const n = byId(id); return !n || n.trashed; })) { P.split = null; savePrefs(); }
+  const on = splitOn(), panel = $('editor-panel'), fmt = $('fmt-bar');
+  panel.classList.toggle('split', on);
+  $('app').classList.toggle('nav-hidden', on && !!P.navHidden);
+  // One formatting bar across the top serves whichever note you're in.
+  if (on && fmt.parentNode !== panel) panel.insertBefore(fmt, $('panes'));
+  if (!on && fmt.parentNode !== $('ed-pane')) $('ed-pane').insertBefore(fmt, $('done-bar'));
+  $('side-pane').hidden = !on;
+  if (!on) { if (sideShown) { sideShown = ''; $('sp-body').innerHTML = ''; renderGripsSoon(); } return; }
+  const right = P.split[1] === edId;
+  $('ed-pane').classList.toggle('right', right); $('side-pane').classList.toggle('right', !right);
+  document.querySelectorAll('.nav-btn').forEach(b => b.dataset.tip = (P.navHidden ? 'Show' : 'Hide') + ' folders and notes (' + MOD + '\\)');
+  renderSide();
+  renderGripsSoon();
+}
+function renderSide() {
+  const n = byId(sideId()); if (!n) return;
+  const sig = [n.id, n.title, n.content, folderName(folderOf(n)), n.tags.join(' '), !!n.hideDone, !!n.archived].join('\u0001');
+  if (sig === sideShown) return;   // unchanged: leave it (and its scroll position) alone
+  const same = sideShown.startsWith(n.id + '\u0001');
+  sideShown = sig;
+  const title = $('sp-title'); title.textContent = n.title.trim() || 'Title'; title.classList.toggle('empty', !n.title.trim());
+  $('sp-archive').hidden = !n.archived;
+  $('sp-meta').innerHTML = `<span class="meta-label">Folder</span><select class="sel" tabindex="-1" aria-hidden="true"><option>${esc(folderName(folderOf(n)))}</option></select>`
+    + `<span class="meta-label" style="margin-left:6px">Tags</span><div class="sp-tags">${n.tags.map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>`;
+  const body = $('sp-body');
+  body.innerHTML = cleanHTML(n.content);
+  body.classList.toggle('hide-done', !!n.hideDone);
+  foldChildren(body);
+  refreshInline(body);
+  const hidden = n.hideDone ? body.querySelectorAll('[data-todo="true"]').length : 0;
+  $('sp-done').hidden = !hidden;
+  if (hidden) $('sp-done-msg').textContent = hidden + ' checked item' + (hidden === 1 ? '' : 's') + ' hidden.';
+  if (!same) $('sp-scroll').scrollTop = 0;
+}
+// Open a note next to the one you're in (it takes the other side if two are already open).
+function openBeside(id) {
+  const n = byId(id);
+  if (!n || n.trashed || isMobile() || !edId || id === edId || (P.split && P.split.includes(id))) { openNote(id); return; }
+  flushEditor();
+  const top = $('ed-scroll').scrollTop;
+  if (P.split) P.split[P.split.indexOf(sideId())] = id;
+  else { P.split = [edId, id]; P.navHidden = false; }
+  openNote(id);
+  $('sp-scroll').scrollTop = top;
+}
+// Click into the other note: it becomes the live one, with the caret where you clicked.
+function activateSide(x, y) {
+  const id = sideId(); if (!id) return;
+  const body = $('sp-body');
+  let at = null;
+  if (document.caretPositionFromPoint) { const c = document.caretPositionFromPoint(x, y); if (c) { at = document.createRange(); at.setStart(c.offsetNode, c.offset); } }
+  else if (document.caretRangeFromPoint) at = document.caretRangeFromPoint(x, y);
+  let offset = null;
+  if (at && body.contains(at.startContainer)) { const r = document.createRange(); r.selectNodeContents(body); r.setEnd(at.startContainer, at.startOffset); offset = r.toString().length; }
+  const sideTop = $('sp-scroll').scrollTop, edTop = $('ed-scroll').scrollTop;
+  openNote(id);
+  $('ed-scroll').scrollTop = sideTop; $('sp-scroll').scrollTop = edTop;
+  ed.focus({ preventScroll: true });
+  if (offset != null) setCaretOffset(offset); else focusEditor(true);
+}
+function editSide(fn) {
+  const id = sideId(); if (!id) return;
+  editNoteDom(id, root => fn(root));
+  renderSplit();
+}
+$('side-pane').addEventListener('mousedown', e => {
+  if (e.button !== 0 || e.target.closest('button,a[href]')) return;
+  e.preventDefault();
+  const body = $('sp-body'), todos = () => [...body.querySelectorAll('[data-todo]')];
+  // Ticking a box or folding a list works right there, without switching notes.
+  const box = todoAt(e.target, e.clientX, e.clientY, body), fold = !box && foldAt(e.target, e.clientX, e.clientY, body);
+  if (box || fold) {
+    const i = todos().indexOf(box || fold);
+    editSide(root => {
+      const el = root.querySelectorAll('[data-todo]')[i]; if (!el) return;
+      if (box) setChecked(el, el.getAttribute('data-todo') !== 'true');
+      else if (el.getAttribute('data-folded') === 'true') el.removeAttribute('data-folded'); else el.setAttribute('data-folded', 'true');
+    });
+    return;
+  }
+  const link = e.target.closest('a[data-note]');
+  activateSide(e.clientX, e.clientY);
+  if (link && byId(link.dataset.note)) openNote(link.dataset.note);   // a link to another note opens it on this side
+});
+$('side-pane').addEventListener('click', e => {
+  const a = e.target.closest('a[href]');
+  if (a && $('sp-body').contains(a)) { e.preventDefault(); window.open(a.href, '_blank', 'noopener'); }
+});
+
 /* One task's menu (tap its handle): Today, marks, due date, move, delete. */
-const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', purple: '\u{1F7E3} In progress', blue: '\u{1F535} Waiting on someone', green: '\u{1F7E2} Quick win' };
+const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', purple: '\u{1F7E3} In progress', blue: '\u{1F535} Waiting on someone', green: '\u{1F7E2} Quick win', gray: '\u26AA Low priority' };
 function itemMenuItems(idx) {
   const el = ed.querySelectorAll('[data-todo]')[idx];
   if (!el || ed.contentEditable !== 'true') return [];
@@ -2175,6 +2366,7 @@ function loadEditor(n, keepCaret) {
   edSnapDone = false;
   ed.classList.toggle('hide-done', !!n.hideDone);
   applyFolds();
+  showTodoTools(false, false);   // until the caret lands on a line
   const ro = !!n.trashed;
   ed.contentEditable = ro ? 'false' : 'true';
   $('title-input').readOnly = ro;
@@ -2259,7 +2451,7 @@ function onEditorChange() {
   if (window.CSS && CSS.highlights) CSS.highlights.delete('search');
   clearTimeout(edTimer);
   edTimer = setTimeout(() => { flushEditor(); persist(); renderListSoon(); renderSidebar(); }, 400);
-  updateCounts(); scheduleSync();
+  updateCounts(); scheduleSync(); updateFmtState();   // typing "[] " makes a checklist without moving the caret
 }
 function updateCounts() {
   const n = byId(edId), text = htmlText(ed.innerHTML), words = text.trim() ? text.trim().split(/\s+/).length : 0;
@@ -2407,9 +2599,9 @@ function toggleCheck(t) {
 const hasKids = t => { const n = t.nextElementSibling; return isTodo(n) && levelOf(n) > levelOf(t); };
 const caretAtEndOf = el => { const s = getSelection(); if (!s.rangeCount || !s.isCollapsed) return false; const r = document.createRange(); r.selectNodeContents(el); r.setStart(s.anchorNode, s.anchorOffset); return r.toString() === ''; };
 // Folded items hide their sub-items. "hidden" is for the screen only and is stripped before saving.
-function applyFolds() {
+function foldChildren(root) {
   let hideBelow = -1;
-  for (const el of ed.children) {
+  for (const el of root.children) {
     let hide = false;
     if (isTodo(el)) {
       const lv = levelOf(el);
@@ -2418,7 +2610,10 @@ function applyFolds() {
     } else hideBelow = -1;
     if (el.hidden !== hide) el.hidden = hide;
   }
-  ed.classList.toggle('has-kids', [...ed.querySelectorAll('[data-todo]')].some(hasKids));
+  root.classList.toggle('has-kids', [...root.querySelectorAll('[data-todo]')].some(hasKids));
+}
+function applyFolds() {
+  foldChildren(ed);
   renderGripsSoon();
   // Don't leave the caret inside something that just got folded away.
   const s = getSelection(), b = s.rangeCount && ed.contains(s.anchorNode) ? blockOf(s.anchorNode) : null;
@@ -2473,17 +2668,17 @@ function sortChecked(root) {
   for (const el of [...root.children]) { if (isTodo(el)) run.push(el); else flush(); }
   flush();
 }
-function todoAt(target, x, y) {
+function todoAt(target, x, y, root = ed) {
   const t = target && target.closest ? target.closest('[data-todo]') : null;
-  if (!t || !ed.contains(t)) return null;
+  if (!t || !root.contains(t)) return null;
   const r = t.getBoundingClientRect();
   return x >= r.left && x - r.left <= 26 && y - r.top <= 30 ? t : null;
 }
 // The arrow to the left of an item that has sub-items.
-function foldAt(target, x, y) {
+function foldAt(target, x, y, root = ed) {
   const near = el => { const r = el.getBoundingClientRect(); return x < r.left - 17 && x >= r.left - 36 && y >= r.top && y - r.top <= 30; };   // left of the drag handle
   let t = target && target.closest ? target.closest('[data-todo]') : null;
-  if (!t || !ed.contains(t)) t = [...ed.querySelectorAll('[data-todo]')].find(el => !el.hidden && near(el));
+  if (!t || !root.contains(t)) t = [...root.querySelectorAll('[data-todo]')].find(el => !el.hidden && near(el));
   return t && near(t) && hasKids(t) ? t : null;
 }
 /* Reordering. Each checklist item gets a six-dot handle to its left; drag it to move the item
@@ -2684,6 +2879,7 @@ ed.addEventListener('keydown', e => {
     const items = selectedTodos();
     if (items.length) { e.preventDefault(); shiftTodos(items, e.shiftKey ? -1 : 1); return; }
     if (node && node.closest('li')) { e.preventDefault(); document.execCommand(e.shiftKey ? 'outdent' : 'indent'); onEditorChange(); return; }
+    e.preventDefault(); typeTab(e.shiftKey); return;   // a tab, like any text editor, not a jump to the next button
   }
   if (e.key === 'Enter' && !e.shiftKey) {
     typedDue(true);   // "@fri" then Enter works like "@fri" then space
@@ -2702,6 +2898,13 @@ ed.addEventListener('keydown', e => {
       return;
     }
     if (b && b.tagName === 'PRE') { e.preventDefault(); codeEnter(b); return; }
+    // A line that starts with tabs: the next line starts at the same depth. On a line of only tabs, Enter takes one away instead.
+    if (b && /^(DIV|P)$/.test(b.tagName) && !isTodo(b) && !b.closest('li,td,th,pre') && getSelection().isCollapsed) {
+      const lead = (/^\t+/.exec(b.textContent) || [''])[0];
+      if (lead && b.textContent === lead && caretAtEndOf(b)) { e.preventDefault(); typeTab(true); return; }
+      const s = getSelection(), before = document.createRange(); before.selectNodeContents(b); before.setEnd(s.anchorNode, s.anchorOffset);
+      if (lead && !/^\t*$/.test(before.toString())) { e.preventDefault(); document.execCommand('insertParagraph'); for (const tab of lead) document.execCommand('insertText', false, tab); return; }   // one at a time: Chrome turns "\t\t" into spaces
+    }
     const q = b && (b.tagName === 'BLOCKQUOTE' ? b : b.closest('blockquote'));
     if (q && !b.textContent.trim()) { e.preventDefault(); document.execCommand('formatBlock', false, 'div'); onEditorChange(); return; }
   }
@@ -2714,6 +2917,38 @@ ed.addEventListener('keydown', e => {
     }
   }
 });
+// Tab in ordinary text types a tab; with several lines selected it indents each of them.
+// Shift+Tab takes a tab (or up to 4 spaces) off the start of the line, or the tab just before the caret.
+function typeTab(back) {
+  const s = getSelection(); if (!s.rangeCount || !ed.contains(s.anchorNode)) return;
+  const r = s.getRangeAt(0);
+  const lines = [...ed.querySelectorAll('*')].filter(el => isBlockEl(el) && r.intersectsNode(el) && !el.querySelector('div,p,li,h1,h2,h3,blockquote,pre,td,th'));
+  if (!back && lines.length < 2) { document.execCommand('insertText', false, '\t'); return; }
+  if (!lines.length) { const b = currentBlock(); if (b) lines.push(b); }
+  // Where the caret sits in its line: taking a tab out can remove the very node it's in.
+  const caretLine = s.isCollapsed ? blockOf(s.anchorNode) : null;
+  let caretAt = 0;
+  if (caretLine) { const pre = document.createRange(); pre.selectNodeContents(caretLine); pre.setEnd(s.anchorNode, s.anchorOffset); caretAt = pre.toString().length; }
+  let did = false;
+  for (const b of lines) {
+    if (!back) { const t = document.createElement('span'); t.setAttribute('data-tab', ''); t.textContent = '\t'; b.insertBefore(t, b.firstChild); did = true; continue; }
+    const first = document.createTreeWalker(b, NodeFilter.SHOW_TEXT).nextNode(), m = first && /^(\t|[ \u00a0]{1,4})/.exec(first.data);
+    if (m) {
+      first.deleteData(0, m[1].length);
+      if (!first.data && first.parentNode !== b && !first.parentNode.textContent) first.parentNode.remove();
+      if (!b.textContent && !b.querySelector('br,img')) b.appendChild(document.createElement('br'));   // an empty line still needs its height
+      if (b === caretLine) caretAt = Math.max(0, caretAt - m[1].length);
+      did = true;
+    }
+  }
+  if (did && back && caretLine) {
+    const w = document.createTreeWalker(caretLine, NodeFilter.SHOW_TEXT); let node, left = caretAt;
+    while ((node = w.nextNode())) { if (left <= node.length) { placeCaret(node, left); break; } left -= node.length; }
+    if (!node) placeCaret(caretLine, 0);
+  }
+  if (!did && back && s.isCollapsed && s.anchorNode.nodeType === 3 && s.anchorNode.data[s.anchorOffset - 1] === '\t') { document.execCommand('delete'); return; }
+  if (did) onEditorChange();
+}
 // Enter inside a code block adds a line; Enter on an empty last line leaves the block.
 function codeEnter(pre) {
   const r = getSelection().getRangeAt(0);
@@ -2735,9 +2970,9 @@ ed.addEventListener('input', e => {
   else if (e.inputType === 'insertText' && /\/$/.test(e.data || '')) maybeOpenSlash();
   else if (e.inputType === 'insertText' && /\[$/.test(e.data || '')) maybeOpenLinkPicker();
   if (e.inputType === 'insertText' && /\]$/.test(e.data || '')) typedLink();
-  if (e.inputType === 'insertText' && /[\s\u00a0]$/.test(e.data || '')) typedDue(false);
+  if (e.inputType === 'insertText' && /[ \n\u00a0]$/.test(e.data || '')) typedDue(false);
   if (e.inputType === 'insertParagraph') fixNewTodo();
-  if (e.inputType === 'insertText' && /[\s\u00a0]$/.test(e.data || '')) markdownShortcut();
+  if (e.inputType === 'insertText' && /[ \n\u00a0]$/.test(e.data || '')) markdownShortcut();
   if (e.inputType === 'insertText' && /-$/.test(e.data || '')) dashToHr();
   onEditorChange();
 });
@@ -3240,7 +3475,13 @@ function updateFmtState() {
       quote: !!(b && b.closest('blockquote')), code: !!(b && b.tagName === 'PRE'),
     };
     document.querySelectorAll('#fmt-bar [data-cmd]').forEach(btn => btn.classList.toggle('on', !!states[btn.dataset.cmd]));
+    if (inside) showTodoTools(selectedTodos().length > 0, !!(b && b.closest('li')));
   });
+}
+function showTodoTools(todo, list) {
+  let any = false;
+  document.querySelectorAll('#todo-tools .fb').forEach(btn => { const on = todo || (list && 'list' in btn.dataset); btn.classList.toggle('ctx-off', !on); any = any || on; });
+  $('todo-tools').classList.toggle('off', !any);
 }
 document.addEventListener('selectionchange', () => {
   if (slash) updateSlash();
@@ -3260,7 +3501,7 @@ $('title-input').addEventListener('input', () => {
   persist(); scheduleSync(); renderListSoon(); updateCounts();
 });
 $('title-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter' || (e.key === 'ArrowDown' && !e.isComposing)) { e.preventDefault(); focusEditor(false); if (ed.firstChild) placeCaret(ed.firstChild.nodeType === 3 ? ed.firstChild : ed.firstChild, 0); }
+  if (e.key === 'Enter' || (e.key === 'Tab' && !e.shiftKey) || (e.key === 'ArrowDown' && !e.isComposing)) { e.preventDefault(); focusEditor(false); if (ed.firstChild) placeCaret(ed.firstChild.nodeType === 3 ? ed.firstChild : ed.firstChild, 0); }
 });
 $('folder-sel').addEventListener('change', e => { if (edId) moveNote(edId, e.target.value); });
 $('tag-input').addEventListener('keydown', e => {
@@ -3453,6 +3694,48 @@ function toast(msg, action, fn) {
   toastTimer = setTimeout(() => $('toast').classList.remove('show'), action ? 6000 : 2800);
 }
 
+/* Every keyboard shortcut, grouped. Settings and the Cmd+/ card both draw from this list. */
+const keyGroups = () => [
+  ['Getting around', [
+    [MOD + ' P', 'Jump to a note (' + MOD + ' K works too)'],
+    [MOD + ' click a note', "Open it beside the one you're in (or " + MOD + ' Enter in the note finder)'],
+    [MOD + ' \\', 'Show or hide the folders and note list'],
+    ['/', 'Search your notes'],
+    ['Alt N', 'New note (add ' + MOD + ' while typing)'],
+    [MOD + ' S', 'Sync now'],
+    [MOD + ' /', 'This list'],
+  ]],
+  ['Writing', [
+    ['/', 'Insert menu, at the start of a line or after a space'],
+    ['[[', 'Link to another note'],
+    [MOD + ' K', 'Add a link'],
+    [MOD + ' click', 'Open a link'],
+    ['- \u00a01. \u00a0[] \u00a0# \u00a0>', 'Bullets, numbers, checklist, heading, quote'],
+    ['---', 'Divider'],
+    ['Tab / Shift Tab', 'Type a tab, or take one out'],
+  ]],
+  ['Checklists', [
+    [MOD + ' Shift L', 'Make the line a checklist'],
+    ['Tab / Shift Tab', 'Nest an item under the one above, or move it back out'],
+    [isMac ? 'Ctrl ⌘ ↑ / ↓' : 'Alt Shift ↑ / ↓', 'Move an item up or down (or drag its dotted handle)'],
+    ['Click ⠿', "An item's menu: work on it today, mark it, due date, move or delete"],
+    ['@fri', 'Due date (@today, @tmrw, @10/20, @3d)'],
+  ]],
+];
+const keysHTML = () => keyGroups().map(([title, keys]) => `<div><h5>${esc(title)}</h5><div class="kbd-list">${keys.map(([k, what]) => `<kbd>${esc(k)}</kbd><span>${esc(what)}</span>`).join('')}</div></div>`).join('');
+$('empty-hint').innerHTML = 'Alt+N new note &nbsp;·&nbsp; / search &nbsp;·&nbsp; ' + (isMac ? '⌘/' : 'Ctrl+/') + ' shortcuts';
+function toggleKeys(show = $('keys-card').hidden) {
+  if (show) { hideMenu(); $('kc-body').innerHTML = keysHTML(); $('kc-close-hint').textContent = 'Esc or ' + MOD + ' / to close'; }
+  $('keys-card').hidden = !show;
+}
+// The card doesn't take the cursor: Esc, a click elsewhere or the next key you press puts it away (that key still works).
+document.addEventListener('keydown', e => {
+  if ($('keys-card').hidden || ['Meta', 'Control', 'Alt', 'Shift', 'CapsLock'].includes(e.key)) return;
+  if ((e.metaKey || e.ctrlKey) && (e.key === '/' || e.code === 'Slash')) return;
+  toggleKeys(false);
+  if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); }
+}, true);
+
 /* ═══════════════════════════════════════════════════════
    QUICK SWITCHER (Cmd/Ctrl+P or K)
    ═══════════════════════════════════════════════════════ */
@@ -3511,21 +3794,21 @@ function renderSwitcher() {
   }).join('');
   const on = $('qs-list').querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' });
 }
-function qsPick(i) {
+function qsPick(i, beside) {
   const it = qs.items[i]; if (!it) return;
   const mode = qsMode;
   closeSwitcher();
   if (mode) { mode.onPick(it.type === 'create' ? createLinkedNote(it.title).id : it.n.id); return; }
   if (it.type === 'today') openToday();
   else if (it.type === 'create') newNote({ title: it.title });
-  else { openNote(it.n.id); if (!isMobile()) focusEditor(true); }
+  else { beside ? openBeside(it.n.id) : openNote(it.n.id); if (!isMobile()) focusEditor(true); }
 }
 $('qs-input').addEventListener('input', qsUpdate);
 $('qs-input').addEventListener('keydown', e => {
   if (e.isComposing) return;
   const k = qs.items.length;
   if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && k) { e.preventDefault(); qs.i = (qs.i + (e.key === 'ArrowDown' ? 1 : -1) + k) % k; renderSwitcher(); }
-  else if (e.key === 'Enter') { e.preventDefault(); qsPick(qs.i); }
+  else if (e.key === 'Enter') { e.preventDefault(); qsPick(qs.i, e.metaKey || e.ctrlKey); }
 });
 
 /* ═══════════════════════════════════════════════════════
@@ -3774,15 +4057,7 @@ function renderSettings() {
     <div class="row"><button class="m-btn sec" data-act="backup">Download backup</button><button class="m-btn sec" data-act="restoreBackup">Restore from file</button></div>
     <p class="hint">${D.notes.length} note${D.notes.length === 1 ? '' : 's'}, ${size > 1e6 ? (size / 1e6).toFixed(1) + ' MB' : Math.max(1, Math.round(size / 1e3)) + ' KB'} on this device.</p></section>`;
   const privacy = `<section class="set-sec"><h4>Privacy</h4><p>This page is public, but your notes are not part of it. They're stored on your own devices, and the synced copy is encrypted with your passphrase before it's uploaded, so GitHub only ever holds scrambled data. Anyone else who opens this page gets their own empty notebook.</p></section>`;
-  const keys = touchUI.matches ? '' : `<section class="set-sec"><h4>Shortcuts</h4><div class="kbd-list">
-    <kbd>Alt N</kbd><span>New note (add ${MOD} while typing)</span><kbd>${MOD} P</kbd><span>Jump to a note (${MOD} K works too)</span>
-    <kbd>/</kbd><span>Search; in a note, the insert menu</span><kbd>[[</kbd><span>Link to another note</span><kbd>@fri</kbd><span>Due date on a checklist item (@today, @tmrw, @10/20, @3d)</span><kbd>${MOD} S</kbd><span>Sync now</span>
-    <kbd>${MOD} K</kbd><span>Add a link (in a note)</span><kbd>${MOD} Shift L</kbd><span>Checklist</span>
-    <kbd>Tab / Shift Tab</kbd><span>Nest a checklist item under the one above, or move it back out</span>
-    <kbd>${isMac ? 'Ctrl ⌘ ↑ / ↓' : 'Alt Shift ↑ / ↓'}</kbd><span>Move a checklist item up or down (or drag its dotted handle)</span>
-    <kbd>Click ⠿</kbd><span>A checklist item's menu: work on it today, mark it, due date, move or delete</span>
-    <kbd>- &nbsp;1. &nbsp;[] &nbsp;# &nbsp;&gt;</kbd><span>Bullets, numbers, checklist, heading, quote</span>
-    <kbd>---</kbd><span>Divider</span><kbd>${MOD}-click</kbd><span>Open a link</span></div></section>`;
+  const keys = touchUI.matches ? '' : `<section class="set-sec"><h4>Shortcuts</h4>${keysHTML()}</section>`;
   const lockAfter = [[0, 'As soon as I leave the app'], [1, 'After 1 minute away'], [5, 'After 5 minutes away'], [15, 'After 15 minutes away'], [60, 'After 1 hour away']];
   const lock = `<section class="set-sec"><h4>App lock</h4>${P.lock
     ? `<p>On. Unlock with ${P.lock.credId ? bioName() + ' or your PIN' : 'your PIN'}.</p>
@@ -3931,16 +4206,25 @@ $('backup-file').addEventListener('change', e => { const f = e.target.files[0]; 
    ═══════════════════════════════════════════════════════ */
 const ACT = {
   view: el => setView(el.dataset.view),
-  open: el => { openNote(el.dataset.id); },
+  open: (el, e) => { if (e && (e.metaKey || e.ctrlKey)) openBeside(el.dataset.id); else openNote(el.dataset.id); },
   newNote: (el) => { if (el.id === 'fab' && fabLong) { fabLong = false; return; } newNote(); },
   newMenu: el => showMenu(el, newMenuItems()),
   today: () => openToday(),
-  qsPick: el => qsPick(+el.dataset.i),
+  qsPick: (el, e) => qsPick(+el.dataset.i, e && (e.metaKey || e.ctrlKey)),
   histPick: el => showVersion(+el.dataset.i),
   histMore: () => loadGithubVersions(),
   histRestore: () => restoreVersion(),
   closeHist: () => { $('hist').classList.remove('show'); hist = null; },
   showDone: () => { if (edId) toggleHideDone(edId); },
+  sideShowDone: () => { const id = sideId(); if (id) toggleHideDone(id); },
+  sideUnarchive: () => { const id = sideId(); if (id) archiveNote(id, false); },
+  sideMenu: el => { const id = sideId(); if (id) showMenu(el, noteMenuItems(id)); },
+  toggleNav: () => { P.navHidden = !P.navHidden; savePrefs(); renderSplit(); renderGripsSoon(); },
+  closePane: el => {
+    if (el.dataset.pane === 'side') { P.split = null; savePrefs(); renderSplit(); return; }
+    const other = sideId(); P.split = null; savePrefs();
+    if (other) openNote(other); else renderSplit();
+  },
   newFolder: () => newFolder(),
   folderMenu: el => showMenu(el, folderMenuItems(el.dataset.id)),
   toggleSidebar, openSidebar, closeSidebar,
@@ -4018,13 +4302,19 @@ document.addEventListener('click', e => {
   // (A tap on a checklist handle opens its menu on release, so the click that follows mustn't close it.)
   if (!e.target.closest('#ctx') && !e.target.closest('#grips') && !(fabLong && e.target.closest('#fab'))) hideMenu();
   if (slash && !e.target.closest('#slash')) closeSlash();
+  if (!$('keys-card').hidden && !e.target.closest('#keys-card')) toggleKeys(false);
   if (!el || !ACT[el.dataset.act]) return;
   if (el.tagName === 'A') e.preventDefault();
   ACT[el.dataset.act](el, e);
 });
 document.addEventListener('contextmenu', e => {
   const c = e.target.closest('.nc');
-  if (c) { e.preventDefault(); showMenu({ x: e.clientX, y: e.clientY }, [{ label: 'Open', fn: () => openNote(c.dataset.id) }, '-', ...noteMenuItems(c.dataset.id)]); return; }
+  if (c) {
+    e.preventDefault();
+    const id = c.dataset.id, beside = !isMobile() && edId && id !== edId && !(P.split && P.split.includes(id));
+    showMenu({ x: e.clientX, y: e.clientY }, [{ label: 'Open', fn: () => openNote(id) }, beside && { label: 'Open beside', fn: () => openBeside(id) }, '-', ...noteMenuItems(id)]);
+    return;
+  }
   const f = e.target.closest('.fl-item[data-drop]');
   if (f) { e.preventDefault(); showMenu({ x: e.clientX, y: e.clientY }, folderMenuItems(f.dataset.drop)); }
 });
@@ -4056,6 +4346,9 @@ document.addEventListener('keydown', e => {
     return;
   }
   if (mod && !e.shiftKey && e.key.toLowerCase() === 'p') { e.preventDefault(); openSwitcher(); return; }
+  if (mod && !e.shiftKey && (e.key === '/' || e.code === 'Slash')) { e.preventDefault(); toggleKeys(); return; }
+  // Cmd/Ctrl+\: show or hide the folders and note list (with two notes open), or just the folders.
+  if (mod && !e.shiftKey && (e.key === '\\' || e.code === 'Backslash')) { e.preventDefault(); if (splitOn()) ACT.toggleNav(); else toggleSidebar(); return; }
   if (mod && e.key.toLowerCase() === 'k') { e.preventDefault(); if (document.activeElement === ed) insertLink(); else openSwitcher(); return; }
   if (mod && e.shiftKey && e.key.toLowerCase() === 'l' && document.activeElement === ed) { e.preventDefault(); runFmt('todo'); return; }
   if (!typing && !mod && e.key === '/') { e.preventDefault(); $('search').focus(); $('search').select(); }
@@ -4089,8 +4382,10 @@ function applyLayout() {
     $('editor-panel').classList.remove('hidden');
   }
   $('expand-btn').hidden = m || P.sbOpen;
+  renderSplit();
 }
 window.addEventListener('resize', applyLayout);
+window.addEventListener('resize', renderSplitSoon);   // the split shows only when there's room
 window.addEventListener('popstate', () => { if (isMobile() && edId) closeEditor(); });
 
 function handleLaunchURL() {
