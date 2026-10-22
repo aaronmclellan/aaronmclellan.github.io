@@ -383,6 +383,7 @@ a{color:var(--accent);}
 #editor [data-dragging]{opacity:.35;}
 /* Drag handles: a column of six dots left of each checklist item, drawn outside the note text */
 #ed-scroll{position:relative;}
+body.file-over #list-panel{box-shadow:inset 0 0 0 2px var(--accent);}
 #grips,#sp-grips{position:absolute;top:0;left:0;width:0;height:0;}
 .grip{position:absolute;width:14px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--text3);opacity:0;cursor:grab;touch-action:none;border-radius:5px;transition:opacity .12s;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
 .grip svg{width:10px;height:16px;pointer-events:none;}
@@ -1691,6 +1692,133 @@ function toMarkdown(html) {
 const preText = el => [...el.childNodes].map(c => c.nodeName === 'BR' ? '\n' : c.nodeType === 3 ? c.data : c.nodeType === 1 ? preText(c) : '').join('');
 const noteMarkdown = n => (n.title.trim() ? '# ' + n.title.trim() + '\n\n' : '') + toMarkdown(n.content);
 const fileName = n => ((n.title.trim() || plain(n).trim().split('\n')[0] || 'note').replace(/[\\/:*?"<>|#]+/g, '').trim().slice(0, 60) || 'note');
+/* Markdown in: pasted Markdown and dropped .md files become formatted notes. It reads what toMarkdown
+   writes, so a note copied out as Markdown comes back the same. One line of text is one line in the note. */
+function mdInline(s) {
+  const keep = [], put = h => '\u0000' + (keep.push(h) - 1) + '\u0000';
+  s = s.replace(/(`[^`\n]+`)(?=`[^`\n]+`)/g, '$1 ');   // `a``b`: two bits of code side by side, not stuck together
+  s = s.replace(/`([^`\n]+)`/g, (m, c) => put('<code>' + esc(c) + '</code>'));
+  s = s.replace(/\\([\\`*_~\[\]()#>!|-])/g, (m, c) => put(esc(c)));
+  // Links and images that can't work in a note (#section anchors, relative paths) keep just their words.
+  s = s.replace(/!\[([^\]\n]*)\]\(\s*<?([^)\s>]+)>?(?:\s+"[^"]*")?\s*\)/g, (m, alt, src) => /^(https:|data:image\/)/i.test(src) ? put(`<img src="${esc(src)}" alt="${esc(alt)}">`) : alt);
+  s = s.replace(/\[([^\]\n]+)\]\(\s*<?([^)\s>]+)>?(?:\s+"[^"]*")?\s*\)/g, (m, text, href) => /^(https?:|mailto:|tel:)/i.test(href) ? put(`<a href="${esc(href)}">`) + text + put('</a>') : text);
+  s = s.replace(/<(https?:\/\/[^>\s]+)>/g, (m, u) => put(`<a href="${esc(u)}">${esc(u)}</a>`));
+  s = s.replace(/\[\[([^\[\]\n]{1,80})\]\]/g, (m, title) => {
+    const n = D.notes.find(x => !x.trashed && noteTitle(x).toLowerCase() === title.trim().toLowerCase());
+    return n ? put(`<a data-note="${esc(n.id)}" contenteditable="false">${esc(noteTitle(n))}</a>`) : m;
+  });
+  s = s.replace(/\(due (\d{4}-\d{2}-\d{2})\)/g, (m, d) => put(`<time datetime="${d}" contenteditable="false">${esc(shortDate(d))}</time>`));
+  s = esc(s)
+    .replace(/\*\*(\S(?:.*?\S)?)\*\*/g, '<b>$1</b>')
+    .replace(/(^|\W)__(\S(?:.*?\S)?)__(?!\w)/g, '$1<b>$2</b>')
+    .replace(/~~(\S(?:.*?\S)?)~~/g, '<s>$1</s>')
+    .replace(/(^|[^*\w])\*([^\s*](?:[^*]*?[^\s*])?)\*(?![*\w])/g, '$1<i>$2</i>')
+    .replace(/(^|\W)_([^\s_](?:[^_]*?[^\s_])?)_(?!\w)/g, '$1<i>$2</i>');
+  for (let i = 0; i < 3 && s.includes('\u0000'); i++) s = s.replace(/\u0000(\d+)\u0000/g, (m, n) => keep[n]);
+  return s;
+}
+function mdToHTML(md) {
+  const lines = md.replace(/^﻿/, '').replace(/\r\n?/g, '\n').split('\n');
+  const out = [], width = s => s.replace(/\t/g, '    ').length;
+  let gap = false, last = null, list = null, todo = [];   // gap: a blank line waiting; last: what was written before it
+  const closeList = () => { while (list && list.length) out.push('</li></' + list.pop().tag + '>'); list = null; };
+  // A plain line or checklist item; a blank line before it becomes an empty line, as in the note it came from.
+  const line = html => { if (gap && last === 'line') out.push('<div><br></div>'); out.push(html); gap = false; last = 'line'; };
+  const block = html => { closeList(); out.push(html); gap = false; last = 'block'; };
+  for (let i = 0; i < lines.length; i++) {
+    const l = lines[i].replace(/\s+$/, ''), w = width(/^\s*/.exec(l)[0]);
+    let m;
+    if (!l.trim()) { gap = true; continue; }
+    if ((m = /^\s*(`{3,}|~{3,})/.exec(l))) {
+      const body = [];
+      while (++i < lines.length && !lines[i].trim().startsWith(m[1])) body.push(lines[i]);
+      block('<pre>' + esc(body.join('\n')) + '</pre>'); todo = []; continue;
+    }
+    if ((m = /^\s*[-*+]\s+\[([ xX])\]\s*(.*)$/.exec(l))) {
+      closeList();
+      while (todo.length && todo[todo.length - 1] > w) todo.pop();
+      if (!todo.length || todo[todo.length - 1] < w) todo.push(w);
+      const lv = Math.min(MAX_INDENT, todo.length - 1), done = m[1] !== ' ';
+      line(`<div data-todo="${done}"${lv ? ` data-indent="${lv}"` : ''}>${mdInline(m[2]) || '<br>'}</div>`);
+      continue;
+    }
+    todo = [];
+    if ((m = /^\s*(#{1,6})\s+(.*?)\s*#*$/.exec(l))) { block(`<h${Math.min(3, m[1].length)}>${mdInline(m[2])}</h${Math.min(3, m[1].length)}>`); continue; }
+    if (/^\s*([-*_])(\s*\1){2,}$/.test(l)) { block('<hr>'); continue; }
+    if (/^\s*\|?.*\|.*$/.test(l) && i + 1 < lines.length && /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(lines[i + 1]) && lines[i + 1].includes('-')) {
+      const cells = r => r.trim().replace(/^\|/, '').replace(/\|$/, '').replace(/\\\|/g, '\u0001').split('|').map(c => `<td>${mdInline(c.trim().replace(/\u0001/g, '\\|')) || '<br>'}</td>`).join('');
+      const rows = [cells(l)];
+      i++;
+      while (i + 1 < lines.length && lines[i + 1].includes('|') && lines[i + 1].trim()) rows.push(cells(lines[++i]));
+      block('<table><tbody>' + rows.map(r => `<tr>${r}</tr>`).join('') + '</tbody></table>');
+      continue;
+    }
+    if (/^\s*>/.test(l)) {
+      const q = [l.replace(/^\s*>\s?/, '')];
+      while (i + 1 < lines.length && /^\s*>/.test(lines[i + 1])) q.push(lines[++i].replace(/^\s*>\s?/, ''));
+      block('<blockquote>' + q.map(mdInline).join('<br>') + '</blockquote>');
+      continue;
+    }
+    if ((m = /^\s*([-*+]|(\d+)[.)])\s+(.*)$/.exec(l))) {
+      // A bullet that is just a heading ("- ### Title", as pages full of cards export) is that heading; the
+      // indented lines under it follow as ordinary lines.
+      const h = /^(#{1,6})\s+(.*?)\s*#*$/.exec(m[3]);
+      if (h) { block(`<h${Math.min(3, h[1].length)}>${mdInline(h[2])}</h${Math.min(3, h[1].length)}>`); continue; }
+      const tag = m[2] ? 'ol' : 'ul', html = mdInline(m[3]) || '<br>';
+      const open = () => `<${tag}${m[2] && +m[2] > 1 ? ` start="${+m[2]}"` : ''}><li>${html}`;
+      if (!list) { list = [{ tag, w }]; out.push(open()); }
+      else {
+        let top = list[list.length - 1];
+        if (w > top.w) { list.push({ tag, w }); out.push(open()); }
+        else {
+          while (list.length > 1 && w < top.w) { out.push('</li></' + list.pop().tag + '>'); top = list[list.length - 1]; }
+          if (top.tag !== tag) { out.push(`</li></${top.tag}>` + open()); top.tag = tag; top.w = w; }
+          else out.push('</li><li>' + html);
+        }
+      }
+      gap = false; last = 'block';
+      continue;
+    }
+    closeList();
+    line(`<div>${mdInline(l.replace(/^ +/, ''))}</div>`);
+  }
+  closeList();
+  return out.join('');
+}
+// Does pasted text look like Markdown? Headings, checklists, code, quotes and tables count double; plain
+// "- " or "1. " lines count once, and so does each bit of inline **bold**, `code` or [links](...).
+function looksLikeMarkdown(text) {
+  const lines = text.trim().split(/\r?\n/);
+  let block = 0, inline = 0;
+  for (const l of lines) {
+    if (/^\s*(#{1,6}\s+\S|```|~~~|[-*+]\s+\[[ xX]\]\s|>\s|\|.*\|\s*$)/.test(l)) block += 2;
+    else if (/^\s*([-*+]|\d+[.)])\s+\S/.test(l) || /^\s*([-*_])(\s*\1){2,}\s*$/.test(l)) block++;
+    inline += (l.match(/\*\*\S[^*]*\*\*|__\S[^_]*__|~~\S[^~]*~~|`[^`\n]+`|\[[^\]\n]+\]\([^)\s]+\)/g) || []).length;
+  }
+  return block >= 2 || (block >= 1 && inline >= 1) || inline >= (lines.length === 1 ? 1 : 2);   // one line: one bit of formatting is enough
+}
+// A dropped Markdown file as a note: a "# Title" first line becomes the title, otherwise the file name does.
+function mdToNote(text, name) {
+  let md = text.replace(/^﻿/, ''), title = name.replace(/\.[^.]+$/, '');
+  const m = /^\s*#\s+(.+?)\s*#*\s*(\n|$)/.exec(md);
+  if (m) { title = m[1]; md = md.slice(m[0].length); }
+  return { title, content: cleanHTML(mdToHTML(md)) };
+}
+const isTextFile = f => /\.(md|markdown|mdown|mkd|txt)$/i.test(f.name) || /^text\/(markdown|plain|x-markdown)$/.test(f.type);
+async function importFiles(files, folder) {
+  if (P.view === 'trash') { P.view = 'all'; savePrefs(); }
+  const made = [];
+  for (const f of files) {
+    const { title, content } = mdToNote(await f.text(), f.name);
+    const n = cleanNote({ id: gid(), title, content, folder: folder || (P.view.startsWith('f:') ? P.view : GENERAL), tags: P.view.startsWith('tag:') ? [P.view.slice(4)] : [], created: now(), updated: now(), dev: P.device });
+    D.notes.unshift(n); made.push(n);
+  }
+  if (!made.length) return;
+  changed(); renderSidebar();
+  openNote(made[made.length - 1].id);
+  toast(made.length === 1 ? 'Added "' + noteTitle(made[0]) + '"' : 'Added ' + made.length + ' notes');
+}
+
 
 /* ═══════════════════════════════════════════════════════
    SIDEBAR, VIEWS
@@ -3394,6 +3522,52 @@ function dashToHr() {
 }
 
 /* Paste and drop */
+// Cmd/Ctrl+Shift+V pastes the words only, Markdown and all.
+let plainPaste = false;
+ed.addEventListener('keydown', e => { plainPaste = (e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'v'; }, true);
+// Pasted Markdown is formatted (a toast offers to keep it as typed). A single line pasted into the middle of
+// a line only gets its bold, links and so on.
+function pasteMarkdown(text) {
+  const s = getSelection(), b = blockOf(s.anchorNode), oneLine = !text.trim().includes('\n');
+  const r = s.getRangeAt(0), before = { html: ed.innerHTML, start: [pathOf(r.startContainer), r.startOffset], end: [pathOf(r.endContainer), r.endOffset] };
+  const html = oneLine && b && b.textContent.trim() ? mdInline(text.replace(/^[\r\n]+|[\r\n]+$/g, '')) : mdToHTML(text);
+  document.execCommand('insertHTML', false, cleanHTML(html));
+  liftBlocks();
+  onEditorChange();
+  const after = ed.innerHTML, id = edId;
+  toast('Pasted as Markdown', 'Keep as text', () => {
+    if (edId !== id || ed.innerHTML !== after) return;   // edited since: Cmd+Z still works
+    // Back to just before the paste, then the text as typed.
+    ed.innerHTML = before.html; ed.focus();
+    const sel = document.createRange(); sel.setStart(nodeAt(before.start[0]), before.start[1]); sel.setEnd(nodeAt(before.end[0]), before.end[1]);
+    getSelection().removeAllRanges(); getSelection().addRange(sel);
+    document.execCommand('insertText', false, text); onEditorChange();
+  });
+}
+// Where a node sits in the note (child indexes from the top), to find it again after the note is redrawn.
+const pathOf = node => { const p = []; for (let n = node; n && n !== ed; n = n.parentNode) p.unshift([...n.parentNode.childNodes].indexOf(n)); return p; };
+const nodeAt = p => p.reduce((n, i) => (n && n.childNodes[i]) || n, ed);
+// Pasted blocks can land inside the line the caret was on (<div><h2>..</h2><div data-todo>..</div></div>). Lift them
+// out so every line sits at the top of the note, where checklists, folds and handles expect them.
+const BLOCK_TAGS = /^(DIV|P|H[1-6]|UL|OL|TABLE|PRE|BLOCKQUOTE|HR)$/;
+function liftBlocks() {
+  const caret = caretOffset();
+  for (let pass = 0; pass < 4; pass++) {
+    const wraps = [...ed.children].filter(d => d.tagName === 'DIV' && !d.hasAttribute('data-todo') && [...d.children].some(c => BLOCK_TAGS.test(c.tagName)));
+    if (!wraps.length) break;
+    for (const d of wraps) {
+      const parts = []; let run = null;
+      for (const c of [...d.childNodes]) {
+        if (c.nodeType === 1 && BLOCK_TAGS.test(c.tagName)) { run = null; parts.push(c); }
+        else if (!run && (c.nodeName === 'BR' || (c.nodeType === 3 && !c.data.trim()))) continue;   // the empty line's own <br>
+        else { if (!run) { run = document.createElement('div'); parts.push(run); } run.appendChild(c); }
+      }
+      d.replaceWith(...parts);
+    }
+  }
+  if (caret != null) setCaretOffset(caret);
+}
+const plainHTML = html => !/<(h[1-6]|ul|ol|li|b|i|u|s|a|table|pre|code|blockquote|img|hr)\b/i.test(cleanHTML(html));
 ed.addEventListener('paste', e => {
   const cd = e.clipboardData; if (!cd) return;
   const files = [...cd.files].filter(f => f.type.startsWith('image/'));
@@ -3404,7 +3578,10 @@ ed.addEventListener('paste', e => {
   if (inPre && inPre.tagName === 'PRE') document.execCommand('insertText', false, text);
   else if (/^https?:\/\/\S+$/.test(text.trim()) && !getSelection().isCollapsed) document.execCommand('createLink', false, text.trim());
   else if (/^https?:\/\/\S+$/.test(text.trim())) document.execCommand('insertHTML', false, `<a href="${esc(text.trim())}">${esc(text.trim())}</a>&nbsp;`);
-  else if (html) document.execCommand('insertHTML', false, cleanHTML(html));
+  else if (plainPaste) document.execCommand('insertText', false, text);
+  // Formatted copies paste as they are, unless the "formatting" is only a code editor's colours around Markdown.
+  else if (html && !(plainHTML(html) && looksLikeMarkdown(text))) { document.execCommand('insertHTML', false, cleanHTML(html)); liftBlocks(); }
+  else if (looksLikeMarkdown(text)) { pasteMarkdown(text); return; }
   else document.execCommand('insertText', false, text);
   onEditorChange();
 });
@@ -3413,16 +3590,17 @@ ed.addEventListener('dragstart', () => { dragFromEditor = true; });
 ed.addEventListener('dragend', () => { dragFromEditor = false; });
 ed.addEventListener('drop', e => {
   if (dragFromEditor) return;
-  const dt = e.dataTransfer, files = [...dt.files].filter(f => f.type.startsWith('image/'));
+  const dt = e.dataTransfer, files = [...dt.files].filter(f => f.type.startsWith('image/')), docs = [...dt.files].filter(isTextFile);
   const html = dt.getData('text/html'), text = dt.getData('text/plain');
-  if (!files.length && !html && !text) return;
+  if (!files.length && !docs.length && !html && !text) return;
   e.preventDefault();
   const pos = document.caretRangeFromPoint ? document.caretRangeFromPoint(e.clientX, e.clientY)
     : document.caretPositionFromPoint ? (p => { const r = document.createRange(); r.setStart(p.offsetNode, p.offset); return r; })(document.caretPositionFromPoint(e.clientX, e.clientY)) : null;
   ed.focus();
   if (pos) { const s = getSelection(); s.removeAllRanges(); s.addRange(pos); lastRange = pos.cloneRange(); }
   if (files.length) files.forEach(insertImageFile);
-  else if (html) { document.execCommand('insertHTML', false, cleanHTML(html)); onEditorChange(); }
+  else if (docs.length) Promise.all(docs.map(f => f.text())).then(ts => { ed.focus(); document.execCommand('insertHTML', false, cleanHTML(mdToHTML(ts.join('\n\n')))); liftBlocks(); onEditorChange(); });
+  else if (html) { document.execCommand('insertHTML', false, cleanHTML(html)); liftBlocks(); onEditorChange(); }
   else { document.execCommand('insertText', false, text); onEditorChange(); }
 });
 
@@ -3662,6 +3840,25 @@ $('folder-list').addEventListener('drop', e => {
   moveNote(id, f.dataset.drop);
 });
 
+// Markdown or text files dropped anywhere but inside a note become notes (on a folder: in that folder).
+let fileOverTimer = 0;
+window.addEventListener('dragover', e => {
+  if (!e.dataTransfer || !e.dataTransfer.types.includes('Files') || ed.contains(e.target)) return;
+  e.preventDefault();   // otherwise the browser opens the file in place of the app
+  e.dataTransfer.dropEffect = 'copy';
+  document.body.classList.add('file-over');
+  clearTimeout(fileOverTimer); fileOverTimer = setTimeout(() => document.body.classList.remove('file-over'), 200);
+});
+window.addEventListener('drop', e => {
+  if (!e.dataTransfer || !e.dataTransfer.types.includes('Files') || ed.contains(e.target)) return;
+  e.preventDefault();
+  document.body.classList.remove('file-over');
+  const docs = [...e.dataTransfer.files].filter(isTextFile);
+  if (!docs.length) { toast('Drop .md or .txt files here to add them as notes'); return; }
+  const f = e.target.closest && e.target.closest('[data-drop]');
+  importFiles(docs, f && f.dataset.drop.startsWith('f:') ? f.dataset.drop : null);
+});
+
 /* ═══════════════════════════════════════════════════════
    MENUS, DIALOGS, TOAST
    ═══════════════════════════════════════════════════════ */
@@ -3784,6 +3981,7 @@ const keyGroups = () => [
     ['- \u00a01. \u00a0[] \u00a0# \u00a0>', 'Bullets, numbers, checklist, heading, quote'],
     ['---', 'Divider'],
     ['Tab / Shift Tab', 'Type a tab, or take one out'],
+    [MOD + ' Shift V', 'Paste without formatting (Markdown stays as typed)'],
   ]],
   ['Checklists', [
     [MOD + ' Shift L', 'Make the line a checklist'],
