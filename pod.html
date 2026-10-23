@@ -19,6 +19,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="ronPod">
 <link rel="icon" type="image/svg+xml" href="pod-favicon.svg">
+<link rel="apple-touch-icon" href="pod-icon-180.png">
+<link rel="manifest" href="pod.webmanifest">
 <style>
 :root {
     --lcd: #fff;
@@ -222,6 +224,7 @@ body {
     right: 0;
     bottom: 0;
     overflow: hidden;
+    container: views / size;
 }
 .view {
     position: absolute;
@@ -816,7 +819,7 @@ body[data-theme="zune"] .for-zune { display: inline; }
 .pod[data-theme="zune"] .np-top { height: 7cqw; font-size: 4.2cqw; font-weight: 400; color: rgba(255, 255, 255, .6); }
 .pod[data-theme="zune"] .np-top .badge, .pod[data-theme="zune"] .np-times .mid { color: var(--accent-b); }
 .pod[data-theme="zune"] .np-main { flex-direction: column; align-items: flex-start; justify-content: center; gap: 4cqw; }
-.pod[data-theme="zune"] .np-art { width: 54cqw; height: 54cqw; margin: 0; box-shadow: 0 2cqw 6cqw rgba(0, 0, 0, .6); -webkit-box-reflect: none; }
+.pod[data-theme="zune"] .np-art { width: 54cqw; height: 54cqw; margin: 0; box-shadow: 0 2cqw 6cqw rgba(0, 0, 0, .6); -webkit-box-reflect: unset; }
 .pod[data-theme="zune"] .np-text { width: 100%; margin: 0; }
 .pod[data-theme="zune"] .np-title { font-size: 8cqw; font-weight: 400; text-transform: lowercase; }
 .pod[data-theme="zune"] .np-artist, .pod[data-theme="zune"] .np-album {
@@ -884,6 +887,32 @@ body[data-theme="zune"] .for-zune { display: inline; }
 .zbtn:active { background: rgba(127, 127, 127, .18); }
 .zback { left: 8cqw; }
 .zplay { right: 8cqw; }
+
+/* ---------- Phones: the device fills the screen and the extra height goes to the display ---------- */
+@media (max-width: 600px) and (max-aspect-ratio: 10 / 17) {
+    .stage {
+        padding: max(10px, calc(env(safe-area-inset-top) + 4px)) 10px max(10px, calc(env(safe-area-inset-bottom) + 4px));
+    }
+    .pod {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+    }
+    .bezel { bottom: 90cqw; }
+    .pod .screen, .pod[data-theme="zune"] .screen { height: 100%; aspect-ratio: auto; }
+    .wheel { top: auto; bottom: 14cqw; }
+    .pod[data-theme="zune"] .bezel { bottom: 52cqw; }
+    .pod[data-theme="zune"] .zune { top: auto; bottom: 5cqw; }
+}
+/* A display taller than it is wide stacks Now Playing: cover on top, words under it. */
+@container views (max-aspect-ratio: 1 / 1) {
+    .np-main { flex-direction: column; align-items: center; justify-content: center; gap: 4cqw; }
+    .np-art { width: min(62cqw, 44cqh); height: min(62cqw, 44cqh); margin-top: 0; -webkit-box-reflect: unset; }
+    .np-text { flex: none; width: 100%; margin-top: 0; text-align: center; }
+    .pod[data-theme="zune"] .np-main { align-items: flex-start; }
+    .pod[data-theme="zune"] .np-text { text-align: left; }
+    .pod[data-theme="zune"] .np-art { width: min(72cqw, 46cqh); height: min(72cqw, 46cqh); }
+}
 
 /* ---------- Desktop theme: a full-window library in the style of mid-2000s jukebox apps ---------- */
 body[data-theme="desktop"] .stage, body[data-theme="desktop"] .hint { display: none; }
