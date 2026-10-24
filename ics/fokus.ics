@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:FOKUS (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016511@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T150000Z
+DTEND:20261020T180000Z
+SUMMARY:Fokus vs ex-Zero Tenacity
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016516@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T090000Z
+DTEND:20261021T120000Z
+SUMMARY:Fokus 1-2 Team UNiTY
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014209@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T080000Z
+DTEND:20261024T110000Z
+SUMMARY:Fokus vs ex-6666
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,149 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Stake Ranked Episode 5 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018196@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T110000Z
+DTEND:20261027T140000Z
+SUMMARY:Magic Esport vs BIG (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018197@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T133000Z
+DTEND:20261027T163000Z
+SUMMARY:Inner Circle vs Team Nemesis (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018198@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T160000Z
+DTEND:20261027T190000Z
+SUMMARY:Astralis vs Fnatic (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018199@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:MIBR vs Eternal Fire (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018200@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T110000Z
+DTEND:20261028T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018201@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T133000Z
+DTEND:20261028T163000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018202@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T160000Z
+DTEND:20261028T190000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018203@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T183000Z
+DTEND:20261028T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018204@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T110000Z
+DTEND:20261029T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018205@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T133000Z
+DTEND:20261029T163000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018206@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T160000Z
+DTEND:20261029T190000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018207@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T183000Z
+DTEND:20261029T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018208@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261030T130000Z
+DTEND:20261030T160000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018209@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261030T163000Z
+DTEND:20261030T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 5\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

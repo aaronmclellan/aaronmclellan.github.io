@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:GenOne (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014176@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T080000Z
+DTEND:20261014T110000Z
+SUMMARY:GenOne vs 6666
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014189@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T110000Z
+DTEND:20261017T140000Z
+SUMMARY:GenOne 1-0 Butterfly
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014196@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T080000Z
+DTEND:20261019T110000Z
+SUMMARY:GenOne 0-2 FORZE Reload
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016506@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T120000Z
+DTEND:20261019T150000Z
+SUMMARY:GenOne 2-1 Omega
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014200@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T080000Z
+DTEND:20261020T110000Z
+SUMMARY:GenOne vs Bushido Wildcats
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013234@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T130000Z
+DTEND:20261021T160000Z
+SUMMARY:GenOne 0-2 Dark Moon
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013242@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:GenOne 0-2 Saint Sinners
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016513@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T174000Z
+DTEND:20261021T204000Z
+SUMMARY:Metizport 2-0 GenOne
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003997@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T080000Z
+DTEND:20261022T110000Z
+SUMMARY:GenOne 1-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+END:VCALENDAR

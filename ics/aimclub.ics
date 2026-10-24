@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:aimclub (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016603@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T090000Z
+DTEND:20261019T103000Z
+SUMMARY:Aimclub vs Basement Boys
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018730@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T140000Z
+DTEND:20261019T170000Z
+SUMMARY:insiders vs Aimclub
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018725@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T171500Z
+DTEND:20261019T201500Z
+SUMMARY:Basement Boys vs Aimclub
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016512@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T173000Z
+DTEND:20261020T203000Z
+SUMMARY:NT 1-2 Aimclub
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016514@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T120000Z
+DTEND:20261021T150000Z
+SUMMARY:Aimclub 0-2 Betclic Apogee Esports
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+END:VCALENDAR

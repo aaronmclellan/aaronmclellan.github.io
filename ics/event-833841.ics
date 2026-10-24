@@ -1,0 +1,349 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fiesta Series 3 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3020793@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T080000Z
+DTEND:20261025T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018163@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T110000Z
+DTEND:20261025T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018164@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T140000Z
+DTEND:20261025T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018165@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T170000Z
+DTEND:20261025T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018166@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261026T080000Z
+DTEND:20261026T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018167@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261026T110000Z
+DTEND:20261026T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018168@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261026T140000Z
+DTEND:20261026T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018169@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261026T170000Z
+DTEND:20261026T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018170@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T080000Z
+DTEND:20261027T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018171@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T110000Z
+DTEND:20261027T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018172@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T140000Z
+DTEND:20261027T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018173@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T170000Z
+DTEND:20261027T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018174@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T080000Z
+DTEND:20261028T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018175@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T110000Z
+DTEND:20261028T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018176@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T140000Z
+DTEND:20261028T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018177@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261028T170000Z
+DTEND:20261028T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018178@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T080000Z
+DTEND:20261029T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018179@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T110000Z
+DTEND:20261029T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018180@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T140000Z
+DTEND:20261029T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018181@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261029T170000Z
+DTEND:20261029T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018182@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261030T080000Z
+DTEND:20261030T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018183@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261030T110000Z
+DTEND:20261030T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018184@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261030T140000Z
+DTEND:20261030T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018185@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261030T170000Z
+DTEND:20261030T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018186@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261031T110000Z
+DTEND:20261031T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018187@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261031T140000Z
+DTEND:20261031T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018188@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261031T170000Z
+DTEND:20261031T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018189@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261101T110000Z
+DTEND:20261101T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018190@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261101T140000Z
+DTEND:20261101T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018191@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261101T170000Z
+DTEND:20261101T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018192@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261102T110000Z
+DTEND:20261102T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018193@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261102T140000Z
+DTEND:20261102T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018194@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261102T170000Z
+DTEND:20261102T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018195@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261103T110000Z
+DTEND:20261103T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 3 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+END:VCALENDAR

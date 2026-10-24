@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Ninjas in Pyjamas (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014769@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261012T100000Z
+DTEND:20261012T130000Z
+SUMMARY:Ninjas in Pyjamas 2-1 Betclic
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014770@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261012T132000Z
+DTEND:20261012T162000Z
+SUMMARY:Inner Circle 0-2 Ninjas in Pyjamas
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006807@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T123000Z
+DTEND:20261014T153000Z
+SUMMARY:Team Falcons 2-0 Ninjas in Pyjamas
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006810@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T083000Z
+DTEND:20261015T113000Z
+SUMMARY:AURORA 2-0 Ninjas in Pyjamas
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014788@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T080000Z
+DTEND:20261016T110000Z
+SUMMARY:Ninjas in Pyjamas 2-1 Team Liquid
+DESCRIPTION:Stake Pulse Beat III (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014792@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T080000Z
+DTEND:20261017T110000Z
+SUMMARY:Ninjas in Pyjamas 2-1 Heroic
+DESCRIPTION:Stake Pulse Beat III (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014795@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T172000Z
+DTEND:20261017T202000Z
+SUMMARY:Ninjas in Pyjamas 2-1 MIBR
+DESCRIPTION:Stake Pulse Beat III (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+END:VCALENDAR

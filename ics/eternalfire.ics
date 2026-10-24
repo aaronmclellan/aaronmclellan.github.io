@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Eternal Fire (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017814@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T080000Z
+DTEND:20261016T110000Z
+SUMMARY:Eternal Fire 1-2 Betclic
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017818@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T080000Z
+DTEND:20261017T110000Z
+SUMMARY:Eternal Fire 0-2 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016618@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T110000Z
+DTEND:20261020T140000Z
+SUMMARY:Eternal Fire 2-0 INFINITE
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016627@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T110000Z
+DTEND:20261021T140000Z
+SUMMARY:Eternal Fire vs Basement Boys
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018716@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T200500Z
+DTEND:20261021T230500Z
+SUMMARY:Eternal Fire 2-1 BC.Game
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017804@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T165000Z
+DTEND:20261022T195000Z
+SUMMARY:SINNERS 2-1 Eternal Fire
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017805@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T135000Z
+DTEND:20261023T165000Z
+SUMMARY:JiJieHao 1-2 Eternal Fire
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018723@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T185500Z
+DTEND:20261023T215500Z
+SUMMARY:SINNERS 1-2 Eternal Fire
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018199@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:MIBR vs Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

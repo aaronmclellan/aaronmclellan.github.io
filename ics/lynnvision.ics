@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lynn Vision (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015985@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261012T130000Z
+DTEND:20261012T160000Z
+SUMMARY:Lynn Vision Gaming 2-0 Just Swing
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015987@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T130000Z
+DTEND:20261014T160000Z
+SUMMARY:Lynn Vision Gaming 2-1 Alter Ego
+DESCRIPTION:ESL Challenger League Season 52 - Cup #3 Asia (Playoffs)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #3 Asia
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Sangal (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014768@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261012T100000Z
+DTEND:20261012T130000Z
+SUMMARY:Inner Circle 2-0 Sangal
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014771@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261012T132000Z
+DTEND:20261012T162000Z
+SUMMARY:Betclic 0-2 Sangal
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014772@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261012T160000Z
+DTEND:20261012T190000Z
+SUMMARY:Sangal 2-0 Inner Circle
+DESCRIPTION:Stake Pulse Beat III (Group Stage)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014791@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T170000Z
+DTEND:20261016T200000Z
+SUMMARY:Sangal 0-2 100 Thieves
+DESCRIPTION:Stake Pulse Beat III (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:Stake Pulse Beat III
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016510@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T120000Z
+DTEND:20261020T150000Z
+SUMMARY:Sangal 2-0 Aurora YB
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016515@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T150000Z
+DTEND:20261021T180000Z
+SUMMARY:Sangal 2-1 BRUTE
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016518@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T163000Z
+DTEND:20261022T193000Z
+SUMMARY:Sangal 2-1 Metizport
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+END:VCALENDAR

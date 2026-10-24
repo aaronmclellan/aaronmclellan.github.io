@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Marsborne (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018817@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T003000Z
+DTEND:20261020T020000Z
+SUMMARY:Marsborne 1-0 Team Skyline
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018673@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T000000Z
+DTEND:20261022T013000Z
+SUMMARY:Marsborne 1-0 NineFly Esports
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009695@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T203000Z
+DTEND:20261024T233000Z
+SUMMARY:Marsborne vs FarmVille
+DESCRIPTION:CCT 2026 North America Cup 1 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 North America Cup 1
+END:VEVENT
+END:VCALENDAR

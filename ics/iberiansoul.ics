@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Iberian Soul (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016605@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T104500Z
+DTEND:20261019T121500Z
+SUMMARY:Iberian Soul vs HyperSpirit
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016612@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T124000Z
+DTEND:20261019T141000Z
+SUMMARY:Iberian Soul vs Sashi
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016623@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T150000Z
+DTEND:20261020T180000Z
+SUMMARY:JiJieHao 2-1 Iberian Soul
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018999@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T183000Z
+DTEND:20261020T213000Z
+SUMMARY:ASTRAL 0-2 Iberian Soul
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018713@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T150000Z
+DTEND:20261021T180000Z
+SUMMARY:Basement Boys vs Iberian Soul
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+END:VCALENDAR

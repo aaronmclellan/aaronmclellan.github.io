@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BETBOOM (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3006809@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T185000Z
+DTEND:20261014T215000Z
+SUMMARY:FURIA 2-0 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006812@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T151000Z
+DTEND:20261015T181000Z
+SUMMARY:Parivision 1-2 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006815@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T170000Z
+DTEND:20261016T200000Z
+SUMMARY:BetBoom 2-1 Legacy
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006817@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T170500Z
+DTEND:20261017T200500Z
+SUMMARY:Team Falcons 1-2 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006819@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T155500Z
+DTEND:20261018T205500Z
+SUMMARY:FURIA 3-2 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 5\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018123@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T104000Z
+DTEND:20261024T134000Z
+SUMMARY:Team Spirit 1-2 BetBoom
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018133@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T110000Z
+DTEND:20261025T140000Z
+SUMMARY:BetBoom vs Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019576@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261102T070000Z
+DTEND:20261102T100000Z
+SUMMARY:9z Team vs BetBoom
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+END:VCALENDAR

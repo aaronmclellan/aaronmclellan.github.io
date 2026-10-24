@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Aurora (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3002964@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261011T113000Z
+DTEND:20261011T143000Z
+SUMMARY:Aurora Gaming 2-0 Team Spirit
+DESCRIPTION:ESL Pro League Season 24 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:ESL Pro League Season 24
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006806@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T092500Z
+DTEND:20261014T122500Z
+SUMMARY:9z Team 2-0 AURORA
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006810@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T083000Z
+DTEND:20261015T113000Z
+SUMMARY:AURORA 2-0 Ninjas in Pyjamas
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006814@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T140000Z
+DTEND:20261016T170000Z
+SUMMARY:AURORA 2-0 9z Team
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006816@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T140000Z
+DTEND:20261017T170000Z
+SUMMARY:FURIA 2-0 AURORA
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006818@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T113000Z
+DTEND:20261018T143000Z
+SUMMARY:Team Falcons 1-2 AURORA
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018122@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T070000Z
+DTEND:20261024T100000Z
+SUMMARY:Aurora Gaming 1-2 The MongolZ
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018134@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T140000Z
+DTEND:20261025T170000Z
+SUMMARY:Aurora Gaming vs G2 Esports
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019577@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261102T093000Z
+DTEND:20261102T123000Z
+SUMMARY:AURORA vs Team Liquid
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+END:VCALENDAR

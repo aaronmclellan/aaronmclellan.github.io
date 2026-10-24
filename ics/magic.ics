@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:magic (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015069@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T172000Z
+DTEND:20261019T202000Z
+SUMMARY:Parivision 2-0 Magic Esport
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015071@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T120000Z
+DTEND:20261020T150000Z
+SUMMARY:Team Liquid 0-2 Magic Esport
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015074@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T090000Z
+DTEND:20261021T120000Z
+SUMMARY:The MongolZ vs Magic Esport
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018196@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T110000Z
+DTEND:20261027T140000Z
+SUMMARY:Magic Esport vs BIG
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

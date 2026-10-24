@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PARIVISION (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3006808@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T145000Z
+DTEND:20261014T175000Z
+SUMMARY:Legacy 2-0 Parivision
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3006812@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T151000Z
+DTEND:20261015T181000Z
+SUMMARY:Parivision 1-2 BetBoom
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Group Stage)\nBest 
+ of 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015069@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T172000Z
+DTEND:20261019T202000Z
+SUMMARY:Parivision 2-0 Magic Esport
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015073@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T165000Z
+DTEND:20261020T195000Z
+SUMMARY:Fnatic 1-2 Parivision
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019036@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T150000Z
+DTEND:20261021T180000Z
+SUMMARY:BIG 0-2 Parivision
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015079@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T150000Z
+DTEND:20261022T200000Z
+SUMMARY:Parivision 0-3 The MongolZ
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 5\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019578@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261102T093000Z
+DTEND:20261102T123000Z
+SUMMARY:Parivision vs G2 Esports
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+END:VCALENDAR

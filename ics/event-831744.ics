@@ -1,0 +1,259 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fiesta Series 3: Closed Qualifier (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015340@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T080000Z
+DTEND:20261019T110000Z
+SUMMARY:ROUNDS vs Wingman (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015341@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T110000Z
+DTEND:20261019T140000Z
+SUMMARY:Revise vs CPH Wolves (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015342@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T140000Z
+DTEND:20261019T170000Z
+SUMMARY:MAYBE vs Ducks (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015343@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T170000Z
+DTEND:20261019T200000Z
+SUMMARY:Dark Moon vs Trainwrecks eSports (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018858@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T080000Z
+DTEND:20261020T110000Z
+SUMMARY:MAYBE vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018861@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T110000Z
+DTEND:20261020T140000Z
+SUMMARY:ROUNDS vs CPH Wolves (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018860@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T140000Z
+DTEND:20261020T170000Z
+SUMMARY:Wingman vs Revise (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018859@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T170000Z
+DTEND:20261020T200000Z
+SUMMARY:Ducks vs Dark Moon (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018862@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T080000Z
+DTEND:20261021T110000Z
+SUMMARY:eSuba vs KAMUI (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018863@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T110000Z
+DTEND:20261021T140000Z
+SUMMARY:Eternal Premium vs NOCTIS (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018864@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T140000Z
+DTEND:20261021T170000Z
+SUMMARY:XI Esport vs TTG Esports (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018865@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:DNK vs A Great Chaos (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018866@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T080000Z
+DTEND:20261022T110000Z
+SUMMARY:eSuba vs TTG Esports (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018869@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T110000Z
+DTEND:20261022T140000Z
+SUMMARY:NOCTIS vs DNK (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018868@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T140000Z
+DTEND:20261022T170000Z
+SUMMARY:KAMUI vs XI Esport (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018867@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T170000Z
+DTEND:20261022T200000Z
+SUMMARY:Eternal Premium vs A Great Chaos (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018872@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T080000Z
+DTEND:20261023T110000Z
+SUMMARY:Ducks vs Rcave (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018873@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T110000Z
+DTEND:20261023T140000Z
+SUMMARY:Revise vs ROUNDS (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018870@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T140000Z
+DTEND:20261023T170000Z
+SUMMARY:NOCTIS vs Eternal Premium (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018871@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T170000Z
+DTEND:20261023T200000Z
+SUMMARY:eSuba vs XI Esport (Group Stage)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020764@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T080000Z
+DTEND:20261024T110000Z
+SUMMARY:DNK vs Ducks (Play-Ins)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Play-Ins)\nBest of 3\nhttps:
+ //www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019673@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T113000Z
+DTEND:20261024T143000Z
+SUMMARY:XI Esport vs Wingman (Play-Ins)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Play-Ins)\nBest of 3\nhttps:
+ //www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019674@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T140000Z
+DTEND:20261024T170000Z
+SUMMARY:Dark Moon vs NOCTIS (Play-Ins)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Play-Ins)\nBest of 3\nhttps:
+ //www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019675@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T170000Z
+DTEND:20261024T200000Z
+SUMMARY:TTG Esports vs Revise (Play-Ins)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Play-Ins)\nBest of 3\nhttps:
+ //www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018874@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T080000Z
+DTEND:20261025T110000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 3: Closed Qualifier (Playoffs)\nBest of 3\nhttps:
+ //www.ron.computer/cs.html
+LOCATION:Fiesta Series 3: Closed Qualifier
+END:VEVENT
+END:VCALENDAR

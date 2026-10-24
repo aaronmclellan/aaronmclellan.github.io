@@ -1,0 +1,489 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 South America Series 7 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3009334@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261013T130000Z
+DTEND:20261013T160000Z
+SUMMARY:QUINTESSÊNCIA 2-0 Martians Esports (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009335@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261013T163000Z
+DTEND:20261013T193000Z
+SUMMARY:Procyon 2-0 HACHA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009336@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261013T190000Z
+DTEND:20261013T220000Z
+SUMMARY:GREMIO 1-2 LOS NINOS (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009337@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261013T220000Z
+DTEND:20261014T010000Z
+SUMMARY:your end 2-0 SUKEBAN (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016755@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T131500Z
+DTEND:20261014T161500Z
+SUMMARY:EXODIA 0-2 realgotis22 (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016756@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T160000Z
+DTEND:20261014T190000Z
+SUMMARY:ARK E-sports 0-2 RED Canids Academy (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009740@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T190000Z
+DTEND:20261014T220000Z
+SUMMARY:Damajuana 2-0 ALIANZA LIMA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009741@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261014T220000Z
+DTEND:20261015T010000Z
+SUMMARY:JOGA DE TERNO 2-0 A NATA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009742@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T130000Z
+DTEND:20261015T160000Z
+SUMMARY:GREMIO 2-0 EXODIA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009743@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T160000Z
+DTEND:20261015T190000Z
+SUMMARY:ALIANZA LIMA 1-2 SUKEBAN (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009744@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T190000Z
+DTEND:20261015T220000Z
+SUMMARY:Martians Esports 0-2 HACHA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009745@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T220000Z
+DTEND:20261016T010000Z
+SUMMARY:A NATA 2-1 ARK E-sports (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009746@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T130000Z
+DTEND:20261016T160000Z
+SUMMARY:JOGA DE TERNO 1-2 your end (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009747@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T160000Z
+DTEND:20261016T190000Z
+SUMMARY:Procyon 2-1 LOS NINOS (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009748@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T190000Z
+DTEND:20261016T220000Z
+SUMMARY:QUINTESSÊNCIA 2-0 Damajuana (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009749@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T220000Z
+DTEND:20261017T010000Z
+SUMMARY:RED Canids Academy 2-0 realgotis22 (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009750@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T130000Z
+DTEND:20261017T160000Z
+SUMMARY:ARK E-sports 1-2 Martians Esports (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009751@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T160000Z
+DTEND:20261017T190000Z
+SUMMARY:ALIANZA LIMA 2-1 EXODIA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009752@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T190000Z
+DTEND:20261017T220000Z
+SUMMARY:GREMIO 2-0 SUKEBAN (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009753@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T220000Z
+DTEND:20261018T010000Z
+SUMMARY:HACHA 0-2 LOS NINOS (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009754@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T130000Z
+DTEND:20261018T160000Z
+SUMMARY:JOGA DE TERNO 2-0 realgotis22 (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009755@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T160000Z
+DTEND:20261018T190000Z
+SUMMARY:Damajuana 2-0 A NATA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009756@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T190000Z
+DTEND:20261018T220000Z
+SUMMARY:QUINTESSÊNCIA 0-2 RED Canids Academy (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009757@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T220000Z
+DTEND:20261019T010000Z
+SUMMARY:Procyon 2-0 your end (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009758@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T160000Z
+DTEND:20261019T190000Z
+SUMMARY:ALIANZA LIMA 2-0 realgotis22 (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009759@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T190000Z
+DTEND:20261019T220000Z
+SUMMARY:Martians Esports 2-0 SUKEBAN (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009760@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T220000Z
+DTEND:20261020T010000Z
+SUMMARY:A NATA 1-2 HACHA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009761@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T160000Z
+DTEND:20261020T190000Z
+SUMMARY:Damajuana 1-2 your end (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009762@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T190000Z
+DTEND:20261020T220000Z
+SUMMARY:QUINTESSÊNCIA 2-1 LOS NINOS (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009763@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T220000Z
+DTEND:20261021T010000Z
+SUMMARY:JOGA DE TERNO 0-2 GREMIO (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009764@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T160000Z
+DTEND:20261021T190000Z
+SUMMARY:JOGA DE TERNO 0-2 Martians Esports (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009765@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T190000Z
+DTEND:20261021T220000Z
+SUMMARY:Damajuana 1-2 HACHA (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009766@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T220000Z
+DTEND:20261022T010000Z
+SUMMARY:ALIANZA LIMA 0-2 LOS NINOS (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 7 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009767@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T130000Z
+DTEND:20261022T160000Z
+SUMMARY:Tropa do KinGui 2-0 Martians Esports (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009768@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T160000Z
+DTEND:20261022T190000Z
+SUMMARY:Meia Noite 2-1 Procyon (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009769@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T190000Z
+DTEND:20261022T220000Z
+SUMMARY:Yawara Esports 2-0 your end (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009770@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T220000Z
+DTEND:20261023T010000Z
+SUMMARY:low cortisol gaming 1-2 GREMIO (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009774@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T130000Z
+DTEND:20261023T160000Z
+SUMMARY:Isurus 2-0 HACHA (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009772@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T160000Z
+DTEND:20261023T190000Z
+SUMMARY:BORRACHEIROS 2-0 QUINTESSÊNCIA (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009773@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T190000Z
+DTEND:20261023T220000Z
+SUMMARY:Bestia Academy 0-2 RED Canids Academy (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009771@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T220000Z
+DTEND:20261024T010000Z
+SUMMARY:ALKA 0-2 LOS NINOS (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009775@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T130000Z
+DTEND:20261024T160000Z
+SUMMARY:Isurus 0-2 RED Canids Academy (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009776@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T160000Z
+DTEND:20261024T190000Z
+SUMMARY:Tropa do KinGui 2-0 Meia Noite (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009777@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T190000Z
+DTEND:20261024T220000Z
+SUMMARY:LOS NINOS 0-2 BORRACHEIROS (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009778@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T220000Z
+DTEND:20261025T010000Z
+SUMMARY:GREMIO vs Yawara Esports (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009779@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T160000Z
+DTEND:20261025T190000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009780@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T190000Z
+DTEND:20261025T220000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009781@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T220000Z
+DTEND:20261026T010000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 7 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 7
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,449 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 South America Series 8 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015662@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261103T140000Z
+DTEND:20261103T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015663@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261103T170000Z
+DTEND:20261103T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015664@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261103T200000Z
+DTEND:20261103T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015665@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261103T230000Z
+DTEND:20261104T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015666@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261104T140000Z
+DTEND:20261104T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015667@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261104T170000Z
+DTEND:20261104T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015668@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261104T200000Z
+DTEND:20261104T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015669@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261104T230000Z
+DTEND:20261105T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015670@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261105T140000Z
+DTEND:20261105T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015671@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261105T170000Z
+DTEND:20261105T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015672@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261105T200000Z
+DTEND:20261105T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015673@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261105T230000Z
+DTEND:20261106T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015674@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261106T140000Z
+DTEND:20261106T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015675@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261106T170000Z
+DTEND:20261106T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015676@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261106T200000Z
+DTEND:20261106T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015677@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261106T230000Z
+DTEND:20261107T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015678@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015679@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261107T170000Z
+DTEND:20261107T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015680@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261107T200000Z
+DTEND:20261107T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015681@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261107T230000Z
+DTEND:20261108T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015682@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261108T140000Z
+DTEND:20261108T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015683@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261108T170000Z
+DTEND:20261108T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015684@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261108T200000Z
+DTEND:20261108T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015685@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261108T230000Z
+DTEND:20261109T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015686@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261109T170000Z
+DTEND:20261109T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015687@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261109T200000Z
+DTEND:20261109T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015688@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261109T230000Z
+DTEND:20261110T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015689@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261110T170000Z
+DTEND:20261110T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015690@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261110T200000Z
+DTEND:20261110T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015691@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261110T230000Z
+DTEND:20261111T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015692@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261111T170000Z
+DTEND:20261111T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015693@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261111T200000Z
+DTEND:20261111T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015694@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261111T230000Z
+DTEND:20261112T020000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:CCT 2026 South America Series 8 (Group Stage)\nBest of 3\nhttps
+ ://www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015695@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015696@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261112T170000Z
+DTEND:20261112T200000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015697@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261112T200000Z
+DTEND:20261112T230000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015698@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261112T230000Z
+DTEND:20261113T020000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015699@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261113T140000Z
+DTEND:20261113T170000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015700@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261113T170000Z
+DTEND:20261113T200000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015701@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261113T200000Z
+DTEND:20261113T230000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015702@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261113T230000Z
+DTEND:20261114T020000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015703@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261114T140000Z
+DTEND:20261114T170000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015704@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261114T170000Z
+DTEND:20261114T200000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015705@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261114T200000Z
+DTEND:20261114T230000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 South America Series 8 (Playoffs)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:CCT 2026 South America Series 8
+END:VEVENT
+END:VCALENDAR

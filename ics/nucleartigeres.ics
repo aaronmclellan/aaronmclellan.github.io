@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nuclear TigeRES (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017815@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T114500Z
+DTEND:20261016T144500Z
+SUMMARY:Nemesis 2-1 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017818@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T080000Z
+DTEND:20261017T110000Z
+SUMMARY:Eternal Fire 0-2 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017823@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T170000Z
+DTEND:20261018T200000Z
+SUMMARY:ex-RUSTEC 0-2 Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017825@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T140000Z
+DTEND:20261019T170000Z
+SUMMARY:Nemesis vs Nuclear Tigeres
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004002@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T110000Z
+DTEND:20261023T140000Z
+SUMMARY:Nuclear Tigeres 2-0 ILLYRIANS
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014211@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T140000Z
+DTEND:20261024T170000Z
+SUMMARY:Nuclear Tigeres 2-0 FORZE Reload
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004008@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T170000Z
+DTEND:20261024T200000Z
+SUMMARY:Nuclear Tigeres 1-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+END:VCALENDAR

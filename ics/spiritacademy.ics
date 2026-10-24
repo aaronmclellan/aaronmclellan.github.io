@@ -1,0 +1,119 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Spirit Academy (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3003964@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261013T080000Z
+DTEND:20261013T110000Z
+SUMMARY:BAKS 2-0 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003974@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261015T140000Z
+DTEND:20261015T170000Z
+SUMMARY:The Last Resort 0-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003986@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T140000Z
+DTEND:20261018T170000Z
+SUMMARY:Spirit Academy 2-1 mellren
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016505@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T090000Z
+DTEND:20261019T120000Z
+SUMMARY:Betclic 2-1 Spirit Academy
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018970@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T155500Z
+DTEND:20261020T185500Z
+SUMMARY:Black Phoenix 1-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009835@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T140000Z
+DTEND:20261021T170000Z
+SUMMARY:Lavked vs Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003997@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T080000Z
+DTEND:20261022T110000Z
+SUMMARY:GenOne 1-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009842@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T110000Z
+DTEND:20261023T140000Z
+SUMMARY:Inner Circle Academy 2-1 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004006@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T110000Z
+DTEND:20261024T140000Z
+SUMMARY:Spirit Academy 2-0 Lavked
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009850@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T120000Z
+DTEND:20261025T150000Z
+SUMMARY:Sökerorg vs Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004010@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T130000Z
+DTEND:20261025T160000Z
+SUMMARY:Spirit Academy vs ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+END:VCALENDAR

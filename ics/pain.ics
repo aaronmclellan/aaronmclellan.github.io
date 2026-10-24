@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:paiN (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017889@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T140000Z
+DTEND:20261021T170000Z
+SUMMARY:Pain Gaming vs largadosypelados
+DESCRIPTION:Circuit X Curitiba Season 4 (Group Stage)\nBest of 3\nhttps://w
+ ww.ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017891@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T183000Z
+DTEND:20261021T213000Z
+SUMMARY:Pain Gaming vs Fluxo
+DESCRIPTION:Circuit X Curitiba Season 4 (Group Stage)\nBest of 3\nhttps://w
+ ww.ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019150@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T210000Z
+DTEND:20261024T000000Z
+SUMMARY:Pain Gaming 1-2 Imperial
+DESCRIPTION:Circuit X Curitiba Season 4 (Playoffs)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019151@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Galorys 0-2 Pain Gaming
+DESCRIPTION:Circuit X Curitiba Season 4 (Playoffs)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019163@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T220000Z
+DTEND:20261026T010000Z
+SUMMARY:Pain Gaming vs TBD
+DESCRIPTION:Circuit X Curitiba Season 4 (Playoffs)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+END:VCALENDAR

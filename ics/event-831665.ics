@@ -1,0 +1,309 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 Challengers Europe Series 8 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013964@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T110000Z
+DTEND:20261017T140000Z
+SUMMARY:Honvéd 0-2 TitanFlow (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013965@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T110000Z
+DTEND:20261017T140000Z
+SUMMARY:Bebop 0-2 DONSTU (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013967@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T134500Z
+DTEND:20261017T164500Z
+SUMMARY:Noir Verse 1-2 Ryvex (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018426@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261017T134500Z
+DTEND:20261017T164500Z
+SUMMARY:los kogutos 2-0 Revise (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013969@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T110000Z
+DTEND:20261018T140000Z
+SUMMARY:Falcons Force 2-1 MAYBE (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018427@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T110000Z
+DTEND:20261018T140000Z
+SUMMARY:MORROW 1-2 Quintessence (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013971@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T140000Z
+DTEND:20261018T170000Z
+SUMMARY:antidaun 0-2 Phantom Academy (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013970@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261018T140000Z
+DTEND:20261018T170000Z
+SUMMARY:6666 2-0 Privateer Gaming (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013972@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T110000Z
+DTEND:20261019T140000Z
+SUMMARY:Honvéd 0-2 Bebop (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013973@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T110000Z
+DTEND:20261019T140000Z
+SUMMARY:Noir Verse 2-1 antidaun (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013974@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T134500Z
+DTEND:20261019T164500Z
+SUMMARY:Quintessence 2-0 Falcons Force (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013975@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T134500Z
+DTEND:20261019T164500Z
+SUMMARY:Ryvex 2-0 Phantom Academy (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013976@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T110000Z
+DTEND:20261020T140000Z
+SUMMARY:MORROW 2-0 MAYBE (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013977@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T110000Z
+DTEND:20261020T140000Z
+SUMMARY:Revise 1-2 Privateer Gaming (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013979@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T134500Z
+DTEND:20261020T164500Z
+SUMMARY:los kogutos 2-0 6666 (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013978@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T135500Z
+DTEND:20261020T165500Z
+SUMMARY:TitanFlow 0-2 DONSTU (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013980@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T110000Z
+DTEND:20261021T140000Z
+SUMMARY:MORROW 2-0 6666 (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013981@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T110000Z
+DTEND:20261021T140000Z
+SUMMARY:Noir Verse 0-2 TitanFlow (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013982@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T134500Z
+DTEND:20261021T164500Z
+SUMMARY:Bebop 1-2 Phantom Academy (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013983@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T134500Z
+DTEND:20261021T164500Z
+SUMMARY:Privateer Gaming 1-2 Falcons Force (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013984@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T110000Z
+DTEND:20261022T140000Z
+SUMMARY:Phantom Academy 2-0 Falcons Force (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013985@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T110000Z
+DTEND:20261022T140000Z
+SUMMARY:MORROW 1-2 TitanFlow (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013987@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T143500Z
+DTEND:20261022T173500Z
+SUMMARY:Quintessence 2-1 Ryvex (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019508@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T144500Z
+DTEND:20261022T174500Z
+SUMMARY:DONSTU 2-1 los kogutos (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013989@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T110000Z
+DTEND:20261023T140000Z
+SUMMARY:TitanFlow 2-0 Ryvex (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013988@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T134500Z
+DTEND:20261023T164500Z
+SUMMARY:los kogutos 0-2 Phantom Academy (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013990@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T110000Z
+DTEND:20261024T140000Z
+SUMMARY:DONSTU 2-0 Quintessence (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013991@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261024T134500Z
+DTEND:20261024T164500Z
+SUMMARY:Phantom Academy 0-2 TitanFlow (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013992@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T120000Z
+DTEND:20261025T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013993@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261025T144500Z
+DTEND:20261025T174500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers Europe Series 8 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers Europe Series 8
+END:VEVENT
+END:VCALENDAR

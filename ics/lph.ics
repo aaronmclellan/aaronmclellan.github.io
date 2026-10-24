@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:LPH (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016731@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261016T183000Z
+DTEND:20261016T200000Z
+SUMMARY:DNK vs LPH Gaming
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018112@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T183000Z
+DTEND:20261019T200000Z
+SUMMARY:LPH Gaming 0-1 Oldboys
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013127@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T130000Z
+DTEND:20261021T160000Z
+SUMMARY:KUUSAMO 1-2 LPH Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013247@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:KAMUI 2-1 LPH Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013250@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T130000Z
+DTEND:20261022T160000Z
+SUMMARY:LPH Gaming 2-0 KUUSAMO
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013256@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T170000Z
+DTEND:20261022T200000Z
+SUMMARY:Four Magic 0-2 LPH Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013257@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T130000Z
+DTEND:20261023T160000Z
+SUMMARY:WhiteBIT Team Academy 2-1 LPH Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013259@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261023T170000Z
+DTEND:20261023T200000Z
+SUMMARY:MAYBE 2-0 LPH Gaming
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Playoffs)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016351@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261027T180000Z
+DTEND:20261027T193000Z
+SUMMARY:LPH Gaming vs Banda LFO
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+END:VCALENDAR

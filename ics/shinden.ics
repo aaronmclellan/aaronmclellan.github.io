@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ShindeN (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3019048@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T140000Z
+DTEND:20261022T170000Z
+SUMMARY:Bestia 2-1 ShindeN
+DESCRIPTION:Circuit X Curitiba Season 4 (Group Stage)\nBest of 3\nhttps://w
+ ww.ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019051@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T174500Z
+DTEND:20261022T204500Z
+SUMMARY:Turma do Pagode vs ShindeN
+DESCRIPTION:Circuit X Curitiba Season 4 (Group Stage)\nBest of 3\nhttps://w
+ ww.ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019148@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261022T211500Z
+DTEND:20261023T001500Z
+SUMMARY:Imperial vs ShindeN
+DESCRIPTION:Circuit X Curitiba Season 4 (Group Stage)\nBest of 3\nhttps://w
+ ww.ron.computer/cs.html
+LOCATION:Circuit X Curitiba Season 4
+END:VEVENT
+END:VCALENDAR

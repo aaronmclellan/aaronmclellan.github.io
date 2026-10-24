@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BASEMENT BOYS (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016603@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T090000Z
+DTEND:20261019T103000Z
+SUMMARY:Aimclub vs Basement Boys
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016609@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T124500Z
+DTEND:20261019T141500Z
+SUMMARY:INFINITE vs Basement Boys
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018725@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261019T171500Z
+DTEND:20261019T201500Z
+SUMMARY:Basement Boys vs Aimclub
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018908@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261020T110000Z
+DTEND:20261020T140000Z
+SUMMARY:Envy vs Basement Boys
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016627@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T110000Z
+DTEND:20261021T140000Z
+SUMMARY:Eternal Fire vs Basement Boys
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018713@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T150000Z
+DTEND:20261021T180000Z
+SUMMARY:Basement Boys vs Iberian Soul
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018719@aaronmclellan.github.io
+DTSTAMP:20261024T215437Z
+DTSTART:20261021T193000Z
+DTEND:20261021T223000Z
+SUMMARY:Basement Boys vs Nexus
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+END:VCALENDAR
