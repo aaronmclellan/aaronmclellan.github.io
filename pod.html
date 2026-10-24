@@ -27,9 +27,12 @@
     --lcd-ink: #15181c;
     --lcd-dim: #6d737b;
     --line: #8b929b;
+    --drop: 0px;    /* extra room under the status bar in the iPhone home screen app */
+    --sab: env(safe-area-inset-bottom);
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
+html { background: #0b0c0e; }
 body {
     background: radial-gradient(110% 80% at 50% 18%, #343943 0%, #1a1d22 55%, #0b0c0e 100%);
     background-color: #111316;
@@ -891,7 +894,7 @@ body[data-theme="zune"] .for-zune { display: inline; }
 /* ---------- Phones: the device fills the screen and the extra height goes to the display ---------- */
 @media (max-width: 600px) and (max-aspect-ratio: 10 / 17) {
     .stage {
-        padding: max(10px, calc(env(safe-area-inset-top) + 4px)) 10px max(10px, calc(env(safe-area-inset-bottom) + 4px));
+        padding: max(10px, calc(env(safe-area-inset-top) + var(--drop) + 4px)) 10px max(10px, calc(var(--sab) + 4px));
     }
     .pod {
         width: 100%;
@@ -933,7 +936,7 @@ body[data-theme="desktop"] .stage, body[data-theme="desktop"] .hint { display: n
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 10px 16px;
+    padding: calc(10px + env(safe-area-inset-top) + var(--drop)) 16px 10px;
     background: linear-gradient(#ececec, #cfcfcf 55%, #bdbdbd);
     border-bottom: 1px solid #8a8a8a;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8);
@@ -1101,7 +1104,7 @@ body[data-theme="desktop"] .stage, body[data-theme="desktop"] .hint { display: n
 .dk-select { padding: 4px 6px; font: inherit; font-size: 13px; }
 @media (max-width: 720px) {
     .desk { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto minmax(0, 1fr); }
-    .dk-bar { flex-wrap: wrap; gap: 8px 10px; padding: 8px 12px; }
+    .dk-bar { flex-wrap: wrap; gap: 8px 10px; padding: calc(8px + env(safe-area-inset-top) + var(--drop)) 12px 8px; }
     .dk-lcd { order: 3; flex-basis: 100%; max-width: none; }
     .dk-vol { display: none; }
     .dk-side { display: flex; gap: 4px; padding: 6px; overflow-x: auto; border-right: 0; border-bottom: 1px solid #9aa4ae; }
@@ -2783,7 +2786,24 @@ document.addEventListener('keydown', e => {
     }
     e.preventDefault();
 });
+// iPhone home screen app quirks (same fix as the ant farm and Jelly Jam, checked on
+// a real phone there): the status bar blurs whatever sits just under it, so the
+// device moves down a little; and the app's viewport comes up short by about the
+// status bar's height, leaving a strip at the bottom that can't be drawn on, so
+// nothing needs room for the home bar.
+const insetProbe = document.createElement('div');
+insetProbe.style.cssText = 'position:fixed;left:0;top:0;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top)';
+document.body.append(insetProbe);
+function fitPhone() {
+    const rs = document.documentElement.style, top = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0;
+    const app = navigator.standalone === true;
+    rs.setProperty('--drop', app && top ? '20px' : '0px');
+    const lost = app ? Math.round(screen.height - innerHeight) : 0;
+    if (lost > 10 && Math.abs(lost - top) < 12) rs.setProperty('--sab', '0px'); else rs.removeProperty('--sab');
+}
+fitPhone();
 window.addEventListener('resize', () => {
+    fitPhone();
     const s = topScr();
     if (s instanceof Menu) s.paint();
 });
