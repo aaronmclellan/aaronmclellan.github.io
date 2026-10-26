@@ -330,19 +330,22 @@ a{color:var(--accent);}
 /* Marks: a tinted row and a coloured box */
 :is(#editor,.note-view) div[data-todo][data-mark]{border-radius:6px;background:var(--tint);box-shadow:-5px 0 0 var(--tint),5px 0 0 var(--tint);}
 :is(#editor,.note-view) div[data-todo][data-mark="red"]{--tint:rgba(239,68,68,.14);}
-:is(#editor,.note-view) div[data-todo][data-mark="orange"]{--tint:rgba(245,158,11,.16);}
+:is(#editor,.note-view) div[data-todo][data-mark="orange"]{--tint:rgba(249,115,22,.15);}
+:is(#editor,.note-view) div[data-todo][data-mark="yellow"]{--tint:rgba(234,179,8,.16);}
 :is(#editor,.note-view) div[data-todo][data-mark="blue"]{--tint:rgba(59,130,246,.14);}
 :is(#editor,.note-view) div[data-todo][data-mark="green"]{--tint:rgba(34,197,94,.14);}
 :is(#editor,.note-view) div[data-todo][data-mark="purple"]{--tint:rgba(168,85,247,.15);}
 :is(#editor,.note-view) div[data-todo="false"][data-mark="gray"]{--tint:rgba(148,163,184,.12);color:var(--text2);}   /* low priority recedes a little */
 :is(#editor,.note-view) div[data-todo][data-mark="red"]::before{border-color:#ef4444;}
-:is(#editor,.note-view) div[data-todo][data-mark="orange"]::before{border-color:#f59e0b;}
+:is(#editor,.note-view) div[data-todo][data-mark="orange"]::before{border-color:#f97316;}
+:is(#editor,.note-view) div[data-todo][data-mark="yellow"]::before{border-color:#eab308;}
 :is(#editor,.note-view) div[data-todo][data-mark="blue"]::before{border-color:#3b82f6;}
 :is(#editor,.note-view) div[data-todo][data-mark="green"]::before{border-color:#22c55e;}
 :is(#editor,.note-view) div[data-todo][data-mark="purple"]::before{border-color:#a855f7;}
 :is(#editor,.note-view) div[data-todo][data-mark="gray"]::before{border-color:#94a3b8;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="red"]::before{background-color:#ef4444;}
-:is(#editor,.note-view) div[data-todo="true"][data-mark="orange"]::before{background-color:#f59e0b;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="orange"]::before{background-color:#f97316;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="yellow"]::before{background-color:#eab308;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="blue"]::before{background-color:#3b82f6;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="green"]::before{background-color:#22c55e;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="purple"]::before{background-color:#a855f7;}
@@ -428,7 +431,9 @@ mark{background:rgba(255,196,77,.5);color:var(--text);border-radius:2px;padding:
 .lock-box h2{font-size:1.1rem;}
 .lock-box .inp{text-align:center;letter-spacing:4px;font-size:1.1rem;}
 body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.locked #toast{visibility:hidden!important;}
-#done-bar,.sp-done{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
+/* Sort by mark: the note is shown in mark order with CSS order (rules written by markOrder), its lines untouched */
+:is(#editor,#sp-body).by-mark{display:flex;flex-direction:column;}
+#done-bar,.sp-done,#sort-bar,.sp-sort{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
 
 /* Status bar */
 #status-bar{padding:4px 16px;display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);font-size:.68rem;color:var(--text3);padding-bottom:calc(4px + var(--sab));}
@@ -781,6 +786,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     </div>
   </div>
   <div id="done-bar" hidden><span id="done-msg"></span><button class="linkbtn" data-act="showDone">Show them</button></div>
+  <div id="sort-bar" hidden><span>Sorted by mark. Your own order is kept.</span><button class="linkbtn" data-act="unsortMarks">Back to my order</button></div>
   <div id="ed-scroll">
     <div id="editor" contenteditable="true" data-placeholder="Start writing... (try - , # , [] or > at the start of a line, or / for more)" spellcheck="true"></div>
     <div id="grips" aria-hidden="true"></div>
@@ -799,6 +805,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <div class="sp-archive" id="sp-archive" hidden><span>This note is archived. It stays out of your lists until you bring it back.</span><button class="m-btn sec sm" data-act="sideUnarchive">Unarchive</button></div>
     <div class="sp-meta" id="sp-meta"></div>
     <div class="sp-done" id="sp-done" hidden><span id="sp-done-msg"></span><button class="linkbtn" data-act="sideShowDone">Show them</button></div>
+    <div class="sp-sort" id="sp-sort" hidden><span>Sorted by mark. Your own order is kept.</span><button class="linkbtn" data-act="sideUnsort">Back to my order</button></div>
     <div id="sp-scroll"><div id="sp-body" class="note-view"></div><div id="sp-grips" aria-hidden="true"></div></div>
   </div>
   </div>
@@ -1057,6 +1064,7 @@ function cleanNote(n) {
     dev: String(n.dev || ''),   // which device made the latest edit
     daily: String(n.daily || ''),   // YYYY-MM-DD for a daily note
     hideDone: !!n.hideDone,         // checked items hidden in this note
+    byMark: !!n.byMark,             // checklists shown sorted by mark (the saved order is untouched)
     archived: +n.archived || 0,     // when it was archived (0 = not archived)
     doneTo: String(n.doneTo || ''), // the note "Move checked items" sends this note's finished items to
   };
@@ -2128,7 +2136,7 @@ function renderSplit() {
 }
 function renderSide() {
   const n = byId(sideId()); if (!n) return;
-  const sig = [n.id, n.title, n.content, folderName(folderOf(n)), n.tags.join(' '), !!n.hideDone, !!n.archived].join('\u0001');
+  const sig = [n.id, n.title, n.content, folderName(folderOf(n)), n.tags.join(' '), !!n.hideDone, !!n.byMark, !!n.archived].join('\u0001');
   if (sig === sideShown) return;   // unchanged: leave it (and its scroll position) alone
   const same = sideShown.startsWith(n.id + '\u0001');
   sideShown = sig;
@@ -2140,6 +2148,8 @@ function renderSide() {
   body.innerHTML = cleanHTML(n.content);
   body.classList.toggle('hide-done', !!n.hideDone);
   foldChildren(body);
+  markOrder(body, !!n.byMark);
+  $('sp-sort').hidden = !(n.byMark && body.querySelector('[data-todo]'));
   refreshInline(body);
   const hidden = n.hideDone ? body.querySelectorAll('[data-todo="true"]').length : 0;
   $('sp-done').hidden = !hidden;
@@ -2239,7 +2249,7 @@ $('side-pane').addEventListener('click', e => {
 });
 
 /* One task's menu (tap its handle): Today, marks, due date, move, delete. */
-const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', purple: '\u{1F7E3} In progress', blue: '\u{1F535} Waiting on someone', green: '\u{1F7E2} Quick win', gray: '\u26AA Low priority' };
+const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', purple: '\u{1F7E3} In progress', yellow: '\u{1F7E1} Up next', blue: '\u{1F535} Waiting on someone', green: '\u{1F7E2} Quick win', gray: '\u26AA Low priority' };
 function itemMenuItems(idx) {
   const el = ed.querySelectorAll('[data-todo]')[idx];
   if (!el || ed.contentEditable !== 'true') return [];
@@ -2430,7 +2440,7 @@ function saveAsTemplate(id) {
   flushEditor();
   const n = byId(id); if (!n) return;
   ensureFolder(TEMPLATES, 'Templates');
-  D.notes.unshift(cleanNote({ ...n, id: gid(), folder: TEMPLATES, pinned: false, daily: '', hideDone: false, created: now(), updated: now(), dev: P.device }));
+  D.notes.unshift(cleanNote({ ...n, id: gid(), folder: TEMPLATES, pinned: false, daily: '', hideDone: false, byMark: false, created: now(), updated: now(), dev: P.device }));
   changed(); renderSidebar();
   toast('Saved as a template', 'Show', () => setView(TEMPLATES));
 }
@@ -2777,8 +2787,41 @@ function foldChildren(root) {
   }
   root.classList.toggle('has-kids', [...root.querySelectorAll('[data-todo]')].some(hasKids));
 }
+/* Sort by mark. A way of looking at a note, not a change to it: each checklist is shown with its items in
+   mark order (sub-items stay with their parent, ticked items last) through CSS order rules, so the order you
+   put things in stays the real one and comes straight back when the sort is turned off. */
+const MARK_RANK = { red: 0, purple: 1, yellow: 2, orange: 3, blue: 4, green: 5, gray: 7 };   // no mark: 6, ticked: 9
+const markCSS = {}, markStyle = document.head.appendChild(document.createElement('style'));
+function markOrder(root, on) {
+  root.classList.toggle('by-mark', on);
+  let css = '';
+  if (on) {
+    let seg = 0, run = false, rank = 6;
+    [...root.children].forEach((el, i) => {
+      if (isTodo(el)) {
+        const own = el.getAttribute('data-todo') === 'true' ? 9 : MARK_RANK[el.getAttribute('data-mark')] ?? 6;
+        if (!run) { seg++; run = true; rank = own; }
+        else if (!levelOf(el)) rank = own;   // a sub-item keeps its parent's place
+        css += `#${root.id}.by-mark>:nth-child(${i + 1}){order:${seg * 10 + rank}}`;
+      } else { run = false; seg++; css += `#${root.id}.by-mark>:nth-child(${i + 1}){order:${seg * 10}}`; }
+    });
+  }
+  if (markCSS[root.id] === css) return;
+  markCSS[root.id] = css;
+  markStyle.textContent = Object.values(markCSS).join('');
+}
+const sortedNote = id => { const n = byId(id); return !!(n && n.byMark); };
+function toggleByMark(id) {
+  const n = byId(id); if (!n) return;
+  n.byMark = !n.byMark; touch(n); changed();
+  if (id === edId) applyFolds();
+  renderSplit();
+  toast(n.byMark ? 'Sorted by mark. Your own order is kept.' : 'Back to your order');
+}
 function applyFolds() {
   foldChildren(ed);
+  markOrder(ed, sortedNote(edId));
+  $('sort-bar').hidden = !(sortedNote(edId) && ed.querySelector('[data-todo]'));
   renderGripsSoon();
   // Don't leave the caret inside something that just got folded away.
   const s = getSelection(), b = s.rangeCount && ed.contains(s.anchorNode) ? blockOf(s.anchorNode) : null;
@@ -2892,6 +2935,13 @@ function moveDrag(x, y) {
   // With two notes open the items can go into the other one: same rules, that note's lines.
   const side = overSide(x, y), root = side ? $('sp-body') : ed, rootBox = root.getBoundingClientRect();
   const items = [...root.querySelectorAll('[data-todo]')].filter(el => !drag.group.includes(el) && el.getClientRects().length);
+  if (side && sortedNote(sideId()) && items.length) {
+    // That note is sorted by mark, so a spot on screen isn't a spot in its list: the items join the end of its last checklist.
+    const last = items[items.length - 1], box = last.getBoundingClientRect();
+    drag.target = { side, before: null, after: last, lv: 0 };
+    Object.assign(dropLine.style, { display: 'block', top: box.bottom + 1 + 'px', left: box.left + 'px', width: Math.max(40, rootBox.right - 24 - box.left) + 'px' });
+    return;
+  }
   let before = null, after = null;
   for (const el of items) { const r = el.getBoundingClientRect(); if (y < r.top + r.height / 2) { before = el; break; } after = el; }
   // Something other than checklist items between the two means two separate lists: join the nearer one.
@@ -2945,6 +2995,7 @@ function finishDrag(cancel) {
 // Move up / Move down (toolbar, Ctrl+Cmd+Up/Down on a Mac, Alt+Shift+Up/Down elsewhere): past the
 // neighbouring item at the same level, staying inside the parent.
 function moveTodo(dir, fromToolbar) {
+  if (sortedNote(edId)) { toast('Sorted by mark. Go back to your order to move items.'); return; }
   if (fromToolbar) restoreSel();
   const s = getSelection(), t = s.rangeCount && blockOf(s.anchorNode);
   if (!isTodo(t)) { toast('Put the cursor on a checklist item first'); return; }
@@ -2980,6 +3031,7 @@ $('grips').addEventListener('pointerdown', e => {
 window.addEventListener('pointermove', e => {
   if (!drag || e.pointerId !== drag.id) return;
   if (!drag.active && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 4) return;
+  if (!drag.active && sortedNote(edId)) { drag = null; toast('Sorted by mark. Go back to your order to drag items.'); return; }
   if (!drag.active) { startDrag(); if (navigator.vibrate && e.pointerType === 'touch') navigator.vibrate(8); }
   moveDrag(e.clientX, e.clientY);
 });
@@ -3890,6 +3942,7 @@ function noteMenuItems(id) {
   return [
     { label: n.pinned ? 'Unpin' : 'Pin to top', fn: () => togglePin(id) },
     todos && { label: n.hideDone ? 'Show checked items' : 'Hide checked items', fn: () => toggleHideDone(id) },
+    todos && { label: n.byMark ? 'Back to my order' : 'Sort by mark', fn: () => toggleByMark(id) },
     done && { label: 'Uncheck all', fn: () => { editNoteDom(id, uncheckAll); toast('All items unchecked'); } },
     done && { label: 'Move checked to bottom', fn: () => editNoteDom(id, sortChecked) },
     done && { label: 'Delete checked items', danger: true, fn: () => deleteItems(id) },
@@ -4486,6 +4539,8 @@ const ACT = {
   closeHist: () => { $('hist').classList.remove('show'); hist = null; },
   showDone: () => { if (edId) toggleHideDone(edId); },
   sideShowDone: () => { const id = sideId(); if (id) toggleHideDone(id); },
+  unsortMarks: () => { if (edId) toggleByMark(edId); },
+  sideUnsort: () => { const id = sideId(); if (id) toggleByMark(id); },
   sideUnarchive: () => { const id = sideId(); if (id) archiveNote(id, false); },
   sideMenu: el => { const id = sideId(); if (id) showMenu(el, noteMenuItems(id)); },
   toggleNav: () => { P.navHidden = !P.navHidden; savePrefs(); renderSplit(); renderGripsSoon(); },
