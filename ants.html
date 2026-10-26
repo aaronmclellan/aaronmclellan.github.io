@@ -1666,11 +1666,16 @@ function resize() {
     applyCam();
 }
 const baseScale = () => Math.min(view.cw / W, view.ch / H);
+// How much of the canvas is clear of the phone's dock: the camera can scroll
+// the bottom of the farm up above it, and frames the nest within it.
+const visH = () => view.ch - (pip.mode === 'video' ? 0 : Math.round((lay.insetB || 0) * view.dpr));
+// Zoomed all the way out, the whole farm fits above the dock.
+const zMin = () => Math.min(1, visH() / view.ch);
 function applyCam() {
-    const s = baseScale() * cam.z, hw = view.cw / s / 2, hh = view.ch / s / 2;
+    const s = baseScale() * cam.z, vh = visH(), hw = view.cw / s / 2, hh = vh / s / 2;
     cam.x = hw * 2 >= W ? W / 2 : Math.max(hw, Math.min(W - hw, cam.x));
     cam.y = hh * 2 >= H ? H / 2 : Math.max(hh, Math.min(H - hh, cam.y));
-    view.s = s; view.ox = view.cw / 2 - cam.x * s; view.oy = view.ch / 2 - cam.y * s;
+    view.s = s; view.ox = view.cw / 2 - cam.x * s; view.oy = vh / 2 - cam.y * s;
 }
 // Left to itself the camera frames what the colony has dug, with the food
 // and some soil below, and pulls back as the nest grows until the whole farm
@@ -1680,8 +1685,8 @@ function autoFrame() {
     // from the nest's left edge to just past the food.
     const b = nestBox, top = GROUND - 40, bottom = Math.min(H, Math.max(b ? b.y1 : GROUND, GROUND + 40) + 44);
     const left = Math.max(0, Math.min(b ? b.x0 : nest.EX, nest.EX) - 10), right = Math.min(W, Math.max(b ? b.x1 : nest.EX, FX + 14) + 8);
-    const vw = view.cw / baseScale(), vh = view.ch / baseScale();
-    const z = Math.max(1, Math.min(3, vh / (bottom - top), vw / (right - left))), w = vw / z, h = vh / z;
+    const vw = view.cw / baseScale(), vh = visH() / baseScale();
+    const z = Math.max(zMin(), Math.min(3, vh / (bottom - top), vw / (right - left))), w = vw / z, h = vh / z;
     return {z, x:Math.max(w / 2, Math.min(W - w / 2, (left + right) / 2)), y:Math.max(h / 2, Math.min(H - h / 2, Math.min(top + h / 2, (top + bottom) / 2 + Math.max(0, h - (bottom - top)) / 2)))};
 }
 // During a fight the camera, when it's left to itself, moves in on the
@@ -1692,17 +1697,17 @@ const fightCam = () => raider && (raider.phase === 'fight' || performance.now() 
 function fightFrame() {
     const r = raider, cx = fightMid(r), a = autoFrame(), bs = baseScale();
     const hud = pip.mode === 'video' ? 0 : $('hud').offsetHeight * view.dpr, top = surfY(cx) - RAID_BAR[r.k] - 4;
-    const z = Math.min(4, Math.max(a.z, 3, hud / (bs * Math.max(1, top)) + 0.15)), w = view.cw / bs / z, h = view.ch / bs / z;
+    const z = Math.min(4, Math.max(a.z, 3, hud / (bs * Math.max(1, top)) + 0.15)), w = view.cw / bs / z, h = visH() / bs / z;
     return {z, x:Math.max(w / 2, Math.min(W - w / 2, cx)), y:Math.max(h / 2, Math.min(H - h / 2, top - hud / (bs * z) + h / 2))};
 }
 // Zoom so the farm point under (px, py) in canvas pixels stays put.
 function zoomTo(z, px, py, instant) {
     cam.auto = false;
-    z = Math.max(1, Math.min(6, z));
-    if (px === undefined) { px = view.cw / 2; py = view.ch / 2; }
+    z = Math.max(zMin(), Math.min(6, z));
+    if (px === undefined) { px = view.cw / 2; py = visH() / 2; }
     const wx = (px - view.ox) / view.s, wy = (py - view.oy) / view.s, s = baseScale() * z;
     cam.tz = z;
-    if (!cam.follow) { cam.tx = wx - (px - view.cw / 2) / s; cam.ty = wy - (py - view.ch / 2) / s; }
+    if (!cam.follow) { cam.tx = wx - (px - view.cw / 2) / s; cam.ty = wy - (py - visH() / 2) / s; }
     if (instant) { cam.z = z; if (!cam.follow) { cam.x = cam.tx; cam.y = cam.ty; } applyCam(); }
     camUI();
 }
@@ -1726,7 +1731,7 @@ function follow(a) {
 function stopFollow() { cam.follow = null; cam.auto = true; camUI(); }
 function camUI() {
     const home = cam.auto && !cam.follow;
-    $('zOut').disabled = cam.tz <= 1.01;
+    $('zOut').disabled = cam.tz <= zMin() + 0.01;
     $('zFit').disabled = home;
     $('zIn').disabled = cam.tz >= 5.99;
     $('zoomCtl').classList.toggle('idle', home);
@@ -2832,7 +2837,7 @@ function stepBurrower(dt, t) {
         burrowAt = t + (180 + Math.random() * 120) * (st.queens >= 1 ? 0.5 : 1);
         // Somewhere in the soil that's on screen, clear of the numbers and the dock.
         const vx0 = Math.max(MARGIN + 8, -view.ox / view.s + 6), vx1 = Math.min(W - MARGIN - 8, (view.cw - view.ox) / view.s - 6);
-        const vy0 = Math.max(GROUND + 10, -view.oy / view.s + 30), vy1 = Math.min(H - MARGIN - 8, (view.ch - view.oy) / view.s - 40);
+        const vy0 = Math.max(GROUND + 10, -view.oy / view.s + 30), vy1 = Math.min(H - MARGIN - 8, (visH() - view.oy) / view.s - 20);
         if (vx1 - vx0 < 10 || vy1 - vy0 < 10) return;
         for (let k = 0; k < 30; k++) {
             const x = vx0 + Math.random() * (vx1 - vx0), y = vy0 + Math.random() * (vy1 - vy0);
@@ -5392,13 +5397,17 @@ function layout() {
     $('zoomCtl').hidden = false;
     if (phone) {
         const inTop = parseFloat(getComputedStyle(insetProbe).paddingTop) || 0;
-        // Under a notch the status bar blurs what sits just below it, so the farm starts a little lower.
-        const top = inTop ? inTop + 28 : 0;
         // Home screen apps on recent iPhones get a viewport short by the
         // status bar's height: the strip below it, with the home bar in it,
         // can't be drawn on. The dock then needs no room for the home bar.
-        const lost = navigator.standalone === true ? Math.round(screen.height - vh) : 0;
-        lay.gap = lost > 10 && Math.abs(lost - inTop) < 12 ? lost : 0;
+        const app = navigator.standalone === true, lost = app ? Math.round(screen.height - vh) : 0;
+        lay.gap = lost > 10 && lost < 90 && (!inTop || Math.abs(lost - inTop) < 12) ? lost : 0;
+        // Under a notch the status bar blurs what sits just below it, so the
+        // farm starts a little lower. iOS has also been seen reporting no top
+        // inset at all while still drawing the status bar over the app; the
+        // short viewport gives its height away then.
+        const bar = inTop || lay.gap;
+        const top = bar ? bar + 28 : 0;
         root.setProperty('--sat', top + 'px');
         if (lay.gap) root.setProperty('--sab', '0px'); else root.removeProperty('--sab');
         const fh = Math.round(Math.min(vh - top, vw * 2));
@@ -5482,6 +5491,11 @@ $('hud').addEventListener('click', e => { const b = e.target.closest('[data-stat
 addEventListener('resize', layout);
 mqPhone.addEventListener('change', layout);
 layout();
+// iOS can settle the safe areas a moment after the app opens or comes back
+// to the front, without a resize, so look again then.
+addEventListener('pageshow', () => layout());
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { layout(); setTimeout(layout, 400); } });
+setTimeout(layout, 400); setTimeout(layout, 1500);
 
 /* ---------- events ---------- */
 // Canvas input: a tap drops a crumb, catches a bug or picks an ant to follow;
@@ -5567,7 +5581,7 @@ cv.addEventListener('wheel', e => {
     zoomTo(cam.tz * Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)), p.x, p.y, true);
 }, {passive:false});
 $('zIn').addEventListener('click', () => { noteInput(); zoomTo(cam.tz * 1.6); });
-$('zOut').addEventListener('click', () => { noteInput(); if (cam.tz / 1.6 <= 1.01) stopFollow(); zoomTo(cam.tz / 1.6); });
+$('zOut').addEventListener('click', () => { noteInput(); if (cam.tz / 1.6 <= zMin() + 0.01) stopFollow(); zoomTo(cam.tz / 1.6); });
 $('zFit').addEventListener('click', () => { noteInput(); stopFollow(); });
 let jobDrag = null;
 const barPct = x => { const r = $('jobBar').getBoundingClientRect(); return (x - r.left) / r.width * 100; };
