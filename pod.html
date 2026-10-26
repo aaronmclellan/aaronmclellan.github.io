@@ -472,6 +472,29 @@ body {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 .np.mode-scrub .np-bar .knob { display: block; }
+.np-bottom { display: flex; align-items: center; gap: 2.4cqw; }
+.np-track { flex: 1; min-width: 0; }
+.np-skip, .dk-skip {
+    position: relative;
+    flex: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #3a4047;
+    cursor: pointer;
+}
+.np-skip { width: 8.4cqw; height: 8.4cqw; margin-top: -4.6cqw; }
+.np-skip .ic { width: 100%; height: 100%; }
+.np-skip span, .dk-skip span {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding-top: 8%;
+    font-weight: 700;
+}
+.np-skip span { font-size: 2.5cqw; }
+.np-skip:active { color: #1f78e0; }
 .np-times {
     display: flex;
     justify-content: space-between;
@@ -836,6 +859,9 @@ body[data-theme="zune"] .for-zune { display: inline; }
 .pod[data-theme="zune"] .np-bar .fill { background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); }
 .pod[data-theme="zune"] .np-bar .knob { width: 3.6cqw; height: 3.6cqw; border: 0; border-radius: 50%; background: #fff; transform: translate(-50%, -50%); }
 .pod[data-theme="zune"] .np-times { font-size: 4.4cqw; font-weight: 400; color: rgba(255, 255, 255, .75); }
+.pod[data-theme="zune"] .np-skip { color: rgba(255, 255, 255, .85); }
+.pod[data-theme="zune"] .np-skip span { font-weight: 600; }
+.pod[data-theme="zune"] .np-skip:active { color: var(--accent-b); }
 .pod[data-theme="zune"] .np-empty { background: #000; color: rgba(255, 255, 255, .4); text-transform: lowercase; }
 .pod[data-theme="zune"] .boot { background: #000; }
 .pod[data-theme="zune"] .boot b { background: none; color: #fff; font-weight: 300; text-transform: lowercase; letter-spacing: -.03em; }
@@ -912,6 +938,8 @@ body[data-theme="zune"] .for-zune { display: inline; }
     .np-main { flex-direction: column; align-items: center; justify-content: center; gap: 4cqw; }
     .np-art { width: min(62cqw, 44cqh); height: min(62cqw, 44cqh); margin-top: 0; -webkit-box-reflect: unset; }
     .np-text { flex: none; width: 100%; margin-top: 0; text-align: center; }
+    .np-skip { width: 13cqw; height: 13cqw; }
+    .np-skip span { font-size: 3.6cqw; }
     .pod[data-theme="zune"] .np-main { align-items: flex-start; }
     .pod[data-theme="zune"] .np-text { text-align: left; }
     .pod[data-theme="zune"] .np-art { width: min(72cqw, 46cqh); height: min(72cqw, 46cqh); }
@@ -958,6 +986,8 @@ body[data-theme="desktop"] .stage, body[data-theme="desktop"] .hint { display: n
 .dk-btn.big { width: 44px; height: 44px; }
 .dk-btn svg { width: 18px; height: 10px; fill: currentColor; }
 .dk-btn .ic { width: 16px; height: 16px; }
+.dk-btn.dk-skip .ic { width: 24px; height: 24px; }
+.dk-skip span { font-size: 8px; }
 .dk-btn:active { background: linear-gradient(#c9c9c9, #e8e8e8); }
 .dk-vol { width: 96px; accent-color: #555; }
 .dk-lcd {
@@ -1245,6 +1275,8 @@ const SLEEPS = [0, 15, 30, 45, 60, 90];
 const THEMES = { classic: 'Classic', zune: 'Zune', desktop: 'Desktop' };
 const COLORS = { classic: ['white', 'black', 'silver', 'red'], zune: ['black', 'brown', 'white', 'pink'] };
 const ICONS = {
+    back15: '<svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7.93 6.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12.6 1.2 8.4 4l4.2 2.8z"/></svg>',
+    fwd15: '<svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 0 7.93 6.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11.4 1.2 15.6 4l-4.2 2.8z"/></svg>',
     plus: '<svg viewBox="0 0 24 24"><path d="M10.5 3h3v7.5H21v3h-7.5V21h-3v-7.5H3v-3h7.5z"/></svg>',
     play: '<svg viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z"/></svg>',
     pause: '<svg viewBox="0 0 10 10"><path d="M2 1h2.3v8H2zM5.7 1H8v8H5.7z"/></svg>',
@@ -2271,7 +2303,9 @@ const NP = {
             this.bg,
             h('div', 'np-top', this.count, this.badge),
             h('div', 'np-main', h('div', 'np-art', this.img), h('div', 'np-text', this.ttl, this.artist, this.album)),
-            h('div', 'np-bottom', this.bar, h('div', 'np-times', this.tl, this.tm, this.tr)),
+            h('div', 'np-bottom', skipButton(-15, 'np-skip'),
+                h('div', 'np-track', this.bar, h('div', 'np-times', this.tl, this.tm, this.tr)),
+                skipButton(15, 'np-skip')),
             h('div', 'np-empty', 'Nothing playing'));
         barSeek(this.bar);
         return this.el;
@@ -2351,6 +2385,23 @@ const NP = {
         this.setMode(this.mode === 'scrub' ? 'speed' : this.mode === 'speed' ? 'base' : 'scrub');
     },
 };
+
+// A circular arrow with the seconds inside; jumps back or ahead in the current track.
+function skipButton(sec, cls) {
+    const b = h('button', cls, icon(sec < 0 ? 'back15' : 'fwd15'), h('span', '', String(Math.abs(sec))));
+    b.type = 'button';
+    b.setAttribute('aria-label', (sec < 0 ? 'Back ' : 'Forward ') + Math.abs(sec) + ' seconds');
+    b.addEventListener('pointerdown', e => e.stopPropagation());
+    b.addEventListener('click', e => {
+        e.stopPropagation();
+        if (!Desk.on) {
+            wake();
+            tick();
+        }
+        seekBy(sec);
+    });
+    return b;
+}
 
 function barSeek(bar) {
     const go = e => {
@@ -2587,7 +2638,7 @@ if ('mediaSession' in navigator) {
     on('previoustrack', prevTrack);
     on('nexttrack', nextTrack);
     on('seekbackward', d => seekBy(-((d && d.seekOffset) || 15)));
-    on('seekforward', d => seekBy((d && d.seekOffset) || 30));
+    on('seekforward', d => seekBy((d && d.seekOffset) || 15));
     on('seekto', d => seekTo(d.seekTime));
 }
 
@@ -2778,7 +2829,7 @@ document.addEventListener('keydown', e => {
             if (np) { flash('prev'); wake(); seekBy(-15); } else { flash('menu'); press('menu'); }
             break;
         case 'ArrowRight':
-            if (np) { flash('next'); wake(); seekBy(30); } else select();
+            if (np) { flash('next'); wake(); seekBy(15); } else select();
             break;
         case 'n': case 'N': flash('next'); press('next'); break;
         case 'p': case 'P': flash('prev'); press('prev'); break;
@@ -3005,7 +3056,7 @@ const Desk = {
             }
             case 'Enter': if (w && this.row >= 0) this.play(w, this.row); break;
             case 'ArrowLeft': seekBy(-15); break;
-            case 'ArrowRight': seekBy(30); break;
+            case 'ArrowRight': seekBy(15); break;
             case 'n': case 'N': nextTrack(); break;
             case 'p': case 'P': prevTrack(); break;
             default: return;
@@ -3089,6 +3140,8 @@ function renderDeskSettings() {
 $('#dkPrev').addEventListener('click', prevTrack);
 $('#dkNext').addEventListener('click', nextTrack);
 $('#dkPlay').addEventListener('click', () => Desk.playPause());
+$('#dkPlay').before(skipButton(-15, 'dk-btn dk-skip'));
+$('#dkPlay').after(skipButton(15, 'dk-btn dk-skip'));
 $('#dkSpeed').addEventListener('click', cycleSpeed);
 $('#dkSleep').addEventListener('click', cycleSleep);
 $('#dkTheme').addEventListener('change', e => setTheme(e.target.value));
