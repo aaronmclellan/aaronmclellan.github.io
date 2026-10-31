@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Betclic (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016505@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T090000Z
+DTEND:20261019T120000Z
+SUMMARY:Betclic 2-1 Spirit Academy
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017824@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T140000Z
+DTEND:20261019T170000Z
+SUMMARY:BBL 2-1 Betclic
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017826@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T140000Z
+DTEND:20261020T170000Z
+SUMMARY:Betclic 2-0 Nemesis
+DESCRIPTION:PGL Bucharest 2027 - Closed Qualifier (Playoffs)\nBest of 3\nht
+ tps://www.ron.computer/cs.html
+LOCATION:PGL Bucharest 2027 - Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016514@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T120000Z
+DTEND:20261021T150000Z
+SUMMARY:Aimclub 0-2 Betclic Apogee Esports
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016517@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T140000Z
+DTEND:20261022T170000Z
+SUMMARY:Betclic Apogee Esports 1-2 Team UNiTY
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009868@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T150000Z
+DTEND:20261030T180000Z
+SUMMARY:Betclic 2-0 ILLYRIANS
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009871@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T120000Z
+DTEND:20261031T150000Z
+SUMMARY:Betclic 2-0 9INE
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+END:VCALENDAR

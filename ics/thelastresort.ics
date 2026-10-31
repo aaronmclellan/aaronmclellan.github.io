@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Last Resort (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3003990@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T175500Z
+DTEND:20261019T205500Z
+SUMMARY:The Last Resort 2-0 Sökerorg
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003996@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:Black Phoenix 2-0 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017866@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T120000Z
+DTEND:20261024T150000Z
+SUMMARY:The Last Resort vs G2 Ares
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017867@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T150000Z
+DTEND:20261024T180000Z
+SUMMARY:STATE vs The Last Resort
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017870@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T170000Z
+DTEND:20261025T200000Z
+SUMMARY:The Last Resort vs TBD
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Aurora (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3006818@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T113000Z
+DTEND:20261018T143000Z
+SUMMARY:Team Falcons 1-2 AURORA
+DESCRIPTION:Thunderpick World Championship 2026 Finals (Playoffs)\nBest of 
+ 3\nhttps://www.ron.computer/cs.html
+LOCATION:Thunderpick World Championship 2026 Finals
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018122@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T070000Z
+DTEND:20261024T100000Z
+SUMMARY:Aurora Gaming 1-2 The MongolZ
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018134@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T130000Z
+DTEND:20261025T160000Z
+SUMMARY:Aurora Gaming 2-0 G2 Esports
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018137@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T080000Z
+DTEND:20261026T110000Z
+SUMMARY:Nemiga Gaming 0-2 Aurora Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018146@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T110000Z
+DTEND:20261027T140000Z
+SUMMARY:Team Liquid 1-2 AURORA
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018155@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T132500Z
+DTEND:20261029T162500Z
+SUMMARY:MOUZ 2-0 Aurora Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Playoffs)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019577@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T043000Z
+DTEND:20261102T073000Z
+SUMMARY:AURORA vs Team Liquid
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+END:VCALENDAR

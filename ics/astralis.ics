@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Astralis (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018198@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T160000Z
+DTEND:20261027T190000Z
+SUMMARY:Astralis 0-2 Fnatic
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018200@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T110000Z
+DTEND:20261028T140000Z
+SUMMARY:Magic Esport 1-2 Astralis
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018205@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T130000Z
+DTEND:20261029T160000Z
+SUMMARY:Astralis 2-1 Inner Circle
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018207@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T183000Z
+DTEND:20261029T213000Z
+SUMMARY:Eternal Fire 2-1 Astralis
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

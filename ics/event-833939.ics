@@ -1,0 +1,339 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:European Pro League Asia - Regular Season  1 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023368@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261105T060000Z
+DTEND:20261105T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023369@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261105T083000Z
+DTEND:20261105T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023370@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261106T060000Z
+DTEND:20261106T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023371@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261106T083000Z
+DTEND:20261106T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023372@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261107T060000Z
+DTEND:20261107T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023373@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261107T083000Z
+DTEND:20261107T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023374@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261108T060000Z
+DTEND:20261108T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023375@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261108T083000Z
+DTEND:20261108T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023376@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261109T060000Z
+DTEND:20261109T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023377@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261109T083000Z
+DTEND:20261109T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023378@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261110T060000Z
+DTEND:20261110T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023379@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261110T083000Z
+DTEND:20261110T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023380@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261111T060000Z
+DTEND:20261111T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023381@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261111T083000Z
+DTEND:20261111T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023382@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261112T060000Z
+DTEND:20261112T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023383@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261112T083000Z
+DTEND:20261112T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023384@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261113T060000Z
+DTEND:20261113T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023385@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261113T083000Z
+DTEND:20261113T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023386@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261114T060000Z
+DTEND:20261114T090000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023387@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261114T083000Z
+DTEND:20261114T113000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023388@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261115T060000Z
+DTEND:20261115T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023389@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261115T083000Z
+DTEND:20261115T113000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023390@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261116T060000Z
+DTEND:20261116T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023391@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261116T083000Z
+DTEND:20261116T113000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023392@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261117T060000Z
+DTEND:20261117T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023393@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261117T083000Z
+DTEND:20261117T113000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023394@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261118T060000Z
+DTEND:20261118T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023395@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261118T083000Z
+DTEND:20261118T113000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023396@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261119T060000Z
+DTEND:20261119T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023397@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261119T083000Z
+DTEND:20261119T113000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023398@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261120T060000Z
+DTEND:20261120T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023399@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261120T083000Z
+DTEND:20261120T113000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023400@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261121T060000Z
+DTEND:20261121T090000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+END:VCALENDAR

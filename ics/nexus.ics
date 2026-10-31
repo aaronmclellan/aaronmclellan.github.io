@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nexus (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016604@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T090000Z
+DTEND:20261019T103000Z
+SUMMARY:WBT vs Nexus
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 1\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018729@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T142500Z
+DTEND:20261019T172500Z
+SUMMARY:Drama eSports vs Nexus
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018726@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T184500Z
+DTEND:20261019T214500Z
+SUMMARY:WBT vs Nexus
+DESCRIPTION:DraculaN Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018909@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T142500Z
+DTEND:20261020T172500Z
+SUMMARY:Luminosity Gaming 1-2 Nexus
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018711@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T110000Z
+DTEND:20261021T140000Z
+SUMMARY:BC.Game 2-1 Nexus
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018712@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T150000Z
+DTEND:20261021T180000Z
+SUMMARY:Nexus vs sAw
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018719@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T193000Z
+DTEND:20261021T223000Z
+SUMMARY:Basement Boys vs Nexus
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018720@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T130000Z
+DTEND:20261022T160000Z
+SUMMARY:JiJieHao 2-0 Nexus
+DESCRIPTION:DraculaN Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.comput
+ er/cs.html
+LOCATION:DraculaN Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018166@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T090000Z
+DTEND:20261026T120000Z
+SUMMARY:Nexus vs Revise
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018176@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T150000Z
+DTEND:20261028T180000Z
+SUMMARY:Nexus vs Walczaki
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018184@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T150000Z
+DTEND:20261030T180000Z
+SUMMARY:Nexus vs SINQU Esports
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018187@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T150000Z
+DTEND:20261031T180000Z
+SUMMARY:Nexus vs Azuolas
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+END:VCALENDAR

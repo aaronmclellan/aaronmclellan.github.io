@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:fnatic (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015068@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T150000Z
+DTEND:20261019T180000Z
+SUMMARY:Team Liquid 0-2 Fnatic
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015073@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T165000Z
+DTEND:20261020T195000Z
+SUMMARY:Fnatic 1-2 Parivision
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015075@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T120000Z
+DTEND:20261021T150000Z
+SUMMARY:Fnatic 0-2 PRIVATE
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018198@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T160000Z
+DTEND:20261027T190000Z
+SUMMARY:Astralis 0-2 Fnatic
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018202@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T160000Z
+DTEND:20261028T190000Z
+SUMMARY:BIG 0-2 Fnatic
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018206@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T163000Z
+DTEND:20261029T193000Z
+SUMMARY:Fnatic 2-0 MIBR
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018209@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T163000Z
+DTEND:20261030T213000Z
+SUMMARY:Fnatic 2-3 Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 5\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

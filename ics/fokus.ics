@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:FOKUS (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016511@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T150000Z
+DTEND:20261020T180000Z
+SUMMARY:Fokus vs ex-Zero Tenacity
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016516@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T090000Z
+DTEND:20261021T120000Z
+SUMMARY:Fokus 1-2 Team UNiTY
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014209@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T080000Z
+DTEND:20261024T110000Z
+SUMMARY:Fokus vs ex-6666
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014220@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T120000Z
+DTEND:20261026T150000Z
+SUMMARY:Fokus vs ex-Zero Tenacity
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014222@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T120000Z
+DTEND:20261027T150000Z
+SUMMARY:Nuclear Tigeres 1-2 Fokus
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014223@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T155000Z
+DTEND:20261027T185000Z
+SUMMARY:BRUTE 1-2 Fokus
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009867@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:Fokus 2-0 Sökerorg
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009872@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T150000Z
+DTEND:20261031T180000Z
+SUMMARY:Fokus 2-0 BAKS
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+END:VCALENDAR

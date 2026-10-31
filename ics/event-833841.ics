@@ -1,0 +1,349 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fiesta Series 3 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3020793@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T090000Z
+DTEND:20261025T120000Z
+SUMMARY:Johnny Speeds vs DNK (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018163@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T120000Z
+DTEND:20261025T150000Z
+SUMMARY:Just Players vs Dark Moon (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018164@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T150000Z
+DTEND:20261025T180000Z
+SUMMARY:Saint Sinners vs BERG (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018165@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T180000Z
+DTEND:20261025T210000Z
+SUMMARY:Honvéd vs SINQU Esports (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018166@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T090000Z
+DTEND:20261026T120000Z
+SUMMARY:Nexus vs Revise (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018167@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T120000Z
+DTEND:20261026T150000Z
+SUMMARY:Walczaki vs Wingman (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018168@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T150000Z
+DTEND:20261026T180000Z
+SUMMARY:Azuolas vs Fortress (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018169@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T180000Z
+DTEND:20261026T210000Z
+SUMMARY:Lilmix vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018170@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T090000Z
+DTEND:20261027T120000Z
+SUMMARY:Johnny Speeds 0-2 Just Players (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018171@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T120000Z
+DTEND:20261027T150000Z
+SUMMARY:Azuolas vs Saint Sinners (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018172@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T150000Z
+DTEND:20261027T180000Z
+SUMMARY:Wingman vs Revise (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018173@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T170000Z
+DTEND:20261027T200000Z
+SUMMARY:Honvéd vs Lilmix (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018174@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T090000Z
+DTEND:20261028T120000Z
+SUMMARY:DNK vs Dark Moon (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018175@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T120000Z
+DTEND:20261028T150000Z
+SUMMARY:SINQU Esports vs Fortress (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018176@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T150000Z
+DTEND:20261028T180000Z
+SUMMARY:Nexus vs Walczaki (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018177@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T180000Z
+DTEND:20261028T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018178@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T090000Z
+DTEND:20261029T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018179@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T120000Z
+DTEND:20261029T150000Z
+SUMMARY:Saint Sinners vs Just Players (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018180@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T150000Z
+DTEND:20261029T180000Z
+SUMMARY:Fortress vs DNK (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018181@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:Revise vs Honvéd (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018182@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T090000Z
+DTEND:20261030T120000Z
+SUMMARY:Lilmix vs Dark Moon (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018183@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:Johnny Speeds vs BERG (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018184@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T150000Z
+DTEND:20261030T180000Z
+SUMMARY:Nexus vs SINQU Esports (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018185@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:Azuolas vs Wingman (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018186@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T120000Z
+DTEND:20261031T150000Z
+SUMMARY:Johnny Speeds vs Revise (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018187@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T150000Z
+DTEND:20261031T180000Z
+SUMMARY:Nexus vs Azuolas (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018188@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T180000Z
+DTEND:20261031T210000Z
+SUMMARY:Dark Moon vs Saint Sinners (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018189@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T120000Z
+DTEND:20261101T150000Z
+SUMMARY:DNK vs SINQU Esports (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018190@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T150000Z
+DTEND:20261101T180000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018191@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T180000Z
+DTEND:20261101T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018192@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T110000Z
+DTEND:20261102T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018193@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T140000Z
+DTEND:20261102T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018194@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T170000Z
+DTEND:20261102T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018195@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261103T110000Z
+DTEND:20261103T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 3 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+END:VCALENDAR

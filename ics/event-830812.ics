@@ -1,0 +1,439 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ESEA Advanced Season 59 - North America (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018101@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T000000Z
+DTEND:20261019T013000Z
+SUMMARY:Demolition 0-1 Sharp (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018816@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T003000Z
+DTEND:20261020T020000Z
+SUMMARY:NZ Gaming 1-0 Zomblers LLC (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018817@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T003000Z
+DTEND:20261020T020000Z
+SUMMARY:Marsborne 1-0 Team Skyline (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018818@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T010000Z
+DTEND:20261020T023000Z
+SUMMARY:mas paspas 0-1 NXG Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018672@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T013000Z
+DTEND:20261021T030000Z
+SUMMARY:Overtake Sector 0-0 EXODIA (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019037@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T020000Z
+DTEND:20261021T033000Z
+SUMMARY:Team Hyper 0-1 firesale (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019038@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T020000Z
+DTEND:20261021T033000Z
+SUMMARY:Empire 0-0 Holly Molly (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019039@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T020000Z
+DTEND:20261021T033000Z
+SUMMARY:Chicken Coop Esports 0-1 SportsBetExpert (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018673@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T000000Z
+DTEND:20261022T013000Z
+SUMMARY:Marsborne 1-0 NineFly Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019128@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T003000Z
+DTEND:20261022T020000Z
+SUMMARY:firesale 0-1 The Holy Squid Empire (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019129@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T010000Z
+DTEND:20261022T023000Z
+SUMMARY:Celestial Esports 1-0 Endless Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019130@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T010000Z
+DTEND:20261022T023000Z
+SUMMARY:counterstrike Team 0-1 MASTER ONE (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019133@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261023T013000Z
+DTEND:20261023T030000Z
+SUMMARY:Pug Place vs Endless Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018675@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T013000Z
+DTEND:20261024T030000Z
+SUMMARY:Detonate 1-0 Desi Boyz v8 (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020697@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T010000Z
+DTEND:20261026T023000Z
+SUMMARY:Omen Esports 0-1 Villainous (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020701@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T010000Z
+DTEND:20261027T023000Z
+SUMMARY:Desi Boyz v8 0-1 Empire (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020702@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T010000Z
+DTEND:20261027T023000Z
+SUMMARY:CLUB 333 0-1 Elusive (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020703@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T010000Z
+DTEND:20261027T023000Z
+SUMMARY:MASTER ONE 0-1 Celestial Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020704@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T023000Z
+DTEND:20261027T040000Z
+SUMMARY:mas paspas 1-0 Diggers (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022148@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T003000Z
+DTEND:20261028T020000Z
+SUMMARY:mas paspas 1-0 Xiaoma Gaming (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022149@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T003000Z
+DTEND:20261028T020000Z
+SUMMARY:Addice 1-0 Endless Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022150@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T013000Z
+DTEND:20261028T030000Z
+SUMMARY:academy 4 gifted children 1-0 Team Hyper (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022151@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T013000Z
+DTEND:20261028T030000Z
+SUMMARY:FLAT EARTH 1-0 NZ Gaming (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019131@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T010000Z
+DTEND:20261029T023000Z
+SUMMARY:Automatic HQ 1-0 North Forge (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022463@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T010000Z
+DTEND:20261029T023000Z
+SUMMARY:027fam 0-1 Shadow Wizard Money Gang (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022464@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T010000Z
+DTEND:20261029T023000Z
+SUMMARY:Wanted Goons 1-0 counterstrike Team (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022465@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T010000Z
+DTEND:20261029T023000Z
+SUMMARY:Team Skyline 0-1 NineFly Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022838@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T010000Z
+DTEND:20261030T023000Z
+SUMMARY:Addice 0-1 FlyQuest RED (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022839@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T010000Z
+DTEND:20261030T023000Z
+SUMMARY:Automatic HQ 0-1 NZ Gaming (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022840@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T010000Z
+DTEND:20261030T023000Z
+SUMMARY:CLUB 333 0-1 Celestial Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022841@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T013000Z
+DTEND:20261030T030000Z
+SUMMARY:Elation 0-1 Hairy Scary Bandits (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023117@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T013000Z
+DTEND:20261031T030000Z
+SUMMARY:House Platypus ESC 0-1 Villainous (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023121@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T013000Z
+DTEND:20261101T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023122@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T013000Z
+DTEND:20261101T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023123@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T013000Z
+DTEND:20261101T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023124@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T013000Z
+DTEND:20261101T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023407@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T013000Z
+DTEND:20261102T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023408@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T013000Z
+DTEND:20261102T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023409@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T013000Z
+DTEND:20261102T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023410@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T013000Z
+DTEND:20261102T030000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019132@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261104T020000Z
+DTEND:20261104T033000Z
+SUMMARY:Holly Molly vs Chicken Coop Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018674@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261105T150000Z
+DTEND:20261105T163000Z
+SUMMARY:New Legends vs NuTorious (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018104@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261110T013000Z
+DTEND:20261110T030000Z
+SUMMARY:EXODIA vs Wanted Goons (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+END:VCALENDAR

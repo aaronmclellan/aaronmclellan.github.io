@@ -1,0 +1,299 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:United21 Season 57 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014935@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T080000Z
+DTEND:20261018T110000Z
+SUMMARY:Elite Klan 0-2 Passion Academy (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014936@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T103000Z
+DTEND:20261018T133000Z
+SUMMARY:Wonderkids 2-1 Revenge (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018334@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T141500Z
+DTEND:20261018T171500Z
+SUMMARY:CTRL 0-2 ex - Eternal Fire Academy (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014937@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T080000Z
+DTEND:20261019T110000Z
+SUMMARY:CPH Wolves 1-2 Prestige Esports (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014938@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T105500Z
+DTEND:20261019T135500Z
+SUMMARY:SANCTUM 0-2 The Chosen Few (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014939@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T103000Z
+DTEND:20261020T133000Z
+SUMMARY:Gatorian 2-0 Team UNiTY (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014941@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T080000Z
+DTEND:20261021T110000Z
+SUMMARY:gothboiclique 2-0 ex - Eternal Fire Academy (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014942@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T103000Z
+DTEND:20261021T133000Z
+SUMMARY:9INE Academy 2-0 CTRL (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014943@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T080000Z
+DTEND:20261022T110000Z
+SUMMARY:Passion Academy 1-2 Wonderkids (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014944@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T104500Z
+DTEND:20261022T134500Z
+SUMMARY:Elite Klan 0-2 Revenge (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018762@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T130000Z
+DTEND:20261022T160000Z
+SUMMARY:ThechampionGG 0-2 ENCE Prospect (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014945@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261023T082000Z
+DTEND:20261023T112000Z
+SUMMARY:CPH Wolves 2-0 The Chosen Few (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014946@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261023T103000Z
+DTEND:20261023T133000Z
+SUMMARY:Team UNiTY 2-0 ENCE Prospect (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014947@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T080000Z
+DTEND:20261024T110000Z
+SUMMARY:ex - Eternal Fire Academy 2-1 9INE Academy (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014948@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T103000Z
+DTEND:20261024T133000Z
+SUMMARY:Passion Academy 1-2 Revenge (Group Stage)
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014949@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T090000Z
+DTEND:20261025T120000Z
+SUMMARY:Prestige Esports 1-2 Revenge (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014950@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T120000Z
+DTEND:20261025T150000Z
+SUMMARY:Gatorian 2-1 Bread Eaters (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014951@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T090000Z
+DTEND:20261026T120000Z
+SUMMARY:gothboiclique 1-2 Team UNiTY (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014952@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T120000Z
+DTEND:20261026T150000Z
+SUMMARY:Wonderkids 0-2 CPH Wolves (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022477@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T090000Z
+DTEND:20261027T120000Z
+SUMMARY:Prestige Esports 2-1 Bread Eaters (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014954@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T113000Z
+DTEND:20261027T143000Z
+SUMMARY:Wonderkids 0-2 gothboiclique (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022478@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T090000Z
+DTEND:20261028T120000Z
+SUMMARY:Revenge 1-1 Gatorian (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014956@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T113000Z
+DTEND:20261028T143000Z
+SUMMARY:Team UNiTY 2-0 CPH Wolves (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014957@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T090000Z
+DTEND:20261029T120000Z
+SUMMARY:CPH Wolves 2-0 Prestige Esports (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014958@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T113000Z
+DTEND:20261029T143000Z
+SUMMARY:Revenge 0-2 gothboiclique (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014959@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T090000Z
+DTEND:20261030T120000Z
+SUMMARY:Gatorian 0-2 Team UNiTY (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014960@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:CPH Wolves 1-2 gothboiclique (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014961@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T090000Z
+DTEND:20261031T120000Z
+SUMMARY:Gatorian 0-2 gothboiclique (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014962@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T090000Z
+DTEND:20261101T120000Z
+SUMMARY:Team UNiTY vs TBD (Playoffs)
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+END:VCALENDAR

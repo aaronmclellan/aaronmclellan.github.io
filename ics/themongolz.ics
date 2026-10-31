@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The MongolZ (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015067@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T091500Z
+DTEND:20261019T121500Z
+SUMMARY:The MongolZ 1-0 Alliance
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015072@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T150000Z
+DTEND:20261020T180000Z
+SUMMARY:BIG 2-0 The MongolZ
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015074@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T090000Z
+DTEND:20261021T120000Z
+SUMMARY:The MongolZ vs Magic Esport
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015077@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T180000Z
+DTEND:20261021T210000Z
+SUMMARY:PRIVATE 0-2 The MongolZ
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015078@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T110000Z
+DTEND:20261022T140000Z
+SUMMARY:BIG 1-2 The MongolZ
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 3\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015079@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T150000Z
+DTEND:20261022T200000Z
+SUMMARY:Parivision 0-3 The MongolZ
+DESCRIPTION:1win Private Club #2 (Playoffs)\nBest of 5\nhttps://www.ron.com
+ puter/cs.html
+LOCATION:1win Private Club #2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018122@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T070000Z
+DTEND:20261024T100000Z
+SUMMARY:Aurora Gaming 1-2 The MongolZ
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018130@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T094000Z
+DTEND:20261025T124000Z
+SUMMARY:The MongolZ 0-2 Team Vitality
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018138@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T080000Z
+DTEND:20261026T110000Z
+SUMMARY:The MongolZ 0-2 MOUZ
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018147@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T140000Z
+DTEND:20261027T170000Z
+SUMMARY:The MongolZ 2-0 Legacy
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018151@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T110000Z
+DTEND:20261028T140000Z
+SUMMARY:The MongolZ 0-2 Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019572@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261102T020000Z
+DTEND:20261102T050000Z
+SUMMARY:Legacy vs The MongolZ
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+END:VCALENDAR

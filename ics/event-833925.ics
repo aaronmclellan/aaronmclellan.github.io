@@ -1,0 +1,149 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Gamers Club Masters VII (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022522@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T131000Z
+DTEND:20261029T161000Z
+SUMMARY:Imperial 2-0 QUINTESSÊNCIA (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022523@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T161000Z
+DTEND:20261029T191000Z
+SUMMARY:paiN 2-1 NAOCOPULAS (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022524@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T195000Z
+DTEND:20261029T225000Z
+SUMMARY:DENDELE CS 2-0 low cortisol gaming (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022525@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T223500Z
+DTEND:20261030T013500Z
+SUMMARY:Turma do Pagode 2-0 ALKA (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022526@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T130000Z
+DTEND:20261030T160000Z
+SUMMARY:QUINTESSÊNCIA 0-2 NAOCOPULAS (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022527@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T160000Z
+DTEND:20261030T190000Z
+SUMMARY:low cortisol gaming 2-0 ALKA (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022528@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T191000Z
+DTEND:20261030T221000Z
+SUMMARY:Imperial 2-0 paiN (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022529@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T220000Z
+DTEND:20261031T010000Z
+SUMMARY:DENDELE CS 2-0 Turma do Pagode (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022530@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T130000Z
+DTEND:20261031T160000Z
+SUMMARY:paiN 0-2 NAOCOPULAS (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022531@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T160000Z
+DTEND:20261031T190000Z
+SUMMARY:Turma do Pagode vs low cortisol gaming (Group Stage)
+DESCRIPTION:Gamers Club Masters VII (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022532@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T200000Z
+DTEND:20261031T230000Z
+SUMMARY:DENDELE CS vs NAOCOPULAS (Playoffs)
+DESCRIPTION:Gamers Club Masters VII (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022533@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T233000Z
+DTEND:20261101T023000Z
+SUMMARY:Imperial vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Masters VII (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022534@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T150000Z
+DTEND:20261101T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Masters VII (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022535@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T200000Z
+DTEND:20261102T010000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Masters VII (Playoffs)\nBest of 5\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Gamers Club Masters VII
+END:VEVENT
+END:VCALENDAR

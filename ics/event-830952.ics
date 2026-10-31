@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 Challengers North America 1 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3009338@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261107T213000Z
+DTEND:20261108T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009339@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261107T213000Z
+DTEND:20261108T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009340@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261108T001500Z
+DTEND:20261108T031500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009341@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261108T001500Z
+DTEND:20261108T031500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009342@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261108T213000Z
+DTEND:20261109T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009343@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261108T213000Z
+DTEND:20261109T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009344@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261109T001500Z
+DTEND:20261109T031500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009345@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261109T001500Z
+DTEND:20261109T031500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+END:VCALENDAR

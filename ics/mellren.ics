@@ -1,0 +1,159 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:mellren (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3003986@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T140000Z
+DTEND:20261018T170000Z
+SUMMARY:Spirit Academy 2-1 mellren
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014195@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T170000Z
+DTEND:20261018T200000Z
+SUMMARY:Team UNiTY vs mellren
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3003989@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T140000Z
+DTEND:20261019T170000Z
+SUMMARY:G2 Ares 2-1 mellren
+DESCRIPTION:CCT 2026 Europe Series 11 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009828@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T175000Z
+DTEND:20261019T205000Z
+SUMMARY:mellren 2-1 Banda LFO
+DESCRIPTION:CCT 2026 Europe Series 12 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009831@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T140000Z
+DTEND:20261020T170000Z
+SUMMARY:ex-RUSTEC 2-0 mellren
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014202@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T140000Z
+DTEND:20261020T170000Z
+SUMMARY:BAKS Esports vs mellren
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013236@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T130000Z
+DTEND:20261021T160000Z
+SUMMARY:mellren 1-2 Four Magic
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013244@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:mellren 1-2 Banda LFO
+DESCRIPTION:ESL Challenger League Season 52 - Cup #9 Europe (Group Stage)\n
+ Best of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #9 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014208@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T140000Z
+DTEND:20261022T170000Z
+SUMMARY:TEAM 33 vs mellren
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009841@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261023T140000Z
+DTEND:20261023T170000Z
+SUMMARY:Walczaki 0-2 mellren
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014210@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T110000Z
+DTEND:20261024T140000Z
+SUMMARY:Nemesis vs mellren
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009849@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T090000Z
+DTEND:20261025T120000Z
+SUMMARY:Lavked 2-1 mellren
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009855@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T180000Z
+DTEND:20261026T210000Z
+SUMMARY:Novaq 2-0 mellren
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013892@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:mellren 0-2 Falcons Force
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013894@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:mellren 0-2 megoshort
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+END:VCALENDAR

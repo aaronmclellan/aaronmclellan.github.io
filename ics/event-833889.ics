@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CyberClash Season 2 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023081@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T130000Z
+DTEND:20261029T160000Z
+SUMMARY:Fire Flux vs PRIVATE (Playoffs)
+DESCRIPTION:CyberClash Season 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023082@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:Nuclear Tigeres vs PRIVATE (Playoffs)
+DESCRIPTION:CyberClash Season 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023083@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T150000Z
+DTEND:20261030T180000Z
+SUMMARY:WRAITH PCIFIC vs Omega (Playoffs)
+DESCRIPTION:CyberClash Season 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023084@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T120000Z
+DTEND:20261031T150000Z
+SUMMARY:Nuclear Tigeres vs WRAITH PCIFIC (Playoffs)
+DESCRIPTION:CyberClash Season 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023085@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T150000Z
+DTEND:20261031T180000Z
+SUMMARY:PRIVATE vs Omega (Playoffs)
+DESCRIPTION:CyberClash Season 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 2
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ex-Zero Tenacity (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014197@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T140000Z
+DTEND:20261019T170000Z
+SUMMARY:ex-Zero Tenacity vs Bushido Wildcats
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014201@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T110000Z
+DTEND:20261020T140000Z
+SUMMARY:ex-Zero Tenacity vs FORZE Reload
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016511@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T150000Z
+DTEND:20261020T180000Z
+SUMMARY:Fokus vs ex-Zero Tenacity
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004001@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261023T080000Z
+DTEND:20261023T110000Z
+SUMMARY:ex-Zero Tenacity 2-0 ex-RUSTEC
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004008@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T170000Z
+DTEND:20261024T200000Z
+SUMMARY:Nuclear Tigeres 1-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004010@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T144000Z
+DTEND:20261025T174000Z
+SUMMARY:Spirit Academy 0-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004011@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T170000Z
+DTEND:20261025T200000Z
+SUMMARY:Acend 0-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014216@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T180000Z
+DTEND:20261025T210000Z
+SUMMARY:Color vs ex-Zero Tenacity
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014220@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T120000Z
+DTEND:20261026T150000Z
+SUMMARY:Fokus vs ex-Zero Tenacity
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+END:VCALENDAR

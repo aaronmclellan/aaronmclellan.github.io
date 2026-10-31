@@ -1,0 +1,309 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 Contenders Europe Series 10 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013994@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T153000Z
+DTEND:20261024T183000Z
+SUMMARY:Xcity 2-0 SPARX ESPORTS (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013995@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T153000Z
+DTEND:20261024T183000Z
+SUMMARY:Zotix 1-2 Prodigy (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013996@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T181500Z
+DTEND:20261024T211500Z
+SUMMARY:Four Magic 0-2 Ducks (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013997@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T181500Z
+DTEND:20261024T211500Z
+SUMMARY:Aurora YB 0-2 Hermine Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013998@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T163000Z
+DTEND:20261025T193000Z
+SUMMARY:Monte 2-1 TTG Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013999@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T163000Z
+DTEND:20261025T193000Z
+SUMMARY:DINERO 0-2 DimoniX Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014001@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T191500Z
+DTEND:20261025T221500Z
+SUMMARY:TSA Black 2-1 WinX (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014000@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T193400Z
+DTEND:20261025T223400Z
+SUMMARY:eSuba 0-2 Nemesis Academy (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014002@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T163000Z
+DTEND:20261026T193000Z
+SUMMARY:Four Magic 0-2 Aurora YB (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014003@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T163000Z
+DTEND:20261026T193000Z
+SUMMARY:DINERO 0-2 TTG Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014004@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T191500Z
+DTEND:20261026T221500Z
+SUMMARY:Ducks 2-0 Hermine Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014006@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T191500Z
+DTEND:20261026T221500Z
+SUMMARY:Prodigy 2-1 Xcity (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014007@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T163000Z
+DTEND:20261027T193000Z
+SUMMARY:Zotix 0-2 SPARX ESPORTS (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014008@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T163000Z
+DTEND:20261027T193000Z
+SUMMARY:eSuba 1-2 WinX (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014009@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T191500Z
+DTEND:20261027T221500Z
+SUMMARY:Nemesis Academy 1-2 TSA Black (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014010@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T191500Z
+DTEND:20261027T221500Z
+SUMMARY:DimoniX Esports 0-2 Monte (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014011@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T163000Z
+DTEND:20261028T193000Z
+SUMMARY:Aurora YB 2-1 DimoniX Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014012@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T163000Z
+DTEND:20261028T193000Z
+SUMMARY:WinX 2-1 Xcity (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014013@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T191500Z
+DTEND:20261028T221500Z
+SUMMARY:SPARX ESPORTS 2-0 Nemesis Academy (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014014@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T192500Z
+DTEND:20261028T222500Z
+SUMMARY:TTG Esports 2-1 Hermine Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014015@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T163000Z
+DTEND:20261029T193000Z
+SUMMARY:Aurora YB 2-1 SPARX ESPORTS (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023277@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T163000Z
+DTEND:20261029T193000Z
+SUMMARY:WinX 0-2 TTG Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014018@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T191500Z
+DTEND:20261029T221500Z
+SUMMARY:TSA Black 0-2 Monte (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023326@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T203000Z
+DTEND:20261029T233000Z
+SUMMARY:Ducks 1-2 Prodigy (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014019@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T164500Z
+DTEND:20261030T194500Z
+SUMMARY:Ducks 2-1 Aurora YB (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014020@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T200000Z
+DTEND:20261030T230000Z
+SUMMARY:TSA Black 0-2 TTG Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014021@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T163000Z
+DTEND:20261031T193000Z
+SUMMARY:Prodigy 0-2 Monte (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014022@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T191500Z
+DTEND:20261031T221500Z
+SUMMARY:Ducks vs TTG Esports (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014023@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T163000Z
+DTEND:20261101T193000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014024@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T191500Z
+DTEND:20261101T221500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Contenders Europe Series 10 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 10
+END:VEVENT
+END:VCALENDAR

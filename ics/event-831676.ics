@@ -1,0 +1,229 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:HyperX Retake Season 13 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022545@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T090000Z
+DTEND:20261029T103000Z
+SUMMARY:WBT Academy 0-1 SAW Youngsters (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022546@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T103000Z
+DTEND:20261029T133000Z
+SUMMARY:JiJieHao 2-1 SAW Youngsters (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022547@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T135000Z
+DTEND:20261029T165000Z
+SUMMARY:WBT Academy 2-1 SAW Youngsters (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022548@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T140000Z
+DTEND:20261029T153000Z
+SUMMARY:Iberian Soul 1-0 Zotix (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022549@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T170500Z
+DTEND:20261029T200500Z
+SUMMARY:TYLOO 1-2 Iberian Soul (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022550@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T212500Z
+DTEND:20261030T002500Z
+SUMMARY:Zotix 0-2 TYLOO (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023339@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T090000Z
+DTEND:20261030T103000Z
+SUMMARY:Basement Boys 0-1 Toobies (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022552@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T101500Z
+DTEND:20261030T131500Z
+SUMMARY:Natus Vincere 2-0 Toobies (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022553@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T123000Z
+DTEND:20261030T153000Z
+SUMMARY:Basement Boys 2-1 Toobies (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022554@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T163000Z
+DTEND:20261030T180000Z
+SUMMARY:BC.Game 1-0 OG (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022555@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T163000Z
+DTEND:20261030T180000Z
+SUMMARY:Metizport 1-0 SNITKO Esports (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022556@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T181500Z
+DTEND:20261030T211500Z
+SUMMARY:BC.Game 0-2 Metizport (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022557@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T181500Z
+DTEND:20261030T211500Z
+SUMMARY:OG 1-2 SNITKO Esports (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022558@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T212000Z
+DTEND:20261031T002000Z
+SUMMARY:OG 2-0 BC.Game (Group Stage)
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022559@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T100000Z
+DTEND:20261031T130000Z
+SUMMARY:Natus Vincere 0-2 WBT Academy (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022560@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T130000Z
+DTEND:20261031T160000Z
+SUMMARY:Metizport 2-0 TYLOO (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022561@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T143000Z
+DTEND:20261031T173000Z
+SUMMARY:JiJieHao 2-0 Basement Boys (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022562@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T173500Z
+DTEND:20261031T203500Z
+SUMMARY:Iberian Soul vs OG (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022563@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T100000Z
+DTEND:20261101T130000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022564@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T130000Z
+DTEND:20261101T160000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022565@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T160000Z
+DTEND:20261101T190000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022566@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T190000Z
+DTEND:20261101T220000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+END:VCALENDAR

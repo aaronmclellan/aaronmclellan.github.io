@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:UNiTY (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014195@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261018T170000Z
+DTEND:20261018T200000Z
+SUMMARY:Team UNiTY vs mellren
+DESCRIPTION:NODWIN Clutch Series #13 (Group Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016508@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261019T173000Z
+DTEND:20261019T203000Z
+SUMMARY:Team UNiTY 2-1 9INE
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014939@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261020T103000Z
+DTEND:20261020T133000Z
+SUMMARY:Gatorian 2-0 Team UNiTY
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016516@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261021T090000Z
+DTEND:20261021T120000Z
+SUMMARY:Fokus 1-2 Team UNiTY
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016517@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261022T140000Z
+DTEND:20261022T170000Z
+SUMMARY:Betclic Apogee Esports 1-2 Team UNiTY
+DESCRIPTION:Stake Ranked Episode 6 Closed Qualifier (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Stake Ranked Episode 6 Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014946@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261023T103000Z
+DTEND:20261023T133000Z
+SUMMARY:Team UNiTY 2-0 ENCE Prospect
+DESCRIPTION:United21 Season 57 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014213@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T090000Z
+DTEND:20261025T120000Z
+SUMMARY:Acend 1-1 Team UNiTY
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014951@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T090000Z
+DTEND:20261026T120000Z
+SUMMARY:gothboiclique 1-2 Team UNiTY
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014219@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T180000Z
+DTEND:20261026T210000Z
+SUMMARY:Nuclear Tigeres 2-1 Team UNiTY
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014956@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T113000Z
+DTEND:20261028T143000Z
+SUMMARY:Team UNiTY 2-0 CPH Wolves
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014959@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T090000Z
+DTEND:20261030T120000Z
+SUMMARY:Gatorian 0-2 Team UNiTY
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014962@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T090000Z
+DTEND:20261101T120000Z
+SUMMARY:Team UNiTY vs TBD
+DESCRIPTION:United21 Season 57 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 57
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nemiga (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018125@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261024T125000Z
+DTEND:20261024T155000Z
+SUMMARY:Legacy 0-2 Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018133@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261025T100500Z
+DTEND:20261025T130500Z
+SUMMARY:BetBoom 2-0 Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018137@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T080000Z
+DTEND:20261026T110000Z
+SUMMARY:Nemiga Gaming 0-2 Aurora Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018149@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T110000Z
+DTEND:20261027T140000Z
+SUMMARY:Nemiga Gaming 2-0 DENDELE CS
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018151@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T110000Z
+DTEND:20261028T140000Z
+SUMMARY:The MongolZ 0-2 Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018154@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261029T080000Z
+DTEND:20261029T110000Z
+SUMMARY:FUT Esports 0-2 Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Playoffs)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018158@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:Team Vitality 0-2 Nemiga Gaming
+DESCRIPTION:PGL Masters Bucharest 2026 (Playoffs)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018161@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T110000Z
+DTEND:20261031T160000Z
+SUMMARY:Nemiga Gaming 2-3 FURIA
+DESCRIPTION:PGL Masters Bucharest 2026 (Playoffs)\nBest of 5\nhttps://www.r
+ on.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+END:VCALENDAR

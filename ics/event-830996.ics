@@ -1,0 +1,169 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:DFRAG Invitational 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3020010@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T030000Z
+DTEND:20261026T060000Z
+SUMMARY:Ground Zero Gaming 0-2 Off Chops (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020012@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T030000Z
+DTEND:20261026T060000Z
+SUMMARY:NEXVOID 0-2 Alter Ego (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009355@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T060000Z
+DTEND:20261026T090000Z
+SUMMARY:Off Chops 0-2 Alter Ego (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009356@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261026T074500Z
+DTEND:20261026T104500Z
+SUMMARY:Ground Zero Gaming 0-2 NEXVOID (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020014@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T030000Z
+DTEND:20261027T060000Z
+SUMMARY:Flyquest 2-0 Staqued (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3020016@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T030000Z
+DTEND:20261027T060000Z
+SUMMARY:Rooster 2-1 Abyssal (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009800@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T073500Z
+DTEND:20261027T103500Z
+SUMMARY:Flyquest 2-1 Rooster (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009801@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261027T073500Z
+DTEND:20261027T103500Z
+SUMMARY:Staqued 0-2 Abyssal (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009802@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T030000Z
+DTEND:20261028T060000Z
+SUMMARY:Off Chops 1-2 NEXVOID (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022247@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261028T061000Z
+DTEND:20261028T091000Z
+SUMMARY:Rooster 0-2 Abyssal (Group Stage)
+DESCRIPTION:DFRAG Invitational 2026 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009803@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T030000Z
+DTEND:20261030T060000Z
+SUMMARY:Alter Ego 2-0 Abyssal (Playoffs)
+DESCRIPTION:DFRAG Invitational 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009804@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T030000Z
+DTEND:20261030T060000Z
+SUMMARY:Flyquest 2-0 NEXVOID (Playoffs)
+DESCRIPTION:DFRAG Invitational 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009805@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261030T060000Z
+DTEND:20261030T090000Z
+SUMMARY:Alter Ego 0-2 Flyquest (Playoffs)
+DESCRIPTION:DFRAG Invitational 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009806@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T030000Z
+DTEND:20261031T060000Z
+SUMMARY:Abyssal 0-2 NEXVOID (Playoffs)
+DESCRIPTION:DFRAG Invitational 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009807@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261031T060000Z
+DTEND:20261031T090000Z
+SUMMARY:Alter Ego 2-1 NEXVOID (Playoffs)
+DESCRIPTION:DFRAG Invitational 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009808@aaronmclellan.github.io
+DTSTAMP:20261031T185423Z
+DTSTART:20261101T030000Z
+DTEND:20261101T080000Z
+SUMMARY:Flyquest vs Alter Ego (Playoffs)
+DESCRIPTION:DFRAG Invitational 2026 (Playoffs)\nBest of 5\nhttps://www.ron.
+ computer/cs.html
+LOCATION:DFRAG Invitational 2026
+END:VEVENT
+END:VCALENDAR
