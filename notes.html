@@ -333,21 +333,32 @@ a{color:var(--accent);}
 :is(#editor,.note-view) div[data-todo][data-mark="orange"]{--tint:rgba(249,115,22,.15);}
 :is(#editor,.note-view) div[data-todo][data-mark="yellow"]{--tint:rgba(234,179,8,.16);}
 :is(#editor,.note-view) div[data-todo][data-mark="blue"]{--tint:rgba(59,130,246,.14);}
-:is(#editor,.note-view) div[data-todo][data-mark="green"]{--tint:rgba(34,197,94,.14);}
+:is(#editor,.note-view) div[data-todo][data-mark="testing"]{--tint:rgba(34,197,94,.14);}
 :is(#editor,.note-view) div[data-todo][data-mark="purple"]{--tint:rgba(168,85,247,.15);}
 :is(#editor,.note-view) div[data-todo="false"][data-mark="gray"]{--tint:rgba(148,163,184,.12);color:var(--text2);}   /* low priority recedes a little */
 :is(#editor,.note-view) div[data-todo][data-mark="red"]::before{border-color:#ef4444;}
 :is(#editor,.note-view) div[data-todo][data-mark="orange"]::before{border-color:#f97316;}
 :is(#editor,.note-view) div[data-todo][data-mark="yellow"]::before{border-color:#eab308;}
 :is(#editor,.note-view) div[data-todo][data-mark="blue"]::before{border-color:#3b82f6;}
-:is(#editor,.note-view) div[data-todo][data-mark="green"]::before{border-color:#22c55e;}
+:is(#editor,.note-view) div[data-todo][data-mark="testing"]::before{border-color:#22c55e;}
 :is(#editor,.note-view) div[data-todo][data-mark="purple"]::before{border-color:#a855f7;}
 :is(#editor,.note-view) div[data-todo][data-mark="gray"]::before{border-color:#94a3b8;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="red"]::before{background-color:#ef4444;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="orange"]::before{background-color:#f97316;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="yellow"]::before{background-color:#eab308;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="blue"]::before{background-color:#3b82f6;}
-:is(#editor,.note-view) div[data-todo="true"][data-mark="green"]::before{background-color:#22c55e;}
+:is(#editor,.note-view) div[data-todo="true"][data-mark="testing"]::before{background-color:#22c55e;}
+/* Labels (Bug, Fun, Quick win): small chips after an item's words; any number, alongside its mark */
+:is(#editor,.note-view) span[data-label]{display:inline-block;margin-left:6px;padding:0 5px;border-radius:9px;background:var(--btn);font-size:.78em;line-height:1.45;vertical-align:1px;text-decoration:none;cursor:default;-webkit-user-select:none;user-select:none;}
+/* Done: a folded section at the bottom of the note that "Move checked to Done" fills, newest first */
+:is(#editor,.note-view) h2[data-donelog]{font-size:.95rem;color:var(--text2);margin:24px 0 6px;padding-top:12px;border-top:1px solid var(--border);cursor:pointer;-webkit-user-select:none;user-select:none;}
+:is(#editor,.note-view) h2[data-donelog]::before{content:'\25B8\00a0\00a0';color:var(--text3);}
+:is(#editor,.note-view).show-done h2[data-donelog]::before{content:'\25BE\00a0\00a0';}
+:is(#editor,.note-view) h2[data-donelog]::after{content:attr(data-count);margin-left:10px;font-size:.74rem;font-weight:500;color:var(--text3);}
+:is(#editor,.note-view):not(.show-done) div[data-indone]{display:none;}
+:is(#editor,.note-view) div[data-indone][data-meta]:not([data-meta=""])::after{content:attr(data-meta) !important;position:static !important;display:inline-block !important;width:auto !important;height:auto !important;border:0 !important;transform:none !important;cursor:default !important;margin-left:8px;font-size:.72rem;color:var(--text3);vertical-align:1px;}
+/* View: show only some marks or labels */
+:is(#editor,#sp-body) [data-out]{display:none !important;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="purple"]::before{background-color:#a855f7;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark="gray"]::before{background-color:#94a3b8;}
 :is(#editor,.note-view) div[data-todo="true"][data-mark]{--tint:transparent;}
@@ -433,7 +444,7 @@ mark{background:rgba(255,196,77,.5);color:var(--text);border-radius:2px;padding:
 body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.locked #toast{visibility:hidden!important;}
 /* Sort by mark: the note is shown in mark order with CSS order (rules written by markOrder), its lines untouched */
 :is(#editor,#sp-body).by-mark{display:flex;flex-direction:column;}
-#done-bar,.sp-done,#sort-bar,.sp-sort{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
+#done-bar,.sp-done,#view-bar,.sp-view{padding:6px 16px;font-size:.74rem;color:var(--text3);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;}
 
 /* Status bar */
 #status-bar{padding:4px 16px;display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);font-size:.68rem;color:var(--text3);padding-bottom:calc(4px + var(--sab));}
@@ -486,7 +497,9 @@ body.locked #app,body.locked .modal,body.locked #ctx,body.locked #slash,body.loc
 .inp:focus{border-color:var(--accent);}
 .mbox .inp{margin-bottom:12px;background:var(--bg);}   /* the page colour, so fields stand out from the window */
 .m-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:4px;}
-#ctx{position:fixed;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:4px;min-width:180px;display:none;animation:fadeIn .12s ease;}
+#ctx{position:fixed;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:4px;min-width:180px;display:none;animation:fadeIn .12s ease;max-height:calc(100dvh - 16px);overflow-y:auto;}
+.ci-head{padding:7px 12px 3px;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--text3);}
+.ci-note{padding:4px 12px 6px;font-size:.74rem;color:var(--text3);max-width:240px;}
 #ctx.show{display:block;}
 .ci{display:flex;width:100%;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--rs);font-size:.82rem;cursor:pointer;background:none;border:none;text-align:left;color:var(--text);}
 .ci:hover{background:var(--btnH);}
@@ -735,6 +748,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <button class="ib" id="back-btn" data-act="back" aria-label="Back to notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
     <input type="text" id="title-input" placeholder="Title" autocomplete="off" enterkeyhint="next" aria-label="Title">
     <div class="ed-actions">
+      <button class="ib" data-act="viewMenu" data-tip="View: show, order, checked" aria-label="View options"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="9" cy="7" r="2.4" style="fill:var(--editor)"/><circle cx="15" cy="17" r="2.4" style="fill:var(--editor)"/></svg></button>
       <button class="ib" id="pin-btn" data-act="togglePin" data-tip="Pin to top" aria-label="Pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 01-1.11 1.79l-1.78.9A2 2 0 005 15.24V16a1 1 0 001 1h12a1 1 0 001-1v-.76a2 2 0 00-1.11-1.79l-1.78-.9A2 2 0 0115 10.76V7a1 1 0 011-1 2 2 0 000-4H8a2 2 0 000 4 1 1 0 011 1z"/></svg></button>
       <button class="ib" data-act="noteMenu" data-tip="More" aria-label="More actions"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
       <button class="ib" id="pane-x" data-act="closePane" data-pane="ed" data-tip="Close this note" aria-label="Close this note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
@@ -786,7 +800,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     </div>
   </div>
   <div id="done-bar" hidden><span id="done-msg"></span><button class="linkbtn" data-act="showDone">Show them</button></div>
-  <div id="sort-bar" hidden><span>Sorted by mark. Your own order is kept.</span><button class="linkbtn" data-act="unsortMarks">Back to my order</button></div>
+  <div id="view-bar" hidden><span id="view-msg"></span><button class="linkbtn" data-act="resetView">Reset view</button></div>
   <div id="ed-scroll">
     <div id="editor" contenteditable="true" data-placeholder="Start writing... (try - , # , [] or > at the start of a line, or / for more)" spellcheck="true"></div>
     <div id="grips" aria-hidden="true"></div>
@@ -798,6 +812,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
       <button class="ib nav-btn" data-act="toggleNav" data-tip="Hide notes list" aria-label="Show or hide the notes list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg></button>
       <div class="sp-title" id="sp-title"></div>
       <div class="ed-actions">
+        <button class="ib" data-act="sideViewMenu" data-tip="View: show, order, checked" aria-label="View options"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="9" cy="7" r="2.4" style="fill:var(--editor)"/><circle cx="15" cy="17" r="2.4" style="fill:var(--editor)"/></svg></button>
         <button class="ib" data-act="sideMenu" data-tip="More" aria-label="More actions"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
         <button class="ib" data-act="closePane" data-pane="side" data-tip="Close this note" aria-label="Close this note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
       </div>
@@ -805,7 +820,7 @@ summary{cursor:pointer;color:var(--text2);font-weight:600;font-size:.76rem;}
     <div class="sp-archive" id="sp-archive" hidden><span>This note is archived. It stays out of your lists until you bring it back.</span><button class="m-btn sec sm" data-act="sideUnarchive">Unarchive</button></div>
     <div class="sp-meta" id="sp-meta"></div>
     <div class="sp-done" id="sp-done" hidden><span id="sp-done-msg"></span><button class="linkbtn" data-act="sideShowDone">Show them</button></div>
-    <div class="sp-sort" id="sp-sort" hidden><span>Sorted by mark. Your own order is kept.</span><button class="linkbtn" data-act="sideUnsort">Back to my order</button></div>
+    <div class="sp-view" id="sp-view" hidden><span id="sp-view-msg"></span><button class="linkbtn" data-act="sideResetView">Reset view</button></div>
     <div id="sp-scroll"><div id="sp-body" class="note-view"></div><div id="sp-grips" aria-hidden="true"></div></div>
   </div>
   </div>
@@ -1065,6 +1080,7 @@ function cleanNote(n) {
     daily: String(n.daily || ''),   // YYYY-MM-DD for a daily note
     hideDone: !!n.hideDone,         // checked items hidden in this note
     byMark: !!n.byMark,             // checklists shown sorted by mark (the saved order is untouched)
+    showOnly: Array.isArray(n.showOnly) ? n.showOnly.filter(k => typeof k === 'string' && /^\w{1,12}$/.test(k)) : [],   // View: only items with these marks or labels
     archived: +n.archived || 0,     // when it was archived (0 = not archived)
     doneTo: String(n.doneTo || ''), // the note "Move checked items" sends this note's finished items to
   };
@@ -1586,9 +1602,11 @@ function cleanHTML(html) {
       let as = KEEP[tag];
       // Google Docs wraps a whole paste in <b style="font-weight:normal">, and marks bold/italic on spans.
       if (tag === 'B' && /font-weight:\s*(normal|[1-4]00)/.test(style)) as = 0;
+      if (tag === 'SPAN' && LABEL_ICON[node.getAttribute('data-label')]) { dst.appendChild(labelChip(doc, node.getAttribute('data-label'))); continue; }
       if (tag === 'SPAN') as = /font-weight:\s*(bold|[6-9]00)/.test(style) ? 'B' : /font-style:\s*italic/.test(style) ? 'I' : 0;
       if (!as) { walk(node, dst); continue; }
       const el = doc.createElement(as === 1 ? tag : as);
+      let quickWin = false;
       if (tag === 'A') {
         const noteId = node.getAttribute('data-note') || '';
         if (/^[\w:.-]{1,80}$/.test(noteId)) { el.setAttribute('data-note', noteId); el.setAttribute('contenteditable', 'false'); }
@@ -1619,9 +1637,16 @@ function cleanHTML(html) {
         if (node.getAttribute('data-folded') === 'true') el.setAttribute('data-folded', 'true');
         const done = node.getAttribute('data-done') || '';
         if (/^\d{4}-\d{2}-\d{2}$/.test(done) && el.getAttribute('data-todo') === 'true') el.setAttribute('data-done', done);
-        if (MARKS[node.getAttribute('data-mark')]) el.setAttribute('data-mark', node.getAttribute('data-mark'));
+        const mk = node.getAttribute('data-mark');
+        if (MARKS[mk]) el.setAttribute('data-mark', mk);
+        if (mk === 'green' && !node.querySelector('span[data-label="quick"]')) quickWin = true;   // Quick win used to be a mark
         if (node.hasAttribute('data-today')) el.setAttribute('data-today', '');
+        if (node.hasAttribute('data-indone')) {
+          el.setAttribute('data-indone', '');
+          const from = (node.getAttribute('data-from') || '').slice(0, 80); if (from) el.setAttribute('data-from', from);
+        }
       }
+      if (tag === 'H2' && node.hasAttribute('data-donelog')) { el.setAttribute('data-donelog', ''); el.setAttribute('contenteditable', 'false'); }
       if ((tag === 'H2' || tag === 'HR') && node.hasAttribute('data-today')) el.setAttribute('data-today', '');
       if (tag === 'H2' && /^\d{4}-\d{2}-\d{2}$/.test(node.getAttribute('data-week') || '')) el.setAttribute('data-week', node.getAttribute('data-week'));
       if (tag === 'OL' && +node.getAttribute('start') > 1) el.setAttribute('start', +node.getAttribute('start'));
@@ -1629,6 +1654,7 @@ function cleanHTML(html) {
       if (tag === 'PRE') inPre++;
       walk(node, el);
       if (tag === 'PRE') inPre--;
+      if (quickWin) el.appendChild(labelChip(doc, 'quick'));
       dst.appendChild(el);
     }
   };
@@ -1747,7 +1773,9 @@ function mdToHTML(md) {
       while (todo.length && todo[todo.length - 1] > w) todo.pop();
       if (!todo.length || todo[todo.length - 1] < w) todo.push(w);
       const lv = Math.min(MAX_INDENT, todo.length - 1), done = m[1] !== ' ';
-      line(`<div data-todo="${done}"${lv ? ` data-indent="${lv}"` : ''}>${mdInline(m[2]) || '<br>'}</div>`);
+      let body = mdInline(m[2]), chips = '';
+      for (const [k, icon] of Object.entries(LABEL_ICON)) if (body.includes(icon)) { body = body.split(icon + '\uFE0F').join('').split(icon).join('').trimEnd(); chips += `<span data-label="${k}" contenteditable="false">${icon}</span>`; }
+      line(`<div data-todo="${done}"${lv ? ` data-indent="${lv}"` : ''}>${(body + chips) || '<br>'}</div>`);
       continue;
     }
     todo = [];
@@ -2136,7 +2164,7 @@ function renderSplit() {
 }
 function renderSide() {
   const n = byId(sideId()); if (!n) return;
-  const sig = [n.id, n.title, n.content, folderName(folderOf(n)), n.tags.join(' '), !!n.hideDone, !!n.byMark, !!n.archived].join('\u0001');
+  const sig = [n.id, n.title, n.content, folderName(folderOf(n)), n.tags.join(' '), !!n.hideDone, !!n.byMark, (n.showOnly || []).join(' '), !!n.archived].join('\u0001');
   if (sig === sideShown) return;   // unchanged: leave it (and its scroll position) alone
   const same = sideShown.startsWith(n.id + '\u0001');
   sideShown = sig;
@@ -2149,7 +2177,9 @@ function renderSide() {
   body.classList.toggle('hide-done', !!n.hideDone);
   foldChildren(body);
   markOrder(body, !!n.byMark);
-  $('sp-sort').hidden = !(n.byMark && body.querySelector('[data-todo]'));
+  decorateDone(body);
+  const svt = body.querySelector('[data-todo]') ? viewText(n, applyFilter(body, n.showOnly || [])) : '';
+  $('sp-view').hidden = !svt; $('sp-view-msg').textContent = svt;
   refreshInline(body);
   const hidden = n.hideDone ? body.querySelectorAll('[data-todo="true"]').length : 0;
   $('sp-done').hidden = !hidden;
@@ -2173,16 +2203,19 @@ function dropInOtherNote(group, target) {
   // In that note's Today list only if it landed there.
   const prev = els[0].previousElementSibling, today = !!prev && prev.hasAttribute('data-today') && (prev.tagName === 'H2' || isTodo(prev));
   for (const c of els) if (today) c.setAttribute('data-today', ''); else c.removeAttribute('data-today');
+  // ...and in its Done section only if it landed there.
+  const inDone = !!prev && (prev.hasAttribute('data-donelog') || prev.hasAttribute('data-indone'));
+  for (const c of els) if (inDone) c.setAttribute('data-indone', ''); else { c.removeAttribute('data-indone'); c.removeAttribute('data-from'); }
   for (let n = els[els.length - 1].nextElementSibling; isTodo(n); n = n.nextElementSibling) {
     const above = n.previousElementSibling;
     if (levelOf(n) > levelOf(above) + 1) setLevel(n, levelOf(above) + 1); else break;
   }
-  tidyToday(body);
+  tidyToday(body); tidyDone(body);
   snapshot(src.id, { t: src.updated, title: src.title, content: src.content });
   snapshot(dst.id, { t: dst.updated, title: dst.title, content: dst.content });
   dst.content = cleanHTML(body.innerHTML); touch(dst);
   for (const el of group) el.remove();
-  tidyToday(ed);
+  tidyToday(ed); tidyDone(ed);
   onEditorChange(); flushEditor();
   changed(); renderSplit(); renderList();
   toast('Moved ' + group.length + ' item' + (group.length === 1 ? '' : 's') + ' to ' + noteTitle(dst), 'Undo', () => {
@@ -2227,6 +2260,7 @@ function editSide(fn) {
 $('side-pane').addEventListener('mousedown', e => {
   if (e.button !== 0 || e.target.closest('button,a[href],.grip')) return;
   e.preventDefault();
+  if (e.target.closest('h2[data-donelog]')) { $('sp-body').classList.toggle('show-done'); renderGripsSoon(); return; }
   const body = $('sp-body'), todos = () => [...body.querySelectorAll('[data-todo]')];
   // Ticking a box or folding a list works right there, without switching notes.
   const box = todoAt(e.target, e.clientX, e.clientY, body), fold = !box && foldAt(e.target, e.clientX, e.clientY, body);
@@ -2234,7 +2268,7 @@ $('side-pane').addEventListener('mousedown', e => {
     const i = todos().indexOf(box || fold);
     editSide(root => {
       const el = root.querySelectorAll('[data-todo]')[i]; if (!el) return;
-      if (box) setChecked(el, el.getAttribute('data-todo') !== 'true');
+      if (box) { const on = el.getAttribute('data-todo') !== 'true'; setChecked(el, on); if (!on && el.hasAttribute('data-indone')) returnFromDone(root, groupOf(el)); }
       else if (el.getAttribute('data-folded') === 'true') el.removeAttribute('data-folded'); else el.setAttribute('data-folded', 'true');
     });
     return;
@@ -2249,7 +2283,12 @@ $('side-pane').addEventListener('click', e => {
 });
 
 /* One task's menu (tap its handle): Today, marks, due date, move, delete. */
-const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', purple: '\u{1F7E3} In progress', yellow: '\u{1F7E1} Up next', blue: '\u{1F535} Waiting on someone', green: '\u{1F7E2} Quick win', gray: '\u26AA Low priority' };
+const MARKS = { red: '\u{1F534} Important', orange: '\u{1F7E0} Needs attention', purple: '\u{1F7E3} In progress', testing: '\u{1F7E2} Testing', yellow: '\u{1F7E1} Up next', blue: '\u{1F535} Waiting on someone', gray: '\u26AA Low priority' };
+// Labels say what kind of task it is. Unlike a mark (one per item) an item can have any of them.
+const LABELS = { bug: '\u{1F41E} Bug', fun: '\u{1F389} Fun', quick: '\u26A1 Quick win' };
+const LABEL_ICON = { bug: '\u{1F41E}', fun: '\u{1F389}', quick: '\u26A1' };
+const labelChip = (doc, k) => { const s = doc.createElement('span'); s.setAttribute('data-label', k); s.setAttribute('contenteditable', 'false'); s.textContent = LABEL_ICON[k]; return s; };
+const hasLabel = (el, k) => !!el.querySelector(`span[data-label="${k}"]`);
 function itemMenuItems(idx) {
   const el = ed.querySelectorAll('[data-todo]')[idx];
   if (!el || ed.contentEditable !== 'true') return [];
@@ -2260,6 +2299,8 @@ function itemMenuItems(idx) {
     ...Object.entries(MARKS).map(([k, label]) => ({ label: label + (mark === k ? '  \u2713' : ''), fn: () => setMark(el, mark === k ? null : k) })),
     mark && { label: 'Clear mark', fn: () => setMark(el, null) },
     '-',
+    ...Object.entries(LABELS).map(([k, label]) => ({ label: label + (hasLabel(el, k) ? '  \u2713' : ''), fn: () => setLabel(el, k, !hasLabel(el, k)) })),
+    '-',
     { label: tm ? 'Change due date...' : 'Due date...', fn: () => pickDue(el, tm ? tm.getAttribute('datetime') : '') },
     { label: 'Move to another note...', fn: () => pickNote('Move this item to...', edId, target => moveToNote(edId, target, [idx])) },
     { label: 'Delete', danger: true, fn: () => deleteItems(edId, [idx]) },
@@ -2268,6 +2309,145 @@ function itemMenuItems(idx) {
 function setMark(el, mark) {
   if (mark) el.setAttribute('data-mark', mark); else el.removeAttribute('data-mark');
   onEditorChange();
+}
+// Labels sit at the end of the item, always in the same order.
+function setLabel(el, k, on) {
+  const keep = Object.keys(LABELS).filter(x => x === k ? on : hasLabel(el, x));
+  el.querySelectorAll('span[data-label]').forEach(x => x.remove());
+  const br = el.lastChild && el.lastChild.nodeName === 'BR' ? el.lastChild : null;
+  for (const x of keep) el.insertBefore(labelChip(document, x), br);
+  onEditorChange();
+}
+
+/* Done. "Move checked to Done" takes every ticked item (with its sub-items), from every list in the note, into a
+   folded Done section at the bottom, newest first. Each remembers the list it came from and the day it was
+   finished; unticking one sends it back to that list. */
+const isHeading = el => !!el && /^H[1-3]$/.test(el.tagName) && !el.hasAttribute('data-donelog');
+const plainText = el => { const c = el.cloneNode(true); c.querySelectorAll('time,span[data-label],a[data-note]').forEach(x => x.remove()); return c.textContent.replace(/\s+/g, ' ').trim(); };
+// The list an item is in (the heading above it) and, for a sub-item, its parent.
+function listName(el) {
+  let parent = '', lv = levelOf(el);
+  for (let p = el.previousElementSibling; p; p = p.previousElementSibling) {
+    if (isTodo(p)) { if (lv > 0 && levelOf(p) < lv) { if (!parent) parent = plainText(p).slice(0, 40); lv = levelOf(p); } continue; }
+    if (isHeading(p)) return [plainText(p).slice(0, 40), parent].filter(Boolean).join(' \u203A ');
+  }
+  return parent;
+}
+function tidyDone(root) {
+  const head = root.querySelector('h2[data-donelog]'), items = root.querySelectorAll('[data-indone]');
+  if (head && !items.length) head.remove();
+  if (!head && items.length) { const h = root.ownerDocument.createElement('h2'); h.setAttribute('data-donelog', ''); h.setAttribute('contenteditable', 'false'); h.textContent = 'Done'; items[0].before(h); }
+}
+function moveCheckedToDone(root) {
+  const groups = [], taken = new Set();
+  for (const el of root.querySelectorAll('[data-todo="true"]')) {
+    if (taken.has(el) || el.hasAttribute('data-indone') || el.parentNode !== root) continue;
+    const g = groupOf(el); g.forEach(x => taken.add(x)); groups.push(g);
+  }
+  if (!groups.length) return 0;
+  const from = groups.map(g => listName(g[0]));
+  let head = root.querySelector('h2[data-donelog]');
+  if (!head) { head = root.ownerDocument.createElement('h2'); head.setAttribute('data-donelog', ''); head.setAttribute('contenteditable', 'false'); head.textContent = 'Done'; root.appendChild(head); }
+  const at = head.nextSibling;
+  groups.forEach((g, i) => {
+    const base = levelOf(g[0]);
+    for (const x of g) { x.remove(); setLevel(x, levelOf(x) - base); x.setAttribute('data-indone', ''); x.removeAttribute('data-today'); x.removeAttribute('data-folded'); }
+    if (from[i]) g[0].setAttribute('data-from', from[i]);
+    if (!g[0].getAttribute('data-done')) g[0].setAttribute('data-done', dayKey());
+    for (const x of g) root.insertBefore(x, at);
+  });
+  tidyToday(root);
+  return groups.length;
+}
+function returnFromDone(root, group) {
+  const name = (group[0].getAttribute('data-from') || '').split(' \u203A ')[0], base = levelOf(group[0]);
+  for (const x of group) { x.remove(); setLevel(x, levelOf(x) - base); x.removeAttribute('data-indone'); x.removeAttribute('data-from'); x.removeAttribute('data-meta'); }
+  const head = name && [...root.children].find(h => isHeading(h) && plainText(h) === name.trim());
+  let anchor = root.querySelector('h2[data-donelog]');   // no such list any more: the end of the note, above Done
+  if (head) {
+    let last = null;
+    for (let n = head.nextElementSibling; n && !isHeading(n) && !n.hasAttribute('data-donelog') && !(n.tagName === 'HR' && n.hasAttribute('data-today')); n = n.nextElementSibling) if (isTodo(n)) last = n;
+    anchor = last ? last.nextSibling : head.nextSibling;
+    if (head.hasAttribute('data-today')) group.forEach(x => x.setAttribute('data-today', ''));
+  }
+  for (const x of group) root.insertBefore(x, anchor);
+  tidyDone(root);
+  return head ? plainText(head) : '';
+}
+// The Done heading's count and each done item's "list · day", drawn from the data (not saved).
+function decorateDone(root) {
+  const head = root.querySelector('h2[data-donelog]'); if (!head) return;
+  const top = [...root.querySelectorAll('[data-indone]')].filter(x => !levelOf(x)), wk = mondayOf(dayKey());
+  const week = top.filter(x => (x.getAttribute('data-done') || '') >= wk).length;
+  const count = top.length + (week ? ' \u00b7 ' + week + ' this week' : '');
+  if (head.getAttribute('data-count') !== count) head.setAttribute('data-count', count);
+  for (const x of top) {
+    const meta = [x.getAttribute('data-from'), x.getAttribute('data-done') && shortDate(x.getAttribute('data-done'))].filter(Boolean).join(' \u00b7 ');
+    if (x.getAttribute('data-meta') !== meta) x.setAttribute('data-meta', meta);
+  }
+}
+function placeInDone(group) {
+  const prev = group[0].previousElementSibling, inside = !!prev && (prev.hasAttribute('data-donelog') || prev.hasAttribute('data-indone'));
+  for (const x of group) if (inside) x.setAttribute('data-indone', ''); else { x.removeAttribute('data-indone'); x.removeAttribute('data-from'); x.removeAttribute('data-meta'); }
+  tidyDone(ed);
+}
+
+/* View: show only some marks or labels. A matching item shows with its sub-items and the items it sits under;
+   headings stay where they have something under them. The line being typed in always shows. */
+function applyFilter(root, keys, keepEl) {
+  root.classList.toggle('filtered', !!keys.length);
+  const kids = [...root.children];
+  if (!keys.length) { for (const el of kids) if (el.hasAttribute('data-out')) el.removeAttribute('data-out'); return 0; }
+  const match = el => keys.some(k => MARKS[k] ? el.getAttribute('data-mark') === k : hasLabel(el, k));
+  const show = new Set();
+  kids.forEach((el, i) => {
+    if (!isTodo(el) || !match(el)) return;
+    groupOf(el).forEach(x => show.add(x));
+    for (let j = i - 1, lv = levelOf(el); j >= 0 && lv > 0 && isTodo(kids[j]); j--) if (levelOf(kids[j]) < lv) { show.add(kids[j]); lv = levelOf(kids[j]); }
+  });
+  const matches = show.size;
+  if (keepEl) show.add(keepEl);
+  let head = null; const heads = new Set();
+  for (const el of kids) { if (isHeading(el) || el.hasAttribute('data-donelog')) head = el; else if (show.has(el) && head) heads.add(head); }
+  for (const el of kids) {
+    const out = !(show.has(el) || heads.has(el));
+    if (el.hasAttribute('data-out') !== out) el.toggleAttribute('data-out', out);
+  }
+  return matches;
+}
+const markName = k => MARKS[k] || LABELS[k] || k;
+function viewText(n, matches) {
+  const parts = [], show = (n.showOnly || []).filter(k => MARKS[k] || LABELS[k]);
+  if (show.length) parts.push('Showing ' + show.map(markName).join(', ') + (matches ? '' : ': none in this note'));
+  if (n.byMark) parts.push(parts.length ? 'sorted by mark' : 'Sorted by mark. Your own order is kept');
+  return parts.join(' \u00b7 ');
+}
+function setView(id, patch) {
+  const n = byId(id); if (!n) return;
+  Object.assign(n, patch); touch(n); changed();
+  if (id === edId) { ed.classList.toggle('hide-done', !!n.hideDone); applyFolds(); }
+  renderSplit();
+}
+// The View menu: what to show, in what order, and the checked items. It stays open while you pick.
+function viewItems(id) {
+  const n = byId(id); if (!n) return [];
+  const html = id === edId ? ed.innerHTML : n.content, show = n.showOnly || [], tick = on => on ? '  \u2713' : '';
+  const has = k => MARKS[k] ? html.includes(`data-mark="${k}"`) : html.includes(`data-label="${k}"`) || (k === 'quick' && html.includes('data-mark="green"'));
+  const keys = [...Object.keys(MARKS), ...Object.keys(LABELS)].filter(k => has(k) || show.includes(k));
+  return [
+    { head: 'Show' },
+    { label: 'Everything' + tick(!show.length), keep: true, fn: () => setView(id, { showOnly: [] }) },
+    ...keys.map(k => ({ label: markName(k) + tick(show.includes(k)), keep: true, fn: () => setView(id, { showOnly: show.includes(k) ? show.filter(x => x !== k) : [...show, k] }) })),
+    !keys.length && { note: 'Mark or label some items (tap their dotted handle) to show just those.' },
+    '-',
+    { head: 'Order' },
+    { label: 'My order' + tick(!n.byMark), keep: true, fn: () => setView(id, { byMark: false }) },
+    { label: 'By mark' + tick(n.byMark), keep: true, fn: () => setView(id, { byMark: true }) },
+    '-',
+    { head: 'Checked items' },
+    { label: 'Show' + tick(!n.hideDone), keep: true, fn: () => setView(id, { hideDone: false }) },
+    { label: 'Hide' + tick(n.hideDone), keep: true, fn: () => setView(id, { hideDone: true }) },
+  ];
 }
 // Today: a "Today" heading at the top of the note, the tasks you're working on, then a line.
 // An item is in Today when it carries data-today; heading and line go away when the last one leaves.
@@ -2313,7 +2493,7 @@ function deleteItems(id, indexes) {
   if (!gone.size) return;
   snapshot(n.id, { t: n.updated, title: n.title, content: n.content });
   gone.forEach(x => x.remove());
-  tidyToday(doc.body);
+  tidyToday(doc.body); tidyDone(doc.body);
   n.content = doc.body.innerHTML; touch(n);
   changed(); renderSidebar(); renderList();
   if (edId === id) loadEditor(n, true);
@@ -2358,7 +2538,7 @@ function moveToNote(srcId, dstId, indexes) {
       if (isTodo(p) && levelOf(p) < lv) { const c = p.cloneNode(true); c.querySelectorAll('time,a[data-note]').forEach(x => x.remove()); path.unshift(c.textContent.trim()); lv = levelOf(p); }
       if (!isTodo(p)) break;
     }
-    const els = g.map(el => { const c = ddoc.importNode(el, true); setLevel(c, levelOf(el) - base); c.removeAttribute('data-folded'); c.removeAttribute('data-today'); return c; });
+    const els = g.map(el => { const c = ddoc.importNode(el, true); setLevel(c, levelOf(el) - base); ['data-folded', 'data-today', 'data-indone', 'data-from'].forEach(a => c.removeAttribute(a)); return c; });
     if (path.length) els[0].insertBefore(ddoc.createTextNode(path.join(' › ') + ' › '), els[0].firstChild);
     if (top.getAttribute('data-todo') === 'true') {
       els[0].setAttribute('data-done', done);
@@ -2371,7 +2551,7 @@ function moveToNote(srcId, dstId, indexes) {
     return { els, done, ticked: top.getAttribute('data-todo') === 'true' };
   });
   for (const g of groups) for (const el of g) el.remove();
-  tidyToday(sdoc.body);
+  tidyToday(sdoc.body); tidyDone(sdoc.body);
   if (log) {
     moving.sort((a, b) => a.done.localeCompare(b.done));
     for (const m of moving) {
@@ -2534,6 +2714,7 @@ document.execCommand('defaultParagraphSeparator', false, 'div');
 
 function loadEditor(n, keepCaret) {
   const caret = keepCaret && document.activeElement === ed ? caretOffset() : null;
+  if (edId !== n.id) ed.classList.remove('show-done');
   edId = n.id; edDirty = false; clearTimeout(edTimer);
   $('title-input').value = n.title;
   ed.innerHTML = cleanHTML(n.content);
@@ -2564,7 +2745,7 @@ function flushEditor() {
   persist();   // the timer that would have saved it was just cancelled
 }
 // Attributes that only describe how things look right now (folded, overdue, a deleted link target): never saved.
-const stripScreenOnly = html => html.replace(/<(div|a|time)\b[^>]*>/g, tag => tag.replace(/ (hidden=""|data-broken=""|data-flash=""|data-dragging=""|data-when="[a-z]*")/g, ''));
+const stripScreenOnly = html => html.replace(/<[a-z][a-z0-9]*\b[^>]*>/g, tag => tag.replace(/ (hidden=""|data-broken=""|data-flash=""|data-dragging=""|data-when="[a-z]*"|data-out=""|data-meta="[^"]*"|data-count="[^"]*")/g, ''));
 // Note links show the target's current title; due dates get their overdue / today colours.
 function refreshInline(root = ed) {
   for (const a of root.querySelectorAll('a[data-note]')) {
@@ -2768,7 +2949,9 @@ function setChecked(t, on) {
 }
 function toggleCheck(t) {
   if (ed.contentEditable !== 'true') return;
-  setChecked(t, t.getAttribute('data-todo') !== 'true');
+  const on = t.getAttribute('data-todo') !== 'true';
+  setChecked(t, on);
+  if (!on && t.hasAttribute('data-indone')) { const to = returnFromDone(ed, groupOf(t)); toast(to ? 'Back in ' + to : 'Back in your list'); }   // unticked in Done
   onEditorChange();
 }
 const hasKids = t => { const n = t.nextElementSibling; return isTodo(n) && levelOf(n) > levelOf(t); };
@@ -2790,7 +2973,7 @@ function foldChildren(root) {
 /* Sort by mark. A way of looking at a note, not a change to it: each checklist is shown with its items in
    mark order (sub-items stay with their parent, ticked items last) through CSS order rules, so the order you
    put things in stays the real one and comes straight back when the sort is turned off. */
-const MARK_RANK = { red: 0, purple: 1, yellow: 2, orange: 3, blue: 4, green: 5, gray: 7 };   // no mark: 6, ticked: 9
+const MARK_RANK = { red: 0, purple: 1, testing: 2, yellow: 3, orange: 4, blue: 5, gray: 7 };   // no mark: 6, ticked: 9
 const markCSS = {}, markStyle = document.head.appendChild(document.createElement('style'));
 function markOrder(root, on) {
   root.classList.toggle('by-mark', on);
@@ -2811,17 +2994,14 @@ function markOrder(root, on) {
   markStyle.textContent = Object.values(markCSS).join('');
 }
 const sortedNote = id => { const n = byId(id); return !!(n && n.byMark); };
-function toggleByMark(id) {
-  const n = byId(id); if (!n) return;
-  n.byMark = !n.byMark; touch(n); changed();
-  if (id === edId) applyFolds();
-  renderSplit();
-  toast(n.byMark ? 'Sorted by mark. Your own order is kept.' : 'Back to your order');
-}
 function applyFolds() {
   foldChildren(ed);
   markOrder(ed, sortedNote(edId));
-  $('sort-bar').hidden = !(sortedNote(edId) && ed.querySelector('[data-todo]'));
+  decorateDone(ed);
+  const vn = byId(edId), sel = getSelection(), here = sel.rangeCount && ed.contains(sel.anchorNode) ? blockOf(sel.anchorNode) : null;
+  const matches = applyFilter(ed, vn ? vn.showOnly || [] : [], here && here.parentNode === ed ? here : null);
+  const vt = vn && ed.querySelector('[data-todo]') ? viewText(vn, matches) : '';
+  $('view-bar').hidden = !vt; $('view-msg').textContent = vt;
   renderGripsSoon();
   // Don't leave the caret inside something that just got folded away.
   const s = getSelection(), b = s.rangeCount && ed.contains(s.anchorNode) ? blockOf(s.anchorNode) : null;
@@ -2858,23 +3038,9 @@ function editNoteDom(id, fn) {
   n.content = doc.body.innerHTML; touch(n);
   changed(); renderList();
 }
-const uncheckAll = root => root.querySelectorAll('[data-todo="true"]').forEach(el => { el.setAttribute('data-todo', 'false'); el.removeAttribute('data-done'); });
-// Within each checklist, ticked items (with their sub-items) go below the unticked ones.
-function sortChecked(root) {
-  const order = items => {
-    const base = Math.min(...items.map(levelOf)), groups = [];
-    for (const el of items) { if (!groups.length || levelOf(el) <= base) groups.push([el]); else groups[groups.length - 1].push(el); }
-    const sorted = groups.map(g => [g[0], ...(g.length > 1 ? order(g.slice(1)) : [])]);
-    const done = g => g[0].getAttribute('data-todo') === 'true';
-    return [...sorted.filter(g => !done(g)), ...sorted.filter(done)].flat();
-  };
-  let run = [];
-  const flush = () => {
-    if (run.length > 1) { const anchor = run[run.length - 1].nextSibling, parent = run[0].parentNode; for (const el of order(run)) parent.insertBefore(el, anchor); }
-    run = [];
-  };
-  for (const el of [...root.children]) { if (isTodo(el)) run.push(el); else flush(); }
-  flush();
+function uncheckAll(root) {
+  root.querySelectorAll('[data-todo="true"]').forEach(el => { el.setAttribute('data-todo', 'false'); el.removeAttribute('data-done'); });
+  for (const el of [...root.querySelectorAll('[data-indone]')]) if (el.hasAttribute('data-indone') && !levelOf(el)) returnFromDone(root, groupOf(el));
 }
 function todoAt(target, x, y, root = ed) {
   const t = target && target.closest ? target.closest('[data-todo]') : null;
@@ -2985,6 +3151,7 @@ function finishDrag(cancel) {
   if (anchor === d.group[d.group.length - 1].nextSibling && !delta) return;   // dropped where it was
   for (const el of d.group) { parent.insertBefore(el, anchor); setLevel(el, Math.max(0, Math.min(MAX_INDENT, levelOf(el) + delta))); }
   placeInToday(d.group);
+  placeInDone(d.group);
   // Items that followed may now sit too deep for their new neighbour.
   for (let n = d.group[d.group.length - 1].nextElementSibling; isTodo(n); n = n.nextElementSibling) {
     const above = n.previousElementSibling;
@@ -3077,6 +3244,16 @@ for (const [sc, root, box] of [['ed-scroll', 'editor', 'grips'], ['sp-scroll', '
 window.addEventListener('resize', renderGripsSoon);
 ed.addEventListener('load', renderGripsSoon, true);   // images change line positions as they load
 ed.addEventListener('mousedown', e => { if (todoAt(e.target, e.clientX, e.clientY) || foldAt(e.target, e.clientX, e.clientY)) e.preventDefault(); });
+ed.addEventListener('mousedown', e => {
+  const head = ed.querySelector('h2[data-donelog]'); if (!head || e.button !== 0) return;
+  if (e.target.closest && e.target.closest('h2[data-donelog]')) { e.preventDefault(); ed.classList.toggle('show-done'); renderGripsSoon(); return; }
+  if (e.target !== ed || ed.classList.contains('show-done') || e.clientY < head.getBoundingClientRect().top) return;
+  // Below a folded Done section: carry on writing above it.
+  e.preventDefault();
+  let line = head.previousElementSibling;
+  if (!line || line.tagName !== 'DIV' || isTodo(line) || line.textContent.trim()) { line = document.createElement('div'); line.innerHTML = '<br>'; head.before(line); onEditorChange(); }
+  ed.focus({ preventScroll: true }); placeCaret(line, 0);
+});
 let touchStart = null;
 ed.addEventListener('touchstart', e => { const p = e.touches[0]; touchStart = { x: p.clientX, y: p.clientY, t: now(), target: e.target }; }, { passive: true });
 ed.addEventListener('touchend', e => {
@@ -3238,7 +3415,14 @@ function fixNewTodo() {
       prev.remove();
       if (lv > 0) setLevel(b, lv - 1); else untodo(b);
     } else {
-      b.setAttribute('data-todo', 'false'); b.removeAttribute('data-done');
+      b.setAttribute('data-todo', 'false'); b.removeAttribute('data-done'); b.removeAttribute('data-indone'); b.removeAttribute('data-from');
+      // Enter just before an item's due date or labels: they stay with the item, not the new line.
+      const chips = [...b.querySelectorAll('time[datetime],span[data-label]')];
+      if (isTodo(prev) && chips.length && !plainText(b)) {
+        const br = prev.lastChild && prev.lastChild.nodeName === 'BR' ? prev.lastChild : null;
+        for (const c of chips) prev.insertBefore(c, br);
+        b.innerHTML = '<br>'; placeCaret(b, 0);
+      }
       if (!b.textContent.trim()) b.removeAttribute('data-mark');
       if (isTodo(prev) && !prev.textContent.trim()) prev.removeAttribute('data-mark');
       if (isTodo(prev)) setLevel(b, levelOf(prev));
@@ -3914,11 +4098,12 @@ window.addEventListener('drop', e => {
 /* ═══════════════════════════════════════════════════════
    MENUS, DIALOGS, TOAST
    ═══════════════════════════════════════════════════════ */
-let menuItems = [];
-function showMenu(anchor, items) {
-  menuItems = items.filter(Boolean);
+let menuItems = [], menuAgain = null;   // menuAgain: rebuilds a menu that stays open while you pick (View)
+function showMenu(anchor, items, again) {
+  menuItems = items.filter(Boolean); menuAgain = again ? () => showMenu(anchor, again(), again) : null;
   const m = $('ctx');
-  m.innerHTML = menuItems.map((it, i) => it === '-' ? '<div class="ci-sep"></div>' : `<button class="ci${it.danger ? ' danger' : ''}" data-act="menuPick" data-i="${i}" role="menuitem">${esc(it.label)}</button>`).join('');
+  m.innerHTML = menuItems.map((it, i) => it === '-' ? '<div class="ci-sep"></div>' : it.head ? `<div class="ci-head">${esc(it.head)}</div>` : it.note ? `<div class="ci-note">${esc(it.note)}</div>`
+    : `<button class="ci${it.danger ? ' danger' : ''}" data-act="menuPick" data-i="${i}" role="menuitem">${esc(it.label)}</button>`).join('');
   m.style.left = '0px'; m.style.top = '0px';
   m.classList.add('show');
   const r = m.getBoundingClientRect();
@@ -3941,10 +4126,8 @@ function noteMenuItems(id) {
   const todos = /data-todo=/.test(n.content), done = /data-todo="true"/.test(n.content);
   return [
     { label: n.pinned ? 'Unpin' : 'Pin to top', fn: () => togglePin(id) },
-    todos && { label: n.hideDone ? 'Show checked items' : 'Hide checked items', fn: () => toggleHideDone(id) },
-    todos && { label: n.byMark ? 'Back to my order' : 'Sort by mark', fn: () => toggleByMark(id) },
     done && { label: 'Uncheck all', fn: () => { editNoteDom(id, uncheckAll); toast('All items unchecked'); } },
-    done && { label: 'Move checked to bottom', fn: () => editNoteDom(id, sortChecked) },
+    done && { label: 'Move checked to Done', fn: () => { let c = 0; editNoteDom(id, root => { c = moveCheckedToDone(root); }); toast(c ? 'Moved ' + c + ' to Done' : 'Everything checked is already in Done'); } },
     done && { label: 'Delete checked items', danger: true, fn: () => deleteItems(id) },
     done && doneTarget(n) && { label: 'Move checked items to ' + noteTitle(doneTarget(n)), fn: () => moveToNote(id, n.doneTo) },
     done && { label: doneTarget(n) ? 'Move checked items to another note...' : 'Move checked items to...', fn: () => pickNote('Move checked items to...', id, target => moveToNote(id, target)) },
@@ -4539,8 +4722,8 @@ const ACT = {
   closeHist: () => { $('hist').classList.remove('show'); hist = null; },
   showDone: () => { if (edId) toggleHideDone(edId); },
   sideShowDone: () => { const id = sideId(); if (id) toggleHideDone(id); },
-  unsortMarks: () => { if (edId) toggleByMark(edId); },
-  sideUnsort: () => { const id = sideId(); if (id) toggleByMark(id); },
+  resetView: () => { if (edId) setView(edId, { showOnly: [], byMark: false }); },
+  sideResetView: () => { const id = sideId(); if (id) setView(id, { showOnly: [], byMark: false }); },
   sideUnarchive: () => { const id = sideId(); if (id) archiveNote(id, false); },
   sideMenu: el => { const id = sideId(); if (id) showMenu(el, noteMenuItems(id)); },
   toggleNav: () => { P.navHidden = !P.navHidden; savePrefs(); renderSplit(); renderGripsSoon(); },
@@ -4560,7 +4743,9 @@ const ACT = {
   emptyTrash,
   removeTag: el => removeTag(el.dataset.tag),
   fmt: el => runFmt(el.dataset.cmd),
-  menuPick: el => { const it = menuItems[+el.dataset.i]; hideMenu(); if (it && it.fn) it.fn(); },
+  menuPick: el => { const it = menuItems[+el.dataset.i], again = menuAgain; if (!(it && it.keep && again)) hideMenu(); if (it && it.fn) it.fn(); if (it && it.keep && again) again(); },
+  viewMenu: el => { if (edId) showMenu(el, viewItems(edId), () => viewItems(edId)); },
+  sideViewMenu: el => { const id = sideId(); if (id) showMenu(el, viewItems(id), () => viewItems(id)); },
   toastAction: () => { $('toast').classList.remove('show'); const fn = toastFn; toastFn = null; if (fn) fn(); },
   hideTip: () => { P.tipHidden = true; savePrefs(); $('sync-tip').hidden = true; },
   syncClick: () => { if (S && syncState !== 'locked' && syncState !== 'error') sync(); else openSettings(); },
