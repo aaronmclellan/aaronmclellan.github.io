@@ -2422,7 +2422,7 @@ function viewText(n, matches) {
   if (n.byMark) parts.push(parts.length ? 'sorted by mark' : 'Sorted by mark. Your own order is kept');
   return parts.join(' \u00b7 ');
 }
-function setView(id, patch) {
+function setNoteView(id, patch) {
   const n = byId(id); if (!n) return;
   Object.assign(n, patch); touch(n); changed();
   if (id === edId) { ed.classList.toggle('hide-done', !!n.hideDone); applyFolds(); }
@@ -2436,17 +2436,17 @@ function viewItems(id) {
   const keys = [...Object.keys(MARKS), ...Object.keys(LABELS)].filter(k => has(k) || show.includes(k));
   return [
     { head: 'Show' },
-    { label: 'Everything' + tick(!show.length), keep: true, fn: () => setView(id, { showOnly: [] }) },
-    ...keys.map(k => ({ label: markName(k) + tick(show.includes(k)), keep: true, fn: () => setView(id, { showOnly: show.includes(k) ? show.filter(x => x !== k) : [...show, k] }) })),
+    { label: 'Everything' + tick(!show.length), keep: true, fn: () => setNoteView(id, { showOnly: [] }) },
+    ...keys.map(k => ({ label: markName(k) + tick(show.includes(k)), keep: true, fn: () => setNoteView(id, { showOnly: show.includes(k) ? show.filter(x => x !== k) : [...show, k] }) })),
     !keys.length && { note: 'Mark or label some items (tap their dotted handle) to show just those.' },
     '-',
     { head: 'Order' },
-    { label: 'My order' + tick(!n.byMark), keep: true, fn: () => setView(id, { byMark: false }) },
-    { label: 'By mark' + tick(n.byMark), keep: true, fn: () => setView(id, { byMark: true }) },
+    { label: 'My order' + tick(!n.byMark), keep: true, fn: () => setNoteView(id, { byMark: false }) },
+    { label: 'By mark' + tick(n.byMark), keep: true, fn: () => setNoteView(id, { byMark: true }) },
     '-',
     { head: 'Checked items' },
-    { label: 'Show' + tick(!n.hideDone), keep: true, fn: () => setView(id, { hideDone: false }) },
-    { label: 'Hide' + tick(n.hideDone), keep: true, fn: () => setView(id, { hideDone: true }) },
+    { label: 'Show' + tick(!n.hideDone), keep: true, fn: () => setNoteView(id, { hideDone: false }) },
+    { label: 'Hide' + tick(n.hideDone), keep: true, fn: () => setNoteView(id, { hideDone: true }) },
   ];
 }
 // Today: a "Today" heading at the top of the note, the tasks you're working on, then a line.
@@ -4722,8 +4722,8 @@ const ACT = {
   closeHist: () => { $('hist').classList.remove('show'); hist = null; },
   showDone: () => { if (edId) toggleHideDone(edId); },
   sideShowDone: () => { const id = sideId(); if (id) toggleHideDone(id); },
-  resetView: () => { if (edId) setView(edId, { showOnly: [], byMark: false }); },
-  sideResetView: () => { const id = sideId(); if (id) setView(id, { showOnly: [], byMark: false }); },
+  resetView: () => { if (edId) setNoteView(edId, { showOnly: [], byMark: false }); },
+  sideResetView: () => { const id = sideId(); if (id) setNoteView(id, { showOnly: [], byMark: false }); },
   sideUnarchive: () => { const id = sideId(); if (id) archiveNote(id, false); },
   sideMenu: el => { const id = sideId(); if (id) showMenu(el, noteMenuItems(id)); },
   toggleNav: () => { P.navHidden = !P.navHidden; savePrefs(); renderSplit(); renderGripsSoon(); },
