@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:G2 Ares (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017868@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:overTIME vs G2 Ares
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017869@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T130000Z
+DTEND:20261025T160000Z
+SUMMARY:STATE vs G2 Ares
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013919@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T150000Z
+DTEND:20261105T180000Z
+SUMMARY:FORZE Reload 2-0 G2 Ares
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013921@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T090000Z
+DTEND:20261106T120000Z
+SUMMARY:G2 Ares 2-0 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017917@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T090000Z
+DTEND:20261107T120000Z
+SUMMARY:G2 Ares 2-0 Saint Sinners
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016660@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:OG vs G2 Ares
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+END:VCALENDAR

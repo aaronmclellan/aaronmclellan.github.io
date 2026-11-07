@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Last Resort (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017867@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261024T150000Z
+DTEND:20261024T180000Z
+SUMMARY:STATE vs The Last Resort
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017870@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T170000Z
+DTEND:20261025T200000Z
+SUMMARY:The Last Resort vs TBD
+DESCRIPTION:Hotspawn 10k Showdown (Playoffs)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Hotspawn 10k Showdown
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013916@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T180000Z
+DTEND:20261104T210000Z
+SUMMARY:Nexus 2-0 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013921@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T090000Z
+DTEND:20261106T120000Z
+SUMMARY:G2 Ares 2-0 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016662@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:Balkan Outlaws vs The Last Resort
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+END:VCALENDAR

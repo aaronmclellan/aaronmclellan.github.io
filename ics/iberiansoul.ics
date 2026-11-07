@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Iberian Soul (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022548@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T140000Z
+DTEND:20261029T153000Z
+SUMMARY:Iberian Soul 1-0 Zotix
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 1\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022549@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T170500Z
+DTEND:20261029T200500Z
+SUMMARY:TYLOO 1-2 Iberian Soul
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022562@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261031T173500Z
+DTEND:20261031T203500Z
+SUMMARY:Iberian Soul 2-1 OG
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022564@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261101T140500Z
+DTEND:20261101T170500Z
+SUMMARY:WBT Academy 2-0 Iberian Soul
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022565@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261101T165500Z
+DTEND:20261101T195500Z
+SUMMARY:JiJieHao 0-2 Iberian Soul
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+END:VCALENDAR

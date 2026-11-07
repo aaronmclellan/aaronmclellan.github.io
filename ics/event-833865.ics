@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Svenska Elitserien Fall 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018448@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T183000Z
+DTEND:20261029T213000Z
+SUMMARY:Nätverket Esport 2-0 Crown City Esport (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018449@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:XEPT 2-1 Minkens Finest (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023998@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T180000Z
+DTEND:20261102T210000Z
+SUMMARY:LEO Esports 2-0 Nätverket Esport (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018499@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T180000Z
+DTEND:20261104T210000Z
+SUMMARY:Coinstep United 2-0 XEPT (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024289@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261109T180000Z
+DTEND:20261109T210000Z
+SUMMARY:Crown City Esport vs IzooTrades (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018501@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:Minkens Finest vs VanirQuick Academy (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018502@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018503@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261118T170000Z
+DTEND:20261118T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018504@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261118T200000Z
+DTEND:20261118T230000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Gamers Club Liga Série A: October 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024450@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T201500Z
+DTEND:20261104T231500Z
+SUMMARY:RED Canids Academy 2-0 underw0rld (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017808@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T213000Z
+DTEND:20261105T003000Z
+SUMMARY:BORRACHEIROS 2-1 ALKA (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017809@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T190000Z
+DTEND:20261105T220000Z
+SUMMARY:QUINTESSÊNCIA 0-2 GREMIO (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017810@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T213000Z
+DTEND:20261106T003000Z
+SUMMARY:Rush Esports 2-1 Meia Noite (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017811@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
+SUMMARY:RED Canids Academy 2-0 Rush Esports (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017812@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T213000Z
+DTEND:20261107T003000Z
+SUMMARY:GREMIO 2-0 BORRACHEIROS (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017813@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261108T190000Z
+DTEND:20261108T220000Z
+SUMMARY:RED Canids Academy vs GREMIO (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: October 2026 (Playoffs)\nBest of 3\n
+ https://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: October 2026
+END:VEVENT
+END:VCALENDAR

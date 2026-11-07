@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Acend (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3014213@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T090000Z
+DTEND:20261025T120000Z
+SUMMARY:Acend 1-1 Team UNiTY
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004009@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T110000Z
+DTEND:20261025T140000Z
+SUMMARY:Acend 2-1 INOX Division
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004011@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T170000Z
+DTEND:20261025T200000Z
+SUMMARY:Acend 0-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009864@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T150000Z
+DTEND:20261029T180000Z
+SUMMARY:Acend 2-0 Saint Sinners
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009873@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261031T180000Z
+DTEND:20261031T210000Z
+SUMMARY:Acend 2-1 Butterfly
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009875@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261101T142500Z
+DTEND:20261101T172500Z
+SUMMARY:Acend 1-2 Fokus
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014928@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T140000Z
+DTEND:20261103T170000Z
+SUMMARY:Acend 2-0 Four Magic
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016698@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:Acend 2-0 benched gods
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016715@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T180000Z
+DTEND:20261104T210000Z
+SUMMARY:Acend 0-2 WRAITH PCIFIC
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+END:VCALENDAR

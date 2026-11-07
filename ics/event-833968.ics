@@ -1,0 +1,139 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Tipsport MČR CS 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024392@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T170000Z
+DTEND:20261104T183000Z
+SUMMARY:SINNERS Legacy vs Monkeys (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 1\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024393@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T180000Z
+DTEND:20261104T193000Z
+SUMMARY:UNiTY esports vs Thousand (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 1\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024394@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T190000Z
+DTEND:20261104T203000Z
+SUMMARY:Dynamo ECLOT Phoenix vs eSuba (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 1\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024395@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T200000Z
+DTEND:20261104T213000Z
+SUMMARY:BRUTE Side Quest vs B.LINE (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 1\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024398@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T170000Z
+DTEND:20261105T200000Z
+SUMMARY:UNiTY esports vs Monkeys (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024399@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T193000Z
+DTEND:20261105T223000Z
+SUMMARY:BRUTE Side Quest vs eSuba (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024400@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T170000Z
+DTEND:20261106T200000Z
+SUMMARY:SINNERS Legacy vs Thousand (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024401@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T193000Z
+DTEND:20261106T223000Z
+SUMMARY:Dynamo ECLOT Phoenix vs B.LINE (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024402@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T170000Z
+DTEND:20261107T200000Z
+SUMMARY:Monkeys vs SINNERS Legacy (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024403@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T193000Z
+DTEND:20261107T223000Z
+SUMMARY:BRUTE Side Quest vs Dynamo ECLOT Phoenix (Group Stage)
+DESCRIPTION:Tipsport MČR CS 2026  (Group Stage)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024404@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261108T170000Z
+DTEND:20261108T200000Z
+SUMMARY:UNiTY esports vs TBD (Playoffs)
+DESCRIPTION:Tipsport MČR CS 2026  (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024405@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261108T193000Z
+DTEND:20261108T223000Z
+SUMMARY:eSuba vs TBD (Playoffs)
+DESCRIPTION:Tipsport MČR CS 2026  (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024406@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261122T120000Z
+DTEND:20261122T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Tipsport MČR CS 2026  (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Tipsport MČR CS 2026
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,189 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Saint Sinners (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018164@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T150000Z
+DTEND:20261025T180000Z
+SUMMARY:Saint Sinners vs BERG
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018171@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261027T120000Z
+DTEND:20261027T150000Z
+SUMMARY:Azuolas vs Saint Sinners
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009857@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261027T150000Z
+DTEND:20261027T180000Z
+SUMMARY:BAKS 2-1 Saint Sinners
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009859@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261028T120000Z
+DTEND:20261028T150000Z
+SUMMARY:Inner Circle Academy 0-2 Saint Sinners
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018179@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T120000Z
+DTEND:20261029T150000Z
+SUMMARY:Saint Sinners vs Just Players
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009864@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T150000Z
+DTEND:20261029T180000Z
+SUMMARY:Acend 2-0 Saint Sinners
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013898@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261031T120000Z
+DTEND:20261031T150000Z
+SUMMARY:Saint Sinners 1-2 Misa
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018188@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261031T180000Z
+DTEND:20261031T210000Z
+SUMMARY:Dark Moon vs Saint Sinners
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013901@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261101T090000Z
+DTEND:20261101T120000Z
+SUMMARY:PsychoFace 2-1 Saint Sinners
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022307@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T120000Z
+DTEND:20261102T150000Z
+SUMMARY:Leo Team vs Saint Sinners
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018193@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T150000Z
+DTEND:20261102T180000Z
+SUMMARY:Lilmix vs Saint Sinners
+DESCRIPTION:Fiesta Series 3 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023780@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T090000Z
+DTEND:20261103T120000Z
+SUMMARY:Saint Sinners vs Spirit Academy
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016696@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T140000Z
+DTEND:20261103T170000Z
+SUMMARY:Saint Sinners 0-2 Drama eSports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016710@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:KUUSAMO 1-2 Saint Sinners
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016714@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T140000Z
+DTEND:20261104T170000Z
+SUMMARY:Drama eSports 2-1 Saint Sinners
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015601@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T185100Z
+DTEND:20261106T215100Z
+SUMMARY:Saint Sinners 0-2 Phantom Academy
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017917@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T090000Z
+DTEND:20261107T120000Z
+SUMMARY:G2 Ares 2-0 Saint Sinners
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015603@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T120000Z
+DTEND:20261107T150000Z
+SUMMARY:Ryvex 2-0 Saint Sinners
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+END:VCALENDAR

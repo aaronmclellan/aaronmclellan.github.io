@@ -1,0 +1,169 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PGL Cluj-Napoca 2027: Closed Qualifier (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024808@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261115T080000Z
+DTEND:20261115T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024809@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261115T110000Z
+DTEND:20261115T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024810@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261115T140000Z
+DTEND:20261115T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024811@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261115T170000Z
+DTEND:20261115T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024812@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261116T080000Z
+DTEND:20261116T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024813@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261116T110000Z
+DTEND:20261116T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024814@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261116T140000Z
+DTEND:20261116T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024815@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261116T170000Z
+DTEND:20261116T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024816@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261117T080000Z
+DTEND:20261117T110000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024817@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261117T110000Z
+DTEND:20261117T140000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024818@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261117T140000Z
+DTEND:20261117T170000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024819@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261117T170000Z
+DTEND:20261117T200000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024820@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261118T080000Z
+DTEND:20261118T110000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Playoffs)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024821@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261118T110000Z
+DTEND:20261118T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Playoffs)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024822@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261118T140000Z
+DTEND:20261118T170000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Playoffs)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024823@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261118T170000Z
+DTEND:20261118T200000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Playoffs)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Falcons Force (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017893@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261026T090000Z
+DTEND:20261026T120000Z
+SUMMARY:Falcons Force 2-1 KUUSAMO
+DESCRIPTION:European Pro League Series 10 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013892@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:mellren 0-2 Falcons Force
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017902@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T113000Z
+DTEND:20261030T143000Z
+SUMMARY:Falcons Force 2-0 SD Invicta
+DESCRIPTION:European Pro League Series 10 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013896@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T181500Z
+DTEND:20261030T211500Z
+SUMMARY:Spirit Academy 2-0 Falcons Force
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013906@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T120000Z
+DTEND:20261102T150000Z
+SUMMARY:megoshort 2-0 Falcons Force
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017910@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T115000Z
+DTEND:20261103T145000Z
+SUMMARY:Falcons Force 1-2 MAYBE
+DESCRIPTION:European Pro League Series 10 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016706@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T143500Z
+DTEND:20261103T173500Z
+SUMMARY:Falcons Force 0-2 WRAITH PCIFIC
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016700@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:MAYBE 2-1 Falcons Force
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+END:VCALENDAR

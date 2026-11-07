@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ex-Zero Tenacity (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3004008@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261024T170000Z
+DTEND:20261024T200000Z
+SUMMARY:Nuclear Tigeres 1-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004010@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T144000Z
+DTEND:20261025T174000Z
+SUMMARY:Spirit Academy 0-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004011@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T170000Z
+DTEND:20261025T200000Z
+SUMMARY:Acend 0-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014216@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T180000Z
+DTEND:20261025T210000Z
+SUMMARY:Color vs ex-Zero Tenacity
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014220@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261026T120000Z
+DTEND:20261026T150000Z
+SUMMARY:Fokus vs ex-Zero Tenacity
+DESCRIPTION:NODWIN Clutch Series #13 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013914@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T120000Z
+DTEND:20261104T150000Z
+SUMMARY:ex-Zero Tenacity 2-0 PsychoFace
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024223@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T150000Z
+DTEND:20261104T180000Z
+SUMMARY:ex-Zero Tenacity vs Honvéd
+DESCRIPTION:Fiesta Series 3 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013928@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T150000Z
+DTEND:20261107T180000Z
+SUMMARY:ex-Zero Tenacity vs Leo Team
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+END:VCALENDAR

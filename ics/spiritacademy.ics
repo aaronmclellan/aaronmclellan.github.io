@@ -1,0 +1,119 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Spirit Academy (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3009850@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T120000Z
+DTEND:20261025T150000Z
+SUMMARY:Sökerorg 0-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3004010@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T144000Z
+DTEND:20261025T174000Z
+SUMMARY:Spirit Academy 0-2 ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 11 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009856@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261027T120000Z
+DTEND:20261027T150000Z
+SUMMARY:ex-RUSTEC 0-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009863@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T123500Z
+DTEND:20261029T153500Z
+SUMMARY:INOX Division 0-2 Spirit Academy
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013891@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T153000Z
+DTEND:20261029T183000Z
+SUMMARY:Spirit Academy 2-0 megoshort
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013896@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T181500Z
+DTEND:20261030T211500Z
+SUMMARY:Spirit Academy 2-0 Falcons Force
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009870@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261031T090000Z
+DTEND:20261031T120000Z
+SUMMARY:Spirit Academy 0-2 Phantom Esports
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023774@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T150000Z
+DTEND:20261102T180000Z
+SUMMARY:Spirit Academy vs Noir Verse
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023780@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T090000Z
+DTEND:20261103T120000Z
+SUMMARY:Saint Sinners vs Spirit Academy
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013910@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T121000Z
+DTEND:20261103T151000Z
+SUMMARY:Spirit Academy 1-2 PsychoFace
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022312@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T090000Z
+DTEND:20261104T120000Z
+SUMMARY:Leo Team vs Spirit Academy
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+END:VCALENDAR

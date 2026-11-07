@@ -1,0 +1,209 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NODWIN Clutch Series #14 Play-In (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022306@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T090000Z
+DTEND:20261102T120000Z
+SUMMARY:Walczaki vs Azuolas (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022307@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T120000Z
+DTEND:20261102T150000Z
+SUMMARY:Leo Team vs Saint Sinners (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023774@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T150000Z
+DTEND:20261102T180000Z
+SUMMARY:Spirit Academy vs Noir Verse (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023957@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T180000Z
+DTEND:20261102T210000Z
+SUMMARY:ex-ENCE 2-0 SINQU Esports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023780@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T090000Z
+DTEND:20261103T120000Z
+SUMMARY:Saint Sinners vs Spirit Academy (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023781@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T120000Z
+DTEND:20261103T150000Z
+SUMMARY:Leo Team vs Noir Verse (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023782@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T150000Z
+DTEND:20261103T180000Z
+SUMMARY:Walczaki vs SINQU Esports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023783@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:ex-ENCE vs Azuolas (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022312@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T090000Z
+DTEND:20261104T120000Z
+SUMMARY:Leo Team vs Spirit Academy (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022313@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T120000Z
+DTEND:20261104T150000Z
+SUMMARY:Azuolas vs Walczaki (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022316@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T090000Z
+DTEND:20261105T120000Z
+SUMMARY:BAKS vs Honvéd (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022317@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T120000Z
+DTEND:20261105T150000Z
+SUMMARY:Fire Flux vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023776@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T150000Z
+DTEND:20261105T180000Z
+SUMMARY:Basement Boys vs Misa (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023777@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T180000Z
+DTEND:20261105T210000Z
+SUMMARY:Johnny Speeds vs Drama eSports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022318@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T090000Z
+DTEND:20261106T120000Z
+SUMMARY:BAKS vs Fire Flux (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022319@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T120000Z
+DTEND:20261106T150000Z
+SUMMARY:Honvéd vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022320@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T150000Z
+DTEND:20261106T180000Z
+SUMMARY:Johnny Speeds 0-2 Basement Boys (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022321@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T180000Z
+DTEND:20261106T210000Z
+SUMMARY:Drama eSports vs Misa (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025059@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T090000Z
+DTEND:20261107T120000Z
+SUMMARY:Johnny Speeds vs Drama eSports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025060@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T120000Z
+DTEND:20261107T150000Z
+SUMMARY:Fire Flux vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 Play-In (Play-Ins)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14 Play-In
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Eternal Fire (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018199@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:MIBR 2-1 Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018201@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261028T134500Z
+DTEND:20261028T164500Z
+SUMMARY:Team Nemesis 1-2 Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018204@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T110000Z
+DTEND:20261029T140000Z
+SUMMARY:Eternal Fire 2-0 BIG
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018207@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T183000Z
+DTEND:20261029T213000Z
+SUMMARY:Eternal Fire 2-1 Astralis
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018208@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T130000Z
+DTEND:20261030T160000Z
+SUMMARY:MIBR 0-2 Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018209@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T163000Z
+DTEND:20261030T213000Z
+SUMMARY:Fnatic 2-3 Eternal Fire
+DESCRIPTION:Stake Ranked Episode 5 (Playoffs)\nBest of 5\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 5
+END:VEVENT
+END:VCALENDAR

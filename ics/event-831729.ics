@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Crossfire Season 7 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015089@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T010000Z
+DTEND:20261103T040000Z
+SUMMARY:SquadUp vs Omen Esports (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019855@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T020000Z
+DTEND:20261103T050000Z
+SUMMARY:Celestial Esports 2-0 Solar Gravity (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024099@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T030000Z
+DTEND:20261104T060000Z
+SUMMARY:Elusive 2-0 Team Amplus (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024272@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T020000Z
+DTEND:20261105T050000Z
+SUMMARY:New Legends 0-2 CLUB 333 (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024273@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T023000Z
+DTEND:20261105T053000Z
+SUMMARY:Danker Memerson 0-2 Wanted Goons (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024836@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T033000Z
+DTEND:20261106T063000Z
+SUMMARY:Celestial Esports 2-0 Fueled by Hate (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025042@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T013000Z
+DTEND:20261107T043000Z
+SUMMARY:Detonate 2-1 Omen Esports (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024494@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261108T020000Z
+DTEND:20261108T050000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024495@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261108T020000Z
+DTEND:20261108T050000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Crossfire Season 7 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+END:VCALENDAR

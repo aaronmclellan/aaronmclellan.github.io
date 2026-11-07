@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:mellren (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3009849@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T090000Z
+DTEND:20261025T120000Z
+SUMMARY:Lavked 2-1 mellren
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009855@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261026T180000Z
+DTEND:20261026T210000Z
+SUMMARY:Novaq 2-0 mellren
+DESCRIPTION:CCT 2026 Europe Series 12 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013892@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:mellren 0-2 Falcons Force
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013894@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T120000Z
+DTEND:20261030T150000Z
+SUMMARY:mellren 0-2 megoshort
+DESCRIPTION:CCT 2026 Europe Series 13 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016707@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T141800Z
+DTEND:20261103T171800Z
+SUMMARY:mellren 1-2 Lilmix
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016712@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:mellren 2-0 mouz NXT
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024077@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T140000Z
+DTEND:20261104T170000Z
+SUMMARY:Lilmix 0-2 mellren
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024079@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T180000Z
+DTEND:20261104T210000Z
+SUMMARY:BAKS Esports 0-2 mellren
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024142@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T140000Z
+DTEND:20261105T170000Z
+SUMMARY:Rebels Gaming 2-0 mellren
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024143@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261105T180000Z
+DTEND:20261105T210000Z
+SUMMARY:mellren 2-1 Banda LFO
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+END:VCALENDAR

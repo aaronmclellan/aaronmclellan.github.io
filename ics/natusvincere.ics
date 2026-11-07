@@ -1,0 +1,159 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Natus Vincere (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3018127@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261024T160000Z
+DTEND:20261024T190000Z
+SUMMARY:G2 Esports 0-2 Natus Vincere
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018135@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261025T160000Z
+DTEND:20261025T190000Z
+SUMMARY:Natus Vincere 2-0 FURIA
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018144@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261026T170000Z
+DTEND:20261026T200000Z
+SUMMARY:BB Team 2-0 Natus Vincere
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018148@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261027T170000Z
+DTEND:20261027T200000Z
+SUMMARY:Natus Vincere 0-2 Team Vitality
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018153@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261028T170000Z
+DTEND:20261028T200000Z
+SUMMARY:Team Spirit 1-2 Natus Vincere
+DESCRIPTION:PGL Masters Bucharest 2026 (Group Stage)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018157@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261029T102000Z
+DTEND:20261029T132000Z
+SUMMARY:Team Vitality 2-1 Natus Vincere
+DESCRIPTION:PGL Masters Bucharest 2026 (Playoffs)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:PGL Masters Bucharest 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022552@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261030T101500Z
+DTEND:20261030T131500Z
+SUMMARY:Natus Vincere 2-0 Toobies
+DESCRIPTION:HyperX Retake Season 13 (Group Stage)\nBest of 3\nhttps://www.r
+ on.computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022559@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261031T100000Z
+DTEND:20261031T130000Z
+SUMMARY:Natus Vincere 0-2 WBT Academy
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023973@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261102T114500Z
+DTEND:20261102T144500Z
+SUMMARY:Natus Vincere 2-0 Team Falcons
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019586@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261103T101500Z
+DTEND:20261103T131500Z
+SUMMARY:FURIA 2-1 Natus Vincere
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019590@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T043000Z
+DTEND:20261104T073000Z
+SUMMARY:Natus Vincere 2-0 B8
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019594@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261104T102000Z
+DTEND:20261104T132000Z
+SUMMARY:Team Falcons 1-2 Natus Vincere
+DESCRIPTION:IEM Beijing 2026 (Group Stage)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019595@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261106T063000Z
+DTEND:20261106T093000Z
+SUMMARY:Parivision 1-2 Natus Vincere
+DESCRIPTION:IEM Beijing 2026 (Playoffs)\nBest of 3\nhttps://www.ron.compute
+ r/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019597@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261107T063000Z
+DTEND:20261107T093000Z
+SUMMARY:The MongolZ 2-0 Natus Vincere
+DESCRIPTION:IEM Beijing 2026 (Playoffs)\nBest of 3\nhttps://www.ron.compute
+ r/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019599@aaronmclellan.github.io
+DTSTAMP:20261107T142407Z
+DTSTART:20261108T040000Z
+DTEND:20261108T070000Z
+SUMMARY:Natus Vincere vs BB Team
+DESCRIPTION:IEM Beijing 2026 (Playoffs)\nBest of 3\nhttps://www.ron.compute
+ r/cs.html
+LOCATION:IEM Beijing 2026
+END:VEVENT
+END:VCALENDAR
