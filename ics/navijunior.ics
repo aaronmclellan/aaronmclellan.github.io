@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NAVI Junior (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023158@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261105T092500Z
+DTEND:20261105T122500Z
+SUMMARY:Navi Junior 0-2 STATE
+DESCRIPTION:United21 Season 58 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 58
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017915@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261106T090000Z
+DTEND:20261106T120000Z
+SUMMARY:FORZE Reload 2-1 Navi Junior
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017923@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T091500Z
+DTEND:20261110T121500Z
+SUMMARY:Navi Junior 2-0 Sökerorg
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023167@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T141000Z
+DTEND:20261110T171000Z
+SUMMARY:Navi Junior 2-0 SANCTUM
+DESCRIPTION:United21 Season 58 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 58
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017927@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T090000Z
+DTEND:20261112T120000Z
+SUMMARY:mouz NXT 2-1 Navi Junior
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023173@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Navi Junior 2-0 ThechampionGG
+DESCRIPTION:United21 Season 58 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 58
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023174@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T094500Z
+DTEND:20261113T124500Z
+SUMMARY:gothboiclique 2-0 Navi Junior
+DESCRIPTION:United21 Season 58 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 58
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023178@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T090000Z
+DTEND:20261115T120000Z
+SUMMARY:Navi Junior vs The Chosen Few
+DESCRIPTION:United21 Season 58 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 58
+END:VEVENT
+END:VCALENDAR

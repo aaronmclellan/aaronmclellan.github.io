@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lavked (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016636@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Lavked 2-1 DNK
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016641@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:Lavked 2-0 Drama eSports
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016653@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Lavked 0-2 Alliance
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+END:VCALENDAR

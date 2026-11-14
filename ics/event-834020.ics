@@ -1,0 +1,149 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Stake Ranked Episode 6 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025327@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T110000Z
+DTEND:20261117T140000Z
+SUMMARY:Inner Circle vs Betclic (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025328@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T133000Z
+DTEND:20261117T163000Z
+SUMMARY:BIG vs Sangal (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025329@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T160000Z
+DTEND:20261117T190000Z
+SUMMARY:Ninjas in Pyjamas vs UNiTY esports (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025330@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T183000Z
+DTEND:20261117T213000Z
+SUMMARY:GamerLegion vs Luminosity Gaming (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025331@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T110000Z
+DTEND:20261118T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025332@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T133000Z
+DTEND:20261118T163000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025333@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T160000Z
+DTEND:20261118T190000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025334@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T183000Z
+DTEND:20261118T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025335@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261119T110000Z
+DTEND:20261119T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025336@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261119T133000Z
+DTEND:20261119T163000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025337@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261119T160000Z
+DTEND:20261119T190000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025338@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261119T183000Z
+DTEND:20261119T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025339@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261120T130000Z
+DTEND:20261120T160000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025340@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261120T163000Z
+DTEND:20261120T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 5\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,249 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fiesta Series 4: Closed Qualifier (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025470@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T090000Z
+DTEND:20261111T120000Z
+SUMMARY:Famalicao vs Eternal Premium (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025471@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T120000Z
+DTEND:20261111T150000Z
+SUMMARY:ex-Sashi Academy vs Ducks (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025472@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T150000Z
+DTEND:20261111T180000Z
+SUMMARY:Ryvex vs Evermore (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025473@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:Tulpar Gaming vs DNK (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025532@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T090000Z
+DTEND:20261112T120000Z
+SUMMARY:Ducks vs DNK (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025533@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T120000Z
+DTEND:20261112T150000Z
+SUMMARY:ex-Sashi Academy vs Tulpar Gaming (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025534@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T150000Z
+DTEND:20261112T180000Z
+SUMMARY:Famalicao vs Evermore (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025535@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025536@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T090000Z
+DTEND:20261113T120000Z
+SUMMARY:4M vs ASTRON (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025537@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T120000Z
+DTEND:20261113T150000Z
+SUMMARY:ABT Esports vs DINERO (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025538@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T150000Z
+DTEND:20261113T180000Z
+SUMMARY:Revise vs eSuba (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025539@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:KAMUI vs Aurora YB (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026079@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T090000Z
+DTEND:20261114T120000Z
+SUMMARY:eSuba vs KAMUI (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026080@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T120000Z
+DTEND:20261114T150000Z
+SUMMARY:ASTRON vs ABT Esports (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026081@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T150000Z
+DTEND:20261114T180000Z
+SUMMARY:Revise vs Aurora YB (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026082@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026083@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T090000Z
+DTEND:20261115T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026084@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T120000Z
+DTEND:20261115T150000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026085@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T150000Z
+DTEND:20261115T180000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026086@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T180000Z
+DTEND:20261115T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026087@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T090000Z
+DTEND:20261116T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026088@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T120000Z
+DTEND:20261116T150000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026089@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T150000Z
+DTEND:20261116T180000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026090@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T180000Z
+DTEND:20261116T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4: Closed Qualifier (Group Stage)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:Fiesta Series 4: Closed Qualifier
+END:VEVENT
+END:VCALENDAR

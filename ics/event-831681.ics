@@ -1,0 +1,289 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ESL Challenger League Season 52 - Cup #12 Europe (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3016631@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Alliance 2-0 Four Magic (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016632@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:benched gods 1-2 Noir Verse (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016635@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:MAYBE 2-0 LPH Gaming (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016636@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Lavked 2-1 DNK (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016637@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Drama eSports 2-0 6yuBoJlbl (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016638@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Balkan Outlaws 1-2 KUUSAMO (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016647@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:TitanFlow 1-2 Saint Sinners (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025829@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:INOX 2-0 mixLVLT (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016639@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:Alliance 1-2 Noir Verse (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016640@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:mixLVLT 2-1 LPH Gaming (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016641@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:Lavked 2-0 Drama eSports (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016642@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:TitanFlow 0-2 Balkan Outlaws (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016643@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:KUUSAMO 2-0 Saint Sinners (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016644@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:INOX 2-0 MAYBE (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016645@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:Four Magic 2-0 benched gods (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016646@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:DNK 0-2 6yuBoJlbl (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025674@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T140000Z
+DTEND:20261113T170000Z
+SUMMARY:MAYBE 2-1 mixLVLT (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025675@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T140000Z
+DTEND:20261113T170000Z
+SUMMARY:Saint Sinners 2-0 Balkan Outlaws (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025676@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T140000Z
+DTEND:20261113T170000Z
+SUMMARY:Alliance 2-1 Four Magic (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025677@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T140000Z
+DTEND:20261113T170000Z
+SUMMARY:Drama eSports 0-2 6yuBoJlbl (Group Stage)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016651@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Noir Verse 2-0 6yuBoJlbl (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016652@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:KUUSAMO 1-2 MAYBE (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016653@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Lavked 0-2 Alliance (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016654@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:INOX 2-0 Saint Sinners (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016656@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T140000Z
+DTEND:20261114T170000Z
+SUMMARY:Alliance vs INOX (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025670@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T140000Z
+DTEND:20261114T170000Z
+SUMMARY:Noir Verse vs MAYBE (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016657@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025673@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+END:VCALENDAR

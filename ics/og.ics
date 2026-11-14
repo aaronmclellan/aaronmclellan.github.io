@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:OG (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022562@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261031T173500Z
+DTEND:20261031T203500Z
+SUMMARY:Iberian Soul 2-1 OG
+DESCRIPTION:HyperX Retake Season 13 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:HyperX Retake Season 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016660@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:OG 2-0 G2 Ares
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016671@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T180000Z
+DTEND:20261107T210000Z
+SUMMARY:PRIVATE vs OG
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016679@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T180000Z
+DTEND:20261108T210000Z
+SUMMARY:OG 1-2 9INE Pusulabet
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+END:VCALENDAR

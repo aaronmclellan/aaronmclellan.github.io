@@ -1,0 +1,269 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:European Pro League Series 11 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3019676@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T090000Z
+DTEND:20261123T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3019677@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T113000Z
+DTEND:20261123T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025610@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T090000Z
+DTEND:20261124T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025611@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T113000Z
+DTEND:20261124T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025612@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261125T090000Z
+DTEND:20261125T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025613@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261125T113000Z
+DTEND:20261125T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025614@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261126T090000Z
+DTEND:20261126T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025615@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261126T113000Z
+DTEND:20261126T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025616@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261127T090000Z
+DTEND:20261127T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025617@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261127T113000Z
+DTEND:20261127T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025618@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261128T090000Z
+DTEND:20261128T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025619@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261128T113000Z
+DTEND:20261128T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025620@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261129T090000Z
+DTEND:20261129T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025621@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261129T113000Z
+DTEND:20261129T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025622@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261130T090000Z
+DTEND:20261130T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025623@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261130T113000Z
+DTEND:20261130T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025624@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261201T090000Z
+DTEND:20261201T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025625@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261201T113000Z
+DTEND:20261201T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025626@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261202T090000Z
+DTEND:20261202T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025627@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261202T113000Z
+DTEND:20261202T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025628@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261203T090000Z
+DTEND:20261203T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025629@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261203T113000Z
+DTEND:20261203T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025630@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261204T090000Z
+DTEND:20261204T120000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025631@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261204T113000Z
+DTEND:20261204T143000Z
+SUMMARY:TBD vs TBD (Play-Ins)
+DESCRIPTION:European Pro League Series 11 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025632@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261205T090000Z
+DTEND:20261205T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Series 11 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025633@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261205T113000Z
+DTEND:20261205T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:European Pro League Series 11 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 11
+END:VEVENT
+END:VCALENDAR

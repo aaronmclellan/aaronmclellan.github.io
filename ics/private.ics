@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PRIVATE (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023085@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261031T150000Z
+DTEND:20261031T180000Z
+SUMMARY:PRIVATE vs Omega
+DESCRIPTION:CyberClash Season 2 (Playoffs)\nBest of 3\nhttps://www.ron.comp
+ uter/cs.html
+LOCATION:CyberClash Season 2
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024222@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261104T120000Z
+DTEND:20261104T150000Z
+SUMMARY:PRIVATE vs Dark Moon
+DESCRIPTION:Fiesta Series 3 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3014965@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:PRIVATE 2-0 Optibet
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016671@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T180000Z
+DTEND:20261107T210000Z
+SUMMARY:PRIVATE vs OG
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016678@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T140000Z
+DTEND:20261108T170000Z
+SUMMARY:PRIVATE 2-0 G2 Ares
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016681@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T180000Z
+DTEND:20261108T210000Z
+SUMMARY:Alliance 2-0 PRIVATE
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025989@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T122000Z
+DTEND:20261113T152000Z
+SUMMARY:PRIVATE 2-1 Butterfly
+DESCRIPTION:CCT 2026 Europe Series 13 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017933@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T090000Z
+DTEND:20261115T120000Z
+SUMMARY:PRIVATE vs FORZE Reload
+DESCRIPTION:European Pro League Series 10 (Playoffs)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+END:VCALENDAR

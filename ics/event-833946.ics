@@ -1,0 +1,269 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:United21 Season 59 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023635@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T090000Z
+DTEND:20261123T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025900@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T113000Z
+DTEND:20261123T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025901@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T090000Z
+DTEND:20261124T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025902@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T113000Z
+DTEND:20261124T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025903@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261125T090000Z
+DTEND:20261125T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025904@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261125T113000Z
+DTEND:20261125T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025905@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261126T090000Z
+DTEND:20261126T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025906@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261126T113000Z
+DTEND:20261126T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025907@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261127T090000Z
+DTEND:20261127T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025908@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261127T113000Z
+DTEND:20261127T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025909@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261128T090000Z
+DTEND:20261128T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025910@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261128T113000Z
+DTEND:20261128T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025911@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261129T090000Z
+DTEND:20261129T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025912@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261129T113000Z
+DTEND:20261129T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025913@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261130T090000Z
+DTEND:20261130T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025914@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261130T113000Z
+DTEND:20261130T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025915@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261201T090000Z
+DTEND:20261201T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025916@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261201T113000Z
+DTEND:20261201T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025917@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261202T090000Z
+DTEND:20261202T120000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025918@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261202T113000Z
+DTEND:20261202T143000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:United21 Season 59 (Group Stage)\nBest of 3\nhttps://www.ron.co
+ mputer/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025919@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261203T090000Z
+DTEND:20261203T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:United21 Season 59 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025920@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261203T113000Z
+DTEND:20261203T143000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:United21 Season 59 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025921@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261204T090000Z
+DTEND:20261204T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:United21 Season 59 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025922@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261204T113000Z
+DTEND:20261204T143000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:United21 Season 59 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025923@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261205T090000Z
+DTEND:20261205T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:United21 Season 59 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025924@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261205T113000Z
+DTEND:20261205T143000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:United21 Season 59 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:United21 Season 59
+END:VEVENT
+END:VCALENDAR

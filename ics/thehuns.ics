@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Huns (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022543@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261101T090000Z
+DTEND:20261101T120000Z
+SUMMARY:The Huns Esports vs 5star eSports
+DESCRIPTION:Moscow Cyber Games 2026 (Playoffs)\nBest of 3\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Moscow Cyber Games 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023375@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T060000Z
+DTEND:20261111T090000Z
+SUMMARY:The Huns Esports 2-0 Russian Men
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023383@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T084500Z
+DTEND:20261112T114500Z
+SUMMARY:Alter Ego 1-2 The Huns Esports
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023391@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T083000Z
+DTEND:20261116T113000Z
+SUMMARY:The Huns Esports vs Fruju
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+END:VCALENDAR

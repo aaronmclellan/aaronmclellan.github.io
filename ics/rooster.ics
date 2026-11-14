@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Rooster (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025039@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261109T090000Z
+DTEND:20261109T120000Z
+SUMMARY:Rooster 0-2 SemperFi Esports
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023380@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T060000Z
+DTEND:20261111T090000Z
+SUMMARY:Rooster 2-0 NEXVOID
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026077@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T060000Z
+DTEND:20261114T090000Z
+SUMMARY:Wolf of Wall Street 0-2 Rooster
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Group Stage)\nBes
+ t of 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+END:VCALENDAR

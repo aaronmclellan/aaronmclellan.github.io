@@ -1,0 +1,289 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:WINLINE Star Series Season 4 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023417@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T101500Z
+DTEND:20261112T131500Z
+SUMMARY:korya_mc 1-2 WorldEdit Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023418@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T131500Z
+DTEND:20261112T161500Z
+SUMMARY:Buster Club 1-2 korya_mc (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025816@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T161500Z
+DTEND:20261112T191500Z
+SUMMARY:Jerry Club 0-2 Recrent Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023420@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T184500Z
+DTEND:20261112T214500Z
+SUMMARY:Bratishkin 2-0 Recrent Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025944@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T103000Z
+DTEND:20261113T133000Z
+SUMMARY:Bratishkin 1-2 Jerry Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023423@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T121500Z
+DTEND:20261113T151500Z
+SUMMARY:leva2k 2-0 korya_mc (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023424@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T133000Z
+DTEND:20261113T163000Z
+SUMMARY:Buster Club 1-2 NS Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025889@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T160000Z
+DTEND:20261113T190000Z
+SUMMARY:PCH3LK1N Club 0-2 Cutierover (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025756@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T175500Z
+DTEND:20261113T205500Z
+SUMMARY:WorldEdit Club 2-1 NS Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023426@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T185500Z
+DTEND:20261113T215500Z
+SUMMARY:PCH3LK1N Club 2-1 Recrent Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023428@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T100000Z
+DTEND:20261114T130000Z
+SUMMARY:Recrent Club 2-0 Cutierover (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023429@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T130000Z
+DTEND:20261114T160000Z
+SUMMARY:Buster Club vs WorldEdit Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023430@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T130000Z
+DTEND:20261114T160000Z
+SUMMARY:leva2k vs NS Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025945@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T160000Z
+DTEND:20261114T190000Z
+SUMMARY:PCH3LK1N Club vs Jerry Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025515@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T100000Z
+DTEND:20261115T130000Z
+SUMMARY:leva2k vs WorldEdit Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025946@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T100000Z
+DTEND:20261115T130000Z
+SUMMARY:Jerry Club vs Cutierover (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023433@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T131500Z
+DTEND:20261115T161500Z
+SUMMARY:Buster Club vs leva2k (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023435@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T131500Z
+DTEND:20261115T161500Z
+SUMMARY:Bratishkin vs Cutierover (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023436@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T160000Z
+DTEND:20261115T190000Z
+SUMMARY:korya_mc vs NS Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025968@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T160000Z
+DTEND:20261115T190000Z
+SUMMARY:Bratishkin vs PCH3LK1N Club (Group Stage)
+DESCRIPTION:WINLINE Star Series Season 4 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023437@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T110000Z
+DTEND:20261116T140000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023438@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T134500Z
+DTEND:20261116T164500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023439@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T163000Z
+DTEND:20261116T193000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023440@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T191500Z
+DTEND:20261116T221500Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023441@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T140000Z
+DTEND:20261117T170000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023442@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T170000Z
+DTEND:20261117T200000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023443@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T130000Z
+DTEND:20261118T160000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023444@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T160000Z
+DTEND:20261118T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:WINLINE Star Series Season 4 (Playoffs)\nBest of 5\nhttps://www
+ .ron.computer/cs.html
+LOCATION:WINLINE Star Series Season 4
+END:VEVENT
+END:VCALENDAR

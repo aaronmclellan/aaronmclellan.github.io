@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:6yuBoJlbl (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017912@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261104T113000Z
+DTEND:20261104T143000Z
+SUMMARY:6yuBoJlbl 0-2 WRAITH PCIFIC
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016664@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:6yuBoJlbl 1-2 9INE Pusulabet
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025124@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T180000Z
+DTEND:20261107T210000Z
+SUMMARY:MAYBE 0-2 6yuBoJlbl
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016677@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T140000Z
+DTEND:20261108T170000Z
+SUMMARY:9INE Pusulabet 2-1 6yuBoJlbl
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016637@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T140000Z
+DTEND:20261112T170000Z
+SUMMARY:Drama eSports 2-0 6yuBoJlbl
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016646@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:DNK 0-2 6yuBoJlbl
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025677@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T140000Z
+DTEND:20261113T170000Z
+SUMMARY:Drama eSports 0-2 6yuBoJlbl
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016651@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Noir Verse 2-0 6yuBoJlbl
+DESCRIPTION:ESL Challenger League Season 52 - Cup #12 Europe (Playoffs)\nBe
+ st of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #12 Europe
+END:VEVENT
+END:VCALENDAR

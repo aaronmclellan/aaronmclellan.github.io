@@ -1,0 +1,119 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ex-Zero Tenacity (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013914@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261104T120000Z
+DTEND:20261104T150000Z
+SUMMARY:ex-Zero Tenacity 2-0 PsychoFace
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024223@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261104T150000Z
+DTEND:20261104T180000Z
+SUMMARY:ex-Zero Tenacity vs Honvéd
+DESCRIPTION:Fiesta Series 3 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 3
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013928@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T150000Z
+DTEND:20261107T180000Z
+SUMMARY:ex-Zero Tenacity 2-1 Leo Team
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013937@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261109T180000Z
+DTEND:20261109T210000Z
+SUMMARY:ex-Zero Tenacity 2-1 Team ACES
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015615@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T120000Z
+DTEND:20261110T150000Z
+SUMMARY:ex-Zero Tenacity 2-0 ILLYRIANS
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025270@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:ex-Zero Tenacity vs Spirit Academy
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025274@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T150000Z
+DTEND:20261112T180000Z
+SUMMARY:ex-Zero Tenacity vs Nice Try
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015627@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T121000Z
+DTEND:20261113T151000Z
+SUMMARY:ex-Zero Tenacity 2-1 BAKS
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013954@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:Team WW vs ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 13 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015637@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T180000Z
+DTEND:20261115T210000Z
+SUMMARY:Butterfly vs ex-Zero Tenacity
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025287@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T180000Z
+DTEND:20261115T210000Z
+SUMMARY:Phantom Esports vs ex-Zero Tenacity
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+END:VCALENDAR

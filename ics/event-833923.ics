@@ -1,0 +1,739 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NODWIN Clutch Series #14 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3022306@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261102T090000Z
+DTEND:20261102T120000Z
+SUMMARY:Walczaki vs Azuolas (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022307@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261102T120000Z
+DTEND:20261102T150000Z
+SUMMARY:Leo Team vs Saint Sinners (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023774@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261102T150000Z
+DTEND:20261102T180000Z
+SUMMARY:Spirit Academy vs Noir Verse (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023957@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261102T180000Z
+DTEND:20261102T210000Z
+SUMMARY:ex-ENCE 2-0 SINQU Esports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023780@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T090000Z
+DTEND:20261103T120000Z
+SUMMARY:Saint Sinners vs Spirit Academy (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023781@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T120000Z
+DTEND:20261103T150000Z
+SUMMARY:Leo Team vs Noir Verse (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023782@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T150000Z
+DTEND:20261103T180000Z
+SUMMARY:Walczaki vs SINQU Esports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023783@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:ex-ENCE vs Azuolas (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022312@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261104T090000Z
+DTEND:20261104T120000Z
+SUMMARY:Leo Team vs Spirit Academy (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022313@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261104T120000Z
+DTEND:20261104T150000Z
+SUMMARY:Azuolas vs Walczaki (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022316@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261105T090000Z
+DTEND:20261105T120000Z
+SUMMARY:BAKS vs Honvéd (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022317@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261105T120000Z
+DTEND:20261105T150000Z
+SUMMARY:Fire Flux vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023776@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261105T150000Z
+DTEND:20261105T180000Z
+SUMMARY:Basement Boys vs Misa (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023777@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261105T180000Z
+DTEND:20261105T210000Z
+SUMMARY:Johnny Speeds vs Drama eSports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022318@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261106T090000Z
+DTEND:20261106T120000Z
+SUMMARY:BAKS vs Fire Flux (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022319@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261106T120000Z
+DTEND:20261106T150000Z
+SUMMARY:Honvéd vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022320@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261106T150000Z
+DTEND:20261106T180000Z
+SUMMARY:Johnny Speeds 0-2 Basement Boys (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022321@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261106T180000Z
+DTEND:20261106T210000Z
+SUMMARY:Drama eSports vs Misa (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025059@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T090000Z
+DTEND:20261107T120000Z
+SUMMARY:Johnny Speeds vs Drama eSports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025060@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T120000Z
+DTEND:20261107T150000Z
+SUMMARY:Fire Flux vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025135@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T090000Z
+DTEND:20261108T120000Z
+SUMMARY:Basement Boys 0-2 Spirit Academy (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025167@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T120000Z
+DTEND:20261108T150000Z
+SUMMARY:Noir Verse vs Drama eSports (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025136@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T150000Z
+DTEND:20261108T180000Z
+SUMMARY:ex-ENCE vs ILLYRIANS (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025137@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T180000Z
+DTEND:20261108T210000Z
+SUMMARY:BAKS vs Azuolas (Play-Ins)
+DESCRIPTION:NODWIN Clutch Series #14 (Play-Ins)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025263@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T090000Z
+DTEND:20261110T120000Z
+SUMMARY:BRUTE vs ILLYRIANS (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025264@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T120000Z
+DTEND:20261110T150000Z
+SUMMARY:Team ACES vs BAKS (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025265@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T150000Z
+DTEND:20261110T180000Z
+SUMMARY:FORZE Reload 2-0 ex-RUSTEC (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025266@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T180000Z
+DTEND:20261110T210000Z
+SUMMARY:Nice Try 2-1 GenOne (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025267@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T090000Z
+DTEND:20261111T120000Z
+SUMMARY:UPGRADE 0-2 Butterfly (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025268@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T120000Z
+DTEND:20261111T150000Z
+SUMMARY:Phantom Esports vs Drama eSports (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025269@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T150000Z
+DTEND:20261111T180000Z
+SUMMARY:INOX vs Bet-M 33 (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025270@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:ex-Zero Tenacity vs Spirit Academy (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025272@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T090000Z
+DTEND:20261112T120000Z
+SUMMARY:Phantom Esports vs ILLYRIANS (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025273@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T120000Z
+DTEND:20261112T150000Z
+SUMMARY:FORZE Reload 0-2 Butterfly (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025274@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T150000Z
+DTEND:20261112T180000Z
+SUMMARY:ex-Zero Tenacity vs Nice Try (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025275@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:ex-RUSTEC 2-1 Spirit Academy (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025276@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T090000Z
+DTEND:20261113T120000Z
+SUMMARY:BRUTE 2-0 Bet-M 33 (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025277@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T120000Z
+DTEND:20261113T150000Z
+SUMMARY:Team ACES vs GenOne (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025278@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T150000Z
+DTEND:20261113T180000Z
+SUMMARY:UPGRADE vs Drama eSports (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025974@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T150000Z
+DTEND:20261113T180000Z
+SUMMARY:LUNTIKI vs Drama eSports (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025279@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:INOX vs BAKS (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025280@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T090000Z
+DTEND:20261114T120000Z
+SUMMARY:FORZE Reload 2-0 Nice Try (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026137@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T120000Z
+DTEND:20261114T150000Z
+SUMMARY:Phantom Esports vs Hype Tech (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025282@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T150000Z
+DTEND:20261114T180000Z
+SUMMARY:LUNTIKI vs Spirit Academy (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025283@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:Bet-M 33 vs GenOne (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025284@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T090000Z
+DTEND:20261115T120000Z
+SUMMARY:ex-RUSTEC vs Drama eSports (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025285@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T120000Z
+DTEND:20261115T150000Z
+SUMMARY:BRUTE vs INOX (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025286@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T150000Z
+DTEND:20261115T180000Z
+SUMMARY:Butterfly vs BAKS (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025287@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T180000Z
+DTEND:20261115T210000Z
+SUMMARY:Phantom Esports vs ex-Zero Tenacity (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025288@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T090000Z
+DTEND:20261116T120000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025289@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T120000Z
+DTEND:20261116T150000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025290@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261116T150000Z
+DTEND:20261116T180000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025291@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T090000Z
+DTEND:20261117T120000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025292@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T120000Z
+DTEND:20261117T150000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025293@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T150000Z
+DTEND:20261117T180000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025294@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T090000Z
+DTEND:20261118T120000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025295@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T120000Z
+DTEND:20261118T150000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025296@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261118T150000Z
+DTEND:20261118T180000Z
+SUMMARY:TBD vs TBD (Swiss Stage)
+DESCRIPTION:NODWIN Clutch Series #14 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025297@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261120T090000Z
+DTEND:20261120T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025298@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261120T120000Z
+DTEND:20261120T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025299@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261120T150000Z
+DTEND:20261120T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025300@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261120T180000Z
+DTEND:20261120T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025301@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261121T090000Z
+DTEND:20261121T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025302@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261121T120000Z
+DTEND:20261121T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025303@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261121T150000Z
+DTEND:20261121T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025304@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261121T180000Z
+DTEND:20261121T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025305@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261122T090000Z
+DTEND:20261122T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025306@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261122T120000Z
+DTEND:20261122T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025307@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261122T150000Z
+DTEND:20261122T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025308@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261122T180000Z
+DTEND:20261122T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025309@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T090000Z
+DTEND:20261123T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025310@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T120000Z
+DTEND:20261123T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025311@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261123T150000Z
+DTEND:20261123T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:NODWIN Clutch Series #14 (Playoffs)\nBest of 3\nhttps://www.ron
+ .computer/cs.html
+LOCATION:NODWIN Clutch Series #14
+END:VEVENT
+END:VCALENDAR

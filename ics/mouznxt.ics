@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:MOUZ NXT (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3017909@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T092000Z
+DTEND:20261103T122000Z
+SUMMARY:mouz NXT 2-0 megoshort
+DESCRIPTION:European Pro League Series 10 (Play-Ins)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016708@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T140000Z
+DTEND:20261103T170000Z
+SUMMARY:Banda LFO 2-0 mouz NXT
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016712@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261103T180000Z
+DTEND:20261103T210000Z
+SUMMARY:mellren 2-0 mouz NXT
+DESCRIPTION:ESL Challenger League Season 52 - Cup #10 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #10 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024833@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261109T151500Z
+DTEND:20261109T181500Z
+SUMMARY:Sökerorg 1-2 mouz NXT
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017924@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T113500Z
+DTEND:20261110T143500Z
+SUMMARY:FORZE Reload 2-0 mouz NXT
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015619@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T120000Z
+DTEND:20261111T150000Z
+SUMMARY:Nexus 2-0 mouz NXT
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017927@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T090000Z
+DTEND:20261112T120000Z
+SUMMARY:mouz NXT 2-1 Navi Junior
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015623@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261112T120000Z
+DTEND:20261112T150000Z
+SUMMARY:mouz NXT 2-0 Sökerorg
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015634@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T090000Z
+DTEND:20261115T120000Z
+SUMMARY:Walczaki vs mouz NXT
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017938@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261117T113000Z
+DTEND:20261117T143000Z
+SUMMARY:INFINITE vs mouz NXT
+DESCRIPTION:European Pro League Series 10 (Playoffs)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+END:VCALENDAR

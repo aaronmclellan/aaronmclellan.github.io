@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PGL Major Singapore 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025768@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T040000Z
+DTEND:20261124T053000Z
+SUMMARY:Heroic vs Imperial (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025769@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T040000Z
+DTEND:20261124T053000Z
+SUMMARY:9z Globant vs Lynn Vision Gaming (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025770@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T050000Z
+DTEND:20261124T063000Z
+SUMMARY:Ninjas in Pyjamas vs M80 (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025771@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T050000Z
+DTEND:20261124T063000Z
+SUMMARY:100 Thieves vs Chinggis Warriors (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025772@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T060000Z
+DTEND:20261124T073000Z
+SUMMARY:Team Liquid vs BC.Game (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025773@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T060000Z
+DTEND:20261124T073000Z
+SUMMARY:Parivision vs DENDELE CS (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025774@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T070000Z
+DTEND:20261124T083000Z
+SUMMARY:FaZe Clan vs Wildcard (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025775@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261124T070000Z
+DTEND:20261124T083000Z
+SUMMARY:Eternal Fire vs Flyquest (Swiss Stage)
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+END:VCALENDAR

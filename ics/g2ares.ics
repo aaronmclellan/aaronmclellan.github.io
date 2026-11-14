@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:G2 Ares (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3013919@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261105T150000Z
+DTEND:20261105T180000Z
+SUMMARY:FORZE Reload 2-0 G2 Ares
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013921@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261106T090000Z
+DTEND:20261106T120000Z
+SUMMARY:G2 Ares 2-0 The Last Resort
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017917@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T090000Z
+DTEND:20261107T120000Z
+SUMMARY:G2 Ares 2-0 Saint Sinners
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016660@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T140000Z
+DTEND:20261107T170000Z
+SUMMARY:OG 2-0 G2 Ares
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016672@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261107T180000Z
+DTEND:20261107T210000Z
+SUMMARY:Optibet 0-2 G2 Ares
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013930@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T090000Z
+DTEND:20261108T120000Z
+SUMMARY:G2 Ares 1-2 Inner Circle Academy
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3016678@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261108T140000Z
+DTEND:20261108T170000Z
+SUMMARY:PRIVATE 2-0 G2 Ares
+DESCRIPTION:ESL Challenger League Season 52 - Cup #11 Europe (Group Stage)\
+ nBest of 3\nhttps://www.ron.computer/cs.html
+LOCATION:ESL Challenger League Season 52 - Cup #11 Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3013939@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261110T150000Z
+DTEND:20261110T180000Z
+SUMMARY:G2 Ares 0-2 MAYBE
+DESCRIPTION:CCT 2026 Europe Series 13 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 13
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017926@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261111T113000Z
+DTEND:20261111T143000Z
+SUMMARY:G2 Ares 2-0 Lunacy
+DESCRIPTION:European Pro League Series 10 (Group Stage)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3017934@aaronmclellan.github.io
+DTSTAMP:20261114T115414Z
+DTSTART:20261115T113000Z
+DTEND:20261115T143000Z
+SUMMARY:Team WW vs G2 Ares
+DESCRIPTION:European Pro League Series 10 (Playoffs)\nBest of 3\nhttps://ww
+ w.ron.computer/cs.html
+LOCATION:European Pro League Series 10
+END:VEVENT
+END:VCALENDAR
