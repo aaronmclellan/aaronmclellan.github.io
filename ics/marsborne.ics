@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Marsborne (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3009341@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261107T231500Z
+DTEND:20261108T021500Z
+SUMMARY:Marsborne 2-0 feet67
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025168@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T205200Z
+DTEND:20261108T235200Z
+SUMMARY:Marsborne 2-0 Elusive
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3009344@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T231500Z
+DTEND:20261109T021500Z
+SUMMARY:Marsborne 2-0 Feistein
+DESCRIPTION:CCT 2026 Challengers North America 1 (Playoffs)\nBest of 3\nhtt
+ ps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Challengers North America 1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025229@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T013000Z
+DTEND:20261110T030000Z
+SUMMARY:Marsborne 0-1 LAG
+DESCRIPTION:ESEA Advanced Season 59 - North America (Group Stage)\nBest of 
+ 1\nhttps://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - North America
+END:VEVENT
+END:VCALENDAR

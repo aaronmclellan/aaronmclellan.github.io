@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Ninjas in Pyjamas (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025329@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T160000Z
+DTEND:20261117T190000Z
+SUMMARY:Ninjas in Pyjamas 2-0 UNiTY esports
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025334@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T185500Z
+DTEND:20261118T215500Z
+SUMMARY:Ninjas in Pyjamas 0-2 Luminosity Gaming
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025336@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T142500Z
+DTEND:20261119T172500Z
+SUMMARY:Ninjas in Pyjamas 1-2 BIG
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025770@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T050000Z
+DTEND:20261124T063000Z
+SUMMARY:Ninjas in Pyjamas vs M80
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+END:VCALENDAR

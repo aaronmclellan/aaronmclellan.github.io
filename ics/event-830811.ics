@@ -1,0 +1,529 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ESEA Advanced Season 59 - Europe (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024589@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T200000Z
+DTEND:20261108T213000Z
+SUMMARY:Y23 1-0 IMAPROBLEM (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025150@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T171000Z
+DTEND:20261109T184000Z
+SUMMARY:TEAM GELO 0-1 MTX (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025151@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T171000Z
+DTEND:20261109T184000Z
+SUMMARY:DimoniX Esports 0-1 wnT (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025152@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T171000Z
+DTEND:20261109T184000Z
+SUMMARY:Hermine Esports 0-1 Zotix (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025225@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T180000Z
+DTEND:20261110T193000Z
+SUMMARY:BOJONG 0-1 Oldboys (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025227@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T190000Z
+DTEND:20261110T203000Z
+SUMMARY:Fortress 1-0 wnT (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025228@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T193000Z
+DTEND:20261110T210000Z
+SUMMARY:Growth Lab Esport 0-1 PARTIZAN (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025373@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T180000Z
+DTEND:20261111T193000Z
+SUMMARY:Rcave 0-1 MTX (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025374@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T180000Z
+DTEND:20261111T193000Z
+SUMMARY:eSuba 0-1 The Chosen Few (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025375@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T180000Z
+DTEND:20261111T193000Z
+SUMMARY:Zotix 0-1 Vitality Academy (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025376@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T190000Z
+DTEND:20261111T203000Z
+SUMMARY:Diamant Esports 1-0 SINQU Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025521@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T180000Z
+DTEND:20261113T193000Z
+SUMMARY:Jumbo Team 1-0 Glitchtech (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025522@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T180000Z
+DTEND:20261113T193000Z
+SUMMARY:TSA Green 0-1 Eternal Premium (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025523@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T180000Z
+DTEND:20261113T193000Z
+SUMMARY:YOUNGLINGS 0-1 SINQU Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025524@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T190000Z
+DTEND:20261113T203000Z
+SUMMARY:Banda Chuya 1-0 DINERO LFO (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025526@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T170000Z
+DTEND:20261114T183000Z
+SUMMARY:Young Tigeres 1-0 DINERO LFO (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025527@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T180000Z
+DTEND:20261114T193000Z
+SUMMARY:YOUNGLINGS 0-1 DINERO LFO (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025528@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T180000Z
+DTEND:20261114T193000Z
+SUMMARY:TSA Green 0-1 BANGARANGA (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025936@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T184000Z
+DTEND:20261115T201000Z
+SUMMARY:YOUNGLINGS 0-1 BANGARANGA (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025937@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T191000Z
+DTEND:20261115T204000Z
+SUMMARY:TEAM GELO 1-0 Rcave (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025940@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T171000Z
+DTEND:20261116T184000Z
+SUMMARY:TTG Esports 1-0 Banda Chuya (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025941@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T171000Z
+DTEND:20261116T184000Z
+SUMMARY:ENRAGE 0-1 Vitality Academy (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025942@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T181000Z
+DTEND:20261116T194000Z
+SUMMARY:Xcity 0-1 Al Ahli Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025943@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T184000Z
+DTEND:20261116T201000Z
+SUMMARY:Fire Flux 0-1 BANGARANGA (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3022683@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T170000Z
+DTEND:20261117T183000Z
+SUMMARY:aimers 1-0 Banger Gang (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026095@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T180000Z
+DTEND:20261117T193000Z
+SUMMARY:TEAM GELO 0-1 Diamant Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026096@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T180000Z
+DTEND:20261117T193000Z
+SUMMARY:LPH Gaming 0-1 XI Esport (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026097@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T180000Z
+DTEND:20261117T193000Z
+SUMMARY:BANGARANGA 0-1 TTG Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3024580@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T170000Z
+DTEND:20261118T183000Z
+SUMMARY:The Chosen Few 0-1 Vitality Academy (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026098@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T180000Z
+DTEND:20261118T193000Z
+SUMMARY:Oldboys 1-0 Rcave (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026099@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T180000Z
+DTEND:20261118T193000Z
+SUMMARY:BANGARANGA 0-1 NoTime (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026100@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T180000Z
+DTEND:20261118T193000Z
+SUMMARY:B8 Academy 1-0 Al Ahli Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026532@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T181000Z
+DTEND:20261119T194000Z
+SUMMARY:IMAPROBLEM 0-1 Xcity (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026533@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T181000Z
+DTEND:20261119T194000Z
+SUMMARY:Y23 0-1 XI Esport (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026534@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T181000Z
+DTEND:20261119T194000Z
+SUMMARY:Hermine Esports 0-1 Diamant Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026535@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T181000Z
+DTEND:20261119T194000Z
+SUMMARY:Al Ahli Esports 1-0 YOUNGLINGS (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026599@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T170000Z
+DTEND:20261120T183000Z
+SUMMARY:Rcave 0-1 Y23 (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026600@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T170000Z
+DTEND:20261120T183000Z
+SUMMARY:Jumbo Team 0-1 BANGARANGA (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026601@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T183000Z
+DTEND:20261120T200000Z
+SUMMARY:99firepower 1utility 0-1 BANGARANGA (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026602@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T183000Z
+DTEND:20261120T200000Z
+SUMMARY:Rcave 1-0 Glitchtech (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026603@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T144500Z
+DTEND:20261121T161500Z
+SUMMARY:TEAM GELO 0-1 Jumbo Team (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026604@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T151500Z
+DTEND:20261121T164500Z
+SUMMARY:Zotix 1-0 TEAM GELO (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026605@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T160000Z
+DTEND:20261121T173000Z
+SUMMARY:LPH Gaming 1-0 Phantom Esports Academy (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026606@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T183000Z
+DTEND:20261121T200000Z
+SUMMARY:Y23 0-1 Hermine Esports (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027136@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T180000Z
+DTEND:20261122T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027137@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T180000Z
+DTEND:20261122T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027138@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T180000Z
+DTEND:20261122T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027139@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T180000Z
+DTEND:20261122T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027140@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T180000Z
+DTEND:20261123T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027141@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T180000Z
+DTEND:20261123T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027142@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T180000Z
+DTEND:20261123T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027143@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T180000Z
+DTEND:20261123T193000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:ESEA Advanced Season 59 - Europe (Group Stage)\nBest of 1\nhttp
+ s://www.ron.computer/cs.html
+LOCATION:ESEA Advanced Season 59 - Europe
+END:VEVENT
+END:VCALENDAR

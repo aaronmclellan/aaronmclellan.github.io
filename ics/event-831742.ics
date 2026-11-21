@@ -1,0 +1,569 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 Europe Series 14 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3015606@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T090000Z
+DTEND:20261108T120000Z
+SUMMARY:Bebop 1-2 ILLYRIANS (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015607@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T120000Z
+DTEND:20261108T150000Z
+SUMMARY:Prestige Esports 2-0 KUUSAMO (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015608@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T151000Z
+DTEND:20261108T181000Z
+SUMMARY:MASONIC 2-1 SAW Youngsters (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015609@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261108T182500Z
+DTEND:20261108T212500Z
+SUMMARY:Ryvex 2-1 Drama eSports (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015610@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T090000Z
+DTEND:20261109T120000Z
+SUMMARY:Sökerorg 2-0 Prestige Esports (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015611@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T120000Z
+DTEND:20261109T150000Z
+SUMMARY:MAYBE 1-2 MASONIC (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015612@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T150000Z
+DTEND:20261109T180000Z
+SUMMARY:Phantom Academy 1-2 ILLYRIANS (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025362@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261109T192500Z
+DTEND:20261109T222500Z
+SUMMARY:Honvéd 2-0 Ryvex (Play-Ins)
+DESCRIPTION:CCT 2026 Europe Series 14 (Play-Ins)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015614@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T090000Z
+DTEND:20261110T120000Z
+SUMMARY:BAKS 2-0 Azuolas (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015615@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T120000Z
+DTEND:20261110T150000Z
+SUMMARY:ex-Zero Tenacity 2-0 ILLYRIANS (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015616@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T150000Z
+DTEND:20261110T180000Z
+SUMMARY:Butterfly 2-1 Honvéd (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015617@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261110T180000Z
+DTEND:20261110T210000Z
+SUMMARY:Leo Team 2-0 MINT (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015618@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T090000Z
+DTEND:20261111T120000Z
+SUMMARY:ex-RUSTEC 2-0 Sökerorg (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015619@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T120000Z
+DTEND:20261111T150000Z
+SUMMARY:Nexus 2-0 mouz NXT (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015620@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T150000Z
+DTEND:20261111T180000Z
+SUMMARY:FORZE Reload 2-0 MASONIC (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015621@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:Walczaki 2-1 The Last Resort (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015622@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261112T090000Z
+DTEND:20261112T120000Z
+SUMMARY:The Last Resort 2-1 MASONIC (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015623@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261112T120000Z
+DTEND:20261112T150000Z
+SUMMARY:mouz NXT 2-0 Sökerorg (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015624@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261112T150000Z
+DTEND:20261112T180000Z
+SUMMARY:Azuolas 0-2 ILLYRIANS (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015625@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261112T180000Z
+DTEND:20261112T210000Z
+SUMMARY:MINT 0-2 Honvéd (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015626@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T090000Z
+DTEND:20261113T120000Z
+SUMMARY:Butterfly 2-0 Leo Team (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015627@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T121000Z
+DTEND:20261113T151000Z
+SUMMARY:ex-Zero Tenacity 2-1 BAKS (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015628@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T150000Z
+DTEND:20261113T180000Z
+SUMMARY:FORZE Reload 2-0 Walczaki (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015629@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:ex-RUSTEC 0-2 Nexus (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015630@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T090000Z
+DTEND:20261114T120000Z
+SUMMARY:MINT 0-2 MASONIC (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015631@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T120000Z
+DTEND:20261114T150000Z
+SUMMARY:Azuolas 2-0 Sökerorg (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015632@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T150000Z
+DTEND:20261114T180000Z
+SUMMARY:ex-RUSTEC 2-0 Honvéd (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015633@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:BAKS 1-2 ILLYRIANS (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015634@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T091500Z
+DTEND:20261115T121500Z
+SUMMARY:Walczaki 2-1 mouz NXT (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015635@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T120000Z
+DTEND:20261115T150000Z
+SUMMARY:Leo Team 0-2 The Last Resort (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015636@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T150000Z
+DTEND:20261115T180000Z
+SUMMARY:FORZE Reload 2-1 Nexus (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015637@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T184500Z
+DTEND:20261115T214500Z
+SUMMARY:Butterfly 2-0 ex-Zero Tenacity (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015638@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T120000Z
+DTEND:20261116T150000Z
+SUMMARY:mouz NXT 2-0 Azuolas (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015639@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T150000Z
+DTEND:20261116T180000Z
+SUMMARY:BAKS 2-0 MASONIC (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015640@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T180000Z
+DTEND:20261116T210000Z
+SUMMARY:Leo Team 2-0 Honvéd (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015641@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T120000Z
+DTEND:20261117T150000Z
+SUMMARY:ex-RUSTEC 1-2 ILLYRIANS (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015642@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T153500Z
+DTEND:20261117T183500Z
+SUMMARY:ex-Zero Tenacity 2-0 The Last Resort (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015643@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T180000Z
+DTEND:20261117T210000Z
+SUMMARY:Nexus 2-0 Walczaki (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015644@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T120000Z
+DTEND:20261118T150000Z
+SUMMARY:ex-RUSTEC 2-0 mouz NXT (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015645@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T150000Z
+DTEND:20261118T180000Z
+SUMMARY:BAKS 2-0 The Last Resort (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015646@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T180500Z
+DTEND:20261118T210500Z
+SUMMARY:Leo Team 2-1 Walczaki (Group Stage)
+DESCRIPTION:CCT 2026 Europe Series 14 (Group Stage)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026887@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T090000Z
+DTEND:20261119T120000Z
+SUMMARY:TEAM 33 1-2 ex-RUSTEC (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015648@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T120000Z
+DTEND:20261119T150000Z
+SUMMARY:Team ACES 2-0 ILLYRIANS (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026888@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T150000Z
+DTEND:20261119T180000Z
+SUMMARY:ex-INOX 1-2 FORZE Reload (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015650@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T184000Z
+DTEND:20261119T214000Z
+SUMMARY:Aimclub 0-2 Nexus (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015651@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T090000Z
+DTEND:20261120T120000Z
+SUMMARY:NT 0-2 BAKS (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015652@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T120000Z
+DTEND:20261120T150000Z
+SUMMARY:Lazer Cats 0-2 ex-Zero Tenacity (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015653@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T150000Z
+DTEND:20261120T180000Z
+SUMMARY:Rune Eaters 1-2 Butterfly (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015654@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T184000Z
+DTEND:20261120T214000Z
+SUMMARY:GenOne 0-2 Leo Team (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015655@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T090000Z
+DTEND:20261121T120000Z
+SUMMARY:Leo Team 1-2 FORZE Reload (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015656@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T123500Z
+DTEND:20261121T153500Z
+SUMMARY:Team ACES 2-1 Nexus (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015657@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T150000Z
+DTEND:20261121T180000Z
+SUMMARY:ex-Zero Tenacity 1-2 ex-RUSTEC (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015658@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T180000Z
+DTEND:20261121T210000Z
+SUMMARY:BAKS 0-2 Butterfly (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015659@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T110000Z
+DTEND:20261122T140000Z
+SUMMARY:Butterfly vs ex-RUSTEC (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015660@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T140000Z
+DTEND:20261122T170000Z
+SUMMARY:FORZE Reload vs Team ACES (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3015661@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T170000Z
+DTEND:20261122T200000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:CCT 2026 Europe Series 14 (Playoffs)\nBest of 3\nhttps://www.ro
+ n.computer/cs.html
+LOCATION:CCT 2026 Europe Series 14
+END:VEVENT
+END:VCALENDAR

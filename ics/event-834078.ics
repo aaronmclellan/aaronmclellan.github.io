@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Master League Portugal Season 19 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3026458@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T114000Z
+DTEND:20261120T144000Z
+SUMMARY:SEGA.dll 0-2 ABT Esports (Playoffs)
+DESCRIPTION:Master League Portugal Season 19 (Playoffs)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:Master League Portugal Season 19
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026459@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T161000Z
+DTEND:20261120T191000Z
+SUMMARY:Fuzos 0-2 Famalicao (Playoffs)
+DESCRIPTION:Master League Portugal Season 19 (Playoffs)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:Master League Portugal Season 19
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026460@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T113000Z
+DTEND:20261121T143000Z
+SUMMARY:Rebels Gaming 2-0 ABT Esports (Playoffs)
+DESCRIPTION:Master League Portugal Season 19 (Playoffs)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:Master League Portugal Season 19
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026461@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T160000Z
+DTEND:20261121T190000Z
+SUMMARY:sAw 1-2 Famalicao (Playoffs)
+DESCRIPTION:Master League Portugal Season 19 (Playoffs)\nBest of 3\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:Master League Portugal Season 19
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026462@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T140000Z
+DTEND:20261122T190000Z
+SUMMARY:Rebels Gaming vs Famalicao (Playoffs)
+DESCRIPTION:Master League Portugal Season 19 (Playoffs)\nBest of 5\nhttps:/
+ /www.ron.computer/cs.html
+LOCATION:Master League Portugal Season 19
+END:VEVENT
+END:VCALENDAR

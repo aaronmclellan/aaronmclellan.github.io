@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:magic (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024809@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T090000Z
+DTEND:20261115T120000Z
+SUMMARY:Magic Esport 2-1 Heroic
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025807@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261115T154500Z
+DTEND:20261115T184500Z
+SUMMARY:Magic Esport 0-2 Fnatic
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026259@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261116T150000Z
+DTEND:20261116T180000Z
+SUMMARY:Magic Esport 2-0 Eternal Fire
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026262@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T120000Z
+DTEND:20261117T150000Z
+SUMMARY:Magic Esport 2-0 Heroic
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026263@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T150000Z
+DTEND:20261117T180000Z
+SUMMARY:Magic Esport 0-2 Fnatic
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+END:VCALENDAR

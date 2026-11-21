@@ -1,0 +1,309 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 Contenders Europe Series 11 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3026428@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T191500Z
+DTEND:20261119T221500Z
+SUMMARY:Young27 1-2 FLXRE (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026429@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T191500Z
+DTEND:20261119T221500Z
+SUMMARY:CPH Wolves 2-1 Haze (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026431@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T215000Z
+DTEND:20261120T005000Z
+SUMMARY:gothboiclique 1-2 VTK (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026430@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T222500Z
+DTEND:20261120T012500Z
+SUMMARY:Fever Squad 1-2 EAC (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026432@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:Hermine Esports 1-2 ENCELADE (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026433@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:TTG Esports 2-1 NoTime (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026435@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T215500Z
+DTEND:20261121T005500Z
+SUMMARY:AXE 0-2 Zotix (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026434@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T224100Z
+DTEND:20261121T014100Z
+SUMMARY:Diamant Esports 2-0 SharaDictatorLFO (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026437@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T190000Z
+DTEND:20261121T220000Z
+SUMMARY:Haze 2-0 Fever Squad (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026436@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T191500Z
+DTEND:20261121T221500Z
+SUMMARY:Young27 2-0 Hermine Esports (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026438@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T214500Z
+DTEND:20261122T004500Z
+SUMMARY:FLXRE vs ENCELADE (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026439@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T214500Z
+DTEND:20261122T004500Z
+SUMMARY:TTG Esports vs VTK (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026440@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T190000Z
+DTEND:20261122T220000Z
+SUMMARY:NoTime vs gothboiclique (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026441@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T190000Z
+DTEND:20261122T220000Z
+SUMMARY:SharaDictatorLFO vs AXE (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026442@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T214500Z
+DTEND:20261123T004500Z
+SUMMARY:Diamant Esports vs Zotix (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026443@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T214500Z
+DTEND:20261123T004500Z
+SUMMARY:CPH Wolves vs EAC (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026444@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T190000Z
+DTEND:20261123T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026445@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T190000Z
+DTEND:20261123T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026446@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T214500Z
+DTEND:20261124T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026447@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T214500Z
+DTEND:20261124T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026448@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T190000Z
+DTEND:20261124T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026449@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T190000Z
+DTEND:20261124T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026450@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T214500Z
+DTEND:20261125T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026451@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T214500Z
+DTEND:20261125T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026452@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261125T190000Z
+DTEND:20261125T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026453@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261125T214500Z
+DTEND:20261126T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026454@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026455@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261126T214500Z
+DTEND:20261127T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026456@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026457@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261127T214500Z
+DTEND:20261128T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 11 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 11
+END:VEVENT
+END:VCALENDAR

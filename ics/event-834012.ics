@@ -1,0 +1,489 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fiesta Series 4 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3026412@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T090000Z
+DTEND:20261117T120000Z
+SUMMARY:Prestige Esports vs MORROW (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026413@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T120000Z
+DTEND:20261117T150000Z
+SUMMARY:Misa vs Evermore (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026414@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T150000Z
+DTEND:20261117T180000Z
+SUMMARY:PCIFIC Esports vs Revise (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026415@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261117T180000Z
+DTEND:20261117T210000Z
+SUMMARY:Azuolas vs KAMUI (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026416@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T090000Z
+DTEND:20261118T120000Z
+SUMMARY:Vexar vs ASTRON (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026417@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T120000Z
+DTEND:20261118T150000Z
+SUMMARY:ILLYRIANS vs INFURITY Gaming (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026418@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T150000Z
+DTEND:20261118T180000Z
+SUMMARY:Drama eSports vs los kogutos (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026419@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261118T180000Z
+DTEND:20261118T210000Z
+SUMMARY:LPH Gaming vs Honvéd (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026544@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T090000Z
+DTEND:20261119T120000Z
+SUMMARY:PCIFIC Esports vs los kogutos (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026545@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T120000Z
+DTEND:20261119T150000Z
+SUMMARY:INFURITY Gaming vs ASTRON (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026546@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T150000Z
+DTEND:20261119T180000Z
+SUMMARY:LPH Gaming vs KAMUI (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026547@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261119T180000Z
+DTEND:20261119T210000Z
+SUMMARY:MORROW vs Evermore (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026548@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T090000Z
+DTEND:20261120T120000Z
+SUMMARY:Drama eSports vs ILLYRIANS (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026549@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T120000Z
+DTEND:20261120T150000Z
+SUMMARY:Honvéd vs Revise (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026550@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T150000Z
+DTEND:20261120T180000Z
+SUMMARY:Misa vs Prestige Esports (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026551@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261120T180000Z
+DTEND:20261120T210000Z
+SUMMARY:Vexar vs Azuolas (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027037@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T090000Z
+DTEND:20261121T120000Z
+SUMMARY:INFURITY Gaming vs KAMUI (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027038@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T120000Z
+DTEND:20261121T150000Z
+SUMMARY:WRAITH PCIFIC vs Evermore (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027039@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T150000Z
+DTEND:20261121T180000Z
+SUMMARY:Azuolas vs Drama eSports (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027040@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261121T180000Z
+DTEND:20261121T210000Z
+SUMMARY:Prestige Esports vs Honvéd (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027472@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T090000Z
+DTEND:20261122T120000Z
+SUMMARY:Revise vs ASTRON (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027473@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T120000Z
+DTEND:20261122T150000Z
+SUMMARY:Vexar vs MORROW (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027474@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T150000Z
+DTEND:20261122T180000Z
+SUMMARY:Misa vs ILLYRIANS (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027475@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261122T180000Z
+DTEND:20261122T210000Z
+SUMMARY:LPH Gaming vs Banda Chuya (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027476@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T120000Z
+DTEND:20261123T150000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027477@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T150000Z
+DTEND:20261123T180000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027478@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261123T180000Z
+DTEND:20261123T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027479@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T120000Z
+DTEND:20261124T150000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027480@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T150000Z
+DTEND:20261124T180000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027481@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261124T180000Z
+DTEND:20261124T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027482@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261125T120000Z
+DTEND:20261125T150000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027483@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261125T150000Z
+DTEND:20261125T180000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027484@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261125T180000Z
+DTEND:20261125T210000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Fiesta Series 4 (Group Stage)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027485@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261126T090000Z
+DTEND:20261126T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027486@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261126T120000Z
+DTEND:20261126T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027487@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261126T150000Z
+DTEND:20261126T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027488@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261126T180000Z
+DTEND:20261126T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027489@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261127T090000Z
+DTEND:20261127T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027490@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261127T120000Z
+DTEND:20261127T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027491@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261127T150000Z
+DTEND:20261127T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027492@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261127T180000Z
+DTEND:20261127T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027493@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261128T090000Z
+DTEND:20261128T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027494@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261128T120000Z
+DTEND:20261128T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027495@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261128T150000Z
+DTEND:20261128T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027496@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261128T180000Z
+DTEND:20261128T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027497@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261129T120000Z
+DTEND:20261129T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027498@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261129T150000Z
+DTEND:20261129T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027499@aaronmclellan.github.io
+DTSTAMP:20261121T214713Z
+DTSTART:20261129T180000Z
+DTEND:20261129T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Fiesta Series 4 (Playoffs)\nBest of 3\nhttps://www.ron.computer
+ /cs.html
+LOCATION:Fiesta Series 4
+END:VEVENT
+END:VCALENDAR
