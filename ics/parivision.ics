@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PARIVISION (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024810@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261115T123000Z
+DTEND:20261115T153000Z
+SUMMARY:Parivision 2-1 TPuDCATb TPu
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025808@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261115T180500Z
+DTEND:20261115T210500Z
+SUMMARY:Parivision 1-2 100 Thieves
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026260@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261116T180000Z
+DTEND:20261116T210000Z
+SUMMARY:Heroic 2-0 Parivision
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025773@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T061500Z
+DTEND:20261124T074500Z
+SUMMARY:Parivision 1-0 DENDELE CS
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026790@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T110000Z
+DTEND:20261124T123000Z
+SUMMARY:Parivision 0-1 Flyquest
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026798@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261125T071500Z
+DTEND:20261125T084500Z
+SUMMARY:Parivision 1-0 FaZe Clan
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026806@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261126T085500Z
+DTEND:20261126T115500Z
+SUMMARY:Lynn Vision 0-2 Parivision
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3028229@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261128T070000Z
+DTEND:20261128T083000Z
+SUMMARY:Natus Vincere 1-0 Parivision
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3028242@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261128T123000Z
+DTEND:20261128T140000Z
+SUMMARY:Flyquest 1-0 Parivision
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+END:VCALENDAR

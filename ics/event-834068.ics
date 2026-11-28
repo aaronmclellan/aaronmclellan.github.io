@@ -1,0 +1,249 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CCT 2026 Contenders Europe Series 12 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3026463@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261213T190000Z
+DTEND:20261213T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026552@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261213T190000Z
+DTEND:20261213T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026553@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261213T214500Z
+DTEND:20261214T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026554@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261213T214500Z
+DTEND:20261214T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026555@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261214T190000Z
+DTEND:20261214T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026556@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261214T190000Z
+DTEND:20261214T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026557@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261214T214500Z
+DTEND:20261215T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026558@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261214T214500Z
+DTEND:20261215T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026559@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261215T190000Z
+DTEND:20261215T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026560@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261215T190000Z
+DTEND:20261215T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026561@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261215T214500Z
+DTEND:20261216T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026562@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261215T214500Z
+DTEND:20261216T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026563@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T190000Z
+DTEND:20261216T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026564@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T190000Z
+DTEND:20261216T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026565@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T214500Z
+DTEND:20261217T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026566@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T214500Z
+DTEND:20261217T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026567@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261217T190000Z
+DTEND:20261217T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026568@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261217T190000Z
+DTEND:20261217T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026569@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261217T214500Z
+DTEND:20261218T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026570@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261217T214500Z
+DTEND:20261218T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026571@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261218T190000Z
+DTEND:20261218T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026572@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261218T190000Z
+DTEND:20261218T220000Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026573@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261218T214500Z
+DTEND:20261219T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026574@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261218T214500Z
+DTEND:20261219T004500Z
+SUMMARY:TBD vs TBD (Main Event)
+DESCRIPTION:CCT 2026 Contenders Europe Series 12 (Main Event)\nBest of 3\nh
+ ttps://www.ron.computer/cs.html
+LOCATION:CCT 2026 Contenders Europe Series 12
+END:VEVENT
+END:VCALENDAR

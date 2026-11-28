@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Gamers Club Liga Série A: December 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025776@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261208T190000Z
+DTEND:20261208T220000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025777@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261208T213000Z
+DTEND:20261209T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026586@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261209T190000Z
+DTEND:20261209T220000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026587@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261209T213000Z
+DTEND:20261210T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026588@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261210T190000Z
+DTEND:20261210T220000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026589@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261210T213000Z
+DTEND:20261211T003000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026590@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Gamers Club Liga Série A: December 2026 (Playoffs)\nBest of 3\
+ nhttps://www.ron.computer/cs.html
+LOCATION:Gamers Club Liga Série A: December 2026
+END:VEVENT
+END:VCALENDAR

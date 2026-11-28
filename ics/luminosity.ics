@@ -1,0 +1,59 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Luminosity (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025330@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261117T183000Z
+DTEND:20261117T213000Z
+SUMMARY:GamerLegion 1-2 Luminosity
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025334@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261118T185500Z
+DTEND:20261118T215500Z
+SUMMARY:Ninjas in Pyjamas 0-2 Luminosity
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025337@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261119T174500Z
+DTEND:20261119T204500Z
+SUMMARY:Luminosity 0-2 Sangal
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025339@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261120T130000Z
+DTEND:20261120T160000Z
+SUMMARY:Luminosity 2-1 BIG
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025340@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261120T163000Z
+DTEND:20261120T213000Z
+SUMMARY:Sangal 1-3 Luminosity
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 5\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+END:VCALENDAR

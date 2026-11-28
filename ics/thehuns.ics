@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:The Huns (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3023391@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261116T083000Z
+DTEND:20261116T113000Z
+SUMMARY:The Huns 2-0 Fruju
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023395@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261118T083000Z
+DTEND:20261118T113000Z
+SUMMARY:Rooster 0-2 The Huns
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023398@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261120T093500Z
+DTEND:20261120T123500Z
+SUMMARY:Legion 0-2 The Huns
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3023401@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261122T061000Z
+DTEND:20261122T091000Z
+SUMMARY:The Huns 2-0 SemperFi
+DESCRIPTION:European Pro League Asia - Regular Season  1 (Playoffs)\nBest o
+ f 3\nhttps://www.ron.computer/cs.html
+LOCATION:European Pro League Asia - Regular Season  1
+END:VEVENT
+END:VCALENDAR

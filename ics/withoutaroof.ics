@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Without a Roof (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3026408@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261117T010000Z
+DTEND:20261117T040000Z
+SUMMARY:Without a Roof 2-0 Axial
+DESCRIPTION:Crossfire Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026150@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261119T010000Z
+DTEND:20261119T040000Z
+SUMMARY:Without a Roof vs NuTorious
+DESCRIPTION:Crossfire Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027414@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T023000Z
+DTEND:20261124T053000Z
+SUMMARY:Without a Roof 2-0 FarmVille
+DESCRIPTION:Crossfire Season 7 (Playoffs)\nBest of 3\nhttps://www.ron.compu
+ ter/cs.html
+LOCATION:Crossfire Season 7
+END:VEVENT
+END:VCALENDAR

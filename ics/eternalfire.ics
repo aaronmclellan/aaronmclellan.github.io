@@ -1,0 +1,99 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Eternal Fire (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3024811@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261115T131500Z
+DTEND:20261115T161500Z
+SUMMARY:100 Thieves 2-1 Eternal Fire
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025806@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261115T184500Z
+DTEND:20261115T214500Z
+SUMMARY:TPuDCATb TPu 0-2 Eternal Fire
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026259@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261116T150000Z
+DTEND:20261116T180000Z
+SUMMARY:Magic 2-0 Eternal Fire
+DESCRIPTION:PGL Cluj-Napoca 2027: Closed Qualifier (Group Stage)\nBest of 3
+ \nhttps://www.ron.computer/cs.html
+LOCATION:PGL Cluj-Napoca 2027: Closed Qualifier
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025775@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T072000Z
+DTEND:20261124T085000Z
+SUMMARY:Eternal Fire 0-1 Flyquest
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026794@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T110000Z
+DTEND:20261124T123000Z
+SUMMARY:Eternal Fire 1-0 DENDELE CS
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027709@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261125T060000Z
+DTEND:20261125T073000Z
+SUMMARY:Eternal Fire 1-0 100 Thieves
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027890@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261126T060000Z
+DTEND:20261126T090000Z
+SUMMARY:M80 1-2 Eternal Fire
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3028228@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261128T061000Z
+DTEND:20261128T074000Z
+SUMMARY:1WIN 1-0 Eternal Fire
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3028239@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261128T103000Z
+DTEND:20261128T120000Z
+SUMMARY:Liquid 1-0 Eternal Fire
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+END:VCALENDAR

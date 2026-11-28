@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Roman Imperium Cup X (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025757@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T080000Z
+DTEND:20261216T093000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Roman Imperium Cup X (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Roman Imperium Cup X
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025758@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T080000Z
+DTEND:20261216T093000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Roman Imperium Cup X (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Roman Imperium Cup X
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025759@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T080000Z
+DTEND:20261216T093000Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Roman Imperium Cup X (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Roman Imperium Cup X
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025760@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T091500Z
+DTEND:20261216T104500Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Roman Imperium Cup X (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Roman Imperium Cup X
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025761@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T091500Z
+DTEND:20261216T104500Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Roman Imperium Cup X (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Roman Imperium Cup X
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025762@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261216T091500Z
+DTEND:20261216T104500Z
+SUMMARY:TBD vs TBD (Group Stage)
+DESCRIPTION:Roman Imperium Cup X (Group Stage)\nBest of 1\nhttps://www.ron.
+ computer/cs.html
+LOCATION:Roman Imperium Cup X
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,179 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Svenska Elitserien Fall 2026 (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025548@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261116T180000Z
+DTEND:20261116T210000Z
+SUMMARY:Nätverket Esport 0-2 Minkens Finest (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025549@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261117T180000Z
+DTEND:20261117T210000Z
+SUMMARY:XEPT 2-0 Crown City Esport (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3018503@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261118T180000Z
+DTEND:20261118T210000Z
+SUMMARY:Nätverket Esport 0-2 Crown City Esport (Group Stage)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Group Stage)\nBest of 3\nhttps://
+ www.ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026707@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T090000Z
+DTEND:20261204T120000Z
+SUMMARY:Leo vs Coinstep United (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027970@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T090000Z
+DTEND:20261204T120000Z
+SUMMARY:Lilmix vs Minkens Finest (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027971@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T120000Z
+DTEND:20261204T150000Z
+SUMMARY:Kappa BAR vs Crown City Esport (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027972@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T120000Z
+DTEND:20261204T150000Z
+SUMMARY:XEPT vs LFO (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027973@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T150000Z
+DTEND:20261204T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027974@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T150000Z
+DTEND:20261204T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027975@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T180000Z
+DTEND:20261204T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027976@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261204T180000Z
+DTEND:20261204T210000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027988@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261205T090000Z
+DTEND:20261205T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027989@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261205T090000Z
+DTEND:20261205T120000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027990@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261205T120000Z
+DTEND:20261205T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027991@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261205T120000Z
+DTEND:20261205T150000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027992@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261205T150000Z
+DTEND:20261205T180000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3027993@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261205T183000Z
+DTEND:20261205T213000Z
+SUMMARY:TBD vs TBD (Playoffs)
+DESCRIPTION:Svenska Elitserien Fall 2026 (Playoffs)\nBest of 3\nhttps://www
+ .ron.computer/cs.html
+LOCATION:Svenska Elitserien Fall 2026
+END:VEVENT
+END:VCALENDAR

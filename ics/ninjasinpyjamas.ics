@@ -1,0 +1,89 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CS2 Pro Tracker//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Ninjas in Pyjamas (CS2)
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:cs2-3025329@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261117T160000Z
+DTEND:20261117T190000Z
+SUMMARY:Ninjas in Pyjamas 2-0 UNiTY esports
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025334@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261118T185500Z
+DTEND:20261118T215500Z
+SUMMARY:Ninjas in Pyjamas 0-2 Luminosity
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025336@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261119T142500Z
+DTEND:20261119T172500Z
+SUMMARY:Ninjas in Pyjamas 1-2 BIG
+DESCRIPTION:Stake Ranked Episode 6 (Playoffs)\nBest of 3\nhttps://www.ron.c
+ omputer/cs.html
+LOCATION:Stake Ranked Episode 6
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3025770@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T050000Z
+DTEND:20261124T063000Z
+SUMMARY:Ninjas in Pyjamas 1-0 M80
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026789@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261124T083000Z
+DTEND:20261124T100000Z
+SUMMARY:Ninjas in Pyjamas 1-0 Lynn Vision
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3026800@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261125T104500Z
+DTEND:20261125T134500Z
+SUMMARY:Ninjas in Pyjamas 2-0 Liquid
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 3\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3028226@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261128T051000Z
+DTEND:20261128T064000Z
+SUMMARY:Nemiga 0-1 Ninjas in Pyjamas
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+BEGIN:VEVENT
+UID:cs2-3028237@aaronmclellan.github.io
+DTSTAMP:20261128T145436Z
+DTSTART:20261128T092000Z
+DTEND:20261128T105000Z
+SUMMARY:G2 1-0 Ninjas in Pyjamas
+DESCRIPTION:PGL Major Singapore 2026 (Swiss Stage)\nBest of 1\nhttps://www.
+ ron.computer/cs.html
+LOCATION:PGL Major Singapore 2026
+END:VEVENT
+END:VCALENDAR
